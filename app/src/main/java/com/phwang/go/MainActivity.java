@@ -55,8 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
             case R.id.exit_button:
-                i = new Intent(this, About.class);
-                startActivity(i);
+                finish();
                 break;
         }
     }
