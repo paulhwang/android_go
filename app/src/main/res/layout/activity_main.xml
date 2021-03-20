@@ -22,11 +22,6 @@
         android:layout_height="wrap_content"
         android:text="@string/continue_label" />
     <Button
-        android:id="@+id/new_game_button"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/new_game_label" />
-    <Button
         android:id="@+id/about_button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -36,5 +31,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/exit_label" />
+    <Button
+        android:id="@+id/new_game_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/new_game_label" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

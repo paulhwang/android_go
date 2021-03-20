@@ -10,5 +10,14 @@
     <string name="about_title">About phwang</string>
     <string name="about_text">Go and Sudoku by Paul Hwang</string>
 
+    <string name="settings_label">Settings...</string>
+    <string name="settings_shortcut">s</string>
+
+    <string name="new_game_title">Difficutly...</string>
+    <string name="easy_label">Easy</string>
+    <string name="medium_labal">Medium</string>
+    <string name="hard_label">Hard</string>
+
+
 
 </resources>

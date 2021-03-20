@@ -1,20 +1,33 @@
+/*
+ ******************************************************************************
+ *
+ *  Copyright (c) 2021 phwang. All rights reserved.
+ *
+ ******************************************************************************
+ */
+
 package com.phwang.go;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.util.Log;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = "+++++Go+++++";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d("+++++Go+++++", "MainActivity");
+        Log.d(TAG, "MainActivity");
 
         View continueButton = findViewById(R.id.continue_button);
         continueButton.setOnClickListener(this);
@@ -31,25 +44,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent i;
         switch (v.getId()) {
             case R.id.continue_button:
-                Log.d("+++++aaaGo+++++", "MainActivity");
                 i = new Intent(this, About.class);
                 startActivity(i);
                 break;
             case R.id.new_game_button:
-                Log.d("+++++bbbGo+++++", "MainActivity");
-                i = new Intent(this, About.class);
-                startActivity(i);
+                this.openNewGameDialog();
                 break;
             case R.id.about_button:
-                Log.d("+++++cccGo+++++", "MainActivity");
                 i = new Intent(this, About.class);
                 startActivity(i);
                 break;
             case R.id.exit_button:
-                Log.d("+++++dddGo+++++", "MainActivity");
                 i = new Intent(this, About.class);
                 startActivity(i);
                 break;
         }
+    }
+
+    private void openNewGameDialog() {
+        new AlertDialog.Builder(this).setTitle(R.string.new_game_title).setItems(R.array.difficulty, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialoginterface, int i) {
+                startGame(i);
+            }
+        }).show();
+    }
+
+    private void startGame(int i) {
+        Log.d(TAG, "clicked on " + i);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu_val) {
+        super.onCreateOptionsMenu(menu_val);
+        MenuInflater inflater = getMenuInflater();
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item_val) {
+        switch (item_val.getItemId()) {
+            case R.id.settings:
+                //StartActivity(new Intent(this, Prefs.class));
+                return true;
+        }
+        return false;
     }
 }
