@@ -9,4 +9,10 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="background">#FFFFFFFF</color>
+
+    <color name="sudoku_background">#FFE6F0FF</color>
+    <color name="sudoku_hilite">#FFEFFFFF</color>
+    <color name="sudoku_light">#64C6D4EF</color>
+    <color name="sudoku_dark">#FF000000</color>
+    <color name="sudoku_foreground">#FF000000</color>
 </resources>

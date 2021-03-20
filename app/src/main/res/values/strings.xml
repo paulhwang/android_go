@@ -18,6 +18,8 @@
     <string name="medium_label">Medium</string>
     <string name="hard_label">Hard</string>
 
+    <string name="sudoku_title">Sudoku</string>
+
 
 
 </resources>

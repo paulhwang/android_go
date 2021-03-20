@@ -9,7 +9,6 @@
 package com.phwang.go;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -21,7 +20,7 @@ import android.view.MenuItem;
 import android.util.Log;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = "+++++Go+++++";
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +68,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void startGame(int i) {
-        Log.d(TAG, "clicked on " + i);
+        Log.d(TAG, "startGame clicked on " + i);
+        Intent intent = new Intent(this, SudokuGame.class);
+        intent.putExtra(SudokuGame.KEY_DIFFICULTY, i);
+        startActivity(intent);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu_val) {
         super.onCreateOptionsMenu(menu_val);
