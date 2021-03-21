@@ -19,6 +19,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.util.Log;
 
+import com.phwang.go.sudoku.About;
+import com.phwang.go.sudoku.SudokuGame;
+import com.phwang.go.go.GoGame;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
 
@@ -67,8 +71,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }).show();
     }
 
+    private static Boolean runGo = true;
+
     private void startGame(int i) {
-        Log.d(TAG, "startGame clicked on " + i);
+        if (this.runGo)
+            this.startGoGame(i);
+        else
+            this.startSudokuGame(i);
+    }
+    private void startGoGame(int i) {
+        Log.d(TAG, "startGoGame clicked on " + i);
+        Intent intent = new Intent(this, GoGame.class);
+        startActivity(intent);
+    }
+
+    private void startSudokuGame(int i) {
+        Log.d(TAG, "startSudokuGame clicked on " + i);
         Intent intent = new Intent(this, SudokuGame.class);
         intent.putExtra(SudokuGame.KEY_DIFFICULTY, i);
         startActivity(intent);

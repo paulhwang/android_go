@@ -6,18 +6,16 @@
  ******************************************************************************
  */
 
-package com.phwang.go;
+package com.phwang.go.sudoku;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class About extends AppCompatActivity {
+public class Prefs extends PreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstancesState) {
-       super.onCreate(savedInstancesState);
-       setContentView(R.layout.about);
+        super.onCreate(savedInstancesState);
+        //addPreferencesFromResource(R.layout.settings);
     }
 }

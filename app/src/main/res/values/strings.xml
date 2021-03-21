@@ -19,7 +19,7 @@
     <string name="hard_label">Hard</string>
 
     <string name="sudoku_title">Sudoku</string>
-
+    <string name="go_title">Go</string>
 
 
 </resources>

@@ -6,13 +6,11 @@
  ******************************************************************************
  */
 
-package com.phwang.go;
+package com.phwang.go.sudoku;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class SudokuGame extends AppCompatActivity {
     private static final String TAG = "SudokuGame";

@@ -18,7 +18,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SudokuGame">
+        <activity android:name=".go.GoGame">
+            android:label = "@string/go_title"
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".sudoku.SudokuGame">
             android:label = "@string/sudoku_title"
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +34,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".About">
+        <activity android:name=".sudoku.About">
             android:label = "@string/about_title"
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
