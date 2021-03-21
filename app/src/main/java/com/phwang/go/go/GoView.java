@@ -22,7 +22,6 @@ public class GoView  extends View {
     private static final String TAG = "GoView";
     private final GoGame goGame;
 
-    private float boardSizeF = 19f;
     private int boardSize = 19;
 
     public GoView(Context context_val) {
@@ -53,25 +52,85 @@ public class GoView  extends View {
     @Override
     protected void onDraw(Canvas canvas_val) {
         Log.d(TAG, "onDraw");
-        this.drawBoard(canvas_val);
+        this.setupCanvas(canvas_val);
+        this.drawBoard();
     }
 
-    private void drawBoard(Canvas canvas_val) {
-        int grid_len = this.width / (this.boardSize + 2);
-        int half_grid_len = grid_len / 2;
-        int micro_grid_len = grid_len / 8;
-        int grid_len_19 = grid_len * this.boardSize;
+    private int gridLen;
+    private int halfGridLen;
+    private int stoneGridLen;
+    private int dotGridLen;
+    private int gridLen0;
+    private int gridLen1;
+    private int gridLen19;
+    private Paint whitePaint;
+    private Paint blackPaint;
+    private Canvas canvas;
 
-        Paint background = new Paint();
-        background.setColor(getResources().getColor(R.color.sudoku_background));
-        canvas_val.drawRect(0, 0, getWidth(), getHeight(), background);
+    private void setupCanvas(Canvas canvas_val) {
+        this.canvas = canvas_val;
+        this.gridLen = this.width / (this.boardSize + 2);
+        this.halfGridLen = this.gridLen / 2;
+        this.stoneGridLen = this.gridLen * 9 / 20;
+        this.dotGridLen = this.gridLen / 5;
+        this.gridLen0 = this.halfGridLen;
+        this.gridLen1 = this.gridLen + this.gridLen0;
+        this.gridLen19 = this.gridLen * this.boardSize + this.gridLen0;
 
-        Paint black = new Paint();
-        black.setColor(getResources().getColor(R.color.black));
+        this.whitePaint = new Paint();
+        this.whitePaint.setColor(getResources().getColor(R.color.white));
 
-        for (int i = this.boardSize ; i >= 0 ; i--) {
-            canvas_val.drawLine(grid_len, i * grid_len, grid_len_19, i * grid_len, black);
-            canvas_val.drawLine(i * grid_len, grid_len, i * grid_len, grid_len_19, black);
+        this.blackPaint = new Paint();
+        this.blackPaint.setColor(getResources().getColor(R.color.black));
+    }
+
+    private void drawBoard() {
+        for (int i = this.boardSize ; i > 0 ; i--) {
+            this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 - 2, this.gridLen19, i * this.gridLen + this.gridLen0 - 2, this.blackPaint);
+            this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 - 1, this.gridLen19, i * this.gridLen + this.gridLen0 - 1, this.blackPaint);
+            this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0,     this.gridLen19, i * this.gridLen + this.gridLen0, this.blackPaint);
+            this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 + 1, this.gridLen19, i * this.gridLen + this.gridLen0 + 1, this.blackPaint);
+            this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 + 2, this.gridLen19, i * this.gridLen + this.gridLen0 + 2, this.blackPaint);
+            this.canvas.drawLine(i * this.gridLen + this.gridLen0 - 2, this.gridLen1, i * this.gridLen + this.gridLen0 - 2, this.gridLen19, this.blackPaint);
+            this.canvas.drawLine(i * this.gridLen + this.gridLen0 - 1, this.gridLen1, i * this.gridLen + this.gridLen0 - 1, this.gridLen19, this.blackPaint);
+            this.canvas.drawLine(i * this.gridLen + this.gridLen0,     this.gridLen1, i * this.gridLen + this.gridLen0,     this.gridLen19, this.blackPaint);
+            this.canvas.drawLine(i * this.gridLen + this.gridLen0 + 1, this.gridLen1, i * this.gridLen + this.gridLen0 + 1, this.gridLen19, this.blackPaint);
+            this.canvas.drawLine(i * this.gridLen + this.gridLen0 + 2, this.gridLen1, i * this.gridLen + this.gridLen0 + 2, this.gridLen19, this.blackPaint);
         }
+
+        if (this.boardSize == 9) {
+            this.drawBoardDot(5, 5);
+        } else if (this.boardSize == 13) {
+            this.drawBoardDot(4, 4);
+            this.drawBoardDot(4, 10);
+            this.drawBoardDot(10, 4);
+            this.drawBoardDot(10, 10);
+            this.drawBoardDot(7, 7);
+        } else if (this.boardSize == 19) {
+            this.drawBoardDot(4, 4);
+            this.drawBoardDot(4, 10);
+            this.drawBoardDot(4, 16);
+            this.drawBoardDot(10, 4);
+            this.drawBoardDot(10, 10);
+            this.drawBoardDot(10, 16);
+            this.drawBoardDot(16, 4);
+            this.drawBoardDot(16, 10);
+            this.drawBoardDot(16, 16);
+        }
+        this.drawStones();
+    }
+
+    void drawBoardDot(int x, int y) {
+        this.canvas.drawCircle(x * this.gridLen + this.gridLen0, y * this.gridLen + this.gridLen0, this.dotGridLen, this.blackPaint);
+    }
+
+    void drawStones() {
+        this.drawStone(3, 3, this.blackPaint);
+        this.drawStone(3, 4, this.whitePaint);
+        this.drawStone(3, 5, this.blackPaint);
+    }
+
+    void drawStone(int x, int y, Paint paint_val) {
+        this.canvas.drawCircle(x * this.gridLen + this.gridLen0, y * this.gridLen + this.gridLen0, this.stoneGridLen, paint_val);
     }
 }
