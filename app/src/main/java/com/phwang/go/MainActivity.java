@@ -18,8 +18,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.util.Log;
-
-import com.phwang.bind.MainAbend;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.sudoku.SudokuGame;
 import com.phwang.go.go.GoGame;
@@ -32,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         new com.phwang.bind.BindMain();
-        this.initCore();
         Log.e(TAG, "MainActivity");
 
         View continueButton = findViewById(R.id.continue_button);
@@ -64,12 +61,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
         }
-    }
-
-    private void initCore() {
-        MainAbend main_abend = new MainAbend();
-        com.phwang.core.utils.Abend.initAbend(main_abend);
-        new com.phwang.core.root.CoreRoot();
     }
 
     private void openNewGameDialog() {
