@@ -20,39 +20,40 @@ import com.phwang.go.sudoku.SudokuGame;
 
 public class GoView  extends View {
     private static final String TAG = "GoView";
-    private final GoGame goGame;
-
     private int boardSize = 19;
+    private final GoGame goGame;
+    private final GoViewInfo viewInfo = new GoViewInfo();
+    private int width;
+    private Canvas canvas;
+    private final Paint whitePaint = new Paint();
+    private final Paint blackPaint = new Paint();
+    private final Paint boardPaint = new Paint();
+    private final Rect rect = new Rect();
 
     public GoView(Context context_val) {
         super(context_val);
         this.goGame = (GoGame) context_val;
+
+        this.whitePaint.setColor(getResources().getColor(R.color.white));
+        this.blackPaint.setColor(getResources().getColor(R.color.black));
+        this.boardPaint.setColor(getResources().getColor(R.color.board));
+
         setFocusable(true);
         setFocusableInTouchMode(true);
     }
 
-    private int width;
-    private final Rect selRect = new Rect();
-
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        Log.d(TAG, "onSizeChanged");
-
         this.width = Math.min(w, h);
         Log.d(TAG,"onSizeChanged: width=" + this.width);
         super.onSizeChanged(w, h, oldw, oldh);
     }
 
     @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        setMeasuredDimension(widthMeasureSpec,
-                heightMeasureSpec);
-    }
-
-    @Override
     protected void onDraw(Canvas canvas_val) {
         Log.d(TAG, "onDraw");
-        this.setupCanvas(canvas_val);
+        this.canvas = canvas_val;
+        this.setupGridLen(this.width, this.boardSize);
         this.drawBoard();
     }
 
@@ -64,31 +65,21 @@ public class GoView  extends View {
     private int gridLen0;
     private int gridLen1;
     private int gridLen19;
-    private Canvas canvas;
-    private final Paint whitePaint = new Paint();
-    private final Paint blackPaint = new Paint();
-    private final Paint boardPaint = new Paint();
-    private final Rect rect = new Rect();
 
-    private void setupCanvas(Canvas canvas_val) {
-        this.canvas = canvas_val;
-        this.gridLen = this.width / (this.boardSize + 2);
+    private void setupGridLen(int width_val, int board_size_val) {
+        this.gridLen = width_val / (board_size_val + 2);
         this.halfGridLen = this.gridLen / 2;
         this.stoneGridLen = this.gridLen * 9 / 20;
         this.dotGridLen = this.gridLen / 5;
         this.sideGridLen = this.gridLen * 2 / 3;
         this.gridLen0 = this.halfGridLen;
         this.gridLen1 = this.gridLen + this.gridLen0;
-        this.gridLen19 = this.gridLen * this.boardSize + this.gridLen0;
-
-        this.whitePaint.setColor(getResources().getColor(R.color.white));
-        this.blackPaint.setColor(getResources().getColor(R.color.black));
-        this.boardPaint.setColor(getResources().getColor(R.color.board));
-
-        this.canvas.drawRect(this.gridLen1 - this.sideGridLen, this.gridLen1 - this.sideGridLen, this.gridLen19 + this.sideGridLen, this.gridLen19 + this.sideGridLen, this.boardPaint);
+        this.gridLen19 = this.gridLen * board_size_val + this.gridLen0;
     }
 
     private void drawBoard() {
+        this.canvas.drawRect(this.gridLen1 - this.sideGridLen, this.gridLen1 - this.sideGridLen, this.gridLen19 + this.sideGridLen, this.gridLen19 + this.sideGridLen, this.boardPaint);
+
         for (int i = this.boardSize ; i > 0 ; i--) {
             this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 - 2, this.gridLen19, i * this.gridLen + this.gridLen0 - 2, this.blackPaint);
             this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 - 1, this.gridLen19, i * this.gridLen + this.gridLen0 - 1, this.blackPaint);
@@ -136,5 +127,27 @@ public class GoView  extends View {
 
     void drawStone(int x, int y, Paint paint_val) {
         this.canvas.drawCircle(x * this.gridLen + this.gridLen0, y * this.gridLen + this.gridLen0, this.stoneGridLen, paint_val);
+    }
+}
+
+class GoViewInfo {
+    private int gridLen;
+    private int halfGridLen;
+    private int sideGridLen;
+    private int stoneGridLen;
+    private int dotGridLen;
+    private int gridLen0;
+    private int gridLen1;
+    private int gridLen19;
+
+    protected void setupGridLen(int width_val, int board_size_val) {
+        this.gridLen = width_val / (board_size_val + 2);
+        this.halfGridLen = this.gridLen / 2;
+        this.stoneGridLen = this.gridLen * 9 / 20;
+        this.dotGridLen = this.gridLen / 5;
+        this.sideGridLen = this.gridLen * 2 / 3;
+        this.gridLen0 = this.halfGridLen;
+        this.gridLen1 = this.gridLen + this.gridLen0;
+        this.gridLen19 = this.gridLen * board_size_val + this.gridLen0;
     }
 }
