@@ -15,7 +15,6 @@ import android.view.MotionEvent;
 
 public class GoGame extends AppCompatActivity {
     private static final String TAG = "GoGame";
-
     private GoView goView;
 
     @Override

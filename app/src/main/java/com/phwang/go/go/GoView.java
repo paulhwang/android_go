@@ -22,6 +22,7 @@ public class GoView  extends View {
     private static final String TAG = "GoView";
     private int boardSize = 9;
     private final GoGame goGame;
+    protected final int[][] board = new int[20][20];
     private int width;
     protected int viewTop;
     protected int viewLeft;
@@ -59,7 +60,7 @@ public class GoView  extends View {
         super.onSizeChanged(w, h, oldw, oldh);
     }
 
-    void getViewTopAndLeft() {
+    private void getViewTopAndLeft() {
         int[] location = new int[2];
         this.getLocationOnScreen(location);
         this.viewLeft = location[0];
@@ -123,17 +124,31 @@ public class GoView  extends View {
         this.drawStones();
     }
 
-    void drawBoardDot(int x, int y) {
+    private void drawBoardDot(int x, int y) {
         this.canvas.drawCircle(x * this.gridLen + this.gridLen0, y * this.gridLen + this.gridLen0, this.dotGridLen, this.blackPaint);
     }
 
-    void drawStones() {
-        this.drawStone(3, 3, this.blackPaint);
-        this.drawStone(3, 4, this.whitePaint);
-        this.drawStone(3, 5, this.blackPaint);
+    private void drawStones() {
+        this.board[3][3] = 1;
+        this.board[6][6] = 2;
+        this.board[5][5] = 1;
+        this.board[5][6] = 2;
+        this.board[3][4] = 1;
+        this.board[6][5] = 2;
+
+        for (int i = this.boardSize; i >= 1; i--) {
+            for (int j = this.boardSize; j >= 1; j--) {
+                if (this.board[i][j] == 1){
+                    this.drawStone(i, j, this.blackPaint);
+                }
+                else if (this.board[i][j] == 2){
+                    this.drawStone(i, j, this.whitePaint);
+                }
+            }
+        }
     }
 
-    void drawStone(int x, int y, Paint paint_val) {
+    private void drawStone(int x, int y, Paint paint_val) {
         this.canvas.drawCircle(x * this.gridLen + this.gridLen0, y * this.gridLen + this.gridLen0, this.stoneGridLen, paint_val);
     }
 }
