@@ -13,6 +13,6 @@ import android.util.Log;
 
 public class BindAbend implements AbendInterface {
     public void log(String str_val) {
-        Log.e("lll", str_val);
+        Log.e("***", str_val);
     }
 }

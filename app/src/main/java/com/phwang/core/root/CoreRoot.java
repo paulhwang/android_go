@@ -28,7 +28,7 @@ public class CoreRoot {
     protected ModelRootClass modelRoot() { return this.modelRoot_; }
 
     public CoreRoot() {
-        this.debug(true, "CoreRoot", "init start");
+        this.debug(false, "CoreRoot", "init start");
     	this.fabricRoot_ = new FabricRoot();
     	this.themeRoot_ = new ThemeRoot();
     	this.engineRoot_ = new EngineRoot();
