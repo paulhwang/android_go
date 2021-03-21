@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d(TAG, "MainActivity");
+        this.initCore();
+        Log.e(TAG, "MainActivity");
 
         View continueButton = findViewById(R.id.continue_button);
         continueButton.setOnClickListener(this);
@@ -61,6 +62,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
         }
+    }
+
+    private void initCore() {
+        MainAbend main_abend = new MainAbend();
+        com.phwang.core.utils.Abend.initAbend(main_abend);
+        new com.phwang.core.root.CoreRoot();
     }
 
     private void openNewGameDialog() {
