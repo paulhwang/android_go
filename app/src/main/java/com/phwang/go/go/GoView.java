@@ -58,14 +58,17 @@ public class GoView  extends View {
 
     private int gridLen;
     private int halfGridLen;
+    private int sideGridLen;
     private int stoneGridLen;
     private int dotGridLen;
     private int gridLen0;
     private int gridLen1;
     private int gridLen19;
-    private Paint whitePaint;
-    private Paint blackPaint;
     private Canvas canvas;
+    private final Paint whitePaint = new Paint();
+    private final Paint blackPaint = new Paint();
+    private final Paint boardPaint = new Paint();
+    private final Rect rect = new Rect();
 
     private void setupCanvas(Canvas canvas_val) {
         this.canvas = canvas_val;
@@ -73,15 +76,16 @@ public class GoView  extends View {
         this.halfGridLen = this.gridLen / 2;
         this.stoneGridLen = this.gridLen * 9 / 20;
         this.dotGridLen = this.gridLen / 5;
+        this.sideGridLen = this.gridLen * 2 / 3;
         this.gridLen0 = this.halfGridLen;
         this.gridLen1 = this.gridLen + this.gridLen0;
         this.gridLen19 = this.gridLen * this.boardSize + this.gridLen0;
 
-        this.whitePaint = new Paint();
         this.whitePaint.setColor(getResources().getColor(R.color.white));
-
-        this.blackPaint = new Paint();
         this.blackPaint.setColor(getResources().getColor(R.color.black));
+        this.boardPaint.setColor(getResources().getColor(R.color.board));
+
+        this.canvas.drawRect(this.gridLen1 - this.sideGridLen, this.gridLen1 - this.sideGridLen, this.gridLen19 + this.sideGridLen, this.gridLen19 + this.sideGridLen, this.boardPaint);
     }
 
     private void drawBoard() {
