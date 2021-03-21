@@ -30,47 +30,17 @@ public class GoGame extends AppCompatActivity {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        int x = (int) event.getX();
-        int y = (int) event.getY();
-
-        Log.d(TAG, "*****onTouchEvent" + event.getAction() + " " + x + " " + y);
-
-        //touchX = event.getX();       // 觸控的 X 軸位置
-        //touchY = event.getY() - 50;  // 觸控的 Y 軸位置
-
-        // 判斷觸控動作
+        int x = ((int) event.getX() - this.goView.gridLen0 + this.goView.halfGridLen) / this.goView.gridLen;
+        int y = ((int) event.getY() - this.goView.viewTop - this.goView.gridLen0 + this.goView.halfGridLen) / this.goView.gridLen;
+        Log.d(TAG, "onTouchEvent: x=" + x + " y=" + y);
         switch( event.getAction() ) {
-
-            case MotionEvent.ACTION_DOWN:  // 按下
-                /*
-                // 設定 TextView 內容, 大小, 位置
-                tv.setText("X: " + touchX + ", Y: " + touchY + ", 按下");
-                tv.setLayoutParams( new AbsoluteLayout.LayoutParams( tvWidth
-                        , tvHeight
-                        , (int)touchX
-                        , (int)touchY
-                ));
-                */
+            case MotionEvent.ACTION_DOWN:
                 break;
 
-            case MotionEvent.ACTION_MOVE:  // 拖曳移動
-                /*
-                // 設定 TextView 內容, 大小, 位置
-                tv.setText("X: " + touchX + ", Y: " + touchY + ", 拖曳移動");
-                tv.setLayoutParams( new AbsoluteLayout.LayoutParams( tvWidth
-                        , tvHeight
-                        , (int)touchX
-                        , (int)touchY
-                ));
-
-                 */
+            case MotionEvent.ACTION_MOVE:
                 break;
 
-            case MotionEvent.ACTION_UP:  // 放開
-                /*
-                // 設定 TextView 內容
-                tv.setText("X: " + touchX + ", Y: " + touchY + ", 放開");
-                */
+            case MotionEvent.ACTION_UP:
                 break;
         }
        return super.onTouchEvent(event);

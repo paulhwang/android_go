@@ -20,10 +20,19 @@ import com.phwang.go.sudoku.SudokuGame;
 
 public class GoView  extends View {
     private static final String TAG = "GoView";
-    private int boardSize = 19;
+    private int boardSize = 9;
     private final GoGame goGame;
-    private final GoViewInfo viewInfo = new GoViewInfo();
     private int width;
+    protected int viewTop;
+    protected int viewLeft;
+    protected int gridLen;
+    protected int halfGridLen;
+    protected int sideGridLen;
+    protected int stoneGridLen;
+    protected int dotGridLen;
+    protected int gridLen0;
+    protected int gridLen1;
+    protected int gridLen19;
     private Canvas canvas;
     private final Paint whitePaint = new Paint();
     private final Paint blackPaint = new Paint();
@@ -46,7 +55,15 @@ public class GoView  extends View {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         this.width = Math.min(w, h);
         Log.d(TAG,"onSizeChanged: width=" + this.width);
+        this.getViewTopAndLeft();
         super.onSizeChanged(w, h, oldw, oldh);
+    }
+
+    void getViewTopAndLeft() {
+        int[] location = new int[2];
+        this.getLocationOnScreen(location);
+        this.viewLeft = location[0];
+        this.viewTop = location[1];
     }
 
     @Override
@@ -56,15 +73,6 @@ public class GoView  extends View {
         this.setupGridLen(this.width, this.boardSize);
         this.drawBoard();
     }
-
-    private int gridLen;
-    private int halfGridLen;
-    private int sideGridLen;
-    private int stoneGridLen;
-    private int dotGridLen;
-    private int gridLen0;
-    private int gridLen1;
-    private int gridLen19;
 
     private void setupGridLen(int width_val, int board_size_val) {
         this.gridLen = width_val / (board_size_val + 2);
@@ -127,27 +135,5 @@ public class GoView  extends View {
 
     void drawStone(int x, int y, Paint paint_val) {
         this.canvas.drawCircle(x * this.gridLen + this.gridLen0, y * this.gridLen + this.gridLen0, this.stoneGridLen, paint_val);
-    }
-}
-
-class GoViewInfo {
-    private int gridLen;
-    private int halfGridLen;
-    private int sideGridLen;
-    private int stoneGridLen;
-    private int dotGridLen;
-    private int gridLen0;
-    private int gridLen1;
-    private int gridLen19;
-
-    protected void setupGridLen(int width_val, int board_size_val) {
-        this.gridLen = width_val / (board_size_val + 2);
-        this.halfGridLen = this.gridLen / 2;
-        this.stoneGridLen = this.gridLen * 9 / 20;
-        this.dotGridLen = this.gridLen / 5;
-        this.sideGridLen = this.gridLen * 2 / 3;
-        this.gridLen0 = this.halfGridLen;
-        this.gridLen1 = this.gridLen + this.gridLen0;
-        this.gridLen19 = this.gridLen * board_size_val + this.gridLen0;
     }
 }
