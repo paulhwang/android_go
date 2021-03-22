@@ -8,22 +8,28 @@
 
 package com.phwang.bind;
 
+import com.phwang.client.ClientDExport;
+import com.phwang.client.ClientFabricInfo;
 import com.phwang.core.utils.Abend;
 
 public class BindUClient {
     private String objectName() {return "BindUClient";}
 
+    private BindClient bindClient_;
+
+    public BindClient bindClient() { return this.bindClient_; }
+    private ClientDExport clientDExport() { return this.bindClient_.clientDExport(); }
+    private ClientFabricInfo clientFabricInfo() { return this.bindClient_.clientFabricInfo();}
+
     public BindUClient() {
+        this.bindClient_ = new BindClient();
     }
 
     public void doSetupLink(String my_name_val, String password_val) {
         this.debug(false, "doSetupLink", "doSetupLink");
-        /*
         this.clientFabricInfo().setMyName(my_name_val);
         this.clientFabricInfo().setPassword(password_val);
         this.clientDExport().setupLink();
-
-         */
     }
 
     public void doGetRemoveLink() {
@@ -40,11 +46,8 @@ public class BindUClient {
 
     public void doSetupSession(String his_name_val, String session_setup_data_val) {
         this.debug(false, "doSetupLink", "doSetupLink");
-        /*
         this.clientFabricInfo().setMyName(his_name_val);
         this.clientDExport().setupLink();
-        
-         */
     }
 
     public void doSetupSession2() {

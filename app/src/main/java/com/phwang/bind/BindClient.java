@@ -20,8 +20,8 @@ public class BindClient implements ClientDImportInt {
 
     private ClientRoot clientRoot_;
 
-    private ClientDExport clientDExport() { return this.clientRoot_.clientDExport(); }
-    private ClientFabricInfo clientFabricInfo() { return this.clientRoot_.clientFabricInfo();}
+    protected ClientDExport clientDExport() { return this.clientRoot_.clientDExport(); }
+    protected ClientFabricInfo clientFabricInfo() { return this.clientRoot_.clientFabricInfo();}
 
     public BindClient() {
         this.debug(false, "BindClient", "init");
