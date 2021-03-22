@@ -20,8 +20,25 @@ public class MainReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context_val, Intent intent_val) {
         Bundle bundle = intent_val.getExtras();
-        String data = bundle.getString("Data");
-        Log.e("MainReceiver", "Data=" + data);
+        String command = bundle.getString("command");
+        String result = bundle.getString("result");
+        Log.e("MainReceiver", "command=" + command + ", result=" + result);
+
+        switch (command.charAt(0)) {
+            case 'L':
+                this.BindUClient().doSetupSession("phwang", "00000000G111111");
+                break;
+
+            case 'S':
+                this.BindUClient().doSetupSession3();
+                break;
+
+            case 'T':
+                break;
+
+            default:
+
+        }
 
         //this.BindUClient().doSetupSession("phwang", "00000000G100000");
     }

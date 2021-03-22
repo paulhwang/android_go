@@ -35,15 +35,16 @@ public class BindDClient implements ClientDImportInt {
     }
 
     public void handleSetupLinkResponse() {
-        this.debug(true, "handleSetupLinkResponse", "handleSetupLinkResponse");
+        this.debug(true, "handleSetupLinkResponse", "LinkId=" + this.clientFabricInfo().linkIdStr());
         Intent intent = new Intent();
-        intent.putExtra("Data", "Succeed");
+        intent.putExtra("command", "L");
+        intent.putExtra("result", "Succeed");
         intent.setAction("com.phwang.go");
         this.applicationContext_.sendBroadcast(intent);
     }
 
     public void handleRemoveLinkResponse() {
-        this.debug(true, "handleRemoveLinkResponse", "handleRemoveLinkResponse");
+        this.debug(true, "handleRemoveLinkResponse", "LinkId=" + this.clientFabricInfo().linkIdStr());
 
     }
 
@@ -58,8 +59,12 @@ public class BindDClient implements ClientDImportInt {
     }
 
     public void handleSetupSessionResponse() {
-        this.debug(true, "handleSetupSessionResponse", "handleSetupSessionResponse");
-
+        this.debug(true, "handleSetupSessionResponse", "SessionId=" + this.clientFabricInfo().sessionIdStr());
+        Intent intent = new Intent();
+        intent.putExtra("command", "S");
+        intent.putExtra("result", "Succeed");
+        intent.setAction("com.phwang.go");
+        this.applicationContext_.sendBroadcast(intent);
     }
 
     public void handleSetupSession2Response() {
@@ -68,8 +73,12 @@ public class BindDClient implements ClientDImportInt {
     }
 
     public void handleSetupSession3Response() {
-        this.debug(true, "handleSetupSession3Response", "handleSetupSession3Response");
-
+        this.debug(true, "handleSetupSession3Response", "SessionId=" + this.clientFabricInfo().sessionIdStr());
+        Intent intent = new Intent();
+        intent.putExtra("command", "T");
+        intent.putExtra("result", "Succeed");
+        intent.setAction("com.phwang.go");
+        this.applicationContext_.sendBroadcast(intent);
     }
 
     public void handlePutSessionDataResponse() {
