@@ -23,7 +23,7 @@ public class BindClient implements ClientDImportInt {
     private ClientFabricInfo clientFabricInfo() { return this.clientRoot_.clientFabricInfo();}
 
     public BindClient() {
-        this.debug(true, "BindClient", "init");
+        this.debug(false, "BindClient", "init");
         this.clientRoot_ = new ClientRoot(this);
     }
 
@@ -35,6 +35,7 @@ public class BindClient implements ClientDImportInt {
     }
 
     public void handleSetupLinkResponse() {
+        this.debug(true, "handleSetupLinkResponse", "doSetupLink");
 
     }
 
