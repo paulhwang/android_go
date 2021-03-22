@@ -10,7 +10,9 @@ package com.phwang.go;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
 import android.content.DialogInterface;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.content.Intent;
 import android.content.Context;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.e(TAG, "MainActivity");
 
         this.applicationContext_ = getApplicationContext();
+        this.registerBroadcaseReceiver();
         this.bindMain_ = new BindMain(this.applicationContext());
 
         View continueButton = findViewById(R.id.continue_button);
@@ -121,5 +124,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
         }
         return false;
+    }
+
+    MainReceiver mainReceiver_;
+    private void registerBroadcaseReceiver() {
+        this.mainReceiver_ = new MainReceiver(this);
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("com.phwang.go");
+        this.registerReceiver(this.mainReceiver_, filter);
     }
 }

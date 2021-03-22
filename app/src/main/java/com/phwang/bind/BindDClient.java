@@ -37,8 +37,8 @@ public class BindDClient implements ClientDImportInt {
     public void handleSetupLinkResponse() {
         this.debug(true, "handleSetupLinkResponse", "handleSetupLinkResponse");
         Intent intent = new Intent();
-        intent.putExtra("LinkSetupResponse", "Succeed");
-        intent.setAction("android.intent.action.test");
+        intent.putExtra("Data", "Succeed");
+        intent.setAction("com.phwang.go");
         this.applicationContext_.sendBroadcast(intent);
     }
 
