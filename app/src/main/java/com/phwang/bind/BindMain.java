@@ -8,15 +8,16 @@
 package com.phwang.bind;
 
 public class BindMain {
-    private BindRoot bindRoot_;
+    private BindUClient bindUClient_;
     private BindClient bindClient_;
 
+    public BindUClient bindUClient() { return this.bindUClient_; }
     public BindClient bindClient() { return this.bindClient_; }
 
     public BindMain() {
         com.phwang.core.utils.Abend.initAbend(new BindAbend());
         new com.phwang.core.root.CoreRoot();
-        this.bindRoot_ = new BindRoot();
+        this.bindUClient_ = new BindUClient();
         this.bindClient_ = new BindClient();
     }
 }
