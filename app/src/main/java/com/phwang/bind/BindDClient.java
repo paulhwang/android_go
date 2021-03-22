@@ -15,16 +15,16 @@ import com.phwang.client.ClientRoot;
 import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientFabricInfo;
 
-public class BindClient implements ClientDImportInt {
-    private String objectName() {return "BindClient";}
+public class BindDClient implements ClientDImportInt {
+    private String objectName() {return "BindDClient";}
 
     private ClientRoot clientRoot_;
 
     protected ClientDExport clientDExport() { return this.clientRoot_.clientDExport(); }
     protected ClientFabricInfo clientFabricInfo() { return this.clientRoot_.clientFabricInfo();}
 
-    public BindClient() {
-        this.debug(false, "BindClient", "init");
+    public BindDClient() {
+        this.debug(false, "BindDClient", "init");
         this.clientRoot_ = new ClientRoot(this);
     }
 
@@ -38,33 +38,41 @@ public class BindClient implements ClientDImportInt {
     }
 
     public void handleRemoveLinkResponse() {
+        this.debug(true, "handleRemoveLinkResponse", "handleRemoveLinkResponse");
 
     }
 
     public void handleGetLinkDataResponse() {
+        this.debug(true, "handleGetLinkDataResponse", "handleGetLinkDataResponse");
 
     }
 
     public void handleGetNameListResponse() {
+        this.debug(true, "handleGetNameListResponse", "handleGetNameListResponse");
 
     }
 
     public void handleSetupSessionResponse() {
+        this.debug(true, "handleSetupSessionResponse", "handleSetupSessionResponse");
 
     }
 
     public void handleSetupSession2Response() {
+        this.debug(true, "handleSetupSession2Response", "handleSetupSession2Response");
 
     }
 
     public void handleSetupSession3Response() {
+        this.debug(true, "handleSetupSession3Response", "handleSetupSession3Response");
 
     }
 
     public void handlePutSessionDataResponse() {
+        this.debug(true, "handlePutSessionDataResponse", "handlePutSessionDataResponse");
     }
 
     public void handleGetSessionDataResponse() {
+        this.debug(true, "handleGetSessionDataResponse", "handleGetSessionDataResponse");
 
     }
 
