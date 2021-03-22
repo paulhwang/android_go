@@ -8,6 +8,7 @@
 
 package com.phwang.bind;
 
+import android.content.Intent;
 import com.phwang.core.utils.Abend;
 import com.phwang.client.ClientDImportInt;
 import com.phwang.client.ClientRoot;
@@ -35,7 +36,11 @@ public class BindClient implements ClientDImportInt {
     }
 
     public void handleSetupLinkResponse() {
-        this.debug(true, "handleSetupLinkResponse", "doSetupLink");
+        this.debug(true, "handleSetupLinkResponse", "handleSetupLinkResponse");
+        //Intent intent = new Intent();
+        //intent.putExtra("LinkSetupResponse", "Succeed");
+        //intent.setAction("sss");
+        //sendBroadcast(intent);
 
     }
 
