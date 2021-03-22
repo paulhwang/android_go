@@ -8,7 +8,11 @@
 
 package com.phwang.bind;
 
+import android.content.Context;
 import android.content.Intent;
+
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import com.phwang.core.utils.Abend;
 import com.phwang.client.ClientDImportInt;
 import com.phwang.client.ClientRoot;
@@ -18,23 +22,24 @@ import com.phwang.client.ClientFabricInfo;
 public class BindDClient implements ClientDImportInt {
     private String objectName() {return "BindDClient";}
 
+    private Context applicationContext_;
     private ClientRoot clientRoot_;
 
     protected ClientDExport clientDExport() { return this.clientRoot_.clientDExport(); }
     protected ClientFabricInfo clientFabricInfo() { return this.clientRoot_.clientFabricInfo();}
 
-    public BindDClient() {
+    public BindDClient(Context application_context_val) {
+        this.applicationContext_ = application_context_val;
         this.debug(false, "BindDClient", "init");
         this.clientRoot_ = new ClientRoot(this);
     }
 
     public void handleSetupLinkResponse() {
         this.debug(true, "handleSetupLinkResponse", "handleSetupLinkResponse");
-        //Intent intent = new Intent();
-        //intent.putExtra("LinkSetupResponse", "Succeed");
-        //intent.setAction("sss");
-        //sendBroadcast(intent);
-
+        Intent intent = new Intent();
+        intent.putExtra("LinkSetupResponse", "Succeed");
+        intent.setAction("android.intent.action.test");
+        this.applicationContext_.sendBroadcast(intent);
     }
 
     public void handleRemoveLinkResponse() {

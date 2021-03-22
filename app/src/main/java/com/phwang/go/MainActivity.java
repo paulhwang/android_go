@@ -13,6 +13,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.content.Intent;
+import android.content.Context;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,8 +27,10 @@ import com.phwang.bind.BindUClient;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
+    private Context applicationContext_;
     private static BindMain bindMain_;
 
+    public Context applicationContext() { return this.applicationContext_; };
     public static BindUClient bindUClient() { return bindMain_.bindUClient(); }
 
     @Override
@@ -36,7 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Log.e(TAG, "MainActivity");
 
-        this.bindMain_ = new BindMain();
+        this.applicationContext_ = getApplicationContext();
+        this.bindMain_ = new BindMain(this.applicationContext());
 
         View continueButton = findViewById(R.id.continue_button);
         continueButton.setOnClickListener(this);

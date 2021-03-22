@@ -8,6 +8,9 @@
 
 package com.phwang.bind;
 
+import android.content.Context;
+
+import android.content.Context;
 import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientFabricInfo;
 import com.phwang.core.utils.Abend;
@@ -15,14 +18,16 @@ import com.phwang.core.utils.Abend;
 public class BindUClient {
     private String objectName() {return "BindUClient";}
 
+    private Context applicationContext_;
     private BindDClient bindDClient_;
 
     public BindDClient bindClient() { return this.bindDClient_; }
     private ClientDExport clientDExport() { return this.bindDClient_.clientDExport(); }
     private ClientFabricInfo clientFabricInfo() { return this.bindDClient_.clientFabricInfo();}
 
-    public BindUClient() {
-        this.bindDClient_ = new BindDClient();
+    public BindUClient(Context application_context_val) {
+        this.applicationContext_ = application_context_val;
+        this.bindDClient_ = new BindDClient(applicationContext_);
     }
 
     public void doSetupLink(String my_name_val, String password_val) {
