@@ -11,7 +11,7 @@ public class BindMain {
     private BindUClient bindUClient_;
 
     public BindUClient bindUClient() { return this.bindUClient_; }
-    public BindClient bindClient() { return this.bindUClient_.bindClient(); }
+    //public BindClient bindClient() { return this.bindUClient_.bindClient(); }
 
     public BindMain() {
         com.phwang.core.utils.Abend.initAbend(new BindAbend());

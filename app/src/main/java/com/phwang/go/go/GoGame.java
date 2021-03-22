@@ -12,14 +12,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
-import com.phwang.bind.BindClient;
+import com.phwang.bind.BindUClient;
 import com.phwang.go.MainActivity;
 
 public class GoGame extends AppCompatActivity {
     private static final String TAG = "GoGame";
     private GoView goView;
 
-    private BindClient bindClient() { return MainActivity.bindClient(); };
+    private BindUClient bindUClient() { return MainActivity.bindUClient(); };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

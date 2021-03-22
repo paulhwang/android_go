@@ -22,13 +22,13 @@ import com.phwang.go.sudoku.About;
 import com.phwang.go.sudoku.SudokuGame;
 import com.phwang.go.go.GoGame;
 import com.phwang.bind.BindMain;
-import com.phwang.bind.BindClient;
+import com.phwang.bind.BindUClient;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
     private static BindMain bindMain_;
 
-    public static BindClient bindClient() { return bindMain_.bindClient(); }
+    public static BindUClient bindUClient() { return bindMain_.bindUClient(); }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void startGame(int i) {
         if (i == 0) {
-            this.bindClient().doSetupLink("phwang", "good");
+            this.bindUClient().doSetupLink("phwang", "good");
         }
 
         if (this.runGo)

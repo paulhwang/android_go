@@ -28,13 +28,6 @@ public class BindClient implements ClientDImportInt {
         this.clientRoot_ = new ClientRoot(this);
     }
 
-    public void doSetupLink(String my_name_val, String password_val) {
-        this.debug(false, "doSetupLink", "doSetupLink");
-        this.clientFabricInfo().setMyName(my_name_val);
-        this.clientFabricInfo().setPassword(password_val);
-        this.clientDExport().setupLink();
-    }
-
     public void handleSetupLinkResponse() {
         this.debug(true, "handleSetupLinkResponse", "handleSetupLinkResponse");
         //Intent intent = new Intent();
@@ -44,15 +37,7 @@ public class BindClient implements ClientDImportInt {
 
     }
 
-    public void doGetRemoveLink() {
-
-    }
-
     public void handleRemoveLinkResponse() {
-
-    }
-
-    public void doGetLinkData() {
 
     }
 
@@ -60,25 +45,11 @@ public class BindClient implements ClientDImportInt {
 
     }
 
-    public void doGetNameList() {
-
-    }
-
     public void handleGetNameListResponse() {
 
     }
 
-    public void doSetupSession(String his_name_val, String session_setup_data_val) {
-        this.debug(false, "doSetupLink", "doSetupLink");
-        this.clientFabricInfo().setMyName(his_name_val);
-        this.clientDExport().setupLink();
-    }
-
     public void handleSetupSessionResponse() {
-
-    }
-
-    public void doSetupSession2() {
 
     }
 
@@ -86,21 +57,11 @@ public class BindClient implements ClientDImportInt {
 
     }
 
-    public void doSetupSession3() {
-
-    }
-
     public void handleSetupSession3Response() {
 
     }
 
-    public void doPutSessionData(String session_put_data_val) {
-   }
-
     public void handlePutSessionDataResponse() {
-    }
-
-    public void doGetSessionData() {
     }
 
     public void handleGetSessionDataResponse() {
