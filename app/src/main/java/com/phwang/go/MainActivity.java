@@ -20,7 +20,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.util.Log;
+
+import com.phwang.go.define.BundleIndexDefine;
+import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
+import com.phwang.go.define.ResultDefine;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.sudoku.SudokuGame;
 import com.phwang.go.go.GoGame;
@@ -91,6 +95,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void startGame(int i) {
         if (i == 0) {
+            Intent intent = new Intent();
+            intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SETUP_LINK_STR);
+            intent.setAction(IntentDefine.BIND_SERVICE);
+            this.applicationContext_.sendBroadcast(intent);
+
+
             this.bindUClient().doSetupLink("phwang", "good");
         }
 
@@ -129,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
-    MainReceiver mainReceiver_;
+    private MainReceiver mainReceiver_;
     private void registerBroadcaseReceiver() {
         this.mainReceiver_ = new MainReceiver(this);
         IntentFilter filter = new IntentFilter();

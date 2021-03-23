@@ -10,9 +10,11 @@ package com.phwang.go.bind;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
+import com.phwang.go.define.IntentDefine;
 
 public class BindService extends Service {
     private static final String TAG = "BindService";
@@ -20,6 +22,7 @@ public class BindService extends Service {
     @Override
     public void onCreate() {
         Log.e(TAG, " onCreate()");
+        this.registerBroadcaseReceiver();
         super.onCreate();
     }
 
@@ -41,5 +44,13 @@ public class BindService extends Service {
     public void onDestroy() {
         Toast.makeText(this, "service done", Toast.LENGTH_SHORT).show();
         super.onDestroy();
+    }
+
+    private BindReceiver bindReceiver_;
+    private void registerBroadcaseReceiver() {
+        this.bindReceiver_ = new BindReceiver(this);
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(IntentDefine.BIND_SERVICE);
+        this.registerReceiver(this.bindReceiver_, filter);
     }
 }
