@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.phwang.bind.BindUClient;
+import com.phwang.go.define.BundleIndexDefine;
+import com.phwang.go.define.CommandDefine;
 
 public class MainReceiver extends BroadcastReceiver {
     private MainActivity mainActivity_;
@@ -20,20 +22,20 @@ public class MainReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context_val, Intent intent_val) {
         Bundle bundle = intent_val.getExtras();
-        String command = bundle.getString("command");
-        String result = bundle.getString("result");
+        String command = bundle.getString(BundleIndexDefine.COMMAND);
+        String result = bundle.getString(BundleIndexDefine.RESULT);
         Log.e("MainReceiver", "command=" + command + ", result=" + result);
 
         switch (command.charAt(0)) {
-            case 'L':
+            case CommandDefine.FABRIC_COMMAND_SETUP_LINK:
                 this.BindUClient().doSetupSession("phwang", "00000000G111111");
                 break;
 
-            case 'S':
+            case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
                 this.BindUClient().doSetupSession3();
                 break;
 
-            case 'T':
+            case CommandDefine.FABRIC_COMMAND_SETUP_SESSION3:
                 break;
 
             default:

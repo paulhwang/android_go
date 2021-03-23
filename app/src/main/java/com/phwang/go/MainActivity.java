@@ -21,6 +21,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.util.Log;
+
+import com.phwang.go.define.IntentDefine;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.sudoku.SudokuGame;
 import com.phwang.go.go.GoGame;
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.e(TAG, "MainActivity");
+        Log.e(TAG, "MainActivity" + " onCreate()");
 
         this.applicationContext_ = getApplicationContext();
         this.registerBroadcaseReceiver();
@@ -130,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void registerBroadcaseReceiver() {
         this.mainReceiver_ = new MainReceiver(this);
         IntentFilter filter = new IntentFilter();
-        filter.addAction("com.phwang.go");
+        filter.addAction(IntentDefine.MainActivity);
         this.registerReceiver(this.mainReceiver_, filter);
     }
 }
