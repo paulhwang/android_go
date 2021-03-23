@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.bind;
+package com.phwang.go.bind;
 
 import com.phwang.core.utils.AbendInterface;
 import android.util.Log;

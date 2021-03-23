@@ -27,6 +27,14 @@
             </intent-filter>
         </activity>
 
+        <service android:name=".bind.BindService">
+            android:label = "@string/bind_service_title"
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </service>
+
         <activity android:name=".sudoku.SudokuGame">
             android:label = "@string/sudoku_title"
             <intent-filter>

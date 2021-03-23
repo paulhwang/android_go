@@ -10,7 +10,6 @@ package com.phwang.go;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
-import android.content.BroadcastReceiver;
 import android.content.DialogInterface;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -21,13 +20,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.util.Log;
-
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.sudoku.SudokuGame;
 import com.phwang.go.go.GoGame;
-import com.phwang.bind.BindMain;
-import com.phwang.bind.BindUClient;
+import com.phwang.go.bind.BindMain;
+import com.phwang.go.bind.BindUClient;
+import com.phwang.go.bind.BindService;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
@@ -42,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.e(TAG, "MainActivity" + " onCreate()");
+
+        startService(new Intent(this, BindService.class));
 
         this.applicationContext_ = getApplicationContext();
         this.registerBroadcaseReceiver();

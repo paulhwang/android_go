@@ -20,6 +20,7 @@
 
     <string name="sudoku_title">Sudoku</string>
     <string name="go_title">Go</string>
+    <string name="bind_service_title">Go</string>
 
 
 </resources>

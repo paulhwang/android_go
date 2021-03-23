@@ -6,12 +6,10 @@
  ******************************************************************************
  */
 
-package com.phwang.bind;
+package com.phwang.go.bind;
 
 import android.content.Context;
 import android.content.Intent;
-
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.phwang.core.utils.Abend;
 import com.phwang.client.ClientDImportInt;

@@ -6,11 +6,10 @@
  ******************************************************************************
  */
 
-package com.phwang.bind;
+package com.phwang.go.bind;
 
 import android.content.Context;
 
-import android.content.Context;
 import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientFabricInfo;
 import com.phwang.core.utils.Abend;

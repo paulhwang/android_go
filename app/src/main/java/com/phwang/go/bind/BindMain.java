@@ -5,11 +5,9 @@
  *
  ******************************************************************************
  */
-package com.phwang.bind;
+package com.phwang.go.bind;
 
 import android.content.Context;
-
-import com.phwang.go.MainActivity;
 
 public class BindMain {
     private BindUClient bindUClient_;

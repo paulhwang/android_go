@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.bind;
+package com.phwang.go.bind;
 
 import android.app.Service;
 import android.content.Intent;
@@ -15,9 +15,11 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
+import android.os.Process;
+import android.util.Log;
 import android.widget.Toast;
 
-public class BindService extends Service {
+public class BindExample extends Service {
     private Looper serviceLooper;
     private ServiceHandler serviceHandler;
 
@@ -25,7 +27,9 @@ public class BindService extends Service {
     private final class ServiceHandler extends Handler {
         public ServiceHandler(Looper looper) {
             super(looper);
+            Log.e("ServiceHandler", "************************");
         }
+
         @Override
         public void handleMessage(Message msg) {
             // Normally we would do some work here, like download a file.
@@ -48,13 +52,12 @@ public class BindService extends Service {
         // separate thread because the service normally runs in the process's
         // main thread, which we don't want to block. We also make it
         // background priority so CPU-intensive work doesn't disrupt our UI.
-        HandlerThread thread = new HandlerThread("ServiceStartArguments",
-                100);////////////////Process.THREAD_PRIORITY_BACKGROUND);
+        HandlerThread thread = new HandlerThread("ServiceStartArguments", Process.THREAD_PRIORITY_BACKGROUND);
         thread.start();
 
         // Get the HandlerThread's Looper and use it for our Handler
-        serviceLooper = thread.getLooper();
-        serviceHandler = new ServiceHandler(serviceLooper);
+        this.serviceLooper = thread.getLooper();
+        this.serviceHandler = new ServiceHandler(this.serviceLooper);
     }
 
     @Override

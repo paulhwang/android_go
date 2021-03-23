@@ -12,9 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
-import com.phwang.bind.BindUClient;
+import android.widget.Toast;
+
+import com.phwang.go.bind.BindUClient;
 import com.phwang.go.MainActivity;
-import com.phwang.bind.BindUClient;
 
 public class GoGame extends AppCompatActivity {
     private static final String TAG = "GoGame";
@@ -25,6 +26,7 @@ public class GoGame extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Toast.makeText(this, "GoGame onCreate", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onCreate");
         this.goView = new GoView(this);
         setContentView(this.goView);
@@ -51,7 +53,7 @@ public class GoGame extends AppCompatActivity {
     }
 
     public void processTouchInput(int x_val, int y_val) {
-        //this.BindUClient().doSetupSession3();
+        //this.BindUClient().doPutSessionData();
 
     }
 }
