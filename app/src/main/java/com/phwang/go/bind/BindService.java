@@ -9,6 +9,7 @@
 package com.phwang.go.bind;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
@@ -18,10 +19,14 @@ import com.phwang.go.define.IntentDefine;
 
 public class BindService extends Service {
     private static final String TAG = "BindService";
+    private Context applicationContext_;
+
+    public Context applicationContext() { return this.applicationContext_; };
 
     @Override
     public void onCreate() {
         Log.e(TAG, " onCreate()");
+        this.applicationContext_ = getApplicationContext();
         this.registerBroadcaseReceiver();
         super.onCreate();
     }

@@ -91,16 +91,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }).show();
     }
 
+    private void do_setup_link(String my_name_val, String password_val) {
+        Intent intent = new Intent();
+        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SETUP_LINK_STR);
+        intent.putExtra(BundleIndexDefine.MY_NAME, my_name_val);
+        intent.putExtra(BundleIndexDefine.PASSWORD, password_val);
+        intent.setAction(IntentDefine.BIND_SERVICE);
+        this.applicationContext_.sendBroadcast(intent);
+
+    }
+
     private static Boolean runGo = true;
 
     private void startGame(int i) {
         if (i == 0) {
-            Intent intent = new Intent();
-            intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SETUP_LINK_STR);
-            intent.setAction(IntentDefine.BIND_SERVICE);
-            this.applicationContext_.sendBroadcast(intent);
-
-
+            this.do_setup_link("phwang", "good");
             this.bindUClient().doSetupLink("phwang", "good");
         }
 
@@ -143,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void registerBroadcaseReceiver() {
         this.mainReceiver_ = new MainReceiver(this);
         IntentFilter filter = new IntentFilter();
-        filter.addAction(IntentDefine.MainActivity);
+        filter.addAction(IntentDefine.MAIN_ACTIVITY);
         this.registerReceiver(this.mainReceiver_, filter);
     }
 }

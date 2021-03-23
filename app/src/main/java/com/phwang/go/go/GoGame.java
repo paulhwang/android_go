@@ -9,25 +9,34 @@
 package com.phwang.go.go;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.Toast;
 
+import com.phwang.go.bind.BindReceiver;
 import com.phwang.go.bind.BindUClient;
 import com.phwang.go.MainActivity;
+import com.phwang.go.define.IntentDefine;
 
 public class GoGame extends AppCompatActivity {
     private static final String TAG = "GoGame";
+    private Context applicationContext_;
     private GoView goView;
 
+    public Context applicationContext() { return this.applicationContext_; };
     private BindUClient bindUClient() { return MainActivity.bindUClient(); };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.applicationContext_ = getApplicationContext();
         Toast.makeText(this, "GoGame onCreate", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onCreate");
+        this.registerBroadcaseReceiver();
         this.goView = new GoView(this);
         setContentView(this.goView);
         this.goView.requestFocus();
@@ -55,5 +64,13 @@ public class GoGame extends AppCompatActivity {
     public void processTouchInput(int x_val, int y_val) {
         //this.BindUClient().doPutSessionData();
 
+    }
+
+    private GoReceiver goReceiver_;
+    private void registerBroadcaseReceiver() {
+        this.goReceiver_ = new GoReceiver(this);
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(IntentDefine.GO_GAME_ACTIVITY);
+        this.registerReceiver(this.goReceiver_, filter);
     }
 }

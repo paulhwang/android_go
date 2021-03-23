@@ -12,5 +12,7 @@ public class BundleIndexDefine {
     public static final String COMMAND = "C";
     public static final String RESULT = "R";
     public static final String DATA = "D";
+    public static final String MY_NAME = "N";
+    public static final String PASSWORD = "P";
 
 }

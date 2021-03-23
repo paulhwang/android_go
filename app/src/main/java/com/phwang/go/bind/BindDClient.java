@@ -41,7 +41,7 @@ public class BindDClient implements ClientDImportInt {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SETUP_LINK_STR);
         intent.putExtra(BundleIndexDefine.RESULT, ResultDefine.SUCCEED);
-        intent.setAction(IntentDefine.MainActivity);
+        intent.setAction(IntentDefine.MAIN_ACTIVITY);
         this.applicationContext_.sendBroadcast(intent);
     }
 
@@ -65,7 +65,7 @@ public class BindDClient implements ClientDImportInt {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SETUP_SESSION_STR);
         intent.putExtra(BundleIndexDefine.RESULT, ResultDefine.SUCCEED);
-        intent.setAction(IntentDefine.MainActivity);
+        intent.setAction(IntentDefine.MAIN_ACTIVITY);
         this.applicationContext_.sendBroadcast(intent);
     }
 
@@ -79,7 +79,7 @@ public class BindDClient implements ClientDImportInt {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SETUP_SESSION3_STR);
         intent.putExtra(BundleIndexDefine.RESULT, ResultDefine.SUCCEED);
-        intent.setAction(IntentDefine.MainActivity);
+        intent.setAction(IntentDefine.MAIN_ACTIVITY);
         this.applicationContext_.sendBroadcast(intent);
     }
 
