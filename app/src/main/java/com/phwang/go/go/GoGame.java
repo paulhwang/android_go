@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import com.phwang.bind.BindUClient;
 import com.phwang.go.MainActivity;
+import com.phwang.bind.BindUClient;
 
 public class GoGame extends AppCompatActivity {
     private static final String TAG = "GoGame";
@@ -34,7 +35,7 @@ public class GoGame extends AppCompatActivity {
     public boolean onTouchEvent(MotionEvent event) {
         int x = ((int) event.getX() - this.goView.gridLen0 + this.goView.halfGridLen) / this.goView.gridLen;
         int y = ((int) event.getY() - this.goView.viewTop - this.goView.gridLen0 + this.goView.halfGridLen) / this.goView.gridLen;
-        Log.d(TAG, "onTouchEvent: x=" + x + " y=" + y);
+        Log.e(TAG, "onTouchEvent: x=" + x + " y=" + y);
         switch( event.getAction() ) {
             case MotionEvent.ACTION_DOWN:
                 break;
@@ -43,8 +44,14 @@ public class GoGame extends AppCompatActivity {
                 break;
 
             case MotionEvent.ACTION_UP:
+                this.processTouchInput(x, y);
                 break;
         }
        return super.onTouchEvent(event);
+    }
+
+    public void processTouchInput(int x_val, int y_val) {
+        //this.BindUClient().doSetupSession3();
+
     }
 }
