@@ -20,9 +20,9 @@ import com.phwang.go.sudoku.SudokuGame;
 
 public class GoView  extends View {
     private static final String TAG = "GoView";
-    private int boardSize = 9;
+    private int boardSize = 19;
     private final GoGame goGame;
-    protected final int[][] board = new int[20][20];
+    private final int[][] board = new int[20][20];
     private int width;
     protected int viewTop;
     protected int viewLeft;
@@ -39,6 +39,7 @@ public class GoView  extends View {
     private final Paint blackPaint = new Paint();
     private final Paint boardPaint = new Paint();
     private final Rect rect = new Rect();
+    protected void setBoard(int x_val, int y_val, int val) { this.board[x_val][y_val] = val; }
 
     public GoView(Context context_val) {
         super(context_val);

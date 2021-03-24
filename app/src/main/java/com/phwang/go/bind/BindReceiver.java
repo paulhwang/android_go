@@ -13,7 +13,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
@@ -23,11 +22,7 @@ public class BindReceiver extends BroadcastReceiver {
     private static final String TAG = "BindReceiver";
     private BindService bindService_;
 
-    private BindService bindService() { return this.bindService_; };
-    //private BindUClient BindUClient() { return this.mainActivity_.bindUClient(); }
-    private BindUClient bindUClient() { return bindService().bindUClient(); }
-
-    public Context applicationContext() { return this.bindService_.applicationContext(); };
+    private BindUClient bindUClient() { return bindService_.bindUClient(); }
 
     public BindReceiver(BindService bind_service_val) {
         this.bindService_ = bind_service_val;
@@ -95,7 +90,6 @@ public class BindReceiver extends BroadcastReceiver {
         }
     }
 
-
     private void sendResponseBroadcastMessage(String target_val, String command_val, String result_val, String data_val) {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
@@ -138,7 +132,7 @@ public class BindReceiver extends BroadcastReceiver {
 
             case CommandDefine.FABRIC_COMMAND_GET_SESSION_DATA:
                 if (data.charAt(0) == ThemeDefine.THEME_GO) {
-                    this.sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command, result, data);
+                    this.sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command, result, data.substring(1));
                 }
                 else {
                     Log.e(TAG, "handleResponse() ***not implemented yet+++");

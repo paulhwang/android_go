@@ -10,7 +10,6 @@ package com.phwang.go.go;
 
 import android.content.Intent;
 import android.util.Log;
-
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
@@ -19,7 +18,7 @@ public class GoGameFunc {
     private static final String TAG = "GoGameFunc";
     private GoGame goGame_;
 
-    public GoGameFunc(GoGame go_game_val) {
+    protected GoGameFunc(GoGame go_game_val) {
         this.goGame_ = go_game_val;
     }
 
