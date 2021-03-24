@@ -13,11 +13,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-
-import com.phwang.go.bind.BindUClient;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
-import com.phwang.go.define.IntentDefine;
 
 public class MainReceiver extends BroadcastReceiver {
     private static final String TAG = "MainReceiver";

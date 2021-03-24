@@ -14,7 +14,6 @@ import android.content.DialogInterface;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.content.Intent;
-import android.content.Context;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,20 +21,16 @@ import android.view.MenuItem;
 import android.util.Log;
 
 import com.phwang.go.R;
-import com.phwang.go.define.BundleIndexDefine;
-import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
-import com.phwang.go.main.MainReceiver;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.sudoku.SudokuGame;
 import com.phwang.go.go.GoGame;
-import com.phwang.go.bind.BindMain;
-import com.phwang.go.bind.BindUClient;
 import com.phwang.go.bind.BindService;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
     private MainActivityFunc mainActivityFunc_;
+    private MainReceiver mainReceiver_;
     private static Boolean runGo = true;
 
     protected MainActivityFunc mainActivityFunc() { return this.mainActivityFunc_; };
@@ -50,7 +45,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         startService(new Intent(this, BindService.class));
 
-        this.registerBroadcaseReceiver();
+        this.registerBroadcastReceiver();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        this.unregisterBroadcastReceiver();
     }
 
     private void setupView() {
@@ -133,11 +144,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
-    private MainReceiver mainReceiver_;
-    private void registerBroadcaseReceiver() {
-        this.mainReceiver_ = new MainReceiver(this);
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(IntentDefine.MAIN_ACTIVITY);
-        this.registerReceiver(this.mainReceiver_, filter);
+    private void registerBroadcastReceiver() {
+        if (this.mainReceiver_ == null) {
+            this.mainReceiver_ = new MainReceiver(this);
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(IntentDefine.MAIN_ACTIVITY);
+            this.registerReceiver(this.mainReceiver_, filter);
+        }
+    }
+
+    private void unregisterBroadcastReceiver() {
+        if (this.mainReceiver_ != null) {
+            this.unregisterReceiver(this.mainReceiver_);
+            this.mainReceiver_ = null;
+        }
     }
 }

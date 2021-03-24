@@ -13,8 +13,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-
-import com.phwang.go.bind.BindService;
 import com.phwang.go.define.BundleIndexDefine;
 
 public class GoReceiver extends BroadcastReceiver {

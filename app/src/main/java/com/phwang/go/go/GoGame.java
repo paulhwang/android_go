@@ -16,9 +16,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.Toast;
-
-import com.phwang.go.bind.BindUClient;
-import com.phwang.go.main.MainActivity;
 import com.phwang.go.define.IntentDefine;
 
 public class GoGame extends AppCompatActivity {
@@ -34,10 +31,26 @@ public class GoGame extends AppCompatActivity {
         this.applicationContext_ = getApplicationContext();
         Toast.makeText(this, "GoGame onCreate", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onCreate");
-        this.registerBroadcaseReceiver();
+        this.registerBroadcastReceiver();
         this.goView = new GoView(this);
         setContentView(this.goView);
         this.goView.requestFocus();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        this.unregisterBroadcastReceiver();
     }
 
     @Override
@@ -65,10 +78,19 @@ public class GoGame extends AppCompatActivity {
     }
 
     private GoReceiver goReceiver_;
-    private void registerBroadcaseReceiver() {
-        this.goReceiver_ = new GoReceiver(this);
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(IntentDefine.GO_GAME_ACTIVITY);
-        this.registerReceiver(this.goReceiver_, filter);
+    private void registerBroadcastReceiver() {
+        if (this.goReceiver_ == null) {
+            this.goReceiver_ = new GoReceiver(this);
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(IntentDefine.GO_GAME_ACTIVITY);
+            this.registerReceiver(this.goReceiver_, filter);
+        }
+    }
+
+    private void unregisterBroadcastReceiver() {
+        if (this.goReceiver_ != null) {
+            this.unregisterReceiver(this.goReceiver_);
+            this.goReceiver_ = null;
+        }
     }
 }

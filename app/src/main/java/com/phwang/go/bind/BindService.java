@@ -30,7 +30,7 @@ public class BindService extends Service {
     public void onCreate() {
         super.onCreate();
         this.applicationContext_ = getApplicationContext();
-        this.registerBroadcaseReceiver();
+        this.registerBroadcastReceiver();
         this.bindMain_ = new BindMain(this.applicationContext());
     }
 
@@ -51,14 +51,24 @@ public class BindService extends Service {
     @Override
     public void onDestroy() {
         Toast.makeText(this, "service done", Toast.LENGTH_SHORT).show();
+        this.unregisterBroadcastReceiver();
         super.onDestroy();
     }
 
     private BindReceiver bindReceiver_;
-    private void registerBroadcaseReceiver() {
-        this.bindReceiver_ = new BindReceiver(this);
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(IntentDefine.BIND_SERVICE);
-        this.registerReceiver(this.bindReceiver_, filter);
+    private void registerBroadcastReceiver() {
+        if (this.bindReceiver_ == null) {
+            this.bindReceiver_ = new BindReceiver(this);
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(IntentDefine.BIND_SERVICE);
+            this.registerReceiver(this.bindReceiver_, filter);
+        }
+    }
+
+    private void unregisterBroadcastReceiver() {
+        if (this.bindReceiver_ != null) {
+            this.unregisterReceiver(this.bindReceiver_);
+            this.bindReceiver_ = null;
+        }
     }
 }
