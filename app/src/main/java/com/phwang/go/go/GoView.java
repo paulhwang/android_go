@@ -21,8 +21,7 @@ public class GoView  extends View {
 
     private final GoGame goGame_;
     private GoBoard goBoard() { return this.goGame_.goBoard(); }
-
-    private final int[][] board = new int[20][20];
+    protected int board(int x_val, int y_val) { return this.goBoard().board(x_val, y_val); }
 
     private int width;
     protected int viewTop;
@@ -135,19 +134,13 @@ public class GoView  extends View {
     }
 
     private void drawStones() {
-        this.board[3][3] = 1;
-        this.board[6][6] = 2;
-        this.board[5][5] = 1;
-        this.board[5][6] = 2;
-        this.board[3][4] = 1;
-        this.board[6][5] = 2;
 
         for (int i = this.goBoard().boardSize(); i >= 1; i--) {
             for (int j = this.goBoard().boardSize(); j >= 1; j--) {
-                if (this.board[i][j] == 1){
+                if (this.board(i, j) == 1){
                     this.drawStone(i, j, this.blackPaint);
                 }
-                else if (this.board[i][j] == 2){
+                else if (this.board(i, j) == 2){
                     this.drawStone(i, j, this.whitePaint);
                 }
             }

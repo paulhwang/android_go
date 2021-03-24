@@ -21,6 +21,12 @@ public class GoBoard {
 
     public GoBoard(GoGame go_game_val) {
         this.goGame_ = go_game_val;
+        this.board_[3][3] = 1;
+        this.board_[6][6] = 2;
+        this.board_[5][5] = 1;
+        this.board_[5][6] = 2;
+        this.board_[3][4] = 1;
+        this.board_[6][5] = 2;
     }
 
     protected void decodeBoard(String data_str_val) {
