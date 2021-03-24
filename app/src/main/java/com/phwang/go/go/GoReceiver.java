@@ -14,10 +14,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import com.phwang.go.define.BundleIndexDefine;
+import com.phwang.go.define.CommandDefine;
 
 public class GoReceiver extends BroadcastReceiver {
     private static final String TAG = "GoReceiver";
     private GoGame goGameActivity_;
+
+    protected GoGameFunc goGameFunc() { return this.goGameActivity_.goGameFunc(); };
 
     public GoReceiver(GoGame go_game_activity_val) {
         this.goGameActivity_ = go_game_activity_val;
@@ -41,7 +44,13 @@ public class GoReceiver extends BroadcastReceiver {
 
         if (command != null) {
             switch (command.charAt(0)) {
-                case 'a':
+                case CommandDefine.FABRIC_COMMAND_PUT_SESSION_DATA:
+                    this.goGameFunc().do_get_session_data();
+                    break;
+
+                case CommandDefine.FABRIC_COMMAND_GET_SESSION_DATA:
+                    String board_data = bundle_val.getString(BundleIndexDefine.BOARD_DATA);
+                    this.goGameFunc().processGetSessionData(board_data);
                     break;
 
                 default:

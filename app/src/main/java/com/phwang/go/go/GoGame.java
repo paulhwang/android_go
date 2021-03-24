@@ -20,21 +20,21 @@ import com.phwang.go.define.IntentDefine;
 
 public class GoGame extends AppCompatActivity {
     private static final String TAG = "GoGame";
-    private Context applicationContext_;
+    private GoGameFunc goGameFunc_;
     private GoView goView;
 
-    public Context applicationContext() { return this.applicationContext_; };
+    protected GoGameFunc goGameFunc() { return this.goGameFunc_; };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.applicationContext_ = getApplicationContext();
-        Toast.makeText(this, "GoGame onCreate", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "onCreate");
-        this.registerBroadcastReceiver();
+        this.goGameFunc_ = new GoGameFunc(this);
+
         this.goView = new GoView(this);
         setContentView(this.goView);
         this.goView.requestFocus();
+
+        this.registerBroadcastReceiver();
     }
 
     @Override
@@ -73,8 +73,7 @@ public class GoGame extends AppCompatActivity {
     }
 
     public void processTouchInput(int x_val, int y_val) {
-        //this.BindUClient().doPutSessionData();
-
+        this.goGameFunc_.do_put_session_data("1111111111");
     }
 
     private GoReceiver goReceiver_;

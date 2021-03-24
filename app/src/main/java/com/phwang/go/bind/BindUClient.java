@@ -70,10 +70,12 @@ public class BindUClient {
 
     public void doPutSessionData(String session_put_data_val) {
         this.debug(false, "doPutSessionData", "doPutSessionData");
+        this.clientDExport().putSessionData();;
     }
 
     public void doGetSessionData() {
         this.debug(false, "doGetSessionData", "doGetSessionData");
+        this.clientDExport().getSessionData();;
     }
 
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }

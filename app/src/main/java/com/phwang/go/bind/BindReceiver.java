@@ -58,7 +58,6 @@ public class BindReceiver extends BroadcastReceiver {
         String command = bundle_val.getString(BundleIndexDefine.COMMAND);
         Log.e(TAG, "handleCommand() command=" + command);
 
-
         if (command == null) {
             Log.e(TAG, "handleCommand() null command=");
             return;
@@ -79,6 +78,16 @@ public class BindReceiver extends BroadcastReceiver {
                 break;
 
             case CommandDefine.FABRIC_COMMAND_SETUP_SESSION3:
+                this.bindUClient().doSetupSession3();
+                break;
+
+            case CommandDefine.FABRIC_COMMAND_PUT_SESSION_DATA:
+                String move_data = bundle_val.getString(BundleIndexDefine.MOVE_DATA);
+                this.bindUClient().doPutSessionData(move_data);
+                break;
+
+            case CommandDefine.FABRIC_COMMAND_GET_SESSION_DATA:
+                this.bindUClient().doGetSessionData();
                 break;
 
             default:
@@ -119,6 +128,15 @@ public class BindReceiver extends BroadcastReceiver {
                 break;
 
             case CommandDefine.FABRIC_COMMAND_SETUP_SESSION3:
+                this.sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data);
+                break;
+
+            case CommandDefine.FABRIC_COMMAND_PUT_SESSION_DATA:
+                this.sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command, result, data);
+                break;
+
+            case CommandDefine.FABRIC_COMMAND_GET_SESSION_DATA:
+                this.sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command, result, data);
                 break;
 
             default:

@@ -97,10 +97,20 @@ public class BindDClient implements ClientDImportInt {
 
     public void handlePutSessionDataResponse() {
         this.debug(true, "handlePutSessionDataResponse", "handlePutSessionDataResponse");
+        this.sendBroadcastMessage(
+                IntentDefine.BIND_SERVICE,
+                CommandDefine.FABRIC_COMMAND_PUT_SESSION_DATA_STR,
+                ResultDefine.SUCCEED,
+                null);
     }
 
     public void handleGetSessionDataResponse() {
         this.debug(true, "handleGetSessionDataResponse", "handleGetSessionDataResponse");
+        this.sendBroadcastMessage(
+                IntentDefine.BIND_SERVICE,
+                CommandDefine.FABRIC_COMMAND_GET_SESSION_DATA_STR,
+                ResultDefine.SUCCEED,
+                null);
 
     }
 
