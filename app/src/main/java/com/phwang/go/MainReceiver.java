@@ -18,6 +18,7 @@ import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 
 public class MainReceiver extends BroadcastReceiver {
+    private static final String TAG = "MainReceiver";
     private MainActivity mainActivity_;
 
     private BindUClient BindUClient() { return this.mainActivity_.bindUClient(); }
@@ -31,13 +32,16 @@ public class MainReceiver extends BroadcastReceiver {
         Bundle bundle = intent_val.getExtras();
         String stamp = bundle.getString(BundleIndexDefine.STAMP);
         if ((stamp == null) || !stamp.equals(BundleIndexDefine.THE_STAMP)) {
-            Log.e("MainReceiver", "++++++++++++++++stamp" + bundle.getString(BundleIndexDefine.COMMAND));
-            //return;
+            Log.e(TAG, "onReceive() bad-stamp. command=" + bundle.getString(BundleIndexDefine.COMMAND));
+            return;
         }
+        this.handleReceivedBundle(bundle);
+    }
 
-        String command = bundle.getString(BundleIndexDefine.COMMAND);
-        String result = bundle.getString(BundleIndexDefine.RESULT);
-        Log.e("MainReceiver", "command=" + command + ", result=" + result);
+    private void handleReceivedBundle(Bundle bundle_val) {
+        String command = bundle_val.getString(BundleIndexDefine.COMMAND);
+        String result = bundle_val.getString(BundleIndexDefine.RESULT);
+        Log.e(TAG, "handleReceivedBundle() command=" + command + ", result=" + result);
 
         if (command != null) {
             switch (command.charAt(0)) {

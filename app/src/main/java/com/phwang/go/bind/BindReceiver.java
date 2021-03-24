@@ -21,6 +21,7 @@ import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
 
 public class BindReceiver extends BroadcastReceiver {
+    private static final String TAG = "BindReceiver";
     private BindService bindService_;
 
     //private BindUClient BindUClient() { return this.mainActivity_.bindUClient(); }
@@ -34,10 +35,18 @@ public class BindReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context_val, Intent intent_val) {
         Bundle bundle = intent_val.getExtras();
-        String command = bundle.getString(BundleIndexDefine.COMMAND);
-        Log.e("BindReceiver", "command=" + command);
-        //String result = bundle.getString(BundleIndexDefine.RESULT);
-        //Log.e("BindReceiver", "command=" + command + ", result=" + result);
+        String stamp = bundle.getString(BundleIndexDefine.STAMP);
+        if ((stamp == null) || !stamp.equals(BundleIndexDefine.THE_STAMP)) {
+            Log.e(TAG, "onReceive() bad-stamp. command=" + bundle.getString(BundleIndexDefine.COMMAND));
+            return;
+        }
+        this.handleReceivedBundle(bundle);
+    }
+
+    private void handleReceivedBundle(Bundle bundle_val) {
+        String command = bundle_val.getString(BundleIndexDefine.COMMAND);
+        String result = bundle_val.getString(BundleIndexDefine.RESULT);
+        Log.e(TAG, "handleReceivedBundle() command=" + command + ", result=" + result);
 
         /////////////////////////////////////////////
         Intent intent = new Intent();
@@ -47,23 +56,24 @@ public class BindReceiver extends BroadcastReceiver {
         /////////////////////////////////////////////////////
 
 
-        switch (command.charAt(0)) {
-            case CommandDefine.FABRIC_COMMAND_SETUP_LINK:
-                String name = bundle.getString(BundleIndexDefine.MY_NAME);
-                String password = bundle.getString(BundleIndexDefine.PASSWORD);
-                Log.e("BindReceiver", "command=" + command + " name=" + name + "," + password);
-                //this.BindUClient().doSetupSession(name, password);
-                break;
+        if (command != null) {
+            switch (command.charAt(0)) {
+                case CommandDefine.FABRIC_COMMAND_SETUP_LINK:
+                    String name = bundle_val.getString(BundleIndexDefine.MY_NAME);
+                    String password = bundle_val.getString(BundleIndexDefine.PASSWORD);
+                    Log.e("BindReceiver", "command=" + command + " name=" + name + "," + password);
+                    //this.BindUClient().doSetupSession(name, password);
+                    break;
 
-            case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
-                //this.BindUClient().doSetupSession3();
-                break;
+                case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
+                    //this.BindUClient().doSetupSession3();
+                    break;
 
-            case CommandDefine.FABRIC_COMMAND_SETUP_SESSION3:
-                break;
+                case CommandDefine.FABRIC_COMMAND_SETUP_SESSION3:
+                    break;
 
-            default:
-
+                default:
+            }
         }
     }
 }
