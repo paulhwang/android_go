@@ -27,7 +27,6 @@ public class GoGame extends AppCompatActivity {
     private GoView goView;
 
     public Context applicationContext() { return this.applicationContext_; };
-    private BindUClient bindUClient() { return MainActivity.bindUClient(); };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -36,12 +36,9 @@ import com.phwang.go.bind.BindService;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
     private MainActivityFunc mainActivityFunc_;
+    private static Boolean runGo = true;
 
-    private Context applicationContext_;
-    private static BindMain bindMain_;
-
-    public Context applicationContext() { return this.applicationContext_; };
-    public static BindUClient bindUClient() { return bindMain_.bindUClient(); }
+    protected MainActivityFunc mainActivityFunc() { return this.mainActivityFunc_; };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         startService(new Intent(this, BindService.class));
 
-        this.applicationContext_ = getApplicationContext();
         this.registerBroadcaseReceiver();
-        //this.bindMain_ = new BindMain(this.applicationContext());
     }
 
     private void setupView() {
@@ -98,24 +93,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }).show();
     }
 
-    private void do_setup_link(String my_name_val, String password_val) {
-        Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
-        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.MAIN_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
-        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SETUP_LINK_STR);
-        intent.putExtra(BundleIndexDefine.MY_NAME, my_name_val);
-        intent.putExtra(BundleIndexDefine.PASSWORD, password_val);
-        intent.setAction(IntentDefine.BIND_SERVICE);
-        this.applicationContext_.sendBroadcast(intent);
-    }
-
-    private static Boolean runGo = true;
-
     private void startGame(int i) {
         if (i == 0) {
-            this.do_setup_link("phwang", "good");
-            //this.bindUClient().doSetupLink("phwang", "good");
+            this.mainActivityFunc_.do_setup_link("phwang", "good");
         }
 
         if (this.runGo)

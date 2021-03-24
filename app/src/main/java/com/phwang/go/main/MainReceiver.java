@@ -23,7 +23,7 @@ public class MainReceiver extends BroadcastReceiver {
     private static final String TAG = "MainReceiver";
     private MainActivity mainActivity_;
 
-    private BindUClient BindUClient() { return this.mainActivity_.bindUClient(); }
+    protected MainActivityFunc mainActivityFunc() { return this.mainActivity_.mainActivityFunc(); };
 
     public MainReceiver(MainActivity main_activity_val) {
         this.mainActivity_ = main_activity_val;
@@ -40,30 +40,6 @@ public class MainReceiver extends BroadcastReceiver {
         this.handleReceivedBundle(bundle);
     }
 
-    private void do_setup_session(String his_name_val, String theme_data_val) {
-        Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
-        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.MAIN_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
-        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SETUP_SESSION_STR);
-        intent.putExtra(BundleIndexDefine.HIS_NAME, his_name_val);
-        intent.putExtra(BundleIndexDefine.THEME_DATA, theme_data_val);
-        intent.setAction(IntentDefine.BIND_SERVICE);
-        this.mainActivity_.sendBroadcast(intent);
-    }
-
-    private void do_setup_session3(String theme_data_val) {
-        Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
-        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.MAIN_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
-        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SETUP_SESSION3_STR);
-       intent.putExtra(BundleIndexDefine.THEME_DATA, theme_data_val);
-        intent.setAction(IntentDefine.BIND_SERVICE);
-        this.mainActivity_.sendBroadcast(intent);
-    }
-
-
     private void handleReceivedBundle(Bundle bundle_val) {
         String command = bundle_val.getString(BundleIndexDefine.COMMAND);
         String result = bundle_val.getString(BundleIndexDefine.RESULT);
@@ -76,11 +52,11 @@ public class MainReceiver extends BroadcastReceiver {
 
         switch (command.charAt(0)) {
             case CommandDefine.FABRIC_COMMAND_SETUP_LINK:
-                this.do_setup_session("phwang", "00000000G111111");
+                this.mainActivityFunc().do_setup_session("phwang", "00000000G111111");
                 break;
 
             case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
-                this.do_setup_session3("00000000G111111");
+                this.mainActivityFunc().do_setup_session3("00000000G111111");
                 break;
 
             case CommandDefine.FABRIC_COMMAND_SETUP_SESSION3:
