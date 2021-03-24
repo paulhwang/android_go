@@ -8,6 +8,8 @@
 
 package com.phwang.go.go;
 
+import android.util.Log;
+
 import com.phwang.core.go.GoDefine;
 import com.phwang.core.utils.EncodeNumber;
 
@@ -43,7 +45,7 @@ public class GoBoard {
         String rest_str = data_str_val.substring(4);
         for (int i = 0; i < this.boardSize_; i++) {
             for (int j = 0; j < this.boardSize_; j++) {
-                this.boardArray_[i][j] = rest_str.charAt(i * this.boardSize_ + j);
+                this.boardArray_[i][j] = rest_str.charAt(i * this.boardSize_ + j) - 48;
             }
         }
     }

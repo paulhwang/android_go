@@ -127,6 +127,7 @@ public class GoView  extends View {
         }
 
         this.drawStones();
+        this.invalidate();
     }
 
     private void drawBoardDot(int x, int y) {
