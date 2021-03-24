@@ -6,13 +6,14 @@
  ******************************************************************************
  */
 
-package com.phwang.go;
+package com.phwang.go.main;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
 import com.phwang.go.bind.BindUClient;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;

@@ -17,9 +17,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.Toast;
 
-import com.phwang.go.bind.BindReceiver;
 import com.phwang.go.bind.BindUClient;
-import com.phwang.go.MainActivity;
+import com.phwang.go.main.MainActivity;
 import com.phwang.go.define.IntentDefine;
 
 public class GoGame extends AppCompatActivity {

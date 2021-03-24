@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.go;
+package com.phwang.go.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
@@ -21,10 +21,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.util.Log;
 
+import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
-import com.phwang.go.define.ResultDefine;
+import com.phwang.go.main.MainReceiver;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.sudoku.SudokuGame;
 import com.phwang.go.go.GoGame;
@@ -34,6 +35,8 @@ import com.phwang.go.bind.BindService;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
+    private MainActivityFunc mainActivityFunc_;
+
     private Context applicationContext_;
     private static BindMain bindMain_;
 
@@ -43,15 +46,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.mainActivityFunc_ = new MainActivityFunc(this);
+
         setContentView(R.layout.activity_main);
-        Log.e(TAG, "MainActivity" + " onCreate()");
+        this.setupView();
 
         startService(new Intent(this, BindService.class));
 
         this.applicationContext_ = getApplicationContext();
         this.registerBroadcaseReceiver();
         this.bindMain_ = new BindMain(this.applicationContext());
+    }
 
+    private void setupView() {
         View continueButton = findViewById(R.id.continue_button);
         continueButton.setOnClickListener(this);
         View newGameButton = findViewById(R.id.new_game_button);
