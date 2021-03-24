@@ -68,9 +68,9 @@ public class BindUClient {
 
     }
 
-    public void doPutSessionData(String session_put_data_val) {
-        this.debug(false, "doPutSessionData", "doPutSessionData");
-        this.clientDExport().putSessionData();;
+    public void doPutSessionData(String data_str_val) {
+        this.debug(true, "doPutSessionData() data=", data_str_val);
+        this.clientDExport().putSessionData(data_str_val);;
     }
 
     public void doGetSessionData() {

@@ -77,7 +77,9 @@ public class GoGame extends AppCompatActivity {
     }
 
     public void processTouchInput(int x_val, int y_val) {
-        this.goGameFunc_.do_put_session_data("1111111111");
+        String move_str = this.goBoard_.encodeMove(x_val, y_val);
+        //Log.e(TAG, "processTouchInput move=" + move_str);
+        this.goGameFunc_.do_put_session_data(move_str);
     }
 
     private GoReceiver goReceiver_;

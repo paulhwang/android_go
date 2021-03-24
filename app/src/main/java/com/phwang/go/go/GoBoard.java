@@ -11,6 +11,7 @@ package com.phwang.go.go;
 import android.util.Log;
 
 import com.phwang.core.go.GoDefine;
+import com.phwang.core.utils.Define;
 import com.phwang.core.utils.EncodeNumber;
 
 public class GoBoard {
@@ -19,8 +20,8 @@ public class GoBoard {
     private GoGame goGame_;
     private int boardSize_ = 9;
     private final int[][] boardArray_ = new int[20][20];
-    private int totalMoves_;
-    private int nextColor_;
+    private int totalMoves_ = 0;
+    private int nextColor_ = 1;
 
     protected int boardSize() { return this.boardSize_; }
     protected int board(int x_val, int y_val) { return this.boardArray_[x_val][y_val]; }
@@ -48,5 +49,19 @@ public class GoBoard {
                 this.boardArray_[i][j] = rest_str.charAt(i * this.boardSize_ + j) - 48;
             }
         }
+    }
+
+    protected String encodeMove(int x_val, int y_val) {
+        StringBuilder buf = new StringBuilder("GM");
+        buf.append(EncodeNumber.encode(x_val, 2));
+        buf.append(EncodeNumber.encode(y_val, 2));
+        buf.append(this.nextColor_);
+        buf.append(EncodeNumber.encode(this.totalMoves_ + 1, 3));
+        String data = buf.toString();
+
+        buf = new StringBuilder();
+        buf.append(EncodeNumber.encode(data.length(), Define.DATA_LENGTH_SIZE));
+        buf.append(data);
+        return buf.toString();
     }
 }
