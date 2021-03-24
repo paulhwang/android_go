@@ -49,8 +49,8 @@ public class GoReceiver extends BroadcastReceiver {
                     break;
 
                 case CommandDefine.FABRIC_COMMAND_GET_SESSION_DATA:
-                    String board_data = bundle_val.getString(BundleIndexDefine.BOARD_DATA);
-                    this.goGameFunc().processGetSessionData(board_data);
+                    String data = bundle_val.getString(BundleIndexDefine.DATA);
+                    this.goGameFunc().processGetSessionData(data);
                     break;
 
                 default:

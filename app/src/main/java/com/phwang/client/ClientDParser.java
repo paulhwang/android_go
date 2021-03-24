@@ -189,7 +189,7 @@ public class ClientDParser {
         String c_data = rest_str.substring(0, c_data_len);
     	rest_str = rest_str.substring(c_data_len);
     	
-    	this.importInterface().handleGetSessionDataResponse();
+    	this.importInterface().handleGetSessionDataResponse(c_data);
     }
 
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }

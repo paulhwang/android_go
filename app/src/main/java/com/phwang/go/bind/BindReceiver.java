@@ -17,6 +17,7 @@ import android.util.Log;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
+import com.phwang.go.define.ThemeDefine;
 
 public class BindReceiver extends BroadcastReceiver {
     private static final String TAG = "BindReceiver";
@@ -136,7 +137,12 @@ public class BindReceiver extends BroadcastReceiver {
                 break;
 
             case CommandDefine.FABRIC_COMMAND_GET_SESSION_DATA:
-                this.sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command, result, data);
+                if (data.charAt(0) == ThemeDefine.THEME_GO) {
+                    this.sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command, result, data);
+                }
+                else {
+                    Log.e(TAG, "handleResponse() ***not implemented yet+++");
+                }
                 break;
 
             default:

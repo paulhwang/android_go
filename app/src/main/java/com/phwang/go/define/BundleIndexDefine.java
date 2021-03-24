@@ -27,7 +27,6 @@ public class BundleIndexDefine {
 
     public static final String THEME_DATA = "theme_data";
     public static final String MOVE_DATA = "move_data";
-    public static final String BOARD_DATA = "board_data";
 
     public static final String DATA = "data";
 
