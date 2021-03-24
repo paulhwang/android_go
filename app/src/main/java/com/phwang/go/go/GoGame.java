@@ -24,6 +24,7 @@ public class GoGame extends AppCompatActivity {
     private GoBoard goBoard_;
     private GoView goView_;
 
+    protected GoView goView() { return this.goView_; };
     protected GoBoard goBoard() { return this.goBoard_; };
     protected GoGameFunc goGameFunc() { return this.goGameFunc_; };
 

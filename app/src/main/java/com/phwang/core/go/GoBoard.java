@@ -43,7 +43,7 @@ public class GoBoard {
     public void encodeBoard() {
         this.theBoardOutputBuffer = "";
         this.theBoardOutputBuffer = this.theBoardOutputBuffer + GO_PROTOCOL_GAME_INFO;
-        this.theBoardOutputBuffer = this.theBoardOutputBuffer + EncodeNumber.encode(this.goGame().totalMoves(), 3);
+        this.theBoardOutputBuffer = this.theBoardOutputBuffer + EncodeNumber.encode(this.goGame().totalMoves(), GoDefine.TOTAL_MOVE_SIZE);
         this.theBoardOutputBuffer = this.theBoardOutputBuffer + EncodeNumber.encode(this.goGame().nextColor(), 1);
 
         int board_size = this.goConfig().boardSize();

@@ -86,7 +86,7 @@ public class GoView  extends View {
         this.gridLen19 = this.gridLen * board_size_val + this.gridLen0;
     }
 
-    private void drawBoard() {
+    protected void drawBoard() {
         this.canvas.drawRect(this.gridLen1 - this.sideGridLen, this.gridLen1 - this.sideGridLen, this.gridLen19 + this.sideGridLen, this.gridLen19 + this.sideGridLen, this.boardPaint);
 
         for (int i = this.goBoard().boardSize() ; i > 0 ; i--) {

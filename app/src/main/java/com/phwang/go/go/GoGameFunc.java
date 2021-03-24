@@ -19,7 +19,9 @@ public class GoGameFunc {
     private static final String TAG = "GoGameFunc";
     private GoGame goGame_;
 
+    protected GoView goView() { return this.goGame_.goView(); }
     protected GoBoard goBoard() { return this.goGame_.goBoard(); }
+
     protected GoGameFunc(GoGame go_game_val) {
         this.goGame_ = go_game_val;
     }
@@ -48,5 +50,6 @@ public class GoGameFunc {
     protected void processGetSessionData(String board_data_val) {
         Log.e(TAG, "processGetSessionData() data=" + board_data_val);
         this.goBoard().decodeBoard(board_data_val);
+        this.goView().drawBoard();
     }
 }
