@@ -29,24 +29,31 @@ public class MainReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context_val, Intent intent_val) {
         Bundle bundle = intent_val.getExtras();
+        String stamp = bundle.getString(BundleIndexDefine.STAMP);
+        if ((stamp == null) || !stamp.equals(BundleIndexDefine.THE_STAMP)) {
+            Log.e("MainReceiver", "++++++++++++++++stamp" + bundle.getString(BundleIndexDefine.COMMAND));
+            //return;
+        }
+
         String command = bundle.getString(BundleIndexDefine.COMMAND);
         String result = bundle.getString(BundleIndexDefine.RESULT);
         Log.e("MainReceiver", "command=" + command + ", result=" + result);
 
-        switch (command.charAt(0)) {
-            case CommandDefine.FABRIC_COMMAND_SETUP_LINK:
-                this.BindUClient().doSetupSession("phwang", "00000000G111111");
-                break;
+        if (command != null) {
+            switch (command.charAt(0)) {
+                case CommandDefine.FABRIC_COMMAND_SETUP_LINK:
+                    this.BindUClient().doSetupSession("phwang", "00000000G111111");
+                    break;
 
-            case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
-                this.BindUClient().doSetupSession3();
-                break;
+                case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
+                    this.BindUClient().doSetupSession3();
+                    break;
 
-            case CommandDefine.FABRIC_COMMAND_SETUP_SESSION3:
-                break;
+                case CommandDefine.FABRIC_COMMAND_SETUP_SESSION3:
+                    break;
 
-            default:
-
+                default:
+            }
         }
 
         //this.BindUClient().doSetupSession("phwang", "00000000G100000");

@@ -36,13 +36,24 @@ public class BindDClient implements ClientDImportInt {
         this.clientRoot_ = new ClientRoot(this);
     }
 
+    private void sendBroadcastMessage(String target_val, String command_val, String result_val, String data_val) {
+        Intent intent = new Intent();
+        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
+        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CLIENT);
+        intent.putExtra(BundleIndexDefine.COMMAND, command_val);
+        intent.putExtra(BundleIndexDefine.RESULT, result_val);
+        intent.putExtra(BundleIndexDefine.DATA, data_val);
+        intent.setAction(target_val);
+        this.applicationContext_.sendBroadcast(intent);
+    }
+
     public void handleSetupLinkResponse() {
         this.debug(true, "handleSetupLinkResponse", "LinkId=" + this.clientFabricInfo().linkIdStr());
-        Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SETUP_LINK_STR);
-        intent.putExtra(BundleIndexDefine.RESULT, ResultDefine.SUCCEED);
-        intent.setAction(IntentDefine.MAIN_ACTIVITY);
-        this.applicationContext_.sendBroadcast(intent);
+        this.sendBroadcastMessage(
+                IntentDefine.MAIN_ACTIVITY,
+                CommandDefine.FABRIC_COMMAND_SETUP_LINK_STR,
+                ResultDefine.SUCCEED,
+                null);
     }
 
     public void handleRemoveLinkResponse() {
@@ -62,11 +73,11 @@ public class BindDClient implements ClientDImportInt {
 
     public void handleSetupSessionResponse() {
         this.debug(true, "handleSetupSessionResponse", "SessionId=" + this.clientFabricInfo().sessionIdStr());
-        Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SETUP_SESSION_STR);
-        intent.putExtra(BundleIndexDefine.RESULT, ResultDefine.SUCCEED);
-        intent.setAction(IntentDefine.MAIN_ACTIVITY);
-        this.applicationContext_.sendBroadcast(intent);
+        this.sendBroadcastMessage(
+                IntentDefine.MAIN_ACTIVITY,
+                CommandDefine.FABRIC_COMMAND_SETUP_SESSION_STR,
+                ResultDefine.SUCCEED,
+                null);
     }
 
     public void handleSetupSession2Response() {
@@ -76,11 +87,11 @@ public class BindDClient implements ClientDImportInt {
 
     public void handleSetupSession3Response() {
         this.debug(true, "handleSetupSession3Response", "SessionId=" + this.clientFabricInfo().sessionIdStr());
-        Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SETUP_SESSION3_STR);
-        intent.putExtra(BundleIndexDefine.RESULT, ResultDefine.SUCCEED);
-        intent.setAction(IntentDefine.MAIN_ACTIVITY);
-        this.applicationContext_.sendBroadcast(intent);
+        this.sendBroadcastMessage(
+                IntentDefine.MAIN_ACTIVITY,
+                CommandDefine.FABRIC_COMMAND_SETUP_SESSION3_STR,
+                ResultDefine.SUCCEED,
+                null);
     }
 
     public void handlePutSessionDataResponse() {
