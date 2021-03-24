@@ -14,15 +14,16 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.view.View;
 import android.util.Log;
-
 import com.phwang.go.R;
-import com.phwang.go.sudoku.SudokuGame;
 
 public class GoView  extends View {
     private static final String TAG = "GoView";
-    private int boardSize = 19;
-    private final GoGame goGame;
+
+    private final GoGame goGame_;
+    private GoBoard goBoard() { return this.goGame_.goBoard(); }
+
     private final int[][] board = new int[20][20];
+
     private int width;
     protected int viewTop;
     protected int viewLeft;
@@ -39,11 +40,10 @@ public class GoView  extends View {
     private final Paint blackPaint = new Paint();
     private final Paint boardPaint = new Paint();
     private final Rect rect = new Rect();
-    protected void setBoard(int x_val, int y_val, int val) { this.board[x_val][y_val] = val; }
 
     public GoView(Context context_val) {
         super(context_val);
-        this.goGame = (GoGame) context_val;
+        this.goGame_ = (GoGame) context_val;
 
         this.whitePaint.setColor(getResources().getColor(R.color.white));
         this.blackPaint.setColor(getResources().getColor(R.color.black));
@@ -72,7 +72,7 @@ public class GoView  extends View {
     protected void onDraw(Canvas canvas_val) {
         Log.d(TAG, "onDraw");
         this.canvas = canvas_val;
-        this.setupGridLen(this.width, this.boardSize);
+        this.setupGridLen(this.width, this.goBoard().boardSize());
         this.drawBoard();
     }
 
@@ -90,7 +90,7 @@ public class GoView  extends View {
     private void drawBoard() {
         this.canvas.drawRect(this.gridLen1 - this.sideGridLen, this.gridLen1 - this.sideGridLen, this.gridLen19 + this.sideGridLen, this.gridLen19 + this.sideGridLen, this.boardPaint);
 
-        for (int i = this.boardSize ; i > 0 ; i--) {
+        for (int i = this.goBoard().boardSize() ; i > 0 ; i--) {
             this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 - 2, this.gridLen19, i * this.gridLen + this.gridLen0 - 2, this.blackPaint);
             this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 - 1, this.gridLen19, i * this.gridLen + this.gridLen0 - 1, this.blackPaint);
             this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0,     this.gridLen19, i * this.gridLen + this.gridLen0, this.blackPaint);
@@ -103,25 +103,30 @@ public class GoView  extends View {
             this.canvas.drawLine(i * this.gridLen + this.gridLen0 + 2, this.gridLen1, i * this.gridLen + this.gridLen0 + 2, this.gridLen19, this.blackPaint);
         }
 
-        if (this.boardSize == 9) {
-            this.drawBoardDot(5, 5);
-        } else if (this.boardSize == 13) {
-            this.drawBoardDot(4, 4);
-            this.drawBoardDot(4, 10);
-            this.drawBoardDot(10, 4);
-            this.drawBoardDot(10, 10);
-            this.drawBoardDot(7, 7);
-        } else if (this.boardSize == 19) {
-            this.drawBoardDot(4, 4);
-            this.drawBoardDot(4, 10);
-            this.drawBoardDot(4, 16);
-            this.drawBoardDot(10, 4);
-            this.drawBoardDot(10, 10);
-            this.drawBoardDot(10, 16);
-            this.drawBoardDot(16, 4);
-            this.drawBoardDot(16, 10);
-            this.drawBoardDot(16, 16);
+        switch (this.goBoard().boardSize()) {
+            case 9:
+                this.drawBoardDot(5, 5);
+                break;
+            case 13:
+                this.drawBoardDot(4, 4);
+                this.drawBoardDot(4, 10);
+                this.drawBoardDot(10, 4);
+                this.drawBoardDot(10, 10);
+                this.drawBoardDot(7, 7);
+                break;
+            case 19:
+                this.drawBoardDot(4, 4);
+                this.drawBoardDot(4, 10);
+                this.drawBoardDot(4, 16);
+                this.drawBoardDot(10, 4);
+                this.drawBoardDot(10, 10);
+                this.drawBoardDot(10, 16);
+                this.drawBoardDot(16, 4);
+                this.drawBoardDot(16, 10);
+                this.drawBoardDot(16, 16);
+                break;
         }
+
         this.drawStones();
     }
 
@@ -137,8 +142,8 @@ public class GoView  extends View {
         this.board[3][4] = 1;
         this.board[6][5] = 2;
 
-        for (int i = this.boardSize; i >= 1; i--) {
-            for (int j = this.boardSize; j >= 1; j--) {
+        for (int i = this.goBoard().boardSize(); i >= 1; i--) {
+            for (int j = this.goBoard().boardSize(); j >= 1; j--) {
                 if (this.board[i][j] == 1){
                     this.drawStone(i, j, this.blackPaint);
                 }

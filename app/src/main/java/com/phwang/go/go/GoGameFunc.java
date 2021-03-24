@@ -10,6 +10,7 @@ package com.phwang.go.go;
 
 import android.content.Intent;
 import android.util.Log;
+
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
@@ -18,6 +19,7 @@ public class GoGameFunc {
     private static final String TAG = "GoGameFunc";
     private GoGame goGame_;
 
+    protected GoBoard goBoard() { return this.goGame_.goBoard(); }
     protected GoGameFunc(GoGame go_game_val) {
         this.goGame_ = go_game_val;
     }
@@ -45,5 +47,6 @@ public class GoGameFunc {
 
     protected void processGetSessionData(String board_data_val) {
         Log.e(TAG, "processGetSessionData() data=" + board_data_val);
+        this.goBoard().decodeBoard(board_data_val);
     }
 }

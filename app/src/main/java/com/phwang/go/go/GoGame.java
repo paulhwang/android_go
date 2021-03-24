@@ -21,18 +21,21 @@ import com.phwang.go.define.IntentDefine;
 public class GoGame extends AppCompatActivity {
     private static final String TAG = "GoGame";
     private GoGameFunc goGameFunc_;
-    private GoView goView;
+    private GoBoard goBoard_;
+    private GoView goView_;
 
+    protected GoBoard goBoard() { return this.goBoard_; };
     protected GoGameFunc goGameFunc() { return this.goGameFunc_; };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.goBoard_ = new GoBoard(this);
         this.goGameFunc_ = new GoGameFunc(this);
 
-        this.goView = new GoView(this);
-        setContentView(this.goView);
-        this.goView.requestFocus();
+        this.goView_ = new GoView(this);
+        setContentView(this.goView_);
+        this.goView_.requestFocus();
 
         this.registerBroadcastReceiver();
     }
@@ -55,8 +58,8 @@ public class GoGame extends AppCompatActivity {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        int x = ((int) event.getX() - this.goView.gridLen0 + this.goView.halfGridLen) / this.goView.gridLen;
-        int y = ((int) event.getY() - this.goView.viewTop - this.goView.gridLen0 + this.goView.halfGridLen) / this.goView.gridLen;
+        int x = ((int) event.getX() - this.goView_.gridLen0 + this.goView_.halfGridLen) / this.goView_.gridLen;
+        int y = ((int) event.getY() - this.goView_.viewTop - this.goView_.gridLen0 + this.goView_.halfGridLen) / this.goView_.gridLen;
         Log.e(TAG, "onTouchEvent: x=" + x + " y=" + y);
         switch( event.getAction() ) {
             case MotionEvent.ACTION_DOWN:
