@@ -28,6 +28,7 @@ public class GoBoard {
     protected void setBoard(int x_val, int y_val, int val) { this.boardArray_[x_val][y_val] = val; }
     protected int totalMoves() { return this.totalMoves_; };
     protected int nextColor() { return this.nextColor_; };
+    protected Boolean isValidMove(int x_val, int y_val) { return (this.boardArray_[x_val][y_val] == 0) ? true : false; }
 
     public GoBoard(GoGame go_game_val) {
         this.goGame_ = go_game_val;
@@ -46,6 +47,9 @@ public class GoBoard {
     }
 
     protected String encodeMove(int x_val, int y_val) {
+        if (this.boardArray_[x_val][y_val] != 0) {
+            return null;
+        }
         StringBuilder buf = new StringBuilder("GM");
         buf.append(EncodeNumber.encode(x_val, 2));
         buf.append(EncodeNumber.encode(y_val, 2));
