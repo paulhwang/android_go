@@ -22,7 +22,9 @@ public class BindReceiver extends BroadcastReceiver {
     private static final String TAG = "BindReceiver";
     private BindService bindService_;
 
+    private BindService bindService() { return this.bindService_; };
     //private BindUClient BindUClient() { return this.mainActivity_.bindUClient(); }
+    private BindUClient bindUClient() { return bindService().bindUClient(); }
 
     public Context applicationContext() { return this.bindService_.applicationContext(); };
 
@@ -34,44 +36,93 @@ public class BindReceiver extends BroadcastReceiver {
     public void onReceive(Context context_val, Intent intent_val) {
         Bundle bundle = intent_val.getExtras();
         String stamp = bundle.getString(BundleIndexDefine.STAMP);
+        String command_or_response = bundle.getString(BundleIndexDefine.COMMAND_OR_RESPONSE);
+        Log.e(TAG, "onReceive() stamp=" + stamp);
+        Log.e(TAG, "onReceive() from=" + bundle.getString(BundleIndexDefine.FROM));
         if ((stamp == null) || !stamp.equals(BundleIndexDefine.THE_STAMP)) {
             Log.e(TAG, "onReceive() bad-stamp. command=" + bundle.getString(BundleIndexDefine.COMMAND));
             return;
         }
-        this.handleReceivedBundle(bundle);
+
+        if (command_or_response.equals(BundleIndexDefine.IS_COMMAND)) {
+            this.handleCommand(bundle);
+        }
+        else if (command_or_response.equals(BundleIndexDefine.IS_RESPONSE)) {
+            this.handleResponse(bundle);
+        }
+        else {
+            Log.e(TAG, "onReceive() TBD=");
+        }
     }
 
-    private void handleReceivedBundle(Bundle bundle_val) {
+    private void handleCommand(Bundle bundle_val) {
+        String command = bundle_val.getString(BundleIndexDefine.COMMAND);
+        Log.e(TAG, "handleCommand() command=" + command);
+
+
+        if (command == null) {
+            Log.e(TAG, "handleCommand() null command=");
+            return;
+        }
+
+        switch (command.charAt(0)) {
+            case CommandDefine.FABRIC_COMMAND_SETUP_LINK:
+                String my_name = bundle_val.getString(BundleIndexDefine.MY_NAME);
+                String password = bundle_val.getString(BundleIndexDefine.PASSWORD);
+                Log.e(TAG, "handleReceivedBundle() command=" + command + " name=" + my_name + "," + password);
+                this.bindUClient().doSetupLink(my_name, password);
+                break;
+
+            case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
+                String his_name = bundle_val.getString(BundleIndexDefine.HIS_NAME);
+                String theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
+                this.bindUClient().doSetupSession(his_name, theme_data);
+                break;
+
+            case CommandDefine.FABRIC_COMMAND_SETUP_SESSION3:
+                break;
+
+            default:
+        }
+    }
+
+
+    private void sendResponseBroadcastMessage(String target_val, String command_val, String result_val, String data_val) {
+        Intent intent = new Intent();
+        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
+        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.BIND_SERVICE);
+        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_RESPONSE);
+        intent.putExtra(BundleIndexDefine.COMMAND, command_val);
+        intent.putExtra(BundleIndexDefine.RESULT, result_val);
+        intent.putExtra(BundleIndexDefine.DATA, data_val);
+        intent.setAction(target_val);
+        this.bindService_.sendBroadcast(intent);
+    }
+
+    private void handleResponse(Bundle bundle_val) {
         String command = bundle_val.getString(BundleIndexDefine.COMMAND);
         String result = bundle_val.getString(BundleIndexDefine.RESULT);
-        Log.e(TAG, "handleReceivedBundle() command=" + command + ", result=" + result);
+        String data = bundle_val.getString(BundleIndexDefine.DATA);
+        Log.e(TAG, "handleResponse() command=" + command + ", result=" + result);
 
-        /////////////////////////////////////////////
-        Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SETUP_LINK_STR);
-        intent.setAction(IntentDefine.GO_GAME_ACTIVITY);
-        this.applicationContext().sendBroadcast(intent);
-        /////////////////////////////////////////////////////
+        if (command == null) {
+            Log.e(TAG, "handleResponse() null command=");
+            return;
+        }
 
+        switch (command.charAt(0)) {
+            case CommandDefine.FABRIC_COMMAND_SETUP_LINK:
+                this.sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data);
+                break;
 
-        if (command != null) {
-            switch (command.charAt(0)) {
-                case CommandDefine.FABRIC_COMMAND_SETUP_LINK:
-                    String name = bundle_val.getString(BundleIndexDefine.MY_NAME);
-                    String password = bundle_val.getString(BundleIndexDefine.PASSWORD);
-                    Log.e("BindReceiver", "command=" + command + " name=" + name + "," + password);
-                    //this.BindUClient().doSetupSession(name, password);
-                    break;
+            case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
+                this.sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data);
+                break;
 
-                case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
-                    //this.BindUClient().doSetupSession3();
-                    break;
+            case CommandDefine.FABRIC_COMMAND_SETUP_SESSION3:
+                break;
 
-                case CommandDefine.FABRIC_COMMAND_SETUP_SESSION3:
-                    break;
-
-                default:
-            }
+            default:
         }
     }
 }

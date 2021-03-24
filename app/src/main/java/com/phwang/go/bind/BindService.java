@@ -20,15 +20,18 @@ import com.phwang.go.define.IntentDefine;
 public class BindService extends Service {
     private static final String TAG = "BindService";
     private Context applicationContext_;
+    private static BindMain bindMain_;
+
+    protected BindUClient bindUClient() { return bindMain_.bindUClient(); }
 
     public Context applicationContext() { return this.applicationContext_; };
 
     @Override
     public void onCreate() {
-        Log.e(TAG, " onCreate()");
+        super.onCreate();
         this.applicationContext_ = getApplicationContext();
         this.registerBroadcaseReceiver();
-        super.onCreate();
+        this.bindMain_ = new BindMain(this.applicationContext());
     }
 
     @Override
