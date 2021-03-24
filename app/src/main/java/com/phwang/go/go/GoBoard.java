@@ -31,18 +31,12 @@ public class GoBoard {
 
     public GoBoard(GoGame go_game_val) {
         this.goGame_ = go_game_val;
-        this.boardArray_[3][3] = 1;
-        this.boardArray_[6][6] = 2;
-        this.boardArray_[5][5] = 1;
-        this.boardArray_[5][6] = 2;
-        this.boardArray_[3][4] = 1;
-        this.boardArray_[6][5] = 2;
     }
 
     protected void decodeBoard(String data_str_val) {
         String total_moves_str = data_str_val.substring(0, 3);
         this.totalMoves_ = EncodeNumber.decode(total_moves_str);
-        this.nextColor_ = data_str_val.charAt(3);
+        this.nextColor_ = data_str_val.charAt(3) - 48;
         String rest_str = data_str_val.substring(4);
         for (int i = 0; i < this.boardSize_; i++) {
             for (int j = 0; j < this.boardSize_; j++) {
