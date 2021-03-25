@@ -15,6 +15,8 @@ import com.phwang.core.utils.Define;
 import com.phwang.core.utils.EncodeNumber;
 
 public class GoBoard {
+    private static final String TAG = "GoBoard";
+
     public static final int MAX_BOARD_SIZE = GoDefine.MAX_BOARD_SIZE;
     public static final int GO_EMPTY_STONE = GoDefine.GO_EMPTY_STONE;
     public static final int GO_BLACK_STONE = GoDefine.GO_BLACK_STONE;
@@ -51,6 +53,11 @@ public class GoBoard {
     }
 
     protected String encodeMove(int x_val, int y_val) {
+        if (!isValidCoordinates(x_val, y_val)) {
+            Log.e(TAG, "encodeMove() bad coordinate: " + x_val + " " + y_val);
+            return null;
+        }
+
         if (this.boardArray_[x_val][y_val] != 0) {
             return null;
         }
@@ -65,5 +72,13 @@ public class GoBoard {
         buf.append(EncodeNumber.encode(data.length(), Define.DATA_LENGTH_SIZE));
         buf.append(data);
         return buf.toString();
+    }
+
+    private Boolean isValidCoordinate_(int coordinate_val) {
+        return (0 <= coordinate_val) && (coordinate_val < this.boardSize());
+    }
+
+    private Boolean isValidCoordinates(int x_val, int y_val) {
+        return this.isValidCoordinate_(x_val) && this.isValidCoordinate_(y_val);
     }
 }

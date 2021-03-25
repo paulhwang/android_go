@@ -69,7 +69,8 @@ public class GoBoard {
 
     public void addStoneToBoard(int x_val, int y_val, int color_val) {
         if (!this.goConfig().isValidCoordinates(x_val, y_val)) {
-            this.abend("addStoneToBoard", "bad coordinate");
+            this.log("addStoneToBoard", "bad coordinate: " + x_val + " " + y_val);
+            this.abend("addStoneToBoard", "bad coordinate: " + x_val + " " + y_val);
             return;
         }
 
