@@ -77,7 +77,7 @@ public class GoGame extends AppCompatActivity {
     }
 
     public void processTouchInput(int x_val, int y_val) {
-        String move_str = this.goBoard_.encodeMove(x_val, y_val);
+        String move_str = this.goBoard_.encodeMove(x_val - 1, y_val - 1);
         if (move_str == null) {
             return;
         }

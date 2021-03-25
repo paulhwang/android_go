@@ -15,6 +15,7 @@ import android.graphics.Rect;
 import android.view.View;
 import android.util.Log;
 import com.phwang.go.R;
+import com.phwang.go.go.GoBoard;
 
 public class GoView  extends View {
     private static final String TAG = "GoView";
@@ -136,12 +137,12 @@ public class GoView  extends View {
 
     private void drawStones() {
 
-        for (int i = this.goBoard().boardSize(); i >= 1; i--) {
-            for (int j = this.goBoard().boardSize(); j >= 1; j--) {
-                if (this.board(i, j) == 1){
+        for (int i = this.goBoard().boardSize() - 1; i >= 0; i--) {
+            for (int j = this.goBoard().boardSize() - 1; j >= 0; j--) {
+                if (this.board(i, j) == GoBoard.GO_BLACK_STONE){
                     this.drawStone(i, j, this.blackPaint);
                 }
-                else if (this.board(i, j) == 2){
+                else if (this.board(i, j) == GoBoard.GO_WHITE_STONE){
                     this.drawStone(i, j, this.whitePaint);
                 }
             }
@@ -149,6 +150,6 @@ public class GoView  extends View {
     }
 
     private void drawStone(int x, int y, Paint paint_val) {
-        this.canvas.drawCircle(x * this.gridLen + this.gridLen0, y * this.gridLen + this.gridLen0, this.stoneGridLen, paint_val);
+        this.canvas.drawCircle(x * this.gridLen + this.gridLen1, y * this.gridLen + this.gridLen1, this.stoneGridLen, paint_val);
     }
 }

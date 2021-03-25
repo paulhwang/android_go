@@ -68,7 +68,7 @@ public class GoBoard {
     }
 
     public void addStoneToBoard(int x_val, int y_val, int color_val) {
-        if (!this.goConfig().IsValidCoordinates(x_val, y_val)) {
+        if (!this.goConfig().isValidCoordinates(x_val, y_val)) {
             this.abend("addStoneToBoard", "bad coordinate");
             return;
         }
@@ -77,7 +77,7 @@ public class GoBoard {
     }
 
     private Boolean isEmptySpace(int x_val, int y_val) {
-        if (!this.goRoot_.goConfig().IsValidCoordinates(x_val, y_val)) {
+        if (!this.goRoot_.goConfig().isValidCoordinates(x_val, y_val)) {
             return false;
         }
         if (this.theBoardArray[x_val][y_val] != GoDefine.GO_EMPTY_STONE) {

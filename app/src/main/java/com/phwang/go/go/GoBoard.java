@@ -15,6 +15,10 @@ import com.phwang.core.utils.Define;
 import com.phwang.core.utils.EncodeNumber;
 
 public class GoBoard {
+    public static final int MAX_BOARD_SIZE = GoDefine.MAX_BOARD_SIZE;
+    public static final int GO_EMPTY_STONE = GoDefine.GO_EMPTY_STONE;
+    public static final int GO_BLACK_STONE = GoDefine.GO_BLACK_STONE;
+    public static final int GO_WHITE_STONE = GoDefine.GO_WHITE_STONE;
     public static final int TOTAL_MOVE_SIZE = GoDefine.TOTAL_MOVE_SIZE;
 
     private GoGame goGame_;
