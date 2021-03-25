@@ -24,7 +24,7 @@ public class GoBoard {
     public static final int TOTAL_MOVE_SIZE = GoDefine.TOTAL_MOVE_SIZE;
 
     private GoGame goGame_;
-    private int boardSize_ = 9;
+    private int boardSize_ = 19;
     private final int[][] boardArray_ = new int[20][20];
     private int totalMoves_ = 0;
     private int nextColor_ = 1;
