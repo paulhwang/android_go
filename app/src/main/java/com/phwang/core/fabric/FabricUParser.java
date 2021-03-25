@@ -85,7 +85,8 @@ public class FabricUParser {
     private String processSetupLinkRequest(String input_str_val) {
         this.debug(false, "processSetupLinkRequest", "input_str_val=" + input_str_val);
         
-        String rest_str = input_str_val;
+        char client = input_str_val.charAt(0);
+        String rest_str = input_str_val.substring(1);
         int my_name_len = EncodeNumber.decode(rest_str.substring(0, Define.DATA_LENGTH_SIZE));
         rest_str = rest_str.substring(Define.DATA_LENGTH_SIZE);
         String my_name = rest_str.substring(0, my_name_len);
