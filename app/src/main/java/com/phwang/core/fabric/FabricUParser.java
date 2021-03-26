@@ -534,8 +534,8 @@ public class FabricUParser {
         if (c_data_val == null) {//////////////////////////////////for now
         	c_data_val = "";
         }
-        response_buf.append(Encoders.iEncode(c_data_val.length(), Define.BIG_DATA_LENGTH_SIZE));
-        response_buf.append(c_data_val);
+        response_buf.append(Encoders.sEncode(c_data_val, Define.BIG_DATA_LENGTH_SIZE));
+
         return response_buf.toString();
     }
 

@@ -18,16 +18,6 @@ public class Encoders {
         }
         buf.append(str);
         return buf.toString();
-
-
-        /*
-        var buf = "";
-        for (var i = str.length(); i < size_val; i++) {
-            buf = buf + "0";
-        }
-        buf = buf + str;
-        */
-        //return buf;
     }
 
     public static int iDecode(String str_val) {
@@ -40,7 +30,18 @@ public class Encoders {
                 val *= 10;
             }
         }
-
         return val;
+    }
+
+    public static String sEncode(String str_val, int size_val) {
+        StringBuilder buf = new StringBuilder();
+        buf.append(Encoders.iEncode(str_val.length(), size_val));
+        buf.append(str_val);
+        return buf.toString();
+    }
+
+    public static String sDecode(String str_val, int size_val) {
+        int len = Encoders.iDecode(str_val.substring(0, size_val));
+        return str_val.substring(size_val, size_val + len);
     }
 }
