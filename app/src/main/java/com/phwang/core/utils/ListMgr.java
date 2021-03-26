@@ -157,9 +157,10 @@ public class ListMgr {
     }
     
     public ListEntry getEntryByIdStr(String id_str_val) {
-    	String id_str = id_str_val.substring(0, idSize_);
-    	String index_str = id_str_val.substring(idSize_);
+    	String id_str = id_str_val.substring(2, 2 + idSize_);
         int id = Encoders.iDecodeRaw(id_str);
+
+    	String index_str = id_str_val.substring(2 + idSize_);
         int index = Encoders.iDecodeRaw(index_str);
         
     	ListEntry entry;
@@ -187,14 +188,7 @@ public class ListMgr {
         }
         return entry;
     }
-    
-    public ListEntry getEntryByIdStrOld(String id_str_val) {
-    	String id_str = id_str_val.substring(0, idSize_);
-        int id = Encoders.iDecode(id_str);
 
-        return this.getEntryById(id);
-    }
-    
     public ListEntry getEntryById(int id_val) {
         this.abendListMgr("before getEntryById");
         

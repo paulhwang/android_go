@@ -32,7 +32,7 @@ public class ListEntry {
         this.data_ = data_val;
         StringBuilder id_str_buf = new StringBuilder(Encoders.iEncodeRaw(this.id_, this.id_size_));
         id_str_buf.append(this.indexStr_);
-        this.id_str_ = id_str_buf.toString();
+        this.id_str_ = Encoders.sEncode2(id_str_buf.toString());
     }
 
     public void clearData() {
