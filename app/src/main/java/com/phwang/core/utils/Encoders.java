@@ -33,6 +33,11 @@ public class Encoders {
         return buf.toString();
     }
 
+    public static String iEncodeLen(int number_val, int size_val) {
+        String str = iEncodeRaw(number_val, size_val);
+        return sEncode2(str);
+    }
+
     public static String iEncode1(int number_val) {
         return iEncode(number_val, 1);
     }
@@ -83,9 +88,14 @@ public class Encoders {
         return val;
     }
 
+    public static int iDecodeLen(String str_val) {
+        String str = sDecode2(str_val);
+        return iDecodeRaw(str);
+    }
+
     public static String sEncode(String str_val, int size_val) {
         StringBuilder buf = new StringBuilder();
-        buf.append(Encoders.iEncode(str_val.length(), size_val));
+        buf.append(Encoders.iEncodeRaw(str_val.length(), size_val));
         buf.append(str_val);
         return buf.toString();
     }
@@ -99,7 +109,7 @@ public class Encoders {
     }
 
     public static String sDecode(String str_val, int size_val) {
-        int len = Encoders.iDecode(str_val.substring(0, size_val));
+        int len = Encoders.iDecodeRaw(str_val.substring(0, size_val));
         return str_val.substring(size_val, size_val + len);
     }
 
