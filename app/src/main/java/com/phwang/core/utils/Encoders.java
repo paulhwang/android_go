@@ -9,7 +9,7 @@
 package com.phwang.core.utils;
 
 public class Encoders {
-    public static String encode(int number_val, int size_val) {
+    public static String iEncode(int number_val, int size_val) {
         String str = Integer.toString(number_val);
 
         StringBuilder buf = new StringBuilder();
@@ -30,7 +30,7 @@ public class Encoders {
         //return buf;
     }
 
-    public static int decode(String str_val) {
+    public static int iDecode(String str_val) {
         int str_len = str_val.length();
         int val = 0;
 

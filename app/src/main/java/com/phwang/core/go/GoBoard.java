@@ -43,8 +43,8 @@ public class GoBoard {
     public void encodeBoard() {
         this.theBoardOutputBuffer = "";
         this.theBoardOutputBuffer = this.theBoardOutputBuffer + GO_PROTOCOL_GAME_INFO;
-        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.encode(this.goGame().totalMoves(), GoDefine.TOTAL_MOVE_SIZE);
-        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.encode(this.goGame().nextColor(), 1);
+        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncode(this.goGame().totalMoves(), GoDefine.TOTAL_MOVE_SIZE);
+        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncode(this.goGame().nextColor(), 1);
 
         int board_size = this.goConfig().boardSize();
         for (int i = 0; i < board_size; i++) {
@@ -58,11 +58,11 @@ public class GoBoard {
             }
         }
 
-        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.encode(this.theBlackCapturedStones, 3);
-        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.encode(this.theWhiteCapturedStones, 3);
+        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncode(this.theBlackCapturedStones, 3);
+        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncode(this.theWhiteCapturedStones, 3);
 
-        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.encode(this.theLastDeadX, 2);
-        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.encode(this.theLastDeadY, 2);
+        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncode(this.theLastDeadX, 2);
+        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncode(this.theLastDeadY, 2);
 
         this.debug(false, "encodeBoard", this.theBoardOutputBuffer);
     }

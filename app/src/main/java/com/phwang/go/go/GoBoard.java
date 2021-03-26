@@ -42,7 +42,7 @@ public class GoBoard {
 
     protected void decodeBoard(String data_str_val) {
         String total_moves_str = data_str_val.substring(0, 3);
-        this.totalMoves_ = Encoders.decode(total_moves_str);
+        this.totalMoves_ = Encoders.iDecode(total_moves_str);
         this.nextColor_ = data_str_val.charAt(3) - 48;
         String rest_str = data_str_val.substring(4);
         for (int i = 0; i < this.boardSize_; i++) {
@@ -62,14 +62,14 @@ public class GoBoard {
             return null;
         }
         StringBuilder buf = new StringBuilder("GM");
-        buf.append(Encoders.encode(x_val, 2));
-        buf.append(Encoders.encode(y_val, 2));
+        buf.append(Encoders.iEncode(x_val, 2));
+        buf.append(Encoders.iEncode(y_val, 2));
         buf.append(this.nextColor_);
-        buf.append(Encoders.encode(this.totalMoves_ + 1, 3));
+        buf.append(Encoders.iEncode(this.totalMoves_ + 1, 3));
         String data = buf.toString();
 
         buf = new StringBuilder();
-        buf.append(Encoders.encode(data.length(), Define.DATA_LENGTH_SIZE));
+        buf.append(Encoders.iEncode(data.length(), Define.DATA_LENGTH_SIZE));
         buf.append(data);
         return buf.toString();
     }
