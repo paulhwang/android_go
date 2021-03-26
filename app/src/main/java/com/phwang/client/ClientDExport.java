@@ -9,7 +9,7 @@
 package com.phwang.client;
 
 import com.phwang.core.utils.Binder;
-import com.phwang.core.utils.EncodeNumber;
+import com.phwang.core.utils.Encoders;
 import com.phwang.core.utils.Define;
 
 public class ClientDExport implements ClientDExportInt {
@@ -41,9 +41,9 @@ public class ClientDExport implements ClientDExportInt {
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(ClientImport.FABRIC_COMMAND_SETUP_LINK);
         command_buf.append(ClientImport.CLIENT_IS_ANDROID);
-        command_buf.append(EncodeNumber.encode(this.clientFabricInfo().myName().length(), Define.DATA_LENGTH_SIZE));
+        command_buf.append(Encoders.encode(this.clientFabricInfo().myName().length(), Define.DATA_LENGTH_SIZE));
         command_buf.append(this.clientFabricInfo().myName());
-        command_buf.append(EncodeNumber.encode(this.clientFabricInfo().password().length(), Define.DATA_LENGTH_SIZE));
+        command_buf.append(Encoders.encode(this.clientFabricInfo().password().length(), Define.DATA_LENGTH_SIZE));
         command_buf.append(this.clientFabricInfo().password());
         String command_str = command_buf.toString();
         
@@ -88,7 +88,7 @@ public class ClientDExport implements ClientDExportInt {
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(ClientImport.FABRIC_COMMAND_SETUP_SESSION); 
         command_buf.append(this.clientFabricInfo().linkIdStr()); 
-        command_buf.append(EncodeNumber.encode(this.clientFabricInfo().hisName().length(), Define.DATA_LENGTH_SIZE));
+        command_buf.append(Encoders.encode(this.clientFabricInfo().hisName().length(), Define.DATA_LENGTH_SIZE));
         command_buf.append(this.clientFabricInfo().hisName());
         command_buf.append(this.goConfig().getGoConfigStr());
         String command_str = command_buf.toString();
