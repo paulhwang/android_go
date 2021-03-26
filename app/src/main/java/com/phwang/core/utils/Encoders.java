@@ -167,7 +167,7 @@ public class Encoders {
 
     public static String sSubstring(String str_val, int size_val) {
         int len = Encoders.iDecodeRaw(str_val.substring(0, size_val));
-        return str_val.substring(size_val + len);
+        return str_val.substring(0, size_val + len);
     }
 
     public static String sSubstring1(String str_val) {

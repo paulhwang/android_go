@@ -103,16 +103,20 @@ public class ClientDParser {
     }
 
     private void parserSetupSessionResponse(String input_str_val) {
-    	this.debug(false, "parserSetupSessionResponse", "input_str_val=" + input_str_val);
+    	this.debug(true, "parserSetupSessionResponse", "input_str_val=" + input_str_val);
     	
         String rest_str = input_str_val;
         String link_id_str = rest_str.substring(0, ClientImport.FABRIC_LINK_ID_SIZE);
         rest_str = rest_str.substring(ClientImport.FABRIC_LINK_ID_SIZE);
 
-        String session_id_str = rest_str.substring(0, ClientImport.FABRIC_SESSION_ID_SIZE);
-        rest_str = rest_str.substring(ClientImport.FABRIC_SESSION_ID_SIZE);
-    	
-    	this.clientFabricInfo().setSessionIdStr(session_id_str);
+        this.debug(true, "parserSetupSessionResponse", "rest_str=" + rest_str);
+
+        String session_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
+
+        this.debug(true, "parserSetupSessionResponse", "session_id_str=" + session_id_str);
+
+        this.clientFabricInfo().setSessionIdStr(session_id_str);
     	this.importInterface().handleSetupSessionResponse();
     }
 
@@ -123,8 +127,8 @@ public class ClientDParser {
         String link_id_str = rest_str.substring(0, ClientImport.FABRIC_LINK_ID_SIZE);
         rest_str = rest_str.substring(ClientImport.FABRIC_LINK_ID_SIZE);
 
-        String session_id_str = rest_str.substring(0, ClientImport.FABRIC_SESSION_ID_SIZE);
-        rest_str = rest_str.substring(ClientImport.FABRIC_SESSION_ID_SIZE);
+        String session_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
 
         String theme_id_str = rest_str.substring(0, ClientImport.THEME_ROOM_ID_SIZE);
         rest_str = rest_str.substring(ClientImport.THEME_ROOM_ID_SIZE);
@@ -139,8 +143,8 @@ public class ClientDParser {
         String link_id_str = rest_str.substring(0, ClientImport.FABRIC_LINK_ID_SIZE);
         rest_str = rest_str.substring(ClientImport.FABRIC_LINK_ID_SIZE);
 
-        String session_id_str = rest_str.substring(0, ClientImport.FABRIC_SESSION_ID_SIZE);
-        rest_str = rest_str.substring(ClientImport.FABRIC_SESSION_ID_SIZE);
+        String session_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
 
         String theme_id_str = rest_str.substring(0, ClientImport.THEME_ROOM_ID_SIZE);
         rest_str = rest_str.substring(ClientImport.THEME_ROOM_ID_SIZE);
@@ -155,8 +159,8 @@ public class ClientDParser {
         String link_id_str = rest_str.substring(0, ClientImport.FABRIC_LINK_ID_SIZE);
         rest_str = rest_str.substring(ClientImport.FABRIC_LINK_ID_SIZE);
 
-        String session_id_str = rest_str.substring(0, ClientImport.FABRIC_SESSION_ID_SIZE);
-        rest_str = rest_str.substring(ClientImport.FABRIC_SESSION_ID_SIZE);
+        String session_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
 
         String c_data = Encoders.sDecode2(rest_str);
         //rest_str = Encoders.sDecode2_(rest_str);
@@ -171,8 +175,8 @@ public class ClientDParser {
         String link_id_str = rest_str.substring(0, ClientImport.FABRIC_LINK_ID_SIZE);
         rest_str = rest_str.substring(ClientImport.FABRIC_LINK_ID_SIZE);
 
-        String session_id_str = rest_str.substring(0, ClientImport.FABRIC_SESSION_ID_SIZE);
-        rest_str = rest_str.substring(ClientImport.FABRIC_SESSION_ID_SIZE);
+        String session_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
 
         String c_data = Encoders.sDecode5(rest_str);
     	rest_str = Encoders.sDecode5_(rest_str);

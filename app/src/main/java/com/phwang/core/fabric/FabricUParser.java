@@ -329,9 +329,9 @@ public class FabricUParser {
         String rest_str = input_str_val;
         String link_id_str = rest_str.substring(0, FabricExport.FABRIC_LINK_ID_SIZE);
         rest_str = rest_str.substring(FabricExport.FABRIC_LINK_ID_SIZE);
-        
-        String session_id_str = rest_str.substring(0, FabricExport.FABRIC_L_SESSION_ID_SIZE);
-        rest_str = rest_str.substring(FabricExport.FABRIC_L_SESSION_ID_SIZE);
+
+        String session_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
         
         String theme_id_str = rest_str.substring(0, FabricImport.THEME_ROOM_ID_SIZE);//////////////////////
         rest_str = rest_str.substring(FabricImport.THEME_ROOM_ID_SIZE);///////////////////////
@@ -377,14 +377,14 @@ public class FabricUParser {
     }
 
     private String processSetupSession3Request(String input_str_val) {
-        this.debug(false, "processSetupSession3Request", "input_str_val = " + input_str_val);
+        this.debug(true, "processSetupSession3Request", "input_str_val = " + input_str_val);
         
         String rest_str = input_str_val;
         String link_id_str = rest_str.substring(0, FabricExport.FABRIC_LINK_ID_SIZE);
         rest_str = rest_str.substring(FabricExport.FABRIC_LINK_ID_SIZE);
-        
-        String session_id_str = rest_str.substring(0, FabricExport.FABRIC_L_SESSION_ID_SIZE);
-        rest_str = rest_str.substring(FabricExport.FABRIC_L_SESSION_ID_SIZE);
+
+        String session_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
     	
         this.debug(false, "processSetupSession3Request", "link_id = " + link_id_str);
         this.debug(false, "processSetupSession3Request", "session_id = " + session_id_str);
@@ -423,9 +423,9 @@ public class FabricUParser {
         String rest_str = input_str_val;
         String link_id_str = rest_str.substring(0, FabricExport.FABRIC_LINK_ID_SIZE);
         rest_str = rest_str.substring(FabricExport.FABRIC_LINK_ID_SIZE);
-        
-        String session_id_str = rest_str.substring(0, FabricExport.FABRIC_L_SESSION_ID_SIZE);
-        rest_str = rest_str.substring(FabricExport.FABRIC_L_SESSION_ID_SIZE);
+
+        String session_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
 
         String data = Encoders.sDecode2(rest_str);
         //rest_str = Encoders.sDecode2_(rest_str);
@@ -481,9 +481,9 @@ public class FabricUParser {
         String rest_str = input_str_val;
         String link_id_str = rest_str.substring(0, FabricExport.FABRIC_LINK_ID_SIZE);
         rest_str = rest_str.substring(FabricExport.FABRIC_LINK_ID_SIZE);
-        
-        String session_id_str = rest_str.substring(0, FabricExport.FABRIC_L_SESSION_ID_SIZE);
-        rest_str = rest_str.substring(FabricExport.FABRIC_L_SESSION_ID_SIZE);
+
+        String session_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
     	
         this.debug(false, "processGetSessionDataRequest", "link_id = " + link_id_str);
         this.debug(false, "processGetSessionDataRequest", "session_id = " + session_id_str);

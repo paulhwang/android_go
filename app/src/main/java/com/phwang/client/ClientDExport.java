@@ -100,7 +100,7 @@ public class ClientDExport implements ClientDExportInt {
     }
     
     public void setupSession3() {
-    	this.debug(false, "setupSession3", "link_id=" + this.clientFabricInfo().linkIdStr());
+    	this.debug(true, "setupSession3", "link_id=" + this.clientFabricInfo().linkIdStr() + "session_id=" + this.clientFabricInfo().sessionIdStr());
     	
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(ClientImport.FABRIC_COMMAND_SETUP_SESSION3); 
