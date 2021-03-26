@@ -63,8 +63,8 @@ public class ClientDParser {
     	this.debug(true, "parserSetupLinkResponse", "input_str_val=" + input_str_val);
     	
         String rest_str = input_str_val;
-        String link_id_str = rest_str.substring(0, ClientImport.FABRIC_LINK_ID_SIZE);
-        rest_str = rest_str.substring(ClientImport.FABRIC_LINK_ID_SIZE);
+        String link_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
         
         String my_name = Encoders.sDecode2(rest_str);
     	rest_str = Encoders.sDecode2_(rest_str);
@@ -77,8 +77,8 @@ public class ClientDParser {
     	this.debug(false, "parserGetLinkDataResponse", "input_str_val=" + input_str_val);
     	
         String rest_str = input_str_val;
-        String link_id_str = rest_str.substring(0, ClientImport.FABRIC_LINK_ID_SIZE);
-        rest_str = rest_str.substring(ClientImport.FABRIC_LINK_ID_SIZE);
+        String link_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
 
         String data = Encoders.sDecode2(rest_str);
         rest_str = Encoders.sDecode2_(rest_str);
@@ -93,8 +93,8 @@ public class ClientDParser {
     	this.debug(false, "parserGetNameListResponse", "input_str_val=" + input_str_val);
     	
         String rest_str = input_str_val;
-        String link_id_str = rest_str.substring(0, ClientImport.FABRIC_LINK_ID_SIZE);
-        rest_str = rest_str.substring(ClientImport.FABRIC_LINK_ID_SIZE);
+        String link_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
 
         String name_list_str = Encoders.sDecode2(rest_str);
         //rest_str = Encoders.sDecode2_(rest_str);
@@ -106,8 +106,8 @@ public class ClientDParser {
     	this.debug(true, "parserSetupSessionResponse", "input_str_val=" + input_str_val);
     	
         String rest_str = input_str_val;
-        String link_id_str = rest_str.substring(0, ClientImport.FABRIC_LINK_ID_SIZE);
-        rest_str = rest_str.substring(ClientImport.FABRIC_LINK_ID_SIZE);
+        String link_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
 
         this.debug(true, "parserSetupSessionResponse", "rest_str=" + rest_str);
 
@@ -124,8 +124,8 @@ public class ClientDParser {
     	this.debug(false, "parserSetupSession2Response", "input_str_val=" + input_str_val);
     	
         String rest_str = input_str_val;
-        String link_id_str = rest_str.substring(0, ClientImport.FABRIC_LINK_ID_SIZE);
-        rest_str = rest_str.substring(ClientImport.FABRIC_LINK_ID_SIZE);
+        String link_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
 
         String session_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
@@ -140,8 +140,8 @@ public class ClientDParser {
     	this.debug(false, "parserSetupSession3Response", "input_str_val=" + input_str_val);
     	
         String rest_str = input_str_val;
-        String link_id_str = rest_str.substring(0, ClientImport.FABRIC_LINK_ID_SIZE);
-        rest_str = rest_str.substring(ClientImport.FABRIC_LINK_ID_SIZE);
+        String link_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
 
         String session_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
@@ -156,8 +156,8 @@ public class ClientDParser {
     	this.debug(false, "parserPutSessionDataResponse", "input_str_val=" + input_str_val);
     	
         String rest_str = input_str_val;
-        String link_id_str = rest_str.substring(0, ClientImport.FABRIC_LINK_ID_SIZE);
-        rest_str = rest_str.substring(ClientImport.FABRIC_LINK_ID_SIZE);
+        String link_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
 
         String session_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
@@ -172,8 +172,8 @@ public class ClientDParser {
     	this.debug(false, "parserGetSessionDataResponse", "input_str_val=" + input_str_val);
     	
         String rest_str = input_str_val;
-        String link_id_str = rest_str.substring(0, ClientImport.FABRIC_LINK_ID_SIZE);
-        rest_str = rest_str.substring(ClientImport.FABRIC_LINK_ID_SIZE);
+        String link_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
 
         String session_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
