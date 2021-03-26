@@ -22,6 +22,30 @@ public class Encoders {
         return buf.toString();
     }
 
+    public static String iEncodeRaw1(int number_val) {
+        return iEncodeRaw(number_val, 1);
+    }
+
+    public static String iEncodeRaw2(int number_val) {
+        return iEncodeRaw(number_val, 2);
+    }
+
+    public static String iEncodeRaw3(int number_val) {
+        return iEncodeRaw(number_val, 3);
+    }
+
+    public static String iEncodeRaw4(int number_val) {
+        return iEncodeRaw(number_val, 4);
+    }
+
+    public static String iEncodeRaw5(int number_val) {
+        return iEncodeRaw(number_val, 5);
+    }
+
+    public static String iEncodeRaw6(int number_val) {
+        return iEncodeRaw(number_val, 6);
+    }
+
     public static String iEncode(int number_val, int size_val) {
         String str = Integer.toString(number_val);
 
@@ -38,28 +62,28 @@ public class Encoders {
         return sEncode2(str);
     }
 
-    public static String iEncode1(int number_val) {
-        return iEncode(number_val, 1);
+    public static String iEncodeLen1(int number_val) {
+        return iEncodeLen(number_val, 1);
     }
 
-    public static String iEncode2(int number_val) {
-        return iEncode(number_val, 2);
+    public static String iEncodeLen2(int number_val) {
+        return iEncodeLen(number_val, 2);
     }
 
-    public static String iEncode3(int number_val) {
-        return iEncode(number_val, 3);
+    public static String iEncodeLen3(int number_val) {
+        return iEncodeLen(number_val, 3);
     }
 
-    public static String iEncode4(int number_val) {
-        return iEncode(number_val, 4);
+    public static String iEncodeLen4(int number_val) {
+        return iEncodeLen(number_val, 4);
     }
 
-    public static String iEncode5(int number_val) {
-        return iEncode(number_val, 5);
+    public static String iEncodeLen5(int number_val) {
+        return iEncodeLen(number_val, 5);
     }
 
-    public static String iEncode6(int number_val) {
-        return iEncode(number_val, 6);
+    public static String iEncodeLen6(int number_val) {
+        return iEncodeLen(number_val, 6);
     }
 
     public static int iDecodeRaw(String str_val) {

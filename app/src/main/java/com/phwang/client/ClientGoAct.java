@@ -42,10 +42,10 @@ public class ClientGoAct {
     	buf.append('G');
 		buf.append(this.action_);
     	if (this.action_ == GoExport.GO_PROTOCOL_MOVE_COMMAND) {
-    		buf.append(Encoders.iEncode2(this.x_));
-    		buf.append(Encoders.iEncode2(this.y_));
-    		buf.append(Encoders.iEncode1(this.color_));
-    		buf.append(Encoders.iEncode3(this.index_));
+    		buf.append(Encoders.iEncodeRaw2(this.x_));
+    		buf.append(Encoders.iEncodeRaw2(this.y_));
+    		buf.append(Encoders.iEncodeRaw1(this.color_));
+    		buf.append(Encoders.iEncodeRaw3(this.index_));
     	}
     	String data = buf.toString();
         return Encoders.sEncode2(data);

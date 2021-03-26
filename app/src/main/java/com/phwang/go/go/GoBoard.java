@@ -62,10 +62,10 @@ public class GoBoard {
             return null;
         }
         StringBuilder buf = new StringBuilder("GM");
-        buf.append(Encoders.iEncode(x_val, 2));
-        buf.append(Encoders.iEncode(y_val, 2));
-        buf.append(Encoders.iEncode(this.nextColor_, 1));
-        buf.append(Encoders.iEncode(this.totalMoves_ + 1, 3));
+        buf.append(Encoders.iEncodeRaw2(x_val));
+        buf.append(Encoders.iEncodeRaw2(y_val));
+        buf.append(Encoders.iEncodeRaw1(this.nextColor_));
+        buf.append(Encoders.iEncodeRaw3(this.totalMoves_ + 1));
         String data = buf.toString();
         return Encoders.sEncode2(data);
     }
