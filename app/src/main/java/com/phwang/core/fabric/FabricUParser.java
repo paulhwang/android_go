@@ -33,12 +33,17 @@ public class FabricUParser {
     }
 
     protected void parseInputPacket(BinderBundle bundle_val) {
-    	String input_data_str = bundle_val.data();
-        String job_id_str = input_data_str.substring(0, FabricExport.FRONT_JOB_ID_SIZE);
-        String data_str = input_data_str.substring(FabricExport.FRONT_JOB_ID_SIZE);
+    	String input_str_val = bundle_val.data();
+
+        String rest_str = input_str_val;
+        String job_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
+
+        String data_str = rest_str;
+
         String response_data = null;
         
-        this.debug(true, "parseInputPacket", "input_data_val = " + input_data_str);
+        this.debug(true, "parseInputPacket", "input_str_val = " + input_str_val);
         this.debug(false, "parseInputPacket", "data_str = " + data_str);
         
         char command = data_str.charAt(0);
@@ -71,11 +76,11 @@ public class FabricUParser {
             response_data = this.processGetSessionDataRequest(data_str.substring(1));
         }
         else {
-        	this.abend("parseInputPacket", "should not reach here, data=" + input_data_str);
+        	this.abend("parseInputPacket", "should not reach here, data=" + input_str_val);
         }
         
         if (response_data == null) {
-        	this.abend("parseInputPacket", "response_data is null, data=" + input_data_str);
+        	this.abend("parseInputPacket", "response_data is null, data=" + input_str_val);
         }
         
         bundle_val.setData(job_id_str + response_data);
@@ -257,8 +262,11 @@ public class FabricUParser {
         this.debug(false, "processSetupSessionRequest", "his_name = " + his_name);
         this.debug(false, "processSetupSessionRequest", "theme_data = " + theme_data_str);
 
-        String theme_id_str = theme_data_str.substring(0, FabricImport.THEME_ROOM_ID_SIZE);////////////////////
-        String theme_data = theme_data_str.substring(FabricImport.THEME_ROOM_ID_SIZE);//////////////////////
+        String rest_str1 = input_str_val;
+        String theme_id_str = Encoders.sSubstring2(rest_str1);
+        rest_str1 = Encoders.sSubstring2_(rest_str1);
+
+        String theme_data = rest_str1;
         theme_data = theme_data_str;
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
@@ -332,9 +340,9 @@ public class FabricUParser {
 
         String session_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
-        
-        String theme_id_str = rest_str.substring(0, FabricImport.THEME_ROOM_ID_SIZE);//////////////////////
-        rest_str = rest_str.substring(FabricImport.THEME_ROOM_ID_SIZE);///////////////////////
+
+        String theme_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
 
         String theme_data_str = Encoders.sDecode2(rest_str);
         //rest_str = Encoders.sDecode2_(rest_str);

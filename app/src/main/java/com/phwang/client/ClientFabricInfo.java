@@ -33,6 +33,6 @@ public class ClientFabricInfo {
     public void setPassword(String val) { this.password_= val; }
     
     public ClientFabricInfo(){
-    	this.jobIdStr_ = Encoders.iEncode(8, ClientImport.FRONT_JOB_ID_SIZE);
+    	this.jobIdStr_ = "0812345678";
     }
 }

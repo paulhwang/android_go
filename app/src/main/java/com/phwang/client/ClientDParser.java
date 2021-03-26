@@ -130,9 +130,9 @@ public class ClientDParser {
         String session_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
 
-        String theme_id_str = rest_str.substring(0, ClientImport.THEME_ROOM_ID_SIZE);
-        rest_str = rest_str.substring(ClientImport.THEME_ROOM_ID_SIZE);
-    	
+        String theme_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
+
     	this.importInterface().handleSetupSession2Response();
     }
 
@@ -146,9 +146,9 @@ public class ClientDParser {
         String session_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
 
-        String theme_id_str = rest_str.substring(0, ClientImport.THEME_ROOM_ID_SIZE);
-        rest_str = rest_str.substring(ClientImport.THEME_ROOM_ID_SIZE);
-    	
+        String theme_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
+
     	this.importInterface().handleSetupSession3Response();
     }
 

@@ -66,11 +66,15 @@ public class ThemeUParser {
         this.themeUBinder().transmitData(buf.toString());
     }
 
-    private void processPutRoomData(String input_data_val) {
-        this.debug(false, "processPutRoomData", input_data_val);
+    private void processPutRoomData(String input_str_val) {
+        this.debug(false, "processPutRoomData", input_str_val);
 
-        String room_id_str = input_data_val.substring(0, ThemeExport.THEME_ROOM_ID_SIZE);
-        String input_data = input_data_val.substring(ThemeExport.THEME_ROOM_ID_SIZE);
+        String rest_str = input_str_val;
+        String room_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
+
+        String input_data = rest_str;
+
         ThemeRoom room = this.roomMgr().getRoomByIdStr(room_id_str);
         if (room == null) {
             this.abend("processPutRoomData", "null room");

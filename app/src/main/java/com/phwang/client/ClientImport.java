@@ -35,5 +35,5 @@ public class ClientImport {
 
 	protected static final int FRONT_JOB_ID_SIZE_ = FabricExport.FRONT_JOB_ID_SIZE_;
 	protected static final int FRONT_JOB_ID_SIZE = FabricExport.FRONT_JOB_ID_SIZE;
-	protected static final int THEME_ROOM_ID_SIZE = ThemeExport.THEME_ROOM_ID_SIZE;
+	//protected static final int THEME_ROOM_ID_SIZE = ThemeExport.THEME_ROOM_ID_SIZE;
 }
