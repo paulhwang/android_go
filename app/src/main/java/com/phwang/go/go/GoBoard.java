@@ -42,7 +42,7 @@ public class GoBoard {
 
     protected void decodeBoard(String data_str_val) {
         String total_moves_str = data_str_val.substring(0, 3);
-        this.totalMoves_ = Encoders.iDecode(total_moves_str);
+        this.totalMoves_ = Encoders.iDecodeRaw(total_moves_str);
         this.nextColor_ = data_str_val.charAt(3) - 48;
         String rest_str = data_str_val.substring(4);
         for (int i = 0; i < this.boardSize_; i++) {
