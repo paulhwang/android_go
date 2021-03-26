@@ -252,16 +252,12 @@ public class FabricUParser {
         String link_id_str = rest_str.substring(0, FabricExport.FABRIC_LINK_ID_SIZE);
         rest_str = rest_str.substring(FabricExport.FABRIC_LINK_ID_SIZE);
 
-        int his_name_len = Encoders.iDecode(rest_str.substring(0, Define.DATA_LENGTH_SIZE));
-        rest_str = rest_str.substring(Define.DATA_LENGTH_SIZE);
-        String his_name = rest_str.substring(0, his_name_len);
-    	rest_str = rest_str.substring(his_name_len);
-        
-        int theme_data_len = Encoders.iDecode(rest_str.substring(0, Define.DATA_LENGTH_SIZE));
-        rest_str = rest_str.substring(Define.DATA_LENGTH_SIZE);
-        String theme_data_str = rest_str.substring(0, theme_data_len);
-    	//rest_str = rest_str.substring(theme_data_len);
-    	
+        String his_name = Encoders.sDecode2(rest_str);
+        rest_str = Encoders.sDecode2_(rest_str);
+
+        String theme_data_str = Encoders.sDecode2(rest_str);
+        //rest_str = Encoders.sDecode2_(rest_str);
+
         this.debug(false, "processSetupSessionRequest", "link_id = " + link_id_str);
         this.debug(false, "processSetupSessionRequest", "his_name = " + his_name);
         this.debug(false, "processSetupSessionRequest", "theme_data = " + theme_data_str);
@@ -438,11 +434,9 @@ public class FabricUParser {
         String session_id_str = rest_str.substring(0, FabricExport.FABRIC_L_SESSION_ID_SIZE);
         rest_str = rest_str.substring(FabricExport.FABRIC_L_SESSION_ID_SIZE);
 
-        int data_len = Encoders.iDecode(rest_str.substring(0, Define.DATA_LENGTH_SIZE));
-        rest_str = rest_str.substring(Define.DATA_LENGTH_SIZE);
-        String data = rest_str.substring(0, data_len);
-    	rest_str = rest_str.substring(data_len);
-    	
+        String data = Encoders.sDecode2(rest_str);
+        //rest_str = Encoders.sDecode2_(rest_str);
+
         this.debug(false, "processPutSessionDataRequest", "link_id=" + link_id_str);
         this.debug(false, "processPutSessionDataRequest", "session_id=" + session_id_str);
         //this.debug(false, "processPutSessionDataRequest", "xmt_seq = " + xmt_seq_str);
