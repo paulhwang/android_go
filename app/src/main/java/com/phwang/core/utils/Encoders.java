@@ -44,4 +44,8 @@ public class Encoders {
         int len = Encoders.iDecode(str_val.substring(0, size_val));
         return str_val.substring(size_val, size_val + len);
     }
+
+    public static String sDecode_(String str_val, int size_val) {
+        return str_val.substring(size_val + Encoders.iDecode(str_val.substring(0, size_val)));
+    }
 }

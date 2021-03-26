@@ -87,18 +87,15 @@ public class FabricUParser {
         
         char client_type = input_str_val.charAt(0);
         String rest_str = input_str_val.substring(1);
-        int my_name_len = Encoders.iDecode(rest_str.substring(0, Define.DATA_LENGTH_SIZE));
-        rest_str = rest_str.substring(Define.DATA_LENGTH_SIZE);
-        String my_name = rest_str.substring(0, my_name_len);
-    	rest_str = rest_str.substring(my_name_len);
-    	
-        int password_len = Encoders.iDecode(rest_str.substring(0, Define.DATA_LENGTH_SIZE));
-        rest_str = rest_str.substring(Define.DATA_LENGTH_SIZE);
-    	String password = rest_str.substring(0, password_len);
-    	//rest_str = rest_str.substring(password_len);
-    	
-        this.debug(false, "processSetupLinkRequest", "my_name = " + my_name);
-        this.debug(false, "processSetupLinkRequest", "password = " + password);
+
+        String my_name = Encoders.sDecode(rest_str, Define.DATA_LENGTH_SIZE);
+    	rest_str = Encoders.sDecode_(rest_str, Define.DATA_LENGTH_SIZE);
+
+        String password = Encoders.sDecode(rest_str, Define.DATA_LENGTH_SIZE);
+        rest_str = Encoders.sDecode_(rest_str, Define.DATA_LENGTH_SIZE);
+
+        this.debug(true, "processSetupLinkRequest", "my_name = " + my_name);
+        this.debug(true, "processSetupLinkRequest", "password = " + password);
 
         FabricLink link = this.linkMgr().mallocLink(client_type, my_name);
         if (link == null) {
