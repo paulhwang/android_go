@@ -64,7 +64,7 @@ public class GoBoard {
         StringBuilder buf = new StringBuilder("GM");
         buf.append(Encoders.iEncode(x_val, 2));
         buf.append(Encoders.iEncode(y_val, 2));
-        buf.append(this.nextColor_);
+        buf.append(Encoders.iEncode(this.nextColor_, 1));
         buf.append(Encoders.iEncode(this.totalMoves_ + 1, 3));
         String data = buf.toString();
         return Encoders.sEncode2(data);
