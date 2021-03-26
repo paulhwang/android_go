@@ -46,7 +46,7 @@ public class Encoders {
         return iEncodeRaw(number_val, 6);
     }
 
-    public static String iEncode(int number_val, int size_val) {
+    public static String iEncode111(int number_val, int size_val) {
         String str = Integer.toString(number_val);
 
         StringBuilder buf = new StringBuilder();
@@ -99,7 +99,7 @@ public class Encoders {
         return val;
     }
 
-    public static int iDecode(String str_val) {
+    public static int iDecode111(String str_val) {
         int str_len = str_val.length();
         int val = 0;
 
@@ -150,7 +150,7 @@ public class Encoders {
     }
 
     public static String sDecode_(String str_val, int size_val) {
-        return str_val.substring(size_val + Encoders.iDecode(str_val.substring(0, size_val)));
+        return str_val.substring(size_val + Encoders.iDecodeRaw(str_val.substring(0, size_val)));
     }
 
     public static String sDecode1_(String str_val) {
@@ -184,7 +184,7 @@ public class Encoders {
 
 
     public static String sSubstring_(String str_val, int size_val) {
-        return str_val.substring(size_val + Encoders.iDecode(str_val.substring(0, size_val)));
+        return str_val.substring(size_val + Encoders.iDecodeRaw(str_val.substring(0, size_val)));
     }
 
     public static String sSubstring1_(String str_val) {

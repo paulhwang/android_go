@@ -226,7 +226,7 @@ public class FabricUParser {
             return this.errorProcessGetNameList(link_id_str, "*************null link");
         }
 
-        int name_list_tag = Encoders.iDecode(name_list_tag_str);
+        int name_list_tag = Encoders.iDecode111(name_list_tag_str);
         String name_list = this.fabricRoot().nameList().getNameList(name_list_tag);
 
         String response_data = this.generateGetNameListResponse(link.linkIdStr(), name_list);
