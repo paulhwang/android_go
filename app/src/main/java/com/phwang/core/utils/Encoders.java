@@ -9,6 +9,8 @@
 package com.phwang.core.utils;
 
 public class Encoders {
+    public static final int DATA_LENGTH_SIZE = 2;
+
     public static String iEncode(int number_val, int size_val) {
         String str = Integer.toString(number_val);
 
@@ -18,6 +20,30 @@ public class Encoders {
         }
         buf.append(str);
         return buf.toString();
+    }
+
+    public static String iEncode1(int number_val) {
+        return iEncode(number_val, 1);
+    }
+
+    public static String iEncode2(int number_val) {
+        return iEncode(number_val, 2);
+    }
+
+    public static String iEncode3(int number_val) {
+        return iEncode(number_val, 3);
+    }
+
+    public static String iEncode4(int number_val) {
+        return iEncode(number_val, 4);
+    }
+
+    public static String iEncode5(int number_val) {
+        return iEncode(number_val, 5);
+    }
+
+    public static String iEncode6(int number_val) {
+        return iEncode(number_val, 6);
     }
 
     public static int iDecode(String str_val) {

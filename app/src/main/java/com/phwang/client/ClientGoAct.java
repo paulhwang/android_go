@@ -42,17 +42,13 @@ public class ClientGoAct {
     	buf.append('G');
 		buf.append(this.action_);
     	if (this.action_ == GoExport.GO_PROTOCOL_MOVE_COMMAND) {
-    		buf.append(Encoders.iEncode(this.x_, 2));
-    		buf.append(Encoders.iEncode(this.y_, 2));
+    		buf.append(Encoders.iEncode2(this.x_));
+    		buf.append(Encoders.iEncode2(this.y_));
     		buf.append(Encoders.iEncode(this.color_, 1));
-    		buf.append(Encoders.iEncode(this.index_, 3));
+    		buf.append(Encoders.iEncode3(this.index_));
     	}
     	String data = buf.toString();
-
-    	buf = new StringBuilder();
-        buf.append(Encoders.iEncode(data.length(), Define.DATA_LENGTH_SIZE));
-        buf.append(data);
-        return buf.toString();
+        return Encoders.sEncode2(data);
     }
 }
 

@@ -110,8 +110,7 @@ public class FabricUParser {
         StringBuilder response_buf = new StringBuilder();
         response_buf.append(FabricExport.FABRIC_COMMAND_SETUP_LINK); 
         response_buf.append(link_id_str_val);
-        response_buf.append(Encoders.iEncode(my_name_val.length(), Define.DATA_LENGTH_SIZE));
-        response_buf.append(my_name_val);
+        response_buf.append(Encoders.sEncode2(my_name_val));
         return response_buf.toString();
     }
     
@@ -141,8 +140,7 @@ public class FabricUParser {
         StringBuilder response_buf = new StringBuilder();
         response_buf.append(FabricExport.FABRIC_COMMAND_GET_LINK_DATA); 
         response_buf.append(link_id_str_val);
-        response_buf.append(Encoders.iEncode(result_val.length(), Define.DATA_LENGTH_SIZE));
-        response_buf.append(result_val);
+        response_buf.append(Encoders.sEncode2(result_val));
         return response_buf.toString();
     }
     
@@ -203,10 +201,8 @@ public class FabricUParser {
         StringBuilder response_buf = new StringBuilder();
         response_buf.append(FabricExport.FABRIC_COMMAND_GET_LINK_DATA); 
         response_buf.append(link_id_str_val);
-        response_buf.append(Encoders.iEncode(data_val.length(), Define.DATA_LENGTH_SIZE));
-        response_buf.append(data_val);
-        response_buf.append(Encoders.iEncode(pending_session_setup_val.length(), Define.DATA_LENGTH_SIZE));
-        response_buf.append(pending_session_setup_val);
+        response_buf.append(Encoders.sEncode2(data_val));
+        response_buf.append(Encoders.sEncode2(pending_session_setup_val));
         return response_buf.toString();
     }
     
@@ -240,8 +236,7 @@ public class FabricUParser {
         StringBuilder response_buf = new StringBuilder();
         response_buf.append(FabricExport.FABRIC_COMMAND_GET_NAME_LIST); 
         response_buf.append(link_id_str_val);
-        response_buf.append(Encoders.iEncode(name_list_str_val.length(), Define.DATA_LENGTH_SIZE));
-        response_buf.append(name_list_str_val);
+        response_buf.append(Encoders.sEncode2(name_list_str_val));
         return response_buf.toString();
     }
 
@@ -340,12 +335,10 @@ public class FabricUParser {
         
         String theme_id_str = rest_str.substring(0, FabricImport.THEME_ROOM_ID_SIZE);//////////////////////
         rest_str = rest_str.substring(FabricImport.THEME_ROOM_ID_SIZE);///////////////////////
-        
-        int theme_data_len = Encoders.iDecode(rest_str.substring(0, Define.DATA_LENGTH_SIZE));
-        rest_str = rest_str.substring(Define.DATA_LENGTH_SIZE);
-        String theme_data_str = rest_str.substring(0, theme_data_len);
-    	rest_str = rest_str.substring(theme_data_len);
-    	
+
+        String theme_data_str = Encoders.sDecode2(rest_str);
+        //rest_str = Encoders.sDecode2_(rest_str);
+
         this.debug(false, "processSetupSession2Request", "link_id = " + link_id_str);
         this.debug(false, "processSetupSession2Request", "session_id = " + session_id_str);
 
@@ -478,8 +471,7 @@ public class FabricUParser {
         response_buf.append(FabricExport.FABRIC_COMMAND_PUT_SESSION_DATA); 
         response_buf.append(link_id_str_val);
         response_buf.append(session_id_str_val);
-        response_buf.append(Encoders.iEncode(c_data_val.length(), Define.DATA_LENGTH_SIZE));
-        response_buf.append(c_data_val);
+        response_buf.append(Encoders.sEncode2(c_data_val));
         return response_buf.toString();
     }
 

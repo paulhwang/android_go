@@ -66,10 +66,8 @@ public class ClientDParser {
         String link_id_str = rest_str.substring(0, ClientImport.FABRIC_LINK_ID_SIZE);
         rest_str = rest_str.substring(ClientImport.FABRIC_LINK_ID_SIZE);
         
-        int my_name_len = Encoders.iDecode(rest_str.substring(0, Define.DATA_LENGTH_SIZE));
-        rest_str = rest_str.substring(Define.DATA_LENGTH_SIZE);
-        String my_name = rest_str.substring(0, my_name_len);
-    	rest_str = rest_str.substring(my_name_len);
+        String my_name = Encoders.sDecode2(rest_str);
+    	rest_str = Encoders.sDecode2_(rest_str);
     	
     	this.clientFabricInfo().setLinkIdStr(link_id_str);
     	this.importInterface().handleSetupLinkResponse();
@@ -81,17 +79,13 @@ public class ClientDParser {
         String rest_str = input_str_val;
         String link_id_str = rest_str.substring(0, ClientImport.FABRIC_LINK_ID_SIZE);
         rest_str = rest_str.substring(ClientImport.FABRIC_LINK_ID_SIZE);
-        
-        int data_len = Encoders.iDecode(rest_str.substring(0, Define.DATA_LENGTH_SIZE));
-        rest_str = rest_str.substring(Define.DATA_LENGTH_SIZE);
-        String data = rest_str.substring(0, data_len);
-    	rest_str = rest_str.substring(data_len);
-        
-        int pending_session_setup_len = Encoders.iDecode(rest_str.substring(0, Define.DATA_LENGTH_SIZE));
-        rest_str = rest_str.substring(Define.DATA_LENGTH_SIZE);
-        String pending_session_setup = rest_str.substring(0, pending_session_setup_len);
-    	rest_str = rest_str.substring(pending_session_setup_len);
-    	
+
+        String data = Encoders.sDecode2(rest_str);
+        rest_str = Encoders.sDecode2_(rest_str);
+
+        String pending_session_setup = Encoders.sDecode2(rest_str);
+        //rest_str = Encoders.sDecode2_(rest_str);
+
     	this.importInterface().handleGetLinkDataResponse();
     }
 
@@ -101,12 +95,10 @@ public class ClientDParser {
         String rest_str = input_str_val;
         String link_id_str = rest_str.substring(0, ClientImport.FABRIC_LINK_ID_SIZE);
         rest_str = rest_str.substring(ClientImport.FABRIC_LINK_ID_SIZE);
-        
-        int name_list_str_len = Encoders.iDecode(rest_str.substring(0, Define.DATA_LENGTH_SIZE));
-        rest_str = rest_str.substring(Define.DATA_LENGTH_SIZE);
-        String name_list_str = rest_str.substring(0, name_list_str_len);
-    	rest_str = rest_str.substring(name_list_str_len);
-    	
+
+        String name_list_str = Encoders.sDecode2(rest_str);
+        //rest_str = Encoders.sDecode2_(rest_str);
+
     	this.importInterface().handleGetNameListResponse();
     }
 
@@ -166,11 +158,9 @@ public class ClientDParser {
         String session_id_str = rest_str.substring(0, ClientImport.FABRIC_SESSION_ID_SIZE);
         rest_str = rest_str.substring(ClientImport.FABRIC_SESSION_ID_SIZE);
 
-        int c_data_len = Encoders.iDecode(rest_str.substring(0, Define.DATA_LENGTH_SIZE));
-        rest_str = rest_str.substring(Define.DATA_LENGTH_SIZE);
-        String c_data = rest_str.substring(0, c_data_len);
-    	rest_str = rest_str.substring(c_data_len);
-    	
+        String c_data = Encoders.sDecode2(rest_str);
+        //rest_str = Encoders.sDecode2_(rest_str);
+
     	this.importInterface().handlePutSessionDataResponse();
     }
 

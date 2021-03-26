@@ -27,17 +27,12 @@ public class ClientGoConfig {
     public String getGoConfigStr() {
     	StringBuilder buf = new StringBuilder();
     	buf.append('G');
-    	buf.append(Encoders.iEncode(9, 3));
-    	buf.append(Encoders.iEncode(this.boardSize_, 2));
-    	buf.append(Encoders.iEncode(this.handicapPoint_, 2));
-    	buf.append(Encoders.iEncode(this.handicapPoint_, 2));
+    	buf.append(Encoders.iEncode3(9));
+    	buf.append(Encoders.iEncode2(this.boardSize_));
+    	buf.append(Encoders.iEncode2(this.handicapPoint_));
+    	buf.append(Encoders.iEncode2(this.handicapPoint_));
     	String data = buf.toString();
-
-    	buf = new StringBuilder();
-        buf.append(Encoders.iEncode(data.length(), Define.DATA_LENGTH_SIZE));
-        buf.append(data);
-        return buf.toString();
-
+        return Encoders.sEncode2(data);
     }
 }
 

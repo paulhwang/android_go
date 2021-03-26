@@ -67,11 +67,7 @@ public class GoBoard {
         buf.append(this.nextColor_);
         buf.append(Encoders.iEncode(this.totalMoves_ + 1, 3));
         String data = buf.toString();
-
-        buf = new StringBuilder();
-        buf.append(Encoders.iEncode(data.length(), Define.DATA_LENGTH_SIZE));
-        buf.append(data);
-        return buf.toString();
+        return Encoders.sEncode2(data);
     }
 
     private Boolean isValidCoordinate_(int coordinate_val) {
