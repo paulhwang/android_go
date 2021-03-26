@@ -159,8 +159,8 @@ public class ListMgr {
     public ListEntry getEntryByIdStr(String id_str_val) {
     	String id_str = id_str_val.substring(0, idSize_);
     	String index_str = id_str_val.substring(idSize_);
-        int id = Encoders.iDecode(id_str);
-        int index = Encoders.iDecode(index_str);
+        int id = Encoders.iDecodeRaw(id_str);
+        int index = Encoders.iDecodeRaw(index_str);
         
     	ListEntry entry;
         //this.theLock.lock();
