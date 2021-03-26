@@ -41,10 +41,8 @@ public class ClientDExport implements ClientDExportInt {
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(ClientImport.FABRIC_COMMAND_SETUP_LINK);
         command_buf.append(ClientImport.CLIENT_IS_ANDROID);
-        command_buf.append(Encoders.iEncode(this.clientFabricInfo().myName().length(), Define.DATA_LENGTH_SIZE));
-        command_buf.append(this.clientFabricInfo().myName());
-        command_buf.append(Encoders.iEncode(this.clientFabricInfo().password().length(), Define.DATA_LENGTH_SIZE));
-        command_buf.append(this.clientFabricInfo().password());
+        command_buf.append(Encoders.sEncode2(this.clientFabricInfo().myName()));
+        command_buf.append(Encoders.sEncode2(this.clientFabricInfo().password()));
         String command_str = command_buf.toString();
         
     	this.debug(false, "setupLink", "command_str=" + command_str);

@@ -40,12 +40,24 @@ public class Encoders {
         return buf.toString();
     }
 
+    public static String sEncode2(String str_val) {
+        return sEncode(str_val, 2);
+    }
+
     public static String sDecode(String str_val, int size_val) {
         int len = Encoders.iDecode(str_val.substring(0, size_val));
         return str_val.substring(size_val, size_val + len);
     }
 
+    public static String sDecode2(String str_val) {
+        return sDecode(str_val, 2);
+    }
+
     public static String sDecode_(String str_val, int size_val) {
         return str_val.substring(size_val + Encoders.iDecode(str_val.substring(0, size_val)));
+    }
+
+    public static String sDecode2_(String str_val) {
+        return sDecode_(str_val, 2);
     }
 }
