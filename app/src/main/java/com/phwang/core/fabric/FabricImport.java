@@ -8,7 +8,5 @@
 
 package com.phwang.core.fabric;
 
-import com.phwang.core.theme.ThemeExport;
-
 public class FabricImport {
 }
