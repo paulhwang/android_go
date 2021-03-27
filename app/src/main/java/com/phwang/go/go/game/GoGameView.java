@@ -16,8 +16,8 @@ import android.view.View;
 import android.util.Log;
 import com.phwang.go.R;
 
-public class GoView  extends View {
-    private static final String TAG = "GoView";
+public class GoGameView  extends View {
+    private static final String TAG = "GoGameView";
 
     private final GoGame goGame_;
     private GoBoard goBoard() { return this.goGame_.goBoard(); }
@@ -40,7 +40,7 @@ public class GoView  extends View {
     private final Paint boardPaint = new Paint();
     private final Rect rect = new Rect();
 
-    public GoView(Context context_val) {
+    public GoGameView(Context context_val) {
         super(context_val);
         this.goGame_ = (GoGame) context_val;
 

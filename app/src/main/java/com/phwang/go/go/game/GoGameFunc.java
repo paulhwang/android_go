@@ -19,7 +19,7 @@ public class GoGameFunc {
     private static final String TAG = "GoGameFunc";
     private GoGame goGame_;
 
-    protected GoView goView() { return this.goGame_.goView(); }
+    protected GoGameView goView() { return this.goGame_.goView(); }
     protected GoBoard goBoard() { return this.goGame_.goBoard(); }
 
     protected GoGameFunc(GoGame go_game_val) {

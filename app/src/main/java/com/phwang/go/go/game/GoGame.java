@@ -21,10 +21,10 @@ public class GoGame extends AppCompatActivity {
     private static final String TAG = "GoGame";
     private GoGameFunc goGameFunc_;
     private GoBoard goBoard_;
-    private GoView goView_;
+    private GoGameView goView_;
     private GoGameReceiver goGameReceiver_;
 
-    protected GoView goView() { return this.goView_; };
+    protected GoGameView goView() { return this.goView_; };
     protected GoBoard goBoard() { return this.goBoard_; };
     protected GoGameFunc goGameFunc() { return this.goGameFunc_; };
 
@@ -34,7 +34,7 @@ public class GoGame extends AppCompatActivity {
         this.goBoard_ = new GoBoard(this);
         this.goGameFunc_ = new GoGameFunc(this);
 
-        this.goView_ = new GoView(this);
+        this.goView_ = new GoGameView(this);
         setContentView(this.goView_);
         this.goView_.requestFocus();
 
