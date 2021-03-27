@@ -28,34 +28,34 @@ public class ClientDParser {
     protected void parserResponseData(String input_data_val) {
     	this.debug(true, "parserResponseData", "input_data_val=" + input_data_val);
     	
-    	char command = input_data_val.charAt(0);
-    	
-    	if (command == ClientImport.FABRIC_COMMAND_SETUP_LINK) {
-    		parserSetupLinkResponse(input_data_val.substring(1));
-    	}	
-    	else if (command == ClientImport.FABRIC_COMMAND_GET_LINK_DATA) {
-    		parserGetLinkDataResponse(input_data_val.substring(1));
-    	}	
-    	else if (command == ClientImport.FABRIC_COMMAND_GET_NAME_LIST) {
-    		parserGetNameListResponse(input_data_val.substring(1));
-    	}	
-    	else if (command == ClientImport.FABRIC_COMMAND_SETUP_SESSION) {
-    		parserSetupSessionResponse(input_data_val.substring(1));
-    	}	
-    	else if (command == ClientImport.FABRIC_COMMAND_SETUP_SESSION2) {
-    		parserSetupSession2Response(input_data_val.substring(1));
-    	}	
-    	else if (command == ClientImport.FABRIC_COMMAND_SETUP_SESSION3) {
-    		parserSetupSession3Response(input_data_val.substring(1));
-    	}	
-    	else if (command == ClientImport.FABRIC_COMMAND_PUT_SESSION_DATA) {
-    		parserPutSessionDataResponse(input_data_val.substring(1));
-    	}	
-    	else if (command == ClientImport.FABRIC_COMMAND_GET_SESSION_DATA) {
-    		parserGetSessionDataResponse(input_data_val.substring(1));
-    	}
-    	else {
-    		this.abend("parserResponseData", "input_data_val=" + input_data_val);
+    	switch (input_data_val.charAt(0)) {
+            case ClientImport.FABRIC_COMMAND_SETUP_LINK:
+    		    parserSetupLinkResponse(input_data_val.substring(1));
+    		    break;
+            case ClientImport.FABRIC_COMMAND_GET_LINK_DATA:
+    		    parserGetLinkDataResponse(input_data_val.substring(1));
+    		    break;
+            case ClientImport.FABRIC_COMMAND_GET_NAME_LIST:
+    		    parserGetNameListResponse(input_data_val.substring(1));
+    		    break;
+            case ClientImport.FABRIC_COMMAND_SETUP_SESSION:
+    		    parserSetupSessionResponse(input_data_val.substring(1));
+    		    break;
+            case ClientImport.FABRIC_COMMAND_SETUP_SESSION2:
+    		    parserSetupSession2Response(input_data_val.substring(1));
+    		    break;
+            case ClientImport.FABRIC_COMMAND_SETUP_SESSION3:
+    		    parserSetupSession3Response(input_data_val.substring(1));
+    		    break;
+            case ClientImport.FABRIC_COMMAND_PUT_SESSION_DATA:
+    		    parserPutSessionDataResponse(input_data_val.substring(1));
+    		    break;
+            case ClientImport.FABRIC_COMMAND_GET_SESSION_DATA:
+    		    parserGetSessionDataResponse(input_data_val.substring(1));
+    		    break;
+            default:
+    		    this.abend("parserResponseData", "input_data_val=" + input_data_val);
+    		    break;
     	}
     }
     

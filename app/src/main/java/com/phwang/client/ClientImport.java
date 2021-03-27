@@ -25,7 +25,4 @@ public class ClientImport {
     protected static final char FABRIC_COMMAND_SETUP_SESSION3   = FabricExport.FABRIC_COMMAND_SETUP_SESSION3;
     protected static final char FABRIC_COMMAND_PUT_SESSION_DATA = FabricExport.FABRIC_COMMAND_PUT_SESSION_DATA;
     protected static final char FABRIC_COMMAND_GET_SESSION_DATA = FabricExport.FABRIC_COMMAND_GET_SESSION_DATA;
-
-	protected static final int FRONT_JOB_ID_SIZE_ = FabricExport.FRONT_JOB_ID_SIZE_;
-	protected static final int FRONT_JOB_ID_SIZE = FabricExport.FRONT_JOB_ID_SIZE;
 }

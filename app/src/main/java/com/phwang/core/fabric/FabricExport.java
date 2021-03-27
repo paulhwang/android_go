@@ -19,9 +19,6 @@ public class FabricExport {
     public static final char CLIENT_IS_IPHONE = 'I';
     public static final char CLIENT_IS_HTTP = 'H';
 
-    public static final int FRONT_JOB_ID_SIZE_ = 4;
-    public static final int FRONT_JOB_ID_SIZE = FRONT_JOB_ID_SIZE_ * 2 + 2;
-
     public static final int NAME_LIST_TAG_SIZE = FabricNameList.NAME_LIST_TAG_SIZE;
 
     public static final char FABRIC_COMMAND_HTTP_DATA = 'H';
