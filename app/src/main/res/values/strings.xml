@@ -9,6 +9,9 @@
     <string name="about_label">About</string>
     <string name="exit_label">Exit</string>
 
+    <string name="go_config_play_label">play</string>
+    <string name="go_config_exit_label">Exit</string>
+
     <string name="about_title">About phwang</string>
     <string name="about_text">Go and Sudoku by Paul Hwang</string>
 

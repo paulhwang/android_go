@@ -22,6 +22,7 @@ import android.util.Log;
 
 import com.phwang.go.R;
 import com.phwang.go.define.IntentDefine;
+import com.phwang.go.go.config.GoConfigActivity;
 import com.phwang.go.go.game.GoGameActivity;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.sudoku.SudokuGame;
@@ -85,9 +86,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View view_val) {
         Intent intent;
-        switch (v.getId()) {
+        switch (view_val.getId()) {
             case R.id.play_go_button:
                 this.openNewGameDialog();
                 break;
@@ -96,8 +97,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.sign_in_button:
+                intent = new Intent(this, SignInActivity.class);
+                startActivity(intent);
                 break;
             case R.id.sign_up_button:
+                intent = new Intent(this, GoConfigActivity.class);
+                startActivity(intent);
                 break;
             case R.id.about_button:
                 intent = new Intent(this, About.class);
