@@ -46,37 +46,41 @@ public class FabricUParser {
         this.debug(true, "parseInputPacket", "input_str_val = " + input_str_val);
         this.debug(false, "parseInputPacket", "data_str = " + data_str);
         
-        char command = data_str.charAt(0);
-        
-        if (command == FabricExport.FABRIC_COMMAND_SETUP_LINK) {
-            response_data = this.processSetupLinkRequest(data_str.substring(1));
+        if (data_str.charAt(0) == FabricExport.FABRIC_COMMAND_HTTP_DATA) {
+
         }
-        else if (command == FabricExport.FABRIC_COMMAND_REMOVE_LINK) {
-            response_data = this.processRemoveLinkRequest(data_str.substring(1));
-        }
-        else if (command == FabricExport.FABRIC_COMMAND_GET_LINK_DATA) {
-            response_data = this.processGetLinkDataRequest(data_str.substring(1));
-        }
-        else if (command == FabricExport.FABRIC_COMMAND_GET_NAME_LIST) {
-            response_data = this.processGetNameListRequest(data_str.substring(1));
-        }
-        else if (command == FabricExport.FABRIC_COMMAND_SETUP_SESSION) {
-            response_data = this.processSetupSessionRequest(data_str.substring(1));
-        }
-        else if (command == FabricExport.FABRIC_COMMAND_SETUP_SESSION2) {
-            response_data = this.processSetupSession2Request(data_str.substring(1));
-        }
-        else if (command == FabricExport.FABRIC_COMMAND_SETUP_SESSION3) {
-            response_data = this.processSetupSession3Request(data_str.substring(1));
-        }
-        else if (command == FabricExport.FABRIC_COMMAND_PUT_SESSION_DATA) {
-            response_data = this.processPutSessionDataRequest(data_str.substring(1));
-        }
-        else if (command == FabricExport.FABRIC_COMMAND_GET_SESSION_DATA) {
-            response_data = this.processGetSessionDataRequest(data_str.substring(1));
-        }
-        else {
-        	this.abend("parseInputPacket", "should not reach here, data=" + input_str_val);
+
+        switch (data_str.charAt(0)) {
+            case FabricExport.FABRIC_COMMAND_SETUP_LINK:
+                response_data = this.processSetupLinkRequest(data_str.substring(1));
+                break;
+            case FabricExport.FABRIC_COMMAND_REMOVE_LINK:
+                response_data = this.processRemoveLinkRequest(data_str.substring(1));
+                break;
+            case FabricExport.FABRIC_COMMAND_GET_LINK_DATA:
+                response_data = this.processGetLinkDataRequest(data_str.substring(1));
+                break;
+            case FabricExport.FABRIC_COMMAND_GET_NAME_LIST:
+                response_data = this.processGetNameListRequest(data_str.substring(1));
+                break;
+            case FabricExport.FABRIC_COMMAND_SETUP_SESSION:
+                response_data = this.processSetupSessionRequest(data_str.substring(1));
+                break;
+            case FabricExport.FABRIC_COMMAND_SETUP_SESSION2:
+                response_data = this.processSetupSession2Request(data_str.substring(1));
+                break;
+            case FabricExport.FABRIC_COMMAND_SETUP_SESSION3:
+                response_data = this.processSetupSession3Request(data_str.substring(1));
+                break;
+            case FabricExport.FABRIC_COMMAND_PUT_SESSION_DATA:
+                response_data = this.processPutSessionDataRequest(data_str.substring(1));
+                break;
+            case FabricExport.FABRIC_COMMAND_GET_SESSION_DATA:
+                response_data = this.processGetSessionDataRequest(data_str.substring(1));
+                break;
+            default:
+        	    this.abend("parseInputPacket", "should not reach here, data=" + input_str_val);
+        	    break;
         }
         
         if (response_data == null) {

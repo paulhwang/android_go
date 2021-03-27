@@ -29,14 +29,7 @@ public class Encoders {
     public static String iEncodeRaw6(int number_val) { return iEncodeRaw(number_val, 6); }
 
     public static String iEncode111(int number_val, int size_val) {
-        String str = Integer.toString(number_val);
-
-        StringBuilder buf = new StringBuilder();
-        for (int i = str.length(); i < size_val; i++) {
-            buf.append('0');
-        }
-        buf.append(str);
-        return buf.toString();
+        return iEncodeRaw(number_val, size_val);
     }
 
     public static String iEncodeLen(int number_val, int size_val) {
@@ -64,16 +57,7 @@ public class Encoders {
     }
 
     public static int iDecode111(String str_val) {
-        int str_len = str_val.length();
-        int val = 0;
-
-        for (int i = 0; i < str_len; i++) {
-            val += str_val.charAt(i) - '0';
-            if (i < str_len - 1) {
-                val *= 10;
-            }
-        }
-        return val;
+        return iDecodeRaw(str_val);
     }
 
     public static int iDecodeLen(String str_val) {
