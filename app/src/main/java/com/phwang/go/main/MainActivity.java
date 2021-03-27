@@ -86,20 +86,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        Intent i;
+        Intent intent;
         switch (v.getId()) {
             case R.id.play_go_button:
+                this.openNewGameDialog();
                 break;
             case R.id.play_sudoku_button:
-                this.openNewGameDialog();
+                intent = new Intent(this, SudokuGame.class);
+                startActivity(intent);
                 break;
             case R.id.sign_in_button:
                 break;
             case R.id.sign_up_button:
                 break;
             case R.id.about_button:
-                i = new Intent(this, About.class);
-                startActivity(i);
+                intent = new Intent(this, About.class);
+                startActivity(intent);
                 break;
             case R.id.exit_button:
                 finish();
