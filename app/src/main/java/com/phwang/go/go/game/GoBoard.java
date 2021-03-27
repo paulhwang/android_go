@@ -6,13 +6,13 @@
  ******************************************************************************
  */
 
-package com.phwang.go.go;
+package com.phwang.go.go.game;
 
 import android.util.Log;
 
 import com.phwang.core.go.GoDefine;
-import com.phwang.core.utils.Define;
 import com.phwang.core.utils.Encoders;
+import com.phwang.go.go.game.GoGame;
 
 public class GoBoard {
     private static final String TAG = "GoBoard";

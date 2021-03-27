@@ -67,7 +67,7 @@ public class ClientDParser {
         rest_str = Encoders.sSubstring2_(rest_str);
         
         String my_name = Encoders.sDecode2(rest_str);
-    	rest_str = Encoders.sDecode2_(rest_str);
+    	//rest_str = Encoders.sDecode2_(rest_str);
     	
     	this.clientFabricInfo().setLinkIdStr(link_id_str);
     	this.importInterface().handleSetupLinkResponse();
@@ -179,7 +179,7 @@ public class ClientDParser {
         rest_str = Encoders.sSubstring2_(rest_str);
 
         String c_data = Encoders.sDecode5(rest_str);
-    	rest_str = Encoders.sDecode5_(rest_str);
+    	//rest_str = Encoders.sDecode5_(rest_str);
     	
     	this.importInterface().handleGetSessionDataResponse(c_data);
     }

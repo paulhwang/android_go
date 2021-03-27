@@ -24,7 +24,7 @@ import com.phwang.go.R;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.sudoku.SudokuGame;
-import com.phwang.go.go.GoGame;
+import com.phwang.go.go.game.GoGame;
 import com.phwang.go.bind.BindService;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {

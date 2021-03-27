@@ -6,16 +6,15 @@
  ******************************************************************************
  */
 
-package com.phwang.go.go;
+package com.phwang.go.go.game;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.widget.Toast;
+
 import com.phwang.go.define.IntentDefine;
 
 public class GoGame extends AppCompatActivity {

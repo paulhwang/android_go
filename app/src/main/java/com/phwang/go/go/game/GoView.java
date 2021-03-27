@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.go.go;
+package com.phwang.go.go.game;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -15,7 +15,6 @@ import android.graphics.Rect;
 import android.view.View;
 import android.util.Log;
 import com.phwang.go.R;
-import com.phwang.go.go.GoBoard;
 
 public class GoView  extends View {
     private static final String TAG = "GoView";

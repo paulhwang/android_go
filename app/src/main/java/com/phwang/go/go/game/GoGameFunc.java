@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.go.go;
+package com.phwang.go.go.game;
 
 import android.content.Intent;
 import android.util.Log;

@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.go.go;
+package com.phwang.go.go.game;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.util.Log;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
+import com.phwang.go.go.game.GoGame;
+import com.phwang.go.go.game.GoGameFunc;
 
 public class GoReceiver extends BroadcastReceiver {
     private static final String TAG = "GoReceiver";

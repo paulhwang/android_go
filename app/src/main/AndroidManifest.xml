@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".go.GoGame">
+        <activity android:name=".go.game.GoGame">
             android:label = "@string/go_title"
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
