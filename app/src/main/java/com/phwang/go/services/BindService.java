@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.go.bind;
+package com.phwang.go.services;
 
 import android.app.Service;
 import android.content.Context;
@@ -16,6 +16,8 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 import com.phwang.go.define.IntentDefine;
+import com.phwang.go.bind.BindMain;
+import com.phwang.go.bind.BindUClient;
 
 public class BindService extends Service {
     private static final String TAG = "BindService";

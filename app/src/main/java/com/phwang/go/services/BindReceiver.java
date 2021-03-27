@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.go.bind;
+package com.phwang.go.services;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -17,6 +17,7 @@ import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.define.ThemeDefine;
+import com.phwang.go.bind.BindUClient;
 
 public class BindReceiver extends BroadcastReceiver {
     private static final String TAG = "BindReceiver";

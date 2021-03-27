@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".bind.BindService">
+        <service android:name=".services.BindService">
             android:label = "@string/bind_service_title"
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
