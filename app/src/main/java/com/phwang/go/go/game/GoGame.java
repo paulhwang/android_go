@@ -22,6 +22,7 @@ public class GoGame extends AppCompatActivity {
     private GoGameFunc goGameFunc_;
     private GoBoard goBoard_;
     private GoView goView_;
+    private GoGameReceiver goGameReceiver_;
 
     protected GoView goView() { return this.goView_; };
     protected GoBoard goBoard() { return this.goBoard_; };
@@ -84,20 +85,19 @@ public class GoGame extends AppCompatActivity {
         this.goGameFunc_.do_put_session_data(move_str);
     }
 
-    private GoReceiver goReceiver_;
     private void registerBroadcastReceiver() {
-        if (this.goReceiver_ == null) {
-            this.goReceiver_ = new GoReceiver(this);
+        if (this.goGameReceiver_ == null) {
+            this.goGameReceiver_ = new GoGameReceiver(this);
             IntentFilter filter = new IntentFilter();
             filter.addAction(IntentDefine.GO_GAME_ACTIVITY);
-            this.registerReceiver(this.goReceiver_, filter);
+            this.registerReceiver(this.goGameReceiver_, filter);
         }
     }
 
     private void unregisterBroadcastReceiver() {
-        if (this.goReceiver_ != null) {
-            this.unregisterReceiver(this.goReceiver_);
-            this.goReceiver_ = null;
+        if (this.goGameReceiver_ != null) {
+            this.unregisterReceiver(this.goGameReceiver_);
+            this.goGameReceiver_ = null;
         }
     }
 }

@@ -18,13 +18,13 @@ import com.phwang.go.define.CommandDefine;
 import com.phwang.go.go.game.GoGame;
 import com.phwang.go.go.game.GoGameFunc;
 
-public class GoReceiver extends BroadcastReceiver {
-    private static final String TAG = "GoReceiver";
+public class GoGameReceiver extends BroadcastReceiver {
+    private static final String TAG = "GoGameReceiver";
     private GoGame goGameActivity_;
 
     protected GoGameFunc goGameFunc() { return this.goGameActivity_.goGameFunc(); };
 
-    public GoReceiver(GoGame go_game_activity_val) {
+    public GoGameReceiver(GoGame go_game_activity_val) {
         this.goGameActivity_ = go_game_activity_val;
     }
 
