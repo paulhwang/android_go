@@ -22,17 +22,17 @@ import com.phwang.go.bind.BindUClient;
 public class BindReceiver extends BroadcastReceiver {
     private static final String TAG = "BindReceiver";
     private BindService bindService_;
-    private BindServiceUFunc bindServiceUFunc_;
-    private BindServiceDFunc bindServiceDFunc_;
+    private BindReceiverUFunc bindServiceUFunc_;
+    private BindReceiverDFunc bindServiceDFunc_;
 
     protected BindService bindService() { return this.bindService_; };
     protected BindUClient bindUClient() { return bindService_.bindUClient(); }
-    protected BindServiceUFunc bindServiceUFunc() { return this.bindServiceUFunc_; };
+    protected BindReceiverUFunc bindServiceUFunc() { return this.bindServiceUFunc_; };
 
     public BindReceiver(BindService bind_service_val) {
         this.bindService_ = bind_service_val;
-        this.bindServiceDFunc_ = new BindServiceDFunc(this);
-        this.bindServiceUFunc_ = new BindServiceUFunc(this);
+        this.bindServiceDFunc_ = new BindReceiverDFunc(this);
+        this.bindServiceUFunc_ = new BindReceiverUFunc(this);
     }
 
     @Override

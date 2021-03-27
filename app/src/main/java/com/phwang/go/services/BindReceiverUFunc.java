@@ -1,3 +1,11 @@
+/*
+ ******************************************************************************
+ *
+ *  Copyright (c) 2021 phwang. All rights reserved.
+ *
+ ******************************************************************************
+ */
+
 package com.phwang.go.services;
 
 import android.content.Intent;
@@ -8,14 +16,14 @@ import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
 
-public class BindServiceUFunc {
-    private static final String TAG = "BindServiceUFunc";
+public class BindReceiverUFunc {
+    private static final String TAG = "BindReceiverUFunc";
     BindReceiver bindReceiver_;
 
     private BindService bindService() { return this.bindReceiver_.bindService(); };
     private BindUClient bindUClient() { return bindReceiver_.bindUClient(); }
 
-    public BindServiceUFunc(BindReceiver bind_receiver_val) {
+    public BindReceiverUFunc(BindReceiver bind_receiver_val) {
         this.bindReceiver_ = bind_receiver_val;
     }
 
