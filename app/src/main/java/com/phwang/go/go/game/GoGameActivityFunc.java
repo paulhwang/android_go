@@ -15,14 +15,14 @@ import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
 
-public class GoGameFunc {
-    private static final String TAG = "GoGameFunc";
+public class GoGameActivityFunc {
+    private static final String TAG = "GoGameActivityFunc";
     private GoGameActivity goGame_;
 
     protected GoGameView goView() { return this.goGame_.goView(); }
     protected GoGameBoard goBoard() { return this.goGame_.goBoard(); }
 
-    protected GoGameFunc(GoGameActivity go_game_val) {
+    protected GoGameActivityFunc(GoGameActivity go_game_val) {
         this.goGame_ = go_game_val;
     }
 

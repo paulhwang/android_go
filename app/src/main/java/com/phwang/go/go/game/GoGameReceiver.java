@@ -20,7 +20,7 @@ public class GoGameReceiver extends BroadcastReceiver {
     private static final String TAG = "GoGameReceiver";
     private GoGameActivity goGameActivity_;
 
-    protected GoGameFunc goGameFunc() { return this.goGameActivity_.goGameFunc(); };
+    protected GoGameActivityFunc goGameFunc() { return this.goGameActivity_.goGameFunc(); };
 
     public GoGameReceiver(GoGameActivity go_game_activity_val) {
         this.goGameActivity_ = go_game_activity_val;
