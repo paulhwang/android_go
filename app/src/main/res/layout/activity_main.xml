@@ -1,27 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
+    android:orientation="vertical"
     tools:context=".main.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/main_title"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
-        android:id="@+id/continue_button"
+        android:id="@+id/play_go_button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/continue_label" />
+        android:text="@string/play_go_label" />
+    <Button
+        android:id="@+id/play_sudoku_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/play_sudoku_label" />
+    <Button
+        android:id="@+id/sign_in_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_in_label" />
+    <Button
+        android:id="@+id/sign_up_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up_label" />
     <Button
         android:id="@+id/about_button"
         android:layout_width="fill_parent"
@@ -32,10 +39,5 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/exit_label" />
-    <Button
-        android:id="@+id/new_game_button"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/new_game_label" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

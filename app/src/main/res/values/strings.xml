@@ -1,9 +1,11 @@
 <resources>
-    <string name="app_name">Go</string>
+    <string name="app_name">Go by Paul Hwang</string>
     
-    <string name="main_title">Go</string>
-    <string name="continue_label">Continue</string>
-    <string name="new_game_label">New Game</string>
+    <string name="main_title">Go Main Title</string>
+    <string name="play_go_label">Play Go Game</string>
+    <string name="play_sudoku_label">Play Sudoku</string>
+    <string name="sign_in_label">Sign In</string>
+    <string name="sign_up_label">Sign Up</string>
     <string name="about_label">About</string>
     <string name="exit_label">Exit</string>
 

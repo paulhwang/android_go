@@ -65,12 +65,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void setupView() {
-        View continueButton = findViewById(R.id.continue_button);
-        continueButton.setOnClickListener(this);
-        View newGameButton = findViewById(R.id.new_game_button);
-        newGameButton.setOnClickListener(this);
-        View aboutButton = findViewById(R.id.about_button);
-        aboutButton.setOnClickListener(this);
+        View playGoButton = findViewById(R.id.play_go_button);
+        playGoButton.setOnClickListener(this);
+
+        View playSudokuButton = findViewById(R.id.play_sudoku_button);
+        playSudokuButton.setOnClickListener(this);
+
+        View signInButton = findViewById(R.id.sign_in_button);
+        signInButton.setOnClickListener(this);
+
+        View signUpButton = findViewById(R.id.sign_up_button);
+        signUpButton.setOnClickListener(this);
+
+        View AboutButton = findViewById(R.id.about_button);
+        AboutButton.setOnClickListener(this);
+
         View exitButton = findViewById(R.id.exit_button);
         exitButton.setOnClickListener(this);
     }
@@ -79,12 +88,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         Intent i;
         switch (v.getId()) {
-            case R.id.continue_button:
-                i = new Intent(this, About.class);
-                startActivity(i);
+            case R.id.play_go_button:
                 break;
-            case R.id.new_game_button:
+            case R.id.play_sudoku_button:
                 this.openNewGameDialog();
+                break;
+            case R.id.sign_in_button:
+                break;
+            case R.id.sign_up_button:
                 break;
             case R.id.about_button:
                 i = new Intent(this, About.class);
