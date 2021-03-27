@@ -20,7 +20,7 @@ public class GoGameView  extends View {
     private static final String TAG = "GoGameView";
 
     private final GoGame goGame_;
-    private GoBoard goBoard() { return this.goGame_.goBoard(); }
+    private GoGameBoard goBoard() { return this.goGame_.goBoard(); }
     protected int board(int x_val, int y_val) { return this.goBoard().board(x_val, y_val); }
 
     private int width;
@@ -138,10 +138,10 @@ public class GoGameView  extends View {
 
         for (int i = this.goBoard().boardSize() - 1; i >= 0; i--) {
             for (int j = this.goBoard().boardSize() - 1; j >= 0; j--) {
-                if (this.board(i, j) == GoBoard.GO_BLACK_STONE){
+                if (this.board(i, j) == GoGameBoard.GO_BLACK_STONE){
                     this.drawStone(i, j, this.blackPaint);
                 }
-                else if (this.board(i, j) == GoBoard.GO_WHITE_STONE){
+                else if (this.board(i, j) == GoGameBoard.GO_WHITE_STONE){
                     this.drawStone(i, j, this.whitePaint);
                 }
             }

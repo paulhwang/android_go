@@ -20,18 +20,18 @@ import com.phwang.go.define.IntentDefine;
 public class GoGame extends AppCompatActivity {
     private static final String TAG = "GoGame";
     private GoGameFunc goGameFunc_;
-    private GoBoard goBoard_;
+    private GoGameBoard goBoard_;
     private GoGameView goView_;
     private GoGameReceiver goGameReceiver_;
 
     protected GoGameView goView() { return this.goView_; };
-    protected GoBoard goBoard() { return this.goBoard_; };
+    protected GoGameBoard goBoard() { return this.goBoard_; };
     protected GoGameFunc goGameFunc() { return this.goGameFunc_; };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.goBoard_ = new GoBoard(this);
+        this.goBoard_ = new GoGameBoard(this);
         this.goGameFunc_ = new GoGameFunc(this);
 
         this.goView_ = new GoGameView(this);

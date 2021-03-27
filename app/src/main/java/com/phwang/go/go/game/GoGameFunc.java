@@ -20,7 +20,7 @@ public class GoGameFunc {
     private GoGame goGame_;
 
     protected GoGameView goView() { return this.goGame_.goView(); }
-    protected GoBoard goBoard() { return this.goGame_.goBoard(); }
+    protected GoGameBoard goBoard() { return this.goGame_.goBoard(); }
 
     protected GoGameFunc(GoGame go_game_val) {
         this.goGame_ = go_game_val;
