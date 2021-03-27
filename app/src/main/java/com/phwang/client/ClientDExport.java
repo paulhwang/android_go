@@ -32,7 +32,7 @@ public class ClientDExport implements ClientDExportInt {
 
     private void transmitToFabric(String data_str_val) {
     	this.debug(true, "transmitToFabric", "data_str_val=" + data_str_val);
-       	this.uBinder().transmitStringData(this.clientFabricInfo().jobIdStr() + data_str_val);
+       	this.uBinder().transmitStringData(data_str_val);
     }
     
     public void setupLink() {

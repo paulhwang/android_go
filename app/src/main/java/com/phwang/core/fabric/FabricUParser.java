@@ -33,21 +33,19 @@ public class FabricUParser {
     }
 
     protected void parseInputPacket(BinderBundle bundle_val) {
-    	String input_str = bundle_val.data();
-        this.debug(true, "parseInputPacket", "input_str = " + input_str);
-        String rest_str = input_str;
-
-        String job_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
-
         String response_data = null;
-        
-        this.debug(false, "parseInputPacket", "data_str = " + rest_str);
-        
-        if (rest_str.charAt(0) == FabricExport.FABRIC_COMMAND_HTTP_DATA) {
+        String job_id_str = null;
+        String input_str = bundle_val.data();
+        this.debug(true, "parseInputPacket", "input_str = " + input_str);
 
+        String rest_str = input_str;
+        if (rest_str.charAt(0) == FabricExport.FABRIC_COMMAND_HTTP_DATA) {
+            rest_str = rest_str.substring(1);
+            job_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
         }
 
+        this.debug(false, "parseInputPacket", "data_str = " + rest_str);
         switch (rest_str.charAt(0)) {
             case FabricExport.FABRIC_COMMAND_SETUP_LINK:
                 response_data = this.processSetupLinkRequest(rest_str.substring(1));
@@ -82,7 +80,10 @@ public class FabricUParser {
         	    break;
         }
 
-        bundle_val.setData(job_id_str + response_data);
+        if (job_id_str != null) {
+            response_data = job_id_str + response_data;
+        }
+        bundle_val.setData(response_data);
         this.fabricDBinder().transmitBundleData(bundle_val);
     }
 
