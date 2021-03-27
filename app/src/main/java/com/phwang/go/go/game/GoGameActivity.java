@@ -17,8 +17,8 @@ import android.view.MotionEvent;
 
 import com.phwang.go.define.IntentDefine;
 
-public class GoGame extends AppCompatActivity {
-    private static final String TAG = "GoGame";
+public class GoGameActivity extends AppCompatActivity {
+    private static final String TAG = "GoGameActivity";
     private GoGameFunc goGameFunc_;
     private GoGameBoard goBoard_;
     private GoGameView goView_;
@@ -73,7 +73,7 @@ public class GoGame extends AppCompatActivity {
                 this.processTouchInput(x, y);
                 break;
         }
-       return super.onTouchEvent(event);
+        return super.onTouchEvent(event);
     }
 
     public void processTouchInput(int x_val, int y_val) {

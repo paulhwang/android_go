@@ -19,7 +19,7 @@ import com.phwang.go.R;
 public class GoGameView  extends View {
     private static final String TAG = "GoGameView";
 
-    private final GoGame goGame_;
+    private final GoGameActivity goGame_;
     private GoGameBoard goBoard() { return this.goGame_.goBoard(); }
     protected int board(int x_val, int y_val) { return this.goBoard().board(x_val, y_val); }
 
@@ -42,7 +42,7 @@ public class GoGameView  extends View {
 
     public GoGameView(Context context_val) {
         super(context_val);
-        this.goGame_ = (GoGame) context_val;
+        this.goGame_ = (GoGameActivity) context_val;
 
         this.whitePaint.setColor(getResources().getColor(R.color.white));
         this.blackPaint.setColor(getResources().getColor(R.color.black));

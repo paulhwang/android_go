@@ -12,7 +12,6 @@ import android.util.Log;
 
 import com.phwang.core.go.GoDefine;
 import com.phwang.core.utils.Encoders;
-import com.phwang.go.go.game.GoGame;
 
 public class GoGameBoard {
     private static final String TAG = "GoGameBoard";
@@ -23,7 +22,7 @@ public class GoGameBoard {
     public static final int GO_WHITE_STONE = GoDefine.GO_WHITE_STONE;
     public static final int TOTAL_MOVE_SIZE = GoDefine.TOTAL_MOVE_SIZE;
 
-    private GoGame goGame_;
+    private GoGameActivity goGame_;
     private int boardSize_ = 19;
     private final int[][] boardArray_ = new int[20][20];
     private int totalMoves_ = 0;
@@ -36,7 +35,7 @@ public class GoGameBoard {
     protected int nextColor() { return this.nextColor_; };
     protected Boolean isValidMove(int x_val, int y_val) { return (this.boardArray_[x_val][y_val] == 0) ? true : false; }
 
-    public GoGameBoard(GoGame go_game_val) {
+    public GoGameBoard(GoGameActivity go_game_val) {
         this.goGame_ = go_game_val;
     }
 

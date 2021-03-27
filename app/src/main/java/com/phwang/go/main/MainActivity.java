@@ -22,9 +22,9 @@ import android.util.Log;
 
 import com.phwang.go.R;
 import com.phwang.go.define.IntentDefine;
+import com.phwang.go.go.game.GoGameActivity;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.sudoku.SudokuGame;
-import com.phwang.go.go.game.GoGame;
 import com.phwang.go.bind.BindService;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     private void startGoGame(int i) {
         Log.d(TAG, "startGoGame clicked on " + i);
-        Intent intent = new Intent(this, GoGame.class);
+        Intent intent = new Intent(this, GoGameActivity.class);
         startActivity(intent);
     }
 

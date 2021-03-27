@@ -15,7 +15,7 @@ import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
 
 public class MainActivityFunc {
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "MainActivityFunc";
     private MainActivity mainActivity_;
 
     public MainActivityFunc(MainActivity main_activity_val) {
@@ -56,5 +56,4 @@ public class MainActivityFunc {
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.mainActivity_.sendBroadcast(intent);
     }
-
 }

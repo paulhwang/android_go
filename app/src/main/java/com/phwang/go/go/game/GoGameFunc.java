@@ -17,12 +17,12 @@ import com.phwang.go.define.IntentDefine;
 
 public class GoGameFunc {
     private static final String TAG = "GoGameFunc";
-    private GoGame goGame_;
+    private GoGameActivity goGame_;
 
     protected GoGameView goView() { return this.goGame_.goView(); }
     protected GoGameBoard goBoard() { return this.goGame_.goBoard(); }
 
-    protected GoGameFunc(GoGame go_game_val) {
+    protected GoGameFunc(GoGameActivity go_game_val) {
         this.goGame_ = go_game_val;
     }
 

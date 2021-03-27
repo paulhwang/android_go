@@ -19,8 +19,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".go.game.GoGame">
-            android:label = "@string/go_title"
+        <activity android:name=".go.game.GoGameActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

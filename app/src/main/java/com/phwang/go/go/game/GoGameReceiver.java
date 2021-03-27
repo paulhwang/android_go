@@ -15,16 +15,14 @@ import android.os.Bundle;
 import android.util.Log;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
-import com.phwang.go.go.game.GoGame;
-import com.phwang.go.go.game.GoGameFunc;
 
 public class GoGameReceiver extends BroadcastReceiver {
     private static final String TAG = "GoGameReceiver";
-    private GoGame goGameActivity_;
+    private GoGameActivity goGameActivity_;
 
     protected GoGameFunc goGameFunc() { return this.goGameActivity_.goGameFunc(); };
 
-    public GoGameReceiver(GoGame go_game_activity_val) {
+    public GoGameReceiver(GoGameActivity go_game_activity_val) {
         this.goGameActivity_ = go_game_activity_val;
     }
 
