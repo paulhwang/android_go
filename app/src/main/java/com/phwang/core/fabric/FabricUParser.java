@@ -33,60 +33,55 @@ public class FabricUParser {
     }
 
     protected void parseInputPacket(BinderBundle bundle_val) {
-    	String input_str_val = bundle_val.data();
+    	String input_str = bundle_val.data();
+        this.debug(true, "parseInputPacket", "input_str = " + input_str);
+        String rest_str = input_str;
 
-        String rest_str = input_str_val;
         String job_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
 
-        String data_str = rest_str;
-
         String response_data = null;
         
-        this.debug(true, "parseInputPacket", "input_str_val = " + input_str_val);
-        this.debug(false, "parseInputPacket", "data_str = " + data_str);
+        this.debug(false, "parseInputPacket", "data_str = " + rest_str);
         
-        if (data_str.charAt(0) == FabricExport.FABRIC_COMMAND_HTTP_DATA) {
+        if (rest_str.charAt(0) == FabricExport.FABRIC_COMMAND_HTTP_DATA) {
 
         }
 
-        switch (data_str.charAt(0)) {
+        switch (rest_str.charAt(0)) {
             case FabricExport.FABRIC_COMMAND_SETUP_LINK:
-                response_data = this.processSetupLinkRequest(data_str.substring(1));
+                response_data = this.processSetupLinkRequest(rest_str.substring(1));
                 break;
             case FabricExport.FABRIC_COMMAND_REMOVE_LINK:
-                response_data = this.processRemoveLinkRequest(data_str.substring(1));
+                response_data = this.processRemoveLinkRequest(rest_str.substring(1));
                 break;
             case FabricExport.FABRIC_COMMAND_GET_LINK_DATA:
-                response_data = this.processGetLinkDataRequest(data_str.substring(1));
+                response_data = this.processGetLinkDataRequest(rest_str.substring(1));
                 break;
             case FabricExport.FABRIC_COMMAND_GET_NAME_LIST:
-                response_data = this.processGetNameListRequest(data_str.substring(1));
+                response_data = this.processGetNameListRequest(rest_str.substring(1));
                 break;
             case FabricExport.FABRIC_COMMAND_SETUP_SESSION:
-                response_data = this.processSetupSessionRequest(data_str.substring(1));
+                response_data = this.processSetupSessionRequest(rest_str.substring(1));
                 break;
             case FabricExport.FABRIC_COMMAND_SETUP_SESSION2:
-                response_data = this.processSetupSession2Request(data_str.substring(1));
+                response_data = this.processSetupSession2Request(rest_str.substring(1));
                 break;
             case FabricExport.FABRIC_COMMAND_SETUP_SESSION3:
-                response_data = this.processSetupSession3Request(data_str.substring(1));
+                response_data = this.processSetupSession3Request(rest_str.substring(1));
                 break;
             case FabricExport.FABRIC_COMMAND_PUT_SESSION_DATA:
-                response_data = this.processPutSessionDataRequest(data_str.substring(1));
+                response_data = this.processPutSessionDataRequest(rest_str.substring(1));
                 break;
             case FabricExport.FABRIC_COMMAND_GET_SESSION_DATA:
-                response_data = this.processGetSessionDataRequest(data_str.substring(1));
+                response_data = this.processGetSessionDataRequest(rest_str.substring(1));
                 break;
             default:
-        	    this.abend("parseInputPacket", "should not reach here, data=" + input_str_val);
+                response_data = "*** Bad command! Fix it!";
+        	    this.abend("parseInputPacket", "should not reach here, data=" + input_str);
         	    break;
         }
-        
-        if (response_data == null) {
-        	this.abend("parseInputPacket", "response_data is null, data=" + input_str_val);
-        }
-        
+
         bundle_val.setData(job_id_str + response_data);
         this.fabricDBinder().transmitBundleData(bundle_val);
     }
