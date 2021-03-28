@@ -10,14 +10,17 @@ package com.phwang.go.go.game;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 
+import com.phwang.go.R;
 import com.phwang.go.define.IntentDefine;
 
-public class GoGameActivity extends AppCompatActivity {
+public class GoGameActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "GoGameActivity";
     private GoGameActivityFunc goGameFunc_;
     private GoGameBoard goBoard_;
@@ -34,11 +37,16 @@ public class GoGameActivity extends AppCompatActivity {
         this.goBoard_ = new GoGameBoard(this);
         this.goGameFunc_ = new GoGameActivityFunc(this);
 
-        this.goView_ = new GoGameView(this);
-        setContentView(this.goView_);
+        setContentView(R.layout.activity_go_game);
+        this.goView_ = findViewById(R.id.go_game_view);
+
+        //this.goView_ = new GoGameView(this);
+        //setContentView(this.goView_);
+
         this.goView_.requestFocus();
 
         this.registerBroadcastReceiver();
+        this.setupView();
     }
 
     @Override
@@ -55,6 +63,21 @@ public class GoGameActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         this.unregisterBroadcastReceiver();
+    }
+
+    private void setupView() {
+        View exitButton = findViewById(R.id.exit_button);
+        exitButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view_val) {
+        Intent intent;
+        switch (view_val.getId()) {
+            case R.id.exit_button:
+                finish();
+                break;
+        }
     }
 
     @Override

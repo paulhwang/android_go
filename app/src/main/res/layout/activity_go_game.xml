@@ -34,7 +34,7 @@
         <view android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             class="com.phwang.go.go.game.GoGameView"
-            android:id="@+id/view"/>
+            android:id="@+id/go_game_view"/>
 
-</LinearLayout>
+    </LinearLayout>
 </LinearLayout>

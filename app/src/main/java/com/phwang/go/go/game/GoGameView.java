@@ -12,6 +12,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.util.AttributeSet;
 import android.view.View;
 import android.util.Log;
 import com.phwang.go.R;
@@ -40,8 +41,8 @@ public class GoGameView  extends View {
     private final Paint boardPaint = new Paint();
     private final Rect rect = new Rect();
 
-    public GoGameView(Context context_val) {
-        super(context_val);
+    public GoGameView(Context context_val, AttributeSet attrs) {
+        super(context_val, attrs);
         this.goGame_ = (GoGameActivity) context_val;
 
         this.whitePaint.setColor(getResources().getColor(R.color.white));

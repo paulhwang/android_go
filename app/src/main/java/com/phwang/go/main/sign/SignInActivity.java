@@ -18,7 +18,7 @@ import com.phwang.go.R;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.sudoku.SudokuGame;
 
-public class SignInActivity extends AppCompatActivity implements View.OnClickListener{
+public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "SignInActivity";
 
     @Override
