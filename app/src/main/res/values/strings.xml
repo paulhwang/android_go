@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">Go by Paul Hwang</string>
-    
-    <string name="main_title">Go Main Title</string>
+
+    <string name="about_title">About phwang</string>
+    <string name="go_title">Go</string>
+    <string name="main_title">Main Title</string>
+    <string name="sudoku_title">Sudoku</string>
+
+    <string name="new_game_title">Difficutly...</string>
+    <string name="bind_service_title">Go</string>
 
     <string name="about_label">About</string>
     <string name="easy_label">Easy</string>
@@ -9,23 +15,16 @@
     <string name="hard_label">Hard</string>
     <string name="medium_label">Medium</string>
     <string name="play_label">Play</string>
-    <string name="play_go_label">Play Go Game</string>
+    <string name="play_go_label">Play Go</string>
     <string name="play_sudoku_label">Play Sudoku</string>
     <string name="settings_label">Settings...</string>
     <string name="sign_in_label">Sign In</string>
     <string name="sign_up_label">Sign Up</string>
     <string name="test_label">Test</string>
 
-    <string name="about_title">About phwang</string>
     <string name="about_text">Go and Sudoku by Paul Hwang</string>
 
     <string name="settings_shortcut">s</string>
-
-    <string name="new_game_title">Difficutly...</string>
-
-    <string name="sudoku_title">Sudoku</string>
-    <string name="go_title">Go</string>
-    <string name="bind_service_title">Go</string>
 
 
 </resources>
