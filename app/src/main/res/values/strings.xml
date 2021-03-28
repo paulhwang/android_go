@@ -3,7 +3,7 @@
 
     <string name="about_title">About phwang</string>
     <string name="go_title">Go</string>
-    <string name="main_title">Main Title</string>
+    <string name="main_title">Play Go and Sudoku</string>
     <string name="sudoku_title">Sudoku</string>
 
     <string name="new_game_title">Difficutly...</string>
