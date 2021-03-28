@@ -49,7 +49,10 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         Intent intent;
         switch (view_val.getId()) {
             case R.id.go_config_play_button:
-                this.openNewGameDialog();
+                this.do_setup_link("phwang", "good");
+                
+                intent = new Intent(this, GoGameActivity.class);
+                startActivity(intent);
                 break;
         }
         switch (view_val.getId()) {
@@ -57,28 +60,6 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 finish();
                 break;
         }
-    }
-
-    private void openNewGameDialog() {
-        new AlertDialog.Builder(this).setTitle(R.string.new_game_title).setItems(R.array.difficulty, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialoginterface, int i) {
-                startGame(i);
-            }
-        }).show();
-    }
-
-    private void startGame(int i) {
-        if (i == 0) {
-            this.do_setup_link("phwang", "good");
-        }
-
-        this.startGoGame(i);
-    }
-
-    private void startGoGame(int i) {
-        Log.d(TAG, "startGoGame clicked on " + i);
-        Intent intent = new Intent(this, GoGameActivity.class);
-        startActivity(intent);
     }
 
     protected void do_setup_link(String my_name_val, String password_val) {
