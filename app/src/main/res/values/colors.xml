@@ -10,6 +10,9 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="background">#FFFFFFFF</color>
+    <color name="sign_in_background">#E3E3E3</color>
+    <color name="sign_up_background">#E3E3E3</color>
+    <color name="text_color">#333333</color>
 
     <color name="sudoku_background">#FFE6F0FF</color>
     <color name="sudoku_hilite">#FFEFFFFF</color>

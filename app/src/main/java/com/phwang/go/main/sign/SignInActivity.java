@@ -30,15 +30,15 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void setupView() {
-        View exitButton = findViewById(R.id.exit_button);
-        exitButton.setOnClickListener(this);
+        View sign_in_button = findViewById(R.id.sign_in_button);
+        sign_in_button.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view_val) {
         Intent intent;
         switch (view_val.getId()) {
-            case R.id.exit_button:
+            case R.id.sign_in_button:
                 finish();
                 break;
         }

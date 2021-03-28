@@ -8,7 +8,7 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/background"
+    android:background="@color/sign_up_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="50px"
