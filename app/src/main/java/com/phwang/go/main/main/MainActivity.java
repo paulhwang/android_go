@@ -19,12 +19,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.util.Log;
-
 import com.phwang.go.R;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.go.config.GoConfigActivity;
-import com.phwang.go.main.main.MainActivityFunc;
-import com.phwang.go.main.main.MainReceiver;
+import com.phwang.go.main.sign.SetupActivity;
 import com.phwang.go.main.sign.SignInActivity;
 import com.phwang.go.main.sign.SignUpActivity;
 import com.phwang.go.sudoku.config.SudokuConfigActivity;
@@ -83,6 +81,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         View sign_up_button = findViewById(R.id.sign_up_button);
         sign_up_button.setOnClickListener(this);
 
+        View setup_button = findViewById(R.id.setup_button);
+        setup_button.setOnClickListener(this);
+
         View about_button = findViewById(R.id.about_button);
         about_button.setOnClickListener(this);
 
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.play_sudoku_button:
-                intent = new Intent(this, SudokuGame.class);
+                intent = new Intent(this, SudokuConfigActivity.class);
                 startActivity(intent);
                 break;
             case R.id.sign_in_button:
@@ -111,6 +112,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.sign_up_button:
                 intent = new Intent(this, SignUpActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.setup_button:
+                intent = new Intent(this, SetupActivity.class);
                 startActivity(intent);
                 break;
             case R.id.about_button:

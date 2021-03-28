@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.go.sudoku.config;
+package com.phwang.go.main.sign;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,33 +18,26 @@ import com.phwang.go.R;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.sudoku.SudokuGame;
 
-public class SudokuConfigActivity extends AppCompatActivity implements View.OnClickListener{
-    private static final String TAG = "SudokuConfigActivity";
+public class SetupActivity extends AppCompatActivity implements View.OnClickListener{
+    private static final String TAG = "SetupActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_sudoku_config);
+        setContentView(R.layout.activity_setup);
         this.setupView();
     }
 
     private void setupView() {
-        View play_button = findViewById(R.id.play_button);
-        play_button.setOnClickListener(this);
-
-        View exit_button = findViewById(R.id.exit_button);
-        exit_button.setOnClickListener(this);
+        View exitButton = findViewById(R.id.exit_button);
+        exitButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view_val) {
         Intent intent;
         switch (view_val.getId()) {
-            case R.id.play_button:
-                intent = new Intent(this, SudokuGame.class);
-                startActivity(intent);
-                break;
             case R.id.exit_button:
                 finish();
                 break;
