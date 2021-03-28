@@ -25,19 +25,25 @@ public class SudokuConfigActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_sudoku_config);
         this.setupView();
     }
 
     private void setupView() {
-        View exitButton = findViewById(R.id.exit_button);
-        exitButton.setOnClickListener(this);
+        View play_button = findViewById(R.id.play_button);
+        play_button.setOnClickListener(this);
+
+        View exit_button = findViewById(R.id.exit_button);
+        exit_button.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view_val) {
         Intent intent;
         switch (view_val.getId()) {
+            case R.id.play_button:
+                finish();
+                break;
             case R.id.exit_button:
                 finish();
                 break;
