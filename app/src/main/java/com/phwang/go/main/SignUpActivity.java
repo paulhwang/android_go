@@ -18,8 +18,8 @@ import com.phwang.go.R;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.sudoku.SudokuGame;
 
-public class SignInActivity extends AppCompatActivity implements View.OnClickListener{
-    private static final String TAG = "SignInActivity";
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
+    private static final String TAG = "SignUpActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

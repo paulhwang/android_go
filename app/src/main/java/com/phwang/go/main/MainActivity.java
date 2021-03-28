@@ -90,7 +90,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         switch (view_val.getId()) {
             case R.id.play_go_button:
-                this.openNewGameDialog();
+                intent = new Intent(this, GoConfigActivity.class);
+                startActivity(intent);
                 break;
             case R.id.play_sudoku_button:
                 intent = new Intent(this, SudokuGame.class);
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.sign_up_button:
-                intent = new Intent(this, GoConfigActivity.class);
+                intent = new Intent(this, SignUpActivity.class);
                 startActivity(intent);
                 break;
             case R.id.about_button:
@@ -132,6 +133,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else
             this.startSudokuGame(i);
     }
+
     private void startGoGame(int i) {
         Log.d(TAG, "startGoGame clicked on " + i);
         Intent intent = new Intent(this, GoGameActivity.class);
