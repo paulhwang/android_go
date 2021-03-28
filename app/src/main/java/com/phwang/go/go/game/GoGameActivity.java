@@ -82,8 +82,8 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        int x = ((int) event.getX() - this.goView_.gridLen0 + this.goView_.halfGridLen) / this.goView_.gridLen;
-        int y = ((int) event.getY() - this.goView_.viewTop - this.goView_.gridLen0 + this.goView_.halfGridLen) / this.goView_.gridLen;
+        int x = ((int) event.getX() - this.goView_.viewLeft - this.goView_.gridLen0 + this.goView_.halfGridLen) / this.goView_.gridLen;
+        int y = ((int) event.getY() - this.goView_.viewTop  - this.goView_.gridLen0 + this.goView_.halfGridLen) / this.goView_.gridLen;
         Log.e(TAG, "onTouchEvent: x=" + x + " y=" + y);
         switch( event.getAction() ) {
             case MotionEvent.ACTION_DOWN:
