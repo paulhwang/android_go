@@ -23,6 +23,8 @@ import android.util.Log;
 import com.phwang.go.R;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.go.config.GoConfigActivity;
+import com.phwang.go.main.sign.SignInActivity;
+import com.phwang.go.main.sign.SignUpActivity;
 import com.phwang.go.sudoku.config.SudokuConfigActivity;
 import com.phwang.go.go.game.GoGameActivity;
 import com.phwang.go.sudoku.About;
