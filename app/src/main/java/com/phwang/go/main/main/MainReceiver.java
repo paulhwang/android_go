@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.go.main;
+package com.phwang.go.main.main;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

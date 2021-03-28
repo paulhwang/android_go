@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.go.main;
+package com.phwang.go.main.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
@@ -23,6 +23,8 @@ import android.util.Log;
 import com.phwang.go.R;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.go.config.GoConfigActivity;
+import com.phwang.go.main.main.MainActivityFunc;
+import com.phwang.go.main.main.MainReceiver;
 import com.phwang.go.main.sign.SignInActivity;
 import com.phwang.go.main.sign.SignUpActivity;
 import com.phwang.go.sudoku.config.SudokuConfigActivity;

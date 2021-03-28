@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    tools:context=".main.MainActivity">
+    tools:context=".main.main.MainActivity">
 
     <Button
         android:id="@+id/play_go_button"
