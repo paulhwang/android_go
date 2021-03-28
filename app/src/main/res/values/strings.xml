@@ -10,6 +10,7 @@
     <string name="app_name">Go by Paul Hwang</string>
 
     <string name="about_title">About phwang</string>
+    <string name="go_game_title">Go Game</string>
     <string name="go_title">Go</string>
     <string name="main_title">Play Go and Sudoku</string>
     <string name="setup_title">Setup</string>
