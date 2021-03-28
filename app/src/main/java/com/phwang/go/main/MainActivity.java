@@ -23,6 +23,7 @@ import android.util.Log;
 import com.phwang.go.R;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.go.config.GoConfigActivity;
+import com.phwang.go.sudoku.config.SudokuConfigActivity;
 import com.phwang.go.go.game.GoGameActivity;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.sudoku.SudokuGame;
@@ -66,23 +67,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void setupView() {
-        View playGoButton = findViewById(R.id.play_go_button);
-        playGoButton.setOnClickListener(this);
+        View play_go_button = findViewById(R.id.play_go_button);
+        play_go_button.setOnClickListener(this);
 
-        View playSudokuButton = findViewById(R.id.play_sudoku_button);
-        playSudokuButton.setOnClickListener(this);
+        View play_sudoku_button = findViewById(R.id.play_sudoku_button);
+        play_sudoku_button.setOnClickListener(this);
 
-        View signInButton = findViewById(R.id.sign_in_button);
-        signInButton.setOnClickListener(this);
+        View sign_in_button = findViewById(R.id.sign_in_button);
+        sign_in_button.setOnClickListener(this);
 
-        View signUpButton = findViewById(R.id.sign_up_button);
-        signUpButton.setOnClickListener(this);
+        View sign_up_button = findViewById(R.id.sign_up_button);
+        sign_up_button.setOnClickListener(this);
 
-        View AboutButton = findViewById(R.id.about_button);
-        AboutButton.setOnClickListener(this);
+        View about_button = findViewById(R.id.about_button);
+        about_button.setOnClickListener(this);
 
-        View exitButton = findViewById(R.id.exit_button);
-        exitButton.setOnClickListener(this);
+        View test_button = findViewById(R.id.test_button);
+        test_button.setOnClickListener(this);
+
+        View exit_button = findViewById(R.id.exit_button);
+        exit_button.setOnClickListener(this);
     }
 
     @Override
@@ -107,6 +111,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.about_button:
                 intent = new Intent(this, About.class);
+                startActivity(intent);
+                break;
+            case R.id.test_button:
+                intent = new Intent(this, SudokuConfigActivity.class);
                 startActivity(intent);
                 break;
             case R.id.exit_button:

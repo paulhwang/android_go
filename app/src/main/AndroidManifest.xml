@@ -55,6 +55,14 @@
             </intent-filter>
         </service>
 
+        <activity android:name=".sudoku.config.SudokuConfigActivity">
+            android:label = "@string/sudoku_title"
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".sudoku.SudokuGame">
             android:label = "@string/sudoku_title"
             <intent-filter>
