@@ -1,3 +1,10 @@
+<!--
+ ******************************************************************************
+ *
+ *  Copyright (c) 2021 phwang. All rights reserved.
+ *
+ ******************************************************************************
+ -->
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -56,5 +63,3 @@
             android:text="@string/exit_label" />
     </LinearLayout>
 </LinearLayout>
-
-
