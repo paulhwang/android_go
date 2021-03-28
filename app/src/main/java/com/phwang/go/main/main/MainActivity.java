@@ -22,6 +22,7 @@ import android.util.Log;
 import com.phwang.go.R;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.go.config.GoConfigActivity;
+import com.phwang.go.go.game.GoPlayActivity;
 import com.phwang.go.main.sign.SetupActivity;
 import com.phwang.go.main.sign.SignInActivity;
 import com.phwang.go.main.sign.SignUpActivity;
@@ -123,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.test_button:
-                intent = new Intent(this, SudokuConfigActivity.class);
+                intent = new Intent(this, GoPlayActivity.class);
                 startActivity(intent);
                 break;
             case R.id.exit_button:
