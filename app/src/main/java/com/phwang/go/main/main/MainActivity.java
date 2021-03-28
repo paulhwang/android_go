@@ -132,38 +132,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void openNewGameDialog() {
-        new AlertDialog.Builder(this).setTitle(R.string.new_game_title).setItems(R.array.difficulty, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialoginterface, int i) {
-                startGame(i);
-            }
-        }).show();
-    }
-
-    private void startGame(int i) {
-        if (i == 0) {
-            this.mainActivityFunc_.do_setup_link("phwang", "good");
-        }
-
-        if (this.runGo)
-            this.startGoGame(i);
-        else
-            this.startSudokuGame(i);
-    }
-
-    private void startGoGame(int i) {
-        Log.d(TAG, "startGoGame clicked on " + i);
-        Intent intent = new Intent(this, GoGameActivity.class);
-        startActivity(intent);
-    }
-
-    private void startSudokuGame(int i) {
-        Log.d(TAG, "startSudokuGame clicked on " + i);
-        Intent intent = new Intent(this, SudokuGame.class);
-        intent.putExtra(SudokuGame.KEY_DIFFICULTY, i);
-        startActivity(intent);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu_val) {
         super.onCreateOptionsMenu(menu_val);
