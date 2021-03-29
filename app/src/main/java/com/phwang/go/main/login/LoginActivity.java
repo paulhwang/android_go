@@ -35,8 +35,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
-
-        //this.userNameLayout_ = findViewById(R.id.sign_in_username);
+        this.userNameEditText_ = findViewById(R.id.sign_in_username);
+        this.passwordEditText_ = findViewById(R.id.sign_in_password);
         findViewById(R.id.sign_in_confirm_button).setOnClickListener(this);
         findViewById(R.id.sign_in_exit_button).setOnClickListener(this);
 
@@ -48,6 +48,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Intent intent;
         switch (view_val.getId()) {
             case R.id.sign_in_confirm_button:
+                if (this.validateUsername() && this.validatePassword()) {
+                    this.do_setup_link();
+                }
                 finish();
                 break;
             case R.id.sign_in_exit_button:
@@ -56,7 +59,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    protected void do_setup_link(String my_name_val, String password_val) {
+    protected void do_setup_link() {
         if (!validateUsername() || !validatePassword()) {
             return;
         }
@@ -65,8 +68,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.LOGIN_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
         intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SETUP_LINK_STR);
-        intent.putExtra(BundleIndexDefine.MY_NAME, my_name_val);
-        intent.putExtra(BundleIndexDefine.PASSWORD, password_val);
+        intent.putExtra(BundleIndexDefine.MY_NAME, this.userName_);
+        intent.putExtra(BundleIndexDefine.PASSWORD, this.password_);
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
         this.registerBroadcastReceiver();
