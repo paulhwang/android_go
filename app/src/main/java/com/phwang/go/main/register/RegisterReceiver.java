@@ -18,9 +18,9 @@ import com.phwang.go.define.CommandDefine;
 
 public class RegisterReceiver extends BroadcastReceiver {
     private static final String TAG = "RegisterReceiver";
-    private SignUpActivity signUpActivity_;
+    private RegisterActivity signUpActivity_;
 
-    public RegisterReceiver(SignUpActivity sign_up_activity_val) {
+    public RegisterReceiver(RegisterActivity sign_up_activity_val) {
         this.signUpActivity_ = sign_up_activity_val;
     }
 

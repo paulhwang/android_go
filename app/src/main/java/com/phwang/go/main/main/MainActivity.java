@@ -23,7 +23,7 @@ import com.phwang.go.define.IntentDefine;
 import com.phwang.go.go.config.GoConfigActivity;
 import com.phwang.go.main.setup.SetupActivity;
 import com.phwang.go.main.login.LoginActivity;
-import com.phwang.go.main.register.SignUpActivity;
+import com.phwang.go.main.register.RegisterActivity;
 import com.phwang.go.sudoku.config.SudokuConfigActivity;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.services.BindService;
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.sign_up_button:
-                intent = new Intent(this, SignUpActivity.class);
+                intent = new Intent(this, RegisterActivity.class);
                 startActivity(intent);
                 break;
             case R.id.setup_button:

@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".main.register.SignUpActivity">
+        <activity android:name=".main.register.RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
