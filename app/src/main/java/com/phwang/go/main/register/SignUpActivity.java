@@ -14,19 +14,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.textfield.TextInputLayout;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
-import com.phwang.go.main.register.SignUpReceiver;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = "SignUpActivity";
-    private SignUpReceiver signUpReceiver_;
+    private RegisterReceiver registerReceiver_;
     private TextInputLayout textInputEmail;
     private TextInputLayout textInputUsername;
     private TextInputLayout textInputPassword;
@@ -147,18 +144,18 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void registerBroadcastReceiver() {
-        if (this.signUpReceiver_ == null) {
-            this.signUpReceiver_ = new SignUpReceiver(this);
+        if (this.registerReceiver_ == null) {
+            this.registerReceiver_ = new RegisterReceiver(this);
             IntentFilter filter = new IntentFilter();
             filter.addAction(IntentDefine.SIGN_UP_ACTIVITY);
-            this.registerReceiver(this.signUpReceiver_, filter);
+            this.registerReceiver(this.registerReceiver_, filter);
         }
     }
 
     private void unregisterBroadcastReceiver() {
-        if (this.signUpReceiver_ != null) {
-            this.unregisterReceiver(this.signUpReceiver_);
-            this.signUpReceiver_ = null;
+        if (this.registerReceiver_ != null) {
+            this.unregisterReceiver(this.registerReceiver_);
+            this.registerReceiver_ = null;
         }
     }
 }

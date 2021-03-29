@@ -22,11 +22,11 @@ import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
-import com.phwang.go.main.login.SignInReceiver;
+import com.phwang.go.main.login.LoginReceiver;
 
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "SignInActivity";
-    private SignInReceiver signInReceiver_;
+    private LoginReceiver loginReceiver_;
     private TextInputLayout userNameLayout_;
     private EditText userNameEditText_;
     private EditText passwordEditText_;
@@ -124,18 +124,18 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void registerBroadcastReceiver() {
-        if (this.signInReceiver_ == null) {
-            this.signInReceiver_ = new SignInReceiver(this);
+        if (this.loginReceiver_ == null) {
+            this.loginReceiver_ = new LoginReceiver(this);
             IntentFilter filter = new IntentFilter();
             filter.addAction(IntentDefine.SIGN_IN_ACTIVITY);
-            this.registerReceiver(this.signInReceiver_, filter);
+            this.registerReceiver(this.loginReceiver_, filter);
         }
     }
 
     private void unregisterBroadcastReceiver() {
-        if (this.signInReceiver_ != null) {
-            this.unregisterReceiver(this.signInReceiver_);
-            this.signInReceiver_ = null;
+        if (this.loginReceiver_ != null) {
+            this.unregisterReceiver(this.loginReceiver_);
+            this.loginReceiver_ = null;
         }
     }
 }
