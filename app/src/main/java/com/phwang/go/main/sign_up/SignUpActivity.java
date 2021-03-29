@@ -9,6 +9,7 @@
 package com.phwang.go.main.sign_up;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,11 +22,13 @@ import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
+import com.phwang.go.main.main.MainReceiver;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.sudoku.SudokuGame;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = "SignUpActivity";
+    private SignUpReceiver signUpReceiver_;
     private TextInputLayout textInputEmail;
     private TextInputLayout textInputUsername;
     private TextInputLayout textInputPassword;
@@ -45,9 +48,26 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         this.emailEditText_ = findViewById(R.id.sign_up_email);
         this.userNameEditText_ = findViewById(R.id.sign_up_username);
         this.passwordEditText_ = findViewById(R.id.sign_up_password);
-
         findViewById(R.id.sign_up_confirm_button).setOnClickListener(this);
         findViewById(R.id.sign_up_exit_button).setOnClickListener(this);
+
+        this.registerBroadcastReceiver();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        this.unregisterBroadcastReceiver();
     }
 
     @Override
@@ -125,6 +145,22 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         else{
             //nameLayout.setError(null);
             return true;
+        }
+    }
+
+    private void registerBroadcastReceiver() {
+        if (this.signUpReceiver_ == null) {
+            this.signUpReceiver_ = new SignUpReceiver(this);
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(IntentDefine.SIGN_UP_ACTIVITY);
+            this.registerReceiver(this.signUpReceiver_, filter);
+        }
+    }
+
+    private void unregisterBroadcastReceiver() {
+        if (this.signUpReceiver_ != null) {
+            this.unregisterReceiver(this.signUpReceiver_);
+            this.signUpReceiver_ = null;
         }
     }
 }

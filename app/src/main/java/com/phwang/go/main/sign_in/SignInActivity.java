@@ -9,6 +9,7 @@
 package com.phwang.go.main.sign_in;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,11 +22,13 @@ import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
+import com.phwang.go.main.main.MainReceiver;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.sudoku.SudokuGame;
 
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "SignInActivity";
+    private SignInReceiver signInReceiver_;
     private TextInputLayout userNameLayout_;
     private EditText userNameEditText_;
     private EditText passwordEditText_;
@@ -41,6 +44,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         //this.userNameLayout_ = findViewById(R.id.sign_in_username);
         findViewById(R.id.sign_in_confirm_button).setOnClickListener(this);
         findViewById(R.id.sign_in_exit_button).setOnClickListener(this);
+
+        this.registerBroadcastReceiver();
     }
 
     @Override
@@ -69,6 +74,23 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         intent.putExtra(BundleIndexDefine.PASSWORD, password_val);
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
+        this.registerBroadcastReceiver();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        this.unregisterBroadcastReceiver();
     }
 
     private boolean validateUsername() {
@@ -100,6 +122,22 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         else{
             //nameLayout.setError(null);
             return true;
+        }
+    }
+
+    private void registerBroadcastReceiver() {
+        if (this.signInReceiver_ == null) {
+            this.signInReceiver_ = new SignInReceiver(this);
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(IntentDefine.SIGN_IN_ACTIVITY);
+            this.registerReceiver(this.signInReceiver_, filter);
+        }
+    }
+
+    private void unregisterBroadcastReceiver() {
+        if (this.signInReceiver_ != null) {
+            this.unregisterReceiver(this.signInReceiver_);
+            this.signInReceiver_ = null;
         }
     }
 }
