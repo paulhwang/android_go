@@ -30,15 +30,18 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_sign_in);
 
         //this.userNameLayout_ = findViewById(R.id.sign_in_username);
-        View sign_in_button = findViewById(R.id.sign_in_button);
-        sign_in_button.setOnClickListener(this);
+        findViewById(R.id.sign_in_confirm_button).setOnClickListener(this);
+        findViewById(R.id.sign_in_exit_button).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view_val) {
         Intent intent;
         switch (view_val.getId()) {
-            case R.id.sign_in_button:
+            case R.id.sign_in_confirm_button:
+                finish();
+                break;
+            case R.id.sign_in_exit_button:
                 finish();
                 break;
         }

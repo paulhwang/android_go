@@ -24,6 +24,7 @@
     <string name="bind_service_title">Go</string>
 
     <string name="about_label">About</string>
+    <string name="confirm_label">Confirm</string>
     <string name="easy_label">Easy</string>
     <string name="email_label">Email</string>
     <string name="exit_label">Exit</string>
