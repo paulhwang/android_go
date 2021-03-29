@@ -23,6 +23,7 @@ public class BundleIndexDefine {
 
     public static final String MY_NAME = "my_mane";
     public static final String HIS_NAME = "his_mane";
+    public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
 
     public static final String THEME_DATA = "theme_data";

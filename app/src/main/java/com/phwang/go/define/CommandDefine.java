@@ -9,6 +9,7 @@
 package com.phwang.go.define;
 
 public class CommandDefine {
+    public static final char FABRIC_COMMAND_REGISTER = 'R';
     public static final char FABRIC_COMMAND_SETUP_LINK = 'L';
     public static final char FABRIC_COMMAND_REMOVE_LINK = 'l';
     public static final char FABRIC_COMMAND_GET_LINK_DATA = 'D';
@@ -19,6 +20,7 @@ public class CommandDefine {
     public static final char FABRIC_COMMAND_PUT_SESSION_DATA = 'P';
     public static final char FABRIC_COMMAND_GET_SESSION_DATA = 'G';
 
+    public static final String FABRIC_COMMAND_REGISTER_STR = "R";
     public static final String FABRIC_COMMAND_SETUP_LINK_STR = "L";
     public static final String FABRIC_COMMAND_REMOVE_LINK_STR = "l";
     public static final String FABRIC_COMMAND_GET_LINK_DATA_STR = "D";

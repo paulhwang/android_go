@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mainActivityFunc_ = new MainActivityFunc(this);
 
         setContentView(R.layout.activity_main);
         findViewById(R.id.play_go_button).setOnClickListener(this);
@@ -55,8 +54,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.test_button).setOnClickListener(this);
         findViewById(R.id.exit_button).setOnClickListener(this);
 
+        this.mainActivityFunc_ = new MainActivityFunc(this);
         startService(new Intent(this, BindService.class));
-
         this.registerBroadcastReceiver();
     }
 

@@ -18,6 +18,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.phwang.go.R;
+import com.phwang.go.define.BundleIndexDefine;
+import com.phwang.go.define.CommandDefine;
+import com.phwang.go.define.IntentDefine;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.sudoku.SudokuGame;
 
@@ -43,8 +46,40 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         this.userNameEditText_ = findViewById(R.id.sign_up_username);
         this.passwordEditText_ = findViewById(R.id.sign_up_password);
 
-        View sign_up_button = findViewById(R.id.sign_up_button);
-        sign_up_button.setOnClickListener(this);
+        findViewById(R.id.sign_up_button).setOnClickListener(this);
+        findViewById(R.id.exit_button).setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view_val) {
+        switch (view_val.getId()) {
+            case R.id.sign_up_button:
+                //this.registerAccount();
+                finish();
+                break;
+        }
+        switch (view_val.getId()) {
+            case R.id.exit_button:
+                finish();
+                break;
+        }
+    }
+
+    private void registerAccount() {
+        if (!validateEmail() | !validateUsername() | !validatePassword()) {
+            return;
+        }
+
+        Intent intent = new Intent();
+        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
+        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.SIGN_UP_ACTIVITY);
+        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
+        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_REGISTER_STR);
+        intent.putExtra(BundleIndexDefine.MY_NAME, this.userName_);
+        intent.putExtra(BundleIndexDefine.EMAIL, this.email_);
+        intent.putExtra(BundleIndexDefine.PASSWORD, this.password_);
+        intent.setAction(IntentDefine.BIND_SERVICE);
+        this.sendBroadcast(intent);
     }
 
     private boolean validateEmail() {
@@ -60,6 +95,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             return true;
         }
     }
+
     private boolean validateUsername() {
         this.userName_ = this.userNameEditText_.getText().toString();
         Log.e(TAG, "username=" + this.userName_);
@@ -89,23 +125,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         else{
             //nameLayout.setError(null);
             return true;
-        }
-    }
-
-    public void confirmInput() {
-        if (!validateEmail() | !validateUsername() | !validatePassword()) {
-            return;
-        }
-    }
-
-    @Override
-    public void onClick(View view_val) {
-        this.confirmInput();
-        Intent intent;
-        switch (view_val.getId()) {
-            case R.id.sign_up_button:
-                finish();
-                break;
         }
     }
 }
