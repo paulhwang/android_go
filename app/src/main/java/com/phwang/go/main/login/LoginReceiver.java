@@ -18,9 +18,9 @@ import com.phwang.go.define.CommandDefine;
 
 public class LoginReceiver extends BroadcastReceiver {
     private static final String TAG = "LoginReceiver";
-    private SignInActivity signInActivity_;
+    private LoginActivity signInActivity_;
 
-    public LoginReceiver(SignInActivity sign_in_activity_val) {
+    public LoginReceiver(LoginActivity sign_in_activity_val) {
         this.signInActivity_ = sign_in_activity_val;
     }
 

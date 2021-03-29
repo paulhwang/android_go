@@ -14,18 +14,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.textfield.TextInputLayout;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
-import com.phwang.go.main.login.LoginReceiver;
 
-public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = "SignInActivity";
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = "LoginActivity";
     private LoginReceiver loginReceiver_;
     private TextInputLayout userNameLayout_;
     private EditText userNameEditText_;
@@ -65,7 +62,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         }
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
-        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.SIGN_IN_ACTIVITY);
+        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.LOGIN_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
         intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SETUP_LINK_STR);
         intent.putExtra(BundleIndexDefine.MY_NAME, my_name_val);
@@ -127,7 +124,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         if (this.loginReceiver_ == null) {
             this.loginReceiver_ = new LoginReceiver(this);
             IntentFilter filter = new IntentFilter();
-            filter.addAction(IntentDefine.SIGN_IN_ACTIVITY);
+            filter.addAction(IntentDefine.LOGIN_ACTIVITY);
             this.registerReceiver(this.loginReceiver_, filter);
         }
     }
