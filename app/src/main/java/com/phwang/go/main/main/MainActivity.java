@@ -9,8 +9,7 @@
 package com.phwang.go.main.main;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.content.Intent;
@@ -18,18 +17,15 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.util.Log;
+
 import com.phwang.go.R;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.go.config.GoConfigActivity;
-import com.phwang.go.go.game.GoPlayActivity;
-import com.phwang.go.main.sign.SetupActivity;
-import com.phwang.go.main.sign.SignInActivity;
-import com.phwang.go.main.sign.SignUpActivity;
+import com.phwang.go.main.setup.SetupActivity;
+import com.phwang.go.main.sign_in.SignInActivity;
+import com.phwang.go.main.sign_up.SignUpActivity;
 import com.phwang.go.sudoku.config.SudokuConfigActivity;
-import com.phwang.go.go.game.GoGameActivity;
 import com.phwang.go.sudoku.About;
-import com.phwang.go.sudoku.SudokuGame;
 import com.phwang.go.services.BindService;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {

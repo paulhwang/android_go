@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.go.main.sign;
+package com.phwang.go.main.sign_in;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -19,21 +19,21 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".main.sign.SignInActivity">
+        <activity android:name=".main.sign_in.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".main.sign.SignUpActivity">
+        <activity android:name=".main.sign_up.SignUpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".main.sign.SetupActivity">
+        <activity android:name=".main.setup.SetupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
