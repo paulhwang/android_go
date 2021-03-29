@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_register);
 
         this.emailEditText_ = findViewById(R.id.sign_up_email);
         this.userNameEditText_ = findViewById(R.id.sign_up_username);
