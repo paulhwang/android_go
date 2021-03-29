@@ -31,7 +31,6 @@ public class BindUClient {
 
     public void doSetupLink(String my_name_val, String password_val) {
         this.debug(false, "doSetupLink", "doSetupLink");
-        this.clientFabricInfo().setMyName(my_name_val);
         this.clientDExport().setupLink(my_name_val, password_val);
     }
 

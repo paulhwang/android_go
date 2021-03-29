@@ -36,7 +36,7 @@ public class ClientDExport implements ClientDExportInt {
     }
     
     public void setupLink(String my_name_val, String password_val) {
-    	this.debug(false, "setupLink", "name=" + this.clientFabricInfo().myName());
+    	this.debug(false, "setupLink", "name=" + my_name_val);
     	
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(ClientImport.FABRIC_COMMAND_SETUP_LINK);
