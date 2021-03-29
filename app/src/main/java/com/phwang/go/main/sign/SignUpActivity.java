@@ -46,20 +46,20 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         this.userNameEditText_ = findViewById(R.id.sign_up_username);
         this.passwordEditText_ = findViewById(R.id.sign_up_password);
 
-        findViewById(R.id.sign_up_button).setOnClickListener(this);
-        findViewById(R.id.exit_button).setOnClickListener(this);
+        findViewById(R.id.sign_up_confirm_button).setOnClickListener(this);
+        findViewById(R.id.sign_up_exit_button).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view_val) {
         switch (view_val.getId()) {
-            case R.id.sign_up_button:
+            case R.id.sign_up_confirm_button:
                 //this.registerAccount();
                 finish();
                 break;
         }
         switch (view_val.getId()) {
-            case R.id.exit_button:
+            case R.id.sign_up_exit_button:
                 finish();
                 break;
         }
