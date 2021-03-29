@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         findViewById(R.id.play_go_button).setOnClickListener(this);
         findViewById(R.id.play_sudoku_button).setOnClickListener(this);
-        findViewById(R.id.sign_in_button).setOnClickListener(this);
-        findViewById(R.id.sign_up_button).setOnClickListener(this);
+        findViewById(R.id.login_button).setOnClickListener(this);
+        findViewById(R.id.register_button).setOnClickListener(this);
         findViewById(R.id.setup_button).setOnClickListener(this);
         findViewById(R.id.about_button).setOnClickListener(this);
         findViewById(R.id.test_button).setOnClickListener(this);
@@ -83,11 +83,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(this, SudokuConfigActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.sign_in_button:
+            case R.id.login_button:
                 intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.sign_up_button:
+            case R.id.register_button:
                 intent = new Intent(this, RegisterActivity.class);
                 startActivity(intent);
                 break;
