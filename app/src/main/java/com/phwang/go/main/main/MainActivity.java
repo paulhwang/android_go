@@ -46,7 +46,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.mainActivityFunc_ = new MainActivityFunc(this);
 
         setContentView(R.layout.activity_main);
-        this.setupView();
+        findViewById(R.id.play_go_button).setOnClickListener(this);
+        findViewById(R.id.play_sudoku_button).setOnClickListener(this);
+        findViewById(R.id.sign_in_button).setOnClickListener(this);
+        findViewById(R.id.sign_up_button).setOnClickListener(this);
+        findViewById(R.id.setup_button).setOnClickListener(this);
+        findViewById(R.id.about_button).setOnClickListener(this);
+        findViewById(R.id.test_button).setOnClickListener(this);
+        findViewById(R.id.exit_button).setOnClickListener(this);
 
         startService(new Intent(this, BindService.class));
 
@@ -67,32 +74,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onDestroy() {
         super.onDestroy();
         this.unregisterBroadcastReceiver();
-    }
-
-    private void setupView() {
-        View play_go_button = findViewById(R.id.play_go_button);
-        play_go_button.setOnClickListener(this);
-
-        View play_sudoku_button = findViewById(R.id.play_sudoku_button);
-        play_sudoku_button.setOnClickListener(this);
-
-        View sign_in_button = findViewById(R.id.sign_in_button);
-        sign_in_button.setOnClickListener(this);
-
-        View sign_up_button = findViewById(R.id.sign_up_button);
-        sign_up_button.setOnClickListener(this);
-
-        View setup_button = findViewById(R.id.setup_button);
-        setup_button.setOnClickListener(this);
-
-        View about_button = findViewById(R.id.about_button);
-        about_button.setOnClickListener(this);
-
-        View test_button = findViewById(R.id.test_button);
-        test_button.setOnClickListener(this);
-
-        View exit_button = findViewById(R.id.exit_button);
-        exit_button.setOnClickListener(this);
     }
 
     @Override
