@@ -26,19 +26,14 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_setup);
-        this.setupView();
-    }
-
-    private void setupView() {
-        View exitButton = findViewById(R.id.exit_button);
-        exitButton.setOnClickListener(this);
+        findViewById(R.id.setup_exit_button).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view_val) {
         Intent intent;
         switch (view_val.getId()) {
-            case R.id.exit_button:
+            case R.id.setup_exit_button:
                 finish();
                 break;
         }
