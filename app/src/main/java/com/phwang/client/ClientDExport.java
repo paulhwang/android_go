@@ -35,14 +35,14 @@ public class ClientDExport implements ClientDExportInt {
        	this.uBinder().transmitStringData(data_str_val);
     }
     
-    public void setupLink() {
+    public void setupLink(String my_name_val, String password_val) {
     	this.debug(false, "setupLink", "name=" + this.clientFabricInfo().myName());
     	
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(ClientImport.FABRIC_COMMAND_SETUP_LINK);
         command_buf.append(ClientImport.CLIENT_IS_ANDROID);
-        command_buf.append(Encoders.sEncode2(this.clientFabricInfo().myName()));
-        command_buf.append(Encoders.sEncode2(this.clientFabricInfo().password()));
+        command_buf.append(Encoders.sEncode2(my_name_val));
+        command_buf.append(Encoders.sEncode2(password_val));
         String command_str = command_buf.toString();
         
     	this.debug(false, "setupLink", "command_str=" + command_str);

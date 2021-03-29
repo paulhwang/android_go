@@ -9,7 +9,7 @@
 package com.phwang.client;
 
 public interface ClientDExportInt {
-    public void setupLink();
+    public void setupLink(String my_name_val, String password_val);
     public void removeLink();
     public void getLinkData();
     public void getNameList();
