@@ -52,8 +52,7 @@ public class BindUClient {
 
     public void doSetupSession(String his_name_val, String session_setup_data_val) {
         this.debug(true, "doSetupSession", "doSetupSession");
-        this.clientFabricInfo().setHisName(his_name_val);
-        this.clientDExport().setupSession();
+        this.clientDExport().setupSession(his_name_val, session_setup_data_val);
     }
 
     public void doSetupSession2() {
