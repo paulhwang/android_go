@@ -66,7 +66,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void registerAccount() {
-        if (!validateEmail() | !validateUsername() | !validatePassword()) {
+        if (!validateEmail() || !validateUsername() || !validatePassword()) {
             return;
         }
 
