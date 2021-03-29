@@ -19,14 +19,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".main.sign_in.SignInActivity">
+        <activity android:name=".main.login.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".main.sign_up.SignUpActivity">
+        <activity android:name=".main.register.SignUpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

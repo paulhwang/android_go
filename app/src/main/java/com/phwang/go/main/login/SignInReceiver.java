@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.go.main.sign_up;
+package com.phwang.go.main.login;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -16,12 +16,12 @@ import android.util.Log;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 
-public class SignUpReceiver extends BroadcastReceiver {
-    private static final String TAG = "SignUpReceiver";
-    private SignUpActivity signUpActivity_;
+public class SignInReceiver extends BroadcastReceiver {
+    private static final String TAG = "SignInReceiver";
+    private SignInActivity signInActivity_;
 
-    public SignUpReceiver(SignUpActivity sign_up_activity_val) {
-        this.signUpActivity_ = sign_up_activity_val;
+    public SignInReceiver(SignInActivity sign_in_activity_val) {
+        this.signInActivity_ = sign_in_activity_val;
     }
 
     @Override
@@ -46,7 +46,7 @@ public class SignUpReceiver extends BroadcastReceiver {
         }
 
         switch (command.charAt(0)) {
-            case CommandDefine.FABRIC_COMMAND_REGISTER:
+            case CommandDefine.FABRIC_COMMAND_SETUP_LINK:
                 break;
             default:
                 break;

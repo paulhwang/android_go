@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.go.main.sign_up;
+package com.phwang.go.main.register;
 
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -22,9 +22,7 @@ import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
-import com.phwang.go.main.main.MainReceiver;
-import com.phwang.go.sudoku.About;
-import com.phwang.go.sudoku.SudokuGame;
+import com.phwang.go.main.register.SignUpReceiver;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = "SignUpActivity";
