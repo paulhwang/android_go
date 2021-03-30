@@ -31,6 +31,9 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_go_config);
+        findViewById(R.id.go_config_solo9_button).setOnClickListener(this);
+        findViewById(R.id.go_config_solo13_button).setOnClickListener(this);
+        findViewById(R.id.go_config_solo19_button).setOnClickListener(this);
         findViewById(R.id.go_config_play_button).setOnClickListener(this);
         findViewById(R.id.go_config_exit_button).setOnClickListener(this);
         this.registerBroadcastReceiver();
@@ -56,11 +59,15 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view_val) {
         Intent intent;
         switch (view_val.getId()) {
+            case R.id.go_config_solo9_button:
+                this.do_setup_session("phwang", "00000000G111111");
+            case R.id.go_config_solo13_button:
+                this.do_setup_session("phwang", "00000000G111111");
+            case R.id.go_config_solo19_button:
+                this.do_setup_session("phwang", "00000000G111111");
             case R.id.go_config_play_button:
                 this.do_setup_session("phwang", "00000000G111111");
                 break;
-        }
-        switch (view_val.getId()) {
             case R.id.go_config_exit_button:
                 finish();
                 break;
