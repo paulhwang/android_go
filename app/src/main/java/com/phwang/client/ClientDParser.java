@@ -108,21 +108,25 @@ public class ClientDParser {
     }
 
     private void parserSetupSessionResponse(String input_str_val) {
-    	this.debug(true, "parserSetupSessionResponse", "input_str_val=" + input_str_val);
-    	
-        String rest_str = input_str_val;
-        String link_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
+    	this.debug(false, "parserSetupSessionResponse", "input_str_val=" + input_str_val);
 
-        this.debug(true, "parserSetupSessionResponse", "rest_str=" + rest_str);
+        String result_str = input_str_val.substring(0, 1);
 
-        String session_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
+        if (result_str.charAt(0) == ClientFabricResultImport.SUCCEED) {
+            String rest_str = input_str_val.substring(1);
+            String link_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
 
-        this.debug(true, "parserSetupSessionResponse", "session_id_str=" + session_id_str);
+            this.debug(false, "parserSetupSessionResponse", "rest_str=" + rest_str);
 
-        this.clientFabricInfo().setSessionIdStr(session_id_str);
-    	this.importInterface().handleSetupSessionResponse("0");
+            String session_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
+
+            this.debug(false, "parserSetupSessionResponse", "session_id_str=" + session_id_str);
+
+            this.clientFabricInfo().setSessionIdStr(session_id_str);
+            this.importInterface().handleSetupSessionResponse(result_str);
+        }
     }
 
     private void parserSetupSession2Response(String input_str_val) {

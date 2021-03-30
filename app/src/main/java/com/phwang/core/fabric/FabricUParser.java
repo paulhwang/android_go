@@ -304,7 +304,7 @@ public class FabricUParser {
             his_link.setPendingSessionSetup(his_link.linkIdStr() + his_session.lSessionIdStr(), theme_data);
         }
 
-        String response_data = this.generateSetupSessionResponse(link.linkIdStr(), session.lSessionIdStr());
+        String response_data = this.generateSetupSessionResponse(FabricResultExport.SUCCEED, link.linkIdStr(), session.lSessionIdStr());
         return response_data;
     }
 
@@ -323,9 +323,10 @@ public class FabricUParser {
         return error_msg_val;
     }
 
-    protected String generateSetupSessionResponse(String link_id_str_val, String session_id_str_val) {
+    protected String generateSetupSessionResponse(char result_val, String link_id_str_val, String session_id_str_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_SETUP_SESSION); 
+        response_buf.append(FabricExport.FABRIC_COMMAND_SETUP_SESSION);
+        response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(session_id_str_val);
         return response_buf.toString();
