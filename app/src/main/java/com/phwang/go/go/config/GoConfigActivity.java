@@ -11,37 +11,45 @@ package com.phwang.go.go.config;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.go.game.GoGameActivity;
-import com.phwang.go.sudoku.About;
-import com.phwang.go.sudoku.SudokuGame;
 
 public class GoConfigActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = "GoConfigActivity";
+    private GoConfigReceiver goConfigReceiver_;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_go_config);
-        this.setupView();
+        findViewById(R.id.go_config_play_button).setOnClickListener(this);
+        findViewById(R.id.go_config_exit_button).setOnClickListener(this);
+        this.registerBroadcastReceiver();
     }
 
-    private void setupView() {
-        View play_button = findViewById(R.id.go_config_play_button);
-        play_button.setOnClickListener(this);
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 
-        View exit_button = findViewById(R.id.go_config_exit_button);
-        exit_button.setOnClickListener(this);
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        this.unregisterBroadcastReceiver();
     }
 
     @Override
@@ -72,5 +80,21 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         intent.putExtra(BundleIndexDefine.THEME_DATA, theme_data_val);
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
+    }
+
+    private void registerBroadcastReceiver() {
+        if (this.goConfigReceiver_ == null) {
+            this.goConfigReceiver_ = new GoConfigReceiver(this);
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(IntentDefine.GO_CONFIG_ACTIVITY);
+            this.registerReceiver(this.goConfigReceiver_, filter);
+        }
+    }
+
+    private void unregisterBroadcastReceiver() {
+        if (this.goConfigReceiver_ != null) {
+            this.unregisterReceiver(this.goConfigReceiver_);
+            this.goConfigReceiver_ = null;
+        }
     }
 }

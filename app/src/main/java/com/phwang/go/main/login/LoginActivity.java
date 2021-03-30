@@ -44,6 +44,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        this.unregisterBroadcastReceiver();
+    }
+
+    @Override
     public void onClick(View view_val) {
         Intent intent;
         switch (view_val.getId()) {
@@ -73,22 +89,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
         this.registerBroadcastReceiver();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        this.unregisterBroadcastReceiver();
     }
 
     private boolean validateUsername() {

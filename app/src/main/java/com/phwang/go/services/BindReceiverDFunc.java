@@ -42,7 +42,7 @@ public class BindReceiverDFunc {
                 break;
 
             case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
-                this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data);
+                this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data);
                 break;
 
             case CommandDefine.FABRIC_COMMAND_SETUP_SESSION3:

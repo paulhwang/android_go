@@ -12,7 +12,10 @@ import android.content.Context;
 
 import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientFabricInfo;
+import com.phwang.client.ClientFabricResultImport;
 import com.phwang.core.utils.Abend;
+import com.phwang.go.define.CommandDefine;
+import com.phwang.go.define.IntentDefine;
 
 public class BindUClient {
     private String objectName() {return "BindUClient";}
@@ -50,7 +53,16 @@ public class BindUClient {
     }
 
     public void doSetupSession(String his_name_val, String session_setup_data_val) {
-        this.debug(true, "doSetupSession", "doSetupSession");
+        this.debug(true, "doSetupSession", "data=" + session_setup_data_val);
+        if (this.clientFabricInfo().linkIdStr() == null) {
+            this.bindDClient_.sendBroadcastMessage(
+                    IntentDefine.BIND_SERVICE,
+                    CommandDefine.FABRIC_COMMAND_SETUP_SESSION_STR,
+                    ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
+                    null);
+
+            return;
+        }
         this.clientDExport().setupSession(his_name_val, session_setup_data_val);
     }
 

@@ -14,4 +14,6 @@ public class ClientFabricResultImport {
     public static final char SUCCEED = FabricResultExport.SUCCEED;
     public static final char FAIL_ACCOUNT_EXIST = FabricResultExport.FAIL_ACCOUNT_EXIST;
     public static final char FAIL_PASSWORD = FabricResultExport.FAIL_PASSWORD;
+
+    public static final String FAIL_LINK_NOT_EXIST = "a";
 }
