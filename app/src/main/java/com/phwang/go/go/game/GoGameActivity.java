@@ -66,15 +66,38 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void setupView() {
-        View exitButton = findViewById(R.id.exit_button);
-        exitButton.setOnClickListener(this);
+        findViewById(R.id.go_game_b_button).setOnClickListener(this);
+        findViewById(R.id.go_game_bb_button).setOnClickListener(this);
+        findViewById(R.id.go_game_f_button).setOnClickListener(this);
+        findViewById(R.id.go_game_ff_button).setOnClickListener(this);
+        findViewById(R.id.go_game_pass_button).setOnClickListener(this);
+        findViewById(R.id.go_game_resign_button).setOnClickListener(this);
+        findViewById(R.id.go_game_exit_button).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view_val) {
         Intent intent;
         switch (view_val.getId()) {
-            case R.id.exit_button:
+            case R.id.go_game_b_button:
+                finish();
+                break;
+            case R.id.go_game_bb_button:
+                finish();
+                break;
+            case R.id.go_game_f_button:
+                finish();
+                break;
+            case R.id.go_game_ff_button:
+                finish();
+                break;
+            case R.id.go_game_pass_button:
+                finish();
+                break;
+            case R.id.go_game_resign_button:
+                finish();
+                break;
+            case R.id.go_game_exit_button:
                 finish();
                 break;
         }

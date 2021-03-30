@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
  ******************************************************************************
  *
@@ -26,11 +27,53 @@
             android:layout_margin="10px"
             android:textSize="24sp"
             android:layout_gravity="center"/>
-        <Button
-            android:id="@+id/exit_button"
-            android:layout_width="match_parent"
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/exit_label" />
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/go_game_bb_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FF" />
+            <Button
+                android:id="@+id/go_game_b_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/exit_label" />
+            <Button
+                android:id="@+id/go_game_f_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FF" />
+            <Button
+                android:id="@+id/go_game_ff_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FF" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/go_game_pass_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pass" />
+            <Button
+                android:id="@+id/go_game_resign_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Resign" />
+            <Button
+                android:id="@+id/go_game_exit_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/exit_label" />
+        </LinearLayout>
+
         <view android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             class="com.phwang.go.go.game.GoGameView"
