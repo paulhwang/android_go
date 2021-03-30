@@ -20,14 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top">
-        <TextView
-            android:text="@string/go_game_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10px"
-            android:textSize="24sp"
-            android:layout_gravity="center"/>
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,17 +28,17 @@
                 android:id="@+id/go_game_bb_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="FF" />
+                android:text="BB" />
             <Button
                 android:id="@+id/go_game_b_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/exit_label" />
+                android:text="B" />
             <Button
                 android:id="@+id/go_game_f_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="FF" />
+                android:text="F" />
             <Button
                 android:id="@+id/go_game_ff_button"
                 android:layout_width="match_parent"
@@ -73,11 +65,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/exit_label" />
         </LinearLayout>
-
         <view android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             class="com.phwang.go.go.game.GoGameView"
             android:id="@+id/go_game_view"/>
-
     </LinearLayout>
 </LinearLayout>

@@ -426,7 +426,7 @@ public class FabricUParser {
     }
 
     private String processPutSessionDataRequest(String input_str_val) {
-        this.debug(false, "processPutSessionDataRequest", "input_str_val = " + input_str_val);
+        this.debug(true, "processPutSessionDataRequest", "input_str_val = " + input_str_val);
     	//String xmt_seq_str = null;
         
         String rest_str = input_str_val;

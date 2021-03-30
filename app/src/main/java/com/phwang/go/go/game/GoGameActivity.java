@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.phwang.core.utils.Encoders;
 import com.phwang.go.R;
 import com.phwang.go.define.IntentDefine;
 
@@ -80,19 +81,19 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         Intent intent;
         switch (view_val.getId()) {
             case R.id.go_game_b_button:
-                finish();
+                this.goGameFunc_.do_put_session_data(Encoders.sEncode2("Gb"));
                 break;
             case R.id.go_game_bb_button:
-                finish();
+                this.goGameFunc_.do_put_session_data(Encoders.sEncode2("GB"));
                 break;
             case R.id.go_game_f_button:
-                finish();
+                this.goGameFunc_.do_put_session_data(Encoders.sEncode2("Gf"));
                 break;
             case R.id.go_game_ff_button:
-                finish();
+                this.goGameFunc_.do_put_session_data(Encoders.sEncode2("GF"));
                 break;
             case R.id.go_game_pass_button:
-                finish();
+                this.goGameFunc_.do_put_session_data(Encoders.sEncode2("GP"));
                 break;
             case R.id.go_game_resign_button:
                 finish();
