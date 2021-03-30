@@ -10,11 +10,11 @@ package com.phwang.client;
 
 public interface ClientDImportInt {
 	public void handleSetupLinkResponse(String result_str_val);
-	public void handleGetLinkDataResponse();
+	public void handleGetLinkDataResponse(String result_str_val);
 	public void handleGetNameListResponse();
 	public void handleSetupSessionResponse(String result_str_val);
 	public void handleSetupSession2Response();
 	public void handleSetupSession3Response();
-	public void handlePutSessionDataResponse();
+	public void handlePutSessionDataResponse(String result_str_val);
 	public void handleGetSessionDataResponse(String result_str_val, String data_val);
 }

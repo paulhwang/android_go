@@ -62,9 +62,13 @@ public class BindDClient implements ClientDImportInt {
 
     }
 
-    public void handleGetLinkDataResponse() {
+    public void handleGetLinkDataResponse(String result_str_val) {
         this.debug(true, "handleGetLinkDataResponse", "handleGetLinkDataResponse");
-
+        this.sendBroadcastMessage(
+                IntentDefine.BIND_SERVICE,
+                CommandDefine.FABRIC_COMMAND_GET_LINK_DATA_STR,
+                result_str_val,
+                null);
     }
 
     public void handleGetNameListResponse() {
@@ -95,12 +99,12 @@ public class BindDClient implements ClientDImportInt {
                 null);
     }
 
-    public void handlePutSessionDataResponse() {
+    public void handlePutSessionDataResponse(String result_str_val) {
         this.debug(true, "handlePutSessionDataResponse", "handlePutSessionDataResponse");
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
                 CommandDefine.FABRIC_COMMAND_PUT_SESSION_DATA_STR,
-                ResultDefine.SUCCEED,
+                result_str_val,
                 null);
     }
 

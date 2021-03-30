@@ -80,18 +80,22 @@ public class ClientDParser {
 
     private void parserGetLinkDataResponse(String input_str_val) {
     	this.debug(false, "parserGetLinkDataResponse", "input_str_val=" + input_str_val);
-    	
-        String rest_str = input_str_val;
-        String link_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
 
-        String data = Encoders.sDecode2(rest_str);
-        rest_str = Encoders.sDecode2_(rest_str);
+        String result_str = input_str_val.substring(0, 1);
 
-        String pending_session_setup = Encoders.sDecode2(rest_str);
-        //rest_str = Encoders.sDecode2_(rest_str);
+        if (result_str.charAt(0) == ClientFabricResultImport.SUCCEED) {
+            String rest_str = input_str_val.substring(1);
+            String link_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
 
-    	this.importInterface().handleGetLinkDataResponse();
+            String data = Encoders.sDecode2(rest_str);
+            rest_str = Encoders.sDecode2_(rest_str);
+
+            String pending_session_setup = Encoders.sDecode2(rest_str);
+            //rest_str = Encoders.sDecode2_(rest_str);
+
+            this.importInterface().handleGetLinkDataResponse(result_str);
+        }
     }
 
     private void parserGetNameListResponse(String input_str_val) {
@@ -163,18 +167,22 @@ public class ClientDParser {
 
     private void parserPutSessionDataResponse(String input_str_val) {
     	this.debug(false, "parserPutSessionDataResponse", "input_str_val=" + input_str_val);
-    	
-        String rest_str = input_str_val;
-        String link_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
 
-        String session_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
+        String result_str = input_str_val.substring(0, 1);
 
-        String c_data = Encoders.sDecode2(rest_str);
-        //rest_str = Encoders.sDecode2_(rest_str);
+        if (result_str.charAt(0) == ClientFabricResultImport.SUCCEED) {
+            String rest_str = input_str_val.substring(1);
+            String link_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
 
-    	this.importInterface().handlePutSessionDataResponse();
+            String session_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
+
+            String c_data = Encoders.sDecode2(rest_str);
+            //rest_str = Encoders.sDecode2_(rest_str);
+
+            this.importInterface().handlePutSessionDataResponse(result_str);
+        }
     }
 
     private void parserGetSessionDataResponse(String input_str_val) {

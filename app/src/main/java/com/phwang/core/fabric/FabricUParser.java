@@ -195,7 +195,7 @@ public class FabricUParser {
 
         downlink_data = downlink_data + pending_session_setup;
 
-        String response_data = this.generateGetLinkDataResponse(link.linkIdStr(), downlink_data, pending_session_setup);
+        String response_data = this.generateGetLinkDataResponse(FabricResultExport.SUCCEED, link.linkIdStr(), downlink_data, pending_session_setup);
         return response_data;
     }
 
@@ -203,9 +203,10 @@ public class FabricUParser {
         return error_msg_val;
     }
 
-    public String generateGetLinkDataResponse(String link_id_str_val, String data_val, String pending_session_setup_val) {
+    public String generateGetLinkDataResponse(char result_val, String link_id_str_val, String data_val, String pending_session_setup_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_GET_LINK_DATA); 
+        response_buf.append(FabricExport.FABRIC_COMMAND_GET_LINK_DATA);
+        response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(Encoders.sEncode2(data_val));
         response_buf.append(Encoders.sEncode2(pending_session_setup_val));
@@ -468,7 +469,7 @@ public class FabricUParser {
         this.fabricUBinder().transmitData(buf.toString());
 
         /* send the response down */
-        String response_data = this.generatePutSessionDataResponse(link.linkIdStr(), session.lSessionIdStr(), "job is done");
+        String response_data = this.generatePutSessionDataResponse(FabricResultExport.SUCCEED, link.linkIdStr(), session.lSessionIdStr(), "job is done");
         return response_data;
     }
 
@@ -476,9 +477,10 @@ public class FabricUParser {
         return error_msg_val;
     }
 
-    protected String generatePutSessionDataResponse(String link_id_str_val, String session_id_str_val, String c_data_val) {
+    protected String generatePutSessionDataResponse(char result_val, String link_id_str_val, String session_id_str_val, String c_data_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_PUT_SESSION_DATA); 
+        response_buf.append(FabricExport.FABRIC_COMMAND_PUT_SESSION_DATA);
+        response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(session_id_str_val);
         response_buf.append(Encoders.sEncode2(c_data_val));
