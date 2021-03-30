@@ -8,10 +8,10 @@
 
 package com.phwang.client;
 
-import com.phwang.core.fabric.FabricExport;
+import com.phwang.core.fabric.FabricResultExport;
 
 public class ClientFabricResultImport {
-    public static final char FABRIC_RESULT_SUCCEED = FabricExport.FABRIC_RESULT_SUCCEED;
-    public static final char FABRIC_RESULT_ACCOUNT_NOT_EXIST = FabricExport.FABRIC_RESULT_ACCOUNT_NOT_EXIST;
-    public static final char FABRIC_RESULT_PASSWORD_NOT_GOOD = FabricExport.FABRIC_RESULT_PASSWORD_NOT_GOOD;
+    public static final char SUCCEED = FabricResultExport.SUCCEED;
+    public static final char FAIL_ACCOUNT_EXIST = FabricResultExport.FAIL_ACCOUNT_EXIST;
+    public static final char FAIL_PASSWORD = FabricResultExport.FAIL_PASSWORD;
 }

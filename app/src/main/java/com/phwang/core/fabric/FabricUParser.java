@@ -107,7 +107,7 @@ public class FabricUParser {
         	this.abend("processSetupLinkRequest", "link is null");
         	return null;
         }
-        String response_data = this.generateSetupLinkResponse(FabricExport.FABRIC_RESULT_SUCCEED, link.linkIdStr(), link.myName());
+        String response_data = this.generateSetupLinkResponse(FabricResultExport.SUCCEED, link.linkIdStr(), link.myName());
         return response_data;
     }
     

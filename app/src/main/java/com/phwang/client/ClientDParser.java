@@ -64,7 +64,7 @@ public class ClientDParser {
 
     	String result_str = input_str_val.substring(0, 1);
 
-    	if (result_str.charAt(0) == ClientImport.FABRIC_RESULT_SUCCEED) {
+    	if (result_str.charAt(0) == ClientFabricResultImport.SUCCEED) {
             String rest_str = input_str_val.substring(1);
             String link_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
