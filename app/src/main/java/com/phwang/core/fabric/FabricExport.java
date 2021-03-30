@@ -26,6 +26,10 @@ public class FabricExport {
 	public static final char FABRIC_COMMAND_REMOVE_LINK = 'l';
 	public static final char FABRIC_COMMAND_GET_LINK_DATA = 'D';
 	public static final char FABRIC_COMMAND_GET_NAME_LIST = 'N';
+    public static final char FABRIC_COMMAND_SOLO_SESSION = 'B';
+    public static final char FABRIC_COMMAND_HEAD_SESSION = 'h';
+    public static final char FABRIC_COMMAND_PEER_SESSION = 'Q';
+    public static final char FABRIC_COMMAND_JOIN_SESSION = 'J';
 	public static final char FABRIC_COMMAND_SETUP_SESSION = 'S';
 	public static final char FABRIC_COMMAND_SETUP_SESSION2 = 's';
 	public static final char FABRIC_COMMAND_SETUP_SESSION3 = 'T';

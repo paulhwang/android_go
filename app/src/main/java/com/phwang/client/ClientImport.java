@@ -20,6 +20,10 @@ public class ClientImport {
     protected static final char FABRIC_COMMAND_REMOVE_LINK      = FabricExport.FABRIC_COMMAND_REMOVE_LINK;
     protected static final char FABRIC_COMMAND_GET_LINK_DATA    = FabricExport.FABRIC_COMMAND_GET_LINK_DATA;
     protected static final char FABRIC_COMMAND_GET_NAME_LIST    = FabricExport.FABRIC_COMMAND_GET_NAME_LIST;
+    protected static final char FABRIC_COMMAND_SOLO_SESSION     = FabricExport.FABRIC_COMMAND_SOLO_SESSION;
+    protected static final char FABRIC_COMMAND_HEAD_SESSION     = FabricExport.FABRIC_COMMAND_HEAD_SESSION;
+    protected static final char FABRIC_COMMAND_PEER_SESSION     = FabricExport.FABRIC_COMMAND_PEER_SESSION;
+    protected static final char FABRIC_COMMAND_JOIN_SESSION     = FabricExport.FABRIC_COMMAND_JOIN_SESSION;
     protected static final char FABRIC_COMMAND_SETUP_SESSION    = FabricExport.FABRIC_COMMAND_SETUP_SESSION;
     protected static final char FABRIC_COMMAND_SETUP_SESSION2   = FabricExport.FABRIC_COMMAND_SETUP_SESSION2;
     protected static final char FABRIC_COMMAND_SETUP_SESSION3   = FabricExport.FABRIC_COMMAND_SETUP_SESSION3;
