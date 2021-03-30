@@ -122,7 +122,7 @@ public class ClientDParser {
         this.debug(true, "parserSetupSessionResponse", "session_id_str=" + session_id_str);
 
         this.clientFabricInfo().setSessionIdStr(session_id_str);
-    	this.importInterface().handleSetupSessionResponse();
+    	this.importInterface().handleSetupSessionResponse("0");
     }
 
     private void parserSetupSession2Response(String input_str_val) {
