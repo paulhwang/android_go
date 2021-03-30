@@ -371,7 +371,7 @@ public class FabricUParser {
         }
         this.mallocRoom(group, theme_data_str);
 
-        String response_data = this.generateSetupSession2Response(link.linkIdStr(), session.lSessionIdStr(), session.browserThemeIdStr());
+        String response_data = this.generateSetupSession2Response(FabricResultExport.SUCCEED, link.linkIdStr(), session.lSessionIdStr(), session.browserThemeIdStr());
         return response_data;
     }
 
@@ -379,9 +379,10 @@ public class FabricUParser {
         return error_msg_val;
     }
 
-    protected String generateSetupSession2Response(String link_id_str_val, String session_id_str_val, String theme_id_str_val) {
+    protected String generateSetupSession2Response(char result_val, String link_id_str_val, String session_id_str_val, String theme_id_str_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_SETUP_SESSION3); 
+        response_buf.append(FabricExport.FABRIC_COMMAND_SETUP_SESSION3);
+        response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(session_id_str_val);
         response_buf.append(theme_id_str_val);
@@ -411,7 +412,7 @@ public class FabricUParser {
             return errorProcessSetupSession3(link_id_str, "null session");
         }
 
-        String response_data = this.generateSetupSession3Response(link_id_str, session_id_str, session.browserThemeIdStr());
+        String response_data = this.generateSetupSession3Response(FabricResultExport.SUCCEED, link_id_str, session_id_str, session.browserThemeIdStr());
         return response_data;
     }
 
@@ -419,9 +420,10 @@ public class FabricUParser {
         return error_msg_val;
     }
 
-    protected String generateSetupSession3Response(String link_id_str_val, String session_id_str_val, String theme_id_str_val) {
+    protected String generateSetupSession3Response(char result_val, String link_id_str_val, String session_id_str_val, String theme_id_str_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_SETUP_SESSION3); 
+        response_buf.append(FabricExport.FABRIC_COMMAND_SETUP_SESSION3);
+        response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(session_id_str_val);
         response_buf.append(theme_id_str_val);

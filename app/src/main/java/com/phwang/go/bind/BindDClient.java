@@ -93,17 +93,21 @@ public class BindDClient implements ClientDImportInt {
                 null);
     }
 
-    public void handleSetupSession2Response() {
+    public void handleSetupSession2Response(String result_str_val) {
         this.debug(true, "handleSetupSession2Response", "handleSetupSession2Response");
-
+        this.sendBroadcastMessage(
+                IntentDefine.BIND_SERVICE,
+                CommandDefine.FABRIC_COMMAND_SETUP_SESSION2_STR,
+                result_str_val,
+                null);
     }
 
-    public void handleSetupSession3Response() {
+    public void handleSetupSession3Response(String result_str_val) {
         this.debug(true, "handleSetupSession3Response", "SessionId=" + this.clientFabricInfo().sessionIdStr());
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
                 CommandDefine.FABRIC_COMMAND_SETUP_SESSION3_STR,
-                ResultDefine.SUCCEED,
+                result_str_val,
                 null);
     }
 
