@@ -179,18 +179,22 @@ public class ClientDParser {
 
     private void parserGetSessionDataResponse(String input_str_val) {
     	this.debug(false, "parserGetSessionDataResponse", "input_str_val=" + input_str_val);
-    	
-        String rest_str = input_str_val;
-        String link_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
 
-        String session_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
+        String result_str = input_str_val.substring(0, 1);
 
-        String c_data = Encoders.sDecode5(rest_str);
-    	//rest_str = Encoders.sDecode5_(rest_str);
-    	
-    	this.importInterface().handleGetSessionDataResponse(c_data);
+        if (result_str.charAt(0) == ClientFabricResultImport.SUCCEED) {
+            String rest_str = input_str_val.substring(1);
+            String link_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
+
+            String session_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
+
+            String c_data = Encoders.sDecode5(rest_str);
+            //rest_str = Encoders.sDecode5_(rest_str);
+
+            this.importInterface().handleGetSessionDataResponse(result_str, c_data);
+        }
     }
 
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }

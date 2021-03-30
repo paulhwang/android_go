@@ -511,7 +511,7 @@ public class FabricUParser {
         String data = session.getPendingDownLinkData();
 
         /* send the response down */
-        String response_data = this.generateGetSessionDataResponse(link.linkIdStr(), session.lSessionIdStr(), data);
+        String response_data = this.generateGetSessionDataResponse(FabricResultExport.SUCCEED, link.linkIdStr(), session.lSessionIdStr(), data);
         return response_data;
     }
 
@@ -519,9 +519,10 @@ public class FabricUParser {
         return error_msg_val;
     }
 
-    protected String generateGetSessionDataResponse(String link_id_str_val, String session_id_str_val, String c_data_val) {
+    protected String generateGetSessionDataResponse(char result_val, String link_id_str_val, String session_id_str_val, String c_data_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_GET_SESSION_DATA); 
+        response_buf.append(FabricExport.FABRIC_COMMAND_GET_SESSION_DATA);
+        response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(session_id_str_val);
         if (c_data_val == null) {//////////////////////////////////for now
