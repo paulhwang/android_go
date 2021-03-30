@@ -38,7 +38,7 @@ public class BindReceiverDFunc {
 
         switch (command.charAt(0)) {
             case CommandDefine.FABRIC_COMMAND_SETUP_LINK:
-                this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data);
+                this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.LOGIN_ACTIVITY, command, result, data);
                 break;
 
             case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:

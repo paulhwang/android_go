@@ -68,7 +68,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
 
     private void setupView() {
         findViewById(R.id.go_game_b_button).setOnClickListener(this);
-        findViewById(R.id.go_game_bb_button).setOnClickListener(this);
+        findViewById(R.id.go_game_fb_button).setOnClickListener(this);
         findViewById(R.id.go_game_f_button).setOnClickListener(this);
         findViewById(R.id.go_game_ff_button).setOnClickListener(this);
         findViewById(R.id.go_game_pass_button).setOnClickListener(this);
@@ -84,7 +84,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.go_game_b_button:
                 this.goGameFunc_.do_put_session_data(Encoders.sEncode2("Gb"));
                 break;
-            case R.id.go_game_bb_button:
+            case R.id.go_game_fb_button:
                 this.goGameFunc_.do_put_session_data(Encoders.sEncode2("GB"));
                 break;
             case R.id.go_game_f_button:

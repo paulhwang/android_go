@@ -13,6 +13,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.phwang.client.ClientFabricResultImport;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 
@@ -37,7 +39,7 @@ public class LoginReceiver extends BroadcastReceiver {
 
     private void handleReceivedBundle(Bundle bundle_val) {
         String command = bundle_val.getString(BundleIndexDefine.COMMAND);
-        String result = bundle_val.getString(BundleIndexDefine.RESULT);
+        char result = bundle_val.getString(BundleIndexDefine.RESULT).charAt(0);
         Log.e(TAG, "handleReceivedBundle() command=" + command + ", result=" + result);
 
         if (command == null) {
@@ -47,6 +49,12 @@ public class LoginReceiver extends BroadcastReceiver {
 
         switch (command.charAt(0)) {
             case CommandDefine.FABRIC_COMMAND_SETUP_LINK:
+                if (result == ClientFabricResultImport.SUCCEED) {
+                    this.signInActivity_.finish();
+                }
+                else {
+
+                }
                 break;
             default:
                 break;

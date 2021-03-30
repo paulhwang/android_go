@@ -48,10 +48,6 @@ public class MainReceiver extends BroadcastReceiver {
         }
 
         switch (command.charAt(0)) {
-            case CommandDefine.FABRIC_COMMAND_SETUP_LINK:
-                this.mainActivityFunc().do_setup_session("phwang", "00000000G111111");
-                break;
-
             case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
                 this.mainActivityFunc().do_setup_session3("00000000G111111");
                 break;
@@ -60,6 +56,7 @@ public class MainReceiver extends BroadcastReceiver {
                 break;
 
             default:
+                Log.e(TAG, "handleReceivedBundle() ***** not supported command=" + command);
         }
     }
 }
