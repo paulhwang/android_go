@@ -73,6 +73,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         findViewById(R.id.go_game_ff_button).setOnClickListener(this);
         findViewById(R.id.go_game_pass_button).setOnClickListener(this);
         findViewById(R.id.go_game_resign_button).setOnClickListener(this);
+        findViewById(R.id.go_game_confirm_button).setOnClickListener(this);
         findViewById(R.id.go_game_exit_button).setOnClickListener(this);
     }
 
@@ -94,6 +95,9 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.go_game_pass_button:
                 this.goGameFunc_.do_put_session_data(Encoders.sEncode2("GP"));
+                break;
+            case R.id.go_game_confirm_button:
+                finish();
                 break;
             case R.id.go_game_resign_button:
                 finish();

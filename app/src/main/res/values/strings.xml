@@ -46,5 +46,13 @@
 
     <string name="settings_shortcut">s</string>
 
-
+    <string-array name="go_board_size_array">
+        <item>19</item>
+        <item>13</item>
+        <item>9</item>
+    </string-array>
+    <string-array name="go_stone_color_array">
+        <item>Black</item>
+        <item>White</item>
+    </string-array>
 </resources>
