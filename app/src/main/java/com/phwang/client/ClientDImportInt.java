@@ -9,7 +9,7 @@
 package com.phwang.client;
 
 public interface ClientDImportInt {
-	public void handleSetupLinkResponse();
+	public void handleSetupLinkResponse(String result_str_val);
 	public void handleGetLinkDataResponse();
 	public void handleGetNameListResponse();
 	public void handleSetupSessionResponse();

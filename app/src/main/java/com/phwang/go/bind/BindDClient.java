@@ -48,12 +48,12 @@ public class BindDClient implements ClientDImportInt {
         this.applicationContext_.sendBroadcast(intent);
     }
 
-    public void handleSetupLinkResponse() {
+    public void handleSetupLinkResponse(String result_str_val) {
         this.debug(true, "handleSetupLinkResponse", "LinkId=" + this.clientFabricInfo().linkIdStr());
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
                 CommandDefine.FABRIC_COMMAND_SETUP_LINK_STR,
-                ResultDefine.SUCCEED,
+                result_str_val,
                 null);
     }
 

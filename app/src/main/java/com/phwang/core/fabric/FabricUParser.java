@@ -107,13 +107,14 @@ public class FabricUParser {
         	this.abend("processSetupLinkRequest", "link is null");
         	return null;
         }
-        String response_data = this.generateSetupLinkResponse(link.linkIdStr(), link.myName());
+        String response_data = this.generateSetupLinkResponse(FabricExport.FABRIC_RESULT_SUCCEED, link.linkIdStr(), link.myName());
         return response_data;
     }
     
-    private String generateSetupLinkResponse(String link_id_str_val, String my_name_val) {
+    private String generateSetupLinkResponse(char result_val, String link_id_str_val, String my_name_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_SETUP_LINK); 
+        response_buf.append(FabricExport.FABRIC_COMMAND_SETUP_LINK);
+        response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(Encoders.sEncode2(my_name_val));
         return response_buf.toString();

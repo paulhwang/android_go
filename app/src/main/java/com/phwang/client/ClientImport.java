@@ -25,4 +25,9 @@ public class ClientImport {
     protected static final char FABRIC_COMMAND_SETUP_SESSION3   = FabricExport.FABRIC_COMMAND_SETUP_SESSION3;
     protected static final char FABRIC_COMMAND_PUT_SESSION_DATA = FabricExport.FABRIC_COMMAND_PUT_SESSION_DATA;
     protected static final char FABRIC_COMMAND_GET_SESSION_DATA = FabricExport.FABRIC_COMMAND_GET_SESSION_DATA;
+
+    public static final char FABRIC_RESULT_SUCCEED = FabricExport.FABRIC_RESULT_SUCCEED;
+    public static final char FABRIC_RESULT_ACCOUNT_NOT_EXIST = FabricExport.FABRIC_RESULT_ACCOUNT_NOT_EXIST;
+    public static final char FABRIC_RESULT_PASSWORD_NOT_GOOD = FabricExport.FABRIC_RESULT_PASSWORD_NOT_GOOD;
+
 }

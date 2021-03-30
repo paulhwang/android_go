@@ -61,16 +61,21 @@ public class ClientDParser {
     
     private void parserSetupLinkResponse(String input_str_val) {
     	this.debug(true, "parserSetupLinkResponse", "input_str_val=" + input_str_val);
-    	
-        String rest_str = input_str_val;
-        String link_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
-        
-        String my_name = Encoders.sDecode2(rest_str);
-    	//rest_str = Encoders.sDecode2_(rest_str);
-    	
-    	this.clientFabricInfo().setLinkIdStr(link_id_str);
-    	this.importInterface().handleSetupLinkResponse();
+
+    	String result_str = input_str_val.substring(0, 1);
+
+    	if (result_str.charAt(0) == ClientImport.FABRIC_RESULT_SUCCEED) {
+            String rest_str = input_str_val.substring(1);
+            String link_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
+
+            String my_name = Encoders.sDecode2(rest_str);
+            //rest_str = Encoders.sDecode2_(rest_str);
+
+            this.clientFabricInfo().setLinkIdStr(link_id_str);
+        }
+
+    	this.importInterface().handleSetupLinkResponse(result_str);
     }
 
     private void parserGetLinkDataResponse(String input_str_val) {
