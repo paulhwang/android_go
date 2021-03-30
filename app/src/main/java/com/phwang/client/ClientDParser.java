@@ -100,15 +100,19 @@ public class ClientDParser {
 
     private void parserGetNameListResponse(String input_str_val) {
     	this.debug(false, "parserGetNameListResponse", "input_str_val=" + input_str_val);
-    	
-        String rest_str = input_str_val;
-        String link_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
 
-        String name_list_str = Encoders.sDecode2(rest_str);
-        //rest_str = Encoders.sDecode2_(rest_str);
+        String result_str = input_str_val.substring(0, 1);
 
-    	this.importInterface().handleGetNameListResponse();
+        if (result_str.charAt(0) == ClientFabricResultImport.SUCCEED) {
+            String rest_str = input_str_val.substring(1);
+            String link_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
+
+            String name_list_str = Encoders.sDecode2(rest_str);
+            //rest_str = Encoders.sDecode2_(rest_str);
+
+            this.importInterface().handleGetNameListResponse(result_str);
+        }
     }
 
     private void parserSetupSessionResponse(String input_str_val) {

@@ -231,7 +231,7 @@ public class FabricUParser {
         int name_list_tag = Encoders.iDecode111(name_list_tag_str);
         String name_list = this.fabricRoot().nameList().getNameList(name_list_tag);
 
-        String response_data = this.generateGetNameListResponse(link.linkIdStr(), name_list);
+        String response_data = this.generateGetNameListResponse(FabricResultExport.SUCCEED, link.linkIdStr(), name_list);
         return response_data;
     }
 
@@ -239,9 +239,10 @@ public class FabricUParser {
         return error_msg_val;
     }
 
-    protected String generateGetNameListResponse(String link_id_str_val, String name_list_str_val) {
+    protected String generateGetNameListResponse(char result_val, String link_id_str_val, String name_list_str_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_GET_NAME_LIST); 
+        response_buf.append(FabricExport.FABRIC_COMMAND_GET_NAME_LIST);
+        response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(Encoders.sEncode2(name_list_str_val));
         return response_buf.toString();

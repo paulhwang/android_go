@@ -57,9 +57,13 @@ public class BindDClient implements ClientDImportInt {
                 null);
     }
 
-    public void handleRemoveLinkResponse() {
+    public void handleRemoveLinkResponse(String result_str_val) {
         this.debug(true, "handleRemoveLinkResponse", "LinkId=" + this.clientFabricInfo().linkIdStr());
-
+        this.sendBroadcastMessage(
+                IntentDefine.BIND_SERVICE,
+                CommandDefine.FABRIC_COMMAND_REMOVE_LINK_STR,
+                result_str_val,
+                null);
     }
 
     public void handleGetLinkDataResponse(String result_str_val) {
@@ -71,9 +75,13 @@ public class BindDClient implements ClientDImportInt {
                 null);
     }
 
-    public void handleGetNameListResponse() {
+    public void handleGetNameListResponse(String result_str_val) {
         this.debug(true, "handleGetNameListResponse", "handleGetNameListResponse");
-
+        this.sendBroadcastMessage(
+                IntentDefine.BIND_SERVICE,
+                CommandDefine.FABRIC_COMMAND_GET_NAME_LIST_STR,
+                result_str_val,
+                null);
     }
 
     public void handleSetupSessionResponse(String result_str_val) {
