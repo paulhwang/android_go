@@ -58,9 +58,6 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         switch (view_val.getId()) {
             case R.id.go_config_play_button:
                 this.do_setup_session("phwang", "00000000G111111");
-
-                intent = new Intent(this, GoGameActivity.class);
-                startActivity(intent);
                 break;
         }
         switch (view_val.getId()) {

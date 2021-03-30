@@ -51,10 +51,14 @@ public class GoConfigReceiver extends BroadcastReceiver {
         switch (command.charAt(0)) {
             case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
                 if (result == ClientFabricResultImport.SUCCEED) {
+                    Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
+                    this.goConfigActivity_.startActivity(intent);
+                    break;
                 }
                 else if (result == ClientFabricResultImport.FAIL_LINK_NOT_EXIST.charAt(0)) {
                     Intent intent = new Intent(this.goConfigActivity_, LoginActivity.class);
                     this.goConfigActivity_.startActivity(intent);
+                    break;
                 }
                 else {
 
