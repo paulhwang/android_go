@@ -10,7 +10,7 @@ package com.phwang.go.define;
 
 public class CommandDefine {
     public static final char FABRIC_COMMAND_REGISTER = 'R';
-    public static final char FABRIC_COMMAND_SETUP_LINK = 'L';
+    public static final char FABRIC_COMMAND_LOGIN = 'L';
     public static final char FABRIC_COMMAND_LOGOUT = 'l';
     public static final char FABRIC_COMMAND_GET_LINK_DATA = 'D';
     public static final char FABRIC_COMMAND_GET_GROUPS = 'g';
@@ -26,8 +26,8 @@ public class CommandDefine {
     public static final char FABRIC_COMMAND_GET_SESSION_DATA = 'G';
 
     public static final String FABRIC_COMMAND_REGISTER_STR = "R";
-    public static final String FABRIC_COMMAND_SETUP_LINK_STR = "L";
-    public static final String FABRIC_COMMAND_LOGOUT_STR = "L";
+    public static final String FABRIC_COMMAND_LOGIN_STR = "L";
+    public static final String FABRIC_COMMAND_LOGOUT_STR = "l";
     public static final String FABRIC_COMMAND_GET_GROUPS_STR = "g";
     public static final String FABRIC_COMMAND_GET_LINK_DATA_STR = "D";
     public static final String FABRIC_COMMAND_GET_NAME_LIST_STR = "N";

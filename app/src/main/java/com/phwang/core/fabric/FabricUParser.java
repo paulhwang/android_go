@@ -47,10 +47,10 @@ public class FabricUParser {
 
         this.debug(false, "parseInputPacket", "data_str = " + rest_str);
         switch (rest_str.charAt(0)) {
-            case FabricExport.FABRIC_COMMAND_SETUP_LINK:
+            case FabricExport.FABRIC_COMMAND_LOGIN:
                 response_data = this.processSetupLinkRequest(rest_str.substring(1));
                 break;
-            case FabricExport.FABRIC_COMMAND_REMOVE_LINK:
+            case FabricExport.FABRIC_COMMAND_LOGOUT:
                 response_data = this.processRemoveLinkRequest(rest_str.substring(1));
                 break;
             case FabricExport.FABRIC_COMMAND_GET_LINK_DATA:
@@ -125,7 +125,7 @@ public class FabricUParser {
     
     private String generateSetupLinkResponse(char result_val, String link_id_str_val, String my_name_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_SETUP_LINK);
+        response_buf.append(FabricExport.FABRIC_COMMAND_LOGIN);
         response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(Encoders.sEncode2(my_name_val));

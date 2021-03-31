@@ -29,7 +29,7 @@ public class ClientDParser {
     	this.debug(true, "parserResponseData", "input_data_val=" + input_data_val);
     	
     	switch (input_data_val.charAt(0)) {
-            case ClientImport.FABRIC_COMMAND_SETUP_LINK:
+            case ClientImport.FABRIC_COMMAND_LOGIN:
     		    parserSetupLinkResponse(input_data_val.substring(1));
     		    break;
             case ClientImport.FABRIC_COMMAND_GET_LINK_DATA:

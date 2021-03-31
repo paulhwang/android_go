@@ -22,8 +22,8 @@ public class FabricExport {
     public static final int NAME_LIST_TAG_SIZE = FabricNameList.NAME_LIST_TAG_SIZE;
 
     public static final char FABRIC_COMMAND_HTTP_DATA = 'H';
-	public static final char FABRIC_COMMAND_SETUP_LINK = 'L';
-	public static final char FABRIC_COMMAND_REMOVE_LINK = 'l';
+	public static final char FABRIC_COMMAND_LOGIN = 'L';
+	public static final char FABRIC_COMMAND_LOGOUT = 'l';
 	public static final char FABRIC_COMMAND_GET_LINK_DATA = 'D';
 	public static final char FABRIC_COMMAND_GET_NAME_LIST = 'N';
     public static final char FABRIC_COMMAND_SOLO_SESSION = 'B';

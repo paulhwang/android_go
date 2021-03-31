@@ -48,7 +48,7 @@ public class LoginReceiver extends BroadcastReceiver {
         }
 
         switch (command.charAt(0)) {
-            case CommandDefine.FABRIC_COMMAND_SETUP_LINK:
+            case CommandDefine.FABRIC_COMMAND_LOGIN:
                 if (result == ClientFabricResultImport.SUCCEED) {
                     this.signInActivity_.finish();
                 }

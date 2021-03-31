@@ -16,8 +16,8 @@ public class ClientImport {
 
     public static final char CLIENT_IS_ANDROID = FabricExport.CLIENT_IS_ANDROID;
 
-    protected static final char FABRIC_COMMAND_SETUP_LINK       = FabricExport.FABRIC_COMMAND_SETUP_LINK;
-    protected static final char FABRIC_COMMAND_REMOVE_LINK      = FabricExport.FABRIC_COMMAND_REMOVE_LINK;
+    protected static final char FABRIC_COMMAND_LOGIN            = FabricExport.FABRIC_COMMAND_LOGIN;
+    protected static final char FABRIC_COMMAND_LOGOUT           = FabricExport.FABRIC_COMMAND_LOGOUT;
     protected static final char FABRIC_COMMAND_GET_LINK_DATA    = FabricExport.FABRIC_COMMAND_GET_LINK_DATA;
     protected static final char FABRIC_COMMAND_GET_NAME_LIST    = FabricExport.FABRIC_COMMAND_GET_NAME_LIST;
     protected static final char FABRIC_COMMAND_SOLO_SESSION     = FabricExport.FABRIC_COMMAND_SOLO_SESSION;

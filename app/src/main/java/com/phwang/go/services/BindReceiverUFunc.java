@@ -38,7 +38,7 @@ public class BindReceiverUFunc {
         }
 
         switch (command.charAt(0)) {
-            case CommandDefine.FABRIC_COMMAND_SETUP_LINK:
+            case CommandDefine.FABRIC_COMMAND_LOGIN:
                 String my_name = bundle_val.getString(BundleIndexDefine.MY_NAME);
                 String password = bundle_val.getString(BundleIndexDefine.PASSWORD);
                 Log.e(TAG, "handleReceivedBundle() command=" + command + " name=" + my_name + "," + password);

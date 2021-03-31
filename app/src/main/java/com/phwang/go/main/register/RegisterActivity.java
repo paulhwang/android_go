@@ -69,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view_val) {
         switch (view_val.getId()) {
             case R.id.sign_up_confirm_button:
-                //this.registerAccount();
+                this.doRegister();
                 finish();
                 break;
         }
@@ -80,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private void registerAccount() {
+    private void doRegister() {
         if (!validateEmail() || !validateUsername() || !validatePassword()) {
             return;
         }
