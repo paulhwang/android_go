@@ -22,8 +22,7 @@ public class ClientDExport implements ClientDExportInt {
     private Binder uBinder() { return this.clientUBinder().uBinder(); }
     private ClientFabricInfo clientFabricInfo() { return this.clientRoot_.clientFabricInfo(); }
     private ClientGoConfig goConfig() { return this.clientRoot_.goConfig(); }
-    private ClientGoAct goAct() { return this.clientRoot_.goAct(); }
- 
+
     protected ClientDExport(ClientRoot root_val) {
         this.debug(false, "ClientDExport", "init start");
         
