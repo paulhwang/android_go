@@ -44,7 +44,6 @@ public class GoGameBoard {
     public static String encodeConfig(int board_size_val, int handicap_val, int komi_val) {
         StringBuilder buf = new StringBuilder();
         buf.append('G');
-        buf.append(Encoders.iEncodeRaw3(19));/////not used
         buf.append(Encoders.iEncodeRaw2(board_size_val));
         buf.append(Encoders.iEncodeRaw2(handicap_val));
         buf.append(Encoders.iEncodeRaw2(komi_val));
@@ -55,11 +54,9 @@ public class GoGameBoard {
     void decodConfig(String config_str_val) {
         Log.e(TAG, "decodeGoConfig() config_str=" + config_str_val);
 
-        config_str_val = config_str_val.substring(1);
-        String len_str = config_str_val.substring(0,3);
-        String board_size_str = config_str_val.substring(3, 5);
-        String handicap_str = config_str_val.substring(5, 7);
-        String komi_str = config_str_val.substring(7, 9);
+        String board_size_str = config_str_val.substring(1, 3);
+        //String handicap_str = config_str_val.substring(3, 5);
+        //String komi_str = config_str_val.substring(5, 7);
 
         this.boardSize_ = Encoders.iDecodeRaw(board_size_str);
         //this.handicapPoint_ = Encoders.iDecodeRaw(handicap_str);

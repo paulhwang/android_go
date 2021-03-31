@@ -29,10 +29,9 @@ public class GoConfig {
     public void configIt(String input_data_val) {
     	this.debug(false, "ConfigIt", "input_data_val=" + input_data_val);
     	
-        String len_str = input_data_val.substring(0,3);
-        String board_size_str = input_data_val.substring(3, 5);
-        String handicap_str = input_data_val.substring(5, 7);
-        String komi_str = input_data_val.substring(7, 9);
+        String board_size_str = input_data_val.substring(0, 2);
+        String handicap_str = input_data_val.substring(2, 4);
+        String komi_str = input_data_val.substring(4, 6);
 
         this.boardSize_ = Encoders.iDecodeRaw(board_size_str);
         this.handicapPoint_ = Encoders.iDecodeRaw(handicap_str);
