@@ -267,14 +267,10 @@ public class FabricUParser {
         String link_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
 
-        String his_name = Encoders.sDecode2(rest_str);
-        rest_str = Encoders.sDecode2_(rest_str);
-
         String theme_data_str = Encoders.sDecode2(rest_str);
         //rest_str = Encoders.sDecode2_(rest_str);
 
         this.debug(false, "processSetupSessionRequest", "link_id = " + link_id_str);
-        this.debug(false, "processSetupSessionRequest", "his_name = " + his_name);
         this.debug(false, "processSetupSessionRequest", "theme_data = " + theme_data_str);
 
         String rest_str1 = input_str_val;
@@ -299,24 +295,7 @@ public class FabricUParser {
         group.insertSession(session);
         session.bindGroup(group);
         
-        if (his_name.equals(link.myName())) {
-            this.mallocRoom(group, theme_data);
-        }
-        else {
-        	FabricLink his_link = this.linkMgr().GetLinkByMyName(his_name);
-            if (his_link == null) {
-                return this.errorProcessSetupSession(link_id_str, "his_link does not exist");
-            }
-            FabricSession his_session = his_link.mallocSession();
-            if (his_session == null) {
-                return this.errorProcessSetupSession(link_id_str, "null his_session");
-            }
-
-            group.insertSession(his_session);
-            his_session.bindGroup(group);
-
-            his_link.setPendingSessionSetup(his_link.linkIdStr() + his_session.lSessionIdStr(), theme_data);
-        }
+        this.mallocRoom(group, theme_data);
 
         String response_data = this.generateSetupSessionResponse(FabricResultExport.SUCCEED, link.linkIdStr(), session.lSessionIdStr());
         return response_data;
