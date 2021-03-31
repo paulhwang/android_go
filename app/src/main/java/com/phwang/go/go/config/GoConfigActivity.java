@@ -61,10 +61,13 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         switch (view_val.getId()) {
             case R.id.go_config_solo9_button:
                 this.do_solo_session("phwang", "00000000G111111");
+                break;
             case R.id.go_config_solo13_button:
                 this.do_solo_session("phwang", "00000000G111111");
+                break;
             case R.id.go_config_solo19_button:
                 this.do_solo_session("phwang", "00000000G111111");
+                break;
             case R.id.go_config_play_button:
                 this.do_setup_session("phwang", "00000000G111111");
                 break;

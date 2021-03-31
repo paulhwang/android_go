@@ -52,6 +52,20 @@ public class BindUClient {
 
     }
 
+    public void doSoloSession(String his_name_val, String session_setup_data_val) {
+        this.debug(true, "doSoloSession", "data=" + session_setup_data_val);
+        if (this.clientFabricInfo().linkIdStr() == null) {
+            this.bindDClient_.sendBroadcastMessage(
+                    IntentDefine.BIND_SERVICE,
+                    CommandDefine.FABRIC_COMMAND_SETUP_SESSION_STR,
+                    ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
+                    null);
+
+            return;
+        }
+        this.clientDExport().setupSession(his_name_val, session_setup_data_val);
+    }
+
     public void doSetupSession(String his_name_val, String session_setup_data_val) {
         this.debug(true, "doSetupSession", "data=" + session_setup_data_val);
         if (this.clientFabricInfo().linkIdStr() == null) {
