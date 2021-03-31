@@ -36,8 +36,22 @@ public class GoGameBoard {
     protected int nextColor() { return this.nextColor_; };
     protected Boolean isValidMove(int x_val, int y_val) { return (this.boardArray_[x_val][y_val] == 0) ? true : false; }
 
-    public GoGameBoard(GoGameActivity go_game_val) {
+    public GoGameBoard(GoGameActivity go_game_val, String config_str_val) {
         this.goGame_ = go_game_val;
+        //this.decodConfig(config_str_val);
+    }
+
+    void decodConfig(String config_str_val) {
+        Log.e(TAG, "decodeGoConfig() config_str=" + config_str_val);
+
+        String len_str = config_str_val.substring(0,3);
+        String board_size_str = config_str_val.substring(3, 5);
+        String handicap_str = config_str_val.substring(5, 7);
+        String komi_str = config_str_val.substring(7, 9);
+
+        this.boardSize_ = Encoders.iDecodeRaw(board_size_str);
+        //this.handicapPoint_ = Encoders.iDecodeRaw(handicap_str);
+        //this.komiPoint_ = Encoders.iDecodeRaw(komi_str);
     }
 
     protected void decodeBoard(String data_str_val) {

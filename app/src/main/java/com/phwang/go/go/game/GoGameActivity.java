@@ -16,9 +16,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-
 import com.phwang.core.utils.Encoders;
 import com.phwang.go.R;
+import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
 
 public class GoGameActivity extends AppCompatActivity implements View.OnClickListener {
@@ -35,7 +35,9 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.goBoard_ = new GoGameBoard(this);
+
+        String config_str = this.getIntent().getExtras().getString(BundleIndexDefine.DATA);
+        this.goBoard_ = new GoGameBoard(this, config_str);
         this.goGameFunc_ = new GoGameActivityFunc(this);
 
         setContentView(R.layout.activity_go_game);
