@@ -66,6 +66,9 @@ public class ClientDExport implements ClientDExportInt {
 
     public void doLogout() {
         this.debug(true, "doLogout", "doLogout");
+        if (this.clientFabricInfo().linkIdStr() == null) {
+            return;
+        }
 
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(ClientImport.FABRIC_COMMAND_LOGOUT);
