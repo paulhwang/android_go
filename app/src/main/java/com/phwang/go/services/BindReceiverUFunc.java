@@ -30,6 +30,10 @@ public class BindReceiverUFunc {
     protected void handleCommand(Bundle bundle_val) {
         String command = bundle_val.getString(BundleIndexDefine.COMMAND);
         String theme_data;
+        String my_name;
+        String email;
+        String password;
+
         Log.e(TAG, "handleCommand() command=" + command);
 
         if (command == null) {
@@ -39,10 +43,28 @@ public class BindReceiverUFunc {
 
         switch (command.charAt(0)) {
             case CommandDefine.FABRIC_COMMAND_LOGIN:
-                String my_name = bundle_val.getString(BundleIndexDefine.MY_NAME);
-                String password = bundle_val.getString(BundleIndexDefine.PASSWORD);
+                my_name = bundle_val.getString(BundleIndexDefine.MY_NAME);
+                password = bundle_val.getString(BundleIndexDefine.PASSWORD);
                 Log.e(TAG, "handleReceivedBundle() command=" + command + " name=" + my_name + "," + password);
-                this.bindUClient().setupLink(my_name, password);
+                this.bindUClient().doLogin(my_name, password);
+                break;
+
+            case CommandDefine.FABRIC_COMMAND_LOGOUT:
+                Log.e(TAG, "handleReceivedBundle() command=" + command);
+                this.bindUClient().doLogout();
+                break;
+
+            case CommandDefine.FABRIC_COMMAND_REGISTER:
+                my_name = bundle_val.getString(BundleIndexDefine.MY_NAME);
+                email = bundle_val.getString(BundleIndexDefine.EMAIL);
+                password = bundle_val.getString(BundleIndexDefine.PASSWORD);
+                Log.e(TAG, "handleReceivedBundle() command=" + command);
+                this.bindUClient().doRegister(my_name, password, email);
+                break;
+
+            case CommandDefine.FABRIC_COMMAND_GET_GROUPS:
+                Log.e(TAG, "handleReceivedBundle() command=" + command);
+                this.bindUClient().doGetGroups();
                 break;
 
             case CommandDefine.FABRIC_COMMAND_SOLO_SESSION:

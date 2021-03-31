@@ -32,9 +32,24 @@ public class BindUClient {
         this.bindDClient_ = new BindDClient(applicationContext_);
     }
 
-    public void setupLink(String my_name_val, String password_val) {
-        this.debug(false, "setupLink", "doSetupLink");
+    public void doLogin(String my_name_val, String password_val) {
+        this.debug(true, "doLogin", "doLogin");
         this.clientDExport().setupLink(my_name_val, password_val);
+    }
+
+    public void doLogout() {
+        this.debug(true, "doLogout", "doLogout");
+        //this.clientDExport().doLogout();
+    }
+
+    public void doRegister(String my_name_val, String password_val, String email_val) {
+        this.debug(true, "doRegister", "doRegister");
+        //this.clientDExport().doRegister();
+    }
+
+    public void doGetGroups() {
+        this.debug(false, "doGetGroups", "doGetGroups");
+        //this.clientDExport().doGetGroups();
     }
 
     public void doGetRemoveLink() {
