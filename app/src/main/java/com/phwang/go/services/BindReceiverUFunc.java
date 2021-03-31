@@ -29,6 +29,7 @@ public class BindReceiverUFunc {
 
     protected void handleCommand(Bundle bundle_val) {
         String command = bundle_val.getString(BundleIndexDefine.COMMAND);
+        String theme_data;
         Log.e(TAG, "handleCommand() command=" + command);
 
         if (command == null) {
@@ -41,17 +42,22 @@ public class BindReceiverUFunc {
                 String my_name = bundle_val.getString(BundleIndexDefine.MY_NAME);
                 String password = bundle_val.getString(BundleIndexDefine.PASSWORD);
                 Log.e(TAG, "handleReceivedBundle() command=" + command + " name=" + my_name + "," + password);
-                this.bindUClient().doSetupLink(my_name, password);
+                this.bindUClient().setupLink(my_name, password);
                 break;
 
             case CommandDefine.FABRIC_COMMAND_SOLO_SESSION:
-                String theme_data1 = bundle_val.getString(BundleIndexDefine.THEME_DATA);
-                this.bindUClient().doSoloSession(theme_data1);
+                theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
+                this.bindUClient().setupSoloSession(theme_data);
+                break;
+
+            case CommandDefine.FABRIC_COMMAND_HEAD_SESSION:
+                theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
+                this.bindUClient().setupHeadSession(theme_data);
                 break;
 
             case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
                 String his_name = bundle_val.getString(BundleIndexDefine.HIS_NAME);
-                String theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
+                theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
                 this.bindUClient().doSetupSession(his_name, theme_data);
                 break;
 
@@ -61,11 +67,11 @@ public class BindReceiverUFunc {
 
             case CommandDefine.FABRIC_COMMAND_PUT_SESSION_DATA:
                 String move_data = bundle_val.getString(BundleIndexDefine.MOVE_DATA);
-                this.bindUClient().doPutSessionData(move_data);
+                this.bindUClient().putSessionData(move_data);
                 break;
 
             case CommandDefine.FABRIC_COMMAND_GET_SESSION_DATA:
-                this.bindUClient().doGetSessionData();
+                this.bindUClient().getSessionData();
                 break;
 
             default:

@@ -20,6 +20,7 @@ public class GoGameBoard {
     public static final int GO_EMPTY_STONE = GoDefine.GO_EMPTY_STONE;
     public static final int GO_BLACK_STONE = GoDefine.GO_BLACK_STONE;
     public static final int GO_WHITE_STONE = GoDefine.GO_WHITE_STONE;
+    public static final int GO_BOTH_STONE = GoDefine.GO_BOTH_STONE;
     public static final int TOTAL_MOVE_SIZE = GoDefine.TOTAL_MOVE_SIZE;
 
     private GoGameActivity goGame_;
@@ -27,7 +28,9 @@ public class GoGameBoard {
     private final int[][] boardArray_ = new int[20][20];
     private int totalMoves_ = 0;
     private int nextColor_ = 1;
+    private int myColor_;
 
+    protected int myColor() { return this.myColor_; };
     protected int boardSize() { return this.boardSize_; }
     protected void setBoardSize(int val) { this.boardSize_ = val; }
     protected int board(int x_val, int y_val) { return this.boardArray_[x_val][y_val]; }
@@ -41,12 +44,13 @@ public class GoGameBoard {
         this.decodConfig(config_str_val);
     }
 
-    public static String encodeConfig(int board_size_val, int handicap_val, int komi_val) {
+    public static String encodeConfig(int board_size_val, int handicap_val, int komi_val, int color_val) {
         StringBuilder buf = new StringBuilder();
         buf.append('G');
         buf.append(Encoders.iEncodeRaw2(board_size_val));
         buf.append(Encoders.iEncodeRaw2(handicap_val));
         buf.append(Encoders.iEncodeRaw2(komi_val));
+        buf.append(Encoders.iEncodeRaw1(color_val));
         String data = buf.toString();
         return Encoders.sEncode2(data);
     }
@@ -58,10 +62,12 @@ public class GoGameBoard {
         String board_size_str = config_str.substring(1, 3);
         //String handicap_str = config_str.substring(3, 5);
         //String komi_str = config_str.substring(5, 7);
+        String color_str = config_str.substring(7, 8);
 
         this.boardSize_ = Encoders.iDecodeRaw(board_size_str);
         //this.handicapPoint_ = Encoders.iDecodeRaw(handicap_str);
         //this.komiPoint_ = Encoders.iDecodeRaw(komi_str);
+        this.myColor_ = Encoders.iDecodeRaw(color_str);
     }
 
     protected void decodeBoard(String data_str_val) {

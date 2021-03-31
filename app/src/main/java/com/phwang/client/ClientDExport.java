@@ -79,7 +79,7 @@ public class ClientDExport implements ClientDExportInt {
     	this.transmitToFabric(command_str);
     }
 
-    public void soloSession(String data_str_val) {
+    public void setupSoloSession(String data_str_val) {
         this.debug(false, "soloSession", "data_str_val=" + data_str_val);
 
         StringBuilder command_buf = new StringBuilder();
@@ -93,13 +93,13 @@ public class ClientDExport implements ClientDExportInt {
         this.transmitToFabric(command_str);
     }
 
-    public void headSession(String data_str_val) {
+    public void setupHeadSession(String data_str_val) {
     }
 
-    public void peerSession(String data_str_val) {
+    public void setupPeerSession(String data_str_val) {
     }
 
-    public void joinSession(String data_str_val) {
+    public void setupJoinSession(String data_str_val) {
     }
     
     public void setupSession(String his_name_val, String data_str_val) {

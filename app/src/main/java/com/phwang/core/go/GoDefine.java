@@ -14,6 +14,7 @@ public class GoDefine {
     public static final int GO_EMPTY_STONE = 0;
     public static final int GO_BLACK_STONE = 1;
     public static final int GO_WHITE_STONE = 2;
+    public static final int GO_BOTH_STONE = 3;
     public static final int GO_MARK_DEAD_STONE_DIFF = 4;
     public static final int GO_MARK_EMPTY_STONE_DIFF = 8;
 

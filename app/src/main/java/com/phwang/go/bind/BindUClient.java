@@ -32,8 +32,8 @@ public class BindUClient {
         this.bindDClient_ = new BindDClient(applicationContext_);
     }
 
-    public void doSetupLink(String my_name_val, String password_val) {
-        this.debug(false, "doSetupLink", "doSetupLink");
+    public void setupLink(String my_name_val, String password_val) {
+        this.debug(false, "setupLink", "doSetupLink");
         this.clientDExport().setupLink(my_name_val, password_val);
     }
 
@@ -52,8 +52,8 @@ public class BindUClient {
 
     }
 
-    public void doSoloSession(String data_str_val) {
-        this.debug(true, "doSoloSession", "data=" + data_str_val);
+    public void setupSoloSession(String data_str_val) {
+        this.debug(true, "setupSoloSession", "data=" + data_str_val);
         if (this.clientFabricInfo().linkIdStr() == null) {
             this.bindDClient_.sendBroadcastMessage(
                     IntentDefine.BIND_SERVICE,
@@ -63,8 +63,51 @@ public class BindUClient {
 
             return;
         }
-        this.clientDExport().soloSession(data_str_val);
+        this.clientDExport().setupSoloSession(data_str_val);
     }
+
+    public void setupHeadSession(String data_str_val) {
+        this.debug(true, "setupHeadSession", "data=" + data_str_val);
+        if (this.clientFabricInfo().linkIdStr() == null) {
+            this.bindDClient_.sendBroadcastMessage(
+                    IntentDefine.BIND_SERVICE,
+                    CommandDefine.FABRIC_COMMAND_HEAD_SESSION_STR,
+                    ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
+                    null);
+
+            return;
+        }
+        this.clientDExport().setupHeadSession(data_str_val);
+    }
+
+    public void setupPeerSession(String data_str_val) {
+        this.debug(true, "setupPeerSession", "data=" + data_str_val);
+        if (this.clientFabricInfo().linkIdStr() == null) {
+            this.bindDClient_.sendBroadcastMessage(
+                    IntentDefine.BIND_SERVICE,
+                    CommandDefine.FABRIC_COMMAND_PEER_SESSION_STR,
+                    ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
+                    null);
+
+            return;
+        }
+        this.clientDExport().setupPeerSession(data_str_val);
+    }
+
+    public void setupJoinSession(String data_str_val) {
+        this.debug(true, "setupJoinSession", "data=" + data_str_val);
+        if (this.clientFabricInfo().linkIdStr() == null) {
+            this.bindDClient_.sendBroadcastMessage(
+                    IntentDefine.BIND_SERVICE,
+                    CommandDefine.FABRIC_COMMAND_JOIN_SESSION_STR,
+                    ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
+                    null);
+
+            return;
+        }
+        this.clientDExport().setupJoinSession(data_str_val);
+    }
+
 
     public void doSetupSession(String his_name_val, String session_setup_data_val) {
         this.debug(true, "doSetupSession", "data=" + session_setup_data_val);
@@ -91,13 +134,13 @@ public class BindUClient {
 
     }
 
-    public void doPutSessionData(String data_str_val) {
-        this.debug(true, "doPutSessionData() data=", data_str_val);
+    public void putSessionData(String data_str_val) {
+        this.debug(true, "putSessionData() data=", data_str_val);
         this.clientDExport().putSessionData(data_str_val);;
     }
 
-    public void doGetSessionData() {
-        this.debug(false, "doGetSessionData", "doGetSessionData");
+    public void getSessionData() {
+        this.debug(false, "getSessionData", "getSessionData");
         this.clientDExport().getSessionData();;
     }
 

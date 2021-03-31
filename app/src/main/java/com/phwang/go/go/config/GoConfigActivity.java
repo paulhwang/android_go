@@ -69,31 +69,31 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view_val) {
         switch (view_val.getId()) {
             case R.id.go_config_solo9_button:
-                this.do_solo_session(GoGameBoard.encodeConfig(9, 0, 0));
+                this.setupSoloSession(GoGameBoard.encodeConfig(9, 0, 0, GoGameBoard.GO_BOTH_STONE));
                 break;
             case R.id.go_config_solo13_button:
-                this.do_solo_session(GoGameBoard.encodeConfig(13, 0, 0));
+                this.setupSoloSession(GoGameBoard.encodeConfig(13, 0, 0, GoGameBoard.GO_BOTH_STONE));
                 break;
             case R.id.go_config_solo19_button:
-                this.do_solo_session(GoGameBoard.encodeConfig(19, 0, 0));
+                this.setupSoloSession(GoGameBoard.encodeConfig(19, 0, 0, GoGameBoard.GO_BOTH_STONE));
                 break;
             case R.id.go_config_black9_button:
-                this.do_solo_session(GoGameBoard.encodeConfig(9, 0, 0));
+                this.setupHeadSession(GoGameBoard.encodeConfig(9, 0, 0, GoGameBoard.GO_BLACK_STONE));
                 break;
             case R.id.go_config_black13_button:
-                this.do_solo_session(GoGameBoard.encodeConfig(13, 0, 0));
+                this.setupHeadSession(GoGameBoard.encodeConfig(13, 0, 0, GoGameBoard.GO_BLACK_STONE));
                 break;
             case R.id.go_config_black19_button:
-                this.do_solo_session(GoGameBoard.encodeConfig(19, 0, 0));
+                this.setupHeadSession(GoGameBoard.encodeConfig(19, 0, 0, GoGameBoard.GO_BLACK_STONE));
                 break;
             case R.id.go_config_white9_button:
-                this.do_solo_session(GoGameBoard.encodeConfig(9, 0, 0));
+                this.setupHeadSession(GoGameBoard.encodeConfig(9, 0, 0, GoGameBoard.GO_WHITE_STONE));
                 break;
             case R.id.go_config_white13_button:
-                this.do_solo_session(GoGameBoard.encodeConfig(13, 0, 0));
+                this.setupHeadSession(GoGameBoard.encodeConfig(13, 0, 0, GoGameBoard.GO_WHITE_STONE));
                 break;
             case R.id.go_config_white19_button:
-                this.do_solo_session(GoGameBoard.encodeConfig(19, 0, 0));
+                this.setupHeadSession(GoGameBoard.encodeConfig(19, 0, 0, GoGameBoard.GO_WHITE_STONE));
                 break;
             case R.id.go_config_play_button:
                 this.do_setup_session("phwang", "00000000G111111");
@@ -104,12 +104,23 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    protected void do_solo_session(String go_config_data_val) {
+    protected void setupSoloSession(String go_config_data_val) {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
         intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SOLO_SESSION_STR);
+        intent.putExtra(BundleIndexDefine.THEME_DATA, go_config_data_val);
+        intent.setAction(IntentDefine.BIND_SERVICE);
+        this.sendBroadcast(intent);
+    }
+
+    protected void setupHeadSession(String go_config_data_val) {
+        Intent intent = new Intent();
+        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
+        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
+        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
+        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_HEAD_SESSION_STR);
         intent.putExtra(BundleIndexDefine.THEME_DATA, go_config_data_val);
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
