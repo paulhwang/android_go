@@ -60,11 +60,11 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         Intent intent;
         switch (view_val.getId()) {
             case R.id.go_config_solo9_button:
-                this.do_setup_session("phwang", "00000000G111111");
+                this.do_solo_session("phwang", "00000000G111111");
             case R.id.go_config_solo13_button:
-                this.do_setup_session("phwang", "00000000G111111");
+                this.do_solo_session("phwang", "00000000G111111");
             case R.id.go_config_solo19_button:
-                this.do_setup_session("phwang", "00000000G111111");
+                this.do_solo_session("phwang", "00000000G111111");
             case R.id.go_config_play_button:
                 this.do_setup_session("phwang", "00000000G111111");
                 break;
@@ -72,6 +72,18 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 finish();
                 break;
         }
+    }
+
+    protected void do_solo_session(String his_name_val, String theme_data_val) {
+        Intent intent = new Intent();
+        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
+        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
+        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
+        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SOLO_SESSION_STR);
+        intent.putExtra(BundleIndexDefine.HIS_NAME, his_name_val);
+        intent.putExtra(BundleIndexDefine.THEME_DATA, theme_data_val);
+        intent.setAction(IntentDefine.BIND_SERVICE);
+        this.sendBroadcast(intent);
     }
 
     protected void do_setup_session(String his_name_val, String theme_data_val) {
