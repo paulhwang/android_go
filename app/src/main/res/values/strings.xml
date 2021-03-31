@@ -31,9 +31,11 @@
     <string name="easy_label">Easy</string>
     <string name="email_label">Email</string>
     <string name="exit_label">Exit</string>
+    <string name="get_groups_label">Group List</string>
     <string name="hard_label">Hard</string>
     <string name="join_label">Join</string>
     <string name="login_label">Login</string>
+    <string name="logout_label">Logout</string>
     <string name="medium_label">Medium</string>
     <string name="password_label">Password</string>
     <string name="peer_label">Peer</string>

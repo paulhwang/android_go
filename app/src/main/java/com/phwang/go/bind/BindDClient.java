@@ -61,7 +61,7 @@ public class BindDClient implements ClientDImportInt {
         this.debug(true, "handleRemoveLinkResponse", "LinkId=" + this.clientFabricInfo().linkIdStr());
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
-                CommandDefine.FABRIC_COMMAND_REMOVE_LINK_STR,
+                CommandDefine.FABRIC_COMMAND_LOGOUT_STR,
                 result_str_val,
                 null);
     }

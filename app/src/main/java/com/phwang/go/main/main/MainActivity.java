@@ -19,6 +19,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.phwang.go.R;
+import com.phwang.go.define.BundleIndexDefine;
+import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.go.config.GoConfigActivity;
 import com.phwang.go.main.setup.SetupActivity;
@@ -41,14 +43,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        findViewById(R.id.play_go_button).setOnClickListener(this);
-        findViewById(R.id.play_sudoku_button).setOnClickListener(this);
-        findViewById(R.id.login_button).setOnClickListener(this);
-        findViewById(R.id.register_button).setOnClickListener(this);
-        findViewById(R.id.setup_button).setOnClickListener(this);
-        findViewById(R.id.about_button).setOnClickListener(this);
-        findViewById(R.id.test_button).setOnClickListener(this);
-        findViewById(R.id.exit_button).setOnClickListener(this);
+        findViewById(R.id.main_about_button).setOnClickListener(this);
+        findViewById(R.id.main_exit_button).setOnClickListener(this);
+        findViewById(R.id.main_get_groups_button).setOnClickListener(this);
+        findViewById(R.id.main_login_button).setOnClickListener(this);
+        findViewById(R.id.main_logout_button).setOnClickListener(this);
+        findViewById(R.id.main_play_go_button).setOnClickListener(this);
+        findViewById(R.id.main_play_sudoku_button).setOnClickListener(this);
+        findViewById(R.id.main_register_button).setOnClickListener(this);
+        findViewById(R.id.main_setup_button).setOnClickListener(this);
+        findViewById(R.id.main_test_button).setOnClickListener(this);
 
         this.mainActivityFunc_ = new MainActivityFunc(this);
         startService(new Intent(this, BindService.class));
@@ -75,36 +79,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view_val) {
         Intent intent;
         switch (view_val.getId()) {
-            case R.id.play_go_button:
-                intent = new Intent(this, GoConfigActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.play_sudoku_button:
-                intent = new Intent(this, SudokuConfigActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.login_button:
-                intent = new Intent(this, LoginActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.register_button:
-                intent = new Intent(this, RegisterActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.setup_button:
-                intent = new Intent(this, SetupActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.about_button:
+            case R.id.main_about_button:
                 intent = new Intent(this, About.class);
                 startActivity(intent);
                 break;
-            case R.id.test_button:
+            case R.id.main_exit_button:
+                finish();
+                break;
+            case R.id.main_get_groups_button:
+                this.doGetGroups();
+                break;
+            case R.id.main_login_button:
+                intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.main_logout_button:
+                this.doLogout();
+                break;
+            case R.id.main_play_go_button:
+                intent = new Intent(this, GoConfigActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.main_play_sudoku_button:
+                intent = new Intent(this, SudokuConfigActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.main_register_button:
+                intent = new Intent(this, RegisterActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.main_setup_button:
                 intent = new Intent(this, SetupActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.exit_button:
-                finish();
+            case R.id.main_test_button:
+                intent = new Intent(this, SetupActivity.class);
+                startActivity(intent);
                 break;
         }
     }
@@ -124,6 +134,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
         }
         return false;
+    }
+
+    protected void doLogout() {
+        Intent intent = new Intent();
+        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
+        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.MAIN_ACTIVITY);
+        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
+        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_LOGOUT_STR);
+        intent.setAction(IntentDefine.BIND_SERVICE);
+        this.sendBroadcast(intent);
+        this.registerBroadcastReceiver();
+    }
+
+    protected void doGetGroups() {
+        Intent intent = new Intent();
+        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
+        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.MAIN_ACTIVITY);
+        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
+        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_GET_GROUPS_STR);
+        intent.setAction(IntentDefine.BIND_SERVICE);
+        this.sendBroadcast(intent);
+        this.registerBroadcastReceiver();
     }
 
     private void registerBroadcastReceiver() {
