@@ -8,22 +8,24 @@
 
 package com.phwang.go.define;
 
+import com.phwang.core.fabric.FabricCommands;
+
 public class CommandDefine {
-    public static final char FABRIC_COMMAND_REGISTER = 'R';
-    public static final char FABRIC_COMMAND_LOGIN = 'L';
-    public static final char FABRIC_COMMAND_LOGOUT = 'l';
-    public static final char FABRIC_COMMAND_GET_LINK_DATA = 'D';
-    public static final char FABRIC_COMMAND_GET_GROUPS = 'g';
-    public static final char FABRIC_COMMAND_GET_NAME_LIST = 'N';
-    public static final char FABRIC_COMMAND_SOLO_SESSION = 'B';
-    public static final char FABRIC_COMMAND_HEAD_SESSION = 'h';
-    public static final char FABRIC_COMMAND_PEER_SESSION = 'Q';
-    public static final char FABRIC_COMMAND_JOIN_SESSION = 'J';
-    public static final char FABRIC_COMMAND_SETUP_SESSION = 'S';
-    public static final char FABRIC_COMMAND_SETUP_SESSION2 = 's';
-    public static final char FABRIC_COMMAND_SETUP_SESSION3 = 'T';
-    public static final char FABRIC_COMMAND_PUT_SESSION_DATA = 'P';
-    public static final char FABRIC_COMMAND_GET_SESSION_DATA = 'G';
+    public static final char FABRIC_COMMAND_REGISTER         = FabricCommands.FABRIC_COMMAND_REGISTER;
+    public static final char FABRIC_COMMAND_LOGIN            = FabricCommands.FABRIC_COMMAND_LOGIN;
+    public static final char FABRIC_COMMAND_LOGOUT           = FabricCommands.FABRIC_COMMAND_LOGOUT;
+    public static final char FABRIC_COMMAND_GET_LINK_DATA    = FabricCommands.FABRIC_COMMAND_GET_LINK_DATA;
+    public static final char FABRIC_COMMAND_GET_GROUPS       = FabricCommands.FABRIC_COMMAND_GET_GROUPS;
+    public static final char FABRIC_COMMAND_GET_NAME_LIST    = FabricCommands.FABRIC_COMMAND_GET_NAME_LIST;
+    public static final char FABRIC_COMMAND_SOLO_SESSION     = FabricCommands.FABRIC_COMMAND_SOLO_SESSION;
+    public static final char FABRIC_COMMAND_HEAD_SESSION     = FabricCommands.FABRIC_COMMAND_HEAD_SESSION;
+    public static final char FABRIC_COMMAND_PEER_SESSION     = FabricCommands.FABRIC_COMMAND_PEER_SESSION;
+    public static final char FABRIC_COMMAND_JOIN_SESSION     = FabricCommands.FABRIC_COMMAND_JOIN_SESSION;
+    public static final char FABRIC_COMMAND_SETUP_SESSION    = FabricCommands.FABRIC_COMMAND_SETUP_SESSION;
+    public static final char FABRIC_COMMAND_SETUP_SESSION2   = FabricCommands.FABRIC_COMMAND_SETUP_SESSION2;
+    public static final char FABRIC_COMMAND_SETUP_SESSION3   = FabricCommands.FABRIC_COMMAND_SETUP_SESSION3;
+    public static final char FABRIC_COMMAND_PUT_SESSION_DATA = FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA;
+    public static final char FABRIC_COMMAND_GET_SESSION_DATA = FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA;
 
     public static final String FABRIC_COMMAND_REGISTER_STR = "R";
     public static final String FABRIC_COMMAND_LOGIN_STR = "L";
