@@ -52,20 +52,16 @@ public class GoConfigReceiver extends BroadcastReceiver {
 
         switch (command.charAt(0)) {
             case CommandDefine.FABRIC_COMMAND_SOLO_SESSION:
-                if (result == ClientFabricResultImport.SUCCEED) {
-                    Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
-                    intent.putExtra(BundleIndexDefine.DATA, data_str);
-                    this.goConfigActivity_.startActivity(intent);
-                    break;
-                }
-                else if (result == ClientFabricResultImport.FAIL_LINK_NOT_EXIST.charAt(0)) {
-                    Intent intent = new Intent(this.goConfigActivity_, LoginActivity.class);
-                    this.goConfigActivity_.startActivity(intent);
-                    break;
-                }
-                else {
-
-                }
+                this.processSetupSoloSessionResponse(result, data_str);
+                break;
+            case CommandDefine.FABRIC_COMMAND_HEAD_SESSION:
+                this.processSetupHeadSessionResponse(result, data_str);
+                break;
+            case CommandDefine.FABRIC_COMMAND_PEER_SESSION:
+                this.processSetupPeerSessionResponse(result, data_str);
+                break;
+            case CommandDefine.FABRIC_COMMAND_JOIN_SESSION:
+                this.processSetupJoinSessionResponse(result, data_str);
                 break;
             case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
                 if (result == ClientFabricResultImport.SUCCEED) {
@@ -84,6 +80,74 @@ public class GoConfigReceiver extends BroadcastReceiver {
                 break;
             default:
                 break;
+        }
+    }
+
+    private void processSetupSoloSessionResponse(char result_val, String data_str_val) {
+        if (result_val == ClientFabricResultImport.SUCCEED) {
+            Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
+            intent.putExtra(BundleIndexDefine.DATA, data_str_val);
+            this.goConfigActivity_.startActivity(intent);
+            return;
+        }
+        else if (result_val == ClientFabricResultImport.FAIL_LINK_NOT_EXIST.charAt(0)) {
+            Intent intent = new Intent(this.goConfigActivity_, LoginActivity.class);
+            this.goConfigActivity_.startActivity(intent);
+            return;
+        }
+        else {
+
+        }
+    }
+
+    private void processSetupHeadSessionResponse(char result_val, String data_str_val) {
+        if (result_val == ClientFabricResultImport.SUCCEED) {
+            Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
+            intent.putExtra(BundleIndexDefine.DATA, data_str_val);
+            this.goConfigActivity_.startActivity(intent);
+            return;
+        }
+        else if (result_val == ClientFabricResultImport.FAIL_LINK_NOT_EXIST.charAt(0)) {
+            Intent intent = new Intent(this.goConfigActivity_, LoginActivity.class);
+            this.goConfigActivity_.startActivity(intent);
+            return;
+        }
+        else {
+
+        }
+    }
+
+    private void processSetupPeerSessionResponse(char result_val, String data_str_val) {
+        if (result_val == ClientFabricResultImport.SUCCEED) {
+            Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
+            intent.putExtra(BundleIndexDefine.DATA, data_str_val);
+            this.goConfigActivity_.startActivity(intent);
+            return;
+        }
+        else if (result_val == ClientFabricResultImport.FAIL_LINK_NOT_EXIST.charAt(0)) {
+            Intent intent = new Intent(this.goConfigActivity_, LoginActivity.class);
+            this.goConfigActivity_.startActivity(intent);
+            return;
+        }
+        else {
+
+        }
+    }
+
+    private void processSetupJoinSessionResponse(char result_val, String data_str_val) {
+        if (result_val == ClientFabricResultImport.SUCCEED) {
+            Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
+            intent.putExtra(BundleIndexDefine.DATA, data_str_val);
+            this.goConfigActivity_.startActivity(intent);
+            return;
+        }
+        else if (result_val == ClientFabricResultImport.FAIL_LINK_NOT_EXIST.charAt(0)) {
+            Intent intent = new Intent(this.goConfigActivity_, LoginActivity.class);
+            this.goConfigActivity_.startActivity(intent);
+            return;
+        }
+        else {
+
         }
     }
 }

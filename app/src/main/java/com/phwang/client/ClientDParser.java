@@ -150,15 +150,69 @@ public class ClientDParser {
     }
 
     private void parserHeadSessionResponse(String input_str_val) {
-        this.debug(false, "parserHeadSessionResponse", "input_str_val=" + input_str_val);
+        this.debug(true, "parserHeadSessionResponse", "input_str_val=" + input_str_val);
+        String result_str = input_str_val.substring(0, 1);
+
+        if (result_str.charAt(0) == ClientFabricResultImport.SUCCEED) {
+            String rest_str = input_str_val.substring(1);
+            String link_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
+
+            String session_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
+
+            String theme_str = Encoders.sSubstring2(rest_str);
+            //rest_str = Encoders.sSubstring2_(rest_str);
+
+            this.debug(false, "parserHeadSessionResponse", "session_id_str=" + session_id_str);
+
+            this.clientFabricInfo().setSessionIdStr(session_id_str);
+            this.importInterface().handleSetupHeadSessionResponse(result_str, theme_str);
+        }
     }
 
     private void parserPeerSessionResponse(String input_str_val) {
-        this.debug(false, "parserPeerSessionResponse", "input_str_val=" + input_str_val);
+        this.debug(true, "parserPeerSessionResponse", "input_str_val=" + input_str_val);
+        String result_str = input_str_val.substring(0, 1);
+
+        if (result_str.charAt(0) == ClientFabricResultImport.SUCCEED) {
+            String rest_str = input_str_val.substring(1);
+            String link_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
+
+            String session_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
+
+            String theme_str = Encoders.sSubstring2(rest_str);
+            //rest_str = Encoders.sSubstring2_(rest_str);
+
+            this.debug(false, "parserPeerSessionResponse", "session_id_str=" + session_id_str);
+
+            this.clientFabricInfo().setSessionIdStr(session_id_str);
+            this.importInterface().handleSetupPeerSessionResponse(result_str, theme_str);
+        }
     }
 
     private void parserJoinSessionResponse(String input_str_val) {
-        this.debug(false, "parserJoinSessionResponse", "input_str_val=" + input_str_val);
+        this.debug(true, "parserJoinSessionResponse", "input_str_val=" + input_str_val);
+        String result_str = input_str_val.substring(0, 1);
+
+        if (result_str.charAt(0) == ClientFabricResultImport.SUCCEED) {
+            String rest_str = input_str_val.substring(1);
+            String link_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
+
+            String session_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
+
+            String theme_str = Encoders.sSubstring2(rest_str);
+            //rest_str = Encoders.sSubstring2_(rest_str);
+
+            this.debug(false, "parserJoinSessionResponse", "session_id_str=" + session_id_str);
+
+            this.clientFabricInfo().setSessionIdStr(session_id_str);
+            this.importInterface().handleSetupJoinSessionResponse(result_str, theme_str);
+        }
     }
 
     private void parserSetupSessionResponse(String input_str_val) {

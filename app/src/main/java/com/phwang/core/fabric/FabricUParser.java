@@ -69,7 +69,7 @@ public class FabricUParser {
                 response_data = this.processPeerSessionRequest(rest_str.substring(1));
                 break;
             case FabricExport.FABRIC_COMMAND_JOIN_SESSION:
-                //response_data = this.processJoinSessionRequest(rest_str.substring(1));
+                response_data = this.processJoinSessionRequest(rest_str.substring(1));
                 break;
             case FabricExport.FABRIC_COMMAND_SETUP_SESSION:
                 response_data = this.processSetupSessionRequest(rest_str.substring(1));

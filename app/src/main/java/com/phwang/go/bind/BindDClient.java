@@ -94,7 +94,7 @@ public class BindDClient implements ClientDImportInt {
     }
 
     public void handleSetupHeadSessionResponse(String result_str_val, String theme_str_val) {
-        this.debug(true, "handleSoloSessionResponse", "SessionId=" + this.clientFabricInfo().sessionIdStr());
+        this.debug(true, "handleSetupHeadSessionResponse", "SessionId=" + this.clientFabricInfo().sessionIdStr());
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
                 CommandDefine.FABRIC_COMMAND_HEAD_SESSION_STR,
@@ -103,12 +103,22 @@ public class BindDClient implements ClientDImportInt {
 
     }
 
-    public void handleSetupPeerSessionResponse(String result_str_val) {
-
+    public void handleSetupPeerSessionResponse(String result_str_val, String theme_str_val) {
+        this.debug(true, "handleSetupPeerSessionResponse", "SessionId=" + this.clientFabricInfo().sessionIdStr());
+        this.sendBroadcastMessage(
+                IntentDefine.BIND_SERVICE,
+                CommandDefine.FABRIC_COMMAND_PEER_SESSION_STR,
+                result_str_val,
+                theme_str_val);
     }
 
-    public void handleSetupJoinSessionResponse(String result_str_val) {
-
+    public void handleSetupJoinSessionResponse(String result_str_val, String theme_str_val) {
+        this.debug(true, "handleSetupJoinSessionResponse", "SessionId=" + this.clientFabricInfo().sessionIdStr());
+        this.sendBroadcastMessage(
+                IntentDefine.BIND_SERVICE,
+                CommandDefine.FABRIC_COMMAND_JOIN_SESSION_STR,
+                result_str_val,
+                theme_str_val);
     }
 
     public void handleSetupSessionResponse(String result_str_val) {
