@@ -139,10 +139,8 @@ public class ClientDParser {
             String session_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
 
-            this.debug(true, "parserSoloSessionResponse", "rest_str=" + rest_str);
-            //String theme_str = Encoders.sSubstring2(rest_str);
+            String theme_str = Encoders.sSubstring2(rest_str);
             //rest_str = Encoders.sSubstring2_(rest_str);
-            String theme_str = rest_str;
 
             this.debug(false, "parserSoloSessionResponse", "session_id_str=" + session_id_str);
 
