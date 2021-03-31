@@ -36,6 +36,18 @@ public class ClientDExport implements ClientDExportInt {
 
     public void doRegister(String my_name_val, String password_val, String email_val) {
         this.debug(true, "doRegister", "name=" + my_name_val);
+
+        StringBuilder command_buf = new StringBuilder();
+        command_buf.append(ClientImport.FABRIC_COMMAND_REGISTER);
+        command_buf.append(ClientImport.CLIENT_IS_ANDROID);
+        command_buf.append(Encoders.sEncode2(my_name_val));
+        command_buf.append(Encoders.sEncode2(password_val));
+        command_buf.append(Encoders.sEncode2(email_val));
+        String command_str = command_buf.toString();
+
+        this.debug(false, "doRegister", "command_str=" + command_str);
+
+        this.transmitToFabric(command_str);
     }
     
     public void doLogin(String my_name_val, String password_val) {
@@ -48,17 +60,35 @@ public class ClientDExport implements ClientDExportInt {
         command_buf.append(Encoders.sEncode2(password_val));
         String command_str = command_buf.toString();
         
-    	this.debug(false, "setupLink", "command_str=" + command_str);
+    	this.debug(false, "doLogin", "command_str=" + command_str);
     	
     	this.transmitToFabric(command_str);
     }
 
     public void doLogout() {
         this.debug(true, "doLogout", "doLogout");
+
+        StringBuilder command_buf = new StringBuilder();
+        command_buf.append(ClientImport.FABRIC_COMMAND_LOGOUT);
+        command_buf.append(ClientImport.CLIENT_IS_ANDROID);
+        String command_str = command_buf.toString();
+
+        this.debug(false, "doLogout", "command_str=" + command_str);
+
+        this.transmitToFabric(command_str);
     }
 
     public void doGetGroups() {
         this.debug(true, "doGetGroups", "doGetGroups");
+
+        StringBuilder command_buf = new StringBuilder();
+        command_buf.append(ClientImport.FABRIC_COMMAND_GET_GROUPS);
+        command_buf.append(ClientImport.CLIENT_IS_ANDROID);
+        String command_str = command_buf.toString();
+
+        this.debug(false, "doGetGroups", "command_str=" + command_str);
+
+        this.transmitToFabric(command_str);
     }
     
     public void getLinkData() {
