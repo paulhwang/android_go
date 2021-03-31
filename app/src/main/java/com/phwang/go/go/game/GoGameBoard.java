@@ -52,7 +52,7 @@ public class GoGameBoard {
     }
 
     void decodConfig(String config_str_val) {
-        Log.e(TAG, "decodeGoConfig() config_str=" + config_str_val);
+        //Log.e(TAG, "decodeGoConfig() config_str=" + config_str_val);
 
         String config_str = Encoders.sDecode2(config_str_val);
         String board_size_str = config_str.substring(1, 3);

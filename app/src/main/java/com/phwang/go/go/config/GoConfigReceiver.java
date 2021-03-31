@@ -53,7 +53,6 @@ public class GoConfigReceiver extends BroadcastReceiver {
         switch (command.charAt(0)) {
             case CommandDefine.FABRIC_COMMAND_SOLO_SESSION:
                 if (result == ClientFabricResultImport.SUCCEED) {
-                    Log.e(TAG, "handleReceivedBundle(2) command=" + command + ", result=" + result + " data=" + data_str);
                     Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
                     intent.putExtra(BundleIndexDefine.DATA, data_str);
                     this.goConfigActivity_.startActivity(intent);
