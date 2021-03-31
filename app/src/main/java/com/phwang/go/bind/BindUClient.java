@@ -52,8 +52,8 @@ public class BindUClient {
 
     }
 
-    public void doSoloSession(String session_setup_data_val) {
-        this.debug(true, "doSoloSession", "data=" + session_setup_data_val);
+    public void doSoloSession(String data_str_val) {
+        this.debug(true, "doSoloSession", "data=" + data_str_val);
         if (this.clientFabricInfo().linkIdStr() == null) {
             this.bindDClient_.sendBroadcastMessage(
                     IntentDefine.BIND_SERVICE,
@@ -63,7 +63,7 @@ public class BindUClient {
 
             return;
         }
-        this.clientDExport().soloSession(session_setup_data_val);
+        this.clientDExport().soloSession(data_str_val);
     }
 
     public void doSetupSession(String his_name_val, String session_setup_data_val) {
