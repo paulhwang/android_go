@@ -80,7 +80,7 @@ public class ClientDExport implements ClientDExportInt {
     }
 
     public void setupSoloSession(String data_str_val) {
-        this.debug(false, "soloSession", "data_str_val=" + data_str_val);
+        this.debug(false, "setupSoloSession", "data_str_val=" + data_str_val);
 
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(ClientImport.FABRIC_COMMAND_SOLO_SESSION);
@@ -88,12 +88,23 @@ public class ClientDExport implements ClientDExportInt {
         command_buf.append(data_str_val);
         String command_str = command_buf.toString();
 
-        this.debug(false, "soloSession", "command_str=" + command_str);
+        this.debug(false, "setupSoloSession", "command_str=" + command_str);
 
         this.transmitToFabric(command_str);
     }
 
     public void setupHeadSession(String data_str_val) {
+        this.debug(false, "setupHeadSession", "data_str_val=" + data_str_val);
+
+        StringBuilder command_buf = new StringBuilder();
+        command_buf.append(ClientImport.FABRIC_COMMAND_HEAD_SESSION);
+        command_buf.append(this.clientFabricInfo().linkIdStr());
+        command_buf.append(data_str_val);
+        String command_str = command_buf.toString();
+
+        this.debug(false, "setupHeadSession", "command_str=" + command_str);
+
+        this.transmitToFabric(command_str);
     }
 
     public void setupPeerSession(String data_str_val) {

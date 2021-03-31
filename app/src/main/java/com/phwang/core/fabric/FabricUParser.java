@@ -63,7 +63,7 @@ public class FabricUParser {
                 response_data = this.processSoloSessionRequest(rest_str.substring(1));
                 break;
             case FabricExport.FABRIC_COMMAND_HEAD_SESSION:
-                //response_data = this.processHeadSessionRequest(rest_str.substring(1));
+                response_data = this.processHeadSessionRequest(rest_str.substring(1));
                 break;
             case FabricExport.FABRIC_COMMAND_PEER_SESSION:
                 //response_data = this.processPeerSessionRequest(rest_str.substring(1));
@@ -290,6 +290,45 @@ public class FabricUParser {
     }
 
     private String generateSoloSessionResponse(char result_val, String link_id_str_val, String session_id_str_val, String theme_data_str_val) {
+        StringBuilder response_buf = new StringBuilder();
+        response_buf.append(FabricExport.FABRIC_COMMAND_SOLO_SESSION);
+        response_buf.append(result_val);
+        response_buf.append(link_id_str_val);
+        response_buf.append(session_id_str_val);
+        response_buf.append(theme_data_str_val);
+        return response_buf.toString();
+    }
+
+    private String processHeadSessionRequest(String input_str_val) {
+        this.debug(true, "processHeadSessionRequest", "input_str_val=" + input_str_val);
+
+        String rest_str = input_str_val;
+        String link_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
+
+        String theme_data_str = Encoders.sSubstring2(rest_str);
+        //rest_str = Encoders.sDecode2_(rest_str);
+
+        this.debug(true, "processHeadSessionRequest", "link_id = " + link_id_str);
+        this.debug(true, "processHeadSessionRequest", "theme_data = " + theme_data_str);
+
+        FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
+        if (link == null) {
+            return this.generateHeadSessionResponse(FabricResultExport.LINK_NOT_EXIST, link.linkIdStr(), "", theme_data_str);
+        }
+
+        FabricSession session = link.mallocSession();
+        FabricGroup group = this.groupMgr().mallocGroup(theme_data_str);
+        group.insertSession(session);
+        session.bindGroup(group);
+
+        this.mallocRoom(group, theme_data_str);
+
+        String response_data = this.generateHeadSessionResponse(FabricResultExport.SUCCEED, link.linkIdStr(), session.lSessionIdStr(), theme_data_str);
+        return response_data;
+    }
+
+    private String generateHeadSessionResponse(char result_val, String link_id_str_val, String session_id_str_val, String theme_data_str_val) {
         StringBuilder response_buf = new StringBuilder();
         response_buf.append(FabricExport.FABRIC_COMMAND_SOLO_SESSION);
         response_buf.append(result_val);

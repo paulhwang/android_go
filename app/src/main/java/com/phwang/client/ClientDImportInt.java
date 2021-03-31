@@ -13,10 +13,10 @@ public interface ClientDImportInt {
 	public void handleRemoveLinkResponse(String result_str_val);
 	public void handleGetLinkDataResponse(String result_str_val);
 	public void handleGetNameListResponse(String result_str_val);
-	public void handleSoloSessionResponse(String result_str_val, String theme_str_val);
-	public void handleHeadSessionResponse(String result_str_val);
-	public void handlePeerSessionResponse(String result_str_val);
-	public void handleJoinSessionResponse(String result_str_val);
+	public void handleSetupSoloSessionResponse(String result_str_val, String theme_str_val);
+	public void handleSetupHeadSessionResponse(String result_str_val, String theme_str_val);
+	public void handleSetupPeerSessionResponse(String result_str_val);
+	public void handleSetupJoinSessionResponse(String result_str_val);
 	public void handleSetupSessionResponse(String result_str_val);
 	public void handleSetupSession2Response(String result_str_val);
 	public void handleSetupSession3Response(String result_str_val);

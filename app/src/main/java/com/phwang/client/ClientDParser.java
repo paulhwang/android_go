@@ -145,7 +145,7 @@ public class ClientDParser {
             this.debug(false, "parserSoloSessionResponse", "session_id_str=" + session_id_str);
 
             this.clientFabricInfo().setSessionIdStr(session_id_str);
-            this.importInterface().handleSoloSessionResponse(result_str, theme_str);
+            this.importInterface().handleSetupSoloSessionResponse(result_str, theme_str);
         }
     }
 
