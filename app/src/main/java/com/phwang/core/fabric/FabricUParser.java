@@ -39,7 +39,7 @@ public class FabricUParser {
         this.debug(true, "parseInputPacket", "input_str = " + input_str);
 
         String rest_str = input_str;
-        if (rest_str.charAt(0) == FabricExport.FABRIC_COMMAND_HTTP_DATA) {
+        if (rest_str.charAt(0) == FabricCommands.FABRIC_COMMAND_HTTP_DATA) {
             rest_str = rest_str.substring(1);
             job_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
@@ -47,49 +47,49 @@ public class FabricUParser {
 
         this.debug(false, "parseInputPacket", "data_str = " + rest_str);
         switch (rest_str.charAt(0)) {
-            case FabricExport.FABRIC_COMMAND_REGISTER:
+            case FabricCommands.FABRIC_COMMAND_REGISTER:
                 //response_data = this.processRegisterRequest(rest_str.substring(1));
                 break;
-            case FabricExport.FABRIC_COMMAND_LOGIN:
+            case FabricCommands.FABRIC_COMMAND_LOGIN:
                 response_data = this.processLoginRequest(rest_str.substring(1));
                 break;
-            case FabricExport.FABRIC_COMMAND_LOGOUT:
+            case FabricCommands.FABRIC_COMMAND_LOGOUT:
                 //response_data = this.processLogoutRequest(rest_str.substring(1));
                 break;
-            case FabricExport.FABRIC_COMMAND_GET_GROUPS:
+            case FabricCommands.FABRIC_COMMAND_GET_GROUPS:
                 //response_data = this.processGetGroupsRequest(rest_str.substring(1));
                 break;
-            case FabricExport.FABRIC_COMMAND_GET_LINK_DATA:
+            case FabricCommands.FABRIC_COMMAND_GET_LINK_DATA:
                 response_data = this.processGetLinkDataRequest(rest_str.substring(1));
                 break;
-            case FabricExport.FABRIC_COMMAND_GET_NAME_LIST:
+            case FabricCommands.FABRIC_COMMAND_GET_NAME_LIST:
                 response_data = this.processGetNameListRequest(rest_str.substring(1));
                 break;
-            case FabricExport.FABRIC_COMMAND_SOLO_SESSION:
+            case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
                 response_data = this.processSoloSessionRequest(rest_str.substring(1));
                 break;
-            case FabricExport.FABRIC_COMMAND_HEAD_SESSION:
+            case FabricCommands.FABRIC_COMMAND_HEAD_SESSION:
                 response_data = this.processHeadSessionRequest(rest_str.substring(1));
                 break;
-            case FabricExport.FABRIC_COMMAND_PEER_SESSION:
+            case FabricCommands.FABRIC_COMMAND_PEER_SESSION:
                 response_data = this.processPeerSessionRequest(rest_str.substring(1));
                 break;
-            case FabricExport.FABRIC_COMMAND_JOIN_SESSION:
+            case FabricCommands.FABRIC_COMMAND_JOIN_SESSION:
                 response_data = this.processJoinSessionRequest(rest_str.substring(1));
                 break;
-            case FabricExport.FABRIC_COMMAND_SETUP_SESSION:
+            case FabricCommands.FABRIC_COMMAND_SETUP_SESSION:
                 response_data = this.processSetupSessionRequest(rest_str.substring(1));
                 break;
-            case FabricExport.FABRIC_COMMAND_SETUP_SESSION2:
+            case FabricCommands.FABRIC_COMMAND_SETUP_SESSION2:
                 response_data = this.processSetupSession2Request(rest_str.substring(1));
                 break;
-            case FabricExport.FABRIC_COMMAND_SETUP_SESSION3:
+            case FabricCommands.FABRIC_COMMAND_SETUP_SESSION3:
                 response_data = this.processSetupSession3Request(rest_str.substring(1));
                 break;
-            case FabricExport.FABRIC_COMMAND_PUT_SESSION_DATA:
+            case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
                 response_data = this.processPutSessionDataRequest(rest_str.substring(1));
                 break;
-            case FabricExport.FABRIC_COMMAND_GET_SESSION_DATA:
+            case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
                 response_data = this.processGetSessionDataRequest(rest_str.substring(1));
                 break;
             default:
@@ -131,7 +131,7 @@ public class FabricUParser {
     
     private String generateLoginResponse(char result_val, String link_id_str_val, String my_name_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_LOGIN);
+        response_buf.append(FabricCommands.FABRIC_COMMAND_LOGIN);
         response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(Encoders.sEncode2(my_name_val));
@@ -162,7 +162,7 @@ public class FabricUParser {
 
     protected String generateLogoutResponse(String link_id_str_val, String result_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_LOGOUT);
+        response_buf.append(FabricCommands.FABRIC_COMMAND_LOGOUT);
         response_buf.append(link_id_str_val);
         response_buf.append(Encoders.sEncode2(result_val));
         return response_buf.toString();
@@ -222,7 +222,7 @@ public class FabricUParser {
 
     public String generateGetLinkDataResponse(char result_val, String link_id_str_val, String data_val, String pending_session_setup_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_GET_LINK_DATA);
+        response_buf.append(FabricCommands.FABRIC_COMMAND_GET_LINK_DATA);
         response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(Encoders.sEncode2(data_val));
@@ -258,7 +258,7 @@ public class FabricUParser {
 
     protected String generateGetNameListResponse(char result_val, String link_id_str_val, String name_list_str_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_GET_NAME_LIST);
+        response_buf.append(FabricCommands.FABRIC_COMMAND_GET_NAME_LIST);
         response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(Encoders.sEncode2(name_list_str_val));
@@ -296,7 +296,7 @@ public class FabricUParser {
 
     private String generateSoloSessionResponse(char result_val, String link_id_str_val, String session_id_str_val, String theme_data_str_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_SOLO_SESSION);
+        response_buf.append(FabricCommands.FABRIC_COMMAND_SOLO_SESSION);
         response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(session_id_str_val);
@@ -335,7 +335,7 @@ public class FabricUParser {
 
     private String generateHeadSessionResponse(char result_val, String link_id_str_val, String session_id_str_val, String theme_data_str_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_SOLO_SESSION);
+        response_buf.append(FabricCommands.FABRIC_COMMAND_SOLO_SESSION);
         response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(session_id_str_val);
@@ -374,7 +374,7 @@ public class FabricUParser {
 
     private String generatePeerSessionResponse(char result_val, String link_id_str_val, String session_id_str_val, String theme_data_str_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_PEER_SESSION);
+        response_buf.append(FabricCommands.FABRIC_COMMAND_PEER_SESSION);
         response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(session_id_str_val);
@@ -413,7 +413,7 @@ public class FabricUParser {
 
     private String generateJoinSessionResponse(char result_val, String link_id_str_val, String session_id_str_val, String theme_data_str_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_JOIN_SESSION);
+        response_buf.append(FabricCommands.FABRIC_COMMAND_JOIN_SESSION);
         response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(session_id_str_val);
@@ -500,7 +500,7 @@ public class FabricUParser {
 
     protected String generateSetupSessionResponse(char result_val, String link_id_str_val, String session_id_str_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_SETUP_SESSION);
+        response_buf.append(FabricCommands.FABRIC_COMMAND_SETUP_SESSION);
         response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(session_id_str_val);
@@ -554,7 +554,7 @@ public class FabricUParser {
 
     protected String generateSetupSession2Response(char result_val, String link_id_str_val, String session_id_str_val, String theme_id_str_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_SETUP_SESSION3);
+        response_buf.append(FabricCommands.FABRIC_COMMAND_SETUP_SESSION3);
         response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(session_id_str_val);
@@ -595,7 +595,7 @@ public class FabricUParser {
 
     protected String generateSetupSession3Response(char result_val, String link_id_str_val, String session_id_str_val, String theme_id_str_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_SETUP_SESSION3);
+        response_buf.append(FabricCommands.FABRIC_COMMAND_SETUP_SESSION3);
         response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(session_id_str_val);
@@ -655,7 +655,7 @@ public class FabricUParser {
 
     protected String generatePutSessionDataResponse(char result_val, String link_id_str_val, String session_id_str_val, String c_data_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_PUT_SESSION_DATA);
+        response_buf.append(FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA);
         response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(session_id_str_val);
@@ -699,7 +699,7 @@ public class FabricUParser {
 
     protected String generateGetSessionDataResponse(char result_val, String link_id_str_val, String session_id_str_val, String c_data_val) {
         StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricExport.FABRIC_COMMAND_GET_SESSION_DATA);
+        response_buf.append(FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA);
         response_buf.append(result_val);
         response_buf.append(link_id_str_val);
         response_buf.append(session_id_str_val);

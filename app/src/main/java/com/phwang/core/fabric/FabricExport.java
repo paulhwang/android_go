@@ -15,29 +15,8 @@ public class FabricExport {
     public static final short FABRIC_FRONT_PORT = 8001;
     public static final short FABRIC_THEME_PORT = 8009;
 
-    public static final char CLIENT_IS_ANDROID = 'A';
-    public static final char CLIENT_IS_IPHONE = 'I';
-    public static final char CLIENT_IS_HTTP = 'H';
-
     public static final int NAME_LIST_TAG_SIZE = FabricNameList.NAME_LIST_TAG_SIZE;
 
-    public static final char FABRIC_COMMAND_HTTP_DATA = 'H';
-    public static final char FABRIC_COMMAND_REGISTER = 'R';
-	public static final char FABRIC_COMMAND_LOGIN = 'L';
-	public static final char FABRIC_COMMAND_LOGOUT = 'l';
-    public static final char FABRIC_COMMAND_GET_GROUPS = 'g';
-	public static final char FABRIC_COMMAND_GET_LINK_DATA = 'D';
-	public static final char FABRIC_COMMAND_GET_NAME_LIST = 'N';
-    public static final char FABRIC_COMMAND_SOLO_SESSION = 'B';
-    public static final char FABRIC_COMMAND_HEAD_SESSION = 'h';
-    public static final char FABRIC_COMMAND_PEER_SESSION = 'Q';
-    public static final char FABRIC_COMMAND_JOIN_SESSION = 'J';
-	public static final char FABRIC_COMMAND_SETUP_SESSION = 'S';
-	public static final char FABRIC_COMMAND_SETUP_SESSION2 = 's';
-	public static final char FABRIC_COMMAND_SETUP_SESSION3 = 'T';
-	public static final char FABRIC_COMMAND_PUT_SESSION_DATA = 'P';
-	public static final char FABRIC_COMMAND_GET_SESSION_DATA = 'G';
-	
     public static final String WEB_FABRIC_PROTOCOL_RESPOND_IS_GET_LINK_DATA_PENDING_SESSION = "S";
     public static final String WEB_FABRIC_PROTOCOL_RESPOND_IS_GET_LINK_DATA_PENDING_SESSION3 = "T";
     public static final String WEB_FABRIC_PROTOCOL_RESPOND_IS_GET_LINK_DATA_PENDING_DATA = "D";
