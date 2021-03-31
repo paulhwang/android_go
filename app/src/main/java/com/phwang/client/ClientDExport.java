@@ -79,6 +79,30 @@ public class ClientDExport implements ClientDExportInt {
     	
     	this.transmitToFabric(command_str);
     }
+
+    public void soloSession(String his_name_val, String session_setup_data_val) {
+        this.debug(false, "soloSession", "link_id=" + this.clientFabricInfo().linkIdStr());
+
+        StringBuilder command_buf = new StringBuilder();
+        command_buf.append(ClientImport.FABRIC_COMMAND_SETUP_SESSION);
+        command_buf.append(this.clientFabricInfo().linkIdStr());
+        command_buf.append(Encoders.sEncode2(his_name_val));
+        command_buf.append(this.goConfig().getGoConfigStr());
+        String command_str = command_buf.toString();
+
+        this.debug(false, "soloSession", "command_str=" + command_str);
+
+        this.transmitToFabric(command_str);
+    }
+
+    public void headSession(String his_name_val, String session_setup_data_val) {
+    }
+
+    public void peerSession(String his_name_val, String session_setup_data_val) {
+    }
+
+    public void joinSession(String his_name_val, String session_setup_data_val) {
+    }
     
     public void setupSession(String his_name_val, String session_setup_data_val) {
     	this.debug(false, "setupSession", "link_id=" + this.clientFabricInfo().linkIdStr());

@@ -63,7 +63,7 @@ public class BindUClient {
 
             return;
         }
-        this.clientDExport().setupSession(his_name_val, session_setup_data_val);
+        this.clientDExport().soloSession(his_name_val, session_setup_data_val);
     }
 
     public void doSetupSession(String his_name_val, String session_setup_data_val) {
