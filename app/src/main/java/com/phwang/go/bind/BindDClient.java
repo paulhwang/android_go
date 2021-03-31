@@ -22,13 +22,20 @@ import com.phwang.go.define.IntentDefine;
 import com.phwang.go.define.ResultDefine;
 
 public class BindDClient implements ClientDImportInt {
-    private String objectName() {return "BindDClient";}
+    private String objectName() {
+        return "BindDClient";
+    }
 
     private Context applicationContext_;
     private ClientRoot clientRoot_;
 
-    protected ClientDExport clientDExport() { return this.clientRoot_.clientDExport(); }
-    protected ClientFabricInfo clientFabricInfo() { return this.clientRoot_.clientFabricInfo();}
+    protected ClientDExport clientDExport() {
+        return this.clientRoot_.clientDExport();
+    }
+
+    protected ClientFabricInfo clientFabricInfo() {
+        return this.clientRoot_.clientFabricInfo();
+    }
 
     public BindDClient(Context application_context_val) {
         this.applicationContext_ = application_context_val;
@@ -48,7 +55,19 @@ public class BindDClient implements ClientDImportInt {
         this.applicationContext_.sendBroadcast(intent);
     }
 
-    public void handleSetupLinkResponse(String result_str_val) {
+    public void handleRegisterResponse(String result_str_val) {
+
+    }
+
+    public void handleLogoutResponse(String result_str_val) {
+
+    }
+
+    public void handleGetGroupsResponse(String result_str_val) {
+
+    }
+
+    public void handleLoginResponse(String result_str_val) {
         this.debug(true, "handleSetupLinkResponse", "LinkId=" + this.clientFabricInfo().linkIdStr());
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,

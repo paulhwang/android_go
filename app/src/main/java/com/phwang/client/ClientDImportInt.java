@@ -9,8 +9,10 @@
 package com.phwang.client;
 
 public interface ClientDImportInt {
-	public void handleSetupLinkResponse(String result_str_val);
-	public void handleRemoveLinkResponse(String result_str_val);
+	public void handleRegisterResponse(String result_str_val);
+	public void handleLoginResponse(String result_str_val);
+	public void handleLogoutResponse(String result_str_val);
+	public void handleGetGroupsResponse(String result_str_val);
 	public void handleGetLinkDataResponse(String result_str_val);
 	public void handleGetNameListResponse(String result_str_val);
 	public void handleSetupSoloSessionResponse(String result_str_val, String theme_str_val);
