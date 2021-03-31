@@ -8,21 +8,19 @@
 
 package com.phwang.go.go.config;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.phwang.core.utils.Encoders;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
-import com.phwang.go.go.game.GoGameActivity;
+import com.phwang.go.go.game.GoGameBoard;
 
 public class GoConfigActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = "GoConfigActivity";
@@ -61,13 +59,13 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view_val) {
         switch (view_val.getId()) {
             case R.id.go_config_solo9_button:
-                this.do_solo_session(this.encodeConfig(9, 0, 0));
+                this.do_solo_session(GoGameBoard.encodeConfig(9, 0, 0));
                 break;
             case R.id.go_config_solo13_button:
-                this.do_solo_session(this.encodeConfig(13, 0, 0));
+                this.do_solo_session(GoGameBoard.encodeConfig(13, 0, 0));
                 break;
             case R.id.go_config_solo19_button:
-                this.do_solo_session(this.encodeConfig(19, 0, 0));
+                this.do_solo_session(GoGameBoard.encodeConfig(19, 0, 0));
                 break;
             case R.id.go_config_play_button:
                 this.do_setup_session("phwang", "00000000G111111");
@@ -76,17 +74,6 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 finish();
                 break;
         }
-    }
-
-    private String encodeConfig(int board_size_val, int handicap_val, int komi_val) {
-        StringBuilder buf = new StringBuilder();
-        buf.append('G');
-        buf.append(Encoders.iEncodeRaw3(19));/////not used
-        buf.append(Encoders.iEncodeRaw2(board_size_val));
-        buf.append(Encoders.iEncodeRaw2(handicap_val));
-        buf.append(Encoders.iEncodeRaw2(komi_val));
-        String data = buf.toString();
-        return Encoders.sEncode2(data);
     }
 
     protected void do_solo_session(String go_config_data_val) {

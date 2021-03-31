@@ -41,6 +41,17 @@ public class GoGameBoard {
         this.decodConfig(config_str_val);
     }
 
+    public static String encodeConfig(int board_size_val, int handicap_val, int komi_val) {
+        StringBuilder buf = new StringBuilder();
+        buf.append('G');
+        buf.append(Encoders.iEncodeRaw3(19));/////not used
+        buf.append(Encoders.iEncodeRaw2(board_size_val));
+        buf.append(Encoders.iEncodeRaw2(handicap_val));
+        buf.append(Encoders.iEncodeRaw2(komi_val));
+        String data = buf.toString();
+        return Encoders.sEncode2(data);
+    }
+
     void decodConfig(String config_str_val) {
         Log.e(TAG, "decodeGoConfig() config_str=" + config_str_val);
 
