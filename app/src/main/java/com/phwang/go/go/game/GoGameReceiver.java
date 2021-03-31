@@ -47,11 +47,9 @@ public class GoGameReceiver extends BroadcastReceiver {
         Log.e(TAG, "handleReceivedBundle(000) command=" + command + ", result=" + result + " data=" + data);
 
         if (command != null) {
-            Log.e(TAG, "handleReceivedBundle(bbb) command=" + command + ", result=" + result + " data=" + data);
             switch (command.charAt(0)) {
                 case CommandDefine.FABRIC_COMMAND_SOLO_SESSION:
-                    Log.e(TAG, "handleReceivedBundle(aaa) command=" + command + ", result=" + result + " data=" + data);
-                    this.decodeGoConfig(data);
+                    Log.e(TAG, "handleReceivedBundle(***ERROR***) fix it! command=" + command + ", result=" + result + " data=" + data);
                     break;
 
                 case CommandDefine.FABRIC_COMMAND_PUT_SESSION_DATA:
@@ -66,18 +64,5 @@ public class GoGameReceiver extends BroadcastReceiver {
                     break;
             }
         }
-    }
-
-    void decodeGoConfig(String config_str_val) {
-        Log.e(TAG, "decodeGoConfig() config_str=" + config_str_val);
-
-        String len_str = config_str_val.substring(0,3);
-        String board_size_str = config_str_val.substring(3, 5);
-        String handicap_str = config_str_val.substring(5, 7);
-        String komi_str = config_str_val.substring(7, 9);
-
-        this.goGameBoard().setBoardSize(Encoders.iDecodeRaw(board_size_str));
-        //this.handicapPoint_ = Encoders.iDecodeRaw(handicap_str);
-        //this.komiPoint_ = Encoders.iDecodeRaw(komi_str);
     }
 }
