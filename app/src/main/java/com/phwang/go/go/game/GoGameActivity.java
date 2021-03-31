@@ -35,8 +35,10 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e(TAG, "onCreate()");
 
         String config_str = this.getIntent().getExtras().getString(BundleIndexDefine.DATA);
+        Log.e(TAG, "onCreate() config_str= " + config_str);
         this.goBoard_ = new GoGameBoard(this, config_str);
         this.goGameFunc_ = new GoGameActivityFunc(this);
 

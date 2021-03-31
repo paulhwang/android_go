@@ -38,12 +38,13 @@ public class GoGameBoard {
 
     public GoGameBoard(GoGameActivity go_game_val, String config_str_val) {
         this.goGame_ = go_game_val;
-        //this.decodConfig(config_str_val);
+        this.decodConfig(config_str_val);
     }
 
     void decodConfig(String config_str_val) {
         Log.e(TAG, "decodeGoConfig() config_str=" + config_str_val);
 
+        config_str_val = config_str_val.substring(1);
         String len_str = config_str_val.substring(0,3);
         String board_size_str = config_str_val.substring(3, 5);
         String handicap_str = config_str_val.substring(5, 7);
