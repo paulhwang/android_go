@@ -34,22 +34,22 @@ public class BindUClient {
 
     public void doLogin(String my_name_val, String password_val) {
         this.debug(true, "doLogin", "doLogin");
-        this.clientDExport().setupLink(my_name_val, password_val);
+        this.clientDExport().doLogin(my_name_val, password_val);
     }
 
     public void doLogout() {
         this.debug(true, "doLogout", "doLogout");
-        //this.clientDExport().doLogout();
+        this.clientDExport().doLogout();
     }
 
     public void doRegister(String my_name_val, String password_val, String email_val) {
         this.debug(true, "doRegister", "doRegister");
-        //this.clientDExport().doRegister();
+        this.clientDExport().doRegister(my_name_val, password_val, email_val);
     }
 
     public void doGetGroups() {
         this.debug(false, "doGetGroups", "doGetGroups");
-        //this.clientDExport().doGetGroups();
+        this.clientDExport().doGetGroups();
     }
 
     public void doGetRemoveLink() {

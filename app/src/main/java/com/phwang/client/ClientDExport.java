@@ -33,9 +33,13 @@ public class ClientDExport implements ClientDExportInt {
     	this.debug(true, "transmitToFabric", "data_str_val=" + data_str_val);
        	this.uBinder().transmitStringData(data_str_val);
     }
+
+    public void doRegister(String my_name_val, String password_val, String email_val) {
+        this.debug(true, "doRegister", "name=" + my_name_val);
+    }
     
-    public void setupLink(String my_name_val, String password_val) {
-    	this.debug(false, "setupLink", "name=" + my_name_val);
+    public void doLogin(String my_name_val, String password_val) {
+    	this.debug(false, "doLogin", "name=" + my_name_val);
     	
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(ClientImport.FABRIC_COMMAND_LOGIN);
@@ -48,9 +52,13 @@ public class ClientDExport implements ClientDExportInt {
     	
     	this.transmitToFabric(command_str);
     }
-    
-    public void removeLink() {
-    	
+
+    public void doLogout() {
+        this.debug(true, "doLogout", "doLogout");
+    }
+
+    public void doGetGroups() {
+        this.debug(true, "doGetGroups", "doGetGroups");
     }
     
     public void getLinkData() {
