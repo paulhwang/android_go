@@ -39,7 +39,6 @@ public class ClientDExport implements ClientDExportInt {
 
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(ClientImport.FABRIC_COMMAND_REGISTER);
-        command_buf.append(ClientImport.CLIENT_IS_ANDROID);
         command_buf.append(Encoders.sEncode2(my_name_val));
         command_buf.append(Encoders.sEncode2(password_val));
         command_buf.append(Encoders.sEncode2(email_val));
@@ -70,7 +69,7 @@ public class ClientDExport implements ClientDExportInt {
 
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(ClientImport.FABRIC_COMMAND_LOGOUT);
-        command_buf.append(ClientImport.CLIENT_IS_ANDROID);
+        command_buf.append(this.clientFabricInfo().linkIdStr());
         String command_str = command_buf.toString();
 
         this.debug(false, "doLogout", "command_str=" + command_str);
@@ -83,7 +82,7 @@ public class ClientDExport implements ClientDExportInt {
 
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(ClientImport.FABRIC_COMMAND_GET_GROUPS);
-        command_buf.append(ClientImport.CLIENT_IS_ANDROID);
+        command_buf.append(this.clientFabricInfo().linkIdStr());
         String command_str = command_buf.toString();
 
         this.debug(false, "doGetGroups", "command_str=" + command_str);
