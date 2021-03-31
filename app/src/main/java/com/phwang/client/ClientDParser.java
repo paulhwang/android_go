@@ -29,9 +29,18 @@ public class ClientDParser {
     	this.debug(true, "parserResponseData", "input_data_val=" + input_data_val);
     	
     	switch (input_data_val.charAt(0)) {
-            case ClientImport.FABRIC_COMMAND_LOGIN:
-    		    parserSetupLinkResponse(input_data_val.substring(1));
+            case ClientImport.FABRIC_COMMAND_REGISTER:
+    		    parserRegisterResponse(input_data_val.substring(1));
     		    break;
+            case ClientImport.FABRIC_COMMAND_LOGIN:
+                parserLoginResponse(input_data_val.substring(1));
+                break;
+            case ClientImport.FABRIC_COMMAND_LOGOUT:
+                parserLogoutResponse(input_data_val.substring(1));
+                break;
+            case ClientImport.FABRIC_COMMAND_GET_GROUPS:
+                parserGetGroupsResponse(input_data_val.substring(1));
+                break;
             case ClientImport.FABRIC_COMMAND_GET_LINK_DATA:
     		    parserGetLinkDataResponse(input_data_val.substring(1));
     		    break;
@@ -70,9 +79,13 @@ public class ClientDParser {
     		    break;
     	}
     }
+
+    private void parserRegisterResponse(String input_str_val) {
+        this.debug(true, "parserRegisterResponse", "input_str_val=" + input_str_val);
+    }
     
-    private void parserSetupLinkResponse(String input_str_val) {
-    	this.debug(true, "parserSetupLinkResponse", "input_str_val=" + input_str_val);
+    private void parserLoginResponse(String input_str_val) {
+    	this.debug(true, "parserLoginResponse", "input_str_val=" + input_str_val);
 
     	String result_str = input_str_val.substring(0, 1);
 
@@ -88,6 +101,14 @@ public class ClientDParser {
         }
 
     	this.importInterface().handleSetupLinkResponse(result_str);
+    }
+
+    private void parserLogoutResponse(String input_str_val) {
+        this.debug(true, "parserLogoutResponse", "input_str_val=" + input_str_val);
+    }
+
+    private void parserGetGroupsResponse(String input_str_val) {
+        this.debug(true, "parserGetGroupsResponse", "input_str_val=" + input_str_val);
     }
 
     private void parserGetLinkDataResponse(String input_str_val) {

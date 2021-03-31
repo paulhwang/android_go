@@ -48,16 +48,16 @@ public class FabricUParser {
         this.debug(false, "parseInputPacket", "data_str = " + rest_str);
         switch (rest_str.charAt(0)) {
             case FabricCommands.FABRIC_COMMAND_REGISTER:
-                //response_data = this.processRegisterRequest(rest_str.substring(1));
+                response_data = this.processRegisterRequest(rest_str.substring(1));
                 break;
             case FabricCommands.FABRIC_COMMAND_LOGIN:
                 response_data = this.processLoginRequest(rest_str.substring(1));
                 break;
             case FabricCommands.FABRIC_COMMAND_LOGOUT:
-                //response_data = this.processLogoutRequest(rest_str.substring(1));
+                response_data = this.processLogoutRequest(rest_str.substring(1));
                 break;
             case FabricCommands.FABRIC_COMMAND_GET_GROUPS:
-                //response_data = this.processGetGroupsRequest(rest_str.substring(1));
+                response_data = this.processGetGroupsRequest(rest_str.substring(1));
                 break;
             case FabricCommands.FABRIC_COMMAND_GET_LINK_DATA:
                 response_data = this.processGetLinkDataRequest(rest_str.substring(1));
@@ -105,6 +105,34 @@ public class FabricUParser {
         this.fabricDBinder().transmitBundleData(bundle_val);
     }
 
+    private String processRegisterRequest(String input_str_val) {
+        this.debug(true, "processRegisterRequest", "input_str_val=" + input_str_val);
+
+        String rest_str = input_str_val;
+        String my_name = Encoders.sDecode2(rest_str);
+        rest_str = Encoders.sDecode2_(rest_str);
+
+        String password = Encoders.sDecode2(rest_str);
+        rest_str = Encoders.sDecode2_(rest_str);
+
+        String email = Encoders.sDecode2(rest_str);
+        //rest_str = Encoders.sDecode2_(rest_str);
+
+        this.debug(true, "processRegisterRequest", "my_name = " + my_name);
+        this.debug(false, "processRegisterRequest", "password = " + password);
+
+        String response_data = this.generateRegisterResponse(FabricResultExport.SUCCEED, my_name);
+        return response_data;
+    }
+
+    private String generateRegisterResponse(char result_val, String my_name_val) {
+        StringBuilder response_buf = new StringBuilder();
+        response_buf.append(FabricCommands.FABRIC_COMMAND_REGISTER);
+        response_buf.append(result_val);
+        response_buf.append(Encoders.sEncode2(my_name_val));
+        return response_buf.toString();
+    }
+
     private String processLoginRequest(String input_str_val) {
         this.debug(false, "processLoginRequest", "input_str_val=" + input_str_val);
         
@@ -139,32 +167,54 @@ public class FabricUParser {
     }
     
     private String processLogoutRequest(String input_str_val) {
-        this.debug(false, "processLogoutRequest", "input_str_val = " + input_str_val);
+        this.debug(true, "processLogoutRequest", "input_str_val = " + input_str_val);
         
         String rest_str = input_str_val;
         String link_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
     	
-        this.debug(false, "processRemoveLinkRequest", "link_id = " + link_id_str);
+        this.debug(false, "processLogoutRequest", "link_id = " + link_id_str);
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            return this.errorProcessRemoveLink(link_id_str, "*************null link");
+            return this.generateLogoutResponse(FabricResultExport.LINK_NOT_EXIST, link_id_str);
         }
 
-        String response_data = this.generateLogoutResponse(link.linkIdStr(), "Succeed");
+        String response_data = this.generateLogoutResponse(FabricResultExport.SUCCEED, link_id_str);
         return response_data;
     }
 
-    private String errorProcessRemoveLink(String link_id_val, String error_msg_val) {
-        return error_msg_val;
-    }
-
-    protected String generateLogoutResponse(String link_id_str_val, String result_val) {
+    private String generateLogoutResponse(char result_val, String link_id_str_val) {
         StringBuilder response_buf = new StringBuilder();
         response_buf.append(FabricCommands.FABRIC_COMMAND_LOGOUT);
+        response_buf.append(result_val);
         response_buf.append(link_id_str_val);
-        response_buf.append(Encoders.sEncode2(result_val));
+        return response_buf.toString();
+    }
+
+    private String processGetGroupsRequest(String input_str_val) {
+        this.debug(true, "processGetGroupsRequest", "input_str_val = " + input_str_val);
+
+        String rest_str = input_str_val;
+        String link_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
+
+        this.debug(false, "processGetGroupsRequest", "link_id = " + link_id_str);
+
+        FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
+        if (link == null) {
+            return this.generateGetGroupsResponse(FabricResultExport.LINK_NOT_EXIST, link_id_str);
+        }
+
+        String response_data = this.generateGetGroupsResponse(FabricResultExport.SUCCEED, link_id_str);
+        return response_data;
+    }
+
+    private String generateGetGroupsResponse(char result_val, String link_id_str_val) {
+        StringBuilder response_buf = new StringBuilder();
+        response_buf.append(FabricCommands.FABRIC_COMMAND_GET_GROUPS);
+        response_buf.append(result_val);
+        response_buf.append(link_id_str_val);
         return response_buf.toString();
     }
 
