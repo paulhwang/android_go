@@ -267,11 +267,11 @@ public class FabricUParser {
         String link_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
 
-        String theme_data_str = Encoders.sDecode2(rest_str);
+        String theme_data_str = Encoders.sSubstring2(rest_str);
         //rest_str = Encoders.sDecode2_(rest_str);
 
-        this.debug(false, "processSoloSessionRequest", "link_id = " + link_id_str);
-        this.debug(false, "processSoloSessionRequest", "theme_data = " + theme_data_str);
+        this.debug(true, "processSoloSessionRequest", "link_id = " + link_id_str);
+        this.debug(true, "processSoloSessionRequest", "theme_data = " + theme_data_str);
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {

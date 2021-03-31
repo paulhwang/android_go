@@ -43,7 +43,7 @@ public class EngineUParser {
     }
 
     private void processSetupBase(String input_str_val) {
-        this.debug(false, "processSetupBase", "data=" + input_str_val);
+        this.debug(true, "processSetupBase", "data=" + input_str_val);
 
         String rest_str = input_str_val;
         String room_id_str = Encoders.sSubstring2(rest_str);
