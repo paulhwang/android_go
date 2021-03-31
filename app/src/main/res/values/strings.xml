@@ -24,6 +24,9 @@
     <string name="bind_service_title">Go</string>
 
     <string name="about_label">About</string>
+    <string name="black9_label">Black 9</string>
+    <string name="black13_label">Black 13</string>
+    <string name="black19_label">Black 19</string>
     <string name="confirm_label">Confirm</string>
     <string name="easy_label">Easy</string>
     <string name="email_label">Email</string>
@@ -44,6 +47,9 @@
     <string name="test_label">Test</string>
     <string name="user_name_label">Username</string>
     <string name="welcome_label">Welcome</string>
+    <string name="white9_label">White 9</string>
+    <string name="white13_label">White 13</string>
+    <string name="white19_label">White 19</string>
 
     <string name="about_text">Go and Sudoku by Paul Hwang</string>
 

@@ -25,6 +25,52 @@
             android:layout_height="wrap_content"
             android:text="@string/solo19_label" />
     </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/go_config_black9_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/black9_label" />
+        <Button
+            android:id="@+id/go_config_black13_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/black13_label" />
+        <Button
+            android:id="@+id/go_config_black19_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/black19_label" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/go_config_white9_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/white9_label" />
+        <Button
+            android:id="@+id/go_config_white13_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/white13_label" />
+        <Button
+            android:id="@+id/go_config_white19_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/white19_label" />
+    </LinearLayout>
+
     <Button
         android:id="@+id/go_config_play_button"
         android:layout_width="fill_parent"

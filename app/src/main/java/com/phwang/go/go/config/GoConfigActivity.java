@@ -34,8 +34,18 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.go_config_solo9_button).setOnClickListener(this);
         findViewById(R.id.go_config_solo13_button).setOnClickListener(this);
         findViewById(R.id.go_config_solo19_button).setOnClickListener(this);
+
+        findViewById(R.id.go_config_black9_button).setOnClickListener(this);
+        findViewById(R.id.go_config_black13_button).setOnClickListener(this);
+        findViewById(R.id.go_config_black19_button).setOnClickListener(this);
+
+        findViewById(R.id.go_config_white9_button).setOnClickListener(this);
+        findViewById(R.id.go_config_white13_button).setOnClickListener(this);
+        findViewById(R.id.go_config_white19_button).setOnClickListener(this);
+
         findViewById(R.id.go_config_play_button).setOnClickListener(this);
         findViewById(R.id.go_config_exit_button).setOnClickListener(this);
+
         this.registerBroadcastReceiver();
     }
 
@@ -65,6 +75,24 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 this.do_solo_session(GoGameBoard.encodeConfig(13, 0, 0));
                 break;
             case R.id.go_config_solo19_button:
+                this.do_solo_session(GoGameBoard.encodeConfig(19, 0, 0));
+                break;
+            case R.id.go_config_black9_button:
+                this.do_solo_session(GoGameBoard.encodeConfig(9, 0, 0));
+                break;
+            case R.id.go_config_black13_button:
+                this.do_solo_session(GoGameBoard.encodeConfig(13, 0, 0));
+                break;
+            case R.id.go_config_black19_button:
+                this.do_solo_session(GoGameBoard.encodeConfig(19, 0, 0));
+                break;
+            case R.id.go_config_white9_button:
+                this.do_solo_session(GoGameBoard.encodeConfig(9, 0, 0));
+                break;
+            case R.id.go_config_white13_button:
+                this.do_solo_session(GoGameBoard.encodeConfig(13, 0, 0));
+                break;
+            case R.id.go_config_white19_button:
                 this.do_solo_session(GoGameBoard.encodeConfig(19, 0, 0));
                 break;
             case R.id.go_config_play_button:

@@ -44,14 +44,17 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
 
         setContentView(R.layout.activity_go_game);
         this.goView_ = findViewById(R.id.go_game_view);
-
-        //this.goView_ = new GoGameView(this);
-        //setContentView(this.goView_);
-
         this.goView_.requestFocus();
+        findViewById(R.id.go_game_b_button).setOnClickListener(this);
+        findViewById(R.id.go_game_fb_button).setOnClickListener(this);
+        findViewById(R.id.go_game_f_button).setOnClickListener(this);
+        findViewById(R.id.go_game_ff_button).setOnClickListener(this);
+        findViewById(R.id.go_game_pass_button).setOnClickListener(this);
+        findViewById(R.id.go_game_resign_button).setOnClickListener(this);
+        findViewById(R.id.go_game_confirm_button).setOnClickListener(this);
+        findViewById(R.id.go_game_exit_button).setOnClickListener(this);
 
         this.registerBroadcastReceiver();
-        this.setupView();
     }
 
     @Override
@@ -68,17 +71,6 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     protected void onDestroy() {
         super.onDestroy();
         this.unregisterBroadcastReceiver();
-    }
-
-    private void setupView() {
-        findViewById(R.id.go_game_b_button).setOnClickListener(this);
-        findViewById(R.id.go_game_fb_button).setOnClickListener(this);
-        findViewById(R.id.go_game_f_button).setOnClickListener(this);
-        findViewById(R.id.go_game_ff_button).setOnClickListener(this);
-        findViewById(R.id.go_game_pass_button).setOnClickListener(this);
-        findViewById(R.id.go_game_resign_button).setOnClickListener(this);
-        findViewById(R.id.go_game_confirm_button).setOnClickListener(this);
-        findViewById(R.id.go_game_exit_button).setOnClickListener(this);
     }
 
     @Override
