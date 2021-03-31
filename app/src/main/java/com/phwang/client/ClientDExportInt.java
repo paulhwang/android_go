@@ -13,10 +13,10 @@ public interface ClientDExportInt {
     public void removeLink();
     public void getLinkData();
     public void getNameList();
-    public void soloSession(String his_name_val, String session_setup_data_val);
-    public void headSession(String his_name_val, String session_setup_data_val);
-    public void peerSession(String his_name_val, String session_setup_data_val);
-    public void joinSession(String his_name_val, String session_setup_data_val);
+    public void soloSession(String session_setup_data_val);
+    public void headSession(String session_setup_data_val);
+    public void peerSession(String session_setup_data_val);
+    public void joinSession(String session_setup_data_val);
     public void setupSession(String his_name_val, String session_setup_data_val);
     public void setupSession2();
     public void setupSession3();

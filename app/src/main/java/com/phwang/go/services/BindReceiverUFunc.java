@@ -45,9 +45,8 @@ public class BindReceiverUFunc {
                 break;
 
             case CommandDefine.FABRIC_COMMAND_SOLO_SESSION:
-                String his_name1 = bundle_val.getString(BundleIndexDefine.HIS_NAME);
                 String theme_data1 = bundle_val.getString(BundleIndexDefine.THEME_DATA);
-                this.bindUClient().doSoloSession(his_name1, theme_data1);
+                this.bindUClient().doSoloSession(theme_data1);
                 break;
 
             case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:

@@ -52,7 +52,7 @@ public class BindUClient {
 
     }
 
-    public void doSoloSession(String his_name_val, String session_setup_data_val) {
+    public void doSoloSession(String session_setup_data_val) {
         this.debug(true, "doSoloSession", "data=" + session_setup_data_val);
         if (this.clientFabricInfo().linkIdStr() == null) {
             this.bindDClient_.sendBroadcastMessage(
@@ -63,7 +63,7 @@ public class BindUClient {
 
             return;
         }
-        this.clientDExport().soloSession(his_name_val, session_setup_data_val);
+        this.clientDExport().soloSession(session_setup_data_val);
     }
 
     public void doSetupSession(String his_name_val, String session_setup_data_val) {
