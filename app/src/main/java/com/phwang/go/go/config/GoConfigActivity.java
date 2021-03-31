@@ -43,6 +43,9 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.go_config_white13_button).setOnClickListener(this);
         findViewById(R.id.go_config_white19_button).setOnClickListener(this);
 
+        findViewById(R.id.go_config_peer_button).setOnClickListener(this);
+        findViewById(R.id.go_config_join_button).setOnClickListener(this);
+
         findViewById(R.id.go_config_play_button).setOnClickListener(this);
         findViewById(R.id.go_config_exit_button).setOnClickListener(this);
 
@@ -95,6 +98,12 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
             case R.id.go_config_white19_button:
                 this.setupHeadSession(GoGameBoard.encodeConfig(19, 0, 0, GoGameBoard.GO_WHITE_STONE));
                 break;
+            case R.id.go_config_peer_button:
+                this.setupPeerSession(GoGameBoard.encodeConfig(13, 0, 0, GoGameBoard.GO_WHITE_STONE));
+                break;
+            case R.id.go_config_join_button:
+                this.setupJoinSession(GoGameBoard.encodeConfig(19, 0, 0, GoGameBoard.GO_WHITE_STONE));
+                break;
             case R.id.go_config_play_button:
                 this.do_setup_session("phwang", "00000000G111111");
                 break;
@@ -121,6 +130,28 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
         intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_HEAD_SESSION_STR);
+        intent.putExtra(BundleIndexDefine.THEME_DATA, go_config_data_val);
+        intent.setAction(IntentDefine.BIND_SERVICE);
+        this.sendBroadcast(intent);
+    }
+
+    protected void setupPeerSession(String go_config_data_val) {
+        Intent intent = new Intent();
+        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
+        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
+        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
+        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_PEER_SESSION_STR);
+        intent.putExtra(BundleIndexDefine.THEME_DATA, go_config_data_val);
+        intent.setAction(IntentDefine.BIND_SERVICE);
+        this.sendBroadcast(intent);
+    }
+
+    protected void setupJoinSession(String go_config_data_val) {
+        Intent intent = new Intent();
+        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
+        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
+        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
+        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_JOIN_SESSION_STR);
         intent.putExtra(BundleIndexDefine.THEME_DATA, go_config_data_val);
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);

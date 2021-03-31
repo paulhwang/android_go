@@ -108,9 +108,31 @@ public class ClientDExport implements ClientDExportInt {
     }
 
     public void setupPeerSession(String data_str_val) {
+        this.debug(false, "setupPeerSession", "data_str_val=" + data_str_val);
+
+        StringBuilder command_buf = new StringBuilder();
+        command_buf.append(ClientImport.FABRIC_COMMAND_PEER_SESSION);
+        command_buf.append(this.clientFabricInfo().linkIdStr());
+        command_buf.append(data_str_val);
+        String command_str = command_buf.toString();
+
+        this.debug(false, "setupPeerSession", "command_str=" + command_str);
+
+        this.transmitToFabric(command_str);
     }
 
     public void setupJoinSession(String data_str_val) {
+        this.debug(false, "setupJoinSession", "data_str_val=" + data_str_val);
+
+        StringBuilder command_buf = new StringBuilder();
+        command_buf.append(ClientImport.FABRIC_COMMAND_JOIN_SESSION);
+        command_buf.append(this.clientFabricInfo().linkIdStr());
+        command_buf.append(data_str_val);
+        String command_str = command_buf.toString();
+
+        this.debug(false, "setupJoinSession", "command_str=" + command_str);
+
+        this.transmitToFabric(command_str);
     }
     
     public void setupSession(String his_name_val, String data_str_val) {

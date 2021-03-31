@@ -60,7 +60,6 @@ public class BindUClient {
                     CommandDefine.FABRIC_COMMAND_SOLO_SESSION_STR,
                     ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
                     null);
-
             return;
         }
         this.clientDExport().setupSoloSession(data_str_val);
@@ -74,7 +73,6 @@ public class BindUClient {
                     CommandDefine.FABRIC_COMMAND_HEAD_SESSION_STR,
                     ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
                     null);
-
             return;
         }
         this.clientDExport().setupHeadSession(data_str_val);
@@ -88,7 +86,6 @@ public class BindUClient {
                     CommandDefine.FABRIC_COMMAND_PEER_SESSION_STR,
                     ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
                     null);
-
             return;
         }
         this.clientDExport().setupPeerSession(data_str_val);
@@ -102,12 +99,10 @@ public class BindUClient {
                     CommandDefine.FABRIC_COMMAND_JOIN_SESSION_STR,
                     ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
                     null);
-
             return;
         }
         this.clientDExport().setupJoinSession(data_str_val);
     }
-
 
     public void doSetupSession(String his_name_val, String session_setup_data_val) {
         this.debug(true, "doSetupSession", "data=" + session_setup_data_val);

@@ -32,9 +32,11 @@
     <string name="email_label">Email</string>
     <string name="exit_label">Exit</string>
     <string name="hard_label">Hard</string>
+    <string name="join_label">Join</string>
     <string name="login_label">Login</string>
     <string name="medium_label">Medium</string>
     <string name="password_label">Password</string>
+    <string name="peer_label">Peer</string>
     <string name="play_label">Play</string>
     <string name="play_go_label">Play Go</string>
     <string name="play_sudoku_label">Play Sudoku</string>

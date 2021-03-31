@@ -55,6 +55,16 @@ public class BindReceiverUFunc {
                 this.bindUClient().setupHeadSession(theme_data);
                 break;
 
+            case CommandDefine.FABRIC_COMMAND_PEER_SESSION:
+                theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
+                this.bindUClient().setupPeerSession(theme_data);
+                break;
+
+            case CommandDefine.FABRIC_COMMAND_JOIN_SESSION:
+                theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
+                this.bindUClient().setupJoinSession(theme_data);
+                break;
+
             case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
                 String his_name = bundle_val.getString(BundleIndexDefine.HIS_NAME);
                 theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
