@@ -41,7 +41,9 @@ public class GoConfigReceiver extends BroadcastReceiver {
     private void handleReceivedBundle(Bundle bundle_val) {
         String command = bundle_val.getString(BundleIndexDefine.COMMAND);
         char result = bundle_val.getString(BundleIndexDefine.RESULT).charAt(0);
-        Log.e(TAG, "handleReceivedBundle() command=" + command + ", result=" + result);
+        String data_str = bundle_val.getString(BundleIndexDefine.DATA);
+
+        Log.e(TAG, "handleReceivedBundle() command=" + command + ", result=" + result + " data=" + data_str);
 
         if (command == null) {
             Log.e(TAG, "handleReceivedBundle() null command========================");
@@ -49,6 +51,23 @@ public class GoConfigReceiver extends BroadcastReceiver {
         }
 
         switch (command.charAt(0)) {
+            case CommandDefine.FABRIC_COMMAND_SOLO_SESSION:
+                if (result == ClientFabricResultImport.SUCCEED) {
+                    Log.e(TAG, "handleReceivedBundle(2) command=" + command + ", result=" + result + " data=" + data_str);
+                    Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
+                    intent.putExtra(BundleIndexDefine.DATA, data_str);
+                    this.goConfigActivity_.startActivity(intent);
+                    break;
+                }
+                else if (result == ClientFabricResultImport.FAIL_LINK_NOT_EXIST.charAt(0)) {
+                    Intent intent = new Intent(this.goConfigActivity_, LoginActivity.class);
+                    this.goConfigActivity_.startActivity(intent);
+                    break;
+                }
+                else {
+
+                }
+                break;
             case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
                 if (result == ClientFabricResultImport.SUCCEED) {
                     Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);

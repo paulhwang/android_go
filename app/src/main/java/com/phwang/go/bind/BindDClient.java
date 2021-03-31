@@ -84,6 +84,27 @@ public class BindDClient implements ClientDImportInt {
                 null);
     }
 
+    public void handleSoloSessionResponse(String result_str_val, String theme_str_val) {
+        this.debug(true, "handleSoloSessionResponse", "SessionId=" + this.clientFabricInfo().sessionIdStr());
+        this.sendBroadcastMessage(
+                IntentDefine.BIND_SERVICE,
+                CommandDefine.FABRIC_COMMAND_SOLO_SESSION_STR,
+                result_str_val,
+                theme_str_val);
+    }
+
+    public void handleHeadSessionResponse(String result_str_val) {
+
+    }
+
+    public void handlePeerSessionResponse(String result_str_val) {
+
+    }
+
+    public void handleJoinSessionResponse(String result_str_val) {
+
+    }
+
     public void handleSetupSessionResponse(String result_str_val) {
         this.debug(true, "handleSetupSessionResponse", "SessionId=" + this.clientFabricInfo().sessionIdStr());
         this.sendBroadcastMessage(

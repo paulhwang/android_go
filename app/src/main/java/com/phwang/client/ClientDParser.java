@@ -38,6 +38,18 @@ public class ClientDParser {
             case ClientImport.FABRIC_COMMAND_GET_NAME_LIST:
     		    parserGetNameListResponse(input_data_val.substring(1));
     		    break;
+            case ClientImport.FABRIC_COMMAND_SOLO_SESSION:
+                parserSoloSessionResponse(input_data_val.substring(1));
+                break;
+            case ClientImport.FABRIC_COMMAND_HEAD_SESSION:
+                parserHeadSessionResponse(input_data_val.substring(1));
+                break;
+            case ClientImport.FABRIC_COMMAND_PEER_SESSION:
+                parserPeerSessionResponse(input_data_val.substring(1));
+                break;
+            case ClientImport.FABRIC_COMMAND_JOIN_SESSION:
+                parserJoinSessionResponse(input_data_val.substring(1));
+                break;
             case ClientImport.FABRIC_COMMAND_SETUP_SESSION:
     		    parserSetupSessionResponse(input_data_val.substring(1));
     		    break;
@@ -113,6 +125,41 @@ public class ClientDParser {
 
             this.importInterface().handleGetNameListResponse(result_str);
         }
+    }
+
+    private void parserSoloSessionResponse(String input_str_val) {
+        this.debug(true, "parserSoloSessionResponse", "input_str_val=" + input_str_val);
+        String result_str = input_str_val.substring(0, 1);
+
+        if (result_str.charAt(0) == ClientFabricResultImport.SUCCEED) {
+            String rest_str = input_str_val.substring(1);
+            String link_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
+
+            String session_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
+
+            //String theme_str = Encoders.sSubstring2(rest_str);
+            //rest_str = Encoders.sSubstring2_(rest_str);
+            String theme_str = rest_str;
+
+            this.debug(false, "parserSoloSessionResponse", "session_id_str=" + session_id_str);
+
+            this.clientFabricInfo().setSessionIdStr(session_id_str);
+            this.importInterface().handleSoloSessionResponse(result_str, theme_str);
+        }
+    }
+
+    private void parserHeadSessionResponse(String input_str_val) {
+        this.debug(false, "parserHeadSessionResponse", "input_str_val=" + input_str_val);
+    }
+
+    private void parserPeerSessionResponse(String input_str_val) {
+        this.debug(false, "parserPeerSessionResponse", "input_str_val=" + input_str_val);
+    }
+
+    private void parserJoinSessionResponse(String input_str_val) {
+        this.debug(false, "parserJoinSessionResponse", "input_str_val=" + input_str_val);
     }
 
     private void parserSetupSessionResponse(String input_str_val) {

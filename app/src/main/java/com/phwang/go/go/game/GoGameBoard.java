@@ -29,6 +29,7 @@ public class GoGameBoard {
     private int nextColor_ = 1;
 
     protected int boardSize() { return this.boardSize_; }
+    protected void setBoardSize(int val) { this.boardSize_ = val; }
     protected int board(int x_val, int y_val) { return this.boardArray_[x_val][y_val]; }
     protected void setBoard(int x_val, int y_val, int val) { this.boardArray_[x_val][y_val] = val; }
     protected int totalMoves() { return this.totalMoves_; };

@@ -57,7 +57,7 @@ public class BindUClient {
         if (this.clientFabricInfo().linkIdStr() == null) {
             this.bindDClient_.sendBroadcastMessage(
                     IntentDefine.BIND_SERVICE,
-                    CommandDefine.FABRIC_COMMAND_SETUP_SESSION_STR,
+                    CommandDefine.FABRIC_COMMAND_SOLO_SESSION_STR,
                     ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
                     null);
 
