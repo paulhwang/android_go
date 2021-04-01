@@ -10,8 +10,7 @@ package com.phwang.core.fabric;
 
 import com.phwang.core.utils.Encoders;
 import com.phwang.core.utils.ListEntry;
-import com.phwang.core.utils.BinderBundle;
-import com.phwang.core.utils.Define;
+import com.phwang.core.utils.binder.BinderBundle;
 
 public class FabricUParser {
     private static String objectName() {return "FabricUParser";}

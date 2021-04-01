@@ -8,9 +8,8 @@
 
 package com.phwang.client;
 
-import com.phwang.core.utils.Binder;
+import com.phwang.core.utils.binder.Binder;
 import com.phwang.core.utils.Encoders;
-import com.phwang.core.utils.Define;
 
 public class ClientDExport implements ClientDExportInt {
     private String objectName() {return "ClientDExport";}

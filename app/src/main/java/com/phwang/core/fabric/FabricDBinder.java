@@ -8,8 +8,8 @@
 
 package com.phwang.core.fabric;
 
-import com.phwang.core.utils.Binder;
-import com.phwang.core.utils.BinderBundle;
+import com.phwang.core.utils.binder.Binder;
+import com.phwang.core.utils.binder.BinderBundle;
 import com.phwang.core.utils.ThreadEntityInt;
 import com.phwang.core.utils.ThreadMgr;
 

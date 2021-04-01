@@ -9,6 +9,7 @@
 package com.phwang.core.engine;
 
 import com.phwang.core.utils.*;
+import com.phwang.core.utils.binder.Binder;
 
 public class EngineDBinder implements ThreadEntityInt {
     private String objectName() {return "EngineDBinder";}

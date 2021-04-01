@@ -9,6 +9,7 @@
 package com.phwang.core.theme;
 
 import com.phwang.core.utils.*;
+import com.phwang.core.utils.binder.Binder;
 
 public class ThemeUBinder implements ThreadEntityInt {
     private String objectName() {return "ThemeUBinder";}

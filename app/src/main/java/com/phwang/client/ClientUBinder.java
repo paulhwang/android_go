@@ -8,10 +8,9 @@
 
 package com.phwang.client;
 
-import com.phwang.core.utils.Binder;
+import com.phwang.core.utils.binder.Binder;
 import com.phwang.core.utils.ThreadEntityInt;
 import com.phwang.core.utils.ThreadMgr;
-import com.phwang.core.utils.Binder;
 
 public class ClientUBinder implements ThreadEntityInt {
     private String objectName() {return "ClientUBinder";}

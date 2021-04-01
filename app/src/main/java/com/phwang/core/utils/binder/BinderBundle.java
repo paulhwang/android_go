@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.core.utils;
+package com.phwang.core.utils.binder;
 
 public class BinderBundle {
 	private String data_;
