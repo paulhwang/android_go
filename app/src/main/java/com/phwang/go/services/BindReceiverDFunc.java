@@ -37,8 +37,20 @@ public class BindReceiverDFunc {
         }
 
         switch (command.charAt(0)) {
+            case CommandDefine.FABRIC_COMMAND_REGISTER:
+                this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data);
+                break;
+
             case CommandDefine.FABRIC_COMMAND_LOGIN:
                 this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.LOGIN_ACTIVITY, command, result, data);
+                break;
+
+            case CommandDefine.FABRIC_COMMAND_LOGOUT:
+                this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data);
+                break;
+
+            case CommandDefine.FABRIC_COMMAND_GET_GROUPS:
+                this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data);
                 break;
 
             case CommandDefine.FABRIC_COMMAND_SOLO_SESSION:

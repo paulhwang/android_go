@@ -48,6 +48,18 @@ public class MainReceiver extends BroadcastReceiver {
         }
 
         switch (command.charAt(0)) {
+            case CommandDefine.FABRIC_COMMAND_REGISTER:
+                Log.e(TAG, "handleReceivedBundle() FABRIC_COMMAND_REGISTER");
+                break;
+
+            case CommandDefine.FABRIC_COMMAND_LOGOUT:
+                Log.e(TAG, "handleReceivedBundle() FABRIC_COMMAND_LOGOUT");
+                break;
+
+            case CommandDefine.FABRIC_COMMAND_GET_GROUPS:
+                Log.e(TAG, "handleReceivedBundle() FABRIC_COMMAND_GET_GROUPS");
+                break;
+
             case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
                 this.mainActivityFunc().do_setup_session3("00000000G111111");
                 break;

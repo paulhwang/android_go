@@ -56,15 +56,12 @@ public class BindDClient implements ClientDImportInt {
     }
 
     public void handleRegisterResponse(String result_str_val) {
-
-    }
-
-    public void handleLogoutResponse(String result_str_val) {
-
-    }
-
-    public void handleGetGroupsResponse(String result_str_val) {
-
+        this.debug(true, "handleRegisterResponse", "handleRegisterResponse");
+        this.sendBroadcastMessage(
+                IntentDefine.BIND_SERVICE,
+                CommandDefine.FABRIC_COMMAND_REGISTER_STR,
+                result_str_val,
+                null);
     }
 
     public void handleLoginResponse(String result_str_val) {
@@ -76,11 +73,20 @@ public class BindDClient implements ClientDImportInt {
                 null);
     }
 
-    public void handleRemoveLinkResponse(String result_str_val) {
-        this.debug(true, "handleRemoveLinkResponse", "LinkId=" + this.clientFabricInfo().linkIdStr());
+    public void handleLogoutResponse(String result_str_val) {
+        this.debug(true, "handleLogoutResponse", "LinkId=" + this.clientFabricInfo().linkIdStr());
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
                 CommandDefine.FABRIC_COMMAND_LOGOUT_STR,
+                result_str_val,
+                null);
+    }
+
+    public void handleGetGroupsResponse(String result_str_val) {
+        this.debug(true, "handleGetGroupsResponse", "LinkId=" + this.clientFabricInfo().linkIdStr());
+        this.sendBroadcastMessage(
+                IntentDefine.BIND_SERVICE,
+                CommandDefine.FABRIC_COMMAND_GET_GROUPS_STR,
                 result_str_val,
                 null);
     }
