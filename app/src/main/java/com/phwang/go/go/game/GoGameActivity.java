@@ -21,6 +21,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     private GoGameBoard goBoard_;
     private GoGameView goView_;
     private GoGameReceiver goGameReceiver_;
+    private String sessionIdStr_;
 
     protected GoGameView goView() { return this.goView_; };
     protected GoGameBoard goBoard() { return this.goBoard_; };
@@ -32,8 +33,16 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         //Log.e(TAG, "onCreate()");
 
-        String config_str = this.getIntent().getExtras().getString(BundleIndexDefine.DATA);
-        //Log.e(TAG, "onCreate() config_str= " + config_str);
+        String data_str = this.getIntent().getExtras().getString(BundleIndexDefine.DATA);
+        //Log.e(TAG, "onCreate() data_str= " + data_str);
+
+        String rest_str = Encoders.sDecode2(data_str);
+        this.sessionIdStr_ = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
+
+        String config_str = Encoders.sSubstring2(rest_str);
+        //rest_str = Encoders.sSubstring2_(rest_str);
+
         this.goBoard_ = new GoGameBoard(this, config_str);
         this.goGameFunc_ = new GoGameActivityFunc(this);
 

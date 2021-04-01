@@ -207,7 +207,7 @@ public class ClientDParser {
             this.debug(true, "parserSoloSessionResponse", "session_id_str=" + session_id_str);
 
             this.clientFabricInfo().setSessionIdStr(session_id_str);
-            this.importInterface().handleSetupSoloSessionResponse(result_str, theme_str);
+            this.importInterface().handleSetupSoloSessionResponse(result_str, data_str);
         }
     }
 
@@ -236,7 +236,7 @@ public class ClientDParser {
             this.debug(false, "parserHeadSessionResponse", "session_id_str=" + session_id_str);
 
             this.clientFabricInfo().setSessionIdStr(session_id_str);
-            this.importInterface().handleSetupHeadSessionResponse(result_str, theme_str);
+            this.importInterface().handleSetupHeadSessionResponse(result_str, data_str);
         }
     }
 
@@ -265,7 +265,7 @@ public class ClientDParser {
             this.debug(false, "parserPeerSessionResponse", "session_id_str=" + session_id_str);
 
             this.clientFabricInfo().setSessionIdStr(session_id_str);
-            this.importInterface().handleSetupPeerSessionResponse(result_str, theme_str);
+            this.importInterface().handleSetupPeerSessionResponse(result_str, data_str);
         }
     }
 
@@ -294,7 +294,7 @@ public class ClientDParser {
             this.debug(false, "parserJoinSessionResponse", "session_id_str=" + session_id_str);
 
             this.clientFabricInfo().setSessionIdStr(session_id_str);
-            this.importInterface().handleSetupJoinSessionResponse(result_str, theme_str);
+            this.importInterface().handleSetupJoinSessionResponse(result_str, data_str);
         }
     }
 
