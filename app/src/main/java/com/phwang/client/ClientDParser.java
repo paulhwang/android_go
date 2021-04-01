@@ -10,6 +10,8 @@ package com.phwang.client;
 
 import com.phwang.core.utils.encoders.Encoders;
 
+import java.util.Base64;
+
 public class ClientDParser {
     private String objectName() {return "ClientDParser";}
     
@@ -189,13 +191,20 @@ public class ClientDParser {
             String link_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
 
+            String data_str = Encoders.sSubstring2(rest_str);
+            //rest_str = Encoders.sSubstring2_(rest_str);
+
+            //////////////////////////////////////////////
+            rest_str = Encoders.sDecode2(data_str);
+
             String session_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
 
             String theme_str = Encoders.sSubstring2(rest_str);
             //rest_str = Encoders.sSubstring2_(rest_str);
+            ///////////////////////////////////////////////////////
 
-            this.debug(false, "parserSoloSessionResponse", "session_id_str=" + session_id_str);
+            this.debug(true, "parserSoloSessionResponse", "session_id_str=" + session_id_str);
 
             this.clientFabricInfo().setSessionIdStr(session_id_str);
             this.importInterface().handleSetupSoloSessionResponse(result_str, theme_str);

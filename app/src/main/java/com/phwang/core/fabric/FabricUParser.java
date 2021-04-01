@@ -345,11 +345,15 @@ public class FabricUParser {
 
     private String generateSoloSessionResponse(char result_val, String link_id_str_val, String session_id_str_val, String theme_data_str_val) {
         StringBuilder response_buf = new StringBuilder();
+        response_buf.append(session_id_str_val);
+        response_buf.append(theme_data_str_val);
+        String data = Encoders.sEncode2(response_buf.toString());
+
+        response_buf = new StringBuilder();
         response_buf.append(FabricCommands.FABRIC_COMMAND_SOLO_SESSION);
         response_buf.append(result_val);
         response_buf.append(link_id_str_val);
-        response_buf.append(session_id_str_val);
-        response_buf.append(theme_data_str_val);
+        response_buf.append(data);
         return response_buf.toString();
     }
 
