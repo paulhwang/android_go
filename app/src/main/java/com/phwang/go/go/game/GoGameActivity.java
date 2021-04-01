@@ -11,13 +11,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import com.phwang.core.utils.Encoders;
 import com.phwang.core.utils.watchdog.WatchDog;
+import com.phwang.core.utils.watchdog.WatchDogInt;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
-import java.util.Timer;
-import java.util.TimerTask;
 
-public class GoGameActivity extends AppCompatActivity implements View.OnClickListener {
+public class GoGameActivity extends AppCompatActivity implements View.OnClickListener, WatchDogInt {
     private static final String TAG = "GoGameActivity";
     private GoGameActivityFunc goGameFunc_;
     private GoGameBoard goBoard_;
@@ -32,7 +31,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e(TAG, "onCreate()");
+        //Log.e(TAG, "onCreate()");
 
         String config_str = this.getIntent().getExtras().getString(BundleIndexDefine.DATA);
         //Log.e(TAG, "onCreate() config_str= " + config_str);
@@ -52,27 +51,27 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         findViewById(R.id.go_game_exit_button).setOnClickListener(this);
 
         this.registerBroadcastReceiver();
-        this.watchDog_ = new WatchDog(1000, 1000);
+        this.watchDog_ = new WatchDog(this, 1000, 1000);
         this.watchDog_.start();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.e(TAG, "onStart()");
+        //Log.e(TAG, "onStart()");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e(TAG, "onStart()");
+        //Log.e(TAG, "onResume()");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         this.watchDog_.cancel();
-        Log.e(TAG, "onDestroy()");
+        //Log.e(TAG, "onDestroy()");
     }
 
     @Override
@@ -150,9 +149,6 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    int test_count;
-    private void test() {
-        Log.e(TAG, "test() " + test_count);
-        test_count++;
+    public void watchDogFunc() {
     }
 }
