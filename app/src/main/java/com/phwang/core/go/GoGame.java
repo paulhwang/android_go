@@ -8,7 +8,7 @@
 
 package com.phwang.core.go;
 
-import com.phwang.core.utils.*;
+import com.phwang.core.utils.abend.Abend;
 
 public class GoGame {
     private String objectName() {return "GoGame";}

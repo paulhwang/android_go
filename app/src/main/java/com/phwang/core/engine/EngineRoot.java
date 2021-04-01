@@ -8,7 +8,7 @@
 
 package com.phwang.core.engine;
 
-import com.phwang.core.utils.Abend;
+import com.phwang.core.utils.abend.Abend;
 import com.phwang.core.utils.threadmgr.ThreadMgr;
 
 public class EngineRoot {

@@ -6,10 +6,10 @@
  ******************************************************************************
  */
 
-package com.phwang.core.utils;
+package com.phwang.core.utils.queue;
 
 import java.util.concurrent.locks.*;
-import com.phwang.core.utils.Abend;
+import com.phwang.core.utils.abend.Abend;
 
 public class ListQueue {
     private String objectName() {return "ListQueue";}

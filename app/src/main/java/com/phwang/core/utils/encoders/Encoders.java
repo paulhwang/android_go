@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.core.utils;
+package com.phwang.core.utils.encoders;
 
 public class Encoders {
     public static final int DATA_LENGTH_SIZE = 2;

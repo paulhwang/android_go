@@ -11,7 +11,7 @@ package com.phwang.core.utils.binder;
 import java.net.*;
 import java.io.*;
 
-import com.phwang.core.utils.Abend;
+import com.phwang.core.utils.abend.Abend;
 import com.phwang.core.utils.Utils;
 
 public class BinderTestClass {

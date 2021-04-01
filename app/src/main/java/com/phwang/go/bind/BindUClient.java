@@ -13,7 +13,7 @@ import android.content.Context;
 import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientFabricInfo;
 import com.phwang.client.ClientFabricResultImport;
-import com.phwang.core.utils.Abend;
+import com.phwang.core.utils.abend.Abend;
 import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
 

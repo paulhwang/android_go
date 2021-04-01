@@ -8,7 +8,7 @@
 
 package com.phwang.core.fabric;
 
-import com.phwang.core.utils.*;
+import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.utils.listmgr.ListEntry;
 
 public class FabricNameList {

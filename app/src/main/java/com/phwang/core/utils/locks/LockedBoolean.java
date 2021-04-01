@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.core.utils;
+package com.phwang.core.utils.locks;
 
 import java.util.concurrent.locks.*;
 

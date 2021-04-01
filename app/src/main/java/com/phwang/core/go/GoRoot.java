@@ -8,7 +8,7 @@
 
 package com.phwang.core.go;
 
-import com.phwang.core.utils.Abend;
+import com.phwang.core.utils.abend.Abend;
 
 public class GoRoot {
     private String objectName() {return "GoRoot";}

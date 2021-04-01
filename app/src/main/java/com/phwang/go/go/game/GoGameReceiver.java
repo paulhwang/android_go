@@ -14,7 +14,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.phwang.core.utils.Encoders;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 

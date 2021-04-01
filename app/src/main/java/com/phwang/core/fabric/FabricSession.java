@@ -8,10 +8,10 @@
 
 package com.phwang.core.fabric;
 
-import com.phwang.core.utils.Abend;
+import com.phwang.core.utils.abend.Abend;
 import com.phwang.core.utils.listmgr.ListEntry;
 import com.phwang.core.utils.listmgr.ListEntryInt;
-import com.phwang.core.utils.ListQueue;
+import com.phwang.core.utils.queue.ListQueue;
 
 public class FabricSession implements ListEntryInt {
     private String objectName() {return "FabricSession";}

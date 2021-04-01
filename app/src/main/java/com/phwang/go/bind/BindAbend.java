@@ -8,7 +8,7 @@
 
 package com.phwang.go.bind;
 
-import com.phwang.core.utils.AbendInterface;
+import com.phwang.core.utils.abend.AbendInterface;
 import android.util.Log;
 
 public class BindAbend implements AbendInterface {

@@ -8,7 +8,7 @@
 
 package com.phwang.core.root;
 
-import com.phwang.core.utils.Abend;
+import com.phwang.core.utils.abend.Abend;
 import com.phwang.core.engine.EngineRoot;
 import com.phwang.core.fabric.FabricRoot;
 import com.phwang.core.models.ModelRootClass;

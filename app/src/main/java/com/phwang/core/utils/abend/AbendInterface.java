@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.core.utils;
+package com.phwang.core.utils.abend;
 
 public interface AbendInterface {
 	public void log(String str_val);

@@ -11,7 +11,7 @@ package com.phwang.go.bind;
 import android.content.Context;
 import android.content.Intent;
 
-import com.phwang.core.utils.Abend;
+import com.phwang.core.utils.abend.Abend;
 import com.phwang.client.ClientDImportInt;
 import com.phwang.client.ClientRoot;
 import com.phwang.client.ClientDExport;
@@ -19,7 +19,6 @@ import com.phwang.client.ClientFabricInfo;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
-import com.phwang.go.define.ResultDefine;
 
 public class BindDClient implements ClientDImportInt {
     private String objectName() {

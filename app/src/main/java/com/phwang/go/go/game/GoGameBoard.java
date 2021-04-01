@@ -11,7 +11,7 @@ package com.phwang.go.go.game;
 import android.util.Log;
 
 import com.phwang.core.go.GoDefine;
-import com.phwang.core.utils.Encoders;
+import com.phwang.core.utils.encoders.Encoders;
 
 public class GoGameBoard {
     private static final String TAG = "GoGameBoard";

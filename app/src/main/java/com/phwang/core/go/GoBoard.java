@@ -8,7 +8,8 @@
 
 package com.phwang.core.go;
 
-import com.phwang.core.utils.*;
+import com.phwang.core.utils.abend.Abend;
+import com.phwang.core.utils.encoders.Encoders;
 
 public class GoBoard {
     private String objectName() {return "GoBoard";}

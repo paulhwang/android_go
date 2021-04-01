@@ -6,7 +6,9 @@
  ******************************************************************************
  */
 
-package com.phwang.core.utils;
+package com.phwang.core.utils.abend;
+
+import com.phwang.core.utils.abend.AbendInterface;
 
 import java.util.concurrent.locks.*;
 

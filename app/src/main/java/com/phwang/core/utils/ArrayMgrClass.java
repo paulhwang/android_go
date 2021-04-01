@@ -8,6 +8,8 @@
 
 package com.phwang.core.utils;
 
+import com.phwang.core.utils.abend.Abend;
+
 public class ArrayMgrClass {
     private String objectName() {return "ArrayMgrClass";}
 

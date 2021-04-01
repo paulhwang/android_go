@@ -8,8 +8,7 @@
 
 package com.phwang.core.utils.listmgr;
 
-import com.phwang.core.utils.Encoders;
-import com.phwang.core.utils.listmgr.ListEntryInt;
+import com.phwang.core.utils.encoders.Encoders;
 
 public class ListEntry {
     private int id_;

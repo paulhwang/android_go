@@ -8,7 +8,7 @@
 
 package com.phwang.core.fabric;
 
-import com.phwang.core.utils.Abend;
+import com.phwang.core.utils.abend.Abend;
 import com.phwang.core.utils.ArrayMgrClass;
 import com.phwang.core.utils.listmgr.ListEntry;
 import com.phwang.core.utils.listmgr.ListMgr;

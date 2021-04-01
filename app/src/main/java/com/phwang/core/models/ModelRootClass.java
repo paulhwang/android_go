@@ -8,7 +8,7 @@
 
 package com.phwang.core.models;
 
-import com.phwang.core.utils.*;
+import com.phwang.core.utils.abend.Abend;
 
 public class ModelRootClass {
     private String objectName() {return "ModelRootClass";}

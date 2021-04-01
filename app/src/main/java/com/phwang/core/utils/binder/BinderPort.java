@@ -8,10 +8,10 @@
 
 package com.phwang.core.utils.binder;
 
-import com.phwang.core.utils.Abend;
+import com.phwang.core.utils.abend.Abend;
 import com.phwang.core.utils.listmgr.ListEntry;
 import com.phwang.core.utils.listmgr.ListEntryInt;
-import com.phwang.core.utils.ListQueue;
+import com.phwang.core.utils.queue.ListQueue;
 import com.phwang.core.utils.threadmgr.ThreadEntity;
 import com.phwang.core.utils.threadmgr.ThreadEntityInt;
 

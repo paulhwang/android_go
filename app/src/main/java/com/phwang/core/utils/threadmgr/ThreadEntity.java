@@ -8,8 +8,7 @@
 
 package com.phwang.core.utils.threadmgr;
 
-import com.phwang.core.utils.Abend;
-import com.phwang.core.utils.threadmgr.ThreadEntityInt;
+import com.phwang.core.utils.abend.Abend;
 
 public class ThreadEntity implements Runnable {
     private String objectName() {return "ThreadEntity";}

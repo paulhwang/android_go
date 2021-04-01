@@ -8,7 +8,7 @@
 
 package com.phwang.core.engine;
 
-import com.phwang.core.utils.*;
+import com.phwang.core.utils.encoders.Encoders;
 
 public class EngineUParser {
     private static String objectName() {return "EngineUParser";}

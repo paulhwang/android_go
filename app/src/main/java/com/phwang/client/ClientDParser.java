@@ -8,8 +8,7 @@
 
 package com.phwang.client;
 
-import com.phwang.core.utils.Encoders;
-import com.phwang.core.utils.Define;
+import com.phwang.core.utils.encoders.Encoders;
 
 public class ClientDParser {
     private String objectName() {return "ClientDParser";}

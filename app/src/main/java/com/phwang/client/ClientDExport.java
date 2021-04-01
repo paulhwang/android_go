@@ -9,7 +9,7 @@
 package com.phwang.client;
 
 import com.phwang.core.utils.binder.Binder;
-import com.phwang.core.utils.Encoders;
+import com.phwang.core.utils.encoders.Encoders;
 
 public class ClientDExport implements ClientDExportInt {
     private String objectName() {return "ClientDExport";}

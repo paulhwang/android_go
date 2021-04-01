@@ -8,9 +8,6 @@
 
 package com.phwang.client;
 
-import com.phwang.core.go.GoRoot;
-import com.phwang.core.utils.Encoders;
-
 public class ClientFabricInfo {
     private String linkIdStr_;
     private String sessionIdStr_;

@@ -10,7 +10,7 @@ package com.phwang.core.theme;
 
 //import com.phwang.core.utils.*;
 
-import com.phwang.core.utils.Encoders;
+import com.phwang.core.utils.encoders.Encoders;
 
 public class ThemeDParser {
     private static String objectName() {return "ThemeDParser";}
