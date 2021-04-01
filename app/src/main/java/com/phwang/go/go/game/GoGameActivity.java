@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,6 +21,9 @@ import com.phwang.core.utils.Encoders;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class GoGameActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "GoGameActivity";
@@ -55,6 +59,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         findViewById(R.id.go_game_exit_button).setOnClickListener(this);
 
         this.registerBroadcastReceiver();
+        this.startWatchDog();
     }
 
     @Override
@@ -70,6 +75,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        this.stopWatchDog();
         this.unregisterBroadcastReceiver();
     }
 
@@ -145,6 +151,45 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         if (this.goGameReceiver_ != null) {
             this.unregisterReceiver(this.goGameReceiver_);
             this.goGameReceiver_ = null;
+        }
+    }
+
+    private Boolean watchDogOn = true;
+    private Timer watchDogTimer = null;
+    private TimerTask watchDogTimerTask = null;
+    private Handler watchDogHandler = null;
+
+    private void startWatchDog() {
+        if (!this.watchDogOn) {
+            return;
+        }
+        if (this.watchDogTimer != null) {
+            return;
+        }
+        watchDogHandler = new Handler();
+        watchDogTimer = new Timer();
+        watchDogTimerTask = new TimerTask() {
+            int count;
+            @Override
+            public void run() {
+                watchDogHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        count++;
+                        Log.e(TAG, "watchDog() " + count);
+                    }
+                });
+            }
+        };
+        watchDogTimer.schedule(watchDogTimerTask, 1000, 1000);
+    }
+
+    void stopWatchDog() {
+        if (this.watchDogTimer != null) {
+            this.watchDogTimer.cancel();
+            this.watchDogTimer = null;
+            this.watchDogTimerTask = null;
+            this.watchDogHandler = null;
         }
     }
 }
