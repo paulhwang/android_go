@@ -26,6 +26,8 @@ public class BundleIndexDefine {
     public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
 
+    public static final String LINK_ID = "link_id";
+    public static final String SESSION_ID = "session_id";
     public static final String THEME_DATA = "theme_data";
     public static final String MOVE_DATA = "move_data";
 

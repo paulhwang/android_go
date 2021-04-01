@@ -98,12 +98,14 @@ public class BindReceiverUFunc {
                 break;
 
             case CommandDefine.FABRIC_COMMAND_PUT_SESSION_DATA:
-                String move_data = bundle_val.getString(BundleIndexDefine.MOVE_DATA);
-                this.bindUClient().putSessionData(move_data);
+                String move_data_str = bundle_val.getString(BundleIndexDefine.MOVE_DATA);
+                String session_id_str1 = bundle_val.getString(BundleIndexDefine.SESSION_ID);
+                this.bindUClient().putSessionData(session_id_str1, move_data_str);
                 break;
 
             case CommandDefine.FABRIC_COMMAND_GET_SESSION_DATA:
-                this.bindUClient().getSessionData();
+                String session_id_str2 = bundle_val.getString(BundleIndexDefine.SESSION_ID);
+                this.bindUClient().getSessionData(session_id_str2);
                 break;
 
             default:

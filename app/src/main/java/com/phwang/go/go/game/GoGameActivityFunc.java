@@ -21,6 +21,7 @@ public class GoGameActivityFunc {
 
     protected GoGameView goView() { return this.goGame_.goView(); }
     protected GoGameBoard goBoard() { return this.goGame_.goBoard(); }
+    private String sessionIdStr() { return this.goGame_.sessionIdStr(); }
 
     protected GoGameActivityFunc(GoGameActivity go_game_val) {
         this.goGame_ = go_game_val;
@@ -32,6 +33,7 @@ public class GoGameActivityFunc {
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_GAME_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
         intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_PUT_SESSION_DATA_STR);
+        intent.putExtra(BundleIndexDefine.SESSION_ID, this.sessionIdStr());
         intent.putExtra(BundleIndexDefine.MOVE_DATA, move_data_val);
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.goGame_.sendBroadcast(intent);
@@ -43,6 +45,7 @@ public class GoGameActivityFunc {
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_GAME_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
         intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_GET_SESSION_DATA_STR);
+        intent.putExtra(BundleIndexDefine.SESSION_ID, this.sessionIdStr());
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.goGame_.sendBroadcast(intent);
     }

@@ -26,6 +26,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     protected GoGameView goView() { return this.goView_; };
     protected GoGameBoard goBoard() { return this.goBoard_; };
     protected GoGameActivityFunc goGameFunc() { return this.goGameFunc_; };
+    protected String sessionIdStr() { return this.sessionIdStr_; }
     private WatchDog watchDog_;
 
     @Override
