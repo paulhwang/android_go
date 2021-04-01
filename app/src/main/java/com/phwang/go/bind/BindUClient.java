@@ -144,14 +144,14 @@ public class BindUClient {
 
     }
 
-    public void putSessionData(String session_id_str_val, String data_str_val) {
+    public void putSessionData(String link_id_str_val, String session_id_str_val, String data_str_val) {
         this.debug(true, "putSessionData() data=", data_str_val);
-        this.clientDExport().putSessionData(session_id_str_val, data_str_val);;
+        this.clientDExport().putSessionData(link_id_str_val, session_id_str_val, data_str_val);;
     }
 
-    public void getSessionData(String session_id_str_val) {
+    public void getSessionData(String link_id_str_val, String session_id_str_val) {
         this.debug(true, "getSessionData", "session_id=" + session_id_str_val);
-        this.clientDExport().getSessionData(session_id_str_val);;
+        this.clientDExport().getSessionData(link_id_str_val, session_id_str_val);;
     }
 
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }
