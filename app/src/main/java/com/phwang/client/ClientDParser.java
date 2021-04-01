@@ -220,11 +220,18 @@ public class ClientDParser {
             String link_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
 
+            String data_str = Encoders.sSubstring2(rest_str);
+            //rest_str = Encoders.sSubstring2_(rest_str);
+
+            //////////////////////////////////////////////
+            rest_str = Encoders.sDecode2(data_str);
+
             String session_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
 
             String theme_str = Encoders.sSubstring2(rest_str);
             //rest_str = Encoders.sSubstring2_(rest_str);
+            ///////////////////////////////////////////////////////
 
             this.debug(false, "parserHeadSessionResponse", "session_id_str=" + session_id_str);
 
@@ -242,11 +249,18 @@ public class ClientDParser {
             String link_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
 
+            String data_str = Encoders.sSubstring2(rest_str);
+            //rest_str = Encoders.sSubstring2_(rest_str);
+
+            //////////////////////////////////////////////
+            rest_str = Encoders.sDecode2(data_str);
+
             String session_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
 
             String theme_str = Encoders.sSubstring2(rest_str);
             //rest_str = Encoders.sSubstring2_(rest_str);
+            ///////////////////////////////////////////////////////
 
             this.debug(false, "parserPeerSessionResponse", "session_id_str=" + session_id_str);
 
@@ -264,11 +278,18 @@ public class ClientDParser {
             String link_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
 
+            String data_str = Encoders.sSubstring2(rest_str);
+            //rest_str = Encoders.sSubstring2_(rest_str);
+
+            //////////////////////////////////////////////
+            rest_str = Encoders.sDecode2(data_str);
+
             String session_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
 
             String theme_str = Encoders.sSubstring2(rest_str);
             //rest_str = Encoders.sSubstring2_(rest_str);
+            ///////////////////////////////////////////////////////
 
             this.debug(false, "parserJoinSessionResponse", "session_id_str=" + session_id_str);
 
