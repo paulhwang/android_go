@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.core.utils;
+package com.phwang.core.utils.arraymgr;
 
 import com.phwang.core.utils.abend.Abend;
 

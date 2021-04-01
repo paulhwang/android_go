@@ -12,7 +12,7 @@ import java.net.*;
 import java.io.*;
 
 import com.phwang.core.utils.abend.Abend;
-import com.phwang.core.utils.Utils;
+import com.phwang.core.utils.sleep.Utils;
 
 public class BinderTestClass {
     private Boolean useBinder;

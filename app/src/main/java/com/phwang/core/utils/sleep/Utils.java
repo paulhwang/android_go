@@ -6,7 +6,14 @@
  ******************************************************************************
  */
 
-package com.phwang.core.utils;
+package com.phwang.core.utils.sleep;
 
-public class Define {
+public class Utils {
+	public static void sleep (int val) {
+        try {
+        	Thread.sleep(val);
+        }
+        catch (InterruptedException ex) {
+        }
+	}
 }
