@@ -8,10 +8,10 @@
 
 package com.phwang.go.bind;
 
-import com.phwang.core.utils.abend.AbendInterface;
+import com.phwang.core.utils.abend.AbendInt;
 import android.util.Log;
 
-public class BindAbend implements AbendInterface {
+public class BindAbend implements AbendInt {
     public void log(String str_val) {
         Log.e("***", str_val);
     }

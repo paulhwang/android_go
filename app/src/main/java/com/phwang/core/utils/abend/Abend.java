@@ -8,40 +8,40 @@
 
 package com.phwang.core.utils.abend;
 
-import com.phwang.core.utils.abend.AbendInterface;
+import com.phwang.core.utils.abend.AbendInt;
 
 import java.util.concurrent.locks.*;
 
 public class Abend {
-	static private boolean logStopped = false;
-    static private Lock abendLock = new ReentrantLock();
-    static private AbendInterface abendInterface;
+	static private boolean logStopped_ = false;
+    static private Lock abendLock_ = new ReentrantLock();
+    static private AbendInt abendInt_;
 	
-    static public void initAbend(AbendInterface abend_interface_val) {
-    	abendInterface = abend_interface_val;
+    static public void initAbend(AbendInt abend_interface_val) {
+		abendInt_ = abend_interface_val;
     }
     
     static public void log(String s0, String s1) {
-    	if (logStopped) {
+    	if (logStopped_) {
     		return;
     	}
-    	abendInterface.log(s0 + " " + s1);
+		abendInt_.log(s0 + " " + s1);
     }
 
     static public void abend(String s0, String s1) {
-    	if (logStopped) {
+    	if (logStopped_) {
     		return;
     	}
-    	logStopped = true;
+    	logStopped_ = true;
    	
-    	abendLock.lock();
+    	abendLock_.lock();
     	System.out.println("***ABEND*** " + s0 + " " + s1);
     	forceCrash();
-    	abendLock.unlock();
+    	abendLock_.unlock();
     }
     
-	static Boolean crashHere;
+	static Boolean crashHere_;
     static private void forceCrash() {
-    	if (crashHere) return;
+    	if (crashHere_) return;
     }
 }
