@@ -1,11 +1,3 @@
-/*
- ******************************************************************************
- *
- *  Copyright (c) 2021 phwang. All rights reserved.
- *
- ******************************************************************************
- */
-
 package com.phwang.go.go.game;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,10 +10,10 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import com.phwang.core.utils.Encoders;
+import com.phwang.core.utils.watchdog.WatchDog;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -35,11 +27,12 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     protected GoGameView goView() { return this.goView_; };
     protected GoGameBoard goBoard() { return this.goBoard_; };
     protected GoGameActivityFunc goGameFunc() { return this.goGameFunc_; };
+    private WatchDog watchDog_;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Log.e(TAG, "onCreate()");
+        Log.e(TAG, "onCreate()");
 
         String config_str = this.getIntent().getExtras().getString(BundleIndexDefine.DATA);
         //Log.e(TAG, "onCreate() config_str= " + config_str);
@@ -59,24 +52,27 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         findViewById(R.id.go_game_exit_button).setOnClickListener(this);
 
         this.registerBroadcastReceiver();
-        this.startWatchDog();
+        this.watchDog_ = new WatchDog(1000, 1000);
+        this.watchDog_.start();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        Log.e(TAG, "onStart()");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        Log.e(TAG, "onStart()");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        this.stopWatchDog();
-        this.unregisterBroadcastReceiver();
+        this.watchDog_.cancel();
+        Log.e(TAG, "onDestroy()");
     }
 
     @Override
@@ -154,42 +150,9 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    private Boolean watchDogOn = true;
-    private Timer watchDogTimer = null;
-    private TimerTask watchDogTimerTask = null;
-    private Handler watchDogHandler = null;
-
-    private void startWatchDog() {
-        if (!this.watchDogOn) {
-            return;
-        }
-        if (this.watchDogTimer != null) {
-            return;
-        }
-        watchDogHandler = new Handler();
-        watchDogTimer = new Timer();
-        watchDogTimerTask = new TimerTask() {
-            int count;
-            @Override
-            public void run() {
-                watchDogHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        count++;
-                        Log.e(TAG, "watchDog() " + count);
-                    }
-                });
-            }
-        };
-        watchDogTimer.schedule(watchDogTimerTask, 1000, 1000);
-    }
-
-    void stopWatchDog() {
-        if (this.watchDogTimer != null) {
-            this.watchDogTimer.cancel();
-            this.watchDogTimer = null;
-            this.watchDogTimerTask = null;
-            this.watchDogHandler = null;
-        }
+    int test_count;
+    private void test() {
+        Log.e(TAG, "test() " + test_count);
+        test_count++;
     }
 }

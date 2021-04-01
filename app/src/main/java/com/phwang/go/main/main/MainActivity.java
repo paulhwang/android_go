@@ -19,7 +19,6 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.CommandDefine;
@@ -31,7 +30,6 @@ import com.phwang.go.main.register.RegisterActivity;
 import com.phwang.go.sudoku.config.SudokuConfigActivity;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.services.BindService;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
