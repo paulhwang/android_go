@@ -8,9 +8,9 @@
 
 package com.phwang.core.fabric;
 
-import com.phwang.core.utils.ListEntry;
-import com.phwang.core.utils.ListMgr;
-import com.phwang.core.utils.ListMgrInt;
+import com.phwang.core.utils.listmgr.ListEntry;
+import com.phwang.core.utils.listmgr.ListMgr;
+import com.phwang.core.utils.listmgr.ListMgrInt;
 
 public class FabricLinkMgr implements ListMgrInt {
     private String objectName() {return "FabricLinkMgr";}

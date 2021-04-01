@@ -9,6 +9,7 @@
 package com.phwang.core.theme;
 
 import com.phwang.core.utils.*;
+import com.phwang.core.utils.threadmgr.ThreadMgr;
 
 public class ThemeRoot {
     private String objectName() {return "ThemeRoot";}

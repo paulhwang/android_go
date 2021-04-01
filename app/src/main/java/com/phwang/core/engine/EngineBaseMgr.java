@@ -8,8 +8,8 @@
 
 package com.phwang.core.engine;
 
-import com.phwang.core.utils.ListMgr;
-import com.phwang.core.utils.ListEntry;
+import com.phwang.core.utils.listmgr.ListMgr;
+import com.phwang.core.utils.listmgr.ListEntry;
 
 public class EngineBaseMgr {
     private String objectName() {return "EngineBaseMgr";}

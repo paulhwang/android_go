@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.core.utils;
+package com.phwang.core.utils.listmgr;
 
 public interface ListEntryInt {
     public void bindListEntry(ListEntry list_entry_val, String who_val);

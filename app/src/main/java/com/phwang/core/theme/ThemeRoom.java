@@ -9,6 +9,8 @@
 package com.phwang.core.theme;
 
 import com.phwang.core.utils.*;
+import com.phwang.core.utils.listmgr.ListEntry;
+import com.phwang.core.utils.listmgr.ListEntryInt;
 
 public class ThemeRoom implements ListEntryInt {
     private String objectName() {return "ThemeRoom";}

@@ -9,7 +9,7 @@
 package com.phwang.core.fabric;
 
 import com.phwang.core.utils.Encoders;
-import com.phwang.core.utils.ListEntry;
+import com.phwang.core.utils.listmgr.ListEntry;
 import com.phwang.core.utils.binder.BinderBundle;
 
 public class FabricUParser {

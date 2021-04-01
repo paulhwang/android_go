@@ -6,9 +6,10 @@
  ******************************************************************************
  */
 
-package com.phwang.core.utils;
+package com.phwang.core.utils.threadmgr;
 
-import com.phwang.core.utils.*;
+import com.phwang.core.utils.Abend;
+import com.phwang.core.utils.threadmgr.ThreadEntityInt;
 
 public class ThreadEntity implements Runnable {
     private String objectName() {return "ThreadEntity";}

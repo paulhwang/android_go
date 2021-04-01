@@ -10,6 +10,8 @@ package com.phwang.core.engine;
 
 import com.phwang.core.utils.*;
 import com.phwang.core.go.GoRoot;
+import com.phwang.core.utils.listmgr.ListEntry;
+import com.phwang.core.utils.listmgr.ListEntryInt;
 
 public class EngineBase implements ListEntryInt {
     private String objectName() {return "EngineBase";}

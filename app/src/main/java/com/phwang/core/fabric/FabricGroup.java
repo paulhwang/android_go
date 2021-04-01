@@ -9,8 +9,8 @@
 package com.phwang.core.fabric;
 
 import com.phwang.core.utils.Abend;
-import com.phwang.core.utils.ListEntry;
-import com.phwang.core.utils.ListEntryInt;
+import com.phwang.core.utils.listmgr.ListEntry;
+import com.phwang.core.utils.listmgr.ListEntryInt;
 
 public class FabricGroup implements ListEntryInt {
     private static String objectName() {return "FabricGroup";}

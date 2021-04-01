@@ -9,12 +9,9 @@
 package com.phwang.core.utils.binder;
 
 import com.phwang.core.utils.Abend;
-import com.phwang.core.utils.ListEntry;
-import com.phwang.core.utils.ThreadEntity;
-import com.phwang.core.utils.ThreadEntityInt;
-import com.phwang.core.utils.binder.BinderBundle;
-import com.phwang.core.utils.binder.BinderPort;
-import com.phwang.core.utils.binder.BinderPortMgr;
+import com.phwang.core.utils.listmgr.ListEntry;
+import com.phwang.core.utils.threadmgr.ThreadEntity;
+import com.phwang.core.utils.threadmgr.ThreadEntityInt;
 
 import java.net.*;
 

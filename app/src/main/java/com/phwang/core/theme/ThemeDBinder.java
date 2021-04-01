@@ -9,8 +9,8 @@
 package com.phwang.core.theme;
 
 import com.phwang.core.utils.binder.Binder;
-import com.phwang.core.utils.ThreadMgr;
-import com.phwang.core.utils.ThreadEntityInt;
+import com.phwang.core.utils.threadmgr.ThreadMgr;
+import com.phwang.core.utils.threadmgr.ThreadEntityInt;
 
 public class ThemeDBinder implements ThreadEntityInt {
     private String objectName() {return "ThemeDBinder";}

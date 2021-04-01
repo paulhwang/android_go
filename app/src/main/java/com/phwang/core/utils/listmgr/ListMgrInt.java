@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.core.utils;
+package com.phwang.core.utils.listmgr;
 
 @FunctionalInterface
 public interface ListMgrInt {

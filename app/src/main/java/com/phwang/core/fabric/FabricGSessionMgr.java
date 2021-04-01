@@ -10,8 +10,8 @@ package com.phwang.core.fabric;
 
 import com.phwang.core.utils.Abend;
 import com.phwang.core.utils.ArrayMgrClass;
-import com.phwang.core.utils.ListEntry;
-import com.phwang.core.utils.ListMgr;
+import com.phwang.core.utils.listmgr.ListEntry;
+import com.phwang.core.utils.listmgr.ListMgr;
 
 public class FabricGSessionMgr {
     protected static String objectName() {return "FabricGSessionMgr";}

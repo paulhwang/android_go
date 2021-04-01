@@ -9,7 +9,7 @@
 package com.phwang.core.engine;
 
 import com.phwang.core.utils.Abend;
-import com.phwang.core.utils.ThreadMgr;
+import com.phwang.core.utils.threadmgr.ThreadMgr;
 
 public class EngineRoot {
     private String objectName() {return "EngineRoot";}

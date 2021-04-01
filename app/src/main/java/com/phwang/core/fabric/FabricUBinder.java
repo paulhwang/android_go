@@ -9,8 +9,8 @@
 package com.phwang.core.fabric;
 
 import com.phwang.core.utils.binder.Binder;
-import com.phwang.core.utils.ThreadMgr;
-import com.phwang.core.utils.ThreadEntityInt;
+import com.phwang.core.utils.threadmgr.ThreadMgr;
+import com.phwang.core.utils.threadmgr.ThreadEntityInt;
 
 public class FabricUBinder implements ThreadEntityInt {
     private String objectName() {return "FabricUBinder";}

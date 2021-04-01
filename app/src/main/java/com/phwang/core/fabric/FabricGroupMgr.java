@@ -8,8 +8,8 @@
 
 package com.phwang.core.fabric;
 
-import com.phwang.core.utils.ListMgr;
-import com.phwang.core.utils.ListEntry;
+import com.phwang.core.utils.listmgr.ListMgr;
+import com.phwang.core.utils.listmgr.ListEntry;
 
 public class FabricGroupMgr {
     private String objectName() {return "FabricGroupMgr";}
