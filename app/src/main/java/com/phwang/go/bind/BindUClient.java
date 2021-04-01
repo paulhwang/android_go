@@ -74,7 +74,6 @@ public class BindUClient {
                     IntentDefine.BIND_SERVICE,
                     CommandDefine.FABRIC_COMMAND_SOLO_SESSION_STR,
                     ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
-                    null,
                     null);
             return;
         }
@@ -88,7 +87,6 @@ public class BindUClient {
                     IntentDefine.BIND_SERVICE,
                     CommandDefine.FABRIC_COMMAND_HEAD_SESSION_STR,
                     ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
-                    null,
                     null);
             return;
         }
@@ -102,7 +100,6 @@ public class BindUClient {
                     IntentDefine.BIND_SERVICE,
                     CommandDefine.FABRIC_COMMAND_PEER_SESSION_STR,
                     ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
-                    null,
                     null);
             return;
         }
@@ -116,7 +113,6 @@ public class BindUClient {
                     IntentDefine.BIND_SERVICE,
                     CommandDefine.FABRIC_COMMAND_JOIN_SESSION_STR,
                     ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
-                    null,
                     null);
             return;
         }
@@ -130,7 +126,6 @@ public class BindUClient {
                     IntentDefine.BIND_SERVICE,
                     CommandDefine.FABRIC_COMMAND_SETUP_SESSION_STR,
                     ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
-                    null,
                     null);
 
             return;

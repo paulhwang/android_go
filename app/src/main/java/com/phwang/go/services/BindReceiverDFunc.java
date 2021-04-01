@@ -29,7 +29,7 @@ public class BindReceiverDFunc {
         String command = bundle_val.getString(BundleIndexDefine.COMMAND);
         String result = bundle_val.getString(BundleIndexDefine.RESULT);
         String data = bundle_val.getString(BundleIndexDefine.DATA);
-        Log.e(TAG, "handleResponse() command=" + command + ", result=" + result);
+        Log.e(TAG, "handleResponse() command=" + command + ", result=" + result + " data=" + data);
 
         if (command == null) {
             Log.e(TAG, "handleResponse() null command=");
