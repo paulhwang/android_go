@@ -41,9 +41,9 @@ public class GoConfigReceiver extends BroadcastReceiver {
     private void handleReceivedBundle(Bundle bundle_val) {
         String command = bundle_val.getString(BundleIndexDefine.COMMAND);
         char result = bundle_val.getString(BundleIndexDefine.RESULT).charAt(0);
-        String data_str = bundle_val.getString(BundleIndexDefine.DATA);
+        String data_package_str = bundle_val.getString(BundleIndexDefine.DATA_PACKAGE);
 
-        Log.e(TAG, "handleReceivedBundle() command=" + command + ", result=" + result + " data=" + data_str);
+        Log.e(TAG, "handleReceivedBundle() command=" + command + ", result=" + result + " data=" + data_package_str);
 
         if (command == null) {
             Log.e(TAG, "handleReceivedBundle() null command========================");
@@ -52,16 +52,16 @@ public class GoConfigReceiver extends BroadcastReceiver {
 
         switch (command.charAt(0)) {
             case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
-                this.processSetupSoloSessionResponse(result, data_str);
+                this.processSetupSoloSessionResponse(result, data_package_str);
                 break;
             case FabricCommands.FABRIC_COMMAND_HEAD_SESSION:
-                this.processSetupHeadSessionResponse(result, data_str);
+                this.processSetupHeadSessionResponse(result, data_package_str);
                 break;
             case FabricCommands.FABRIC_COMMAND_PEER_SESSION:
-                this.processSetupPeerSessionResponse(result, data_str);
+                this.processSetupPeerSessionResponse(result, data_package_str);
                 break;
             case FabricCommands.FABRIC_COMMAND_JOIN_SESSION:
-                this.processSetupJoinSessionResponse(result, data_str);
+                this.processSetupJoinSessionResponse(result, data_package_str);
                 break;
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION:
                 if (result == ClientFabricResultImport.SUCCEED) {
@@ -83,10 +83,10 @@ public class GoConfigReceiver extends BroadcastReceiver {
         }
     }
 
-    private void processSetupSoloSessionResponse(char result_val, String data_str_val) {
+    private void processSetupSoloSessionResponse(char result_val, String data_package_str_val) {
         if (result_val == ClientFabricResultImport.SUCCEED) {
             Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
-            intent.putExtra(BundleIndexDefine.DATA, data_str_val);
+            intent.putExtra(BundleIndexDefine.DATA_PACKAGE, data_package_str_val);
             this.goConfigActivity_.startActivity(intent);
             return;
         }
@@ -100,10 +100,10 @@ public class GoConfigReceiver extends BroadcastReceiver {
         }
     }
 
-    private void processSetupHeadSessionResponse(char result_val, String data_str_val) {
+    private void processSetupHeadSessionResponse(char result_val, String data_package_str_val) {
         if (result_val == ClientFabricResultImport.SUCCEED) {
             Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
-            intent.putExtra(BundleIndexDefine.DATA, data_str_val);
+            intent.putExtra(BundleIndexDefine.DATA_PACKAGE, data_package_str_val);
             this.goConfigActivity_.startActivity(intent);
             return;
         }
@@ -117,10 +117,10 @@ public class GoConfigReceiver extends BroadcastReceiver {
         }
     }
 
-    private void processSetupPeerSessionResponse(char result_val, String data_str_val) {
+    private void processSetupPeerSessionResponse(char result_val, String data_package_str_val) {
         if (result_val == ClientFabricResultImport.SUCCEED) {
             Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
-            intent.putExtra(BundleIndexDefine.DATA, data_str_val);
+            intent.putExtra(BundleIndexDefine.DATA_PACKAGE, data_package_str_val);
             this.goConfigActivity_.startActivity(intent);
             return;
         }
@@ -134,10 +134,10 @@ public class GoConfigReceiver extends BroadcastReceiver {
         }
     }
 
-    private void processSetupJoinSessionResponse(char result_val, String data_str_val) {
+    private void processSetupJoinSessionResponse(char result_val, String data_package_str_val) {
         if (result_val == ClientFabricResultImport.SUCCEED) {
             Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
-            intent.putExtra(BundleIndexDefine.DATA, data_str_val);
+            intent.putExtra(BundleIndexDefine.DATA_PACKAGE, data_package_str_val);
             this.goConfigActivity_.startActivity(intent);
             return;
         }

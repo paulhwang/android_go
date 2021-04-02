@@ -31,6 +31,6 @@ public class BundleIndexDefine {
     public static final String THEME_DATA = "theme_data";
     public static final String MOVE_DATA = "move_data";
 
-    public static final String DATA = "data";
+    public static final String DATA_PACKAGE = "data_package";
 
 }

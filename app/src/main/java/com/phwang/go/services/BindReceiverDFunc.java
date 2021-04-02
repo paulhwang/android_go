@@ -31,7 +31,7 @@ public class BindReceiverDFunc {
     protected void handleResponse(Bundle bundle_val) {
         String command = bundle_val.getString(BundleIndexDefine.COMMAND);
         String result = bundle_val.getString(BundleIndexDefine.RESULT);
-        String data_package_str = bundle_val.getString(BundleIndexDefine.DATA);
+        String data_package_str = bundle_val.getString(BundleIndexDefine.DATA_PACKAGE);
         Log.e(TAG, "handleResponse() command=" + command + ", result=" + result + " data=" + data_package_str);
 
         if (command == null) {
@@ -97,14 +97,14 @@ public class BindReceiverDFunc {
         }
     }
 
-    private void sendResponseBroadcastMessage(String target_val, String command_val, String result_val, String data_val) {
+    private void sendResponseBroadcastMessage(String target_val, String command_val, String result_val, String data_package_val) {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.BIND_SERVICE);
         intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_RESPONSE);
         intent.putExtra(BundleIndexDefine.COMMAND, command_val);
         intent.putExtra(BundleIndexDefine.RESULT, result_val);
-        intent.putExtra(BundleIndexDefine.DATA, data_val);
+        intent.putExtra(BundleIndexDefine.DATA_PACKAGE, data_package_val);
         intent.setAction(target_val);
         this.bindService().sendBroadcast(intent);
     }

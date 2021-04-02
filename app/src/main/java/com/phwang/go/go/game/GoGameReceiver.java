@@ -42,13 +42,13 @@ public class GoGameReceiver extends BroadcastReceiver {
     private void handleReceivedBundle(Bundle bundle_val) {
         String command = bundle_val.getString(BundleIndexDefine.COMMAND);
         String result = bundle_val.getString(BundleIndexDefine.RESULT);
-        String data = bundle_val.getString(BundleIndexDefine.DATA);
-        Log.e(TAG, "handleReceivedBundle(000) command=" + command + ", result=" + result + " data=" + data);
+        String data_package_str = bundle_val.getString(BundleIndexDefine.DATA_PACKAGE);
+        Log.e(TAG, "handleReceivedBundle(000) command=" + command + ", result=" + result + " data_package=" + data_package_str);
 
         if (command != null) {
             switch (command.charAt(0)) {
                 case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
-                    Log.e(TAG, "handleReceivedBundle(***ERROR***) fix it! command=" + command + ", result=" + result + " data=" + data);
+                    Log.e(TAG, "handleReceivedBundle(***ERROR***) fix it! command=" + command + ", result=" + result + " data_package=" + data_package_str);
                     break;
 
                 case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
@@ -56,7 +56,7 @@ public class GoGameReceiver extends BroadcastReceiver {
                     break;
 
                 case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
-                    this.goGameFunc().processGetSessionData(data);
+                    this.goGameFunc().processGetSessionData(data_package_str);
                     break;
 
                 default:

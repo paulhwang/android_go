@@ -36,10 +36,10 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         //Log.e(TAG, "onCreate()");
 
-        String data_str = this.getIntent().getExtras().getString(BundleIndexDefine.DATA);
-        Log.e(TAG, "onCreate() data_str=" + data_str);
+        String data_package_str = this.getIntent().getExtras().getString(BundleIndexDefine.DATA_PACKAGE);
+        Log.e(TAG, "onCreate() data_package=" + data_package_str);
 
-        String rest_str = Encoders.sDecode5(data_str);
+        String rest_str = Encoders.sDecode5(data_package_str);
         this.linkIdStr_ = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
 
