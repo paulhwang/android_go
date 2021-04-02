@@ -12,6 +12,7 @@ public class Encoders {
     public static final int DATA_LENGTH_SIZE = 2;
     public static final String NULL_DATA    = "09NULL_DATA";
     public static final String NULL_LINK    = "09NULL_LINK";
+    public static final String JOB_IS_DONE  = "11JOB_IS_DONE";
     public static final String NULL_SESSION = "12NULL_SESSION";
 
     public static String iEncodeRaw(int number_val, int size_val) {

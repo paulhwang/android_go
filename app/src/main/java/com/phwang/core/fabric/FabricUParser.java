@@ -696,17 +696,17 @@ public class FabricUParser {
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            return this.errorProcessPutSessionData(link_id_str, "null link");
+            return this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.LINK_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
         }
-        
+
         FabricSession session = link.sessionMgr().getSessionByIdStr(session_id_str);
         if (session == null) {
-            return errorProcessPutSessionData(link_id_str, "null session");
+            return generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SESSION_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
         }
 
         String room_id_str = session.group().roomIdStr();
         if (room_id_str == null) {
-            return this.errorProcessPutSessionData(link_id_str, "null room");
+            return generateFabricResponse(input_str_val.charAt(0), FabricResultExport.ROOM_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
         }
 
         /* transfer data up */
@@ -717,22 +717,8 @@ public class FabricUParser {
         this.fabricUBinder().transmitData(buf.toString());
 
         /* send the response down */
-        String response_data = this.generatePutSessionDataResponse(FabricResultExport.SUCCEED, link.linkIdStr(), session.lSessionIdStr(), "job is done");
+        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SUCCEED, link_id_str, session_id_str, Encoders.JOB_IS_DONE);
         return response_data;
-    }
-
-    private String errorProcessPutSessionData(String link_id_val, String error_msg_val) {
-        return error_msg_val;
-    }
-
-    protected String generatePutSessionDataResponse(char result_val, String link_id_str_val, String session_id_str_val, String c_data_val) {
-        StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA);
-        response_buf.append(result_val);
-        response_buf.append(link_id_str_val);
-        response_buf.append(session_id_str_val);
-        response_buf.append(Encoders.sEncode2(c_data_val));
-        return response_buf.toString();
     }
 
     private String processGetSessionDataRequest(String input_str_val) {

@@ -19,4 +19,6 @@ public class FabricResultExport {
     public static final String LINK_NOT_EXIST_STR    = "3";
     public static final char   SESSION_NOT_EXIST     = '4';
     public static final String SESSION_NOT_EXIST_STR = "4";
+    public static final char   ROOM_NOT_EXIST        = '5';
+    public static final String ROOM_NOT_EXIST_STR    = "5";
 }
