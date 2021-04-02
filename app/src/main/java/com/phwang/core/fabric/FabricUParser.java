@@ -750,12 +750,12 @@ public class FabricUParser {
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            return this.errorProcessSetupSession3(link_id_str, "null link");
+            return this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.LINK_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
         }
         
         FabricSession session = link.sessionMgr().getSessionByIdStr(session_id_str);
         if (session == null) {
-            return errorProcessSetupSession3(link_id_str, "null session");
+            return generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SESSION_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
         }
         
         String data = session.getPendingDownLinkData();
@@ -763,24 +763,6 @@ public class FabricUParser {
         /* send the response down */
         String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SUCCEED, link_id_str, session_id_str, Encoders.sEncode5(data));
         return response_data;
-    }
-
-    private String errorProcessGetSessionData(String link_id_val, String error_msg_val) {
-        return error_msg_val;
-    }
-
-    protected String generateGetSessionDataResponse(char result_val, String link_id_str_val, String session_id_str_val, String c_data_val) {
-        StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA);
-        response_buf.append(result_val);
-        response_buf.append(link_id_str_val);
-        response_buf.append(session_id_str_val);
-        if (c_data_val == null) {//////////////////////////////////for now
-        	c_data_val = "";
-        }
-        response_buf.append(Encoders.sEncode5(c_data_val));
-
-        return response_buf.toString();
     }
 
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }

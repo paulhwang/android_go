@@ -14,6 +14,7 @@ import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientFabricInfo;
 import com.phwang.client.ClientFabricResultImport;
 import com.phwang.core.fabric.FabricCommands;
+import com.phwang.core.fabric.FabricResultExport;
 import com.phwang.core.utils.abend.Abend;
 import com.phwang.go.define.IntentDefine;
 
@@ -73,7 +74,7 @@ public class BindUClient {
             this.bindDClient_.sendBroadcastMessage(
                     IntentDefine.BIND_SERVICE,
                     FabricCommands.FABRIC_COMMAND_SOLO_SESSION_STR,
-                    ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
+                    FabricResultExport.LINK_NOT_EXIST_STR,
                     null);
             return;
         }
@@ -86,7 +87,7 @@ public class BindUClient {
             this.bindDClient_.sendBroadcastMessage(
                     IntentDefine.BIND_SERVICE,
                     FabricCommands.FABRIC_COMMAND_HEAD_SESSION_STR,
-                    ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
+                    FabricResultExport.LINK_NOT_EXIST_STR,
                     null);
             return;
         }
@@ -99,7 +100,7 @@ public class BindUClient {
             this.bindDClient_.sendBroadcastMessage(
                     IntentDefine.BIND_SERVICE,
                     FabricCommands.FABRIC_COMMAND_PEER_SESSION_STR,
-                    ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
+                    FabricResultExport.LINK_NOT_EXIST_STR,
                     null);
             return;
         }
@@ -112,7 +113,7 @@ public class BindUClient {
             this.bindDClient_.sendBroadcastMessage(
                     IntentDefine.BIND_SERVICE,
                     FabricCommands.FABRIC_COMMAND_JOIN_SESSION_STR,
-                    ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
+                    FabricResultExport.LINK_NOT_EXIST_STR,
                     null);
             return;
         }
@@ -125,7 +126,7 @@ public class BindUClient {
             this.bindDClient_.sendBroadcastMessage(
                     IntentDefine.BIND_SERVICE,
                     FabricCommands.FABRIC_COMMAND_SETUP_SESSION_STR,
-                    ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
+                    FabricResultExport.LINK_NOT_EXIST_STR,
                     null);
 
             return;
