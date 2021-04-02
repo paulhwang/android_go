@@ -339,8 +339,8 @@ public class FabricUParser {
         String link_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
 
-        String theme_data_str = Encoders.sSubstring2(rest_str);
-        //rest_str = Encoders.sDecode2_(rest_str);
+        String theme_data_str = Encoders.sSubstring5(rest_str);
+        //rest_str = Encoders.sDecode5_(rest_str);
 
         this.debug(true, "processSoloSessionRequest", "link_id = " + link_id_str);
         this.debug(true, "processSoloSessionRequest", "theme_data = " + theme_data_str);
@@ -368,8 +368,8 @@ public class FabricUParser {
         String link_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
 
-        String theme_data_str = Encoders.sSubstring2(rest_str);
-        //rest_str = Encoders.sDecode2_(rest_str);
+        String theme_data_str = Encoders.sSubstring5(rest_str);
+        //rest_str = Encoders.sDecode5_(rest_str);
 
         this.debug(true, "processHeadSessionRequest", "link_id = " + link_id_str);
         this.debug(true, "processHeadSessionRequest", "theme_data = " + theme_data_str);
@@ -397,8 +397,8 @@ public class FabricUParser {
         String link_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
 
-        String theme_data_str = Encoders.sSubstring2(rest_str);
-        //rest_str = Encoders.sDecode2_(rest_str);
+        String theme_data_str = Encoders.sSubstring5(rest_str);
+        //rest_str = Encoders.sDecode5_(rest_str);
 
         this.debug(true, "processPeerSessionRequest", "link_id = " + link_id_str);
         this.debug(true, "processPeerSessionRequest", "theme_data = " + theme_data_str);
@@ -426,8 +426,8 @@ public class FabricUParser {
         String link_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
 
-        String theme_data_str = Encoders.sSubstring2(rest_str);
-        //rest_str = Encoders.sDecode2_(rest_str);
+        String theme_data_str = Encoders.sSubstring5(rest_str);
+        //rest_str = Encoders.sDecode5_(rest_str);
 
         this.debug(true, "processJoinSessionRequest", "link_id = " + link_id_str);
         this.debug(true, "processJoinSessionRequest", "theme_data = " + theme_data_str);

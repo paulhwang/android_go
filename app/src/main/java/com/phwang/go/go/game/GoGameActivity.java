@@ -37,7 +37,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         //Log.e(TAG, "onCreate()");
 
         String data_str = this.getIntent().getExtras().getString(BundleIndexDefine.DATA);
-        //Log.e(TAG, "onCreate() data_str= " + data_str);
+        Log.e(TAG, "onCreate() data_str=" + data_str);
 
         String rest_str = Encoders.sDecode5(data_str);
         this.linkIdStr_ = Encoders.sSubstring2(rest_str);
@@ -46,8 +46,8 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         this.sessionIdStr_ = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
 
-        String config_str = Encoders.sSubstring2(rest_str);
-        //rest_str = Encoders.sSubstring2_(rest_str);
+        String config_str = Encoders.sSubstring5(rest_str);
+        //rest_str = Encoders.sSubstring5_(rest_str);
 
         this.goBoard_ = new GoGameBoard(this, config_str);
         this.goGameFunc_ = new GoGameActivityFunc(this);

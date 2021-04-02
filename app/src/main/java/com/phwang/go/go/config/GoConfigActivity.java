@@ -14,7 +14,6 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;

@@ -40,7 +40,7 @@ public class EngineBase implements ListEntryInt {
 
     public String setupBase(String input_data_val) {
     	this.debug(true, "setupBase", "input_data_val=" + input_data_val);
-        String input_data = Encoders.sDecode2(input_data_val);
+        String input_data = Encoders.sDecode5(input_data_val);
 
         switch (input_data.charAt(0)) {
             case 'G':
