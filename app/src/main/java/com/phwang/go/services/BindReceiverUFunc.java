@@ -30,10 +30,13 @@ public class BindReceiverUFunc {
 
     protected void handleCommand(Bundle bundle_val) {
         String command = bundle_val.getString(BundleIndexDefine.COMMAND);
+        String data_str;
         String theme_data;
         String my_name;
         String email;
         String password;
+        String link_id_str;
+        String session_id_str;
 
         Log.e(TAG, "handleCommand() command=" + command);
 
@@ -98,20 +101,27 @@ public class BindReceiverUFunc {
                 this.bindUClient().doSetupSession3();
                 break;
 
+            case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
+                link_id_str = bundle_val.getString(BundleIndexDefine.LINK_ID);
+                session_id_str = bundle_val.getString(BundleIndexDefine.SESSION_ID);
+                this.bindUClient().deleteSession(link_id_str, session_id_str);
+                break;
+
             case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
                 String move_data_str = bundle_val.getString(BundleIndexDefine.MOVE_DATA);
-                String link_id_str1 = bundle_val.getString(BundleIndexDefine.LINK_ID);
-                String session_id_str1 = bundle_val.getString(BundleIndexDefine.SESSION_ID);
-                this.bindUClient().putSessionData(link_id_str1, session_id_str1, move_data_str);
+                link_id_str = bundle_val.getString(BundleIndexDefine.LINK_ID);
+                session_id_str = bundle_val.getString(BundleIndexDefine.SESSION_ID);
+                this.bindUClient().putSessionData(link_id_str, session_id_str, move_data_str);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
-                String link_id_str2 = bundle_val.getString(BundleIndexDefine.LINK_ID);
-                String session_id_str2 = bundle_val.getString(BundleIndexDefine.SESSION_ID);
-                this.bindUClient().getSessionData(link_id_str2, session_id_str2);
+                link_id_str = bundle_val.getString(BundleIndexDefine.LINK_ID);
+                session_id_str = bundle_val.getString(BundleIndexDefine.SESSION_ID);
+                this.bindUClient().getSessionData(link_id_str, session_id_str);
                 break;
 
             default:
+                Log.e(TAG, "handleCommand() command=" + command + " not implemented*********************");
         }
     }
 

@@ -85,6 +85,9 @@ public class FabricUParser {
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION3:
                 response_data = this.processSetupSession3Request(rest_str.substring(1));
                 break;
+            case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
+                response_data = this.processDeleteSessionRequest(rest_str.substring(1));
+                break;
             case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
                 response_data = this.processPutSessionDataRequest(rest_str.substring(1));
                 break;
@@ -665,6 +668,51 @@ public class FabricUParser {
         response_buf.append(link_id_str_val);
         response_buf.append(session_id_str_val);
         response_buf.append(theme_id_str_val);
+        return response_buf.toString();
+    }
+
+    private String processDeleteSessionRequest(String input_str_val) {
+        this.debug(true, "processDeleteSessionRequest", "input_str_val = " + input_str_val);
+        //String xmt_seq_str = null;
+
+        String rest_str = input_str_val;
+        String link_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
+
+        String session_id_str = Encoders.sSubstring2(rest_str);
+        //rest_str = Encoders.sSubstring2_(rest_str);
+
+        this.debug(true, "processDeleteSessionRequest", "link_id=" + link_id_str);
+        this.debug(true, "processDeleteSessionRequest", "session_id=" + session_id_str);
+
+        FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
+        if (link == null) {
+            return this.errorProcessDeleteSession(link_id_str, "null link");
+        }
+
+        FabricSession session = link.sessionMgr().getSessionByIdStr(session_id_str);
+        if (session == null) {
+            return errorProcessDeleteSession(link_id_str, "null session");
+        }
+
+        link.sessionMgr().freeSession(session);
+
+        /* send the response down */
+        String response_data = this.generateDeleteSessionResponse(FabricResultExport.SUCCEED, link_id_str, session_id_str, "session is deleted");
+        return response_data;
+    }
+
+    private String errorProcessDeleteSession(String link_id_val, String error_msg_val) {
+        return error_msg_val;
+    }
+
+    protected String generateDeleteSessionResponse(char result_val, String link_id_str_val, String session_id_str_val, String c_data_val) {
+        StringBuilder response_buf = new StringBuilder();
+        response_buf.append(FabricCommands.FABRIC_COMMAND_DELETE_SESSION);
+        response_buf.append(result_val);
+        response_buf.append(link_id_str_val);
+        response_buf.append(session_id_str_val);
+        response_buf.append(Encoders.sEncode2(c_data_val));
         return response_buf.toString();
     }
 

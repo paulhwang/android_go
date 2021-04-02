@@ -144,6 +144,11 @@ public class BindUClient {
 
     }
 
+    public void deleteSession(String link_id_str_val, String session_id_str_val) {
+        this.debug(true, "deleteSession() session_id=", session_id_str_val);
+        this.clientDExport().deleteSession(link_id_str_val, session_id_str_val);;
+    }
+
     public void putSessionData(String link_id_str_val, String session_id_str_val, String data_str_val) {
         this.debug(true, "putSessionData() data=", data_str_val);
         this.clientDExport().putSessionData(link_id_str_val, session_id_str_val, data_str_val);;

@@ -8,6 +8,7 @@
 
 package com.phwang.client;
 
+import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.utils.encoders.Encoders;
 
 import java.util.Base64;
@@ -69,6 +70,9 @@ public class ClientDParser {
             case ClientImport.FABRIC_COMMAND_SETUP_SESSION3:
     		    parserSetupSession3Response(input_data_val.substring(1));
     		    break;
+            case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
+                parserDeleteSessionResponse(input_data_val.substring(1));
+                break;
             case ClientImport.FABRIC_COMMAND_PUT_SESSION_DATA:
     		    parserPutSessionDataResponse(input_data_val.substring(1));
     		    break;
@@ -359,6 +363,10 @@ public class ClientDParser {
 
             this.importInterface().handleSetupSession3Response(result_str);
         }
+    }
+
+    private void parserDeleteSessionResponse(String input_str_val) {
+        this.debug(true, "parserDeleteSessionResponse", "input_str_val=" + input_str_val);
     }
 
     private void parserPutSessionDataResponse(String input_str_val) {
