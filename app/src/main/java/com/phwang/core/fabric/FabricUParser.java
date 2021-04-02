@@ -112,7 +112,7 @@ public class FabricUParser {
         response_buf.append(link_id_str_val);
         response_buf.append(session_id_str_val);
         response_buf.append(data_str_val);
-        String data = Encoders.sEncode2(response_buf.toString());
+        String data = Encoders.sEncode5(response_buf.toString());
 
         response_buf = new StringBuilder();
         response_buf.append(command_val);
