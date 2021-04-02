@@ -13,7 +13,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import com.phwang.client.ClientFabricResultImport;
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.fabric.FabricResultExport;
 import com.phwang.go.define.BundleIndexDefine;

@@ -12,7 +12,6 @@ import android.content.Context;
 
 import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientFabricInfo;
-import com.phwang.client.ClientFabricResultImport;
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.fabric.FabricResultExport;
 import com.phwang.core.utils.abend.Abend;

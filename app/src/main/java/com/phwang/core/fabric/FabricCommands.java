@@ -9,11 +9,11 @@
 package com.phwang.core.fabric;
 
 public class FabricCommands {
-    public static final char CLIENT_IS_ANDROID = 'A';
-    public static final char CLIENT_IS_IPHONE = 'I';
-    public static final char CLIENT_IS_HTTP = 'H';
+    public static final char   CLIENT_IS_ANDROID                   = '*';
+    public static final char   CLIENT_IS_IPHONE                    = '$';
+    public static final char   CLIENT_IS_HTTP                      = '#';
 
-    public static final char FABRIC_COMMAND_HTTP_DATA = 'H';
+    public static final char   FABRIC_COMMAND_HTTP_DATA            = '&';
 
     public static final char   FABRIC_COMMAND_REGISTER             = 'R';
     public static final String FABRIC_COMMAND_REGISTER_STR         = "R";
