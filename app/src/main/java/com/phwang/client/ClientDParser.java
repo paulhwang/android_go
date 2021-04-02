@@ -222,14 +222,15 @@ public class ClientDParser {
 
         if (result_str.charAt(0) == ClientFabricResultImport.SUCCEED) {
             String rest_str = input_str_val.substring(1);
-            String link_id_str = Encoders.sSubstring2(rest_str);
-            rest_str = Encoders.sSubstring2_(rest_str);
 
             String data_str = Encoders.sSubstring2(rest_str);
             //rest_str = Encoders.sSubstring2_(rest_str);
 
             //////////////////////////////////////////////
             rest_str = Encoders.sDecode2(data_str);
+
+            String link_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
 
             String session_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
@@ -251,14 +252,14 @@ public class ClientDParser {
 
         if (result_str.charAt(0) == ClientFabricResultImport.SUCCEED) {
             String rest_str = input_str_val.substring(1);
-            String link_id_str = Encoders.sSubstring2(rest_str);
-            rest_str = Encoders.sSubstring2_(rest_str);
 
             String data_str = Encoders.sSubstring2(rest_str);
             //rest_str = Encoders.sSubstring2_(rest_str);
 
             //////////////////////////////////////////////
             rest_str = Encoders.sDecode2(data_str);
+            String link_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
 
             String session_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
@@ -280,14 +281,15 @@ public class ClientDParser {
 
         if (result_str.charAt(0) == ClientFabricResultImport.SUCCEED) {
             String rest_str = input_str_val.substring(1);
-            String link_id_str = Encoders.sSubstring2(rest_str);
-            rest_str = Encoders.sSubstring2_(rest_str);
 
             String data_str = Encoders.sSubstring2(rest_str);
             //rest_str = Encoders.sSubstring2_(rest_str);
 
             //////////////////////////////////////////////
             rest_str = Encoders.sDecode2(data_str);
+            
+            String link_id_str = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
 
             String session_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
