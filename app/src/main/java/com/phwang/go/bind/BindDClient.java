@@ -11,13 +11,13 @@ package com.phwang.go.bind;
 import android.content.Context;
 import android.content.Intent;
 
+import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.utils.abend.Abend;
 import com.phwang.client.ClientDImportInt;
 import com.phwang.client.ClientRoot;
 import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientFabricInfo;
 import com.phwang.go.define.BundleIndexDefine;
-import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
 
 public class BindDClient implements ClientDImportInt {
@@ -58,7 +58,7 @@ public class BindDClient implements ClientDImportInt {
         this.debug(true, "handleRegisterResponse", "handleRegisterResponse");
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
-                CommandDefine.FABRIC_COMMAND_REGISTER_STR,
+                FabricCommands.FABRIC_COMMAND_REGISTER_STR,
                 result_str_val,
                 null);
     }
@@ -67,7 +67,7 @@ public class BindDClient implements ClientDImportInt {
         this.debug(true, "handleSetupLinkResponse", "LinkId=" + this.clientFabricInfo().linkIdStr());
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
-                CommandDefine.FABRIC_COMMAND_LOGIN_STR,
+                FabricCommands.FABRIC_COMMAND_LOGIN_STR,
                 result_str_val,
                 null);
     }
@@ -76,7 +76,7 @@ public class BindDClient implements ClientDImportInt {
         this.debug(true, "handleLogoutResponse", "LinkId=" + this.clientFabricInfo().linkIdStr());
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
-                CommandDefine.FABRIC_COMMAND_LOGOUT_STR,
+                FabricCommands.FABRIC_COMMAND_LOGOUT_STR,
                 result_str_val,
                 null);
     }
@@ -85,7 +85,7 @@ public class BindDClient implements ClientDImportInt {
         this.debug(true, "handleGetGroupsResponse", "LinkId=" + this.clientFabricInfo().linkIdStr());
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
-                CommandDefine.FABRIC_COMMAND_GET_GROUPS_STR,
+                FabricCommands.FABRIC_COMMAND_GET_GROUPS_STR,
                 result_str_val,
                 null);
     }
@@ -94,7 +94,7 @@ public class BindDClient implements ClientDImportInt {
         this.debug(true, "handleGetLinkDataResponse", "handleGetLinkDataResponse");
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
-                CommandDefine.FABRIC_COMMAND_GET_LINK_DATA_STR,
+                FabricCommands.FABRIC_COMMAND_GET_LINK_DATA_STR,
                 result_str_val,
                 null);
     }
@@ -103,7 +103,7 @@ public class BindDClient implements ClientDImportInt {
         this.debug(true, "handleGetNameListResponse", "handleGetNameListResponse");
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
-                CommandDefine.FABRIC_COMMAND_GET_NAME_LIST_STR,
+                FabricCommands.FABRIC_COMMAND_GET_NAME_LIST_STR,
                 result_str_val,
                 null);
     }
@@ -112,7 +112,7 @@ public class BindDClient implements ClientDImportInt {
         this.debug(true, "handleSoloSessionResponse", "theme_str_val=" + theme_str_val);
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
-                CommandDefine.FABRIC_COMMAND_SOLO_SESSION_STR,
+                FabricCommands.FABRIC_COMMAND_SOLO_SESSION_STR,
                 result_str_val,
                 theme_str_val);
     }
@@ -121,17 +121,16 @@ public class BindDClient implements ClientDImportInt {
         this.debug(true, "handleSetupHeadSessionResponse", "theme_str_val=" + theme_str_val);
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
-                CommandDefine.FABRIC_COMMAND_HEAD_SESSION_STR,
+                FabricCommands.FABRIC_COMMAND_HEAD_SESSION_STR,
                 result_str_val,
                 theme_str_val);
-
     }
 
     public void handleSetupPeerSessionResponse(String result_str_val, String theme_str_val) {
         this.debug(true, "handleSetupPeerSessionResponse", "theme_str_val=" + theme_str_val);
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
-                CommandDefine.FABRIC_COMMAND_PEER_SESSION_STR,
+                FabricCommands.FABRIC_COMMAND_PEER_SESSION_STR,
                 result_str_val,
                 theme_str_val);
     }
@@ -140,7 +139,7 @@ public class BindDClient implements ClientDImportInt {
         this.debug(true, "handleSetupJoinSessionResponse", "theme_str_val=" + theme_str_val);
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
-                CommandDefine.FABRIC_COMMAND_JOIN_SESSION_STR,
+                FabricCommands.FABRIC_COMMAND_JOIN_SESSION_STR,
                 result_str_val,
                 theme_str_val);
     }
@@ -149,7 +148,7 @@ public class BindDClient implements ClientDImportInt {
         this.debug(true, "handleSetupSessionResponse", "SessionId=" + this.clientFabricInfo().sessionIdStr());
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
-                CommandDefine.FABRIC_COMMAND_SETUP_SESSION_STR,
+                FabricCommands.FABRIC_COMMAND_SETUP_SESSION_STR,
                 result_str_val,
                 null);
     }
@@ -158,7 +157,7 @@ public class BindDClient implements ClientDImportInt {
         this.debug(true, "handleSetupSession2Response", "handleSetupSession2Response");
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
-                CommandDefine.FABRIC_COMMAND_SETUP_SESSION2_STR,
+                FabricCommands.FABRIC_COMMAND_SETUP_SESSION2_STR,
                 result_str_val,
                 null);
     }
@@ -167,7 +166,7 @@ public class BindDClient implements ClientDImportInt {
         this.debug(true, "handleSetupSession3Response", "SessionId=" + this.clientFabricInfo().sessionIdStr());
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
-                CommandDefine.FABRIC_COMMAND_SETUP_SESSION3_STR,
+                FabricCommands.FABRIC_COMMAND_SETUP_SESSION3_STR,
                 result_str_val,
                 null);
     }
@@ -176,7 +175,7 @@ public class BindDClient implements ClientDImportInt {
         this.debug(true, "handlePutSessionDataResponse", "handlePutSessionDataResponse");
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
-                CommandDefine.FABRIC_COMMAND_PUT_SESSION_DATA_STR,
+                FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA_STR,
                 result_str_val,
                 null);
     }
@@ -185,7 +184,7 @@ public class BindDClient implements ClientDImportInt {
         this.debug(true, "handleGetSessionDataResponse", "handleGetSessionDataResponse");
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
-                CommandDefine.FABRIC_COMMAND_GET_SESSION_DATA_STR,
+                FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA_STR,
                 result_str_val,
                 data_val);
 

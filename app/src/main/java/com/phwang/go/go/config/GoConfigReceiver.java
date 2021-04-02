@@ -14,8 +14,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import com.phwang.client.ClientFabricResultImport;
+import com.phwang.core.fabric.FabricCommands;
 import com.phwang.go.define.BundleIndexDefine;
-import com.phwang.go.define.CommandDefine;
 import com.phwang.go.go.game.GoGameActivity;
 import com.phwang.go.main.login.LoginActivity;
 
@@ -51,19 +51,19 @@ public class GoConfigReceiver extends BroadcastReceiver {
         }
 
         switch (command.charAt(0)) {
-            case CommandDefine.FABRIC_COMMAND_SOLO_SESSION:
+            case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
                 this.processSetupSoloSessionResponse(result, data_str);
                 break;
-            case CommandDefine.FABRIC_COMMAND_HEAD_SESSION:
+            case FabricCommands.FABRIC_COMMAND_HEAD_SESSION:
                 this.processSetupHeadSessionResponse(result, data_str);
                 break;
-            case CommandDefine.FABRIC_COMMAND_PEER_SESSION:
+            case FabricCommands.FABRIC_COMMAND_PEER_SESSION:
                 this.processSetupPeerSessionResponse(result, data_str);
                 break;
-            case CommandDefine.FABRIC_COMMAND_JOIN_SESSION:
+            case FabricCommands.FABRIC_COMMAND_JOIN_SESSION:
                 this.processSetupJoinSessionResponse(result, data_str);
                 break;
-            case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
+            case FabricCommands.FABRIC_COMMAND_SETUP_SESSION:
                 if (result == ClientFabricResultImport.SUCCEED) {
                     Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
                     this.goConfigActivity_.startActivity(intent);

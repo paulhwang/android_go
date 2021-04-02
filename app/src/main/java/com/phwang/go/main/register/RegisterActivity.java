@@ -16,9 +16,9 @@ import android.view.View;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputLayout;
+import com.phwang.core.fabric.FabricCommands;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
-import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
@@ -89,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.REGISTER_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
-        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_REGISTER_STR);
+        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_REGISTER_STR);
         intent.putExtra(BundleIndexDefine.MY_NAME, this.userName_);
         intent.putExtra(BundleIndexDefine.EMAIL, this.email_);
         intent.putExtra(BundleIndexDefine.PASSWORD, this.password_);

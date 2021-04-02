@@ -14,9 +14,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import com.phwang.go.define.BundleIndexDefine;
-import com.phwang.go.define.CommandDefine;
-import com.phwang.go.define.IntentDefine;
-import com.phwang.go.define.ThemeDefine;
 import com.phwang.go.bind.BindUClient;
 
 public class BindReceiver extends BroadcastReceiver {

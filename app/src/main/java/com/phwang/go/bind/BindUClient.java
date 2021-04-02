@@ -13,8 +13,8 @@ import android.content.Context;
 import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientFabricInfo;
 import com.phwang.client.ClientFabricResultImport;
+import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.utils.abend.Abend;
-import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
 
 public class BindUClient {
@@ -72,7 +72,7 @@ public class BindUClient {
         if (this.clientFabricInfo().linkIdStr() == null) {
             this.bindDClient_.sendBroadcastMessage(
                     IntentDefine.BIND_SERVICE,
-                    CommandDefine.FABRIC_COMMAND_SOLO_SESSION_STR,
+                    FabricCommands.FABRIC_COMMAND_SOLO_SESSION_STR,
                     ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
                     null);
             return;
@@ -85,7 +85,7 @@ public class BindUClient {
         if (this.clientFabricInfo().linkIdStr() == null) {
             this.bindDClient_.sendBroadcastMessage(
                     IntentDefine.BIND_SERVICE,
-                    CommandDefine.FABRIC_COMMAND_HEAD_SESSION_STR,
+                    FabricCommands.FABRIC_COMMAND_HEAD_SESSION_STR,
                     ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
                     null);
             return;
@@ -98,7 +98,7 @@ public class BindUClient {
         if (this.clientFabricInfo().linkIdStr() == null) {
             this.bindDClient_.sendBroadcastMessage(
                     IntentDefine.BIND_SERVICE,
-                    CommandDefine.FABRIC_COMMAND_PEER_SESSION_STR,
+                    FabricCommands.FABRIC_COMMAND_PEER_SESSION_STR,
                     ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
                     null);
             return;
@@ -111,7 +111,7 @@ public class BindUClient {
         if (this.clientFabricInfo().linkIdStr() == null) {
             this.bindDClient_.sendBroadcastMessage(
                     IntentDefine.BIND_SERVICE,
-                    CommandDefine.FABRIC_COMMAND_JOIN_SESSION_STR,
+                    FabricCommands.FABRIC_COMMAND_JOIN_SESSION_STR,
                     ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
                     null);
             return;
@@ -124,7 +124,7 @@ public class BindUClient {
         if (this.clientFabricInfo().linkIdStr() == null) {
             this.bindDClient_.sendBroadcastMessage(
                     IntentDefine.BIND_SERVICE,
-                    CommandDefine.FABRIC_COMMAND_SETUP_SESSION_STR,
+                    FabricCommands.FABRIC_COMMAND_SETUP_SESSION_STR,
                     ClientFabricResultImport.FAIL_LINK_NOT_EXIST,
                     null);
 

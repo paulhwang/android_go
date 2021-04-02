@@ -19,9 +19,10 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import com.phwang.core.fabric.FabricCommands;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
-import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.go.config.GoConfigActivity;
 import com.phwang.go.main.setup.SetupActivity;
@@ -146,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.MAIN_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
-        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_LOGOUT_STR);
+        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_LOGOUT_STR);
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
         this.registerBroadcastReceiver();
@@ -157,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.MAIN_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
-        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_GET_GROUPS_STR);
+        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_GET_GROUPS_STR);
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
         this.registerBroadcastReceiver();

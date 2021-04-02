@@ -13,8 +13,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.phwang.core.fabric.FabricCommands;
 import com.phwang.go.define.BundleIndexDefine;
-import com.phwang.go.define.CommandDefine;
 
 public class RegisterReceiver extends BroadcastReceiver {
     private static final String TAG = "RegisterReceiver";
@@ -46,7 +47,7 @@ public class RegisterReceiver extends BroadcastReceiver {
         }
 
         switch (command.charAt(0)) {
-            case CommandDefine.FABRIC_COMMAND_REGISTER:
+            case FabricCommands.FABRIC_COMMAND_REGISTER:
                 break;
             default:
                 break;

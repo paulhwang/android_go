@@ -10,8 +10,9 @@ package com.phwang.go.services;
 
 import android.os.Bundle;
 import android.util.Log;
+
+import com.phwang.core.fabric.FabricCommands;
 import com.phwang.go.define.BundleIndexDefine;
-import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.define.ThemeDefine;
 
@@ -37,51 +38,51 @@ public class BindReceiverDFunc {
         }
 
         switch (command.charAt(0)) {
-            case CommandDefine.FABRIC_COMMAND_REGISTER:
+            case FabricCommands.FABRIC_COMMAND_REGISTER:
                 this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data);
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_LOGIN:
+            case FabricCommands.FABRIC_COMMAND_LOGIN:
                 this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.LOGIN_ACTIVITY, command, result, data);
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_LOGOUT:
+            case FabricCommands.FABRIC_COMMAND_LOGOUT:
                 this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data);
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_GET_GROUPS:
+            case FabricCommands.FABRIC_COMMAND_GET_GROUPS:
                 this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data);
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_SOLO_SESSION:
+            case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
                 this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data);
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_HEAD_SESSION:
+            case FabricCommands.FABRIC_COMMAND_HEAD_SESSION:
                 this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data);
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_PEER_SESSION:
+            case FabricCommands.FABRIC_COMMAND_PEER_SESSION:
                 this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data);
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_JOIN_SESSION:
+            case FabricCommands.FABRIC_COMMAND_JOIN_SESSION:
                 this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data);
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
+            case FabricCommands.FABRIC_COMMAND_SETUP_SESSION:
                 this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data);
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_SETUP_SESSION3:
+            case FabricCommands.FABRIC_COMMAND_SETUP_SESSION3:
                 this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data);
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_PUT_SESSION_DATA:
+            case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
                 this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command, result, data);
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_GET_SESSION_DATA:
+            case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
                 if (data.charAt(0) == ThemeDefine.THEME_GO) {
                     this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command, result, data.substring(1));
                 }

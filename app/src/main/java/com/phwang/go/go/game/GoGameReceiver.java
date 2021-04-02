@@ -14,8 +14,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.phwang.core.fabric.FabricCommands;
 import com.phwang.go.define.BundleIndexDefine;
-import com.phwang.go.define.CommandDefine;
 
 public class GoGameReceiver extends BroadcastReceiver {
     private static final String TAG = "GoGameReceiver";
@@ -47,15 +47,15 @@ public class GoGameReceiver extends BroadcastReceiver {
 
         if (command != null) {
             switch (command.charAt(0)) {
-                case CommandDefine.FABRIC_COMMAND_SOLO_SESSION:
+                case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
                     Log.e(TAG, "handleReceivedBundle(***ERROR***) fix it! command=" + command + ", result=" + result + " data=" + data);
                     break;
 
-                case CommandDefine.FABRIC_COMMAND_PUT_SESSION_DATA:
+                case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
                     this.goGameFunc().do_get_session_data();
                     break;
 
-                case CommandDefine.FABRIC_COMMAND_GET_SESSION_DATA:
+                case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
                     this.goGameFunc().processGetSessionData(data);
                     break;
 

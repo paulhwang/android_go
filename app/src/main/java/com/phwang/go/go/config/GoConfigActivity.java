@@ -15,9 +15,9 @@ import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.phwang.core.fabric.FabricCommands;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
-import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.go.game.GoGameBoard;
 
@@ -117,7 +117,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
-        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SOLO_SESSION_STR);
+        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_SOLO_SESSION_STR);
         intent.putExtra(BundleIndexDefine.THEME_DATA, go_config_data_val);
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
@@ -128,7 +128,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
-        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_HEAD_SESSION_STR);
+        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_HEAD_SESSION_STR);
         intent.putExtra(BundleIndexDefine.THEME_DATA, go_config_data_val);
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
@@ -139,7 +139,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
-        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_PEER_SESSION_STR);
+        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_PEER_SESSION_STR);
         intent.putExtra(BundleIndexDefine.THEME_DATA, go_config_data_val);
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
@@ -150,7 +150,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
-        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_JOIN_SESSION_STR);
+        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_JOIN_SESSION_STR);
         intent.putExtra(BundleIndexDefine.THEME_DATA, go_config_data_val);
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
@@ -161,7 +161,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
-        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SETUP_SESSION_STR);
+        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_SETUP_SESSION_STR);
         intent.putExtra(BundleIndexDefine.HIS_NAME, his_name_val);
         intent.putExtra(BundleIndexDefine.THEME_DATA, theme_data_val);
         intent.setAction(IntentDefine.BIND_SERVICE);

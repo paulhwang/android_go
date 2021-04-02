@@ -10,8 +10,8 @@ package com.phwang.go.main.main;
 
 import android.content.Intent;
 
+import com.phwang.core.fabric.FabricCommands;
 import com.phwang.go.define.BundleIndexDefine;
-import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
 
 public class MainActivityFunc {
@@ -27,7 +27,7 @@ public class MainActivityFunc {
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.MAIN_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
-        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SETUP_SESSION_STR);
+        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_SETUP_SESSION_STR);
         intent.putExtra(BundleIndexDefine.HIS_NAME, his_name_val);
         intent.putExtra(BundleIndexDefine.THEME_DATA, theme_data_val);
         intent.setAction(IntentDefine.BIND_SERVICE);
@@ -39,7 +39,7 @@ public class MainActivityFunc {
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.MAIN_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
-        intent.putExtra(BundleIndexDefine.COMMAND, CommandDefine.FABRIC_COMMAND_SETUP_SESSION3_STR);
+        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_SETUP_SESSION3_STR);
         intent.putExtra(BundleIndexDefine.THEME_DATA, theme_data_val);
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.mainActivity_.sendBroadcast(intent);

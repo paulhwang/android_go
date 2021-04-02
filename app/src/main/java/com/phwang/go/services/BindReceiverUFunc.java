@@ -11,9 +11,10 @@ package com.phwang.go.services;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.phwang.core.fabric.FabricCommands;
 import com.phwang.go.bind.BindUClient;
 import com.phwang.go.define.BundleIndexDefine;
-import com.phwang.go.define.CommandDefine;
 import com.phwang.go.define.IntentDefine;
 
 public class BindReceiverUFunc {
@@ -42,19 +43,19 @@ public class BindReceiverUFunc {
         }
 
         switch (command.charAt(0)) {
-            case CommandDefine.FABRIC_COMMAND_LOGIN:
+            case FabricCommands.FABRIC_COMMAND_LOGIN:
                 my_name = bundle_val.getString(BundleIndexDefine.MY_NAME);
                 password = bundle_val.getString(BundleIndexDefine.PASSWORD);
                 Log.e(TAG, "handleReceivedBundle() command=" + command + " name=" + my_name + "," + password);
                 this.bindUClient().doLogin(my_name, password);
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_LOGOUT:
+            case FabricCommands.FABRIC_COMMAND_LOGOUT:
                 Log.e(TAG, "handleReceivedBundle() command=" + command);
                 this.bindUClient().doLogout();
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_REGISTER:
+            case FabricCommands.FABRIC_COMMAND_REGISTER:
                 my_name = bundle_val.getString(BundleIndexDefine.MY_NAME);
                 email = bundle_val.getString(BundleIndexDefine.EMAIL);
                 password = bundle_val.getString(BundleIndexDefine.PASSWORD);
@@ -62,49 +63,49 @@ public class BindReceiverUFunc {
                 this.bindUClient().doRegister(my_name, password, email);
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_GET_GROUPS:
+            case FabricCommands.FABRIC_COMMAND_GET_GROUPS:
                 Log.e(TAG, "handleReceivedBundle() command=" + command);
                 this.bindUClient().doGetGroups();
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_SOLO_SESSION:
+            case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
                 theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
                 this.bindUClient().setupSoloSession(theme_data);
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_HEAD_SESSION:
+            case FabricCommands.FABRIC_COMMAND_HEAD_SESSION:
                 theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
                 this.bindUClient().setupHeadSession(theme_data);
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_PEER_SESSION:
+            case FabricCommands.FABRIC_COMMAND_PEER_SESSION:
                 theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
                 this.bindUClient().setupPeerSession(theme_data);
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_JOIN_SESSION:
+            case FabricCommands.FABRIC_COMMAND_JOIN_SESSION:
                 theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
                 this.bindUClient().setupJoinSession(theme_data);
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_SETUP_SESSION:
+            case FabricCommands.FABRIC_COMMAND_SETUP_SESSION:
                 String his_name = bundle_val.getString(BundleIndexDefine.HIS_NAME);
                 theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
                 this.bindUClient().doSetupSession(his_name, theme_data);
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_SETUP_SESSION3:
+            case FabricCommands.FABRIC_COMMAND_SETUP_SESSION3:
                 this.bindUClient().doSetupSession3();
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_PUT_SESSION_DATA:
+            case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
                 String move_data_str = bundle_val.getString(BundleIndexDefine.MOVE_DATA);
                 String link_id_str1 = bundle_val.getString(BundleIndexDefine.LINK_ID);
                 String session_id_str1 = bundle_val.getString(BundleIndexDefine.SESSION_ID);
                 this.bindUClient().putSessionData(link_id_str1, session_id_str1, move_data_str);
                 break;
 
-            case CommandDefine.FABRIC_COMMAND_GET_SESSION_DATA:
+            case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
                 String link_id_str2 = bundle_val.getString(BundleIndexDefine.LINK_ID);
                 String session_id_str2 = bundle_val.getString(BundleIndexDefine.SESSION_ID);
                 this.bindUClient().getSessionData(link_id_str2, session_id_str2);
