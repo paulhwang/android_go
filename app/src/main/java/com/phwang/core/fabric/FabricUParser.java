@@ -170,19 +170,10 @@ public class FabricUParser {
         	this.abend("processLoginRequest", "link is null");
         	return null;
         }
-        String response_data = this.generateLoginResponse(FabricResultExport.SUCCEED, link.linkIdStr(), link.myName());
+        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SUCCEED, link.linkIdStr(), Encoders.NULL_SESSION, Encoders.sEncode2(my_name));
         return response_data;
     }
-    
-    private String generateLoginResponse(char result_val, String link_id_str_val, String my_name_val) {
-        StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricCommands.FABRIC_COMMAND_LOGIN);
-        response_buf.append(result_val);
-        response_buf.append(link_id_str_val);
-        response_buf.append(Encoders.sEncode2(my_name_val));
-        return response_buf.toString();
-    }
-    
+
     private String processLogoutRequest(String input_str_val) {
         this.debug(true, "processLogoutRequest", "input_str_val = " + input_str_val);
 
