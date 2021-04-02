@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.phwang.core.fabric.FabricCommands;
+import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.define.ThemeDefine;
@@ -29,10 +30,12 @@ public class BindReceiverDFunc {
     }
 
     protected void handleResponse(Bundle bundle_val) {
+        String link_id_str;
+        String session_id_str;
         String command = bundle_val.getString(BundleIndexDefine.COMMAND);
         String result = bundle_val.getString(BundleIndexDefine.RESULT);
         String data_package_str = bundle_val.getString(BundleIndexDefine.DATA_PACKAGE);
-        Log.e(TAG, "handleResponse() command=" + command + ", result=" + result + " data=" + data_package_str);
+        Log.e(TAG, "handleResponse() command=" + command + ", result=" + result + " data_package=" + data_package_str);
 
         if (command == null) {
             Log.e(TAG, "handleResponse() null command=");
@@ -85,8 +88,25 @@ public class BindReceiverDFunc {
                 break;
 
             case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
-                if (data_package_str.charAt(0) == ThemeDefine.THEME_GO) {
-                    this.sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command, result, data_package_str.substring(1));
+                String rest_str = Encoders.sDecode5(data_package_str);
+                link_id_str = Encoders.sSubstring2(rest_str);
+                rest_str = Encoders.sSubstring2_(rest_str);
+
+                session_id_str = Encoders.sSubstring2(rest_str);
+                rest_str = Encoders.sSubstring2_(rest_str);
+
+                String data_str = Encoders.sSubstring5(rest_str);
+                //rest_str = Encoders.sSubstring5_(rest_str);
+
+                Log.e(TAG, "handleResponse(FABRIC_COMMAND_GET_SESSION_DATA) data=" + data_str);
+
+                ///////////////////////////////
+                String theme_data_str = Encoders.sDecode5(data_str);
+
+                Log.e(TAG, "handleResponse(FABRIC_COMMAND_GET_SESSION_DATA) theme_data=" + theme_data_str);
+
+                if (theme_data_str.charAt(0) == ThemeDefine.THEME_GO) {
+                    this.sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command, result, theme_data_str.substring(1));
                 }
                 else {
                     Log.e(TAG, "handleResponse() ***not implemented yet+++");

@@ -180,14 +180,13 @@ public class BindDClient implements ClientDImportInt {
                 null);
     }
 
-    public void handleGetSessionDataResponse(String result_str_val, String data_val) {
-        this.debug(true, "handleGetSessionDataResponse", "handleGetSessionDataResponse");
+    public void handleGetSessionDataResponse(String result_str_val, String data_package_val) {
+        this.debug(true, "handleGetSessionDataResponse", "data_package=" + data_package_val);
         this.sendBroadcastMessage(
                 IntentDefine.BIND_SERVICE,
                 FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA_STR,
                 result_str_val,
-                data_val);
-
+                data_package_val);
     }
 
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }

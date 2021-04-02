@@ -761,7 +761,7 @@ public class FabricUParser {
         String data = session.getPendingDownLinkData();
 
         /* send the response down */
-        String response_data = this.generateGetSessionDataResponse(FabricResultExport.SUCCEED, link.linkIdStr(), session.lSessionIdStr(), data);
+        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SUCCEED, link_id_str, session_id_str, Encoders.sEncode5(data));
         return response_data;
     }
 

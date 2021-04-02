@@ -27,60 +27,60 @@ public class ClientDParser {
         this.clientRoot_ = root_val;
     }
     
-    protected void parserResponseData(String input_data_val) {
-    	this.debug(true, "parserResponseData", "input_data_val=" + input_data_val);
+    protected void parserResponseData(String response_data_str_val) {
+    	this.debug(true, "parserResponseData", "response_data=" + response_data_str_val);
     	
-    	switch (input_data_val.charAt(0)) {
+    	switch (response_data_str_val.charAt(0)) {
             case FabricCommands.FABRIC_COMMAND_REGISTER:
-    		    parserRegisterResponse(input_data_val.substring(1));
+    		    parserRegisterResponse(response_data_str_val.substring(1));
     		    break;
             case FabricCommands.FABRIC_COMMAND_LOGIN:
-                parserLoginResponse(input_data_val.substring(1));
+                parserLoginResponse(response_data_str_val.substring(1));
                 break;
             case FabricCommands.FABRIC_COMMAND_LOGOUT:
-                parserLogoutResponse(input_data_val.substring(1));
+                parserLogoutResponse(response_data_str_val.substring(1));
                 break;
             case FabricCommands.FABRIC_COMMAND_GET_GROUPS:
-                parserGetGroupsResponse(input_data_val.substring(1));
+                parserGetGroupsResponse(response_data_str_val.substring(1));
                 break;
             case FabricCommands.FABRIC_COMMAND_GET_LINK_DATA:
-    		    parserGetLinkDataResponse(input_data_val.substring(1));
+    		    parserGetLinkDataResponse(response_data_str_val.substring(1));
     		    break;
             case FabricCommands.FABRIC_COMMAND_GET_NAME_LIST:
-    		    parserGetNameListResponse(input_data_val.substring(1));
+    		    parserGetNameListResponse(response_data_str_val.substring(1));
     		    break;
             case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
-                parserSoloSessionResponse(input_data_val.substring(1));
+                parserSoloSessionResponse(response_data_str_val.substring(1));
                 break;
             case FabricCommands.FABRIC_COMMAND_HEAD_SESSION:
-                parserHeadSessionResponse(input_data_val.substring(1));
+                parserHeadSessionResponse(response_data_str_val.substring(1));
                 break;
             case FabricCommands.FABRIC_COMMAND_PEER_SESSION:
-                parserPeerSessionResponse(input_data_val.substring(1));
+                parserPeerSessionResponse(response_data_str_val.substring(1));
                 break;
             case FabricCommands.FABRIC_COMMAND_JOIN_SESSION:
-                parserJoinSessionResponse(input_data_val.substring(1));
+                parserJoinSessionResponse(response_data_str_val.substring(1));
                 break;
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION:
-    		    parserSetupSessionResponse(input_data_val.substring(1));
+    		    parserSetupSessionResponse(response_data_str_val.substring(1));
     		    break;
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION2:
-    		    parserSetupSession2Response(input_data_val.substring(1));
+    		    parserSetupSession2Response(response_data_str_val.substring(1));
     		    break;
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION3:
-    		    parserSetupSession3Response(input_data_val.substring(1));
+    		    parserSetupSession3Response(response_data_str_val.substring(1));
     		    break;
             case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
-                parserDeleteSessionResponse(input_data_val.substring(1));
+                parserDeleteSessionResponse(response_data_str_val.substring(1));
                 break;
             case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
-    		    parserPutSessionDataResponse(input_data_val.substring(1));
+    		    parserPutSessionDataResponse(response_data_str_val.substring(1));
     		    break;
             case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
-    		    parserGetSessionDataResponse(input_data_val.substring(1));
+    		    parserGetSessionDataResponse(response_data_str_val.substring(1));
     		    break;
             default:
-    		    this.abend("parserResponseData", "input_data_val=" + input_data_val);
+    		    this.abend("parserResponseData", "input_data_val=" + response_data_str_val);
     		    break;
     	}
     }
@@ -398,16 +398,11 @@ public class ClientDParser {
 
         if (result_str.charAt(0) == ClientFabricResultImport.SUCCEED) {
             String rest_str = input_str_val.substring(1);
-            String link_id_str = Encoders.sSubstring2(rest_str);
-            rest_str = Encoders.sSubstring2_(rest_str);
 
-            String session_id_str = Encoders.sSubstring2(rest_str);
-            rest_str = Encoders.sSubstring2_(rest_str);
-
-            String c_data = Encoders.sDecode5(rest_str);
+            String data_package_str = Encoders.sSubstring5(rest_str);
             //rest_str = Encoders.sDecode5_(rest_str);
 
-            this.importInterface().handleGetSessionDataResponse(result_str, c_data);
+            this.importInterface().handleGetSessionDataResponse(result_str, data_package_str);
         }
     }
 
