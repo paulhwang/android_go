@@ -657,18 +657,8 @@ public class FabricUParser {
         link.sessionMgr().freeSession(session);
 
         /* send the response down */
-        String response_data = this.generateDeleteSessionResponse(FabricResultExport.SUCCEED, link_id_str, session_id_str, "session is deleted");
+        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SUCCEED, link_id_str, session_id_str, Encoders.JOB_IS_DONE);
         return response_data;
-    }
-
-    protected String generateDeleteSessionResponse(char result_val, String link_id_str_val, String session_id_str_val, String c_data_val) {
-        StringBuilder response_buf = new StringBuilder();
-        response_buf.append(FabricCommands.FABRIC_COMMAND_DELETE_SESSION);
-        response_buf.append(result_val);
-        response_buf.append(link_id_str_val);
-        response_buf.append(session_id_str_val);
-        response_buf.append(Encoders.sEncode2(c_data_val));
-        return response_buf.toString();
     }
 
     private String processPutSessionDataRequest(String input_str_val) {
