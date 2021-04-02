@@ -50,7 +50,7 @@ public class FabricUParser {
                 response_data = this.processRegisterRequest(rest_str.substring(1));
                 break;
             case FabricCommands.FABRIC_COMMAND_LOGIN:
-                response_data = this.processLoginRequest(rest_str.substring(1));
+                response_data = this.processLoginRequest(rest_str);
                 break;
             case FabricCommands.FABRIC_COMMAND_LOGOUT:
                 response_data = this.processLogoutRequest(rest_str.substring(1));
@@ -89,10 +89,10 @@ public class FabricUParser {
                 response_data = this.processDeleteSessionRequest(rest_str.substring(1));
                 break;
             case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
-                response_data = this.processPutSessionDataRequest(rest_str.substring(1));
+                response_data = this.processPutSessionDataRequest(rest_str);
                 break;
             case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
-                response_data = this.processGetSessionDataRequest(rest_str.substring(1));
+                response_data = this.processGetSessionDataRequest(rest_str);
                 break;
             default:
                 response_data = "*** Bad command! Fix it!";
@@ -151,9 +151,10 @@ public class FabricUParser {
 
     private String processLoginRequest(String input_str_val) {
         this.debug(false, "processLoginRequest", "input_str_val=" + input_str_val);
-        
-        char client_type = input_str_val.charAt(0);
+
         String rest_str = input_str_val.substring(1);
+        char client_type = rest_str.charAt(0);
+        rest_str = rest_str.substring(1);
 
         String my_name = Encoders.sDecode2(rest_str);
     	rest_str = Encoders.sDecode2_(rest_str);
@@ -678,7 +679,7 @@ public class FabricUParser {
         this.debug(true, "processPutSessionDataRequest", "input_str_val = " + input_str_val);
     	//String xmt_seq_str = null;
         
-        String rest_str = input_str_val;
+        String rest_str = input_str_val.substring(1);
         String link_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
 
@@ -737,7 +738,7 @@ public class FabricUParser {
     private String processGetSessionDataRequest(String input_str_val) {
         this.debug(false, "processGetSessionDataRequest", "input_str_val = " + input_str_val);
         
-        String rest_str = input_str_val;
+        String rest_str = input_str_val.substring(1);
         String link_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
 
