@@ -8,6 +8,7 @@
 
 package com.phwang.go.services;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -20,6 +21,7 @@ public class BindReceiverDFunc {
     private static final String TAG = "BindReceiverDFunc";
     BindReceiver bindReceiver_;
 
+    private BindService bindService() { return this.bindReceiver_.bindService(); };
     protected BindReceiverUFunc bindServiceUFunc() { return this.bindReceiver_.bindServiceUFunc(); };
 
     public BindReceiverDFunc(BindReceiver bind_receiver_val) {
@@ -39,52 +41,52 @@ public class BindReceiverDFunc {
 
         switch (command.charAt(0)) {
             case FabricCommands.FABRIC_COMMAND_REGISTER:
-                this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data_package_str);
+                this.sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data_package_str);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_LOGIN:
-                this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.LOGIN_ACTIVITY, command, result, data_package_str);
+                this.sendResponseBroadcastMessage(IntentDefine.LOGIN_ACTIVITY, command, result, data_package_str);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_LOGOUT:
-                this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data_package_str);
+                this.sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data_package_str);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_GET_GROUPS:
-                this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data_package_str);
+                this.sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data_package_str);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
-                this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data_package_str);
+                this.sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data_package_str);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_HEAD_SESSION:
-                this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data_package_str);
+                this.sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data_package_str);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_PEER_SESSION:
-                this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data_package_str);
+                this.sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data_package_str);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_JOIN_SESSION:
-                this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data_package_str);
+                this.sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data_package_str);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION:
-                this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data_package_str);
+                this.sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data_package_str);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION3:
-                this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data_package_str);
+                this.sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data_package_str);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
-                this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command, result, data_package_str);
+                this.sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command, result, data_package_str);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
                 if (data_package_str.charAt(0) == ThemeDefine.THEME_GO) {
-                    this.bindServiceUFunc().sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command, result, data_package_str.substring(1));
+                    this.sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command, result, data_package_str.substring(1));
                 }
                 else {
                     Log.e(TAG, "handleResponse() ***not implemented yet+++");
@@ -93,5 +95,17 @@ public class BindReceiverDFunc {
 
             default:
         }
+    }
+
+    private void sendResponseBroadcastMessage(String target_val, String command_val, String result_val, String data_val) {
+        Intent intent = new Intent();
+        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
+        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.BIND_SERVICE);
+        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_RESPONSE);
+        intent.putExtra(BundleIndexDefine.COMMAND, command_val);
+        intent.putExtra(BundleIndexDefine.RESULT, result_val);
+        intent.putExtra(BundleIndexDefine.DATA, data_val);
+        intent.setAction(target_val);
+        this.bindService().sendBroadcast(intent);
     }
 }

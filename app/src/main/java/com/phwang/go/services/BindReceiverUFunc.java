@@ -123,16 +123,4 @@ public class BindReceiverUFunc {
                 Log.e(TAG, "handleCommand() command=" + command + " not implemented*********************");
         }
     }
-
-    protected void sendResponseBroadcastMessage(String target_val, String command_val, String result_val, String data_val) {
-        Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
-        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.BIND_SERVICE);
-        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_RESPONSE);
-        intent.putExtra(BundleIndexDefine.COMMAND, command_val);
-        intent.putExtra(BundleIndexDefine.RESULT, result_val);
-        intent.putExtra(BundleIndexDefine.DATA, data_val);
-        intent.setAction(target_val);
-        this.bindService().sendBroadcast(intent);
-    }
 }
