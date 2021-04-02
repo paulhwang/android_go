@@ -47,16 +47,16 @@ public class FabricUParser {
         this.debug(false, "parseInputPacket", "data_str = " + rest_str);
         switch (rest_str.charAt(0)) {
             case FabricCommands.FABRIC_COMMAND_REGISTER:
-                response_data = this.processRegisterRequest(rest_str.substring(1));
+                response_data = this.processRegisterRequest(rest_str);
                 break;
             case FabricCommands.FABRIC_COMMAND_LOGIN:
                 response_data = this.processLoginRequest(rest_str);
                 break;
             case FabricCommands.FABRIC_COMMAND_LOGOUT:
-                response_data = this.processLogoutRequest(rest_str.substring(1));
+                response_data = this.processLogoutRequest(rest_str);
                 break;
             case FabricCommands.FABRIC_COMMAND_GET_GROUPS:
-                response_data = this.processGetGroupsRequest(rest_str.substring(1));
+                response_data = this.processGetGroupsRequest(rest_str);
                 break;
             case FabricCommands.FABRIC_COMMAND_GET_LINK_DATA:
                 response_data = this.processGetLinkDataRequest(rest_str.substring(1));
@@ -124,7 +124,7 @@ public class FabricUParser {
     private String processRegisterRequest(String input_str_val) {
         this.debug(true, "processRegisterRequest", "input_str_val=" + input_str_val);
 
-        String rest_str = input_str_val;
+        String rest_str = input_str_val.substring(1);
         String my_name = Encoders.sDecode2(rest_str);
         rest_str = Encoders.sDecode2_(rest_str);
 
@@ -185,8 +185,8 @@ public class FabricUParser {
     
     private String processLogoutRequest(String input_str_val) {
         this.debug(true, "processLogoutRequest", "input_str_val = " + input_str_val);
-        
-        String rest_str = input_str_val;
+
+        String rest_str = input_str_val.substring(1);
         String link_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
     	
@@ -212,7 +212,7 @@ public class FabricUParser {
     private String processGetGroupsRequest(String input_str_val) {
         this.debug(true, "processGetGroupsRequest", "input_str_val = " + input_str_val);
 
-        String rest_str = input_str_val;
+        String rest_str = input_str_val.substring(1);
         String link_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
 
