@@ -11,7 +11,6 @@ package com.phwang.go.services;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.go.bind.BindUClient;
 import com.phwang.go.define.BundleIndexDefine;
