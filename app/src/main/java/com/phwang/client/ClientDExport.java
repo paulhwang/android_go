@@ -38,7 +38,7 @@ public class ClientDExport implements ClientDExportInt {
         this.debug(true, "doRegister", "name=" + my_name_val);
 
         StringBuilder command_buf = new StringBuilder();
-        command_buf.append(ClientImport.FABRIC_COMMAND_REGISTER);
+        command_buf.append(FabricCommands.FABRIC_COMMAND_REGISTER);
         command_buf.append(Encoders.sEncode2(my_name_val));
         command_buf.append(Encoders.sEncode2(password_val));
         command_buf.append(Encoders.sEncode2(email_val));
@@ -53,7 +53,7 @@ public class ClientDExport implements ClientDExportInt {
     	this.debug(false, "doLogin", "name=" + my_name_val);
     	
         StringBuilder command_buf = new StringBuilder();
-        command_buf.append(ClientImport.FABRIC_COMMAND_LOGIN);
+        command_buf.append(FabricCommands.FABRIC_COMMAND_LOGIN);
         command_buf.append(ClientImport.CLIENT_IS_ANDROID);
         command_buf.append(Encoders.sEncode2(my_name_val));
         command_buf.append(Encoders.sEncode2(password_val));
@@ -71,7 +71,7 @@ public class ClientDExport implements ClientDExportInt {
         }
 
         StringBuilder command_buf = new StringBuilder();
-        command_buf.append(ClientImport.FABRIC_COMMAND_LOGOUT);
+        command_buf.append(FabricCommands.FABRIC_COMMAND_LOGOUT);
         command_buf.append(this.clientFabricInfo().linkIdStr());
         String command_str = command_buf.toString();
 
@@ -84,7 +84,7 @@ public class ClientDExport implements ClientDExportInt {
         this.debug(true, "doGetGroups", "doGetGroups");
 
         StringBuilder command_buf = new StringBuilder();
-        command_buf.append(ClientImport.FABRIC_COMMAND_GET_GROUPS);
+        command_buf.append(FabricCommands.FABRIC_COMMAND_GET_GROUPS);
         command_buf.append(this.clientFabricInfo().linkIdStr());
         String command_str = command_buf.toString();
 
@@ -97,7 +97,7 @@ public class ClientDExport implements ClientDExportInt {
     	this.debug(false, "getLinkData", "link_id=" + this.clientFabricInfo().linkIdStr());
     	
         StringBuilder command_buf = new StringBuilder();
-        command_buf.append(ClientImport.FABRIC_COMMAND_GET_LINK_DATA); 
+        command_buf.append(FabricCommands.FABRIC_COMMAND_GET_LINK_DATA);
         command_buf.append(this.clientFabricInfo().linkIdStr()); 
         String command_str = command_buf.toString();
         
@@ -110,7 +110,7 @@ public class ClientDExport implements ClientDExportInt {
     	this.debug(false, "getNameList", "link_id=" + this.clientFabricInfo().linkIdStr());
     	
         StringBuilder command_buf = new StringBuilder();
-        command_buf.append(ClientImport.FABRIC_COMMAND_GET_LINK_DATA); 
+        command_buf.append(FabricCommands.FABRIC_COMMAND_GET_LINK_DATA);
         command_buf.append(this.clientFabricInfo().linkIdStr()); 
         String command_str = command_buf.toString();
         
@@ -123,7 +123,7 @@ public class ClientDExport implements ClientDExportInt {
         this.debug(false, "setupSoloSession", "data_str_val=" + data_str_val);
 
         StringBuilder command_buf = new StringBuilder();
-        command_buf.append(ClientImport.FABRIC_COMMAND_SOLO_SESSION);
+        command_buf.append(FabricCommands.FABRIC_COMMAND_SOLO_SESSION);
         command_buf.append(this.clientFabricInfo().linkIdStr());
         command_buf.append(data_str_val);
         String command_str = command_buf.toString();
@@ -137,7 +137,7 @@ public class ClientDExport implements ClientDExportInt {
         this.debug(false, "setupHeadSession", "data_str_val=" + data_str_val);
 
         StringBuilder command_buf = new StringBuilder();
-        command_buf.append(ClientImport.FABRIC_COMMAND_HEAD_SESSION);
+        command_buf.append(FabricCommands.FABRIC_COMMAND_HEAD_SESSION);
         command_buf.append(this.clientFabricInfo().linkIdStr());
         command_buf.append(data_str_val);
         String command_str = command_buf.toString();
@@ -151,7 +151,7 @@ public class ClientDExport implements ClientDExportInt {
         this.debug(false, "setupPeerSession", "data_str_val=" + data_str_val);
 
         StringBuilder command_buf = new StringBuilder();
-        command_buf.append(ClientImport.FABRIC_COMMAND_PEER_SESSION);
+        command_buf.append(FabricCommands.FABRIC_COMMAND_PEER_SESSION);
         command_buf.append(this.clientFabricInfo().linkIdStr());
         command_buf.append(data_str_val);
         String command_str = command_buf.toString();
@@ -165,7 +165,7 @@ public class ClientDExport implements ClientDExportInt {
         this.debug(false, "setupJoinSession", "data_str_val=" + data_str_val);
 
         StringBuilder command_buf = new StringBuilder();
-        command_buf.append(ClientImport.FABRIC_COMMAND_JOIN_SESSION);
+        command_buf.append(FabricCommands.FABRIC_COMMAND_JOIN_SESSION);
         command_buf.append(this.clientFabricInfo().linkIdStr());
         command_buf.append(data_str_val);
         String command_str = command_buf.toString();
@@ -179,7 +179,7 @@ public class ClientDExport implements ClientDExportInt {
     	this.debug(false, "setupSession", "link_id=" + this.clientFabricInfo().linkIdStr());
     	
         StringBuilder command_buf = new StringBuilder();
-        command_buf.append(ClientImport.FABRIC_COMMAND_SETUP_SESSION); 
+        command_buf.append(FabricCommands.FABRIC_COMMAND_SETUP_SESSION);
         command_buf.append(this.clientFabricInfo().linkIdStr()); 
         command_buf.append(Encoders.sEncode2(his_name_val));
         command_buf.append(this.goConfig().getGoConfigStr());
@@ -198,7 +198,7 @@ public class ClientDExport implements ClientDExportInt {
     	this.debug(true, "setupSession3", "link_id=" + this.clientFabricInfo().linkIdStr() + "session_id=" + this.clientFabricInfo().sessionIdStr());
     	
         StringBuilder command_buf = new StringBuilder();
-        command_buf.append(ClientImport.FABRIC_COMMAND_SETUP_SESSION3); 
+        command_buf.append(FabricCommands.FABRIC_COMMAND_SETUP_SESSION3);
         command_buf.append(this.clientFabricInfo().linkIdStr()); 
         command_buf.append(this.clientFabricInfo().sessionIdStr()); 
         String command_str = command_buf.toString();
@@ -226,7 +226,7 @@ public class ClientDExport implements ClientDExportInt {
     	this.debug(false, "putSessionData", "session_id=" + session_id_str_val);
     	
         StringBuilder command_buf = new StringBuilder();
-        command_buf.append(ClientImport.FABRIC_COMMAND_PUT_SESSION_DATA); 
+        command_buf.append(FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA);
         command_buf.append(link_id_str_val);
         command_buf.append(session_id_str_val);
         command_buf.append(data_str_val);
@@ -241,7 +241,7 @@ public class ClientDExport implements ClientDExportInt {
     	this.debug(false, "getSessionData", "session_id=" + session_id_str_val);
     	
         StringBuilder command_buf = new StringBuilder();
-        command_buf.append(ClientImport.FABRIC_COMMAND_GET_SESSION_DATA); 
+        command_buf.append(FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA);
         command_buf.append(link_id_str_val);
         command_buf.append(session_id_str_val);
         String command_str = command_buf.toString();

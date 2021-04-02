@@ -31,52 +31,52 @@ public class ClientDParser {
     	this.debug(true, "parserResponseData", "input_data_val=" + input_data_val);
     	
     	switch (input_data_val.charAt(0)) {
-            case ClientImport.FABRIC_COMMAND_REGISTER:
+            case FabricCommands.FABRIC_COMMAND_REGISTER:
     		    parserRegisterResponse(input_data_val.substring(1));
     		    break;
-            case ClientImport.FABRIC_COMMAND_LOGIN:
+            case FabricCommands.FABRIC_COMMAND_LOGIN:
                 parserLoginResponse(input_data_val.substring(1));
                 break;
-            case ClientImport.FABRIC_COMMAND_LOGOUT:
+            case FabricCommands.FABRIC_COMMAND_LOGOUT:
                 parserLogoutResponse(input_data_val.substring(1));
                 break;
-            case ClientImport.FABRIC_COMMAND_GET_GROUPS:
+            case FabricCommands.FABRIC_COMMAND_GET_GROUPS:
                 parserGetGroupsResponse(input_data_val.substring(1));
                 break;
-            case ClientImport.FABRIC_COMMAND_GET_LINK_DATA:
+            case FabricCommands.FABRIC_COMMAND_GET_LINK_DATA:
     		    parserGetLinkDataResponse(input_data_val.substring(1));
     		    break;
-            case ClientImport.FABRIC_COMMAND_GET_NAME_LIST:
+            case FabricCommands.FABRIC_COMMAND_GET_NAME_LIST:
     		    parserGetNameListResponse(input_data_val.substring(1));
     		    break;
-            case ClientImport.FABRIC_COMMAND_SOLO_SESSION:
+            case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
                 parserSoloSessionResponse(input_data_val.substring(1));
                 break;
-            case ClientImport.FABRIC_COMMAND_HEAD_SESSION:
+            case FabricCommands.FABRIC_COMMAND_HEAD_SESSION:
                 parserHeadSessionResponse(input_data_val.substring(1));
                 break;
-            case ClientImport.FABRIC_COMMAND_PEER_SESSION:
+            case FabricCommands.FABRIC_COMMAND_PEER_SESSION:
                 parserPeerSessionResponse(input_data_val.substring(1));
                 break;
-            case ClientImport.FABRIC_COMMAND_JOIN_SESSION:
+            case FabricCommands.FABRIC_COMMAND_JOIN_SESSION:
                 parserJoinSessionResponse(input_data_val.substring(1));
                 break;
-            case ClientImport.FABRIC_COMMAND_SETUP_SESSION:
+            case FabricCommands.FABRIC_COMMAND_SETUP_SESSION:
     		    parserSetupSessionResponse(input_data_val.substring(1));
     		    break;
-            case ClientImport.FABRIC_COMMAND_SETUP_SESSION2:
+            case FabricCommands.FABRIC_COMMAND_SETUP_SESSION2:
     		    parserSetupSession2Response(input_data_val.substring(1));
     		    break;
-            case ClientImport.FABRIC_COMMAND_SETUP_SESSION3:
+            case FabricCommands.FABRIC_COMMAND_SETUP_SESSION3:
     		    parserSetupSession3Response(input_data_val.substring(1));
     		    break;
             case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
                 parserDeleteSessionResponse(input_data_val.substring(1));
                 break;
-            case ClientImport.FABRIC_COMMAND_PUT_SESSION_DATA:
+            case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
     		    parserPutSessionDataResponse(input_data_val.substring(1));
     		    break;
-            case ClientImport.FABRIC_COMMAND_GET_SESSION_DATA:
+            case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
     		    parserGetSessionDataResponse(input_data_val.substring(1));
     		    break;
             default:
