@@ -19,12 +19,14 @@ import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientFabricInfo;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
+import com.phwang.go.services.BindService;
 
 public class BindDClient implements ClientDImportInt {
     private String objectName() {
         return "BindDClient";
     }
 
+    private BindService bindService_;
     private Context applicationContext_;
     private ClientRoot clientRoot_;
 
@@ -36,10 +38,11 @@ public class BindDClient implements ClientDImportInt {
         return this.clientRoot_.clientFabricInfo();
     }
 
-    public BindDClient(Context application_context_val) {
+    public BindDClient(BindService bind_service_val, Context application_context_val) {
+        this.bindService_ = bind_service_val;
         this.applicationContext_ = application_context_val;
         this.debug(false, "BindDClient", "init");
-        this.clientRoot_ = new ClientRoot(this);
+        this.clientRoot_ = new ClientRoot(this.bindService_, this);
     }
 
     public void sendBroadcastMessage(String target_val, String command_val, String result_val, String data_pakage_val) {

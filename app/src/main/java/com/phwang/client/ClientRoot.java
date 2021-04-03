@@ -10,10 +10,12 @@ package com.phwang.client;
 
 import com.phwang.core.utils.abend.Abend;
 import com.phwang.core.utils.threadmgr.ThreadMgr;
+import com.phwang.go.services.BindService;
 
 public class ClientRoot {
     private String objectName() {return "ClientRoot";}
 
+    private BindService bindService_;
     private ClientDImportInt importInterface_;
     private ThreadMgr threadMgr_;
     private ClientFabricInfo clientFabricInfo_;
@@ -21,7 +23,8 @@ public class ClientRoot {
     private ClientUBinder clientUBinder_;
     private ClientDExport clientDExport_;
     private ClientDParser clientDParser_;
-    
+
+    protected BindService bindService() { return this.bindService_; };
     public ClientDExport clientDExport() { return this.clientDExport_; }
     public ClientFabricInfo clientFabricInfo() { return this.clientFabricInfo_; }
     public ClientGoConfig goConfig() { return this.goConfig_; }
@@ -30,9 +33,10 @@ public class ClientRoot {
     protected ClientUBinder clientUBinder() { return this.clientUBinder_; }
     protected ClientDParser clientDParser() { return this.clientDParser_; }
     
-    public ClientRoot(ClientDImportInt import_int_val) {
+    public ClientRoot(BindService bind_service_val, ClientDImportInt import_int_val) {
         this.debug(false, "ClientRoot", "init start");
 
+        this.bindService_ = bind_service_val;
         this.importInterface_ = import_int_val;
         this.clientFabricInfo_ = new ClientFabricInfo();
         this.goConfig_ = new ClientGoConfig();

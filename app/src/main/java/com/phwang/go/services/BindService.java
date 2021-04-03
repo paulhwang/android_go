@@ -35,7 +35,7 @@ public class BindService extends Service {
         super.onCreate();
         this.applicationContext_ = getApplicationContext();
         this.registerBroadcastReceiver();
-        this.bindMain_ = new BindMain(this.applicationContext());
+        this.bindMain_ = new BindMain(this, this.applicationContext());
     }
 
     @Override
