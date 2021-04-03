@@ -128,4 +128,8 @@ public class BindReceiverDFunc {
         intent.setAction(target_val);
         this.bindService().sendBroadcast(intent);
     }
+
+    public void parsePutSessionDataResponse(String command_val, String result_val, String data_package_str_val) {
+        this.sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command_val, result_val, data_package_str_val);
+    }
 }

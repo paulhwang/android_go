@@ -24,9 +24,11 @@ public class BindService extends Service {
     private static final String TAG = "BindService";
     private Context applicationContext_;
     private static BindMain bindMain_;
+    private BindReceiver bindReceiver_;
 
     public static BindMain bindMain() { return bindMain_; };
     public BindDClient bindDClient() { return this.bindMain_.bindDClient(); }
+    public BindReceiverDFunc bindReceiverDFunc() { return this.bindReceiver_.bindReceiverDFunc(); }
 
     public Context applicationContext() { return this.applicationContext_; };
 
@@ -59,7 +61,6 @@ public class BindService extends Service {
         super.onDestroy();
     }
 
-    private BindReceiver bindReceiver_;
     private void registerBroadcastReceiver() {
         if (this.bindReceiver_ == null) {
             this.bindReceiver_ = new BindReceiver(this);

@@ -18,16 +18,17 @@ import com.phwang.go.define.BundleIndexDefine;
 public class BindReceiver extends BroadcastReceiver {
     private static final String TAG = "BindReceiver";
     private BindService bindService_;
-    private BindReceiverUFunc bindServiceUFunc_;
-    private BindReceiverDFunc bindServiceDFunc_;
+    private BindReceiverUFunc bindReceiverUFunc_;
+    private BindReceiverDFunc bindReceiverDFunc_;
 
     protected BindService bindService() { return this.bindService_; };
-    protected BindReceiverUFunc bindServiceUFunc() { return this.bindServiceUFunc_; };
+    protected BindReceiverUFunc bindServiceUFunc() { return this.bindReceiverUFunc_; };
+    protected BindReceiverDFunc bindReceiverDFunc() { return this.bindReceiverDFunc_; };
 
     public BindReceiver(BindService bind_service_val) {
         this.bindService_ = bind_service_val;
-        this.bindServiceDFunc_ = new BindReceiverDFunc(this);
-        this.bindServiceUFunc_ = new BindReceiverUFunc(this);
+        this.bindReceiverDFunc_ = new BindReceiverDFunc(this);
+        this.bindReceiverUFunc_ = new BindReceiverUFunc(this);
     }
 
     @Override
@@ -42,10 +43,10 @@ public class BindReceiver extends BroadcastReceiver {
         //Log.e(TAG, "onReceive() from=" + bundle.getString(BundleIndexDefine.FROM));
         String command_or_response = bundle.getString(BundleIndexDefine.COMMAND_OR_RESPONSE);
         if (command_or_response.equals(BundleIndexDefine.IS_COMMAND)) {
-            this.bindServiceUFunc_.handleCommand(bundle);
+            this.bindReceiverUFunc_.handleCommand(bundle);
         }
         else if (command_or_response.equals(BundleIndexDefine.IS_RESPONSE)) {
-            this.bindServiceDFunc_.handleResponse(bundle);
+            this.bindReceiverDFunc_.handleResponse(bundle);
         }
         else {
             Log.e(TAG, "onReceive() TBD=");

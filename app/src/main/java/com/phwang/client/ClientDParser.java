@@ -11,6 +11,8 @@ package com.phwang.client;
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.fabric.FabricResultExport;
 import com.phwang.core.utils.encoders.Encoders;
+import com.phwang.go.services.BindReceiverDFunc;
+import com.phwang.go.services.BindService;
 
 import java.util.Base64;
 
@@ -18,7 +20,9 @@ public class ClientDParser {
     private String objectName() {return "ClientDParser";}
     
     private ClientRoot clientRoot_;
-    
+
+    protected BindService bindService() { return this.clientRoot_.bindService(); }
+    protected BindReceiverDFunc bindReceiverDFunc() { return this.bindService().bindReceiverDFunc(); }
     protected ClientRoot clientRoot() { return this.clientRoot_; }
     protected ClientDImportInt importInterface() { return this.clientRoot_.importInterface(); }
     private ClientFabricInfo clientFabricInfo() { return this.clientRoot().clientFabricInfo(); }
@@ -405,7 +409,8 @@ public class ClientDParser {
             String c_data = Encoders.sDecode2(rest_str);
             //rest_str = Encoders.sDecode2_(rest_str);
 
-            this.importInterface().handlePutSessionDataResponse(result_str);
+            //this.importInterface().handlePutSessionDataResponse(result_str);
+            this.bindReceiverDFunc().parsePutSessionDataResponse(FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA_STR, result_str, null);
         }
     }
 
