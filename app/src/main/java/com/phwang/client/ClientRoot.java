@@ -31,7 +31,7 @@ public class ClientRoot {
     protected ClientUBinder clientUBinder() { return this.clientUBinder_; }
     protected ClientDParser clientDParser() { return this.clientDParser_; }
     
-    public ClientRoot(BindService bind_service_val, ClientDImportInt import_int_val) {
+    public ClientRoot(BindService bind_service_val) {
         this.debug(false, "ClientRoot", "init start");
 
         this.bindService_ = bind_service_val;

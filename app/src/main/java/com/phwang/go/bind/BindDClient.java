@@ -42,7 +42,7 @@ public class BindDClient implements ClientDImportInt {
         this.bindService_ = bind_service_val;
         this.applicationContext_ = application_context_val;
         this.debug(false, "BindDClient", "init");
-        this.clientRoot_ = new ClientRoot(this.bindService_, this);
+        this.clientRoot_ = new ClientRoot(this.bindService_);
     }
 
     public void sendBroadcastMessage(String target_val, String command_val, String result_val, String data_pakage_val) {
