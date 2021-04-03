@@ -410,7 +410,7 @@ public class ClientDParser {
             //rest_str = Encoders.sDecode2_(rest_str);
 
             //this.importInterface().handlePutSessionDataResponse(result_str);
-            this.bindReceiverDFunc().parsePutSessionDataResponse(FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA_STR, result_str, null);
+            this.bindReceiverDFunc().parseFabricResponse(FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA_STR, result_str, null);
         }
     }
 
@@ -425,7 +425,8 @@ public class ClientDParser {
             String data_package_str = Encoders.sSubstring5(rest_str);
             //rest_str = Encoders.sSubstring5_(rest_str);
 
-            this.importInterface().handleGetSessionDataResponse(result_str, data_package_str);
+            //this.importInterface().handleGetSessionDataResponse(result_str, data_package_str);
+            this.bindReceiverDFunc().parseFabricResponse(FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA_STR, result_str, data_package_str);
         }
     }
 
