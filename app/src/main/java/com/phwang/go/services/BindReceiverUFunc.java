@@ -15,6 +15,7 @@ import android.util.Log;
 import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientFabricInfo;
 import com.phwang.core.fabric.FabricCommands;
+import com.phwang.core.fabric.FabricResultExport;
 import com.phwang.go.bind.BindDClient;
 import com.phwang.go.bind.BindUClient;
 import com.phwang.go.define.BundleIndexDefine;
@@ -79,7 +80,18 @@ public class BindReceiverUFunc {
 
             case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
                 theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
-                this.bindUClient().setupSoloSession(theme_data);
+                Log.e(TAG, "handleCommand(FABRIC_COMMAND_SOLO_SESSION) data=" + theme_data);
+
+                if (this.clientFabricInfo().linkIdStr() == null) {
+                    this.bindDClient().sendBroadcastMessage(
+                            IntentDefine.BIND_SERVICE,
+                            FabricCommands.FABRIC_COMMAND_SOLO_SESSION_STR,
+                            FabricResultExport.LINK_NOT_EXIST_STR,
+                            null);
+                    return;
+                }
+
+                this.clientDExport().setupSoloSession(theme_data);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_HEAD_SESSION:

@@ -42,7 +42,7 @@ public class BindDClient implements ClientDImportInt {
         this.clientRoot_ = new ClientRoot(this);
     }
 
-    protected void sendBroadcastMessage(String target_val, String command_val, String result_val, String data_pakage_val) {
+    public void sendBroadcastMessage(String target_val, String command_val, String result_val, String data_pakage_val) {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CLIENT);

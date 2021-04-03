@@ -67,19 +67,6 @@ public class BindUClient {
 
     }
 
-    public void setupSoloSession(String data_str_val) {
-        this.debug(true, "setupSoloSession", "data=" + data_str_val);
-        if (this.clientFabricInfo().linkIdStr() == null) {
-            this.bindDClient_.sendBroadcastMessage(
-                    IntentDefine.BIND_SERVICE,
-                    FabricCommands.FABRIC_COMMAND_SOLO_SESSION_STR,
-                    FabricResultExport.LINK_NOT_EXIST_STR,
-                    null);
-            return;
-        }
-        this.clientDExport().setupSoloSession(data_str_val);
-    }
-
     public void setupHeadSession(String data_str_val) {
         this.debug(true, "setupHeadSession", "data=" + data_str_val);
         if (this.clientFabricInfo().linkIdStr() == null) {
