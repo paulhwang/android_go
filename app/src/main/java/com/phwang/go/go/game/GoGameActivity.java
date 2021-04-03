@@ -17,7 +17,6 @@ import com.phwang.go.define.IntentDefine;
 
 public class GoGameActivity extends AppCompatActivity implements View.OnClickListener, WatchDogInt {
     private static final String TAG = "GoGameActivity";
-    private GoGameActivityFunc goGameFunc_;
     private GoGameUFunc goGameUFunc_;
     private GoGameDFunc goGameDFunc_;
     private GoGameBoard goBoard_;
@@ -28,7 +27,6 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
 
     protected GoGameView goView() { return this.goView_; };
     protected GoGameBoard goBoard() { return this.goBoard_; };
-    protected GoGameActivityFunc goGameFunc() { return this.goGameFunc_; };
     protected GoGameUFunc goGameUFunc() { return this.goGameUFunc_; };
     protected GoGameDFunc goGameDFunc() { return this.goGameDFunc_; };
     protected String linkIdStr() { return this.linkIdStr_; }
@@ -54,7 +52,6 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         //rest_str = Encoders.sSubstring5_(rest_str);
 
         this.goBoard_ = new GoGameBoard(this, config_str);
-        this.goGameFunc_ = new GoGameActivityFunc(this);
         this.goGameUFunc_ = new GoGameUFunc(this);
         this.goGameDFunc_ = new GoGameDFunc(this);
 
