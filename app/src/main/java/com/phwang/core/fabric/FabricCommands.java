@@ -35,8 +35,8 @@ public class FabricCommands {
     public static final String FABRIC_COMMAND_PEER_SESSION_STR     = "Q";
     public static final char   FABRIC_COMMAND_JOIN_SESSION         = 'J';
     public static final String FABRIC_COMMAND_JOIN_SESSION_STR     = "J";
-    public static final char   FABRIC_COMMAND_DELETE_SESSION       = 'j';
-    public static final String FABRIC_COMMAND_DELETE_SESSION_STR   = "j";
+    public static final char   FABRIC_COMMAND_DELETE_SESSION       = 'k';
+    public static final String FABRIC_COMMAND_DELETE_SESSION_STR   = "k";
     public static final char   FABRIC_COMMAND_SETUP_SESSION        = 'S';
     public static final String FABRIC_COMMAND_SETUP_SESSION_STR    = "S";
     public static final char   FABRIC_COMMAND_SETUP_SESSION2       = 's';

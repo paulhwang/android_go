@@ -24,6 +24,8 @@ public class GoGameReceiver extends BroadcastReceiver {
     private GoGameBoard goGameBoard() { return this.goGameActivity_.goBoard(); }
     protected GoGameDFunc goGameDFunc() { return this.goGameActivity_.goGameDFunc(); };
     protected GoGameUFunc goGameUFunc() { return this.goGameActivity_.goGameUFunc(); };
+    private Boolean isDead() { return this.goGameActivity_.isDead(); };
+    private String sessionIdStr() { return this.goGameActivity_.sessionIdStr(); }
 
     public GoGameReceiver(GoGameActivity go_game_activity_val) {
         this.goGameActivity_ = go_game_activity_val;
@@ -53,11 +55,21 @@ public class GoGameReceiver extends BroadcastReceiver {
                     break;
 
                 case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
-                    this.goGameUFunc().sendGetSessionDataCommand();
+                    if (!this.isDead()) {
+                        this.goGameUFunc().sendGetSessionDataCommand();
+                    }
+                    else {
+                        Log.e(TAG, "handleReceivedBundle(FABRIC_COMMAND_PUT_SESSION_DATA) isDead session_id=" + this.sessionIdStr());
+                    }
                     break;
 
                 case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
-                    this.goGameDFunc().parseGetSessionData(data_package_str);
+                    if (!this.isDead()) {
+                        this.goGameDFunc().parseGetSessionData(data_package_str);
+                    }
+                    else {
+                        Log.e(TAG, "handleReceivedBundle(FABRIC_COMMAND_GET_SESSION_DATA) isDead session_id=" + this.sessionIdStr());
+                    }
                     break;
 
                 default:

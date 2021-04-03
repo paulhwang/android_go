@@ -24,6 +24,8 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     private GoGameReceiver goGameReceiver_;
     private String linkIdStr_;
     private String sessionIdStr_;
+    private Boolean isDead_ = false;
+    private WatchDog watchDog_;
 
     protected GoGameView goView() { return this.goView_; };
     protected GoGameBoard goBoard() { return this.goBoard_; };
@@ -31,7 +33,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     protected GoGameDFunc goGameDFunc() { return this.goGameDFunc_; };
     protected String linkIdStr() { return this.linkIdStr_; }
     protected String sessionIdStr() { return this.sessionIdStr_; }
-    private WatchDog watchDog_;
+    protected Boolean isDead() { return this.isDead_; }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +91,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         super.onDestroy();
         this.watchDog_.cancel();
         this.goGameUFunc_.sendDeleteSessionCommand();
+        this.isDead_ = true;
         //Log.e(TAG, "onDestroy()");
     }
 
