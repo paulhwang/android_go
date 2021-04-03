@@ -32,18 +32,22 @@ public class GoGameDFunc {
         String link_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
         //Log.e(TAG, "parseGetSessionData() link_id_str=" + link_id_str);
+        /*
         if (!this.linkIdStr().equals(link_id_str)) {
             Log.e(TAG, "parseGetSessionData(link_id is different) link_id=" + this.linkIdStr() + " " + link_id_str);
             return;
         }
+        */
 
         String session_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
         //Log.e(TAG, "parseGetSessionData() session_id_str=" + session_id_str);
+        /*
         if (!this.sessionIdStr().equals(session_id_str)) {
             Log.e(TAG, "parseGetSessionData(session_id is different) link_id=" + this.sessionIdStr() + " " + session_id_str);
             return;
         }
+        */
 
         String encoded_theme_data_str = Encoders.sSubstring5(rest_str);
         rest_str = Encoders.sSubstring5_(rest_str);
