@@ -16,6 +16,7 @@ public class FabricEncode {
 
     private char command_;
     private char result_;
+    private char theme_;
     private String linkIdStr_;
     private String sessionIdStr_;
     private int stringsCount_;
@@ -23,9 +24,10 @@ public class FabricEncode {
 
     public void setStrings(int index_val, String string_val) { this.strings_[index_val] = string_val; }
 
-    public FabricEncode(char command_val, char result_val, String link_id_str_val, String session_id_str_val, int items_count_val) {
+    public FabricEncode(char command_val, char result_val, char theme_val, String link_id_str_val, String session_id_str_val, int items_count_val) {
         this.command_ = command_val;
         this.result_ = result_val;
+        this.theme_ = theme_val;
         this.linkIdStr_ = link_id_str_val;
         this.sessionIdStr_ = session_id_str_val;
         this.stringsCount_ = items_count_val;
@@ -35,6 +37,7 @@ public class FabricEncode {
         StringBuilder buf = new StringBuilder();
         buf.append(this.command_);
         buf.append(this.result_);
+        buf.append(this.theme_);
         buf.append(this.linkIdStr_);
         buf.append(this.sessionIdStr_);
         buf.append(Encoders.iEncodeRaw1(this.stringsCount_));
