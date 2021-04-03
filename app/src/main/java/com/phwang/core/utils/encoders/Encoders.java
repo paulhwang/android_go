@@ -15,6 +15,7 @@ public class Encoders {
     public static final String JOB_IS_DONE  = "11JOB_IS_DONE";
     public static final String NULL_SESSION = "12NULL_SESSION";
 
+    public static String charToString(char val) { StringBuilder buf = new StringBuilder(val); return buf.toString(); }
     public static String iEncodeRaw(int number_val, int size_val) {
         String str = Integer.toString(number_val);
 
