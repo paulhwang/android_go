@@ -57,12 +57,12 @@ public class BindReceiverUFunc {
                 my_name = bundle_val.getString(BundleIndexDefine.MY_NAME);
                 password = bundle_val.getString(BundleIndexDefine.PASSWORD);
                 Log.e(TAG, "handleReceivedBundle() command=" + command + " name=" + my_name + "," + password);
-                this.bindUClient().doLogin(my_name, password);
+                this.clientDExport().doLogin(my_name, password);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_LOGOUT:
                 Log.e(TAG, "handleReceivedBundle() command=" + command);
-                this.bindUClient().doLogout();
+                this.clientDExport().doLogout();
                 break;
 
             case FabricCommands.FABRIC_COMMAND_REGISTER:
@@ -70,12 +70,12 @@ public class BindReceiverUFunc {
                 email = bundle_val.getString(BundleIndexDefine.EMAIL);
                 password = bundle_val.getString(BundleIndexDefine.PASSWORD);
                 Log.e(TAG, "handleReceivedBundle() command=" + command);
-                this.bindUClient().doRegister(my_name, password, email);
+                this.clientDExport().doRegister(my_name, password, email);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_GET_GROUPS:
                 Log.e(TAG, "handleReceivedBundle() command=" + command);
-                this.bindUClient().doGetGroups();
+                this.clientDExport().doGetGroups();
                 break;
 
             case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
@@ -145,11 +145,21 @@ public class BindReceiverUFunc {
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION:
                 String his_name = bundle_val.getString(BundleIndexDefine.HIS_NAME);
                 theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
-                this.bindUClient().doSetupSession(his_name, theme_data);
+
+                if (this.clientFabricInfo().linkIdStr() == null) {
+                    this.bindDClient().sendBroadcastMessage(
+                            IntentDefine.BIND_SERVICE,
+                            FabricCommands.FABRIC_COMMAND_SETUP_SESSION_STR,
+                            FabricResultExport.LINK_NOT_EXIST_STR,
+                            null);
+
+                    return;
+                }
+                this.clientDExport().setupSession(his_name, theme_data);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION3:
-                this.bindUClient().doSetupSession3();
+                this.clientDExport().setupSession3();
                 break;
 
             case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:

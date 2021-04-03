@@ -32,50 +32,6 @@ public class BindUClient {
         this.bindDClient_ = new BindDClient(applicationContext_);
     }
 
-    public void doLogin(String my_name_val, String password_val) {
-        this.debug(true, "doLogin", "doLogin");
-        this.clientDExport().doLogin(my_name_val, password_val);
-    }
-
-    public void doLogout() {
-        this.debug(true, "doLogout", "doLogout");
-        this.clientDExport().doLogout();
-    }
-
-    public void doRegister(String my_name_val, String password_val, String email_val) {
-        this.debug(true, "doRegister", "doRegister");
-        this.clientDExport().doRegister(my_name_val, password_val, email_val);
-    }
-
-    public void doGetGroups() {
-        this.debug(false, "doGetGroups", "doGetGroups");
-        this.clientDExport().doGetGroups();
-    }
-
-    public void doSetupSession(String his_name_val, String session_setup_data_val) {
-        this.debug(true, "doSetupSession", "data=" + session_setup_data_val);
-        if (this.clientFabricInfo().linkIdStr() == null) {
-            this.bindDClient_.sendBroadcastMessage(
-                    IntentDefine.BIND_SERVICE,
-                    FabricCommands.FABRIC_COMMAND_SETUP_SESSION_STR,
-                    FabricResultExport.LINK_NOT_EXIST_STR,
-                    null);
-
-            return;
-        }
-        this.clientDExport().setupSession(his_name_val, session_setup_data_val);
-    }
-
-    public void doSetupSession3() {
-        this.debug(true, "doSetupSession3", "doSetupSession3");
-        this.clientDExport().setupSession3();
-
-    }
-
-    public void deleteSession(String link_id_str_val, String session_id_str_val) {
-        this.debug(true, "deleteSession() session_id=", session_id_str_val);
-        this.clientDExport().deleteSession(link_id_str_val, session_id_str_val);;
-    }
 
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }
     private void log(String s0, String s1) { Abend.log(this.objectName() + "." + s0 + "()", s1); }
