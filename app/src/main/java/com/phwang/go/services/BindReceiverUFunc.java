@@ -96,17 +96,50 @@ public class BindReceiverUFunc {
 
             case FabricCommands.FABRIC_COMMAND_HEAD_SESSION:
                 theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
-                this.bindUClient().setupHeadSession(theme_data);
+                Log.e(TAG, "handleCommand(FABRIC_COMMAND_SOLO_SESSION) data=" + theme_data);
+
+                if (this.clientFabricInfo().linkIdStr() == null) {
+                    this.bindDClient().sendBroadcastMessage(
+                            IntentDefine.BIND_SERVICE,
+                            FabricCommands.FABRIC_COMMAND_HEAD_SESSION_STR,
+                            FabricResultExport.LINK_NOT_EXIST_STR,
+                            null);
+                    return;
+                }
+
+                this.clientDExport().setupHeadSession(theme_data);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_PEER_SESSION:
                 theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
-                this.bindUClient().setupPeerSession(theme_data);
+                Log.e(TAG, "handleCommand(FABRIC_COMMAND_SOLO_SESSION) data=" + theme_data);
+
+                if (this.clientFabricInfo().linkIdStr() == null) {
+                    this.bindDClient().sendBroadcastMessage(
+                            IntentDefine.BIND_SERVICE,
+                            FabricCommands.FABRIC_COMMAND_PEER_SESSION_STR,
+                            FabricResultExport.LINK_NOT_EXIST_STR,
+                            null);
+                    return;
+                }
+
+                this.clientDExport().setupPeerSession(theme_data);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_JOIN_SESSION:
                 theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
-                this.bindUClient().setupJoinSession(theme_data);
+                Log.e(TAG, "handleCommand(FABRIC_COMMAND_SOLO_SESSION) data=" + theme_data);
+
+                if (this.clientFabricInfo().linkIdStr() == null) {
+                    this.bindDClient().sendBroadcastMessage(
+                            IntentDefine.BIND_SERVICE,
+                            FabricCommands.FABRIC_COMMAND_JOIN_SESSION_STR,
+                            FabricResultExport.LINK_NOT_EXIST_STR,
+                            null);
+                    return;
+                }
+
+                this.clientDExport().setupJoinSession(theme_data);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION:

@@ -67,45 +67,6 @@ public class BindUClient {
 
     }
 
-    public void setupHeadSession(String data_str_val) {
-        this.debug(true, "setupHeadSession", "data=" + data_str_val);
-        if (this.clientFabricInfo().linkIdStr() == null) {
-            this.bindDClient_.sendBroadcastMessage(
-                    IntentDefine.BIND_SERVICE,
-                    FabricCommands.FABRIC_COMMAND_HEAD_SESSION_STR,
-                    FabricResultExport.LINK_NOT_EXIST_STR,
-                    null);
-            return;
-        }
-        this.clientDExport().setupHeadSession(data_str_val);
-    }
-
-    public void setupPeerSession(String data_str_val) {
-        this.debug(true, "setupPeerSession", "data=" + data_str_val);
-        if (this.clientFabricInfo().linkIdStr() == null) {
-            this.bindDClient_.sendBroadcastMessage(
-                    IntentDefine.BIND_SERVICE,
-                    FabricCommands.FABRIC_COMMAND_PEER_SESSION_STR,
-                    FabricResultExport.LINK_NOT_EXIST_STR,
-                    null);
-            return;
-        }
-        this.clientDExport().setupPeerSession(data_str_val);
-    }
-
-    public void setupJoinSession(String data_str_val) {
-        this.debug(true, "setupJoinSession", "data=" + data_str_val);
-        if (this.clientFabricInfo().linkIdStr() == null) {
-            this.bindDClient_.sendBroadcastMessage(
-                    IntentDefine.BIND_SERVICE,
-                    FabricCommands.FABRIC_COMMAND_JOIN_SESSION_STR,
-                    FabricResultExport.LINK_NOT_EXIST_STR,
-                    null);
-            return;
-        }
-        this.clientDExport().setupJoinSession(data_str_val);
-    }
-
     public void doSetupSession(String his_name_val, String session_setup_data_val) {
         this.debug(true, "doSetupSession", "data=" + session_setup_data_val);
         if (this.clientFabricInfo().linkIdStr() == null) {
