@@ -43,22 +43,6 @@ public class BindReceiverDFunc {
         }
 
         switch (command.charAt(0)) {
-            case FabricCommands.FABRIC_COMMAND_REGISTER:
-                this.sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data_package_str);
-                break;
-
-            case FabricCommands.FABRIC_COMMAND_LOGIN:
-                this.sendResponseBroadcastMessage(IntentDefine.LOGIN_ACTIVITY, command, result, data_package_str);
-                break;
-
-            case FabricCommands.FABRIC_COMMAND_LOGOUT:
-                this.sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data_package_str);
-                break;
-
-            case FabricCommands.FABRIC_COMMAND_GET_GROUPS:
-                this.sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data_package_str);
-                break;
-
             case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
                 this.sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data_package_str);
                 break;
@@ -74,47 +58,7 @@ public class BindReceiverDFunc {
             case FabricCommands.FABRIC_COMMAND_JOIN_SESSION:
                 this.sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data_package_str);
                 break;
-
-            case FabricCommands.FABRIC_COMMAND_SETUP_SESSION:
-                this.sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data_package_str);
-                break;
-
-            case FabricCommands.FABRIC_COMMAND_SETUP_SESSION3:
-                this.sendResponseBroadcastMessage(IntentDefine.MAIN_ACTIVITY, command, result, data_package_str);
-                break;
-
-            case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
-                this.sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command, result, data_package_str);
-                break;
-
-            case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
-                String rest_str = Encoders.sDecode5(data_package_str);
-                link_id_str = Encoders.sSubstring2(rest_str);
-                rest_str = Encoders.sSubstring2_(rest_str);
-
-                session_id_str = Encoders.sSubstring2(rest_str);
-                rest_str = Encoders.sSubstring2_(rest_str);
-
-                String data_str = Encoders.sSubstring5(rest_str);
-                //rest_str = Encoders.sSubstring5_(rest_str);
-
-                Log.e(TAG, "handleResponse(FABRIC_COMMAND_GET_SESSION_DATA) data=" + data_str);
-
-                ///////////////////////////////
-                String theme_data_str = Encoders.sDecode5(data_str);
-
-                Log.e(TAG, "handleResponse(FABRIC_COMMAND_GET_SESSION_DATA) theme_data=" + theme_data_str);
-
-                if (theme_data_str.charAt(0) == ThemeDefine.THEME_GO) {
-                    this.sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command, result, data_package_str);
-                }
-                else {
-                    Log.e(TAG, "handleResponse() ***not implemented yet+++");
-                }
-                break;
-
-            default:
-        }
+      }
     }
 
     private void sendResponseBroadcastMessage(String target_val, String command_val, String result_val, String data_package_val) {
