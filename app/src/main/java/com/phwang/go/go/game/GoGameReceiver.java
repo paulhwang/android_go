@@ -33,10 +33,12 @@ public class GoGameReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context_val, Intent intent_val) {
+        /*
         if (this.isDead()) {
             Log.e(TAG, "onReceive(isDead) session_id=" + this.sessionIdStr());
             return;
         }
+        */
 
         Bundle bundle = intent_val.getExtras();
         String stamp = bundle.getString(BundleIndexDefine.STAMP);

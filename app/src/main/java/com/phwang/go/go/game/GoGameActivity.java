@@ -91,6 +91,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         super.onDestroy();
         this.watchDog_.cancel();
         this.goGameUFunc_.sendDeleteSessionCommand();
+        this.unregisterBroadcastReceiver();
         this.isDead_ = true;
         //Log.e(TAG, "onDestroy()");
     }
