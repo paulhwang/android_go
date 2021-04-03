@@ -30,50 +30,9 @@ public class BindReceiverDFunc {
     }
 
     protected void handleResponse(Bundle bundle_val) {
-        String link_id_str;
-        String session_id_str;
-        String command = bundle_val.getString(BundleIndexDefine.COMMAND);
-        String result = bundle_val.getString(BundleIndexDefine.RESULT);
-        String data_package_str = bundle_val.getString(BundleIndexDefine.DATA_PACKAGE);
-        Log.e(TAG, "handleResponse() command=" + command + ", result=" + result + " data_package=" + data_package_str);
-
-        if (command == null) {
-            Log.e(TAG, "handleResponse() null command=");
-            return;
-        }
-
-        switch (command.charAt(0)) {
-            case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
-                this.sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data_package_str);
-                break;
-
-            case FabricCommands.FABRIC_COMMAND_HEAD_SESSION:
-                this.sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data_package_str);
-                break;
-
-            case FabricCommands.FABRIC_COMMAND_PEER_SESSION:
-                this.sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data_package_str);
-                break;
-
-            case FabricCommands.FABRIC_COMMAND_JOIN_SESSION:
-                this.sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data_package_str);
-                break;
-        }
     }
 
-    public void sendBroadcastMessageOld(String target_val, String command_val, String result_val, String data_pakage_val) {
-        Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
-        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CLIENT);
-        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_RESPONSE);
-        intent.putExtra(BundleIndexDefine.COMMAND, command_val);
-        intent.putExtra(BundleIndexDefine.RESULT, result_val);
-        intent.putExtra(BundleIndexDefine.DATA_PACKAGE, data_pakage_val);
-        intent.setAction(target_val);
-        this.bindService().sendBroadcast(intent);
-    }
-
-    private void sendResponseBroadcastMessage(String target_val, String command_val, String result_val, String data_package_val) {
+    public void sendResponseBroadcastMessage(String target_val, String command_val, String result_val, String data_package_val) {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.BIND_SERVICE);
