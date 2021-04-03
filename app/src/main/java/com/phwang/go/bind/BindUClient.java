@@ -52,21 +52,6 @@ public class BindUClient {
         this.clientDExport().doGetGroups();
     }
 
-    public void doGetRemoveLink() {
-        this.debug(false, "doGetRemoveLink", "doGetRemoveLink");
-
-    }
-
-    public void doGetLinkData() {
-        this.debug(false, "doGetLinkData", "doGetLinkData");
-
-    }
-
-    public void doGetNameList() {
-        this.debug(false, "doGetNameList", "doGetNameList");
-
-    }
-
     public void doSetupSession(String his_name_val, String session_setup_data_val) {
         this.debug(true, "doSetupSession", "data=" + session_setup_data_val);
         if (this.clientFabricInfo().linkIdStr() == null) {
@@ -79,11 +64,6 @@ public class BindUClient {
             return;
         }
         this.clientDExport().setupSession(his_name_val, session_setup_data_val);
-    }
-
-    public void doSetupSession2() {
-        this.debug(false, "doSetupSession2", "doSetupSession2");
-
     }
 
     public void doSetupSession3() {
