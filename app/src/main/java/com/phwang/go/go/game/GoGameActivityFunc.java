@@ -28,7 +28,7 @@ public class GoGameActivityFunc {
         this.goGame_ = go_game_val;
     }
 
-    protected void do_delete_session() {
+    protected void sendDeleteSessionCommand() {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_GAME_ACTIVITY);
@@ -40,7 +40,7 @@ public class GoGameActivityFunc {
         this.goGame_.sendBroadcast(intent);
     }
 
-    protected void do_put_session_data(String move_data_val) {
+    protected void sendPutSessionDataCommand(String move_data_val) {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_GAME_ACTIVITY);
@@ -53,7 +53,7 @@ public class GoGameActivityFunc {
         this.goGame_.sendBroadcast(intent);
     }
 
-    protected void do_get_session_data() {
+    protected void sendGetSessionDataCommand() {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_GAME_ACTIVITY);

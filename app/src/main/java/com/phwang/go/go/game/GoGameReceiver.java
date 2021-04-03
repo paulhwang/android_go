@@ -52,7 +52,7 @@ public class GoGameReceiver extends BroadcastReceiver {
                     break;
 
                 case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
-                    this.goGameFunc().do_get_session_data();
+                    this.goGameFunc().sendGetSessionDataCommand();
                     break;
 
                 case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
