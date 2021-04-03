@@ -28,8 +28,8 @@ public class BindReceiverUFunc {
     private BindService bindService() { return this.bindReceiver_.bindService(); };
     private BindMain bindUClient() { return bindService().bindMain(); }
     private BindDClient bindDClient() { return bindUClient().bindDClient(); }
-    public ClientDExport clientDExport() { return this.bindDClient().clientDExport(); }
-    public ClientFabricInfo clientFabricInfo() { return this.bindUClient().clientFabricInfo();}
+    public ClientDExport clientDExport() { return this.bindService().clientDExport(); }
+    public ClientFabricInfo clientFabricInfo() { return this.bindService().clientFabricInfo();}
 
     public BindReceiverUFunc(BindReceiver bind_receiver_val) {
         this.bindReceiver_ = bind_receiver_val;

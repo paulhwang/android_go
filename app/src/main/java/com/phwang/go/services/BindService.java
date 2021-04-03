@@ -16,6 +16,9 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.phwang.client.ClientDExport;
+import com.phwang.client.ClientFabricInfo;
+import com.phwang.client.ClientRoot;
 import com.phwang.go.bind.BindDClient;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.bind.BindMain;
@@ -25,10 +28,17 @@ public class BindService extends Service {
     private Context applicationContext_;
     private static BindMain bindMain_;
     private BindReceiver bindReceiver_;
+    private ClientRoot clientRoot_;
 
     public static BindMain bindMain() { return bindMain_; };
     public BindDClient bindDClient() { return this.bindMain_.bindDClient(); }
     public BindReceiverDFunc bindReceiverDFunc() { return this.bindReceiver_.bindReceiverDFunc(); }
+    public ClientDExport clientDExport() {
+        return this.clientRoot_.clientDExport();
+    }
+    protected ClientFabricInfo clientFabricInfo() {
+        return this.clientRoot_.clientFabricInfo();
+    }
 
     public Context applicationContext() { return this.applicationContext_; };
 
@@ -38,6 +48,7 @@ public class BindService extends Service {
         this.applicationContext_ = getApplicationContext();
         this.registerBroadcastReceiver();
         this.bindMain_ = new BindMain(this, this.applicationContext());
+        this.clientRoot_ = new ClientRoot(this);
     }
 
     @Override

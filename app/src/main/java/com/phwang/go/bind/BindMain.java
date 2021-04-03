@@ -19,8 +19,6 @@ public class BindMain {
     private BindService bindService_;
 
     public BindDClient bindDClient() { return this.bindDClient_; }
-    public ClientDExport clientDExport() { return this.bindDClient().clientDExport(); }
-    public ClientFabricInfo clientFabricInfo() { return this.bindDClient().clientFabricInfo();}
 
     public BindMain(BindService bind_service_val, Context application_context_val) {
         this.bindService_ = bind_service_val;
