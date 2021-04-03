@@ -23,7 +23,6 @@ public class BindReceiverUFunc {
     BindReceiver bindReceiver_;
 
     private BindService bindService() { return this.bindReceiver_.bindService(); };
-    private BindDClient bindDClient() { return bindService().bindDClient(); }
     public ClientDExport clientDExport() { return this.bindService().clientDExport(); }
     public ClientFabricInfo clientFabricInfo() { return this.bindService().clientFabricInfo();}
     public BindReceiverDFunc bindReceiverDFunc() { return this.bindService().bindReceiverDFunc(); }
