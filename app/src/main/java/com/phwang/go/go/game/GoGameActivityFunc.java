@@ -64,10 +64,4 @@ public class GoGameActivityFunc {
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.goGame_.sendBroadcast(intent);
     }
-
-    protected void processGetSessionData(String board_data_val) {
-        Log.e(TAG, "processGetSessionData() data=" + board_data_val);
-        this.goBoard().decodeBoard(board_data_val);
-        this.goView().drawBoard();
-    }
 }
