@@ -15,7 +15,6 @@ import android.content.IntentFilter;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientFabricInfo;
 import com.phwang.client.ClientRoot;
@@ -23,18 +22,15 @@ import com.phwang.core.utils.abend.Abend;
 import com.phwang.go.bind.BindAbend;
 import com.phwang.go.bind.BindDClient;
 import com.phwang.go.define.IntentDefine;
-import com.phwang.go.bind.BindMain;
 
 public class BindService extends Service {
     private static final String TAG = "BindService";
     private Context applicationContext_;
-    private static BindMain bindMain_;
     private BindReceiver bindReceiver_;
     private ClientRoot clientRoot_;
     private BindDClient bindDClient_;
 
     public BindDClient bindDClient() { return this.bindDClient_; }
-    public static BindMain bindMain() { return bindMain_; };
     public BindReceiverDFunc bindReceiverDFunc() { return this.bindReceiver_.bindReceiverDFunc(); }
     public ClientDExport clientDExport() {
         return this.clientRoot_.clientDExport();
