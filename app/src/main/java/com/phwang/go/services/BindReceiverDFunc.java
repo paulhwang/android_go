@@ -29,9 +29,6 @@ public class BindReceiverDFunc {
         this.bindReceiver_ = bind_receiver_val;
     }
 
-    protected void handleResponse(Bundle bundle_val) {
-    }
-
     public void sendResponseBroadcastMessage(String target_val, String command_val, String result_val, String data_package_val) {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);

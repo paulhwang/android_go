@@ -40,16 +40,6 @@ public class BindReceiver extends BroadcastReceiver {
             return;
         }
 
-        //Log.e(TAG, "onReceive() from=" + bundle.getString(BundleIndexDefine.FROM));
-        String command_or_response = bundle.getString(BundleIndexDefine.COMMAND_OR_RESPONSE);
-        if (command_or_response.equals(BundleIndexDefine.IS_COMMAND)) {
-            this.bindReceiverUFunc_.handleCommand(bundle);
-        }
-        else if (command_or_response.equals(BundleIndexDefine.IS_RESPONSE)) {
-            this.bindReceiverDFunc_.handleResponse(bundle);
-        }
-        else {
-            Log.e(TAG, "onReceive() TBD=");
-        }
+        this.bindReceiverUFunc_.handleCommand(bundle);
     }
 }
