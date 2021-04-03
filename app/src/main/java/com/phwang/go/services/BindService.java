@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientFabricInfo;
 import com.phwang.client.ClientRoot;
+import com.phwang.core.utils.abend.Abend;
+import com.phwang.go.bind.BindAbend;
 import com.phwang.go.bind.BindDClient;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.bind.BindMain;
@@ -47,6 +49,8 @@ public class BindService extends Service {
         super.onCreate();
         this.applicationContext_ = getApplicationContext();
         this.registerBroadcastReceiver();
+        Abend.initAbend(new BindAbend());
+        new com.phwang.core.root.CoreRoot();
         this.bindMain_ = new BindMain(this, this.applicationContext());
         this.clientRoot_ = new ClientRoot(this);
     }

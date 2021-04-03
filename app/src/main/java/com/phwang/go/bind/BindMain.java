@@ -22,8 +22,6 @@ public class BindMain {
 
     public BindMain(BindService bind_service_val, Context application_context_val) {
         this.bindService_ = bind_service_val;
-        Abend.initAbend(new BindAbend());
-        new com.phwang.core.root.CoreRoot();
         this.bindDClient_ = new BindDClient(this.bindService_, application_context_val);
     }
 }
