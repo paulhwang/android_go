@@ -11,7 +11,11 @@ package com.phwang.go.services;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.phwang.client.ClientDExport;
+import com.phwang.client.ClientFabricInfo;
 import com.phwang.core.fabric.FabricCommands;
+import com.phwang.go.bind.BindDClient;
 import com.phwang.go.bind.BindUClient;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
@@ -22,6 +26,9 @@ public class BindReceiverUFunc {
 
     private BindService bindService() { return this.bindReceiver_.bindService(); };
     private BindUClient bindUClient() { return bindReceiver_.bindUClient(); }
+    private BindDClient bindDClient() { return bindUClient().bindDClient(); }
+    public ClientDExport clientDExport() { return this.bindDClient().clientDExport(); }
+    public ClientFabricInfo clientFabricInfo() { return this.bindUClient().clientFabricInfo();}
 
     public BindReceiverUFunc(BindReceiver bind_receiver_val) {
         this.bindReceiver_ = bind_receiver_val;
@@ -110,13 +117,15 @@ public class BindReceiverUFunc {
                 String move_data_str = bundle_val.getString(BundleIndexDefine.MOVE_DATA);
                 link_id_str = bundle_val.getString(BundleIndexDefine.LINK_ID);
                 session_id_str = bundle_val.getString(BundleIndexDefine.SESSION_ID);
-                this.bindUClient().putSessionData(link_id_str, session_id_str, move_data_str);
+                //this.bindUClient().putSessionData(link_id_str, session_id_str, move_data_str);
+                this.clientDExport().putSessionData(link_id_str, session_id_str, move_data_str);;
                 break;
 
             case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
                 link_id_str = bundle_val.getString(BundleIndexDefine.LINK_ID);
                 session_id_str = bundle_val.getString(BundleIndexDefine.SESSION_ID);
-                this.bindUClient().getSessionData(link_id_str, session_id_str);
+                //this.bindUClient().getSessionData(link_id_str, session_id_str);
+                this.clientDExport().getSessionData(link_id_str, session_id_str);;
                 break;
 
             default:

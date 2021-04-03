@@ -23,9 +23,9 @@ public class BindUClient {
     private Context applicationContext_;
     private BindDClient bindDClient_;
 
-    public BindDClient bindClient() { return this.bindDClient_; }
-    private ClientDExport clientDExport() { return this.bindDClient_.clientDExport(); }
-    private ClientFabricInfo clientFabricInfo() { return this.bindDClient_.clientFabricInfo();}
+    public BindDClient bindDClient() { return this.bindDClient_; }
+    public ClientDExport clientDExport() { return this.bindDClient_.clientDExport(); }
+    public ClientFabricInfo clientFabricInfo() { return this.bindDClient_.clientFabricInfo();}
 
     public BindUClient(Context application_context_val) {
         this.applicationContext_ = application_context_val;

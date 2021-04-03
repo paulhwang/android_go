@@ -28,7 +28,7 @@ public class BindDClient implements ClientDImportInt {
     private Context applicationContext_;
     private ClientRoot clientRoot_;
 
-    protected ClientDExport clientDExport() {
+    public ClientDExport clientDExport() {
         return this.clientRoot_.clientDExport();
     }
 
