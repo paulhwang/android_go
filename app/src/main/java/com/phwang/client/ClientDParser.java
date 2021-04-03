@@ -25,7 +25,6 @@ public class ClientDParser {
     protected BindService bindService() { return this.clientRoot_.bindService(); }
     protected BindReceiverDFunc bindReceiverDFunc() { return this.bindService().bindReceiverDFunc(); }
     protected ClientRoot clientRoot() { return this.clientRoot_; }
-    protected ClientDImportInt importInterface() { return this.clientRoot_.importInterface(); }
     private ClientFabricInfo clientFabricInfo() { return this.clientRoot().clientFabricInfo(); }
     
     protected ClientDParser(ClientRoot root_val) {
@@ -210,7 +209,7 @@ public class ClientDParser {
             String name_list_str = Encoders.sDecode2(rest_str);
             //rest_str = Encoders.sDecode2_(rest_str);
 
-            this.importInterface().handleGetNameListResponse(result_str);
+            //this.importInterface().handleGetNameListResponse(result_str);
             this.bindReceiverDFunc().parseFabricResponse(IntentDefine.MAIN_ACTIVITY, FabricCommands.FABRIC_COMMAND_GET_NAME_LIST_STR, result_str, Encoders.NULL_DATA);
         }
     }
