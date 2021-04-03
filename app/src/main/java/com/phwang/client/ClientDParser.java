@@ -192,7 +192,8 @@ public class ClientDParser {
             String pending_session_setup = Encoders.sDecode2(rest_str);
             //rest_str = Encoders.sDecode2_(rest_str);
 
-            this.importInterface().handleGetLinkDataResponse(result_str);
+            //this.importInterface().handleGetLinkDataResponse(result_str);
+            this.bindReceiverDFunc().parseFabricResponse(IntentDefine.MAIN_ACTIVITY, FabricCommands.FABRIC_COMMAND_GET_LINK_DATA_STR, result_str, Encoders.NULL_DATA);
         }
     }
 
@@ -210,6 +211,7 @@ public class ClientDParser {
             //rest_str = Encoders.sDecode2_(rest_str);
 
             this.importInterface().handleGetNameListResponse(result_str);
+            this.bindReceiverDFunc().parseFabricResponse(IntentDefine.MAIN_ACTIVITY, FabricCommands.FABRIC_COMMAND_GET_NAME_LIST_STR, result_str, Encoders.NULL_DATA);
         }
     }
 
@@ -354,7 +356,8 @@ public class ClientDParser {
             this.debug(false, "parserSetupSessionResponse", "session_id_str=" + session_id_str);
 
             this.clientFabricInfo().setSessionIdStr(session_id_str);
-            this.importInterface().handleSetupSessionResponse(result_str);
+            //this.importInterface().handleSetupSessionResponse(result_str);
+            this.bindReceiverDFunc().parseFabricResponse(IntentDefine.GO_CONFIG_ACTIVITY, FabricCommands.FABRIC_COMMAND_SETUP_SESSION_STR, result_str, Encoders.NULL_DATA);
         }
     }
 
@@ -374,7 +377,8 @@ public class ClientDParser {
             String theme_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
 
-            this.importInterface().handleSetupSession2Response(result_str);
+            //this.importInterface().handleSetupSession2Response(result_str);
+            this.bindReceiverDFunc().parseFabricResponse(IntentDefine.GO_CONFIG_ACTIVITY, FabricCommands.FABRIC_COMMAND_SETUP_SESSION2_STR, result_str, Encoders.NULL_DATA);
         }
     }
 
@@ -394,12 +398,14 @@ public class ClientDParser {
             String theme_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
 
-            this.importInterface().handleSetupSession3Response(result_str);
+            //this.importInterface().handleSetupSession3Response(result_str);
+            this.bindReceiverDFunc().parseFabricResponse(IntentDefine.MAIN_ACTIVITY, FabricCommands.FABRIC_COMMAND_SETUP_SESSION3_STR, result_str, Encoders.NULL_DATA);
         }
     }
 
     private void parserDeleteSessionResponse(String input_str_val) {
         this.debug(true, "parserDeleteSessionResponse", "input_str_val=" + input_str_val);
+        //this.bindReceiverDFunc().parseFabricResponse(IntentDefine.MAIN_ACTIVITY, FabricCommands.FABRIC_COMMAND_DELETE_SESSION_STR, result_str, Encoders.NULL_DATA);
     }
 
     private void parserPutSessionDataResponse(String input_str_val) {
