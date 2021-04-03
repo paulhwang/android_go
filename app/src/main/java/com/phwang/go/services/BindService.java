@@ -15,16 +15,18 @@ import android.content.IntentFilter;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.phwang.go.bind.BindDClient;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.bind.BindMain;
-import com.phwang.go.bind.BindUClient;
 
 public class BindService extends Service {
     private static final String TAG = "BindService";
     private Context applicationContext_;
     private static BindMain bindMain_;
 
-    protected BindUClient bindUClient() { return bindMain_.bindUClient(); }
+    public static BindMain bindMain() { return bindMain_; };
+    public BindDClient bindDClient() { return this.bindMain_.bindDClient(); }
 
     public Context applicationContext() { return this.applicationContext_; };
 

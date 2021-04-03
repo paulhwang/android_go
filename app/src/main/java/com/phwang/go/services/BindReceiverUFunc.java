@@ -17,7 +17,7 @@ import com.phwang.client.ClientFabricInfo;
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.fabric.FabricResultExport;
 import com.phwang.go.bind.BindDClient;
-import com.phwang.go.bind.BindUClient;
+import com.phwang.go.bind.BindMain;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
 
@@ -26,7 +26,7 @@ public class BindReceiverUFunc {
     BindReceiver bindReceiver_;
 
     private BindService bindService() { return this.bindReceiver_.bindService(); };
-    private BindUClient bindUClient() { return bindReceiver_.bindUClient(); }
+    private BindMain bindUClient() { return bindService().bindMain(); }
     private BindDClient bindDClient() { return bindUClient().bindDClient(); }
     public ClientDExport clientDExport() { return this.bindDClient().clientDExport(); }
     public ClientFabricInfo clientFabricInfo() { return this.bindUClient().clientFabricInfo();}

@@ -14,7 +14,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import com.phwang.go.define.BundleIndexDefine;
-import com.phwang.go.bind.BindUClient;
 
 public class BindReceiver extends BroadcastReceiver {
     private static final String TAG = "BindReceiver";
@@ -23,7 +22,6 @@ public class BindReceiver extends BroadcastReceiver {
     private BindReceiverDFunc bindServiceDFunc_;
 
     protected BindService bindService() { return this.bindService_; };
-    protected BindUClient bindUClient() { return bindService_.bindUClient(); }
     protected BindReceiverUFunc bindServiceUFunc() { return this.bindServiceUFunc_; };
 
     public BindReceiver(BindService bind_service_val) {
