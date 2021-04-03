@@ -26,6 +26,7 @@ public class BindReceiverUFunc {
     private BindDClient bindDClient() { return bindService().bindDClient(); }
     public ClientDExport clientDExport() { return this.bindService().clientDExport(); }
     public ClientFabricInfo clientFabricInfo() { return this.bindService().clientFabricInfo();}
+    public BindReceiverDFunc bindReceiverDFunc() { return this.bindService().bindReceiverDFunc(); }
 
     public BindReceiverUFunc(BindReceiver bind_receiver_val) {
         this.bindReceiver_ = bind_receiver_val;
@@ -79,7 +80,7 @@ public class BindReceiverUFunc {
                 Log.e(TAG, "handleCommand(FABRIC_COMMAND_SOLO_SESSION) data=" + theme_data);
 
                 if (this.clientFabricInfo().linkIdStr() == null) {
-                    this.bindDClient().sendBroadcastMessageOld(
+                    this.bindReceiverDFunc().sendBroadcastMessageOld(
                             IntentDefine.BIND_SERVICE,
                             FabricCommands.FABRIC_COMMAND_SOLO_SESSION_STR,
                             FabricResultExport.LINK_NOT_EXIST_STR,
@@ -95,7 +96,7 @@ public class BindReceiverUFunc {
                 Log.e(TAG, "handleCommand(FABRIC_COMMAND_SOLO_SESSION) data=" + theme_data);
 
                 if (this.clientFabricInfo().linkIdStr() == null) {
-                    this.bindDClient().sendBroadcastMessageOld(
+                    this.bindReceiverDFunc().sendBroadcastMessageOld(
                             IntentDefine.BIND_SERVICE,
                             FabricCommands.FABRIC_COMMAND_HEAD_SESSION_STR,
                             FabricResultExport.LINK_NOT_EXIST_STR,
@@ -111,7 +112,7 @@ public class BindReceiverUFunc {
                 Log.e(TAG, "handleCommand(FABRIC_COMMAND_SOLO_SESSION) data=" + theme_data);
 
                 if (this.clientFabricInfo().linkIdStr() == null) {
-                    this.bindDClient().sendBroadcastMessageOld(
+                    this.bindReceiverDFunc().sendBroadcastMessageOld(
                             IntentDefine.BIND_SERVICE,
                             FabricCommands.FABRIC_COMMAND_PEER_SESSION_STR,
                             FabricResultExport.LINK_NOT_EXIST_STR,
@@ -127,7 +128,7 @@ public class BindReceiverUFunc {
                 Log.e(TAG, "handleCommand(FABRIC_COMMAND_SOLO_SESSION) data=" + theme_data);
 
                 if (this.clientFabricInfo().linkIdStr() == null) {
-                    this.bindDClient().sendBroadcastMessageOld(
+                    this.bindReceiverDFunc().sendBroadcastMessageOld(
                             IntentDefine.BIND_SERVICE,
                             FabricCommands.FABRIC_COMMAND_JOIN_SESSION_STR,
                             FabricResultExport.LINK_NOT_EXIST_STR,
@@ -143,7 +144,7 @@ public class BindReceiverUFunc {
                 theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
 
                 if (this.clientFabricInfo().linkIdStr() == null) {
-                    this.bindDClient().sendBroadcastMessageOld(
+                    this.bindReceiverDFunc().sendBroadcastMessageOld(
                             IntentDefine.BIND_SERVICE,
                             FabricCommands.FABRIC_COMMAND_SETUP_SESSION_STR,
                             FabricResultExport.LINK_NOT_EXIST_STR,

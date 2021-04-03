@@ -58,7 +58,19 @@ public class BindReceiverDFunc {
             case FabricCommands.FABRIC_COMMAND_JOIN_SESSION:
                 this.sendResponseBroadcastMessage(IntentDefine.GO_CONFIG_ACTIVITY, command, result, data_package_str);
                 break;
-      }
+        }
+    }
+
+    public void sendBroadcastMessageOld(String target_val, String command_val, String result_val, String data_pakage_val) {
+        Intent intent = new Intent();
+        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
+        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CLIENT);
+        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_RESPONSE);
+        intent.putExtra(BundleIndexDefine.COMMAND, command_val);
+        intent.putExtra(BundleIndexDefine.RESULT, result_val);
+        intent.putExtra(BundleIndexDefine.DATA_PACKAGE, data_pakage_val);
+        intent.setAction(target_val);
+        this.bindService().sendBroadcast(intent);
     }
 
     private void sendResponseBroadcastMessage(String target_val, String command_val, String result_val, String data_package_val) {
