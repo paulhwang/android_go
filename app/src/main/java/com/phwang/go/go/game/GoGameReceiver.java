@@ -33,6 +33,11 @@ public class GoGameReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context_val, Intent intent_val) {
+        if (this.isDead()) {
+            Log.e(TAG, "onReceive(isDead) session_id=" + this.sessionIdStr());
+            return;
+        }
+
         Bundle bundle = intent_val.getExtras();
         String stamp = bundle.getString(BundleIndexDefine.STAMP);
         if ((stamp == null) || !stamp.equals(BundleIndexDefine.THE_STAMP)) {
@@ -55,21 +60,11 @@ public class GoGameReceiver extends BroadcastReceiver {
                     break;
 
                 case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
-                    if (!this.isDead()) {
-                        this.goGameUFunc().sendGetSessionDataCommand();
-                    }
-                    else {
-                        Log.e(TAG, "handleReceivedBundle(FABRIC_COMMAND_PUT_SESSION_DATA) isDead session_id=" + this.sessionIdStr());
-                    }
+                    this.goGameUFunc().sendGetSessionDataCommand();
                     break;
 
                 case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
-                    if (!this.isDead()) {
-                        this.goGameDFunc().parseGetSessionData(data_package_str);
-                    }
-                    else {
-                        Log.e(TAG, "handleReceivedBundle(FABRIC_COMMAND_GET_SESSION_DATA) isDead session_id=" + this.sessionIdStr());
-                    }
+                    this.goGameDFunc().parseGetSessionData(data_package_str);
                     break;
 
                 default:
