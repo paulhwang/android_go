@@ -24,6 +24,7 @@ public class GoGameReceiver extends BroadcastReceiver {
     private GoGameBoard goGameBoard() { return this.goGameActivity_.goBoard(); }
     protected GoGameActivityFunc goGameFunc() { return this.goGameActivity_.goGameFunc(); };
     protected GoGameDFunc goGameDFunc() { return this.goGameActivity_.goGameDFunc(); };
+    protected GoGameUFunc goGameUFunc() { return this.goGameActivity_.goGameUFunc(); };
 
     public GoGameReceiver(GoGameActivity go_game_activity_val) {
         this.goGameActivity_ = go_game_activity_val;
@@ -53,7 +54,7 @@ public class GoGameReceiver extends BroadcastReceiver {
                     break;
 
                 case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
-                    this.goGameFunc().sendGetSessionDataCommand();
+                    this.goGameUFunc().sendGetSessionDataCommand();
                     break;
 
                 case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:

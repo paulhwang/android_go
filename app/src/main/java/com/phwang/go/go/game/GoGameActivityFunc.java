@@ -27,41 +27,4 @@ public class GoGameActivityFunc {
     protected GoGameActivityFunc(GoGameActivity go_game_val) {
         this.goGame_ = go_game_val;
     }
-
-    protected void sendDeleteSessionCommand() {
-        Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
-        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_GAME_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
-        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_DELETE_SESSION_STR);
-        intent.putExtra(BundleIndexDefine.LINK_ID, this.linkIdStr());
-        intent.putExtra(BundleIndexDefine.SESSION_ID, this.sessionIdStr());
-        intent.setAction(IntentDefine.BIND_SERVICE);
-        this.goGame_.sendBroadcast(intent);
-    }
-
-    protected void sendPutSessionDataCommand(String move_data_val) {
-        Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
-        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_GAME_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
-        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA_STR);
-        intent.putExtra(BundleIndexDefine.LINK_ID, this.linkIdStr());
-        intent.putExtra(BundleIndexDefine.SESSION_ID, this.sessionIdStr());
-        intent.putExtra(BundleIndexDefine.MOVE_DATA, move_data_val);
-        intent.setAction(IntentDefine.BIND_SERVICE);
-        this.goGame_.sendBroadcast(intent);
-    }
-
-    protected void sendGetSessionDataCommand() {
-        Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
-        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_GAME_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
-        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA_STR);
-        intent.putExtra(BundleIndexDefine.LINK_ID, this.linkIdStr());
-        intent.putExtra(BundleIndexDefine.SESSION_ID, this.sessionIdStr());
-        intent.setAction(IntentDefine.BIND_SERVICE);
-        this.goGame_.sendBroadcast(intent);
-    }
 }

@@ -91,7 +91,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     protected void onDestroy() {
         super.onDestroy();
         this.watchDog_.cancel();
-        this.goGameFunc_.sendDeleteSessionCommand();
+        this.goGameUFunc_.sendDeleteSessionCommand();
         //Log.e(TAG, "onDestroy()");
     }
 
@@ -100,19 +100,19 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         Intent intent;
         switch (view_val.getId()) {
             case R.id.go_game_b_button:
-                this.goGameFunc_.sendPutSessionDataCommand(Encoders.sEncode2("Gb"));
+                this.goGameUFunc_.sendPutSessionDataCommand(Encoders.sEncode2("Gb"));
                 break;
             case R.id.go_game_fb_button:
-                this.goGameFunc_.sendPutSessionDataCommand(Encoders.sEncode2("GB"));
+                this.goGameUFunc_.sendPutSessionDataCommand(Encoders.sEncode2("GB"));
                 break;
             case R.id.go_game_f_button:
-                this.goGameFunc_.sendPutSessionDataCommand(Encoders.sEncode2("Gf"));
+                this.goGameUFunc_.sendPutSessionDataCommand(Encoders.sEncode2("Gf"));
                 break;
             case R.id.go_game_ff_button:
-                this.goGameFunc_.sendPutSessionDataCommand(Encoders.sEncode2("GF"));
+                this.goGameUFunc_.sendPutSessionDataCommand(Encoders.sEncode2("GF"));
                 break;
             case R.id.go_game_pass_button:
-                this.goGameFunc_.sendPutSessionDataCommand(Encoders.sEncode2("GP"));
+                this.goGameUFunc_.sendPutSessionDataCommand(Encoders.sEncode2("GP"));
                 break;
             case R.id.go_game_confirm_button:
                 finish();
@@ -151,7 +151,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
         //Log.e(TAG, "processTouchInput move=" + move_str);
-        this.goGameFunc_.sendPutSessionDataCommand(move_str);
+        this.goGameUFunc_.sendPutSessionDataCommand(move_str);
     }
 
     private void registerBroadcastReceiver() {
