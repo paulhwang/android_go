@@ -41,7 +41,7 @@ public class GoGameBoard {
 
     public GoGameBoard(GoGameActivity go_game_val, String config_str_val) {
         this.goGame_ = go_game_val;
-        this.decodConfig(config_str_val);
+        this.decodeConfig(config_str_val);
     }
 
     public static String encodeConfig(int board_size_val, int handicap_val, int komi_val, int color_val) {
@@ -55,8 +55,8 @@ public class GoGameBoard {
         return Encoders.sEncode5(data);
     }
 
-    void decodConfig(String config_str_val) {
-        Log.e(TAG, "decodeGoConfig() config_str=" + config_str_val);
+    void decodeConfig(String config_str_val) {
+        Log.e(TAG, "decodeConfig() config_str=" + config_str_val);
 
         String config_str = Encoders.sDecode5(config_str_val);
         String board_size_str = config_str.substring(1, 3);

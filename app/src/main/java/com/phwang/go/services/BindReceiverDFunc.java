@@ -106,7 +106,7 @@ public class BindReceiverDFunc {
                 Log.e(TAG, "handleResponse(FABRIC_COMMAND_GET_SESSION_DATA) theme_data=" + theme_data_str);
 
                 if (theme_data_str.charAt(0) == ThemeDefine.THEME_GO) {
-                    this.sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command, result, theme_data_str.substring(1));
+                    this.sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command, result, data_package_str);
                 }
                 else {
                     Log.e(TAG, "handleResponse() ***not implemented yet+++");
