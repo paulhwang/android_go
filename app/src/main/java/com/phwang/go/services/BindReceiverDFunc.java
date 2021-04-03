@@ -129,7 +129,8 @@ public class BindReceiverDFunc {
         this.bindService().sendBroadcast(intent);
     }
 
-    public void parseFabricResponse(String command_val, String result_val, String data_package_str_val) {
-        this.sendResponseBroadcastMessage(IntentDefine.GO_GAME_ACTIVITY, command_val, result_val, data_package_str_val);
+    public void parseFabricResponse(String target_val, String command_val, String result_val, String data_package_str_val) {
+        Log.e(TAG, "parseFabricResponse() command=" + command_val + " result=" + result_val + " data=" + data_package_str_val);
+        this.sendResponseBroadcastMessage(target_val, command_val, result_val, data_package_str_val);
     }
 }

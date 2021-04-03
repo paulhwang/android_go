@@ -11,6 +11,7 @@ package com.phwang.client;
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.fabric.FabricResultExport;
 import com.phwang.core.utils.encoders.Encoders;
+import com.phwang.go.define.IntentDefine;
 import com.phwang.go.services.BindReceiverDFunc;
 import com.phwang.go.services.BindService;
 
@@ -234,7 +235,8 @@ public class ClientDParser {
             this.debug(true, "parserSoloSessionResponse", "session_id_str=" + session_id_str);
 
             this.clientFabricInfo().setSessionIdStr(session_id_str);
-            this.importInterface().handleSetupSoloSessionResponse(result_str, data_str);
+            //this.importInterface().handleSetupSoloSessionResponse(result_str, data_str);
+            this.bindReceiverDFunc().parseFabricResponse(IntentDefine.GO_CONFIG_ACTIVITY, FabricCommands.FABRIC_COMMAND_SOLO_SESSION_STR, result_str, data_str);
         }
     }
 
@@ -264,7 +266,8 @@ public class ClientDParser {
             this.debug(false, "parserHeadSessionResponse", "session_id_str=" + session_id_str);
 
             this.clientFabricInfo().setSessionIdStr(session_id_str);
-            this.importInterface().handleSetupHeadSessionResponse(result_str, data_str);
+            //this.importInterface().handleSetupHeadSessionResponse(result_str, data_str);
+            this.bindReceiverDFunc().parseFabricResponse(IntentDefine.GO_CONFIG_ACTIVITY, FabricCommands.FABRIC_COMMAND_HEAD_SESSION_STR, result_str, data_str);
         }
     }
 
@@ -293,7 +296,8 @@ public class ClientDParser {
             this.debug(false, "parserPeerSessionResponse", "session_id_str=" + session_id_str);
 
             this.clientFabricInfo().setSessionIdStr(session_id_str);
-            this.importInterface().handleSetupPeerSessionResponse(result_str, data_str);
+            //this.importInterface().handleSetupPeerSessionResponse(result_str, data_str);
+            this.bindReceiverDFunc().parseFabricResponse(IntentDefine.GO_CONFIG_ACTIVITY, FabricCommands.FABRIC_COMMAND_PEER_SESSION_STR, result_str, data_str);
         }
     }
 
@@ -323,7 +327,8 @@ public class ClientDParser {
             this.debug(false, "parserJoinSessionResponse", "session_id_str=" + session_id_str);
 
             this.clientFabricInfo().setSessionIdStr(session_id_str);
-            this.importInterface().handleSetupJoinSessionResponse(result_str, data_str);
+            //this.importInterface().handleSetupJoinSessionResponse(result_str, data_str);
+            this.bindReceiverDFunc().parseFabricResponse(IntentDefine.GO_CONFIG_ACTIVITY, FabricCommands.FABRIC_COMMAND_JOIN_SESSION_STR, result_str, data_str);
         }
     }
 
@@ -410,7 +415,7 @@ public class ClientDParser {
             //rest_str = Encoders.sDecode2_(rest_str);
 
             //this.importInterface().handlePutSessionDataResponse(result_str);
-            this.bindReceiverDFunc().parseFabricResponse(FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA_STR, result_str, null);
+            this.bindReceiverDFunc().parseFabricResponse(IntentDefine.GO_GAME_ACTIVITY, FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA_STR, result_str, null);
         }
     }
 
@@ -426,7 +431,7 @@ public class ClientDParser {
             //rest_str = Encoders.sSubstring5_(rest_str);
 
             //this.importInterface().handleGetSessionDataResponse(result_str, data_package_str);
-            this.bindReceiverDFunc().parseFabricResponse(FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA_STR, result_str, data_package_str);
+            this.bindReceiverDFunc().parseFabricResponse(IntentDefine.GO_GAME_ACTIVITY, FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA_STR, result_str, data_package_str);
         }
     }
 
