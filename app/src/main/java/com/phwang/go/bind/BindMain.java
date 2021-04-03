@@ -15,6 +15,7 @@ import com.phwang.core.utils.abend.Abend;
 
 public class BindMain {
     private BindUClient bindUClient_;
+    private BindDClient bindDClient_;
 
     public BindUClient bindUClient() { return this.bindUClient_; }
     public BindDClient bindDClient() { return this.bindUClient_.bindDClient(); }
@@ -25,5 +26,6 @@ public class BindMain {
         Abend.initAbend(new BindAbend());
         new com.phwang.core.root.CoreRoot();
         this.bindUClient_ = new BindUClient(application_context_val);
+        this.bindDClient_ = new BindDClient(application_context_val);
     }
 }
