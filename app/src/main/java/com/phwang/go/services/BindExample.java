@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.go.bind;
+package com.phwang.go.services;
 
 import android.app.Service;
 import android.content.Intent;

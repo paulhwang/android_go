@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.go.bind;
+package com.phwang.go.services;
 
 import com.phwang.core.utils.abend.AbendInt;
 import android.util.Log;

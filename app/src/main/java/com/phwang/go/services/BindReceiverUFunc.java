@@ -15,7 +15,6 @@ import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientFabricInfo;
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.fabric.FabricResultExport;
-import com.phwang.go.bind.BindDClient;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
 
