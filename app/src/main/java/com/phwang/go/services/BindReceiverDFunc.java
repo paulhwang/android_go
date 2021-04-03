@@ -131,6 +131,34 @@ public class BindReceiverDFunc {
 
     public void parseFabricResponse(String target_val, String command_val, String result_val, String data_package_str_val) {
         Log.e(TAG, "parseFabricResponse() command=" + command_val + " result=" + result_val + " data=" + data_package_str_val);
+
         this.sendResponseBroadcastMessage(target_val, command_val, result_val, data_package_str_val);
+    }
+
+    private String getSessionDataTargetActivity(String data_package_str_val) {
+        String rest_str = Encoders.sDecode5(data_package_str_val);
+        String link_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
+
+        String session_id_str = Encoders.sSubstring2(rest_str);
+        rest_str = Encoders.sSubstring2_(rest_str);
+
+        String data_str = Encoders.sSubstring5(rest_str);
+        //rest_str = Encoders.sSubstring5_(rest_str);
+
+        Log.e(TAG, "handleResponse(FABRIC_COMMAND_GET_SESSION_DATA) data=" + data_str);
+
+        ///////////////////////////////
+        String theme_data_str = Encoders.sDecode5(data_str);
+
+        Log.e(TAG, "handleResponse(FABRIC_COMMAND_GET_SESSION_DATA) theme_data=" + theme_data_str);
+
+        if (theme_data_str.charAt(0) == ThemeDefine.THEME_GO) {
+            return IntentDefine.GO_GAME_ACTIVITY;
+        }
+        else {
+            Log.e(TAG, "handleResponse() ***not implemented yet+++");
+            return IntentDefine.GO_GAME_ACTIVITY;
+        }
     }
 }
