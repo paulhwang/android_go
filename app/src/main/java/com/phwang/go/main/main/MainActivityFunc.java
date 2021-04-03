@@ -26,7 +26,6 @@ public class MainActivityFunc {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.MAIN_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
         intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_SETUP_SESSION_STR);
         intent.putExtra(BundleIndexDefine.HIS_NAME, his_name_val);
         intent.putExtra(BundleIndexDefine.THEME_DATA, theme_data_val);
@@ -38,7 +37,6 @@ public class MainActivityFunc {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.MAIN_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
         intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_SETUP_SESSION3_STR);
         intent.putExtra(BundleIndexDefine.THEME_DATA, theme_data_val);
         intent.setAction(IntentDefine.BIND_SERVICE);

@@ -29,7 +29,6 @@ public class GoGameUFunc {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_GAME_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
         intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_DELETE_SESSION_STR);
         intent.putExtra(BundleIndexDefine.LINK_ID, this.linkIdStr());
         intent.putExtra(BundleIndexDefine.SESSION_ID, this.sessionIdStr());
@@ -41,7 +40,6 @@ public class GoGameUFunc {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_GAME_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
         intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA_STR);
         intent.putExtra(BundleIndexDefine.LINK_ID, this.linkIdStr());
         intent.putExtra(BundleIndexDefine.SESSION_ID, this.sessionIdStr());
@@ -54,7 +52,6 @@ public class GoGameUFunc {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_GAME_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_COMMAND);
         intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA_STR);
         intent.putExtra(BundleIndexDefine.LINK_ID, this.linkIdStr());
         intent.putExtra(BundleIndexDefine.SESSION_ID, this.sessionIdStr());

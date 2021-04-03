@@ -33,7 +33,6 @@ public class BindReceiverDFunc {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.BIND_SERVICE);
-        intent.putExtra(BundleIndexDefine.COMMAND_OR_RESPONSE, BundleIndexDefine.IS_RESPONSE);
         intent.putExtra(BundleIndexDefine.COMMAND, command_val);
         intent.putExtra(BundleIndexDefine.RESULT, result_val);
         intent.putExtra(BundleIndexDefine.DATA_PACKAGE, data_package_val);
