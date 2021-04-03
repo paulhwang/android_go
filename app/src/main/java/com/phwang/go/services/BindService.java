@@ -31,9 +31,10 @@ public class BindService extends Service {
     private static BindMain bindMain_;
     private BindReceiver bindReceiver_;
     private ClientRoot clientRoot_;
+    private BindDClient bindDClient_;
 
+    public BindDClient bindDClient() { return this.bindDClient_; }
     public static BindMain bindMain() { return bindMain_; };
-    public BindDClient bindDClient() { return this.bindMain_.bindDClient(); }
     public BindReceiverDFunc bindReceiverDFunc() { return this.bindReceiver_.bindReceiverDFunc(); }
     public ClientDExport clientDExport() {
         return this.clientRoot_.clientDExport();
@@ -51,7 +52,7 @@ public class BindService extends Service {
         this.registerBroadcastReceiver();
         Abend.initAbend(new BindAbend());
         new com.phwang.core.root.CoreRoot();
-        this.bindMain_ = new BindMain(this, this.applicationContext());
+        this.bindDClient_ = new BindDClient(this, this.applicationContext());
         this.clientRoot_ = new ClientRoot(this);
     }
 
