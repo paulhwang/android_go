@@ -21,6 +21,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.phwang.core.fabric.FabricCommands;
+import com.phwang.core.fabric.FabricResults;
+import com.phwang.core.fabric.FabricThemes;
+import com.phwang.core.utils.encoders.Encoders;
+import com.phwang.core.utils.fabric.FabricEncode;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
@@ -143,20 +147,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     protected void doLogout() {
+
+        FabricEncode fabric_encode = new FabricEncode(
+                FabricCommands.FABRIC_COMMAND_LOGOUT,
+                FabricResults.IGNORE,
+                FabricCommands.CLIENT_IS_ANDROID,
+                FabricThemes.IGNORE,
+                Encoders.IGNORE,
+                Encoders.IGNORE,
+                0
+        );
+
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.MAIN_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_LOGOUT_STR);
+        intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
         this.registerBroadcastReceiver();
     }
 
     protected void doGetGroups() {
+
+        FabricEncode fabric_encode = new FabricEncode(
+                FabricCommands.FABRIC_COMMAND_GET_GROUPS,
+                FabricResults.IGNORE,
+                FabricCommands.CLIENT_IS_ANDROID,
+                FabricThemes.IGNORE,
+                Encoders.IGNORE,
+                Encoders.IGNORE,
+                0
+        );
+
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.MAIN_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_GET_GROUPS_STR);
+        intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
         this.registerBroadcastReceiver();

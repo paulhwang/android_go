@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 FabricCommands.FABRIC_COMMAND_LOGIN,
                 FabricResults.IGNORE,
                 FabricCommands.CLIENT_IS_ANDROID,
-                FabricThemes.GO,
+                FabricThemes.IGNORE,
                 Encoders.IGNORE,
                 Encoders.IGNORE,
                 2

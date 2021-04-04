@@ -17,6 +17,10 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputLayout;
 import com.phwang.core.fabric.FabricCommands;
+import com.phwang.core.fabric.FabricResults;
+import com.phwang.core.fabric.FabricThemes;
+import com.phwang.core.utils.encoders.Encoders;
+import com.phwang.core.utils.fabric.FabricEncode;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
@@ -85,6 +89,19 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
 
+        FabricEncode fabric_encode = new FabricEncode(
+                FabricCommands.FABRIC_COMMAND_REGISTER,
+                FabricResults.IGNORE,
+                FabricCommands.CLIENT_IS_ANDROID,
+                FabricThemes.IGNORE,
+                Encoders.IGNORE,
+                Encoders.IGNORE,
+                3
+        );
+        fabric_encode.setStringList(0, this.userName_);
+        fabric_encode.setStringList(1, this.email_);
+        fabric_encode.setStringList(2, this.password_);
+
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.REGISTER_ACTIVITY);
@@ -92,6 +109,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         intent.putExtra(BundleIndexDefine.MY_NAME, this.userName_);
         intent.putExtra(BundleIndexDefine.EMAIL, this.email_);
         intent.putExtra(BundleIndexDefine.PASSWORD, this.password_);
+        intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
     }
