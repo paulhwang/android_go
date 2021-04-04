@@ -9,6 +9,7 @@
 package com.phwang.core.fabric;
 
 import com.phwang.core.utils.encoders.Encoders;
+import com.phwang.core.utils.fabric.FabricDecode;
 import com.phwang.core.utils.listmgr.ListEntry;
 import com.phwang.core.utils.binder.BinderBundle;
 
@@ -631,7 +632,9 @@ public class FabricUParser {
     private String processPutSessionDataRequest(String input_str_val) {
         this.debug(true, "processPutSessionDataRequest", "input_str_val = " + input_str_val);
     	//String xmt_seq_str = null;
-        
+        FabricDecode fabric_decode = new FabricDecode(input_str_val);
+
+        /*
         String rest_str = input_str_val.substring(1);
         String link_id_str = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
@@ -641,36 +644,37 @@ public class FabricUParser {
 
         String data = Encoders.sDecode2(rest_str);
         //rest_str = Encoders.sDecode2_(rest_str);
+        */
 
-        this.debug(false, "processPutSessionDataRequest", "link_id=" + link_id_str);
-        this.debug(false, "processPutSessionDataRequest", "session_id=" + session_id_str);
+        this.debug(true, "processPutSessionDataRequest", "link_id=" + fabric_decode.linkIdStr());
+        this.debug(true, "processPutSessionDataRequest", "session_id=" + fabric_decode.sessionIdStr());
         //this.debug(false, "processPutSessionDataRequest", "xmt_seq = " + xmt_seq_str);
-        this.debug(false, "processPutSessionDataRequest", "data=" + data);
+        this.debug(true, "processPutSessionDataRequest", "data=" + fabric_decode.stringList(0));
 
-        FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
+        FabricLink link = this.linkMgr().getLinkByIdStr(fabric_decode.linkIdStr());
         if (link == null) {
-            return this.generateFabricResponse(input_str_val.charAt(0), FabricResults.LINK_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
+            return this.generateFabricResponse(input_str_val.charAt(0), FabricResults.LINK_NOT_EXIST, fabric_decode.linkIdStr(), fabric_decode.sessionIdStr(), Encoders.NULL_DATA);
         }
 
-        FabricSession session = link.sessionMgr().getSessionByIdStr(session_id_str);
+        FabricSession session = link.sessionMgr().getSessionByIdStr(fabric_decode.sessionIdStr());
         if (session == null) {
-            return generateFabricResponse(input_str_val.charAt(0), FabricResults.SESSION_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
+            return generateFabricResponse(input_str_val.charAt(0), FabricResults.SESSION_NOT_EXIST, fabric_decode.linkIdStr(), fabric_decode.sessionIdStr(), Encoders.NULL_DATA);
         }
 
         String room_id_str = session.group().roomIdStr();
         if (room_id_str == null) {
-            return generateFabricResponse(input_str_val.charAt(0), FabricResults.ROOM_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
+            return generateFabricResponse(input_str_val.charAt(0), FabricResults.ROOM_NOT_EXIST, fabric_decode.linkIdStr(), fabric_decode.sessionIdStr(), Encoders.NULL_DATA);
         }
 
         /* transfer data up */
         StringBuilder buf = new StringBuilder();
         buf.append(FabricExport.FABRIC_THEME_COMMAND_PUT_ROOM_DATA);
         buf.append(room_id_str);
-        buf.append(data);
+        buf.append(Encoders.sDecode2(fabric_decode.stringList(0)));
         this.fabricUBinder().transmitData(buf.toString());
 
         /* send the response down */
-        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResults.SUCCEED, link_id_str, session_id_str, Encoders.JOB_IS_DONE);
+        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResults.SUCCEED, fabric_decode.linkIdStr(), fabric_decode.sessionIdStr(), Encoders.JOB_IS_DONE);
         return response_data;
     }
 

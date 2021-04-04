@@ -29,11 +29,13 @@ public class FabricDecode {
     public String stringList(int index_val) { return this.stringList_[index_val]; };
 
     public FabricDecode(String fabric_data_str_val) {
-        String rest_str = Encoders.sDecode5(fabric_data_str_val);
+        //String rest_str = Encoders.sDecode5(fabric_data_str_val);
+        String rest_str = fabric_data_str_val;
         this.command_ = rest_str.charAt(0);
         this.result_ = rest_str.charAt(1);
         this.theme_ = rest_str.charAt(2);
-        rest_str = Encoders.sDecode5(rest_str.substring(3));
+        //rest_str = Encoders.sDecode5(rest_str.substring(3));
+        rest_str = rest_str.substring((3));
 
         this.linkIdStr_ = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);

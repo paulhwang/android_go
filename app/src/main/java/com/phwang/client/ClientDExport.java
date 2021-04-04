@@ -236,7 +236,7 @@ public class ClientDExport implements ClientDExportInt {
         
     	this.debug(true, "putSessionData", "command_str=" + command_str);
     	
-    	this.transmitToFabric(command_str);
+    	this.transmitToFabric(fabric_data_str_val);
     }
     
     public void getSessionData(String fabric_data_str_val, String link_id_str_val, String session_id_str_val) {
