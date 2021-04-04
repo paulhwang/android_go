@@ -402,50 +402,19 @@ public class ClientDParser {
         }
     }
 
-    private void parserDeleteSessionResponse(String input_str_val) {
-        this.debug(true, "parserDeleteSessionResponse", "input_str_val=" + input_str_val);
-        //this.bindReceiverDFunc().parseFabricResponse(IntentDefine.MAIN_ACTIVITY, FabricCommands.FABRIC_COMMAND_DELETE_SESSION_STR, result_str, Encoders.NULL_DATA);
+    private void parserDeleteSessionResponse(String fabric_data_str_val) {
+        this.debug(true, "parserDeleteSessionResponse", "fabric_data_str_val=" + fabric_data_str_val);
+        this.bindReceiverDFunc().sendFabricDataResponse(IntentDefine.GO_GAME_ACTIVITY, fabric_data_str_val);
     }
 
-    private void parserPutSessionDataResponse(String input_str_val) {
-    	this.debug(false, "parserPutSessionDataResponse", "input_str_val=" + input_str_val);
-
-        String result_str = input_str_val.substring(1, 2);
-
-        if (result_str.charAt(0) == FabricResults.SUCCEED) {
-            String rest_str = input_str_val.substring(2);
-            String link_id_str = Encoders.sSubstring2(rest_str);
-            rest_str = Encoders.sSubstring2_(rest_str);
-
-            String session_id_str = Encoders.sSubstring2(rest_str);
-            rest_str = Encoders.sSubstring2_(rest_str);
-
-            String c_data = Encoders.sDecode2(rest_str);
-            //rest_str = Encoders.sDecode2_(rest_str);
-
-            //this.importInterface().handlePutSessionDataResponse(result_str);
-            this.bindReceiverDFunc().parseFabricResponse(IntentDefine.GO_GAME_ACTIVITY, FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA_STR, result_str, null);
-        }
+    private void parserPutSessionDataResponse(String fabric_data_str_val) {
+    	this.debug(true, "parserPutSessionDataResponse", "input_str_val=" + fabric_data_str_val);
+        this.bindReceiverDFunc().sendFabricDataResponse(IntentDefine.GO_GAME_ACTIVITY, fabric_data_str_val);
     }
 
     private void parserGetSessionDataResponse(String fabric_data_str_val) {
     	this.debug(false, "parserGetSessionDataResponse", "fabric_data_str_val=" + fabric_data_str_val);
-
         this.bindReceiverDFunc().sendFabricDataResponse(IntentDefine.GO_GAME_ACTIVITY, fabric_data_str_val);
-
-        /*
-        String result_str = fabric_data_str_val.substring(1, 2);
-
-        if (result_str.charAt(0) == FabricResults.SUCCEED) {
-            String rest_str = fabric_data_str_val.substring(2);
-
-            String data_package_str = Encoders.sSubstring5(rest_str);
-            //rest_str = Encoders.sSubstring5_(rest_str);
-
-            //this.importInterface().handleGetSessionDataResponse(result_str, data_package_str);
-            this.bindReceiverDFunc().parseFabricResponse(IntentDefine.GO_GAME_ACTIVITY, FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA_STR, result_str, data_package_str);
-        }
-         */
     }
 
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }

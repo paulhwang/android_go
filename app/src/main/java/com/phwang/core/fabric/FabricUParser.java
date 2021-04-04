@@ -619,8 +619,9 @@ public class FabricUParser {
         link.sessionMgr().freeSession(session);
 
         /* send the response down */
-        String response_data = this.generateFabricResponse(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.linkIdStr(), fabric_decode.sessionIdStr(), Encoders.JOB_IS_DONE);
-        return response_data;
+        //String response_data = this.generateFabricResponse(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.linkIdStr(), fabric_decode.sessionIdStr(), Encoders.JOB_IS_DONE);
+        //return response_data;
+        return this.generateFabricData0(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.theme(), fabric_decode.linkIdStr(), fabric_decode.sessionIdStr());
     }
 
     private String processPutSessionDataRequest(String input_str_val) {
@@ -654,8 +655,9 @@ public class FabricUParser {
         this.fabricUBinder().transmitData(buf.toString());
 
         /* send the response down */
-        String response_data = this.generateFabricResponse(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.linkIdStr(), fabric_decode.sessionIdStr(), Encoders.JOB_IS_DONE);
-        return response_data;
+        //String response_data = this.generateFabricResponse(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.linkIdStr(), fabric_decode.sessionIdStr(), Encoders.JOB_IS_DONE);
+        //return response_data;
+        return this.generateFabricData0(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.theme(), fabric_decode.linkIdStr(), fabric_decode.sessionIdStr());
     }
 
     private String processGetSessionDataRequest(String input_str_val) {
@@ -678,8 +680,6 @@ public class FabricUParser {
 
         /* send the response down */
         return this.generateFabricData1(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.theme(), fabric_decode.linkIdStr(), fabric_decode.sessionIdStr(), Encoders.sEncode6(data));
-        //String response_data = this.generateFabricResponse(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.linkIdStr(), fabric_decode.sessionIdStr(), Encoders.sEncode5(data));
-        //return response_data;
     }
 
     private String generateFabricData0(char command_val, char result_val, char theme_val, String link_id_str_val, String session_id_str_val) {
