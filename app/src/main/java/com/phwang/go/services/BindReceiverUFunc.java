@@ -159,13 +159,6 @@ public class BindReceiverUFunc {
                 break;
 
             case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
-                fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
-                link_id_str = bundle_val.getString(BundleIndexDefine.LINK_ID);
-                session_id_str = bundle_val.getString(BundleIndexDefine.SESSION_ID);
-                //this.bindUClient().deleteSession(link_id_str, session_id_str);
-                this.clientDExport().deleteSession(fabric_data_str, link_id_str, session_id_str);;
-                break;
-
             case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
             case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
                 fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
