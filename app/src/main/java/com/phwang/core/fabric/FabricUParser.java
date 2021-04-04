@@ -10,6 +10,7 @@ package com.phwang.core.fabric;
 
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.utils.fabric.FabricDecode;
+import com.phwang.core.utils.fabric.FabricEncode;
 import com.phwang.core.utils.listmgr.ListEntry;
 import com.phwang.core.utils.binder.BinderBundle;
 
@@ -676,8 +677,41 @@ public class FabricUParser {
         String data = session.getPendingDownLinkData();
 
         /* send the response down */
+        //return this.generateFabricData1(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.theme(), fabric_decode.linkIdStr(), fabric_decode.sessionIdStr(), Encoders.sEncode5(data));
         String response_data = this.generateFabricResponse(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.linkIdStr(), fabric_decode.sessionIdStr(), Encoders.sEncode5(data));
         return response_data;
+    }
+
+    private String generateFabricData0(char command_val, char result_val, char theme_val, String link_id_str_val, String session_id_str_val) {
+        FabricEncode fabric_encode = new FabricEncode(command_val, result_val, theme_val, link_id_str_val, session_id_str_val, 0);
+        return fabric_encode.getEncodedString();
+    }
+
+    private String generateFabricData1(char command_val, char result_val, char theme_val, String link_id_str_val, String session_id_str_val, String str0_val) {
+        FabricEncode fabric_encode = new FabricEncode(command_val, result_val, theme_val, link_id_str_val, session_id_str_val, 1);
+        fabric_encode.setStringList(0, str0_val);
+        return fabric_encode.getEncodedString();
+    }
+
+    private String generateFabricData2(char command_val, char result_val, char theme_val, String link_id_str_val, String session_id_str_val, String str0_val, String str1_val) {
+        FabricEncode fabric_encode = new FabricEncode(command_val, result_val, theme_val, link_id_str_val, session_id_str_val, 2);
+        fabric_encode.setStringList(0, str0_val);
+        fabric_encode.setStringList(1, str1_val);
+        return fabric_encode.getEncodedString();
+    }
+
+    private String generateFabricData____(char command_val, char result_val, char theme_val, String link_id_str_val, String session_id_str_val, String data_str_val) {
+        StringBuilder response_buf = new StringBuilder();
+        response_buf.append(link_id_str_val);
+        response_buf.append(session_id_str_val);
+        response_buf.append(data_str_val);
+        String data_package_str = Encoders.sEncode5(response_buf.toString());
+
+        response_buf = new StringBuilder();
+        response_buf.append(command_val);
+        response_buf.append(result_val);
+        response_buf.append(data_package_str);
+        return response_buf.toString();
     }
 
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }

@@ -431,6 +431,8 @@ public class ClientDParser {
     private void parserGetSessionDataResponse(String fabric_data_str_val) {
     	this.debug(false, "parserGetSessionDataResponse", "fabric_data_str_val=" + fabric_data_str_val);
 
+        //this.bindReceiverDFunc().sendFabricDataResponse(IntentDefine.GO_GAME_ACTIVITY, fabric_data_str_val);
+
         String result_str = fabric_data_str_val.substring(1, 2);
 
         if (result_str.charAt(0) == FabricResults.SUCCEED) {
