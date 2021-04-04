@@ -10,6 +10,7 @@ package com.phwang.core.utils.encoders;
 
 public class Encoders {
     public static final int DATA_LENGTH_SIZE = 2;
+    public static final String IGNORE       = "06NULL_DATA";
     public static final String NULL_DATA    = "09NULL_DATA";
     public static final String NULL_LINK    = "09NULL_LINK";
     public static final String JOB_IS_DONE  = "11JOB_IS_DONE";

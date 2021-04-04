@@ -49,6 +49,13 @@ public class BindReceiverUFunc {
         }
 
         switch (command.charAt(0)) {
+            case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
+            case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
+            case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
+                fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
+                this.clientDExport().transmitToFabric(fabric_data_str);
+                break;
+
             case FabricCommands.FABRIC_COMMAND_LOGIN:
                 my_name = bundle_val.getString(BundleIndexDefine.MY_NAME);
                 password = bundle_val.getString(BundleIndexDefine.PASSWORD);
@@ -156,13 +163,6 @@ public class BindReceiverUFunc {
 
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION3:
                 this.clientDExport().setupSession3();
-                break;
-
-            case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
-            case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
-            case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
-                fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
-                this.clientDExport().transmitToFabric(fabric_data_str);
                 break;
 
             default:
