@@ -173,9 +173,10 @@ public class BindReceiverUFunc {
 
             case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
                 fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
-                link_id_str = bundle_val.getString(BundleIndexDefine.LINK_ID);
-                session_id_str = bundle_val.getString(BundleIndexDefine.SESSION_ID);
-                this.clientDExport().getSessionData(fabric_data_str, link_id_str, session_id_str);;
+                this.clientDExport().transmitToFabric(fabric_data_str);
+                //link_id_str = bundle_val.getString(BundleIndexDefine.LINK_ID);
+                //session_id_str = bundle_val.getString(BundleIndexDefine.SESSION_ID);
+                //this.clientDExport().getSessionData(fabric_data_str, link_id_str, session_id_str);;
                 break;
 
             default:
