@@ -10,6 +10,7 @@ package com.phwang.go.go.game;
 
 import android.content.Intent;
 
+import com.phwang.core.fabric.FabricClients;
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.fabric.FabricResults;
 import com.phwang.core.fabric.FabricThemes;
@@ -32,7 +33,7 @@ public class GoGameUFunc {
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_DELETE_SESSION,
                 FabricResults.IGNORE,
-                FabricCommands.CLIENT_IS_ANDROID,
+                FabricClients.ANDROID,
                 FabricThemes.GO,
                 this.linkIdStr(),
                 this.sessionIdStr(),
@@ -52,7 +53,7 @@ public class GoGameUFunc {
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA,
                 FabricResults.IGNORE,
-                FabricCommands.CLIENT_IS_ANDROID,
+                FabricClients.ANDROID,
                 FabricThemes.GO,
                 this.linkIdStr(),
                 this.sessionIdStr(),
@@ -73,7 +74,7 @@ public class GoGameUFunc {
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA,
                 FabricResults.IGNORE,
-                FabricCommands.CLIENT_IS_ANDROID,
+                FabricClients.ANDROID,
                 FabricThemes.GO,
                 this.linkIdStr(),
                 this.sessionIdStr(),

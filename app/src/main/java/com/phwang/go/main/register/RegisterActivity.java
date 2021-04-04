@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputLayout;
+import com.phwang.core.fabric.FabricClients;
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.fabric.FabricResults;
 import com.phwang.core.fabric.FabricThemes;
@@ -92,7 +93,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_REGISTER,
                 FabricResults.IGNORE,
-                FabricCommands.CLIENT_IS_ANDROID,
+                FabricClients.ANDROID,
                 FabricThemes.IGNORE,
                 Encoders.IGNORE,
                 Encoders.IGNORE,

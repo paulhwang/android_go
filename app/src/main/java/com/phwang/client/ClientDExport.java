@@ -8,6 +8,7 @@
 
 package com.phwang.client;
 
+import com.phwang.core.fabric.FabricClients;
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.utils.binder.Binder;
 import com.phwang.core.utils.encoders.Encoders;
@@ -54,7 +55,7 @@ public class ClientDExport implements ClientDExportInt {
     	
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(FabricCommands.FABRIC_COMMAND_LOGIN);
-        command_buf.append(FabricCommands.CLIENT_IS_ANDROID);
+        command_buf.append(FabricClients.ANDROID);
         command_buf.append(Encoders.sEncode2(my_name_val));
         command_buf.append(Encoders.sEncode2(password_val));
         String command_str = command_buf.toString();

@@ -14,6 +14,8 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.phwang.core.fabric.FabricClients;
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.fabric.FabricResults;
 import com.phwang.core.fabric.FabricThemes;
@@ -120,7 +122,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_SOLO_SESSION,
                 FabricResults.IGNORE,
-                FabricCommands.CLIENT_IS_ANDROID,
+                FabricClients.ANDROID,
                 FabricThemes.IGNORE,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,
@@ -142,7 +144,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_HEAD_SESSION,
                 FabricResults.IGNORE,
-                FabricCommands.CLIENT_IS_ANDROID,
+                FabricClients.ANDROID,
                 FabricThemes.IGNORE,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,
@@ -164,7 +166,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_PEER_SESSION,
                 FabricResults.IGNORE,
-                FabricCommands.CLIENT_IS_ANDROID,
+                FabricClients.ANDROID,
                 FabricThemes.IGNORE,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,
@@ -186,7 +188,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_JOIN_SESSION,
                 FabricResults.IGNORE,
-                FabricCommands.CLIENT_IS_ANDROID,
+                FabricClients.ANDROID,
                 FabricThemes.IGNORE,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,
