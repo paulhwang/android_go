@@ -20,9 +20,9 @@ public class FabricEncode {
     private String linkIdStr_;
     private String sessionIdStr_;
     private int stringsCount_;
-    private String[] strings_ = new String[MAX_ARRAY_SIZE];
+    private String[] stringList_ = new String[MAX_ARRAY_SIZE];
 
-    public void setStrings(int index_val, String string_val) { this.strings_[index_val] = string_val; }
+    public void setStringList(int index_val, String string_val) { this.stringList_[index_val] = string_val; }
 
     public FabricEncode(char command_val, char result_val, char theme_val, String link_id_str_val, String session_id_str_val, int items_count_val) {
         this.command_ = command_val;
@@ -43,7 +43,7 @@ public class FabricEncode {
         buf.append(Encoders.iEncodeRaw1(this.stringsCount_));
 
         for (int i = 0; i < this.stringsCount_; i++) {
-            buf.append(this.strings_[i]);
+            buf.append(this.stringList_[i]);
         }
         return buf.toString();
     }

@@ -19,14 +19,14 @@ public class FabricDecode {
     private char theme_;
     private String linkIdStr_;
     private String sessionIdStr_;
-    private String[] strings_ = new String[MAX_ARRAY_SIZE];
+    private String[] stringList_ = new String[MAX_ARRAY_SIZE];
 
     public char command() { return this.command_; };
     public char result() { return this.result_; };
     public char theme() { return this.theme_; };
     public String linkIdStr() { return this.linkIdStr_; };
     public String sessionIdStr() { return this.sessionIdStr_; };
-    public String strings(int index_val) { return this.strings_[index_val]; };
+    public String stringList(int index_val) { return this.stringList_[index_val]; };
 
     public FabricDecode(String fabric_data_str_val) {
         this.command_ = fabric_data_str_val.charAt(0);
@@ -44,7 +44,7 @@ public class FabricDecode {
         rest_str = rest_str.substring(1);
 
         for (int i = 0; i < count; i ++) {
-            this.strings_[i] = Encoders.sSubstring2(rest_str);
+            this.stringList_[i] = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
         }
     }
