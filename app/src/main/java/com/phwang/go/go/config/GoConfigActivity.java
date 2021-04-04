@@ -123,7 +123,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 FabricCommands.FABRIC_COMMAND_SOLO_SESSION,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID,
-                FabricThemes.IGNORE,
+                FabricThemes.GO,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,
                 1
@@ -145,7 +145,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 FabricCommands.FABRIC_COMMAND_HEAD_SESSION,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID,
-                FabricThemes.IGNORE,
+                FabricThemes.GO,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,
                 1
@@ -167,7 +167,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 FabricCommands.FABRIC_COMMAND_PEER_SESSION,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID,
-                FabricThemes.IGNORE,
+                FabricThemes.GO,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,
                 1
@@ -189,7 +189,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 FabricCommands.FABRIC_COMMAND_JOIN_SESSION,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID,
-                FabricThemes.IGNORE,
+                FabricThemes.GO,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,
                 1

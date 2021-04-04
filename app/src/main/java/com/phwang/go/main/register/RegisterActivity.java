@@ -94,7 +94,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 FabricCommands.FABRIC_COMMAND_REGISTER,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID,
-                FabricThemes.IGNORE,
+                FabricThemes.ALL,
                 Encoders.IGNORE,
                 Encoders.IGNORE,
                 3

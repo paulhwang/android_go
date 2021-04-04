@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 FabricCommands.FABRIC_COMMAND_LOGOUT,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID,
-                FabricThemes.IGNORE,
+                FabricThemes.ALL,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,
                 0
@@ -170,12 +170,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     protected void doGetGroups() {
-
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_GET_GROUPS,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID,
-                FabricThemes.IGNORE,
+                FabricThemes.ALL,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,
                 0
