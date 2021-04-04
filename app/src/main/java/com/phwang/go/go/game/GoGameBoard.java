@@ -51,14 +51,13 @@ public class GoGameBoard {
         buf.append(Encoders.iEncodeRaw2(handicap_val));
         buf.append(Encoders.iEncodeRaw2(komi_val));
         buf.append(Encoders.iEncodeRaw1(color_val));
-        String data = buf.toString();
-        return Encoders.sEncode5(data);
+        return buf.toString();
     }
 
     void decodeConfig(String config_str_val) {
         Log.e(TAG, "decodeConfig() config_str=" + config_str_val);
 
-        String config_str = Encoders.sDecode5(config_str_val);
+        String config_str = config_str_val;
         String board_size_str = config_str.substring(1, 3);
         //String handicap_str = config_str.substring(3, 5);
         //String komi_str = config_str.substring(5, 7);
