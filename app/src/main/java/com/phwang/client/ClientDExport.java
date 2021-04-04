@@ -29,7 +29,7 @@ public class ClientDExport implements ClientDExportInt {
     	this.clientRoot_ = root_val;
     }
 
-    private void transmitToFabric(String data_str_val) {
+    public void transmitToFabric(String data_str_val) {
     	this.debug(true, "transmitToFabric", "data_str_val=" + data_str_val);
        	this.uBinder().transmitStringData(data_str_val);
     }
@@ -222,23 +222,7 @@ public class ClientDExport implements ClientDExportInt {
 
         this.transmitToFabric(command_str);
     }
-    
-    public void putSessionData(String fabric_data_str_val, String link_id_str_val, String session_id_str_val, String data_str_val) {
-        this.debug(true, "putSessionData", "fabric_data_str=" + fabric_data_str_val);
-    	this.debug(false, "putSessionData", "session_id=" + session_id_str_val);
-    	
-        StringBuilder command_buf = new StringBuilder();
-        command_buf.append(FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA);
-        command_buf.append(link_id_str_val);
-        command_buf.append(session_id_str_val);
-        command_buf.append(data_str_val);
-        String command_str = command_buf.toString();
-        
-    	this.debug(true, "putSessionData", "command_str=" + command_str);
-    	
-    	this.transmitToFabric(fabric_data_str_val);
-    }
-    
+
     public void getSessionData(String fabric_data_str_val, String link_id_str_val, String session_id_str_val) {
         this.debug(true, "getSessionData", "fabric_data_str=" + fabric_data_str_val);
     	this.debug(false, "getSessionData", "session_id=" + session_id_str_val);

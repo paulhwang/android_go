@@ -23,6 +23,6 @@ public interface ClientDExportInt {
     public void setupSession2();
     public void setupSession3();
     public void deleteSession(String fabric_data_str_val, String link_id_str_val, String session_id_str_val);
-    public void putSessionData(String fabric_data_str_val, String link_id_str_val, String session_id_str_val, String data_str_val);
+   //public void putSessionData(String fabric_data_str_val, String link_id_str_val, String session_id_str_val, String data_str_val);
     public void getSessionData(String fabric_data_str_val, String link_id_str_val, String session_id_str_val);
 }
