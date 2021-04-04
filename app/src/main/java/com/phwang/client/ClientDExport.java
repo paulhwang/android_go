@@ -223,21 +223,6 @@ public class ClientDExport implements ClientDExportInt {
         this.transmitToFabric(command_str);
     }
 
-    public void getSessionData(String fabric_data_str_val, String link_id_str_val, String session_id_str_val) {
-        this.debug(true, "getSessionData", "fabric_data_str=" + fabric_data_str_val);
-    	this.debug(false, "getSessionData", "session_id=" + session_id_str_val);
-    	
-        StringBuilder command_buf = new StringBuilder();
-        command_buf.append(FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA);
-        command_buf.append(link_id_str_val);
-        command_buf.append(session_id_str_val);
-        String command_str = command_buf.toString();
-        
-    	this.debug(false, "getSessionData", "command_str=" + command_str);
-    	
-    	this.transmitToFabric(command_str);
-    }
-    
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }
     private void log(String s0, String s1) { this.clientRoot().logIt(this.objectName() + "." + s0 + "()", s1); }
     protected void abend(String s0, String s1) { this.clientRoot().abendIt(this.objectName() + "." + s0 + "()", s1); }
