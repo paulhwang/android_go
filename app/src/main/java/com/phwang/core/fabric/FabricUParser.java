@@ -40,6 +40,7 @@ public class FabricUParser {
         String job_id_str = null;
         String input_str = bundle_val.data();
         this.debug(true, "parseInputPacket", "input_str = " + input_str);
+        FabricDecode fabric_decode = new FabricDecode(input_str);
 
         String rest_str = input_str;
         if (rest_str.charAt(0) == FabricCommands.FABRIC_COMMAND_HTTP_DATA) {
@@ -49,7 +50,7 @@ public class FabricUParser {
         }
 
         this.debug(false, "parseInputPacket", "data_str = " + rest_str);
-        switch (rest_str.charAt(0)) {
+        switch (fabric_decode.command()) {
             case FabricCommands.FABRIC_COMMAND_REGISTER:
                 response_data = this.processRegisterRequest(rest_str);
                 break;
