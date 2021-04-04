@@ -15,9 +15,14 @@ import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import com.phwang.core.fabric.FabricCommands;
+import com.phwang.core.fabric.FabricResults;
+import com.phwang.core.fabric.FabricThemes;
+import com.phwang.core.utils.encoders.Encoders;
+import com.phwang.core.utils.fabric.FabricEncode;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
+import com.phwang.go.global.GlobalData;
 import com.phwang.go.go.game.GoGameBoard;
 
 public class GoConfigActivity extends AppCompatActivity implements View.OnClickListener{
@@ -112,41 +117,89 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
     }
 
     protected void setupSoloSession(String go_config_data_val) {
+        FabricEncode fabric_encode = new FabricEncode(
+                FabricCommands.FABRIC_COMMAND_SOLO_SESSION,
+                FabricResults.IGNORE,
+                FabricCommands.CLIENT_IS_ANDROID,
+                FabricThemes.IGNORE,
+                GlobalData.linkIdStr(),
+                Encoders.IGNORE,
+                1
+        );
+        fabric_encode.setStringList(0, go_config_data_val);
+
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_SOLO_SESSION_STR);
         intent.putExtra(BundleIndexDefine.THEME_DATA, go_config_data_val);
+        intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
     }
 
     protected void setupHeadSession(String go_config_data_val) {
+        FabricEncode fabric_encode = new FabricEncode(
+                FabricCommands.FABRIC_COMMAND_HEAD_SESSION,
+                FabricResults.IGNORE,
+                FabricCommands.CLIENT_IS_ANDROID,
+                FabricThemes.IGNORE,
+                GlobalData.linkIdStr(),
+                Encoders.IGNORE,
+                1
+        );
+        fabric_encode.setStringList(0, go_config_data_val);
+
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_HEAD_SESSION_STR);
         intent.putExtra(BundleIndexDefine.THEME_DATA, go_config_data_val);
+        intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
     }
 
     protected void setupPeerSession(String go_config_data_val) {
+        FabricEncode fabric_encode = new FabricEncode(
+                FabricCommands.FABRIC_COMMAND_PEER_SESSION,
+                FabricResults.IGNORE,
+                FabricCommands.CLIENT_IS_ANDROID,
+                FabricThemes.IGNORE,
+                GlobalData.linkIdStr(),
+                Encoders.IGNORE,
+                1
+        );
+        fabric_encode.setStringList(0, go_config_data_val);
+
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_PEER_SESSION_STR);
         intent.putExtra(BundleIndexDefine.THEME_DATA, go_config_data_val);
+        intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
     }
 
     protected void setupJoinSession(String go_config_data_val) {
+        FabricEncode fabric_encode = new FabricEncode(
+                FabricCommands.FABRIC_COMMAND_JOIN_SESSION,
+                FabricResults.IGNORE,
+                FabricCommands.CLIENT_IS_ANDROID,
+                FabricThemes.IGNORE,
+                GlobalData.linkIdStr(),
+                Encoders.IGNORE,
+                1
+        );
+        fabric_encode.setStringList(0, go_config_data_val);
+
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
         intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_JOIN_SESSION_STR);
         intent.putExtra(BundleIndexDefine.THEME_DATA, go_config_data_val);
+        intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
     }

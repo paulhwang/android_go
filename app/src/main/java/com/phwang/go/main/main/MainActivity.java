@@ -148,7 +148,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     protected void doLogout() {
-
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_LOGOUT,
                 FabricResults.IGNORE,

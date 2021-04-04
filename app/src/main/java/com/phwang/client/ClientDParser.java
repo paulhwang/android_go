@@ -92,43 +92,6 @@ public class ClientDParser {
     	}
     }
 
-    private void parserLoginResponse(String input_str_val) {
-    	this.debug(true, "parserLoginResponse", "input_str_val=" + input_str_val);
-
-        String result_str = input_str_val.substring(1, 2);
-
-    	if (result_str.charAt(0) == FabricResults.SUCCEED) {
-            String rest_str = input_str_val.substring(2);
-
-            String data_package_str = Encoders.sSubstring5(rest_str);
-            //rest_str = Encoders.sSubstring5_(rest_str);
-
-            ////////////////////////////////////////////////
-            rest_str = Encoders.sDecode5(data_package_str);
-
-            this.debug(false, "parserLoginResponse", "0 rest_str=" + rest_str);
-            String link_id_str = Encoders.sSubstring2(rest_str);
-            rest_str = Encoders.sSubstring2_(rest_str);
-
-            this.debug(false, "parserLoginResponse", "1 rest_str=" + rest_str);
-
-            String session_id_str = Encoders.sSubstring2(rest_str);
-            rest_str = Encoders.sSubstring2_(rest_str);
-
-            this.debug(false, "parserLoginResponse", "2 rest_str=" + rest_str);
-
-            String data_str = Encoders.sDecode2(rest_str);
-            //rest_str = Encoders.sDecode2_(rest_str);
-
-            String my_name = data_str;
-
-            this.clientFabricInfo().setLinkIdStr(link_id_str);
-            //this.importInterface().handleLoginResponse(result_str);
-            this.bindReceiverDFunc().parseFabricResponse(IntentDefine.LOGIN_ACTIVITY, FabricCommands.FABRIC_COMMAND_LOGIN_STR, result_str, data_str);
-        }
-
-    }
-
     private void parserGetLinkDataResponse(String input_str_val) {
     	this.debug(false, "parserGetLinkDataResponse", "input_str_val=" + input_str_val);
 
