@@ -57,11 +57,10 @@ public class GoGameBoard {
     void decodeConfig(String config_str_val) {
         Log.e(TAG, "decodeConfig() config_str=" + config_str_val);
 
-        String config_str = config_str_val;
-        String board_size_str = config_str.substring(1, 3);
+        String board_size_str = config_str_val.substring(1, 3);
         //String handicap_str = config_str.substring(3, 5);
         //String komi_str = config_str.substring(5, 7);
-        String color_str = config_str.substring(7, 8);
+        String color_str = config_str_val.substring(7, 8);
 
         this.boardSize_ = Encoders.iDecodeRaw(board_size_str);
         //this.handicapPoint_ = Encoders.iDecodeRaw(handicap_str);

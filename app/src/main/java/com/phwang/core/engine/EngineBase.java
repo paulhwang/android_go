@@ -40,12 +40,11 @@ public class EngineBase implements ListEntryInt {
 
     public String setupBase(String input_data_val) {
     	this.debug(true, "setupBase", "input_data_val=" + input_data_val);
-        String input_data = input_data_val;
 
-        switch (input_data.charAt(0)) {
+        switch (input_data_val.charAt(0)) {
             case 'G':
                 this.goRoot_ = new GoRoot();
-                return this.goRoot_.doSetup(input_data.substring(1));
+                return this.goRoot_.doSetup(input_data_val.substring(1));
 
             default:
                 String err_msg = "command " + input_data_val.charAt(0) + " not supported";
