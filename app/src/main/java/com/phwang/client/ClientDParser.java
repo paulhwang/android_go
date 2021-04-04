@@ -75,15 +75,13 @@ public class ClientDParser {
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION3:
     		    parserSetupSession3Response(response_data_str_val);
     		    break;
+
             case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
-                parserDeleteSessionResponse(response_data_str_val);
-                break;
             case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
-    		    parserPutSessionDataResponse(response_data_str_val);
-    		    break;
             case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
-    		    parserGetSessionDataResponse(response_data_str_val);
+                this.bindReceiverDFunc().sendFabricDataResponse(IntentDefine.GO_GAME_ACTIVITY, response_data_str_val);
     		    break;
+
             default:
     		    this.abend("parserResponseData", "input_data_val=" + response_data_str_val);
     		    break;
@@ -400,21 +398,6 @@ public class ClientDParser {
             //this.importInterface().handleSetupSession3Response(result_str);
             this.bindReceiverDFunc().parseFabricResponse(IntentDefine.MAIN_ACTIVITY, FabricCommands.FABRIC_COMMAND_SETUP_SESSION3_STR, result_str, Encoders.NULL_DATA);
         }
-    }
-
-    private void parserDeleteSessionResponse(String fabric_data_str_val) {
-        this.debug(true, "parserDeleteSessionResponse", "fabric_data_str_val=" + fabric_data_str_val);
-        this.bindReceiverDFunc().sendFabricDataResponse(IntentDefine.GO_GAME_ACTIVITY, fabric_data_str_val);
-    }
-
-    private void parserPutSessionDataResponse(String fabric_data_str_val) {
-    	this.debug(true, "parserPutSessionDataResponse", "input_str_val=" + fabric_data_str_val);
-        this.bindReceiverDFunc().sendFabricDataResponse(IntentDefine.GO_GAME_ACTIVITY, fabric_data_str_val);
-    }
-
-    private void parserGetSessionDataResponse(String fabric_data_str_val) {
-    	this.debug(false, "parserGetSessionDataResponse", "fabric_data_str_val=" + fabric_data_str_val);
-        this.bindReceiverDFunc().sendFabricDataResponse(IntentDefine.GO_GAME_ACTIVITY, fabric_data_str_val);
     }
 
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }
