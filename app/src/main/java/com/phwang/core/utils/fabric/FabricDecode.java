@@ -16,6 +16,7 @@ public class FabricDecode {
 
     private char command_;
     private char result_;
+    private char clientType_;
     private char theme_;
     private String linkIdStr_;
     private String sessionIdStr_;
@@ -23,6 +24,7 @@ public class FabricDecode {
 
     public char command() { return this.command_; };
     public char result() { return this.result_; };
+    public char clientType() { return this.clientType_; }
     public char theme() { return this.theme_; };
     public String linkIdStr() { return this.linkIdStr_; };
     public String sessionIdStr() { return this.sessionIdStr_; };
@@ -33,9 +35,9 @@ public class FabricDecode {
         String rest_str = fabric_data_str_val;
         this.command_ = rest_str.charAt(0);
         this.result_ = rest_str.charAt(1);
-        this.theme_ = rest_str.charAt(2);
-        //rest_str = Encoders.sDecode5(rest_str.substring(3));
-        rest_str = rest_str.substring((3));
+        this.clientType_ = rest_str.charAt(2);
+        this.theme_ = rest_str.charAt(3);
+        rest_str = rest_str.substring((4));
 
         this.linkIdStr_ = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);

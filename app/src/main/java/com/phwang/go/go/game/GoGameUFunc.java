@@ -32,6 +32,7 @@ public class GoGameUFunc {
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_DELETE_SESSION,
                 FabricResults.IGNORE,
+                FabricCommands.CLIENT_IS_ANDROID,
                 FabricThemes.GO,
                 this.linkIdStr(),
                 this.sessionIdStr(),
@@ -51,6 +52,7 @@ public class GoGameUFunc {
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA,
                 FabricResults.IGNORE,
+                FabricCommands.CLIENT_IS_ANDROID,
                 FabricThemes.GO,
                 this.linkIdStr(),
                 this.sessionIdStr(),
@@ -71,6 +73,7 @@ public class GoGameUFunc {
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA,
                 FabricResults.IGNORE,
+                FabricCommands.CLIENT_IS_ANDROID,
                 FabricThemes.GO,
                 this.linkIdStr(),
                 this.sessionIdStr(),
