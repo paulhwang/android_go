@@ -101,19 +101,19 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         Intent intent;
         switch (view_val.getId()) {
             case R.id.go_game_b_button:
-                this.goGameUFunc_.sendPutSessionDataCommand(Encoders.sEncode2("Gb"));
+                this.goGameUFunc_.sendPutSessionDataCommand("Gb");
                 break;
             case R.id.go_game_fb_button:
-                this.goGameUFunc_.sendPutSessionDataCommand(Encoders.sEncode2("GB"));
+                this.goGameUFunc_.sendPutSessionDataCommand("GB");
                 break;
             case R.id.go_game_f_button:
-                this.goGameUFunc_.sendPutSessionDataCommand(Encoders.sEncode2("Gf"));
+                this.goGameUFunc_.sendPutSessionDataCommand("Gf");
                 break;
             case R.id.go_game_ff_button:
-                this.goGameUFunc_.sendPutSessionDataCommand(Encoders.sEncode2("GF"));
+                this.goGameUFunc_.sendPutSessionDataCommand("GF");
                 break;
             case R.id.go_game_pass_button:
-                this.goGameUFunc_.sendPutSessionDataCommand(Encoders.sEncode2("GP"));
+                this.goGameUFunc_.sendPutSessionDataCommand("GP");
                 break;
             case R.id.go_game_confirm_button:
                 finish();
