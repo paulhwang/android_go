@@ -631,24 +631,10 @@ public class FabricUParser {
 
     private String processPutSessionDataRequest(String input_str_val) {
         this.debug(true, "processPutSessionDataRequest", "input_str_val = " + input_str_val);
-    	//String xmt_seq_str = null;
         FabricDecode fabric_decode = new FabricDecode(input_str_val);
-
-        /*
-        String rest_str = input_str_val.substring(1);
-        String link_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
-
-        String session_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
-
-        String data = Encoders.sDecode2(rest_str);
-        //rest_str = Encoders.sDecode2_(rest_str);
-        */
 
         this.debug(true, "processPutSessionDataRequest", "link_id=" + fabric_decode.linkIdStr());
         this.debug(true, "processPutSessionDataRequest", "session_id=" + fabric_decode.sessionIdStr());
-        //this.debug(false, "processPutSessionDataRequest", "xmt_seq = " + xmt_seq_str);
         this.debug(true, "processPutSessionDataRequest", "data=" + fabric_decode.stringList(0));
 
         FabricLink link = this.linkMgr().getLinkByIdStr(fabric_decode.linkIdStr());
