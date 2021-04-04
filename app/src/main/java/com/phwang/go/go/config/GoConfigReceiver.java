@@ -83,7 +83,7 @@ public class GoConfigReceiver extends BroadcastReceiver {
     private void processSetupSoloSessionResponse(char result_val, String fabric_data_str_val) {
         if (result_val == FabricResults.SUCCEED) {
             Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
-            intent.putExtra(BundleIndexDefine.DATA_PACKAGE, fabric_data_str_val);
+            intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_data_str_val);
             this.goConfigActivity_.startActivity(intent);
             return;
         }
