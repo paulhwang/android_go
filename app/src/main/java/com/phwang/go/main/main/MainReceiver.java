@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.phwang.core.fabric.FabricCommands;
+import com.phwang.core.utils.fabric.FabricDecode;
 import com.phwang.go.define.BundleIndexDefine;
 
 public class MainReceiver extends BroadcastReceiver {
@@ -39,16 +40,15 @@ public class MainReceiver extends BroadcastReceiver {
     }
 
     private void handleReceivedBundle(Bundle bundle_val) {
-        String command = bundle_val.getString(BundleIndexDefine.COMMAND);
-        String result = bundle_val.getString(BundleIndexDefine.RESULT);
-        Log.e(TAG, "handleReceivedBundle() command=" + command + ", result=" + result);
+        String fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
+        Log.e(TAG, "handleReceivedBundle() fabric_data_str=" + fabric_data_str);
 
-        if (command == null) {
-            Log.e(TAG, "handleReceivedBundle() null command========================");
-            return;
-        }
+        FabricDecode fabric_decode = new FabricDecode(fabric_data_str);
+        String link_id_str = fabric_decode.linkIdStr();
 
-        switch (command.charAt(0)) {
+        Log.e(TAG, "handleReceivedBundle() command=" + fabric_decode.command() + ", result=" + fabric_decode.result());
+
+        switch (fabric_decode.command()) {
             case FabricCommands.FABRIC_COMMAND_REGISTER:
                 Log.e(TAG, "handleReceivedBundle() FABRIC_COMMAND_REGISTER");
                 break;
@@ -69,7 +69,7 @@ public class MainReceiver extends BroadcastReceiver {
                 break;
 
             default:
-                Log.e(TAG, "handleReceivedBundle() ***** not supported command=" + command);
+                Log.e(TAG, "handleReceivedBundle() ***** not supported command=" + fabric_decode.command());
         }
     }
 }

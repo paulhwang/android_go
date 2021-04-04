@@ -46,22 +46,18 @@ public class ClientDParser {
                 this.bindReceiverDFunc().sendFabricDataResponse(IntentDefine.LOGIN_ACTIVITY, response_data_str_val);
                 break;
 
+            case FabricCommands.FABRIC_COMMAND_REGISTER:
+            case FabricCommands.FABRIC_COMMAND_LOGOUT:
+            case FabricCommands.FABRIC_COMMAND_GET_GROUPS:
+                this.bindReceiverDFunc().sendFabricDataResponse(IntentDefine.MAIN_ACTIVITY, response_data_str_val);
+                break;
+
             case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
             case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
             case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
                 this.bindReceiverDFunc().sendFabricDataResponse(IntentDefine.GO_GAME_ACTIVITY, response_data_str_val);
                 break;
 
-            case FabricCommands.FABRIC_COMMAND_REGISTER:
-    		    parserRegisterResponse(response_data_str_val);
-    		    break;
-
-            case FabricCommands.FABRIC_COMMAND_LOGOUT:
-                parserLogoutResponse(response_data_str_val);
-                break;
-            case FabricCommands.FABRIC_COMMAND_GET_GROUPS:
-                parserGetGroupsResponse(response_data_str_val);
-                break;
             case FabricCommands.FABRIC_COMMAND_GET_LINK_DATA:
     		    parserGetLinkDataResponse(response_data_str_val);
     		    break;
@@ -96,21 +92,6 @@ public class ClientDParser {
     	}
     }
 
-    private void parserRegisterResponse(String input_str_val) {
-        this.debug(true, "parserRegisterResponse", "input_str_val=" + input_str_val);
-
-        String result_str = input_str_val.substring(1, 2);
-
-        if (result_str.charAt(0) == FabricResults.SUCCEED) {
-            String rest_str = input_str_val.substring(2);
-            String my_name = Encoders.sDecode2(rest_str);
-            //rest_str = Encoders.sDecode2_(rest_str);
-        }
-
-        //this.importInterface().handleRegisterResponse(result_str);
-        this.bindReceiverDFunc().parseFabricResponse(IntentDefine.MAIN_ACTIVITY, FabricCommands.FABRIC_COMMAND_REGISTER_STR, result_str, Encoders.NULL_DATA);
-    }
-    
     private void parserLoginResponse(String input_str_val) {
     	this.debug(true, "parserLoginResponse", "input_str_val=" + input_str_val);
 
@@ -146,39 +127,6 @@ public class ClientDParser {
             this.bindReceiverDFunc().parseFabricResponse(IntentDefine.LOGIN_ACTIVITY, FabricCommands.FABRIC_COMMAND_LOGIN_STR, result_str, data_str);
         }
 
-    }
-
-    private void parserLogoutResponse(String input_str_val) {
-        this.debug(true, "parserLogoutResponse", "input_str_val=" + input_str_val);
-
-        String result_str = input_str_val.substring(1, 2);
-
-        if (result_str.charAt(0) == FabricResults.SUCCEED) {
-            String rest_str = input_str_val.substring(2);
-            String link_id_str = Encoders.sSubstring2(rest_str);
-            rest_str = Encoders.sSubstring2_(rest_str);
-
-            this.clientFabricInfo().setLinkIdStr(null);
-        }
-
-        //this.importInterface().handleLogoutResponse(result_str);
-        this.bindReceiverDFunc().parseFabricResponse(IntentDefine.MAIN_ACTIVITY, FabricCommands.FABRIC_COMMAND_LOGOUT_STR, result_str, Encoders.NULL_DATA);
-    }
-
-    private void parserGetGroupsResponse(String input_str_val) {
-        this.debug(true, "parserGetGroupsResponse", "input_str_val=" + input_str_val);
-
-        String result_str = input_str_val.substring(1, 2);
-
-        if (result_str.charAt(0) == FabricResults.SUCCEED) {
-            String rest_str = input_str_val.substring(2);
-            String link_id_str = Encoders.sSubstring2(rest_str);
-            //rest_str = Encoders.sSubstring2_(rest_str);
-
-        }
-
-        //this.importInterface().handleGetGroupsResponse(result_str);
-        this.bindReceiverDFunc().parseFabricResponse(IntentDefine.MAIN_ACTIVITY, FabricCommands.FABRIC_COMMAND_GET_GROUPS_STR, result_str, Encoders.NULL_DATA);
     }
 
     private void parserGetLinkDataResponse(String input_str_val) {
