@@ -679,7 +679,7 @@ public class FabricUParser {
         String data = session.getPendingDownLinkData();
 
         /* send the response down */
-        return this.generateFabricData1(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.theme(), fabric_decode.linkIdStr(), fabric_decode.sessionIdStr(), Encoders.sEncode6(data));
+        return this.generateFabricData1(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.theme(), fabric_decode.linkIdStr(), fabric_decode.sessionIdStr(), data);
     }
 
     private String generateFabricData0(char command_val, char result_val, char theme_val, String link_id_str_val, String session_id_str_val) {
@@ -698,20 +698,6 @@ public class FabricUParser {
         fabric_encode.setStringList(0, str0_val);
         fabric_encode.setStringList(1, str1_val);
         return fabric_encode.getEncodedString();
-    }
-
-    private String generateFabricData____(char command_val, char result_val, char theme_val, String link_id_str_val, String session_id_str_val, String data_str_val) {
-        StringBuilder response_buf = new StringBuilder();
-        response_buf.append(link_id_str_val);
-        response_buf.append(session_id_str_val);
-        response_buf.append(data_str_val);
-        String data_package_str = Encoders.sEncode5(response_buf.toString());
-
-        response_buf = new StringBuilder();
-        response_buf.append(command_val);
-        response_buf.append(result_val);
-        response_buf.append(data_package_str);
-        return response_buf.toString();
     }
 
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }

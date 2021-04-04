@@ -43,9 +43,8 @@ public class FabricEncode {
         buf.append(Encoders.iEncodeRaw1(this.stringsCount_));
 
         for (int i = 0; i < this.stringsCount_; i++) {
-            buf.append(this.stringList_[i]);
+            buf.append(Encoders.sEncode6(this.stringList_[i]));
         }
         return buf.toString();
-        //return Encoders.sEncode5(buf.toString());
     }
 }
