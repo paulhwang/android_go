@@ -29,4 +29,6 @@ public class BundleIndexDefine {
 
     public static final String DATA_PACKAGE = "data_package";
 
+    public static final String FABRIC_DATA = "FABRIC_DATA";
+
 }
