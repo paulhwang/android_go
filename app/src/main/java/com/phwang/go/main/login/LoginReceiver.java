@@ -17,6 +17,7 @@ import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.fabric.FabricResults;
 import com.phwang.core.utils.fabric.FabricDecode;
 import com.phwang.go.define.BundleIndexDefine;
+import com.phwang.go.global.GlobalData;
 
 public class LoginReceiver extends BroadcastReceiver {
     private static final String TAG = "LoginReceiver";
@@ -47,6 +48,7 @@ public class LoginReceiver extends BroadcastReceiver {
         switch (fabric_decode.command()) {
             case FabricCommands.FABRIC_COMMAND_LOGIN:
                 if (fabric_decode.result() == FabricResults.SUCCEED) {
+                    GlobalData.setLinkIdStr(link_id_str);
                     this.signInActivity_.finish();
                 }
                 else {

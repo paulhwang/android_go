@@ -28,6 +28,7 @@ import com.phwang.core.utils.fabric.FabricEncode;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
+import com.phwang.go.global.GlobalData;
 import com.phwang.go.go.config.GoConfigActivity;
 import com.phwang.go.main.setup.SetupActivity;
 import com.phwang.go.main.login.LoginActivity;
@@ -153,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 FabricResults.IGNORE,
                 FabricCommands.CLIENT_IS_ANDROID,
                 FabricThemes.IGNORE,
-                Encoders.IGNORE,
+                GlobalData.linkIdStr(),
                 Encoders.IGNORE,
                 0
         );
@@ -175,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 FabricResults.IGNORE,
                 FabricCommands.CLIENT_IS_ANDROID,
                 FabricThemes.IGNORE,
-                Encoders.IGNORE,
+                GlobalData.linkIdStr(),
                 Encoders.IGNORE,
                 0
         );

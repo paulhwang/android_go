@@ -9,7 +9,7 @@
 package com.phwang.core.fabric;
 
 public class FabricCommands {
-    public static final char   CLIENT_IS_ANDROID                   = '*';
+    public static final char   CLIENT_IS_ANDROID                   = '!';
     public static final char   CLIENT_IS_IPHONE                    = '$';
     public static final char   CLIENT_IS_HTTP                      = '#';
 

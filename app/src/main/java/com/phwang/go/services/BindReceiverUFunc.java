@@ -49,38 +49,15 @@ public class BindReceiverUFunc {
         }
 
         switch (command.charAt(0)) {
+            case FabricCommands.FABRIC_COMMAND_REGISTER:
             case FabricCommands.FABRIC_COMMAND_LOGIN:
+            case FabricCommands.FABRIC_COMMAND_LOGOUT:
+            case FabricCommands.FABRIC_COMMAND_GET_GROUPS:
             case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
             case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
             case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
                 fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
                 this.clientDExport().transmitToFabric(fabric_data_str);
-                break;
-
-            //case FabricCommands.FABRIC_COMMAND_LOGIN:
-            case ';':
-                my_name = bundle_val.getString(BundleIndexDefine.MY_NAME);
-                password = bundle_val.getString(BundleIndexDefine.PASSWORD);
-                Log.e(TAG, "handleReceivedBundle() command=" + command + " name=" + my_name + "," + password);
-                this.clientDExport().doLogin(my_name, password);
-                break;
-
-            case FabricCommands.FABRIC_COMMAND_LOGOUT:
-                Log.e(TAG, "handleReceivedBundle() command=" + command);
-                this.clientDExport().doLogout();
-                break;
-
-            case FabricCommands.FABRIC_COMMAND_REGISTER:
-                my_name = bundle_val.getString(BundleIndexDefine.MY_NAME);
-                email = bundle_val.getString(BundleIndexDefine.EMAIL);
-                password = bundle_val.getString(BundleIndexDefine.PASSWORD);
-                Log.e(TAG, "handleReceivedBundle() command=" + command);
-                this.clientDExport().doRegister(my_name, password, email);
-                break;
-
-            case FabricCommands.FABRIC_COMMAND_GET_GROUPS:
-                Log.e(TAG, "handleReceivedBundle() command=" + command);
-                this.clientDExport().doGetGroups();
                 break;
 
             case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
