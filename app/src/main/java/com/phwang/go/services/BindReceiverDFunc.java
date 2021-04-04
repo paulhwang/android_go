@@ -14,6 +14,7 @@ import android.util.Log;
 
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.utils.encoders.Encoders;
+import com.phwang.core.utils.fabric.FabricData;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.define.ThemeDefine;
@@ -44,6 +45,18 @@ public class BindReceiverDFunc {
         Log.e(TAG, "parseFabricResponse() command=" + command_val + " result=" + result_val + " data=" + data_package_str_val);
 
         this.sendResponseBroadcastMessage(target_val, command_val, result_val, data_package_str_val);
+    }
+
+    public void sendFabricDataResponse(String target_val, String fabric_data_str_val) {
+        Log.e(TAG, "sendFabricDataResponse() fabric_data_str_val=" + fabric_data_str_val);
+
+        Intent intent = new Intent();
+        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
+        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.BIND_SERVICE);
+        intent.putExtra(BundleIndexDefine.COMMAND, FabricData.getCommand(fabric_data_str_val));
+        intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_data_str_val);
+        intent.setAction(target_val);
+        this.bindService().sendBroadcast(intent);
     }
 
     private String getSessionDataTargetActivity(String data_package_str_val) {
