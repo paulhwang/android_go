@@ -9,7 +9,7 @@
 package com.phwang.core.fabric;
 
 public class FabricResults {
-    public static final char   IGNORE                = '*';
+    public static final char   UNDECIDED             = '?';
     public static final char   SUCCEED               = '0';
     public static final String SUCCEED_STR           = "0";
     public static final char   ACCOUNT_NOT_EXIST     = '1';

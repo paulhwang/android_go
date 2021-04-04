@@ -121,7 +121,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
     protected void setupSoloSession(String go_config_data_val) {
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_SOLO_SESSION,
-                FabricResults.IGNORE,
+                FabricResults.UNDECIDED,
                 FabricClients.ANDROID,
                 FabricThemes.IGNORE,
                 GlobalData.linkIdStr(),
@@ -143,7 +143,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
     protected void setupHeadSession(String go_config_data_val) {
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_HEAD_SESSION,
-                FabricResults.IGNORE,
+                FabricResults.UNDECIDED,
                 FabricClients.ANDROID,
                 FabricThemes.IGNORE,
                 GlobalData.linkIdStr(),
@@ -165,7 +165,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
     protected void setupPeerSession(String go_config_data_val) {
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_PEER_SESSION,
-                FabricResults.IGNORE,
+                FabricResults.UNDECIDED,
                 FabricClients.ANDROID,
                 FabricThemes.IGNORE,
                 GlobalData.linkIdStr(),
@@ -187,7 +187,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
     protected void setupJoinSession(String go_config_data_val) {
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_JOIN_SESSION,
-                FabricResults.IGNORE,
+                FabricResults.UNDECIDED,
                 FabricClients.ANDROID,
                 FabricThemes.IGNORE,
                 GlobalData.linkIdStr(),

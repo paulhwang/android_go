@@ -87,7 +87,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_LOGIN,
-                FabricResults.IGNORE,
+                FabricResults.UNDECIDED,
                 FabricClients.ANDROID,
                 FabricThemes.IGNORE,
                 Encoders.IGNORE,

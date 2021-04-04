@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void doLogout() {
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_LOGOUT,
-                FabricResults.IGNORE,
+                FabricResults.UNDECIDED,
                 FabricClients.ANDROID,
                 FabricThemes.IGNORE,
                 GlobalData.linkIdStr(),
@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_GET_GROUPS,
-                FabricResults.IGNORE,
+                FabricResults.UNDECIDED,
                 FabricClients.ANDROID,
                 FabricThemes.IGNORE,
                 GlobalData.linkIdStr(),

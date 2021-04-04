@@ -92,7 +92,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_REGISTER,
-                FabricResults.IGNORE,
+                FabricResults.UNDECIDED,
                 FabricClients.ANDROID,
                 FabricThemes.IGNORE,
                 Encoders.IGNORE,
