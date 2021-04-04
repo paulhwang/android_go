@@ -208,7 +208,8 @@ public class ClientDExport implements ClientDExportInt {
     	this.transmitToFabric(command_str);
     }
     
-    public void deleteSession(String link_id_str_val, String session_id_str_val) {
+    public void deleteSession(String fabric_data_str_val, String link_id_str_val, String session_id_str_val) {
+        this.debug(true, "deleteSession", "fabric_data_str=" + fabric_data_str_val);
         this.debug(false, "deleteSession", "session_id=" + session_id_str_val);
 
         StringBuilder command_buf = new StringBuilder();
@@ -222,7 +223,8 @@ public class ClientDExport implements ClientDExportInt {
         this.transmitToFabric(command_str);
     }
     
-    public void putSessionData(String link_id_str_val, String session_id_str_val, String data_str_val) {
+    public void putSessionData(String fabric_data_str_val, String link_id_str_val, String session_id_str_val, String data_str_val) {
+        this.debug(true, "putSessionData", "fabric_data_str=" + fabric_data_str_val);
     	this.debug(false, "putSessionData", "session_id=" + session_id_str_val);
     	
         StringBuilder command_buf = new StringBuilder();
@@ -237,7 +239,8 @@ public class ClientDExport implements ClientDExportInt {
     	this.transmitToFabric(command_str);
     }
     
-    public void getSessionData(String link_id_str_val, String session_id_str_val) {
+    public void getSessionData(String fabric_data_str_val, String link_id_str_val, String session_id_str_val) {
+        this.debug(true, "getSessionData", "fabric_data_str=" + fabric_data_str_val);
     	this.debug(false, "getSessionData", "session_id=" + session_id_str_val);
     	
         StringBuilder command_buf = new StringBuilder();

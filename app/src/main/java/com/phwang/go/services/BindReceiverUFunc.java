@@ -10,7 +10,6 @@ package com.phwang.go.services;
 
 import android.os.Bundle;
 import android.util.Log;
-
 import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientFabricInfo;
 import com.phwang.core.fabric.FabricCommands;
@@ -40,6 +39,7 @@ public class BindReceiverUFunc {
         String password;
         String link_id_str;
         String session_id_str;
+        String fabric_data_str;
 
         Log.e(TAG, "handleCommand() command=" + command);
 
@@ -159,23 +159,26 @@ public class BindReceiverUFunc {
                 break;
 
             case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
+                fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
                 link_id_str = bundle_val.getString(BundleIndexDefine.LINK_ID);
                 session_id_str = bundle_val.getString(BundleIndexDefine.SESSION_ID);
                 //this.bindUClient().deleteSession(link_id_str, session_id_str);
-                this.clientDExport().deleteSession(link_id_str, session_id_str);;
+                this.clientDExport().deleteSession(fabric_data_str, link_id_str, session_id_str);;
                 break;
 
             case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
+                fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
                 String move_data_str = bundle_val.getString(BundleIndexDefine.MOVE_DATA);
                 link_id_str = bundle_val.getString(BundleIndexDefine.LINK_ID);
                 session_id_str = bundle_val.getString(BundleIndexDefine.SESSION_ID);
-                this.clientDExport().putSessionData(link_id_str, session_id_str, move_data_str);;
+                this.clientDExport().putSessionData(fabric_data_str, link_id_str, session_id_str, move_data_str);;
                 break;
 
             case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
+                fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
                 link_id_str = bundle_val.getString(BundleIndexDefine.LINK_ID);
                 session_id_str = bundle_val.getString(BundleIndexDefine.SESSION_ID);
-                this.clientDExport().getSessionData(link_id_str, session_id_str);;
+                this.clientDExport().getSessionData(fabric_data_str, link_id_str, session_id_str);;
                 break;
 
             default:
