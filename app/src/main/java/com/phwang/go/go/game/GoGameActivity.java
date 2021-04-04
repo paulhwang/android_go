@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import com.phwang.core.utils.encoders.Encoders;
+import com.phwang.core.utils.fabric.FabricDecode;
 import com.phwang.core.utils.watchdog.WatchDog;
 import com.phwang.core.utils.watchdog.WatchDogInt;
 import com.phwang.go.R;
@@ -43,15 +44,15 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         String data_package_str = this.getIntent().getExtras().getString(BundleIndexDefine.DATA_PACKAGE);
         Log.e(TAG, "onCreate() data_package=" + data_package_str);
 
-        String rest_str = Encoders.sDecode5(data_package_str);
-        this.linkIdStr_ = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
-
-        this.sessionIdStr_ = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
-
-        String config_str = Encoders.sSubstring5(rest_str);
-        //rest_str = Encoders.sSubstring5_(rest_str);
+        FabricDecode fabric_decode = new FabricDecode(data_package_str);
+        this.linkIdStr_ = fabric_decode.linkIdStr();
+        this.sessionIdStr_ = fabric_decode.sessionIdStr();
+        String config_str = fabric_decode.stringList(0);
+        Log.e(TAG, "onCreate() linkIdStr_=" + linkIdStr_);
+        Log.e(TAG, "onCreate() sessionIdStr_=" + sessionIdStr_);
+        Log.e(TAG, "onCreate() config_str=" + config_str);
+        config_str = Encoders.sDecode6(config_str);
+        Log.e(TAG, "onCreate() config_str=" + config_str);
 
         this.goBoard_ = new GoGameBoard(this, config_str);
         this.goGameUFunc_ = new GoGameUFunc(this);

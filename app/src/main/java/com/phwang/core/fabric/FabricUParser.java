@@ -8,6 +8,8 @@
 
 package com.phwang.core.fabric;
 
+import android.provider.MediaStore;
+
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.utils.fabric.FabricDecode;
 import com.phwang.core.utils.fabric.FabricEncode;
@@ -201,6 +203,34 @@ public class FabricUParser {
         return this.generateFabricData1(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.clientType(), fabric_decode.theme(), link_id_str, Encoders.IGNORE, Encoders.NULL_DATA);
     }
 
+    private String processSoloSessionRequest(String input_str_val) {
+        this.debug(true, "processSoloSessionRequest", "input_str_val=" + input_str_val);
+        FabricDecode fabric_decode = new FabricDecode(input_str_val);
+
+        String link_id_str = fabric_decode.linkIdStr();
+        String theme_data_str = fabric_decode.stringList(0);
+
+
+        FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
+        if (link == null) {
+            return this.generateFabricData0(fabric_decode.command(), FabricResults.LINK_NOT_EXIST, fabric_decode.clientType(), fabric_decode.theme(), link_id_str, Encoders.IGNORE);
+        }
+
+        this.debug(true, "processSoloSessionRequest", "link_id = " + link_id_str);
+        this.debug(true, "processSoloSessionRequest", "theme_data = " + theme_data_str);
+        theme_data_str = Encoders.sDecode6(theme_data_str);
+        this.debug(true, "processSoloSessionRequest", "theme_data = " + theme_data_str);
+
+        FabricSession session = link.mallocSession();
+        FabricGroup group = this.groupMgr().mallocGroup(theme_data_str);
+        group.insertSession(session);
+        session.bindGroup(group);
+
+        this.mallocRoom(group, theme_data_str);
+
+        return this.generateFabricData1(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.clientType(), fabric_decode.theme(), link_id_str, session.lSessionIdStr(), theme_data_str);
+    }
+
     private String processDeleteSessionRequest(String input_str_val) {
         this.debug(true, "processDeleteSessionRequest", "input_str_val = " + input_str_val);
         FabricDecode fabric_decode = new FabricDecode(input_str_val);
@@ -381,35 +411,6 @@ public class FabricUParser {
         response_buf.append(link_id_str_val);
         response_buf.append(Encoders.sEncode2(name_list_str_val));
         return response_buf.toString();
-    }
-
-    private String processSoloSessionRequest(String input_str_val) {
-        this.debug(true, "processSoloSessionRequest", "input_str_val=" + input_str_val);
-        
-        String rest_str = input_str_val.substring(1);
-        String link_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
-
-        String theme_data_str = Encoders.sSubstring5(rest_str);
-        //rest_str = Encoders.sDecode5_(rest_str);
-
-        this.debug(true, "processSoloSessionRequest", "link_id = " + link_id_str);
-        this.debug(true, "processSoloSessionRequest", "theme_data = " + theme_data_str);
-
-        FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
-        if (link == null) {
-            return this.generateFabricResponse(input_str_val.charAt(0), FabricResults.LINK_NOT_EXIST, link_id_str, Encoders.NULL_SESSION, theme_data_str);
-        }
-        
-        FabricSession session = link.mallocSession();
-        FabricGroup group = this.groupMgr().mallocGroup(theme_data_str);
-        group.insertSession(session);
-        session.bindGroup(group);
-        
-        this.mallocRoom(group, theme_data_str);
-
-        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResults.SUCCEED, link_id_str, session.lSessionIdStr(), theme_data_str);
-        return response_data;
     }
 
     private String processHeadSessionRequest(String input_str_val) {

@@ -58,15 +58,10 @@ public class ClientDParser {
                 this.bindReceiverDFunc().sendFabricDataResponse(IntentDefine.GO_GAME_ACTIVITY, response_data_str_val);
                 break;
 
-            case FabricCommands.FABRIC_COMMAND_GET_LINK_DATA:
-    		    parserGetLinkDataResponse(response_data_str_val);
-    		    break;
-            case FabricCommands.FABRIC_COMMAND_GET_NAME_LIST:
-    		    parserGetNameListResponse(response_data_str_val);
-    		    break;
             case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
-                parserSoloSessionResponse(response_data_str_val);
+                this.bindReceiverDFunc().sendFabricDataResponse(IntentDefine.GO_CONFIG_ACTIVITY, response_data_str_val);
                 break;
+
             case FabricCommands.FABRIC_COMMAND_HEAD_SESSION:
                 parserHeadSessionResponse(response_data_str_val);
                 break;
@@ -75,6 +70,13 @@ public class ClientDParser {
                 break;
             case FabricCommands.FABRIC_COMMAND_JOIN_SESSION:
                 parserJoinSessionResponse(response_data_str_val);
+                break;
+
+            case FabricCommands.FABRIC_COMMAND_GET_LINK_DATA:
+                parserGetLinkDataResponse(response_data_str_val);
+                break;
+            case FabricCommands.FABRIC_COMMAND_GET_NAME_LIST:
+                parserGetNameListResponse(response_data_str_val);
                 break;
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION:
     		    parserSetupSessionResponse(response_data_str_val);

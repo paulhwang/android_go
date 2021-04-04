@@ -16,6 +16,7 @@ import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.fabric.FabricResults;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
+import com.phwang.go.global.GlobalData;
 
 public class BindReceiverUFunc {
     private static final String TAG = "BindReceiverUFunc";
@@ -49,6 +50,15 @@ public class BindReceiverUFunc {
         }
 
         switch (command.charAt(0)) {
+            case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
+                if (GlobalData.linkIdStr() == null) {
+                    this.bindReceiverDFunc().sendResponseBroadcastMessage(
+                            IntentDefine.GO_CONFIG_ACTIVITY,
+                            FabricCommands.FABRIC_COMMAND_SOLO_SESSION_STR,
+                            FabricResults.LINK_NOT_EXIST_STR,
+                            null);
+                    return;
+                }
             case FabricCommands.FABRIC_COMMAND_REGISTER:
             case FabricCommands.FABRIC_COMMAND_LOGIN:
             case FabricCommands.FABRIC_COMMAND_LOGOUT:
@@ -60,21 +70,6 @@ public class BindReceiverUFunc {
                 this.clientDExport().transmitToFabric(fabric_data_str);
                 break;
 
-            case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
-                theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
-                Log.e(TAG, "handleCommand(FABRIC_COMMAND_SOLO_SESSION) data=" + theme_data);
-
-                if (this.clientFabricInfo().linkIdStr() == null) {
-                    this.bindReceiverDFunc().sendResponseBroadcastMessage(
-                            IntentDefine.GO_CONFIG_ACTIVITY,
-                            FabricCommands.FABRIC_COMMAND_SOLO_SESSION_STR,
-                            FabricResults.LINK_NOT_EXIST_STR,
-                            null);
-                    return;
-                }
-
-                this.clientDExport().setupSoloSession(theme_data);
-                break;
 
             case FabricCommands.FABRIC_COMMAND_HEAD_SESSION:
                 theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
