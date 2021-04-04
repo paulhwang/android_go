@@ -11,6 +11,7 @@ package com.phwang.go.go.game;
 import android.util.Log;
 
 import com.phwang.core.utils.encoders.Encoders;
+import com.phwang.core.utils.fabric.FabricDecode;
 
 public class GoGameDFunc {
     private static final String TAG = "GoGameDFunc";
@@ -25,36 +26,14 @@ public class GoGameDFunc {
         this.goGameActivity_ = go_game_activity_val;
     }
 
-    protected void parseGetSessionData(String data_package_str_val) {
-        Log.e(TAG, "parseGetSessionData() data=" + data_package_str_val);
+    protected void parseGetSessionData(String fabric_data_str_val) {
+        Log.e(TAG, "parseGetSessionData() fabric_data_str=" + fabric_data_str_val);
 
-        String rest_str = Encoders.sDecode5(data_package_str_val);
-        String link_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
-        //Log.e(TAG, "parseGetSessionData() link_id_str=" + link_id_str);
-        /*
-        if (!this.linkIdStr().equals(link_id_str)) {
-            Log.e(TAG, "parseGetSessionData(link_id is different) link_id=" + this.linkIdStr() + " " + link_id_str);
-            return;
-        }
-        */
+        FabricDecode fabric_decode = new FabricDecode(fabric_data_str_val);
+        Log.e(TAG, "parseGetSessionData() theme_data_str_=" + fabric_decode.stringList(0));
 
-        String session_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
-        //Log.e(TAG, "parseGetSessionData() session_id_str=" + session_id_str);
-        /*
-        if (!this.sessionIdStr().equals(session_id_str)) {
-            Log.e(TAG, "parseGetSessionData(session_id is different) link_id=" + this.sessionIdStr() + " " + session_id_str);
-            return;
-        }
-        */
-
-        String encoded_theme_data_str = Encoders.sSubstring5(rest_str);
-        rest_str = Encoders.sSubstring5_(rest_str);
-        //Log.e(TAG, "parseGetSessionData() encoded_theme_data_str=" + encoded_theme_data_str);
-
-        String theme_data_str = Encoders.sDecode5(encoded_theme_data_str);
-        //Log.e(TAG, "parseGetSessionData() theme_data_str=" + theme_data_str);
+        String theme_data_str = Encoders.sDecode6(fabric_decode.stringList(0));
+        Log.e(TAG, "parseGetSessionData() theme_data_str=" + theme_data_str);
 
         String board_data_str = theme_data_str.substring(1);
 

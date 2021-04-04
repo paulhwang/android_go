@@ -97,7 +97,7 @@ public class GoGameBoard {
         buf.append(Encoders.iEncodeRaw1(this.nextColor_));
         buf.append(Encoders.iEncodeRaw3(this.totalMoves_ + 1));
         String data = buf.toString();
-        return Encoders.sEncode2(data);
+        return Encoders.sEncode6(data);
     }
 
     private Boolean isValidCoordinate_(int coordinate_val) {

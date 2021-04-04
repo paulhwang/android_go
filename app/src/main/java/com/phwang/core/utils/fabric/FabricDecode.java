@@ -47,8 +47,8 @@ public class FabricDecode {
         rest_str = rest_str.substring(1);
 
         for (int i = 0; i < count; i ++) {
-            this.stringList_[i] = Encoders.sSubstring2(rest_str);
-            rest_str = Encoders.sSubstring2_(rest_str);
+            this.stringList_[i] = Encoders.sSubstring6(rest_str);
+            rest_str = Encoders.sSubstring6_(rest_str);
         }
     }
 }

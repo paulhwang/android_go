@@ -77,8 +77,12 @@ public class Encoders {
         buf.append(str_val);
         return buf.toString();
     }
+    public static String sEncode1(String str_val) { return sEncode(str_val, 1); }
     public static String sEncode2(String str_val) { return sEncode(str_val, 2); }
+    public static String sEncode3(String str_val) { return sEncode(str_val, 3); }
+    public static String sEncode4(String str_val) { return sEncode(str_val, 4); }
     public static String sEncode5(String str_val) { return sEncode(str_val, 5); }
+    public static String sEncode6(String str_val) { return sEncode(str_val, 6); }
 
     public static String sDecode(String str_val, int size_val) {
         int len = Encoders.iDecodeRaw(str_val.substring(0, size_val));
@@ -86,14 +90,20 @@ public class Encoders {
     }
     public static String sDecode1(String str_val) { return sDecode(str_val, 1); }
     public static String sDecode2(String str_val) { return sDecode(str_val, 2); }
+    public static String sDecode3(String str_val) { return sDecode(str_val, 3); }
+    public static String sDecode4(String str_val) { return sDecode(str_val, 4); }
     public static String sDecode5(String str_val) { return sDecode(str_val, 5); }
+    public static String sDecode6(String str_val) { return sDecode(str_val, 6); }
 
     public static String sDecode_(String str_val, int size_val) {
         return str_val.substring(size_val + Encoders.iDecodeRaw(str_val.substring(0, size_val)));
     }
     public static String sDecode1_(String str_val) { return sDecode_(str_val, 1); }
     public static String sDecode2_(String str_val) { return sDecode_(str_val, 2); }
+    public static String sDecode3_(String str_val) { return sDecode_(str_val, 3); }
+    public static String sDecode4_(String str_val) { return sDecode_(str_val, 4); }
     public static String sDecode5_(String str_val) { return sDecode_(str_val, 5); }
+    public static String sDecode6_(String str_val) { return sDecode_(str_val, 6); }
 
     public static String sSubstring(String str_val, int size_val) {
         int len = Encoders.iDecodeRaw(str_val.substring(0, size_val));
@@ -101,7 +111,10 @@ public class Encoders {
     }
     public static String sSubstring1(String str_val) { return sSubstring(str_val, 1); }
     public static String sSubstring2(String str_val) { return sSubstring(str_val, 2); }
+    public static String sSubstring3(String str_val) { return sSubstring(str_val, 3); }
+    public static String sSubstring4(String str_val) { return sSubstring(str_val, 4); }
     public static String sSubstring5(String str_val) { return sSubstring(str_val, 5); }
+    public static String sSubstring6(String str_val) { return sSubstring(str_val, 6); }
 
 
     public static String sSubstring_(String str_val, int size_val) {
@@ -109,5 +122,8 @@ public class Encoders {
     }
     public static String sSubstring1_(String str_val) { return sSubstring_(str_val, 1); }
     public static String sSubstring2_(String str_val) { return sSubstring_(str_val, 2); }
+    public static String sSubstring3_(String str_val) { return sSubstring_(str_val, 3); }
+    public static String sSubstring4_(String str_val) { return sSubstring_(str_val, 4); }
     public static String sSubstring5_(String str_val) { return sSubstring_(str_val, 5); }
+    public static String sSubstring6_(String str_val) { return sSubstring_(str_val, 6); }
 }

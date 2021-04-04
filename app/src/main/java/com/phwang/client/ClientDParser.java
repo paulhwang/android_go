@@ -431,8 +431,9 @@ public class ClientDParser {
     private void parserGetSessionDataResponse(String fabric_data_str_val) {
     	this.debug(false, "parserGetSessionDataResponse", "fabric_data_str_val=" + fabric_data_str_val);
 
-        //this.bindReceiverDFunc().sendFabricDataResponse(IntentDefine.GO_GAME_ACTIVITY, fabric_data_str_val);
+        this.bindReceiverDFunc().sendFabricDataResponse(IntentDefine.GO_GAME_ACTIVITY, fabric_data_str_val);
 
+        /*
         String result_str = fabric_data_str_val.substring(1, 2);
 
         if (result_str.charAt(0) == FabricResults.SUCCEED) {
@@ -444,6 +445,7 @@ public class ClientDParser {
             //this.importInterface().handleGetSessionDataResponse(result_str, data_package_str);
             this.bindReceiverDFunc().parseFabricResponse(IntentDefine.GO_GAME_ACTIVITY, FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA_STR, result_str, data_package_str);
         }
+         */
     }
 
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }

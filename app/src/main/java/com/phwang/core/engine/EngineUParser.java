@@ -24,7 +24,7 @@ public class EngineUParser {
     }
 
     public void ParseInputPacket(String input_data_val) {
-        this.debug(false, "ParseInputPacket", "data=" + input_data_val);
+        this.debug(true, "ParseInputPacket", "data=" + input_data_val);
 
         char command = input_data_val.charAt(0);
         String input_data = input_data_val.substring(1);

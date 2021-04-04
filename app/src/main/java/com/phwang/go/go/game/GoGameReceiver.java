@@ -53,7 +53,8 @@ public class GoGameReceiver extends BroadcastReceiver {
         String command = bundle_val.getString(BundleIndexDefine.COMMAND);
         String result = bundle_val.getString(BundleIndexDefine.RESULT);
         String data_package_str = bundle_val.getString(BundleIndexDefine.DATA_PACKAGE);
-        Log.e(TAG, "handleReceivedBundle(000) command=" + command + ", result=" + result + " data_package=" + data_package_str);
+        String fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
+        Log.e(TAG, "handleReceivedBundle() command=" + command + ", fabric_data=" + fabric_data_str + " data_package=" + data_package_str);
 
         if (command != null) {
             switch (command.charAt(0)) {
@@ -66,7 +67,7 @@ public class GoGameReceiver extends BroadcastReceiver {
                     break;
 
                 case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
-                    this.goGameDFunc().parseGetSessionData(data_package_str);
+                    this.goGameDFunc().parseGetSessionData(fabric_data_str);
                     break;
 
                 default:
