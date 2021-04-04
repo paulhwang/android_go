@@ -14,7 +14,7 @@ import android.util.Log;
 import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientFabricInfo;
 import com.phwang.core.fabric.FabricCommands;
-import com.phwang.core.fabric.FabricResultExport;
+import com.phwang.core.fabric.FabricResults;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
 
@@ -82,7 +82,7 @@ public class BindReceiverUFunc {
                     this.bindReceiverDFunc().sendResponseBroadcastMessage(
                             IntentDefine.GO_CONFIG_ACTIVITY,
                             FabricCommands.FABRIC_COMMAND_SOLO_SESSION_STR,
-                            FabricResultExport.LINK_NOT_EXIST_STR,
+                            FabricResults.LINK_NOT_EXIST_STR,
                             null);
                     return;
                 }
@@ -98,7 +98,7 @@ public class BindReceiverUFunc {
                     this.bindReceiverDFunc().sendResponseBroadcastMessage(
                             IntentDefine.GO_CONFIG_ACTIVITY,
                             FabricCommands.FABRIC_COMMAND_HEAD_SESSION_STR,
-                            FabricResultExport.LINK_NOT_EXIST_STR,
+                            FabricResults.LINK_NOT_EXIST_STR,
                             null);
                     return;
                 }
@@ -114,7 +114,7 @@ public class BindReceiverUFunc {
                     this.bindReceiverDFunc().sendResponseBroadcastMessage(
                             IntentDefine.GO_CONFIG_ACTIVITY,
                             FabricCommands.FABRIC_COMMAND_PEER_SESSION_STR,
-                            FabricResultExport.LINK_NOT_EXIST_STR,
+                            FabricResults.LINK_NOT_EXIST_STR,
                             null);
                     return;
                 }
@@ -130,7 +130,7 @@ public class BindReceiverUFunc {
                     this.bindReceiverDFunc().sendResponseBroadcastMessage(
                             IntentDefine.GO_CONFIG_ACTIVITY,
                             FabricCommands.FABRIC_COMMAND_JOIN_SESSION_STR,
-                            FabricResultExport.LINK_NOT_EXIST_STR,
+                            FabricResults.LINK_NOT_EXIST_STR,
                             null);
                     return;
                 }
@@ -146,7 +146,7 @@ public class BindReceiverUFunc {
                     this.bindReceiverDFunc().sendResponseBroadcastMessage(
                             IntentDefine.GO_CONFIG_ACTIVITY,
                             FabricCommands.FABRIC_COMMAND_SETUP_SESSION_STR,
-                            FabricResultExport.LINK_NOT_EXIST_STR,
+                            FabricResults.LINK_NOT_EXIST_STR,
                             null);
 
                     return;

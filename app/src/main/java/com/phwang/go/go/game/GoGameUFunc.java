@@ -11,7 +11,7 @@ package com.phwang.go.go.game;
 import android.content.Intent;
 
 import com.phwang.core.fabric.FabricCommands;
-import com.phwang.core.fabric.FabricResultExport;
+import com.phwang.core.fabric.FabricResults;
 import com.phwang.core.fabric.FabricThemes;
 import com.phwang.core.utils.fabric.FabricEncode;
 import com.phwang.go.define.BundleIndexDefine;
@@ -31,7 +31,7 @@ public class GoGameUFunc {
     protected void sendDeleteSessionCommand() {
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_DELETE_SESSION,
-                FabricResultExport.IGNORE,
+                FabricResults.IGNORE,
                 FabricThemes.GO,
                 this.linkIdStr(),
                 this.sessionIdStr(),
@@ -52,14 +52,14 @@ public class GoGameUFunc {
     protected void sendPutSessionDataCommand(String move_data_val) {
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA,
-                FabricResultExport.IGNORE,
+                FabricResults.IGNORE,
                 FabricThemes.GO,
                 this.linkIdStr(),
                 this.sessionIdStr(),
                 1
         );
         fabric_encode.setStringList(0, move_data_val);
-        
+
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_GAME_ACTIVITY);
@@ -75,7 +75,7 @@ public class GoGameUFunc {
     protected void sendGetSessionDataCommand() {
         FabricEncode fabric_encode = new FabricEncode(
                 FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA,
-                FabricResultExport.IGNORE,
+                FabricResults.IGNORE,
                 FabricThemes.GO,
                 this.linkIdStr(),
                 this.sessionIdStr(),

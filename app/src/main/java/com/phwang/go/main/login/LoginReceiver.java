@@ -14,7 +14,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import com.phwang.core.fabric.FabricCommands;
-import com.phwang.core.fabric.FabricResultExport;
+import com.phwang.core.fabric.FabricResults;
 import com.phwang.go.define.BundleIndexDefine;
 
 public class LoginReceiver extends BroadcastReceiver {
@@ -48,7 +48,7 @@ public class LoginReceiver extends BroadcastReceiver {
 
         switch (command.charAt(0)) {
             case FabricCommands.FABRIC_COMMAND_LOGIN:
-                if (result == FabricResultExport.SUCCEED) {
+                if (result == FabricResults.SUCCEED) {
                     this.signInActivity_.finish();
                 }
                 else {

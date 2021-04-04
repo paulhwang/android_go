@@ -8,7 +8,7 @@
 
 package com.phwang.core.fabric;
 
-public class FabricResultExport {
+public class FabricResults {
     public static final char   IGNORE                = '*';
     public static final char   SUCCEED               = '0';
     public static final String SUCCEED_STR           = "0";

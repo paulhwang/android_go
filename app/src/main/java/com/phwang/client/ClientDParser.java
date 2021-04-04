@@ -9,7 +9,7 @@
 package com.phwang.client;
 
 import com.phwang.core.fabric.FabricCommands;
-import com.phwang.core.fabric.FabricResultExport;
+import com.phwang.core.fabric.FabricResults;
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.services.BindReceiverDFunc;
@@ -95,7 +95,7 @@ public class ClientDParser {
 
         String result_str = input_str_val.substring(0, 1);
 
-        if (result_str.charAt(0) == FabricResultExport.SUCCEED) {
+        if (result_str.charAt(0) == FabricResults.SUCCEED) {
             String rest_str = input_str_val.substring(1);
             String my_name = Encoders.sDecode2(rest_str);
             //rest_str = Encoders.sDecode2_(rest_str);
@@ -110,7 +110,7 @@ public class ClientDParser {
 
     	String result_str = input_str_val.substring(0, 1);
 
-    	if (result_str.charAt(0) == FabricResultExport.SUCCEED) {
+    	if (result_str.charAt(0) == FabricResults.SUCCEED) {
             String rest_str = input_str_val.substring(1);
 
             String data_package_str = Encoders.sSubstring5(rest_str);
@@ -147,7 +147,7 @@ public class ClientDParser {
 
         String result_str = input_str_val.substring(0, 1);
 
-        if (result_str.charAt(0) == FabricResultExport.SUCCEED) {
+        if (result_str.charAt(0) == FabricResults.SUCCEED) {
             String rest_str = input_str_val.substring(1);
             String link_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
@@ -164,7 +164,7 @@ public class ClientDParser {
 
         String result_str = input_str_val.substring(0, 1);
 
-        if (result_str.charAt(0) == FabricResultExport.SUCCEED) {
+        if (result_str.charAt(0) == FabricResults.SUCCEED) {
             String rest_str = input_str_val.substring(1);
             String link_id_str = Encoders.sSubstring2(rest_str);
             //rest_str = Encoders.sSubstring2_(rest_str);
@@ -180,7 +180,7 @@ public class ClientDParser {
 
         String result_str = input_str_val.substring(0, 1);
 
-        if (result_str.charAt(0) == FabricResultExport.SUCCEED) {
+        if (result_str.charAt(0) == FabricResults.SUCCEED) {
             String rest_str = input_str_val.substring(1);
             String link_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
@@ -201,7 +201,7 @@ public class ClientDParser {
 
         String result_str = input_str_val.substring(0, 1);
 
-        if (result_str.charAt(0) == FabricResultExport.SUCCEED) {
+        if (result_str.charAt(0) == FabricResults.SUCCEED) {
             String rest_str = input_str_val.substring(1);
             String link_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
@@ -218,7 +218,7 @@ public class ClientDParser {
         this.debug(true, "parserSoloSessionResponse", "input_str_val=" + input_str_val);
         String result_str = input_str_val.substring(0, 1);
 
-        if (result_str.charAt(0) == FabricResultExport.SUCCEED) {
+        if (result_str.charAt(0) == FabricResults.SUCCEED) {
             String rest_str = input_str_val.substring(1);
 
             String data_str = Encoders.sSubstring5(rest_str);
@@ -249,7 +249,7 @@ public class ClientDParser {
         this.debug(true, "parserHeadSessionResponse", "input_str_val=" + input_str_val);
         String result_str = input_str_val.substring(0, 1);
 
-        if (result_str.charAt(0) == FabricResultExport.SUCCEED) {
+        if (result_str.charAt(0) == FabricResults.SUCCEED) {
             String rest_str = input_str_val.substring(1);
 
             String data_str = Encoders.sSubstring5(rest_str);
@@ -280,7 +280,7 @@ public class ClientDParser {
         this.debug(true, "parserPeerSessionResponse", "input_str_val=" + input_str_val);
         String result_str = input_str_val.substring(0, 1);
 
-        if (result_str.charAt(0) == FabricResultExport.SUCCEED) {
+        if (result_str.charAt(0) == FabricResults.SUCCEED) {
             String rest_str = input_str_val.substring(1);
 
             String data_str = Encoders.sSubstring5(rest_str);
@@ -310,7 +310,7 @@ public class ClientDParser {
         this.debug(true, "parserJoinSessionResponse", "input_str_val=" + input_str_val);
         String result_str = input_str_val.substring(0, 1);
 
-        if (result_str.charAt(0) == FabricResultExport.SUCCEED) {
+        if (result_str.charAt(0) == FabricResults.SUCCEED) {
             String rest_str = input_str_val.substring(1);
 
             String data_str = Encoders.sSubstring5(rest_str);
@@ -342,7 +342,7 @@ public class ClientDParser {
 
         String result_str = input_str_val.substring(0, 1);
 
-        if (result_str.charAt(0) == FabricResultExport.SUCCEED) {
+        if (result_str.charAt(0) == FabricResults.SUCCEED) {
             String rest_str = input_str_val.substring(1);
             String link_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
@@ -365,7 +365,7 @@ public class ClientDParser {
 
         String result_str = input_str_val.substring(0, 1);
 
-        if (result_str.charAt(0) == FabricResultExport.SUCCEED) {
+        if (result_str.charAt(0) == FabricResults.SUCCEED) {
             String rest_str = input_str_val.substring(1);
             String link_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
@@ -386,7 +386,7 @@ public class ClientDParser {
 
         String result_str = input_str_val.substring(0, 1);
 
-        if (result_str.charAt(0) == FabricResultExport.SUCCEED) {
+        if (result_str.charAt(0) == FabricResults.SUCCEED) {
             String rest_str = input_str_val.substring(1);
             String link_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
@@ -412,7 +412,7 @@ public class ClientDParser {
 
         String result_str = input_str_val.substring(0, 1);
 
-        if (result_str.charAt(0) == FabricResultExport.SUCCEED) {
+        if (result_str.charAt(0) == FabricResults.SUCCEED) {
             String rest_str = input_str_val.substring(1);
             String link_id_str = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
@@ -433,7 +433,7 @@ public class ClientDParser {
 
         String result_str = input_str_val.substring(0, 1);
 
-        if (result_str.charAt(0) == FabricResultExport.SUCCEED) {
+        if (result_str.charAt(0) == FabricResults.SUCCEED) {
             String rest_str = input_str_val.substring(1);
 
             String data_package_str = Encoders.sSubstring5(rest_str);

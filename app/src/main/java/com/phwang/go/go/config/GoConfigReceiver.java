@@ -14,7 +14,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import com.phwang.core.fabric.FabricCommands;
-import com.phwang.core.fabric.FabricResultExport;
+import com.phwang.core.fabric.FabricResults;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.go.game.GoGameActivity;
 import com.phwang.go.main.login.LoginActivity;
@@ -64,12 +64,12 @@ public class GoConfigReceiver extends BroadcastReceiver {
                 this.processSetupJoinSessionResponse(result, data_package_str);
                 break;
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION:
-                if (result == FabricResultExport.SUCCEED) {
+                if (result == FabricResults.SUCCEED) {
                     Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
                     this.goConfigActivity_.startActivity(intent);
                     break;
                 }
-                else if (result == FabricResultExport.LINK_NOT_EXIST) {
+                else if (result == FabricResults.LINK_NOT_EXIST) {
                     Intent intent = new Intent(this.goConfigActivity_, LoginActivity.class);
                     this.goConfigActivity_.startActivity(intent);
                     break;
@@ -84,13 +84,13 @@ public class GoConfigReceiver extends BroadcastReceiver {
     }
 
     private void processSetupSoloSessionResponse(char result_val, String data_package_str_val) {
-        if (result_val == FabricResultExport.SUCCEED) {
+        if (result_val == FabricResults.SUCCEED) {
             Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
             intent.putExtra(BundleIndexDefine.DATA_PACKAGE, data_package_str_val);
             this.goConfigActivity_.startActivity(intent);
             return;
         }
-        else if (result_val == FabricResultExport.LINK_NOT_EXIST) {
+        else if (result_val == FabricResults.LINK_NOT_EXIST) {
             Intent intent = new Intent(this.goConfigActivity_, LoginActivity.class);
             this.goConfigActivity_.startActivity(intent);
             return;
@@ -101,13 +101,13 @@ public class GoConfigReceiver extends BroadcastReceiver {
     }
 
     private void processSetupHeadSessionResponse(char result_val, String data_package_str_val) {
-        if (result_val == FabricResultExport.SUCCEED) {
+        if (result_val == FabricResults.SUCCEED) {
             Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
             intent.putExtra(BundleIndexDefine.DATA_PACKAGE, data_package_str_val);
             this.goConfigActivity_.startActivity(intent);
             return;
         }
-        else if (result_val == FabricResultExport.LINK_NOT_EXIST) {
+        else if (result_val == FabricResults.LINK_NOT_EXIST) {
             Intent intent = new Intent(this.goConfigActivity_, LoginActivity.class);
             this.goConfigActivity_.startActivity(intent);
             return;
@@ -118,13 +118,13 @@ public class GoConfigReceiver extends BroadcastReceiver {
     }
 
     private void processSetupPeerSessionResponse(char result_val, String data_package_str_val) {
-        if (result_val == FabricResultExport.SUCCEED) {
+        if (result_val == FabricResults.SUCCEED) {
             Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
             intent.putExtra(BundleIndexDefine.DATA_PACKAGE, data_package_str_val);
             this.goConfigActivity_.startActivity(intent);
             return;
         }
-        else if (result_val == FabricResultExport.LINK_NOT_EXIST) {
+        else if (result_val == FabricResults.LINK_NOT_EXIST) {
             Intent intent = new Intent(this.goConfigActivity_, LoginActivity.class);
             this.goConfigActivity_.startActivity(intent);
             return;
@@ -135,13 +135,13 @@ public class GoConfigReceiver extends BroadcastReceiver {
     }
 
     private void processSetupJoinSessionResponse(char result_val, String data_package_str_val) {
-        if (result_val == FabricResultExport.SUCCEED) {
+        if (result_val == FabricResults.SUCCEED) {
             Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
             intent.putExtra(BundleIndexDefine.DATA_PACKAGE, data_package_str_val);
             this.goConfigActivity_.startActivity(intent);
             return;
         }
-        else if (result_val == FabricResultExport.LINK_NOT_EXIST) {
+        else if (result_val == FabricResults.LINK_NOT_EXIST) {
             Intent intent = new Intent(this.goConfigActivity_, LoginActivity.class);
             this.goConfigActivity_.startActivity(intent);
             return;

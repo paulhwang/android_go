@@ -137,7 +137,7 @@ public class FabricUParser {
         this.debug(true, "processRegisterRequest", "my_name = " + my_name);
         this.debug(false, "processRegisterRequest", "password = " + password);
 
-        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SUCCEED, Encoders.NULL_LINK, Encoders.NULL_SESSION, Encoders.sEncode2(my_name));
+        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResults.SUCCEED, Encoders.NULL_LINK, Encoders.NULL_SESSION, Encoders.sEncode2(my_name));
         return response_data;
     }
 
@@ -162,7 +162,7 @@ public class FabricUParser {
         	this.abend("processLoginRequest", "link is null");
         	return null;
         }
-        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SUCCEED, link.linkIdStr(), Encoders.NULL_SESSION, Encoders.sEncode2(my_name));
+        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResults.SUCCEED, link.linkIdStr(), Encoders.NULL_SESSION, Encoders.sEncode2(my_name));
         return response_data;
     }
 
@@ -177,10 +177,10 @@ public class FabricUParser {
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            return this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.LINK_NOT_EXIST, link_id_str, Encoders.NULL_SESSION, Encoders.NULL_DATA);
+            return this.generateFabricResponse(input_str_val.charAt(0), FabricResults.LINK_NOT_EXIST, link_id_str, Encoders.NULL_SESSION, Encoders.NULL_DATA);
         }
 
-        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SUCCEED, link_id_str, Encoders.NULL_SESSION, Encoders.NULL_DATA);
+        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResults.SUCCEED, link_id_str, Encoders.NULL_SESSION, Encoders.NULL_DATA);
         return response_data;
     }
 
@@ -195,10 +195,10 @@ public class FabricUParser {
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            return this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.LINK_NOT_EXIST, link_id_str, Encoders.NULL_SESSION, Encoders.NULL_DATA);
+            return this.generateFabricResponse(input_str_val.charAt(0), FabricResults.LINK_NOT_EXIST, link_id_str, Encoders.NULL_SESSION, Encoders.NULL_DATA);
         }
 
-        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SUCCEED, link_id_str, Encoders.NULL_SESSION, Encoders.NULL_DATA);
+        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResults.SUCCEED, link_id_str, Encoders.NULL_SESSION, Encoders.NULL_DATA);
         return response_data;
     }
 
@@ -246,7 +246,7 @@ public class FabricUParser {
 
         downlink_data = downlink_data + pending_session_setup;
 
-        String response_data = this.generateGetLinkDataResponse(FabricResultExport.SUCCEED, link.linkIdStr(), downlink_data, pending_session_setup);
+        String response_data = this.generateGetLinkDataResponse(FabricResults.SUCCEED, link.linkIdStr(), downlink_data, pending_session_setup);
         return response_data;
     }
 
@@ -282,7 +282,7 @@ public class FabricUParser {
         int name_list_tag = Encoders.iDecode111(name_list_tag_str);
         String name_list = this.fabricRoot().nameList().getNameList(name_list_tag);
 
-        String response_data = this.generateGetNameListResponse(FabricResultExport.SUCCEED, link.linkIdStr(), name_list);
+        String response_data = this.generateGetNameListResponse(FabricResults.SUCCEED, link.linkIdStr(), name_list);
         return response_data;
     }
 
@@ -314,7 +314,7 @@ public class FabricUParser {
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            return this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.LINK_NOT_EXIST, link_id_str, Encoders.NULL_SESSION, theme_data_str);
+            return this.generateFabricResponse(input_str_val.charAt(0), FabricResults.LINK_NOT_EXIST, link_id_str, Encoders.NULL_SESSION, theme_data_str);
         }
         
         FabricSession session = link.mallocSession();
@@ -324,7 +324,7 @@ public class FabricUParser {
         
         this.mallocRoom(group, theme_data_str);
 
-        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SUCCEED, link_id_str, session.lSessionIdStr(), theme_data_str);
+        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResults.SUCCEED, link_id_str, session.lSessionIdStr(), theme_data_str);
         return response_data;
     }
 
@@ -343,7 +343,7 @@ public class FabricUParser {
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            return this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.LINK_NOT_EXIST, link_id_str, Encoders.NULL_SESSION, data_str);
+            return this.generateFabricResponse(input_str_val.charAt(0), FabricResults.LINK_NOT_EXIST, link_id_str, Encoders.NULL_SESSION, data_str);
         }
 
         FabricSession session = link.mallocSession();
@@ -353,7 +353,7 @@ public class FabricUParser {
 
         this.mallocRoom(group, data_str);
 
-        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SUCCEED, link_id_str, session.lSessionIdStr(), data_str);
+        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResults.SUCCEED, link_id_str, session.lSessionIdStr(), data_str);
         return response_data;
     }
 
@@ -372,7 +372,7 @@ public class FabricUParser {
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            return this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.LINK_NOT_EXIST, link_id_str, Encoders.NULL_SESSION, data_str);
+            return this.generateFabricResponse(input_str_val.charAt(0), FabricResults.LINK_NOT_EXIST, link_id_str, Encoders.NULL_SESSION, data_str);
         }
 
         FabricSession session = link.mallocSession();
@@ -382,7 +382,7 @@ public class FabricUParser {
 
         this.mallocRoom(group, data_str);
 
-        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SUCCEED, link_id_str, session.lSessionIdStr(), data_str);
+        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResults.SUCCEED, link_id_str, session.lSessionIdStr(), data_str);
         return response_data;
     }
 
@@ -401,7 +401,7 @@ public class FabricUParser {
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            return this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.LINK_NOT_EXIST, link_id_str, Encoders.NULL_SESSION, data_str);
+            return this.generateFabricResponse(input_str_val.charAt(0), FabricResults.LINK_NOT_EXIST, link_id_str, Encoders.NULL_SESSION, data_str);
         }
 
         FabricSession session = link.mallocSession();
@@ -411,7 +411,7 @@ public class FabricUParser {
 
         this.mallocRoom(group, data_str);
 
-        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SUCCEED, link_id_str, session.lSessionIdStr(), data_str);
+        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResults.SUCCEED, link_id_str, session.lSessionIdStr(), data_str);
         return response_data;
     }
 
@@ -473,7 +473,7 @@ public class FabricUParser {
             his_link.setPendingSessionSetup(his_link.linkIdStr() + his_session.lSessionIdStr(), theme_data);
         }
 
-        String response_data = this.generateSetupSessionResponse(FabricResultExport.SUCCEED, link.linkIdStr(), session.lSessionIdStr());
+        String response_data = this.generateSetupSessionResponse(FabricResults.SUCCEED, link.linkIdStr(), session.lSessionIdStr());
         return response_data;
     }
 
@@ -538,7 +538,7 @@ public class FabricUParser {
         }
         this.mallocRoom(group, theme_data_str);
 
-        String response_data = this.generateSetupSession2Response(FabricResultExport.SUCCEED, link.linkIdStr(), session.lSessionIdStr(), session.browserThemeIdStr());
+        String response_data = this.generateSetupSession2Response(FabricResults.SUCCEED, link.linkIdStr(), session.lSessionIdStr(), session.browserThemeIdStr());
         return response_data;
     }
 
@@ -579,7 +579,7 @@ public class FabricUParser {
             return errorProcessSetupSession3(link_id_str, "null session");
         }
 
-        String response_data = this.generateSetupSession3Response(FabricResultExport.SUCCEED, link_id_str, session_id_str, session.browserThemeIdStr());
+        String response_data = this.generateSetupSession3Response(FabricResults.SUCCEED, link_id_str, session_id_str, session.browserThemeIdStr());
         return response_data;
     }
 
@@ -613,18 +613,18 @@ public class FabricUParser {
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            return this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.LINK_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
+            return this.generateFabricResponse(input_str_val.charAt(0), FabricResults.LINK_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
         }
 
         FabricSession session = link.sessionMgr().getSessionByIdStr(session_id_str);
         if (session == null) {
-            return generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SESSION_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
+            return generateFabricResponse(input_str_val.charAt(0), FabricResults.SESSION_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
         }
 
         link.sessionMgr().freeSession(session);
 
         /* send the response down */
-        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SUCCEED, link_id_str, session_id_str, Encoders.JOB_IS_DONE);
+        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResults.SUCCEED, link_id_str, session_id_str, Encoders.JOB_IS_DONE);
         return response_data;
     }
 
@@ -649,17 +649,17 @@ public class FabricUParser {
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            return this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.LINK_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
+            return this.generateFabricResponse(input_str_val.charAt(0), FabricResults.LINK_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
         }
 
         FabricSession session = link.sessionMgr().getSessionByIdStr(session_id_str);
         if (session == null) {
-            return generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SESSION_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
+            return generateFabricResponse(input_str_val.charAt(0), FabricResults.SESSION_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
         }
 
         String room_id_str = session.group().roomIdStr();
         if (room_id_str == null) {
-            return generateFabricResponse(input_str_val.charAt(0), FabricResultExport.ROOM_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
+            return generateFabricResponse(input_str_val.charAt(0), FabricResults.ROOM_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
         }
 
         /* transfer data up */
@@ -670,7 +670,7 @@ public class FabricUParser {
         this.fabricUBinder().transmitData(buf.toString());
 
         /* send the response down */
-        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SUCCEED, link_id_str, session_id_str, Encoders.JOB_IS_DONE);
+        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResults.SUCCEED, link_id_str, session_id_str, Encoders.JOB_IS_DONE);
         return response_data;
     }
 
@@ -689,18 +689,18 @@ public class FabricUParser {
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            return this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.LINK_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
+            return this.generateFabricResponse(input_str_val.charAt(0), FabricResults.LINK_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
         }
         
         FabricSession session = link.sessionMgr().getSessionByIdStr(session_id_str);
         if (session == null) {
-            return generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SESSION_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
+            return generateFabricResponse(input_str_val.charAt(0), FabricResults.SESSION_NOT_EXIST, link_id_str, session_id_str, Encoders.NULL_DATA);
         }
         
         String data = session.getPendingDownLinkData();
 
         /* send the response down */
-        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResultExport.SUCCEED, link_id_str, session_id_str, Encoders.sEncode5(data));
+        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResults.SUCCEED, link_id_str, session_id_str, Encoders.sEncode5(data));
         return response_data;
     }
 
