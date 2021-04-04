@@ -49,6 +49,7 @@ public class BindReceiverUFunc {
         }
 
         switch (command.charAt(0)) {
+            case FabricCommands.FABRIC_COMMAND_LOGIN:
             case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
             case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
             case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
@@ -56,7 +57,8 @@ public class BindReceiverUFunc {
                 this.clientDExport().transmitToFabric(fabric_data_str);
                 break;
 
-            case FabricCommands.FABRIC_COMMAND_LOGIN:
+            //case FabricCommands.FABRIC_COMMAND_LOGIN:
+            case ';':
                 my_name = bundle_val.getString(BundleIndexDefine.MY_NAME);
                 password = bundle_val.getString(BundleIndexDefine.PASSWORD);
                 Log.e(TAG, "handleReceivedBundle() command=" + command + " name=" + my_name + "," + password);

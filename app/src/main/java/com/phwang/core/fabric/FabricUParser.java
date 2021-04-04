@@ -143,27 +143,22 @@ public class FabricUParser {
 
     private String processLoginRequest(String input_str_val) {
         this.debug(false, "processLoginRequest", "input_str_val=" + input_str_val);
+        FabricDecode fabric_decode = new FabricDecode(input_str_val);
 
-        String rest_str = input_str_val.substring(1);
-        char client_type = rest_str.charAt(0);
-        rest_str = rest_str.substring(1);
-
-        String my_name = Encoders.sDecode2(rest_str);
-        rest_str = Encoders.sDecode2_(rest_str);
-
-        String password = Encoders.sDecode2(rest_str);
-        rest_str = Encoders.sDecode2_(rest_str);
-
-        this.debug(false, "processLoginRequest", "my_name = " + my_name);
-        this.debug(false, "processLoginRequest", "password = " + password);
+        char client_type = fabric_decode.clientType();
+        String my_name = fabric_decode.stringList(0);
+        String password = fabric_decode.stringList(1);
+        this.debug(true, "processDeleteSessionRequest", "my_name=" + my_name);
+        this.debug(true, "processDeleteSessionRequest", "password=" + password);
 
         FabricLink link = this.linkMgr().mallocLink(client_type, my_name);
         if (link == null) {
-            this.abend("processLoginRequest", "link is null");
-            return null;
+            return this.generateFabricData0(fabric_decode.command(), FabricResults.BAD_PASSWORD, client_type, fabric_decode.theme(), link.linkIdStr(), Encoders.IGNORE);
         }
-        String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResults.SUCCEED, link.linkIdStr(), Encoders.NULL_SESSION, Encoders.sEncode2(my_name));
-        return response_data;
+
+        return this.generateFabricData1(fabric_decode.command(), FabricResults.SUCCEED, client_type, fabric_decode.theme(), link.linkIdStr(), Encoders.IGNORE, my_name);
+        //String response_data = this.generateFabricResponse(input_str_val.charAt(0), FabricResults.SUCCEED, link.linkIdStr(), Encoders.NULL_SESSION, Encoders.sEncode2(my_name));
+        //return response_data;
     }
 
     private String processDeleteSessionRequest(String input_str_val) {
@@ -185,7 +180,6 @@ public class FabricUParser {
 
         link.sessionMgr().freeSession(session);
 
-        /* send the response down */
         return this.generateFabricData0(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.clientType(), fabric_decode.theme(), fabric_decode.linkIdStr(), fabric_decode.sessionIdStr());
     }
 

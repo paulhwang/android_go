@@ -11,6 +11,7 @@ package com.phwang.client;
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.fabric.FabricResults;
 import com.phwang.core.utils.encoders.Encoders;
+import com.phwang.core.utils.fabric.FabricDecode;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.services.BindReceiverDFunc;
 import com.phwang.go.services.BindService;
@@ -36,12 +37,25 @@ public class ClientDParser {
     	this.debug(true, "parserResponseData", "response_data=" + response_data_str_val);
     	
     	switch (response_data_str_val.charAt(0)) {
+            case FabricCommands.FABRIC_COMMAND_LOGIN:
+                FabricDecode fabric_decode = new FabricDecode(response_data_str_val);
+                String link_id_str = fabric_decode.linkIdStr();
+                if (fabric_decode.result() == FabricResults.SUCCEED) {
+                    this.clientFabricInfo().setLinkIdStr(link_id_str);
+                }
+                this.bindReceiverDFunc().sendFabricDataResponse(IntentDefine.LOGIN_ACTIVITY, response_data_str_val);
+                break;
+
+            case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
+            case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
+            case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
+                this.bindReceiverDFunc().sendFabricDataResponse(IntentDefine.GO_GAME_ACTIVITY, response_data_str_val);
+                break;
+
             case FabricCommands.FABRIC_COMMAND_REGISTER:
     		    parserRegisterResponse(response_data_str_val);
     		    break;
-            case FabricCommands.FABRIC_COMMAND_LOGIN:
-                parserLoginResponse(response_data_str_val);
-                break;
+
             case FabricCommands.FABRIC_COMMAND_LOGOUT:
                 parserLogoutResponse(response_data_str_val);
                 break;
@@ -74,12 +88,6 @@ public class ClientDParser {
     		    break;
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION3:
     		    parserSetupSession3Response(response_data_str_val);
-    		    break;
-
-            case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
-            case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
-            case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
-                this.bindReceiverDFunc().sendFabricDataResponse(IntentDefine.GO_GAME_ACTIVITY, response_data_str_val);
     		    break;
 
             default:
