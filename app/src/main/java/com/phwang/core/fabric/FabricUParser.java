@@ -218,8 +218,6 @@ public class FabricUParser {
 
         this.debug(true, "processSoloSessionRequest", "link_id = " + link_id_str);
         this.debug(true, "processSoloSessionRequest", "theme_data = " + theme_data_str);
-        theme_data_str = Encoders.sDecode6(theme_data_str);
-        this.debug(true, "processSoloSessionRequest", "theme_data = " + theme_data_str);
 
         FabricSession session = link.mallocSession();
         FabricGroup group = this.groupMgr().mallocGroup(theme_data_str);
@@ -265,7 +263,7 @@ public class FabricUParser {
 
         this.debug(false, "processPutSessionDataRequest", "link_id=" + link_id_str);
         this.debug(false, "processPutSessionDataRequest", "session_id=" + session_id_str);
-        this.debug(false, "processPutSessionDataRequest", "data=" + fabric_decode.stringList(0));
+        this.debug(true, "processPutSessionDataRequest", "data=" + fabric_decode.stringList(0));
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
@@ -286,7 +284,7 @@ public class FabricUParser {
         StringBuilder buf = new StringBuilder();
         buf.append(FabricExport.FABRIC_THEME_COMMAND_PUT_ROOM_DATA);
         buf.append(room_id_str);
-        buf.append(Encoders.sDecode6(fabric_decode.stringList(0)));
+        buf.append(fabric_decode.stringList(0));
         this.fabricUBinder().transmitData(buf.toString());
 
         return this.generateFabricData0(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.clientType(), fabric_decode.theme(), link_id_str, session_id_str);

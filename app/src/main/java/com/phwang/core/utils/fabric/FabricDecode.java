@@ -28,7 +28,8 @@ public class FabricDecode {
     public char theme() { return this.theme_; };
     public String linkIdStr() { return this.linkIdStr_; };
     public String sessionIdStr() { return this.sessionIdStr_; };
-    public String stringList(int index_val) { return this.stringList_[index_val]; };
+    public String stringListRaw(int index_val) { return this.stringList_[index_val]; };
+    public String stringList(int index_val) { return Encoders.sDecode6(this.stringList_[index_val]); };
 
     public FabricDecode(String fabric_data_str_val) {
         //String rest_str = Encoders.sDecode5(fabric_data_str_val);

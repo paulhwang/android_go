@@ -51,7 +51,6 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         Log.e(TAG, "onCreate() linkIdStr_=" + linkIdStr_);
         Log.e(TAG, "onCreate() sessionIdStr_=" + sessionIdStr_);
         Log.e(TAG, "onCreate() config_str=" + config_str);
-        config_str = Encoders.sDecode6(config_str);
         Log.e(TAG, "onCreate() config_str=" + config_str);
 
         this.goBoard_ = new GoGameBoard(this, config_str);
