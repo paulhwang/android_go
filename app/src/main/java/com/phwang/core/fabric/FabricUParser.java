@@ -36,54 +36,46 @@ public class FabricUParser {
 
     protected void parseInputPacket(BinderBundle bundle_val) {
         String response_data = null;
-        String job_id_str = null;
         String input_str = bundle_val.data();
         this.debug(true, "parseInputPacket", "input_str = " + input_str);
-        FabricData fabric_decode = new FabricData(input_str);
+        FabricData fabric_data = new FabricData(input_str);
 
-        String rest_str = input_str;
-        if (rest_str.charAt(0) == FabricCommands.FABRIC_COMMAND_HTTP_DATA) {
-            rest_str = rest_str.substring(1);
-            job_id_str = Encoders.sSubstring2(rest_str);
-            rest_str = Encoders.sSubstring2_(rest_str);
-        }
-
-        this.debug(false, "parseInputPacket", "data_str = " + rest_str);
-        switch (fabric_decode.command()) {
+        switch (fabric_data.command()) {
             case FabricCommands.FABRIC_COMMAND_REGISTER:
-                response_data = this.processRegisterRequest(fabric_decode);
+                response_data = this.processRegisterRequest(fabric_data);
                 break;
             case FabricCommands.FABRIC_COMMAND_LOGIN:
-                response_data = this.processLoginRequest(fabric_decode);
+                response_data = this.processLoginRequest(fabric_data);
                 break;
             case FabricCommands.FABRIC_COMMAND_LOGOUT:
-                response_data = this.processLogoutRequest(fabric_decode);
+                response_data = this.processLogoutRequest(fabric_data);
                 break;
             case FabricCommands.FABRIC_COMMAND_GET_GROUPS:
-                response_data = this.processGetGroupsRequest(fabric_decode);
+                response_data = this.processGetGroupsRequest(fabric_data);
                 break;
             case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
-                response_data = this.processSoloSessionRequest(fabric_decode);
+                response_data = this.processSoloSessionRequest(fabric_data);
                 break;
             case FabricCommands.FABRIC_COMMAND_HEAD_SESSION:
-                response_data = this.processHeadSessionRequest(fabric_decode);
+                response_data = this.processHeadSessionRequest(fabric_data);
                 break;
             case FabricCommands.FABRIC_COMMAND_PEER_SESSION:
-                response_data = this.processPeerSessionRequest(fabric_decode);
+                response_data = this.processPeerSessionRequest(fabric_data);
                 break;
             case FabricCommands.FABRIC_COMMAND_JOIN_SESSION:
-                response_data = this.processJoinSessionRequest(fabric_decode);
+                response_data = this.processJoinSessionRequest(fabric_data);
                 break;
             case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
-                response_data = this.processDeleteSessionRequest(fabric_decode);
+                response_data = this.processDeleteSessionRequest(fabric_data);
                 break;
             case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
-                response_data = this.processPutSessionDataRequest(fabric_decode);
+                response_data = this.processPutSessionDataRequest(fabric_data);
                 break;
             case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
-                response_data = this.processGetSessionDataRequest(fabric_decode);
+                response_data = this.processGetSessionDataRequest(fabric_data);
                 break;
 
+                /*
             case FabricCommands.FABRIC_COMMAND_GET_LINK_DATA:
                 response_data = this.processGetLinkDataRequest(rest_str.substring(1));
                 break;
@@ -99,15 +91,13 @@ public class FabricUParser {
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION3:
                 response_data = this.processSetupSession3Request(rest_str.substring(1));
                 break;
+                 */
             default:
                 response_data = "*** Bad command! Fix it!";
         	    this.abend("parseInputPacket", "should not reach here, data=" + input_str);
         	    break;
         }
 
-        if (job_id_str != null) {
-            response_data = job_id_str + response_data;
-        }
         bundle_val.setData(response_data);
         this.fabricDBinder().transmitBundleData(bundle_val);
     }
