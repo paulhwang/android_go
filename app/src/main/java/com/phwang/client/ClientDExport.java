@@ -22,7 +22,6 @@ public class ClientDExport {
     private ClientRoot clientRoot() { return this.clientRoot_; }
     private ClientUBinder clientUBinder() { return this.clientRoot_.clientUBinder(); }
     private Binder uBinder() { return this.clientUBinder().uBinder(); }
-    private ClientGoConfig goConfig() { return this.clientRoot_.goConfig(); }
 
     protected ClientDExport(ClientRoot root_val) {
         this.debug(false, "ClientDExport", "init start");
