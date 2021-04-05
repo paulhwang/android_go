@@ -131,10 +131,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         fabric_encode.setStringList(0, go_config_data_val);
 
         Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_SOLO_SESSION_STR);
-        intent.putExtra(BundleIndexDefine.THEME_DATA, go_config_data_val);
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
@@ -153,10 +150,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         fabric_encode.setStringList(0, go_config_data_val);
 
         Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_HEAD_SESSION_STR);
-        intent.putExtra(BundleIndexDefine.THEME_DATA, go_config_data_val);
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
@@ -175,10 +169,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         fabric_encode.setStringList(0, go_config_data_val);
 
         Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_PEER_SESSION_STR);
-        intent.putExtra(BundleIndexDefine.THEME_DATA, go_config_data_val);
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
@@ -197,24 +188,13 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         fabric_encode.setStringList(0, go_config_data_val);
 
         Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_JOIN_SESSION_STR);
-        intent.putExtra(BundleIndexDefine.THEME_DATA, go_config_data_val);
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);
     }
 
     protected void do_setup_session(String his_name_val, String theme_data_val) {
-        Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
-        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_SETUP_SESSION_STR);
-        intent.putExtra(BundleIndexDefine.HIS_NAME, his_name_val);
-        intent.putExtra(BundleIndexDefine.THEME_DATA, theme_data_val);
-        intent.setAction(IntentDefine.BIND_SERVICE);
-        this.sendBroadcast(intent);
     }
 
     private void registerBroadcastReceiver() {
