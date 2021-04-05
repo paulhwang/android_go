@@ -24,7 +24,7 @@ public class ClientUParser {
     private static final String TAG = "ClientUParser";
     private ClientRoot clientRoot_;
 
-    public ClientDParser clientDParser() { return this.clientRoot_.clientDParser(); }
+    private ClientDParser clientDParser() { return this.clientRoot_.clientDParser(); }
     private ClientUBinder clientUBinder() { return this.clientRoot_.clientUBinder(); }
     private Binder uBinder() { return this.clientUBinder().uBinder(); }
 

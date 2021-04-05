@@ -15,25 +15,20 @@ import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.utils.fabric.FabricDataStr;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
-import com.phwang.go.services.ClientService;
-import com.phwang.go.services.ClientRoot;
 
 public class ClientDParser {
     private static final String TAG = "ClientDParser";
-    private String objectName() {return "ClientDParser";}
-    
+
     private ClientRoot clientRoot_;
 
-    protected ClientService clientService() { return this.clientRoot_.clientService(); }
-    protected ClientRoot clientRoot() { return this.clientRoot_; }
+    private ClientService clientService() { return this.clientRoot_.clientService(); }
 
     protected ClientDParser(ClientRoot root_val) {
-        this.debug(false, "ClientDParser", "init start");
         this.clientRoot_ = root_val;
     }
     
     protected void parserResponseData(String response_data_str_val) {
-    	this.debug(true, "parserResponseData", "response_data=" + response_data_str_val);
+    	Log.e(TAG, "parserResponseData() response_data=" + response_data_str_val);
     	
     	switch (response_data_str_val.charAt(0)) {
             case FabricCommands.FABRIC_COMMAND_LOGIN:
@@ -65,12 +60,12 @@ public class ClientDParser {
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION2:
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION3:
             default:
-    		    this.abend("parserResponseData", "input_data_val=" + response_data_str_val);
+    		    Log.e(TAG, "parserResponseData() response_data_str_val=" + response_data_str_val);
     		    break;
     	}
     }
 
-    public void sendFabricDataResponse(String target_val, String fabric_data_str_val) {
+    protected void sendFabricDataResponse(String target_val, String fabric_data_str_val) {
         Log.e(TAG, "sendFabricDataResponse() fabric_data_str_val=" + fabric_data_str_val);
 
         Intent intent = new Intent();
@@ -81,8 +76,4 @@ public class ClientDParser {
         intent.setAction(target_val);
         this.clientService().sendBroadcast(intent);
     }
-
-    private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }
-    private void log(String s0, String s1) { this.clientRoot().logIt(this.objectName() + "." + s0 + "()", s1); }
-    protected void abend(String s0, String s1) { this.clientRoot().abendIt(this.objectName() + "." + s0 + "()", s1); }
 }
