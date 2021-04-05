@@ -17,7 +17,6 @@ public class ClientRoot {
 
     private BindService bindService_;
     private ThreadMgr threadMgr_;
-    private ClientFabricInfo clientFabricInfo_;
     private ClientGoConfig goConfig_;
     private ClientUBinder clientUBinder_;
     private ClientDExport clientDExport_;
@@ -25,7 +24,6 @@ public class ClientRoot {
 
     protected BindService bindService() { return this.bindService_; };
     public ClientDExport clientDExport() { return this.clientDExport_; }
-    public ClientFabricInfo clientFabricInfo() { return this.clientFabricInfo_; }
     public ClientGoConfig goConfig() { return this.goConfig_; }
     protected ThreadMgr threadMgr() { return this.threadMgr_; }
     protected ClientUBinder clientUBinder() { return this.clientUBinder_; }
@@ -35,7 +33,6 @@ public class ClientRoot {
         this.debug(false, "ClientRoot", "init start");
 
         this.bindService_ = bind_service_val;
-        this.clientFabricInfo_ = new ClientFabricInfo();
         this.goConfig_ = new ClientGoConfig();
         this.threadMgr_ = new ThreadMgr();
         this.clientUBinder_ = new ClientUBinder(this);

@@ -16,7 +16,6 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 import com.phwang.client.ClientDExport;
-import com.phwang.client.ClientFabricInfo;
 import com.phwang.client.ClientRoot;
 import com.phwang.core.utils.abend.Abend;
 import com.phwang.go.define.IntentDefine;
@@ -31,10 +30,6 @@ public class BindService extends Service {
     public ClientDExport clientDExport() {
         return this.clientRoot_.clientDExport();
     }
-    protected ClientFabricInfo clientFabricInfo() {
-        return this.clientRoot_.clientFabricInfo();
-    }
-
     public Context applicationContext() { return this.applicationContext_; };
 
     @Override

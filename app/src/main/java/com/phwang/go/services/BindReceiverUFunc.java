@@ -11,7 +11,6 @@ package com.phwang.go.services;
 import android.os.Bundle;
 import android.util.Log;
 import com.phwang.client.ClientDExport;
-import com.phwang.client.ClientFabricInfo;
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.fabric.FabricResults;
 import com.phwang.go.define.BundleIndexDefine;
@@ -24,7 +23,6 @@ public class BindReceiverUFunc {
 
     private BindService bindService() { return this.bindReceiver_.bindService(); };
     public ClientDExport clientDExport() { return this.bindService().clientDExport(); }
-    public ClientFabricInfo clientFabricInfo() { return this.bindService().clientFabricInfo();}
     public BindReceiverDFunc bindReceiverDFunc() { return this.bindService().bindReceiverDFunc(); }
 
     public BindReceiverUFunc(BindReceiver bind_receiver_val) {
