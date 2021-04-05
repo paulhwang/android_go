@@ -22,16 +22,16 @@ import com.phwang.go.global.GlobalData;
 
 public class ClientUParser {
     private static final String TAG = "ClientUParser";
-    ClientReceiver bindReceiver_;
+    ClientRoot clientRoot_;
 
     private ClientRoot clientRoot() { return this.clientService().clientRoot(); }
-    private ClientService clientService() { return this.bindReceiver_.clientService(); };
+    private ClientService clientService() { return this.clientRoot_.clientService(); };
     public ClientDParser clientDParser() { return this.clientService().clientDParser(); }
     private ClientUBinder clientUBinder() { return this.clientRoot().clientUBinder(); }
     private Binder uBinder() { return this.clientUBinder().uBinder(); }
 
-    public ClientUParser(ClientReceiver bind_receiver_val) {
-        this.bindReceiver_ = bind_receiver_val;
+    public ClientUParser(ClientRoot client_root_val) {
+        this.clientRoot_ = client_root_val;
     }
 
     protected void parseUCommand(String fabric_data_str_val) {

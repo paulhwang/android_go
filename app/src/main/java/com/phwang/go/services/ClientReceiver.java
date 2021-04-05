@@ -22,10 +22,11 @@ public class ClientReceiver extends BroadcastReceiver {
 
     protected ClientService clientService() { return this.clientService_; };
     protected ClientUParser clientUParser() { return this.clientUParser_; };
+    protected ClientRoot clientRoot() { return this.clientService().clientRoot(); }
 
     public ClientReceiver(ClientService bind_service_val) {
         this.clientService_ = bind_service_val;
-        this.clientUParser_ = new ClientUParser(this);
+        this.clientUParser_ = new ClientUParser(this.clientRoot());
     }
 
     @Override

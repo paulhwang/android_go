@@ -24,7 +24,7 @@ public class ClientDParser {
     
     private ClientRoot clientRoot_;
 
-    protected ClientService bindService() { return this.clientRoot_.bindService(); }
+    protected ClientService clientService() { return this.clientRoot_.clientService(); }
     protected ClientRoot clientRoot() { return this.clientRoot_; }
 
     protected ClientDParser(ClientRoot root_val) {
@@ -79,7 +79,7 @@ public class ClientDParser {
         intent.putExtra(BundleIndexDefine.COMMAND, FabricDataStr.getCommandStr(fabric_data_str_val));
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_data_str_val);
         intent.setAction(target_val);
-        this.bindService().sendBroadcast(intent);
+        this.clientService().sendBroadcast(intent);
     }
 
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }

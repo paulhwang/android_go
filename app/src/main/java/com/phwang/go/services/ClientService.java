@@ -34,8 +34,8 @@ public class ClientService extends Service {
     public void onCreate() {
         super.onCreate();
         this.applicationContext_ = getApplicationContext();
-        this.registerBroadcastReceiver();
         this.clientRoot_ = new ClientRoot(this);
+        this.registerBroadcastReceiver();
     }
 
     @Override
