@@ -19,7 +19,4 @@ public interface ClientDExportInt {
     public void setupHeadSession(String data_str_val);
     public void setupPeerSession(String data_str_val);
     public void setupJoinSession(String data_str_val);
-    public void setupSession(String his_name_val, String data_str_val);
-    public void setupSession2();
-    public void setupSession3();
 }

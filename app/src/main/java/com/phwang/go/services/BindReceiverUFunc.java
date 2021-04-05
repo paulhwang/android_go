@@ -113,26 +113,6 @@ public class BindReceiverUFunc {
                 this.clientDExport().transmitToFabric(fabric_data_str);
                 break;
 
-            case FabricCommands.FABRIC_COMMAND_SETUP_SESSION:
-                String his_name = bundle_val.getString(BundleIndexDefine.HIS_NAME);
-                theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
-
-                if (this.clientFabricInfo().linkIdStr() == null) {
-                    this.bindReceiverDFunc().sendResponseBroadcastMessage(
-                            IntentDefine.GO_CONFIG_ACTIVITY,
-                            FabricCommands.FABRIC_COMMAND_SETUP_SESSION_STR,
-                            FabricResults.LINK_NOT_EXIST_STR,
-                            null);
-
-                    return;
-                }
-                this.clientDExport().setupSession(his_name, theme_data);
-                break;
-
-            case FabricCommands.FABRIC_COMMAND_SETUP_SESSION3:
-                this.clientDExport().setupSession3();
-                break;
-
             default:
                 Log.e(TAG, "handleCommand() command=" + command + " not implemented*********************");
         }

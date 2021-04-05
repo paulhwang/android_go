@@ -175,39 +175,6 @@ public class ClientDExport implements ClientDExportInt {
 
         this.transmitToFabric(command_str);
     }
-    
-    public void setupSession(String his_name_val, String data_str_val) {
-    	this.debug(false, "setupSession", "link_id=" + this.clientFabricInfo().linkIdStr());
-    	
-        StringBuilder command_buf = new StringBuilder();
-        command_buf.append(FabricCommands.FABRIC_COMMAND_SETUP_SESSION);
-        command_buf.append(this.clientFabricInfo().linkIdStr()); 
-        command_buf.append(Encoders.sEncode2(his_name_val));
-        command_buf.append(this.goConfig().getGoConfigStr());
-        String command_str = command_buf.toString();
-        
-    	this.debug(false, "setupSession", "command_str=" + command_str);
-    	
-    	this.transmitToFabric(command_str);
-    }
-    
-    public void setupSession2() {
-    	
-    }
-    
-    public void setupSession3() {
-    	this.debug(true, "setupSession3", "link_id=" + this.clientFabricInfo().linkIdStr() + "session_id=" + this.clientFabricInfo().sessionIdStr());
-    	
-        StringBuilder command_buf = new StringBuilder();
-        command_buf.append(FabricCommands.FABRIC_COMMAND_SETUP_SESSION3);
-        command_buf.append(this.clientFabricInfo().linkIdStr()); 
-        command_buf.append(this.clientFabricInfo().sessionIdStr()); 
-        String command_str = command_buf.toString();
-        
-    	this.debug(false, "setupSession3", "command_str=" + command_str);
-    	
-    	this.transmitToFabric(command_str);
-    }
 
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }
     private void log(String s0, String s1) { this.clientRoot().logIt(this.objectName() + "." + s0 + "()", s1); }
