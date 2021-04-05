@@ -11,7 +11,7 @@ package com.phwang.go.services;
 import com.phwang.core.utils.abend.AbendInt;
 import android.util.Log;
 
-public class BindAbend implements AbendInt {
+public class ClientAbend implements AbendInt {
     public void log(String str_val) {
         Log.e("***", str_val);
     }

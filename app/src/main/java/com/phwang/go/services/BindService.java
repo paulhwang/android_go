@@ -35,7 +35,7 @@ public class BindService extends Service {
         super.onCreate();
         this.applicationContext_ = getApplicationContext();
         this.registerBroadcastReceiver();
-        Abend.initAbend(new BindAbend());
+        Abend.initAbend(new ClientAbend());
         new com.phwang.core.root.CoreRoot();
         this.clientRoot_ = new ClientRoot(this);
     }
