@@ -64,7 +64,7 @@ public class ClientService extends Service {
         if (this.clientReceiver_ == null) {
             this.clientReceiver_ = new ClientReceiver(this);
             IntentFilter filter = new IntentFilter();
-            filter.addAction(IntentDefine.BIND_SERVICE);
+            filter.addAction(IntentDefine.CLIENT_SERVICE);
             this.registerReceiver(this.clientReceiver_, filter);
         }
     }

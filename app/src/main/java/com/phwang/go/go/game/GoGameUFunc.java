@@ -43,7 +43,7 @@ public class GoGameUFunc {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_GAME_ACTIVITY);
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
-        intent.setAction(IntentDefine.BIND_SERVICE);
+        intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.goGameActivity_.sendBroadcast(intent);
     }
 
@@ -62,7 +62,7 @@ public class GoGameUFunc {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_GAME_ACTIVITY);
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
-        intent.setAction(IntentDefine.BIND_SERVICE);
+        intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.goGameActivity_.sendBroadcast(intent);
     }
 
@@ -80,7 +80,7 @@ public class GoGameUFunc {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_GAME_ACTIVITY);
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
-        intent.setAction(IntentDefine.BIND_SERVICE);
+        intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.goGameActivity_.sendBroadcast(intent);
     }
 }

@@ -68,8 +68,7 @@ public class ClientDParser {
         Log.e(TAG, "sendFabricDataResponse() fabric_data_str_val=" + fabric_data_str_val);
 
         Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
-        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.BIND_SERVICE);
+        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.CLIENT_SERVICE);
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_data_str_val);
         intent.setAction(target_val);
         this.clientService().sendBroadcast(intent);

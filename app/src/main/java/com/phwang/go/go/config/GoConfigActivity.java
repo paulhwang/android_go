@@ -133,7 +133,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
-        intent.setAction(IntentDefine.BIND_SERVICE);
+        intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.sendBroadcast(intent);
     }
 
@@ -152,7 +152,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
-        intent.setAction(IntentDefine.BIND_SERVICE);
+        intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.sendBroadcast(intent);
     }
 
@@ -171,7 +171,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
-        intent.setAction(IntentDefine.BIND_SERVICE);
+        intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.sendBroadcast(intent);
     }
 
@@ -190,7 +190,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
-        intent.setAction(IntentDefine.BIND_SERVICE);
+        intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.sendBroadcast(intent);
     }
 
