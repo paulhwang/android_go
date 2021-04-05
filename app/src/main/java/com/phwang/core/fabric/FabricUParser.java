@@ -112,38 +112,6 @@ public class FabricUParser {
         this.fabricDBinder().transmitBundleData(bundle_val);
     }
 
-    private String generateFabricResponse(char command_val, char result_val, String link_id_str_val, String session_id_str_val, String data_str_val) {
-        StringBuilder response_buf = new StringBuilder();
-        response_buf.append(link_id_str_val);
-        response_buf.append(session_id_str_val);
-        response_buf.append(data_str_val);
-        String data_package_str = Encoders.sEncode5(response_buf.toString());
-
-        response_buf = new StringBuilder();
-        response_buf.append(command_val);
-        response_buf.append(result_val);
-        response_buf.append(data_package_str);
-        return response_buf.toString();
-    }
-
-    private String generateFabricData0(char command_val, char result_val, char  client_type_val, char theme_val, String link_id_str_val, String session_id_str_val) {
-        FabricData fabric_encode = new FabricData(command_val, result_val, client_type_val, theme_val, link_id_str_val, session_id_str_val, 0);
-        return fabric_encode.getEncodedString();
-    }
-
-    private String generateFabricData1(char command_val, char result_val, char  client_type_val, char theme_val, String link_id_str_val, String session_id_str_val, String str0_val) {
-        FabricData fabric_encode = new FabricData(command_val, result_val, client_type_val, theme_val, link_id_str_val, session_id_str_val, 1);
-        fabric_encode.setStringList(0, str0_val);
-        return fabric_encode.getEncodedString();
-    }
-
-    private String generateFabricData2(char command_val, char result_val, char  client_type_val, char theme_val, String link_id_str_val, String session_id_str_val, String str0_val, String str1_val) {
-        FabricData fabric_encode = new FabricData(command_val, result_val, client_type_val, theme_val, link_id_str_val, session_id_str_val, 2);
-        fabric_encode.setStringList(0, str0_val);
-        fabric_encode.setStringList(1, str1_val);
-        return fabric_encode.getEncodedString();
-    }
-
     private String processRegisterRequest(FabricData fabric_decode_val) {
         this.debug(true, "processRegisterRequest", "");
         FabricData fabric_data = fabric_decode_val;
