@@ -12,6 +12,7 @@ import com.phwang.core.fabric.FabricClients;
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.utils.binder.Binder;
 import com.phwang.core.utils.encoders.Encoders;
+import com.phwang.go.global.GlobalData;
 
 public class ClientDExport implements ClientDExportInt {
     private String objectName() {return "ClientDExport";}
@@ -67,13 +68,13 @@ public class ClientDExport implements ClientDExportInt {
 
     public void doLogout() {
         this.debug(true, "doLogout", "doLogout");
-        if (this.clientFabricInfo().linkIdStr() == null) {
+        if (GlobalData.linkIdStr() == null) {
             return;
         }
 
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(FabricCommands.FABRIC_COMMAND_LOGOUT);
-        command_buf.append(this.clientFabricInfo().linkIdStr());
+        command_buf.append(GlobalData.linkIdStr());
         String command_str = command_buf.toString();
 
         this.debug(false, "doLogout", "command_str=" + command_str);
@@ -86,7 +87,7 @@ public class ClientDExport implements ClientDExportInt {
 
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(FabricCommands.FABRIC_COMMAND_GET_GROUPS);
-        command_buf.append(this.clientFabricInfo().linkIdStr());
+        command_buf.append(GlobalData.linkIdStr());
         String command_str = command_buf.toString();
 
         this.debug(false, "doGetGroups", "command_str=" + command_str);
@@ -95,11 +96,11 @@ public class ClientDExport implements ClientDExportInt {
     }
     
     public void getLinkData() {
-    	this.debug(false, "getLinkData", "link_id=" + this.clientFabricInfo().linkIdStr());
+    	this.debug(false, "getLinkData", "link_id=" + GlobalData.linkIdStr());
     	
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(FabricCommands.FABRIC_COMMAND_GET_LINK_DATA);
-        command_buf.append(this.clientFabricInfo().linkIdStr()); 
+        command_buf.append(GlobalData.linkIdStr());
         String command_str = command_buf.toString();
         
     	this.debug(false, "getLinkData", "command_str=" + command_str);
@@ -108,11 +109,11 @@ public class ClientDExport implements ClientDExportInt {
     }
     
     public void getNameList() {
-    	this.debug(false, "getNameList", "link_id=" + this.clientFabricInfo().linkIdStr());
+    	this.debug(false, "getNameList", "link_id=" + GlobalData.linkIdStr());
     	
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(FabricCommands.FABRIC_COMMAND_GET_LINK_DATA);
-        command_buf.append(this.clientFabricInfo().linkIdStr()); 
+        command_buf.append(GlobalData.linkIdStr());
         String command_str = command_buf.toString();
         
     	this.debug(false, "getNameList", "command_str=" + command_str);
@@ -125,7 +126,7 @@ public class ClientDExport implements ClientDExportInt {
 
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(FabricCommands.FABRIC_COMMAND_SOLO_SESSION);
-        command_buf.append(this.clientFabricInfo().linkIdStr());
+        command_buf.append(GlobalData.linkIdStr());
         command_buf.append(data_str_val);
         String command_str = command_buf.toString();
 
@@ -139,7 +140,7 @@ public class ClientDExport implements ClientDExportInt {
 
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(FabricCommands.FABRIC_COMMAND_HEAD_SESSION);
-        command_buf.append(this.clientFabricInfo().linkIdStr());
+        command_buf.append(GlobalData.linkIdStr());
         command_buf.append(data_str_val);
         String command_str = command_buf.toString();
 
@@ -153,7 +154,7 @@ public class ClientDExport implements ClientDExportInt {
 
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(FabricCommands.FABRIC_COMMAND_PEER_SESSION);
-        command_buf.append(this.clientFabricInfo().linkIdStr());
+        command_buf.append(GlobalData.linkIdStr());
         command_buf.append(data_str_val);
         String command_str = command_buf.toString();
 
@@ -167,7 +168,7 @@ public class ClientDExport implements ClientDExportInt {
 
         StringBuilder command_buf = new StringBuilder();
         command_buf.append(FabricCommands.FABRIC_COMMAND_JOIN_SESSION);
-        command_buf.append(this.clientFabricInfo().linkIdStr());
+        command_buf.append(GlobalData.linkIdStr());
         command_buf.append(data_str_val);
         String command_str = command_buf.toString();
 
