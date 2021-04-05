@@ -157,23 +157,25 @@ public class FabricUParser {
         return this.generateFabricData0(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.clientType(), fabric_decode.theme(), Encoders.IGNORE, Encoders.IGNORE);
     }
 
-    private String processLoginRequest(FabricData fabric_decode_val) {
+    private String processLoginRequest(FabricData fabric_data_val) {
         this.debug(false, "processLoginRequest", "");
-        FabricData fabric_decode = fabric_decode_val;
+        FabricData fabric_data = fabric_data_val;
 
-        char client_type = fabric_decode.clientType();
-        String my_name = fabric_decode.stringList(0);
-        String password = fabric_decode.stringList(1);
+        char client_type = fabric_data.clientType();
+        String my_name = fabric_data.stringList(0);
+        String password = fabric_data.stringList(1);
         this.debug(true, "processDeleteSessionRequest", "my_name=" + my_name);
         this.debug(true, "processDeleteSessionRequest", "password=" + password);
 
         FabricLink link = this.linkMgr().mallocLink(client_type, my_name);
         if (link == null) {
-            return this.generateFabricData0(fabric_decode.command(), FabricResults.BAD_PASSWORD, client_type, fabric_decode.theme(), link.linkIdStr(), Encoders.IGNORE);
+            fabric_data.setResult(FabricResults.BAD_PASSWORD);
+            return fabric_data.getEncodedString();
         }
 
-        fabric_decode.setLinkIdStr(link.linkIdStr());
-        return this.generateFabricData1(fabric_decode.command(), FabricResults.SUCCEED, client_type, fabric_decode.theme(), link.linkIdStr(), Encoders.IGNORE, my_name);
+        fabric_data.setResult(FabricResults.SUCCEED);
+        fabric_data.setLinkIdStr(link.linkIdStr());
+        return fabric_data.getEncodedString();
     }
 
     private String processLogoutRequest(FabricData fabric_decode_val) {
