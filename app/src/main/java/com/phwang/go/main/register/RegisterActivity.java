@@ -21,7 +21,7 @@ import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.fabric.FabricResults;
 import com.phwang.core.fabric.FabricThemes;
 import com.phwang.core.utils.encoders.Encoders;
-import com.phwang.core.utils.fabric.FabricEncode;
+import com.phwang.core.utils.fabric.FabricData;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
@@ -90,7 +90,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
 
-        FabricEncode fabric_encode = new FabricEncode(
+        FabricData fabric_encode = new FabricData(
                 FabricCommands.FABRIC_COMMAND_REGISTER,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID,

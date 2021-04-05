@@ -10,8 +10,8 @@ package com.phwang.core.utils.fabric;
 
 import com.phwang.core.utils.encoders.Encoders;
 
-public class FabricEncode {
-    private static final String TAG = "FabricEncode";
+public class FabricData {
+    private static final String TAG = "FabricData";
     private static final int MAX_ARRAY_SIZE = 10;
 
     private char command_;
@@ -25,7 +25,7 @@ public class FabricEncode {
 
     public void setStringList(int index_val, String string_val) { this.stringList_[index_val] = string_val; }
 
-    public FabricEncode(char command_val, char result_val, char client_type_val, char theme_val, String link_id_str_val, String session_id_str_val, int items_count_val) {
+    public FabricData(char command_val, char result_val, char client_type_val, char theme_val, String link_id_str_val, String session_id_str_val, int items_count_val) {
         this.command_ = command_val;
         this.result_ = result_val;
         this.clientType_ = client_type_val;

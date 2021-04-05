@@ -12,7 +12,7 @@ import android.provider.MediaStore;
 
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.utils.fabric.FabricDecode;
-import com.phwang.core.utils.fabric.FabricEncode;
+import com.phwang.core.utils.fabric.FabricData;
 import com.phwang.core.utils.listmgr.ListEntry;
 import com.phwang.core.utils.binder.BinderBundle;
 
@@ -127,18 +127,18 @@ public class FabricUParser {
     }
 
     private String generateFabricData0(char command_val, char result_val, char  client_type_val, char theme_val, String link_id_str_val, String session_id_str_val) {
-        FabricEncode fabric_encode = new FabricEncode(command_val, result_val, client_type_val, theme_val, link_id_str_val, session_id_str_val, 0);
+        FabricData fabric_encode = new FabricData(command_val, result_val, client_type_val, theme_val, link_id_str_val, session_id_str_val, 0);
         return fabric_encode.getEncodedString();
     }
 
     private String generateFabricData1(char command_val, char result_val, char  client_type_val, char theme_val, String link_id_str_val, String session_id_str_val, String str0_val) {
-        FabricEncode fabric_encode = new FabricEncode(command_val, result_val, client_type_val, theme_val, link_id_str_val, session_id_str_val, 1);
+        FabricData fabric_encode = new FabricData(command_val, result_val, client_type_val, theme_val, link_id_str_val, session_id_str_val, 1);
         fabric_encode.setStringList(0, str0_val);
         return fabric_encode.getEncodedString();
     }
 
     private String generateFabricData2(char command_val, char result_val, char  client_type_val, char theme_val, String link_id_str_val, String session_id_str_val, String str0_val, String str1_val) {
-        FabricEncode fabric_encode = new FabricEncode(command_val, result_val, client_type_val, theme_val, link_id_str_val, session_id_str_val, 2);
+        FabricData fabric_encode = new FabricData(command_val, result_val, client_type_val, theme_val, link_id_str_val, session_id_str_val, 2);
         fabric_encode.setStringList(0, str0_val);
         fabric_encode.setStringList(1, str1_val);
         return fabric_encode.getEncodedString();
