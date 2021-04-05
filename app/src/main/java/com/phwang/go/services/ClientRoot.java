@@ -28,6 +28,10 @@ public class ClientRoot {
         this.debug(false, "ClientRoot", "init start");
 
         this.bindService_ = bind_service_val;
+
+        Abend.initAbend(new ClientAbend());
+        new com.phwang.core.root.CoreRoot();
+
         this.threadMgr_ = new ThreadMgr();
         this.clientUBinder_ = new ClientUBinder(this);
         this.clientDParser_ = new ClientDParser(this);
