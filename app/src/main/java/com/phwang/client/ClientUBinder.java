@@ -25,7 +25,7 @@ public class ClientUBinder implements ThreadEntityInt {
     private ClientRoot clientRoot() { return this.clientRoot_; }
     private ThreadMgr threadMgr() { return this.clientRoot().threadMgr();}
     private ClientDParser clientDParser() { return this.clientRoot().clientDParser();}
-    protected Binder uBinder() { return this.uBinder_; }
+    public Binder uBinder() { return this.uBinder_; }
     
     protected ClientUBinder(ClientRoot root_val) {
         this.debug(false, "ClientUBinder", "init start");

@@ -29,11 +29,6 @@ public class ClientDExport {
     	this.clientRoot_ = root_val;
     }
 
-    public void transmitToFabric(String data_str_val) {
-    	this.debug(true, "transmitToFabric", "data_str_val=" + data_str_val);
-       	this.uBinder().transmitStringData(data_str_val);
-    }
-
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }
     private void log(String s0, String s1) { this.clientRoot().logIt(this.objectName() + "." + s0 + "()", s1); }
     protected void abend(String s0, String s1) { this.clientRoot().abendIt(this.objectName() + "." + s0 + "()", s1); }

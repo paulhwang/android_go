@@ -12,8 +12,11 @@ import android.os.Bundle;
 import android.util.Log;
 import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientDParser;
+import com.phwang.client.ClientRoot;
+import com.phwang.client.ClientUBinder;
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.fabric.FabricResults;
+import com.phwang.core.utils.binder.Binder;
 import com.phwang.core.utils.fabric.FabricData;
 import com.phwang.core.utils.fabric.FabricDataStr;
 import com.phwang.go.define.BundleIndexDefine;
@@ -24,9 +27,12 @@ public class BindReceiverUFunc {
     private static final String TAG = "BindReceiverUFunc";
     BindReceiver bindReceiver_;
 
+    private ClientRoot clientRoot() { return this.bindService().clientRoot(); }
     private BindService bindService() { return this.bindReceiver_.bindService(); };
     public ClientDExport clientDExport() { return this.bindService().clientDExport(); }
     public ClientDParser clientDParser() { return this.bindService().clientDParser(); }
+    private ClientUBinder clientUBinder() { return this.clientRoot().clientUBinder(); }
+    private Binder uBinder() { return this.clientUBinder().uBinder(); }
 
     public BindReceiverUFunc(BindReceiver bind_receiver_val) {
         this.bindReceiver_ = bind_receiver_val;
@@ -56,11 +62,16 @@ public class BindReceiverUFunc {
             case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
             case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
             case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
-                this.clientDExport().transmitToFabric(fabric_data_str);
+                this.transmitToFabric(fabric_data_str);
                 break;
 
             default:
                 Log.e(TAG, "handleCommand(not implemented) fabric_data_str=" + fabric_data_str);
         }
+    }
+
+    public void transmitToFabric(String data_str_val) {
+        Log.e(TAG,  "transmitToFabric() data_str_val=" + data_str_val);
+        this.uBinder().transmitStringData(data_str_val);
     }
 }

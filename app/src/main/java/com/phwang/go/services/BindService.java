@@ -28,6 +28,7 @@ public class BindService extends Service {
     private BindReceiver bindReceiver_;
     private ClientRoot clientRoot_;
 
+    public ClientRoot clientRoot() { return this.clientRoot_; };
     public ClientDParser clientDParser() { return this.clientRoot_.clientDParser(); }
     public ClientDExport clientDExport() {
         return this.clientRoot_.clientDExport();
