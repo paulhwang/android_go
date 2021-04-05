@@ -20,8 +20,8 @@ import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.global.GlobalData;
 
-public class BindReceiverUFunc {
-    private static final String TAG = "BindReceiverUFunc";
+public class ClientUParser {
+    private static final String TAG = "ClientUParser";
     BindReceiver bindReceiver_;
 
     private ClientRoot clientRoot() { return this.bindService().clientRoot(); }
@@ -30,7 +30,7 @@ public class BindReceiverUFunc {
     private ClientUBinder clientUBinder() { return this.clientRoot().clientUBinder(); }
     private Binder uBinder() { return this.clientUBinder().uBinder(); }
 
-    public BindReceiverUFunc(BindReceiver bind_receiver_val) {
+    public ClientUParser(BindReceiver bind_receiver_val) {
         this.bindReceiver_ = bind_receiver_val;
     }
 
