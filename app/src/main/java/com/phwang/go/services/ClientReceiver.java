@@ -17,15 +17,15 @@ import com.phwang.go.define.BundleIndexDefine;
 
 public class ClientReceiver extends BroadcastReceiver {
     private static final String TAG = "ClientReceiver";
-    private ClientService bindService_;
-    private ClientUParser bindReceiverUFunc_;
+    private ClientService clientService_;
+    private ClientUParser clientUParser_;
 
-    protected ClientService bindService() { return this.bindService_; };
-    protected ClientUParser bindServiceUFunc() { return this.bindReceiverUFunc_; };
+    protected ClientService clientService() { return this.clientService_; };
+    protected ClientUParser clientUParser() { return this.clientUParser_; };
 
     public ClientReceiver(ClientService bind_service_val) {
-        this.bindService_ = bind_service_val;
-        this.bindReceiverUFunc_ = new ClientUParser(this);
+        this.clientService_ = bind_service_val;
+        this.clientUParser_ = new ClientUParser(this);
     }
 
     @Override
@@ -37,6 +37,6 @@ public class ClientReceiver extends BroadcastReceiver {
             return;
         }
 
-        this.bindReceiverUFunc_.handleCommand(bundle);
+        this.clientUParser_.handleCommand(bundle);
     }
 }

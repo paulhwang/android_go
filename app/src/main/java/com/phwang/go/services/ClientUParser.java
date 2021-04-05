@@ -24,9 +24,9 @@ public class ClientUParser {
     private static final String TAG = "ClientUParser";
     ClientReceiver bindReceiver_;
 
-    private ClientRoot clientRoot() { return this.bindService().clientRoot(); }
-    private ClientService bindService() { return this.bindReceiver_.bindService(); };
-    public ClientDParser clientDParser() { return this.bindService().clientDParser(); }
+    private ClientRoot clientRoot() { return this.clientService().clientRoot(); }
+    private ClientService clientService() { return this.bindReceiver_.clientService(); };
+    public ClientDParser clientDParser() { return this.clientService().clientDParser(); }
     private ClientUBinder clientUBinder() { return this.clientRoot().clientUBinder(); }
     private Binder uBinder() { return this.clientUBinder().uBinder(); }
 

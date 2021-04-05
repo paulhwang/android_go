@@ -22,7 +22,7 @@ import com.phwang.go.define.IntentDefine;
 public class ClientService extends Service {
     private static final String TAG = "ClientService";
     private Context applicationContext_;
-    private ClientReceiver bindReceiver_;
+    private ClientReceiver clientReceiver_;
     private ClientRoot clientRoot_;
 
     public ClientRoot clientRoot() { return this.clientRoot_; };
@@ -60,18 +60,18 @@ public class ClientService extends Service {
     }
 
     private void registerBroadcastReceiver() {
-        if (this.bindReceiver_ == null) {
-            this.bindReceiver_ = new ClientReceiver(this);
+        if (this.clientReceiver_ == null) {
+            this.clientReceiver_ = new ClientReceiver(this);
             IntentFilter filter = new IntentFilter();
             filter.addAction(IntentDefine.BIND_SERVICE);
-            this.registerReceiver(this.bindReceiver_, filter);
+            this.registerReceiver(this.clientReceiver_, filter);
         }
     }
 
     private void unregisterBroadcastReceiver() {
-        if (this.bindReceiver_ != null) {
-            this.unregisterReceiver(this.bindReceiver_);
-            this.bindReceiver_ = null;
+        if (this.clientReceiver_ != null) {
+            this.unregisterReceiver(this.clientReceiver_);
+            this.clientReceiver_ = null;
         }
     }
 }
