@@ -11,7 +11,7 @@ package com.phwang.client;
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.fabric.FabricResults;
 import com.phwang.core.utils.encoders.Encoders;
-import com.phwang.core.utils.fabric.FabricDecode;
+import com.phwang.core.utils.fabric.FabricData;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.services.BindReceiverDFunc;
 import com.phwang.go.services.BindService;
@@ -38,7 +38,7 @@ public class ClientDParser {
     	
     	switch (response_data_str_val.charAt(0)) {
             case FabricCommands.FABRIC_COMMAND_LOGIN:
-                FabricDecode fabric_decode = new FabricDecode(response_data_str_val);
+                FabricData fabric_decode = new FabricData(response_data_str_val);
                 String link_id_str = fabric_decode.linkIdStr();
                 if (fabric_decode.result() == FabricResults.SUCCEED) {
                     this.clientFabricInfo().setLinkIdStr(link_id_str);

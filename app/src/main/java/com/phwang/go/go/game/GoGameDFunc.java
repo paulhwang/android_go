@@ -11,7 +11,7 @@ package com.phwang.go.go.game;
 import android.util.Log;
 
 import com.phwang.core.utils.encoders.Encoders;
-import com.phwang.core.utils.fabric.FabricDecode;
+import com.phwang.core.utils.fabric.FabricData;
 
 public class GoGameDFunc {
     private static final String TAG = "GoGameDFunc";
@@ -29,7 +29,7 @@ public class GoGameDFunc {
     protected void parseGetSessionData(String fabric_data_str_val) {
         Log.e(TAG, "parseGetSessionData() fabric_data_str=" + fabric_data_str_val);
 
-        FabricDecode fabric_decode = new FabricDecode(fabric_data_str_val);
+        FabricData fabric_decode = new FabricData(fabric_data_str_val);
         Log.e(TAG, "parseGetSessionData() theme_data_str_=" + fabric_decode.stringList(0));
 
         String theme_data_str = fabric_decode.stringList(0);

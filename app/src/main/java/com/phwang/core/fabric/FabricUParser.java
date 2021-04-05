@@ -11,7 +11,6 @@ package com.phwang.core.fabric;
 import android.provider.MediaStore;
 
 import com.phwang.core.utils.encoders.Encoders;
-import com.phwang.core.utils.fabric.FabricDecode;
 import com.phwang.core.utils.fabric.FabricData;
 import com.phwang.core.utils.listmgr.ListEntry;
 import com.phwang.core.utils.binder.BinderBundle;
@@ -40,7 +39,7 @@ public class FabricUParser {
         String job_id_str = null;
         String input_str = bundle_val.data();
         this.debug(true, "parseInputPacket", "input_str = " + input_str);
-        FabricDecode fabric_decode = new FabricDecode(input_str);
+        FabricData fabric_decode = new FabricData(input_str);
 
         String rest_str = input_str;
         if (rest_str.charAt(0) == FabricCommands.FABRIC_COMMAND_HTTP_DATA) {
@@ -144,9 +143,9 @@ public class FabricUParser {
         return fabric_encode.getEncodedString();
     }
 
-    private String processRegisterRequest(FabricDecode fabric_decode_val) {
+    private String processRegisterRequest(FabricData fabric_decode_val) {
         this.debug(true, "processRegisterRequest", "");
-        FabricDecode fabric_decode = fabric_decode_val;
+        FabricData fabric_decode = fabric_decode_val;
 
         String my_name = fabric_decode.stringList(0);
         String email = fabric_decode.stringList(1);
@@ -158,9 +157,9 @@ public class FabricUParser {
         return this.generateFabricData0(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.clientType(), fabric_decode.theme(), Encoders.IGNORE, Encoders.IGNORE);
     }
 
-    private String processLoginRequest(FabricDecode fabric_decode_val) {
+    private String processLoginRequest(FabricData fabric_decode_val) {
         this.debug(false, "processLoginRequest", "");
-        FabricDecode fabric_decode = fabric_decode_val;
+        FabricData fabric_decode = fabric_decode_val;
 
         char client_type = fabric_decode.clientType();
         String my_name = fabric_decode.stringList(0);
@@ -177,9 +176,9 @@ public class FabricUParser {
         return this.generateFabricData1(fabric_decode.command(), FabricResults.SUCCEED, client_type, fabric_decode.theme(), link.linkIdStr(), Encoders.IGNORE, my_name);
     }
 
-    private String processLogoutRequest(FabricDecode fabric_decode_val) {
+    private String processLogoutRequest(FabricData fabric_decode_val) {
         this.debug(true, "processLogoutRequest", "input_str_val");
-        FabricDecode fabric_decode = fabric_decode_val;
+        FabricData fabric_decode = fabric_decode_val;
 
         String link_id_str = fabric_decode.linkIdStr();
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
@@ -191,9 +190,9 @@ public class FabricUParser {
         return this.generateFabricData0(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.clientType(), fabric_decode.theme(), link_id_str, Encoders.IGNORE);
     }
 
-    private String processGetGroupsRequest(FabricDecode fabric_decode_val) {
+    private String processGetGroupsRequest(FabricData fabric_decode_val) {
         this.debug(true, "processGetGroupsRequest", "");
-        FabricDecode fabric_decode = fabric_decode_val;
+        FabricData fabric_decode = fabric_decode_val;
 
         String link_id_str = fabric_decode.linkIdStr();
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
@@ -205,9 +204,9 @@ public class FabricUParser {
         return this.generateFabricData1(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.clientType(), fabric_decode.theme(), link_id_str, Encoders.IGNORE, Encoders.NULL_DATA);
     }
 
-    private String processSoloSessionRequest(FabricDecode fabric_decode_val) {
+    private String processSoloSessionRequest(FabricData fabric_decode_val) {
         this.debug(true, "processSoloSessionRequest", "");
-        FabricDecode fabric_decode = fabric_decode_val;
+        FabricData fabric_decode = fabric_decode_val;
 
         String link_id_str = fabric_decode.linkIdStr();
         String theme_data_str = fabric_decode.stringList(0);
@@ -231,9 +230,9 @@ public class FabricUParser {
         return this.generateFabricData1(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.clientType(), fabric_decode.theme(), link_id_str, session.lSessionIdStr(), theme_data_str);
     }
 
-    private String processDeleteSessionRequest(FabricDecode fabric_decode_val) {
+    private String processDeleteSessionRequest(FabricData fabric_decode_val) {
         this.debug(true, "processDeleteSessionRequest", "");
-        FabricDecode fabric_decode = fabric_decode_val;
+        FabricData fabric_decode = fabric_decode_val;
 
         String link_id_str = fabric_decode.linkIdStr();
         String session_id_str = fabric_decode.sessionIdStr();
@@ -256,9 +255,9 @@ public class FabricUParser {
         return this.generateFabricData0(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.clientType(), fabric_decode.theme(), link_id_str, session_id_str);
     }
 
-    private String processPutSessionDataRequest(FabricDecode fabric_decode_val) {
+    private String processPutSessionDataRequest(FabricData fabric_decode_val) {
         this.debug(false, "processPutSessionDataRequest", "");
-        FabricDecode fabric_decode = fabric_decode_val;
+        FabricData fabric_decode = fabric_decode_val;
 
         String link_id_str = fabric_decode.linkIdStr();
         String session_id_str = fabric_decode.sessionIdStr();
@@ -292,9 +291,9 @@ public class FabricUParser {
         return this.generateFabricData0(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.clientType(), fabric_decode.theme(), link_id_str, session_id_str);
     }
 
-    private String processGetSessionDataRequest(FabricDecode fabric_decode_val) {
+    private String processGetSessionDataRequest(FabricData fabric_decode_val) {
         this.debug(false, "processPutSessionDataRequest", "");
-        FabricDecode fabric_decode = fabric_decode_val;
+        FabricData fabric_decode = fabric_decode_val;
 
         String link_id_str = fabric_decode.linkIdStr();
         String session_id_str = fabric_decode.sessionIdStr();

@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import com.phwang.core.utils.encoders.Encoders;
-import com.phwang.core.utils.fabric.FabricDecode;
+import com.phwang.core.utils.fabric.FabricData;
 import com.phwang.core.utils.watchdog.WatchDog;
 import com.phwang.core.utils.watchdog.WatchDogInt;
 import com.phwang.go.R;
@@ -44,7 +44,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         String fabric_data_str = this.getIntent().getExtras().getString(BundleIndexDefine.FABRIC_DATA);
         Log.e(TAG, "onCreate() data_package=" + fabric_data_str);
 
-        FabricDecode fabric_decode = new FabricDecode(fabric_data_str);
+        FabricData fabric_decode = new FabricData(fabric_data_str);
         this.linkIdStr_ = fabric_decode.linkIdStr();
         this.sessionIdStr_ = fabric_decode.sessionIdStr();
         String config_str = fabric_decode.stringList(0);
