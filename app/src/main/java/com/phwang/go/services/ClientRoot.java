@@ -9,6 +9,7 @@
 package com.phwang.go.services;
 
 import com.phwang.core.utils.abend.Abend;
+import com.phwang.core.utils.binder.Binder;
 import com.phwang.core.utils.threadmgr.ThreadMgr;
 
 public class ClientRoot {
@@ -25,6 +26,7 @@ public class ClientRoot {
     protected ClientUBinder clientUBinder() { return this.clientUBinder_; }
     protected ClientDParser clientDParser() { return this.clientDParser_; }
     protected ClientUParser clientUParser() { return this.clientUParser_; };
+    protected Binder uBinder() { return this.clientUBinder_.uBinder(); }
 
     public ClientRoot(ClientService client_service_val) {
         this.debug(false, "ClientRoot", "init start");
