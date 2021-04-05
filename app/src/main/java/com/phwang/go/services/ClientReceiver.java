@@ -15,15 +15,15 @@ import android.os.Bundle;
 import android.util.Log;
 import com.phwang.go.define.BundleIndexDefine;
 
-public class BindReceiver extends BroadcastReceiver {
-    private static final String TAG = "BindReceiver";
+public class ClientReceiver extends BroadcastReceiver {
+    private static final String TAG = "ClientReceiver";
     private BindService bindService_;
     private ClientUParser bindReceiverUFunc_;
 
     protected BindService bindService() { return this.bindService_; };
     protected ClientUParser bindServiceUFunc() { return this.bindReceiverUFunc_; };
 
-    public BindReceiver(BindService bind_service_val) {
+    public ClientReceiver(BindService bind_service_val) {
         this.bindService_ = bind_service_val;
         this.bindReceiverUFunc_ = new ClientUParser(this);
     }

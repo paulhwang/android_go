@@ -22,7 +22,7 @@ import com.phwang.go.global.GlobalData;
 
 public class ClientUParser {
     private static final String TAG = "ClientUParser";
-    BindReceiver bindReceiver_;
+    ClientReceiver bindReceiver_;
 
     private ClientRoot clientRoot() { return this.bindService().clientRoot(); }
     private BindService bindService() { return this.bindReceiver_.bindService(); };
@@ -30,7 +30,7 @@ public class ClientUParser {
     private ClientUBinder clientUBinder() { return this.clientRoot().clientUBinder(); }
     private Binder uBinder() { return this.clientUBinder().uBinder(); }
 
-    public ClientUParser(BindReceiver bind_receiver_val) {
+    public ClientUParser(ClientReceiver bind_receiver_val) {
         this.bindReceiver_ = bind_receiver_val;
     }
 
