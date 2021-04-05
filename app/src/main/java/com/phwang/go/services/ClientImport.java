@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.client;
+package com.phwang.go.services;
 
 import com.phwang.core.fabric.FabricExport;
 import com.phwang.core.fabric.FabricCommands;

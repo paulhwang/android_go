@@ -6,21 +6,17 @@
  ******************************************************************************
  */
 
-package com.phwang.client;
+package com.phwang.go.services;
 
 import android.content.Intent;
 import android.util.Log;
 
 import com.phwang.core.fabric.FabricCommands;
-import com.phwang.core.fabric.FabricResults;
-import com.phwang.core.utils.encoders.Encoders;
-import com.phwang.core.utils.fabric.FabricData;
 import com.phwang.core.utils.fabric.FabricDataStr;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.services.BindService;
-
-import java.util.Base64;
+import com.phwang.go.services.ClientRoot;
 
 public class ClientDParser {
     private static final String TAG = "ClientDParser";

@@ -6,11 +6,10 @@
  ******************************************************************************
  */
 
-package com.phwang.client;
+package com.phwang.go.services;
 
 import com.phwang.core.utils.abend.Abend;
 import com.phwang.core.utils.threadmgr.ThreadMgr;
-import com.phwang.go.services.BindService;
 
 public class ClientRoot {
     private String objectName() {return "ClientRoot";}
