@@ -34,6 +34,8 @@ public class FabricData {
     public void setResult(char result_val) { this.result_ = result_val; }
     public void setLinkIdStr(String link_id_str_val) { this.linkIdStr_ = link_id_str_val; }
     public void setSessionIdStr(String session_id_str_val) { this.sessionIdStr_ = session_id_str_val; }
+    public void setStringList(int index_val, String string_val) { this.stringList_[index_val] = string_val; }
+    public void addStringList(String string_val) { this.stringList_[this.stringsCount_] = string_val; this.stringsCount_++; }
 
     public FabricData(char command_val, char result_val, char client_type_val, char theme_val, String link_id_str_val, String session_id_str_val, int items_count_val) {
         this.command_ = command_val;
@@ -66,15 +68,6 @@ public class FabricData {
             this.stringList_[i] = Encoders.sDecode6(rest_str);
             rest_str = Encoders.sSubstring6_(rest_str);
         }
-    }
-
-    public void setStringList(int index_val, String string_val) {
-        this.stringList_[index_val] = string_val;
-    }
-
-    public void addStringList(String string_val) {
-        this.stringList_[this.stringsCount_] = string_val;
-        this.stringsCount_++;
     }
 
     public String getEncodedString() {
