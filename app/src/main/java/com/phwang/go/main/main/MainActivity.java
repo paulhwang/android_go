@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FabricData fabric_encode = new FabricData(
                 FabricCommands.FABRIC_COMMAND_LOGOUT,
                 FabricResults.UNDECIDED,
-                FabricData.ANDROID,
+                FabricData.ANDROID_CLIENT,
                 FabricThemes.ALL,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,
@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FabricData fabric_encode = new FabricData(
                 FabricCommands.FABRIC_COMMAND_GET_GROUPS,
                 FabricResults.UNDECIDED,
-                FabricData.ANDROID,
+                FabricData.ANDROID_CLIENT,
                 FabricThemes.ALL,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,

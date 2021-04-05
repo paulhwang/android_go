@@ -14,9 +14,9 @@ public class FabricData {
     private static final String TAG = "FabricData";
     private static final int MAX_ARRAY_SIZE = 10;
 
-    public static final char ANDROID = 'A';
-    public static final char IPHONE  = 'I';
-    public static final char HTTP    = 'H';
+    public static final char ANDROID_CLIENT = 'A';
+    public static final char IPHONE_CLIENT  = 'I';
+    public static final char HTTP_CLIENT    = 'H';
 
     private char command_;
     private char result_;
@@ -68,6 +68,11 @@ public class FabricData {
         this.sessionIdStr_ = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
 
+        if (this.clientType_ == HTTP_CLIENT) {
+            this.jobIdStr_ = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
+        }
+
         this.stringsCount_ = rest_str.charAt(0) - 48;
         rest_str = rest_str.substring(1);
 
@@ -86,6 +91,9 @@ public class FabricData {
 
         buf.append((this.linkIdStr_ != null) ? this.linkIdStr_: Encoders.NULL_LINK);
         buf.append((this.sessionIdStr_ != null) ? this.sessionIdStr_: Encoders.NULL_SESSION);
+        if (this.clientType_ == HTTP_CLIENT) {
+            buf.append((this.jobIdStr_ != null) ? this.jobIdStr_: Encoders.NULL_JOB);
+        }
         buf.append(Encoders.iEncodeRaw1(this.stringsCount_));
 
         for (int i = 0; i < this.stringsCount_; i++) {

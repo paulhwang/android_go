@@ -121,7 +121,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         FabricData fabric_encode = new FabricData(
                 FabricCommands.FABRIC_COMMAND_SOLO_SESSION,
                 FabricResults.UNDECIDED,
-                FabricData.ANDROID,
+                FabricData.ANDROID_CLIENT,
                 FabricThemes.GO,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,
@@ -140,7 +140,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         FabricData fabric_encode = new FabricData(
                 FabricCommands.FABRIC_COMMAND_HEAD_SESSION,
                 FabricResults.UNDECIDED,
-                FabricData.ANDROID,
+                FabricData.ANDROID_CLIENT,
                 FabricThemes.GO,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,
@@ -159,7 +159,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         FabricData fabric_encode = new FabricData(
                 FabricCommands.FABRIC_COMMAND_PEER_SESSION,
                 FabricResults.UNDECIDED,
-                FabricData.ANDROID,
+                FabricData.ANDROID_CLIENT,
                 FabricThemes.GO,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,
@@ -178,7 +178,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         FabricData fabric_encode = new FabricData(
                 FabricCommands.FABRIC_COMMAND_JOIN_SESSION,
                 FabricResults.UNDECIDED,
-                FabricData.ANDROID,
+                FabricData.ANDROID_CLIENT,
                 FabricThemes.GO,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,
