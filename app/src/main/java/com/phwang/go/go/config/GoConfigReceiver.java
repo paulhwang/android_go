@@ -97,10 +97,10 @@ public class GoConfigReceiver extends BroadcastReceiver {
         }
     }
 
-    private void processSetupHeadSessionResponse(char result_val, String data_package_str_val) {
+    private void processSetupHeadSessionResponse(char result_val, String fabric_data_str_val) {
         if (result_val == FabricResults.SUCCEED) {
             Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
-            intent.putExtra(BundleIndexDefine.DATA_PACKAGE, data_package_str_val);
+            intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_data_str_val);
             this.goConfigActivity_.startActivity(intent);
             return;
         }
@@ -114,10 +114,10 @@ public class GoConfigReceiver extends BroadcastReceiver {
         }
     }
 
-    private void processSetupPeerSessionResponse(char result_val, String data_package_str_val) {
+    private void processSetupPeerSessionResponse(char result_val, String fabric_data_str_val) {
         if (result_val == FabricResults.SUCCEED) {
             Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
-            intent.putExtra(BundleIndexDefine.DATA_PACKAGE, data_package_str_val);
+            intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_data_str_val);
             this.goConfigActivity_.startActivity(intent);
             return;
         }
@@ -131,10 +131,10 @@ public class GoConfigReceiver extends BroadcastReceiver {
         }
     }
 
-    private void processSetupJoinSessionResponse(char result_val, String data_package_str_val) {
+    private void processSetupJoinSessionResponse(char result_val, String fabric_data_str_val) {
         if (result_val == FabricResults.SUCCEED) {
             Intent intent = new Intent(this.goConfigActivity_, GoGameActivity.class);
-            intent.putExtra(BundleIndexDefine.DATA_PACKAGE, data_package_str_val);
+            intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_data_str_val);
             this.goConfigActivity_.startActivity(intent);
             return;
         }

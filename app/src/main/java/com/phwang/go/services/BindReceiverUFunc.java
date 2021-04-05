@@ -50,15 +50,6 @@ public class BindReceiverUFunc {
         }
 
         switch (command.charAt(0)) {
-            case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
-                if (GlobalData.linkIdStr() == null) {
-                    this.bindReceiverDFunc().sendResponseBroadcastMessage(
-                            IntentDefine.GO_CONFIG_ACTIVITY,
-                            FabricCommands.FABRIC_COMMAND_SOLO_SESSION_STR,
-                            FabricResults.LINK_NOT_EXIST_STR,
-                            null);
-                    return;
-                }
             case FabricCommands.FABRIC_COMMAND_REGISTER:
             case FabricCommands.FABRIC_COMMAND_LOGIN:
             case FabricCommands.FABRIC_COMMAND_LOGOUT:
@@ -70,12 +61,21 @@ public class BindReceiverUFunc {
                 this.clientDExport().transmitToFabric(fabric_data_str);
                 break;
 
+            case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
+                if (GlobalData.linkIdStr() == null) {
+                    this.bindReceiverDFunc().sendResponseBroadcastMessage(
+                            IntentDefine.GO_CONFIG_ACTIVITY,
+                            FabricCommands.FABRIC_COMMAND_SOLO_SESSION_STR,
+                            FabricResults.LINK_NOT_EXIST_STR,
+                            null);
+                    return;
+                }
+                fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
+                this.clientDExport().transmitToFabric(fabric_data_str);
+                break;
 
             case FabricCommands.FABRIC_COMMAND_HEAD_SESSION:
-                theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
-                Log.e(TAG, "handleCommand(FABRIC_COMMAND_SOLO_SESSION) data=" + theme_data);
-
-                if (this.clientFabricInfo().linkIdStr() == null) {
+                if (GlobalData.linkIdStr() == null) {
                     this.bindReceiverDFunc().sendResponseBroadcastMessage(
                             IntentDefine.GO_CONFIG_ACTIVITY,
                             FabricCommands.FABRIC_COMMAND_HEAD_SESSION_STR,
@@ -83,15 +83,12 @@ public class BindReceiverUFunc {
                             null);
                     return;
                 }
-
-                this.clientDExport().setupHeadSession(theme_data);
+                fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
+                this.clientDExport().transmitToFabric(fabric_data_str);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_PEER_SESSION:
-                theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
-                Log.e(TAG, "handleCommand(FABRIC_COMMAND_SOLO_SESSION) data=" + theme_data);
-
-                if (this.clientFabricInfo().linkIdStr() == null) {
+                if (GlobalData.linkIdStr() == null) {
                     this.bindReceiverDFunc().sendResponseBroadcastMessage(
                             IntentDefine.GO_CONFIG_ACTIVITY,
                             FabricCommands.FABRIC_COMMAND_PEER_SESSION_STR,
@@ -99,15 +96,12 @@ public class BindReceiverUFunc {
                             null);
                     return;
                 }
-
-                this.clientDExport().setupPeerSession(theme_data);
+                fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
+                this.clientDExport().transmitToFabric(fabric_data_str);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_JOIN_SESSION:
-                theme_data = bundle_val.getString(BundleIndexDefine.THEME_DATA);
-                Log.e(TAG, "handleCommand(FABRIC_COMMAND_SOLO_SESSION) data=" + theme_data);
-
-                if (this.clientFabricInfo().linkIdStr() == null) {
+                if (GlobalData.linkIdStr() == null) {
                     this.bindReceiverDFunc().sendResponseBroadcastMessage(
                             IntentDefine.GO_CONFIG_ACTIVITY,
                             FabricCommands.FABRIC_COMMAND_JOIN_SESSION_STR,
@@ -115,8 +109,8 @@ public class BindReceiverUFunc {
                             null);
                     return;
                 }
-
-                this.clientDExport().setupJoinSession(theme_data);
+                fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
+                this.clientDExport().transmitToFabric(fabric_data_str);
                 break;
 
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION:
