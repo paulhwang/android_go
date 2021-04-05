@@ -26,7 +26,6 @@ public class BindReceiverUFunc {
 
     private BindService bindService() { return this.bindReceiver_.bindService(); };
     public ClientDExport clientDExport() { return this.bindService().clientDExport(); }
-    public BindReceiverDFunc bindReceiverDFunc() { return this.bindService().bindReceiverDFunc(); }
     public ClientDParser clientDParser() { return this.bindService().clientDParser(); }
 
     public BindReceiverUFunc(BindReceiver bind_receiver_val) {

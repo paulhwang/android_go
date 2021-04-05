@@ -19,15 +19,12 @@ public class BindReceiver extends BroadcastReceiver {
     private static final String TAG = "BindReceiver";
     private BindService bindService_;
     private BindReceiverUFunc bindReceiverUFunc_;
-    private BindReceiverDFunc bindReceiverDFunc_;
 
     protected BindService bindService() { return this.bindService_; };
     protected BindReceiverUFunc bindServiceUFunc() { return this.bindReceiverUFunc_; };
-    protected BindReceiverDFunc bindReceiverDFunc() { return this.bindReceiverDFunc_; };
 
     public BindReceiver(BindService bind_service_val) {
         this.bindService_ = bind_service_val;
-        this.bindReceiverDFunc_ = new BindReceiverDFunc(this);
         this.bindReceiverUFunc_ = new BindReceiverUFunc(this);
     }
 
