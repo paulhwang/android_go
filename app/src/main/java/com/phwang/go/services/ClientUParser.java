@@ -22,12 +22,10 @@ import com.phwang.go.global.GlobalData;
 
 public class ClientUParser {
     private static final String TAG = "ClientUParser";
-    ClientRoot clientRoot_;
+    private ClientRoot clientRoot_;
 
-    private ClientRoot clientRoot() { return this.clientService().clientRoot(); }
-    private ClientService clientService() { return this.clientRoot_.clientService(); };
-    public ClientDParser clientDParser() { return this.clientService().clientDParser(); }
-    private ClientUBinder clientUBinder() { return this.clientRoot().clientUBinder(); }
+    public ClientDParser clientDParser() { return this.clientRoot_.clientDParser(); }
+    private ClientUBinder clientUBinder() { return this.clientRoot_.clientUBinder(); }
     private Binder uBinder() { return this.clientUBinder().uBinder(); }
 
     public ClientUParser(ClientRoot client_root_val) {

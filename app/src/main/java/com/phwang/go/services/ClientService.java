@@ -25,10 +25,11 @@ public class ClientService extends Service {
     private ClientReceiver clientReceiver_;
     private ClientRoot clientRoot_;
 
-    public ClientRoot clientRoot() { return this.clientRoot_; };
-    public ClientDParser clientDParser() { return this.clientRoot_.clientDParser(); }
-    public ClientUBinder clientUBinder() { return this.clientRoot_.clientUBinder(); }
-    public Context applicationContext() { return this.applicationContext_; };
+    protected ClientRoot clientRoot() { return this.clientRoot_; };
+    protected ClientDParser clientDParser() { return this.clientRoot_.clientDParser(); }
+    protected ClientUParser clientUParser() { return this.clientRoot_.clientUParser(); }
+    protected ClientUBinder clientUBinder() { return this.clientRoot_.clientUBinder(); }
+    protected Context applicationContext() { return this.applicationContext_; };
 
     @Override
     public void onCreate() {

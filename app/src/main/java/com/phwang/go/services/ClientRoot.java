@@ -14,20 +14,22 @@ import com.phwang.core.utils.threadmgr.ThreadMgr;
 public class ClientRoot {
     private String objectName() {return "ClientRoot";}
 
-    private ClientService bindService_;
+    private ClientService clientService_;
     private ThreadMgr threadMgr_;
     private ClientUBinder clientUBinder_;
     private ClientDParser clientDParser_;
+    private ClientUParser clientUParser_;
 
-    public ClientService clientService() { return this.bindService_; };
-    public ThreadMgr threadMgr() { return this.threadMgr_; }
-    public ClientUBinder clientUBinder() { return this.clientUBinder_; }
-    public ClientDParser clientDParser() { return this.clientDParser_; }
-    
-    public ClientRoot(ClientService bind_service_val) {
+    protected ThreadMgr threadMgr() { return this.threadMgr_; }
+    protected ClientService clientService() { return this.clientService_; };
+    protected ClientUBinder clientUBinder() { return this.clientUBinder_; }
+    protected ClientDParser clientDParser() { return this.clientDParser_; }
+    protected ClientUParser clientUParser() { return this.clientUParser_; };
+
+    public ClientRoot(ClientService client_service_val) {
         this.debug(false, "ClientRoot", "init start");
 
-        this.bindService_ = bind_service_val;
+        this.clientService_ = client_service_val;
 
         Abend.initAbend(new ClientAbend());
         new com.phwang.core.root.CoreRoot();
@@ -35,6 +37,7 @@ public class ClientRoot {
         this.threadMgr_ = new ThreadMgr();
         this.clientUBinder_ = new ClientUBinder(this);
         this.clientDParser_ = new ClientDParser(this);
+        this.clientUParser_ = new ClientUParser(this);
 
         this.clientUBinder_.startThreads();
 	}
