@@ -15,6 +15,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.phwang.core.fabric.FabricCommands;
+import com.phwang.core.utils.encoders.Encoders;
+import com.phwang.core.utils.fabric.FabricData;
+import com.phwang.core.utils.fabric.FabricDataStr;
 import com.phwang.go.define.BundleIndexDefine;
 
 public class GoGameReceiver extends BroadcastReceiver {
@@ -50,29 +53,25 @@ public class GoGameReceiver extends BroadcastReceiver {
     }
 
     private void handleReceivedBundle(Bundle bundle_val) {
-        String command = bundle_val.getString(BundleIndexDefine.COMMAND);
-        String result = bundle_val.getString(BundleIndexDefine.RESULT);
-        String data_package_str = bundle_val.getString(BundleIndexDefine.DATA_PACKAGE);
         String fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
-        Log.e(TAG, "handleReceivedBundle() command=" + command + ", fabric_data=" + fabric_data_str + " data_package=" + data_package_str);
+        char command = FabricDataStr.getCommand(fabric_data_str);
+        Log.e(TAG, "handleReceivedBundle() command=" + command + ", fabric_data=" + fabric_data_str);
 
-        if (command != null) {
-            switch (command.charAt(0)) {
-                case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
-                    Log.e(TAG, "handleReceivedBundle(***ERROR***) fix it! command=" + command + ", result=" + result + " data_package=" + data_package_str);
-                    break;
+        switch (command) {
+            case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
+                Log.e(TAG, "handleReceivedBundle(***ERROR***) fix it! fabric_data=" + fabric_data_str);
+                break;
 
-                case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
-                    this.goGameUFunc().sendGetSessionDataCommand();
-                    break;
+            case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
+                this.goGameUFunc().sendGetSessionDataCommand();
+                break;
 
-                case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
-                    this.goGameDFunc().parseGetSessionData(fabric_data_str);
-                    break;
+            case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
+                this.goGameDFunc().parseGetSessionData(fabric_data_str);
+                break;
 
-                default:
-                    break;
-            }
+            default:
+                break;
         }
     }
 }

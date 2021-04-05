@@ -70,7 +70,6 @@ public class ClientDParser {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.BIND_SERVICE);
-        intent.putExtra(BundleIndexDefine.COMMAND, FabricDataStr.getCommandStr(fabric_data_str_val));
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_data_str_val);
         intent.setAction(target_val);
         this.clientService().sendBroadcast(intent);
