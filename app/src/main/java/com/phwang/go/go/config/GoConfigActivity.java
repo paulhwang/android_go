@@ -15,7 +15,6 @@ import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.phwang.core.fabric.FabricClients;
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.fabric.FabricResults;
 import com.phwang.core.fabric.FabricThemes;
@@ -122,7 +121,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         FabricData fabric_encode = new FabricData(
                 FabricCommands.FABRIC_COMMAND_SOLO_SESSION,
                 FabricResults.UNDECIDED,
-                FabricClients.ANDROID,
+                FabricData.ANDROID,
                 FabricThemes.GO,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,
@@ -141,7 +140,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         FabricData fabric_encode = new FabricData(
                 FabricCommands.FABRIC_COMMAND_HEAD_SESSION,
                 FabricResults.UNDECIDED,
-                FabricClients.ANDROID,
+                FabricData.ANDROID,
                 FabricThemes.GO,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,
@@ -160,7 +159,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         FabricData fabric_encode = new FabricData(
                 FabricCommands.FABRIC_COMMAND_PEER_SESSION,
                 FabricResults.UNDECIDED,
-                FabricClients.ANDROID,
+                FabricData.ANDROID,
                 FabricThemes.GO,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,
@@ -179,7 +178,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         FabricData fabric_encode = new FabricData(
                 FabricCommands.FABRIC_COMMAND_JOIN_SESSION,
                 FabricResults.UNDECIDED,
-                FabricClients.ANDROID,
+                FabricData.ANDROID,
                 FabricThemes.GO,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE,

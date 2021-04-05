@@ -14,12 +14,17 @@ public class FabricData {
     private static final String TAG = "FabricData";
     private static final int MAX_ARRAY_SIZE = 10;
 
+    public static final char ANDROID = 'A';
+    public static final char IPHONE  = 'I';
+    public static final char HTTP    = 'H';
+
     private char command_;
     private char result_;
     private char clientType_;
     private char theme_;
     private String linkIdStr_;
     private String sessionIdStr_;
+    private String jobIdStr_;
     private int stringsCount_;
     private String[] stringList_ = new String[MAX_ARRAY_SIZE];
 
@@ -29,11 +34,13 @@ public class FabricData {
     public char theme() { return this.theme_; };
     public String linkIdStr() { return this.linkIdStr_; };
     public String sessionIdStr() { return this.sessionIdStr_; };
+    public String jobIdStr() { return this.jobIdStr_; };
     public String stringList(int index_val) { return this.stringList_[index_val]; };
 
     public void setResult(char result_val) { this.result_ = result_val; }
     public void setLinkIdStr(String link_id_str_val) { this.linkIdStr_ = link_id_str_val; }
     public void setSessionIdStr(String session_id_str_val) { this.sessionIdStr_ = session_id_str_val; }
+    public void setJobIdStr(String job_id_str_val) { this.jobIdStr_ = job_id_str_val; }
     public void setStringList(int index_val, String string_val) { this.stringList_[index_val] = string_val; }
     public void addStringList(String string_val) { this.stringList_[this.stringsCount_] = string_val; this.stringsCount_++; }
 

@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputLayout;
-import com.phwang.core.fabric.FabricClients;
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.fabric.FabricResults;
 import com.phwang.core.fabric.FabricThemes;
@@ -88,7 +87,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         FabricData fabric_encode = new FabricData(
                 FabricCommands.FABRIC_COMMAND_LOGIN,
                 FabricResults.UNDECIDED,
-                FabricClients.ANDROID,
+                FabricData.ANDROID,
                 FabricThemes.ALL,
                 Encoders.IGNORE,
                 Encoders.IGNORE,
