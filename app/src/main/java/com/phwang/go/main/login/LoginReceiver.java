@@ -30,16 +30,7 @@ public class LoginReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context_val, Intent intent_val) {
         Bundle bundle = intent_val.getExtras();
-        String stamp = bundle.getString(BundleIndexDefine.STAMP);
-        if ((stamp == null) || !stamp.equals(BundleIndexDefine.THE_STAMP)) {
-            Log.e(TAG, "onReceive() bad-stamp. command=" + bundle.getString(BundleIndexDefine.COMMAND));
-            return;
-        }
-        this.handleReceivedBundle(bundle);
-    }
-
-    private void handleReceivedBundle(Bundle bundle_val) {
-        String fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
+        String fabric_data_str = bundle.getString(BundleIndexDefine.FABRIC_DATA);
         Log.e(TAG, "handleReceivedBundle() fabric_data_str=" + fabric_data_str);
 
         FabricData fabric_decode = new FabricData(fabric_data_str);

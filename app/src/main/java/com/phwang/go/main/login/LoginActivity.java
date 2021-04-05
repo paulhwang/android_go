@@ -98,9 +98,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         fabric_encode.setStringList(1, this.password_);
 
         Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.LOGIN_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_LOGIN_STR);
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);

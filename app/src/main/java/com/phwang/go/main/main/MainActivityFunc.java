@@ -23,23 +23,8 @@ public class MainActivityFunc {
     }
 
     protected void do_setup_session(String his_name_val, String theme_data_val) {
-        Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
-        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.MAIN_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_SETUP_SESSION_STR);
-        intent.putExtra(BundleIndexDefine.HIS_NAME, his_name_val);
-        intent.putExtra(BundleIndexDefine.THEME_DATA, theme_data_val);
-        intent.setAction(IntentDefine.BIND_SERVICE);
-        this.mainActivity_.sendBroadcast(intent);
     }
 
     protected void do_setup_session3(String theme_data_val) {
-        Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
-        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.MAIN_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_SETUP_SESSION3_STR);
-        intent.putExtra(BundleIndexDefine.THEME_DATA, theme_data_val);
-        intent.setAction(IntentDefine.BIND_SERVICE);
-        this.mainActivity_.sendBroadcast(intent);
     }
 }

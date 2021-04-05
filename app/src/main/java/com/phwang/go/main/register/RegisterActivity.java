@@ -104,12 +104,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         fabric_encode.setStringList(2, this.password_);
 
         Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.REGISTER_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.COMMAND, FabricCommands.FABRIC_COMMAND_REGISTER_STR);
-        intent.putExtra(BundleIndexDefine.MY_NAME, this.userName_);
-        intent.putExtra(BundleIndexDefine.EMAIL, this.email_);
-        intent.putExtra(BundleIndexDefine.PASSWORD, this.password_);
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
         intent.setAction(IntentDefine.BIND_SERVICE);
         this.sendBroadcast(intent);

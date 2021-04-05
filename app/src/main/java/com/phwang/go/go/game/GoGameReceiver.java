@@ -44,16 +44,7 @@ public class GoGameReceiver extends BroadcastReceiver {
         */
 
         Bundle bundle = intent_val.getExtras();
-        String stamp = bundle.getString(BundleIndexDefine.STAMP);
-        if ((stamp == null) || !stamp.equals(BundleIndexDefine.THE_STAMP)) {
-            Log.e(TAG, "onReceive() bad stamp. command=" + bundle.getString(BundleIndexDefine.COMMAND));
-            return;
-        }
-        this.handleReceivedBundle(bundle);
-    }
-
-    private void handleReceivedBundle(Bundle bundle_val) {
-        String fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
+        String fabric_data_str = bundle.getString(BundleIndexDefine.FABRIC_DATA);
         char command = FabricDataStr.getCommand(fabric_data_str);
         Log.e(TAG, "handleReceivedBundle() command=" + command + ", fabric_data=" + fabric_data_str);
 

@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.phwang.core.fabric.FabricCommands;
+import com.phwang.core.utils.fabric.FabricDataStr;
 import com.phwang.go.define.BundleIndexDefine;
 
 public class RegisterReceiver extends BroadcastReceiver {
@@ -28,27 +29,14 @@ public class RegisterReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context_val, Intent intent_val) {
         Bundle bundle = intent_val.getExtras();
-        String stamp = bundle.getString(BundleIndexDefine.STAMP);
-        if ((stamp == null) || !stamp.equals(BundleIndexDefine.THE_STAMP)) {
-            Log.e(TAG, "onReceive() bad-stamp. command=" + bundle.getString(BundleIndexDefine.COMMAND));
-            return;
-        }
-        this.handleReceivedBundle(bundle);
-    }
+        String fabric_data_str = bundle.getString(BundleIndexDefine.FABRIC_DATA);
+        char command = FabricDataStr.getCommand(fabric_data_str);
+        Log.e(TAG, "handleReceivedBundle() command=" + command + ", fabric_data_str=" + fabric_data_str);
 
-    private void handleReceivedBundle(Bundle bundle_val) {
-        String command = bundle_val.getString(BundleIndexDefine.COMMAND);
-        String result = bundle_val.getString(BundleIndexDefine.RESULT);
-        Log.e(TAG, "handleReceivedBundle() command=" + command + ", result=" + result);
-
-        if (command == null) {
-            Log.e(TAG, "handleReceivedBundle() null command========================");
-            return;
-        }
-
-        switch (command.charAt(0)) {
+        switch (command) {
             case FabricCommands.FABRIC_COMMAND_REGISTER:
                 break;
+
             default:
                 break;
         }
