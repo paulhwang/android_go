@@ -21,10 +21,10 @@ public class ClientRoot {
     private ClientDExport clientDExport_;
     private ClientDParser clientDParser_;
 
-    protected BindService bindService() { return this.bindService_; };
+    public BindService bindService() { return this.bindService_; };
     public ClientDExport clientDExport() { return this.clientDExport_; }
-    protected ThreadMgr threadMgr() { return this.threadMgr_; }
-    protected ClientUBinder clientUBinder() { return this.clientUBinder_; }
+    public ThreadMgr threadMgr() { return this.threadMgr_; }
+    public ClientUBinder clientUBinder() { return this.clientUBinder_; }
     public ClientDParser clientDParser() { return this.clientDParser_; }
     
     public ClientRoot(BindService bind_service_val) {

@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientDParser;
 import com.phwang.client.ClientRoot;
+import com.phwang.client.ClientUBinder;
 import com.phwang.core.utils.abend.Abend;
 import com.phwang.go.define.IntentDefine;
 
@@ -31,6 +32,7 @@ public class BindService extends Service {
     public ClientDExport clientDExport() {
         return this.clientRoot_.clientDExport();
     }
+    public ClientUBinder clientUBinder() { return this.clientRoot_.clientUBinder(); }
     public Context applicationContext() { return this.applicationContext_; };
 
     @Override
