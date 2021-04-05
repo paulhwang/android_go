@@ -30,17 +30,6 @@ public class BindReceiverDFunc {
         this.bindReceiver_ = bind_receiver_val;
     }
 
-    public void sendResponseBroadcastMessage(String target_val, String command_val, String result_val, String data_package_val) {
-        Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
-        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.BIND_SERVICE);
-        intent.putExtra(BundleIndexDefine.COMMAND, command_val);
-        intent.putExtra(BundleIndexDefine.RESULT, result_val);
-        intent.putExtra(BundleIndexDefine.DATA_PACKAGE, data_package_val);
-        intent.setAction(target_val);
-        this.bindService().sendBroadcast(intent);
-    }
-
     public void sendFabricDataResponse(String target_val, String fabric_data_str_val) {
         Log.e(TAG, "sendFabricDataResponse() fabric_data_str_val=" + fabric_data_str_val);
 

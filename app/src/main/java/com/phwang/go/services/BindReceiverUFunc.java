@@ -32,7 +32,6 @@ public class BindReceiverUFunc {
     }
 
     protected void handleCommand(Bundle bundle_val) {
-        String command = bundle_val.getString(BundleIndexDefine.COMMAND);
         String fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
 
         Log.e(TAG, "handleCommand() fabric_data_str=" + fabric_data_str);
