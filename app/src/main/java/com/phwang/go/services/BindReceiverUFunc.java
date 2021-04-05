@@ -10,7 +10,6 @@ package com.phwang.go.services;
 
 import android.os.Bundle;
 import android.util.Log;
-import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientDParser;
 import com.phwang.client.ClientRoot;
 import com.phwang.client.ClientUBinder;
@@ -29,7 +28,6 @@ public class BindReceiverUFunc {
 
     private ClientRoot clientRoot() { return this.bindService().clientRoot(); }
     private BindService bindService() { return this.bindReceiver_.bindService(); };
-    public ClientDExport clientDExport() { return this.bindService().clientDExport(); }
     public ClientDParser clientDParser() { return this.bindService().clientDParser(); }
     private ClientUBinder clientUBinder() { return this.clientRoot().clientUBinder(); }
     private Binder uBinder() { return this.clientUBinder().uBinder(); }

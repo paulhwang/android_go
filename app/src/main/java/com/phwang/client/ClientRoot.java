@@ -18,11 +18,9 @@ public class ClientRoot {
     private BindService bindService_;
     private ThreadMgr threadMgr_;
     private ClientUBinder clientUBinder_;
-    private ClientDExport clientDExport_;
     private ClientDParser clientDParser_;
 
     public BindService bindService() { return this.bindService_; };
-    public ClientDExport clientDExport() { return this.clientDExport_; }
     public ThreadMgr threadMgr() { return this.threadMgr_; }
     public ClientUBinder clientUBinder() { return this.clientUBinder_; }
     public ClientDParser clientDParser() { return this.clientDParser_; }
@@ -33,7 +31,6 @@ public class ClientRoot {
         this.bindService_ = bind_service_val;
         this.threadMgr_ = new ThreadMgr();
         this.clientUBinder_ = new ClientUBinder(this);
-        this.clientDExport_ = new ClientDExport(this);
         this.clientDParser_ = new ClientDParser(this);
         
         this.clientUBinder_.startThreads();

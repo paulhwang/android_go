@@ -15,7 +15,6 @@ import android.content.IntentFilter;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
-import com.phwang.client.ClientDExport;
 import com.phwang.client.ClientDParser;
 import com.phwang.client.ClientRoot;
 import com.phwang.client.ClientUBinder;
@@ -30,9 +29,6 @@ public class BindService extends Service {
 
     public ClientRoot clientRoot() { return this.clientRoot_; };
     public ClientDParser clientDParser() { return this.clientRoot_.clientDParser(); }
-    public ClientDExport clientDExport() {
-        return this.clientRoot_.clientDExport();
-    }
     public ClientUBinder clientUBinder() { return this.clientRoot_.clientUBinder(); }
     public Context applicationContext() { return this.applicationContext_; };
 
