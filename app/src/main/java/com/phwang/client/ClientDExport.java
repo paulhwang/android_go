@@ -14,7 +14,7 @@ import com.phwang.core.utils.binder.Binder;
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.go.global.GlobalData;
 
-public class ClientDExport implements ClientDExportInt {
+public class ClientDExport {
     private String objectName() {return "ClientDExport";}
     
     private ClientRoot clientRoot_;
