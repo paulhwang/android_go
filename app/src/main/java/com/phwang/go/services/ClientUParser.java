@@ -34,18 +34,16 @@ public class ClientUParser {
         this.bindReceiver_ = bind_receiver_val;
     }
 
-    protected void handleCommand(Bundle bundle_val) {
-        String fabric_data_str = bundle_val.getString(BundleIndexDefine.FABRIC_DATA);
+    protected void parseUCommand(String fabric_data_str_val) {
+        Log.e(TAG, "parseUCommand() fabric_data_str=" + fabric_data_str_val);
 
-        Log.e(TAG, "handleCommand() fabric_data_str=" + fabric_data_str);
-
-        switch (FabricDataStr.getCommand(fabric_data_str)) {
+        switch (FabricDataStr.getCommand(fabric_data_str_val)) {
             case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
             case FabricCommands.FABRIC_COMMAND_HEAD_SESSION:
             case FabricCommands.FABRIC_COMMAND_PEER_SESSION:
             case FabricCommands.FABRIC_COMMAND_JOIN_SESSION:
                 if (GlobalData.linkIdStr() == null) {
-                    FabricData fabric_data = new FabricData(fabric_data_str);
+                    FabricData fabric_data = new FabricData(fabric_data_str_val);
                     fabric_data.setResult(FabricResults.LINK_NOT_EXIST);
                     String new_fabric_data_str = fabric_data.getEncodedString();
                     this.clientDParser().sendFabricDataResponse(IntentDefine.GO_CONFIG_ACTIVITY, new_fabric_data_str);
@@ -58,11 +56,11 @@ public class ClientUParser {
             case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
             case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
             case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
-                this.transmitToFabric(fabric_data_str);
+                this.transmitToFabric(fabric_data_str_val);
                 break;
 
             default:
-                Log.e(TAG, "handleCommand(not implemented) fabric_data_str=" + fabric_data_str);
+                Log.e(TAG, "handleCommand(not implemented) fabric_data_str=" + fabric_data_str_val);
         }
     }
 
