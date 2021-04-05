@@ -25,7 +25,7 @@ public class ClientRoot {
     public ClientDExport clientDExport() { return this.clientDExport_; }
     protected ThreadMgr threadMgr() { return this.threadMgr_; }
     protected ClientUBinder clientUBinder() { return this.clientUBinder_; }
-    protected ClientDParser clientDParser() { return this.clientDParser_; }
+    public ClientDParser clientDParser() { return this.clientDParser_; }
     
     public ClientRoot(BindService bind_service_val) {
         this.debug(false, "ClientRoot", "init start");

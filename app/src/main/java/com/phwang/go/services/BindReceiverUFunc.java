@@ -11,6 +11,7 @@ package com.phwang.go.services;
 import android.os.Bundle;
 import android.util.Log;
 import com.phwang.client.ClientDExport;
+import com.phwang.client.ClientDParser;
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.fabric.FabricResults;
 import com.phwang.core.utils.fabric.FabricData;
@@ -26,6 +27,7 @@ public class BindReceiverUFunc {
     private BindService bindService() { return this.bindReceiver_.bindService(); };
     public ClientDExport clientDExport() { return this.bindService().clientDExport(); }
     public BindReceiverDFunc bindReceiverDFunc() { return this.bindService().bindReceiverDFunc(); }
+    public ClientDParser clientDParser() { return this.bindService().clientDParser(); }
 
     public BindReceiverUFunc(BindReceiver bind_receiver_val) {
         this.bindReceiver_ = bind_receiver_val;
@@ -45,7 +47,7 @@ public class BindReceiverUFunc {
                     FabricData fabric_data = new FabricData(fabric_data_str);
                     fabric_data.setResult(FabricResults.LINK_NOT_EXIST);
                     String new_fabric_data_str = fabric_data.getEncodedString();
-                    this.bindReceiverDFunc().sendFabricDataResponse(IntentDefine.GO_CONFIG_ACTIVITY, new_fabric_data_str);
+                    this.clientDParser().sendFabricDataResponse(IntentDefine.GO_CONFIG_ACTIVITY, new_fabric_data_str);
                     return;
                 }
             case FabricCommands.FABRIC_COMMAND_REGISTER:

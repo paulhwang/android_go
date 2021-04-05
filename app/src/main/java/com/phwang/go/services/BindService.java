@@ -16,6 +16,7 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 import com.phwang.client.ClientDExport;
+import com.phwang.client.ClientDParser;
 import com.phwang.client.ClientRoot;
 import com.phwang.core.utils.abend.Abend;
 import com.phwang.go.define.IntentDefine;
@@ -26,6 +27,7 @@ public class BindService extends Service {
     private BindReceiver bindReceiver_;
     private ClientRoot clientRoot_;
 
+    public ClientDParser clientDParser() { return this.clientRoot_.clientDParser(); }
     public BindReceiverDFunc bindReceiverDFunc() { return this.bindReceiver_.bindReceiverDFunc(); }
     public ClientDExport clientDExport() {
         return this.clientRoot_.clientDExport();

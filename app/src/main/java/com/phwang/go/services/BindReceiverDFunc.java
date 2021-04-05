@@ -29,16 +29,4 @@ public class BindReceiverDFunc {
     public BindReceiverDFunc(BindReceiver bind_receiver_val) {
         this.bindReceiver_ = bind_receiver_val;
     }
-
-    public void sendFabricDataResponse(String target_val, String fabric_data_str_val) {
-        Log.e(TAG, "sendFabricDataResponse() fabric_data_str_val=" + fabric_data_str_val);
-
-        Intent intent = new Intent();
-        intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
-        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.BIND_SERVICE);
-        intent.putExtra(BundleIndexDefine.COMMAND, FabricDataStr.getCommandStr(fabric_data_str_val));
-        intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_data_str_val);
-        intent.setAction(target_val);
-        this.bindService().sendBroadcast(intent);
-    }
 }
