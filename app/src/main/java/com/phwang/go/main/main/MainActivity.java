@@ -36,7 +36,7 @@ import com.phwang.go.main.login.LoginActivity;
 import com.phwang.go.main.register.RegisterActivity;
 import com.phwang.go.sudoku.config.SudokuConfigActivity;
 import com.phwang.go.sudoku.About;
-import com.phwang.go.services.BindService;
+import com.phwang.go.services.ClientService;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.main_test_button).setOnClickListener(this);
 
         this.mainActivityFunc_ = new MainActivityFunc(this);
-        startService(new Intent(this, BindService.class));
+        startService(new Intent(this, ClientService.class));
         this.registerBroadcastReceiver();
         this.startWatchDog();
     }

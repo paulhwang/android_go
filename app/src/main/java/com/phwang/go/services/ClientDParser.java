@@ -15,7 +15,7 @@ import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.utils.fabric.FabricDataStr;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
-import com.phwang.go.services.BindService;
+import com.phwang.go.services.ClientService;
 import com.phwang.go.services.ClientRoot;
 
 public class ClientDParser {
@@ -24,7 +24,7 @@ public class ClientDParser {
     
     private ClientRoot clientRoot_;
 
-    protected BindService bindService() { return this.clientRoot_.bindService(); }
+    protected ClientService bindService() { return this.clientRoot_.bindService(); }
     protected ClientRoot clientRoot() { return this.clientRoot_; }
 
     protected ClientDParser(ClientRoot root_val) {

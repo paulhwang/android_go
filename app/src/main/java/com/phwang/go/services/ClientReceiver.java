@@ -17,13 +17,13 @@ import com.phwang.go.define.BundleIndexDefine;
 
 public class ClientReceiver extends BroadcastReceiver {
     private static final String TAG = "ClientReceiver";
-    private BindService bindService_;
+    private ClientService bindService_;
     private ClientUParser bindReceiverUFunc_;
 
-    protected BindService bindService() { return this.bindService_; };
+    protected ClientService bindService() { return this.bindService_; };
     protected ClientUParser bindServiceUFunc() { return this.bindReceiverUFunc_; };
 
-    public ClientReceiver(BindService bind_service_val) {
+    public ClientReceiver(ClientService bind_service_val) {
         this.bindService_ = bind_service_val;
         this.bindReceiverUFunc_ = new ClientUParser(this);
     }

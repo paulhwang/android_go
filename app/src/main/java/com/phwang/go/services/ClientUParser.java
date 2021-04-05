@@ -25,7 +25,7 @@ public class ClientUParser {
     ClientReceiver bindReceiver_;
 
     private ClientRoot clientRoot() { return this.bindService().clientRoot(); }
-    private BindService bindService() { return this.bindReceiver_.bindService(); };
+    private ClientService bindService() { return this.bindReceiver_.bindService(); };
     public ClientDParser clientDParser() { return this.bindService().clientDParser(); }
     private ClientUBinder clientUBinder() { return this.clientRoot().clientUBinder(); }
     private Binder uBinder() { return this.clientUBinder().uBinder(); }

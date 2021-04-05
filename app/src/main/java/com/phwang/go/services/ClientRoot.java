@@ -14,17 +14,17 @@ import com.phwang.core.utils.threadmgr.ThreadMgr;
 public class ClientRoot {
     private String objectName() {return "ClientRoot";}
 
-    private BindService bindService_;
+    private ClientService bindService_;
     private ThreadMgr threadMgr_;
     private ClientUBinder clientUBinder_;
     private ClientDParser clientDParser_;
 
-    public BindService bindService() { return this.bindService_; };
+    public ClientService bindService() { return this.bindService_; };
     public ThreadMgr threadMgr() { return this.threadMgr_; }
     public ClientUBinder clientUBinder() { return this.clientUBinder_; }
     public ClientDParser clientDParser() { return this.clientDParser_; }
     
-    public ClientRoot(BindService bind_service_val) {
+    public ClientRoot(ClientService bind_service_val) {
         this.debug(false, "ClientRoot", "init start");
 
         this.bindService_ = bind_service_val;
