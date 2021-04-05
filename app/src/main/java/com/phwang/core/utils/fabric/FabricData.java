@@ -76,8 +76,9 @@ public class FabricData {
         buf.append(this.result_);
         buf.append(this.clientType_);
         buf.append(this.theme_);
-        buf.append(this.linkIdStr_);
-        buf.append(this.sessionIdStr_);
+
+        buf.append((this.linkIdStr_ != null) ? this.linkIdStr_: Encoders.NULL_LINK);
+        buf.append((this.sessionIdStr_ != null) ? this.sessionIdStr_: Encoders.NULL_SESSION);
         buf.append(Encoders.iEncodeRaw1(this.stringsCount_));
 
         for (int i = 0; i < this.stringsCount_; i++) {
