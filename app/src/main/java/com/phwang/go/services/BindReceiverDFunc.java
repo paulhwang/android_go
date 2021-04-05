@@ -14,7 +14,7 @@ import android.util.Log;
 
 import com.phwang.core.fabric.FabricCommands;
 import com.phwang.core.utils.encoders.Encoders;
-import com.phwang.core.utils.fabric.FabricData;
+import com.phwang.core.utils.fabric.FabricDataStr;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.define.ThemeDefine;
@@ -53,7 +53,7 @@ public class BindReceiverDFunc {
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.STAMP, BundleIndexDefine.THE_STAMP);
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.BIND_SERVICE);
-        intent.putExtra(BundleIndexDefine.COMMAND, FabricData.getCommandStr(fabric_data_str_val));
+        intent.putExtra(BundleIndexDefine.COMMAND, FabricDataStr.getCommandStr(fabric_data_str_val));
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_data_str_val);
         intent.setAction(target_val);
         this.bindService().sendBroadcast(intent);

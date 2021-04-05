@@ -8,7 +8,7 @@
 
 package com.phwang.core.utils.fabric;
 
-public class FabricData {
+public class FabricDataStr {
     public static char   getCommand(String fabric_data_str_val)    { return fabric_data_str_val.charAt(0); }
     public static String getCommandStr(String fabric_data_str_val) { return fabric_data_str_val.substring(0, 1); }
 

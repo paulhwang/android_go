@@ -173,6 +173,7 @@ public class FabricUParser {
             return this.generateFabricData0(fabric_decode.command(), FabricResults.BAD_PASSWORD, client_type, fabric_decode.theme(), link.linkIdStr(), Encoders.IGNORE);
         }
 
+        fabric_decode.setLinkIdStr(link.linkIdStr());
         return this.generateFabricData1(fabric_decode.command(), FabricResults.SUCCEED, client_type, fabric_decode.theme(), link.linkIdStr(), Encoders.IGNORE, my_name);
     }
 

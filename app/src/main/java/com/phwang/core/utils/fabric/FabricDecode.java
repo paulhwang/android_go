@@ -30,6 +30,10 @@ public class FabricDecode {
     public String sessionIdStr() { return this.sessionIdStr_; };
     public String stringList(int index_val) { return this.stringList_[index_val]; };
 
+    public void setResult(char result_val) { this.result_ = result_val; }
+    public void setLinkIdStr(String link_id_str_val) { this.linkIdStr_ = link_id_str_val; }
+    public void setSessionIdStr(String session_id_str_val) { this.sessionIdStr_ = session_id_str_val; }
+
     public FabricDecode(String fabric_data_str_val) {
         //String rest_str = Encoders.sDecode5(fabric_data_str_val);
         String rest_str = fabric_data_str_val;
