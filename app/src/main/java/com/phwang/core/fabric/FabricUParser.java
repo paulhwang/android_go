@@ -52,16 +52,16 @@ public class FabricUParser {
         this.debug(false, "parseInputPacket", "data_str = " + rest_str);
         switch (fabric_decode.command()) {
             case FabricCommands.FABRIC_COMMAND_REGISTER:
-                response_data = this.processRegisterRequest(rest_str);
+                response_data = this.processRegisterRequest(fabric_decode);
                 break;
             case FabricCommands.FABRIC_COMMAND_LOGIN:
-                response_data = this.processLoginRequest(rest_str);
+                response_data = this.processLoginRequest(fabric_decode);
                 break;
             case FabricCommands.FABRIC_COMMAND_LOGOUT:
-                response_data = this.processLogoutRequest(rest_str);
+                response_data = this.processLogoutRequest(fabric_decode);
                 break;
             case FabricCommands.FABRIC_COMMAND_GET_GROUPS:
-                response_data = this.processGetGroupsRequest(rest_str);
+                response_data = this.processGetGroupsRequest(fabric_decode);
                 break;
             case FabricCommands.FABRIC_COMMAND_GET_LINK_DATA:
                 response_data = this.processGetLinkDataRequest(rest_str.substring(1));
@@ -70,7 +70,7 @@ public class FabricUParser {
                 response_data = this.processGetNameListRequest(rest_str.substring(1));
                 break;
             case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
-                response_data = this.processSoloSessionRequest(rest_str);
+                response_data = this.processSoloSessionRequest(fabric_decode);
                 break;
             case FabricCommands.FABRIC_COMMAND_HEAD_SESSION:
                 response_data = this.processHeadSessionRequest(rest_str);
@@ -91,13 +91,13 @@ public class FabricUParser {
                 response_data = this.processSetupSession3Request(rest_str.substring(1));
                 break;
             case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
-                response_data = this.processDeleteSessionRequest(rest_str);
+                response_data = this.processDeleteSessionRequest(fabric_decode);
                 break;
             case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
-                response_data = this.processPutSessionDataRequest(rest_str);
+                response_data = this.processPutSessionDataRequest(fabric_decode);
                 break;
             case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
-                response_data = this.processGetSessionDataRequest(rest_str);
+                response_data = this.processGetSessionDataRequest(fabric_decode);
                 break;
             default:
                 response_data = "*** Bad command! Fix it!";
@@ -144,9 +144,9 @@ public class FabricUParser {
         return fabric_encode.getEncodedString();
     }
 
-    private String processRegisterRequest(String input_str_val) {
-        this.debug(true, "processRegisterRequest", "input_str_val=" + input_str_val);
-        FabricDecode fabric_decode = new FabricDecode(input_str_val);
+    private String processRegisterRequest(FabricDecode fabric_decode_val) {
+        this.debug(true, "processRegisterRequest", "");
+        FabricDecode fabric_decode = fabric_decode_val;
 
         String my_name = fabric_decode.stringList(0);
         String email = fabric_decode.stringList(1);
@@ -158,9 +158,9 @@ public class FabricUParser {
         return this.generateFabricData0(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.clientType(), fabric_decode.theme(), Encoders.IGNORE, Encoders.IGNORE);
     }
 
-    private String processLoginRequest(String input_str_val) {
-        this.debug(false, "processLoginRequest", "input_str_val=" + input_str_val);
-        FabricDecode fabric_decode = new FabricDecode(input_str_val);
+    private String processLoginRequest(FabricDecode fabric_decode_val) {
+        this.debug(false, "processLoginRequest", "");
+        FabricDecode fabric_decode = fabric_decode_val;
 
         char client_type = fabric_decode.clientType();
         String my_name = fabric_decode.stringList(0);
@@ -176,9 +176,9 @@ public class FabricUParser {
         return this.generateFabricData1(fabric_decode.command(), FabricResults.SUCCEED, client_type, fabric_decode.theme(), link.linkIdStr(), Encoders.IGNORE, my_name);
     }
 
-    private String processLogoutRequest(String input_str_val) {
-        this.debug(true, "processLogoutRequest", "input_str_val = " + input_str_val);
-        FabricDecode fabric_decode = new FabricDecode(input_str_val);
+    private String processLogoutRequest(FabricDecode fabric_decode_val) {
+        this.debug(true, "processLogoutRequest", "input_str_val");
+        FabricDecode fabric_decode = fabric_decode_val;
 
         String link_id_str = fabric_decode.linkIdStr();
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
@@ -190,9 +190,9 @@ public class FabricUParser {
         return this.generateFabricData0(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.clientType(), fabric_decode.theme(), link_id_str, Encoders.IGNORE);
     }
 
-    private String processGetGroupsRequest(String input_str_val) {
-        this.debug(true, "processGetGroupsRequest", "input_str_val = " + input_str_val);
-        FabricDecode fabric_decode = new FabricDecode(input_str_val);
+    private String processGetGroupsRequest(FabricDecode fabric_decode_val) {
+        this.debug(true, "processGetGroupsRequest", "");
+        FabricDecode fabric_decode = fabric_decode_val;
 
         String link_id_str = fabric_decode.linkIdStr();
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
@@ -204,9 +204,9 @@ public class FabricUParser {
         return this.generateFabricData1(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.clientType(), fabric_decode.theme(), link_id_str, Encoders.IGNORE, Encoders.NULL_DATA);
     }
 
-    private String processSoloSessionRequest(String input_str_val) {
-        this.debug(true, "processSoloSessionRequest", "input_str_val=" + input_str_val);
-        FabricDecode fabric_decode = new FabricDecode(input_str_val);
+    private String processSoloSessionRequest(FabricDecode fabric_decode_val) {
+        this.debug(true, "processSoloSessionRequest", "");
+        FabricDecode fabric_decode = fabric_decode_val;
 
         String link_id_str = fabric_decode.linkIdStr();
         String theme_data_str = fabric_decode.stringList(0);
@@ -230,9 +230,9 @@ public class FabricUParser {
         return this.generateFabricData1(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.clientType(), fabric_decode.theme(), link_id_str, session.lSessionIdStr(), theme_data_str);
     }
 
-    private String processDeleteSessionRequest(String input_str_val) {
-        this.debug(true, "processDeleteSessionRequest", "input_str_val = " + input_str_val);
-        FabricDecode fabric_decode = new FabricDecode(input_str_val);
+    private String processDeleteSessionRequest(FabricDecode fabric_decode_val) {
+        this.debug(true, "processDeleteSessionRequest", "");
+        FabricDecode fabric_decode = fabric_decode_val;
 
         String link_id_str = fabric_decode.linkIdStr();
         String session_id_str = fabric_decode.sessionIdStr();
@@ -255,9 +255,9 @@ public class FabricUParser {
         return this.generateFabricData0(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.clientType(), fabric_decode.theme(), link_id_str, session_id_str);
     }
 
-    private String processPutSessionDataRequest(String input_str_val) {
-        this.debug(true, "processPutSessionDataRequest", "input_str_val = " + input_str_val);
-        FabricDecode fabric_decode = new FabricDecode(input_str_val);
+    private String processPutSessionDataRequest(FabricDecode fabric_decode_val) {
+        this.debug(false, "processPutSessionDataRequest", "");
+        FabricDecode fabric_decode = fabric_decode_val;
 
         String link_id_str = fabric_decode.linkIdStr();
         String session_id_str = fabric_decode.sessionIdStr();
@@ -291,8 +291,9 @@ public class FabricUParser {
         return this.generateFabricData0(fabric_decode.command(), FabricResults.SUCCEED, fabric_decode.clientType(), fabric_decode.theme(), link_id_str, session_id_str);
     }
 
-    private String processGetSessionDataRequest(String input_str_val) {
-        FabricDecode fabric_decode = new FabricDecode(input_str_val);
+    private String processGetSessionDataRequest(FabricDecode fabric_decode_val) {
+        this.debug(false, "processPutSessionDataRequest", "");
+        FabricDecode fabric_decode = fabric_decode_val;
 
         String link_id_str = fabric_decode.linkIdStr();
         String session_id_str = fabric_decode.sessionIdStr();
