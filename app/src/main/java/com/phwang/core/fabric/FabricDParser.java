@@ -25,25 +25,24 @@ public class FabricDParser {
         this.fabricRoot_ = root_val;
     }
 
-    protected void parseInputPacket(String input_data_val) {
-        this.debug(false, "parseInputPacket", input_data_val);
-        ThemeData theme_data = new ThemeData(input_data_val);
+    protected void parseInputPacket(String theme_data_val) {
+        this.debug(false, "parseInputPacket", theme_data_val);
+        ThemeData theme_data = new ThemeData(theme_data_val);
         char command = theme_data.command();
 
-        //char command = input_data_val.charAt(0);
-        //String input_data = input_data_val.substring(1);
+        switch (command) {
+            case ThemeCommands.FABRIC_THEME_RESPOND_SETUP_ROOM:
+                this.processSetupRoomResponse(theme_data);
+                return;
 
-        if (command == ThemeCommands.FABRIC_THEME_RESPOND_SETUP_ROOM) {
-            this.processSetupRoomResponse(theme_data);
-            return;
+            case ThemeCommands.FABRIC_THEME_RESPOND_PUT_ROOM_DATA:
+                this.processPutRoomDataResponse(theme_data);
+                return;
+
+            default:
+                this.abend("exportedParseFunction", theme_data_val);
+                return;
         }
-
-        if (command == ThemeCommands.FABRIC_THEME_RESPOND_PUT_ROOM_DATA) {
-            this.processPutRoomDataResponse(theme_data);
-            return;
-        }
-
-        this.abend("exportedParseFunction", input_data_val);
     }
     
     private void processSetupRoomResponse(ThemeData theme_data_val) {
@@ -51,13 +50,6 @@ public class FabricDParser {
         String room_id_str = theme_data_val.roomIdStr();
         this.debug(true, "processSetupRoomResponse", "group_id_str=" + group_id_str);
         this.debug(true, "processSetupRoomResponse", "room_id_str=" + room_id_str);
-
-        //String rest_str = input_str_val;
-        //String group_id_str = Encoders.sSubstring2(rest_str);
-        //rest_str = Encoders.sSubstring2_(rest_str);
-
-        //String room_id_str = Encoders.sSubstring2(rest_str);
-        //rest_str = Encoders.sSubstring2_(rest_str);
 
         FabricGroup group = this.groupMgr().getGroupByIdStr(group_id_str);
         if (group != null) {
@@ -88,12 +80,6 @@ public class FabricDParser {
         this.debug(true, "processPutRoomDataResponse", "group_id_str=" + group_id_str);
         String input_data = theme_data_val.stringList(0);
         this.debug(true, "processPutRoomDataResponse", "input_data=" + input_data);
-
-        //String rest_str = input_str_val;
-        //String group_id_str = Encoders.sSubstring2(rest_str);
-        //rest_str = Encoders.sSubstring2_(rest_str);
-
-        //String input_data = rest_str;
 
         FabricGroup group = this.groupMgr().getGroupByIdStr(group_id_str);
         if (group != null) {
