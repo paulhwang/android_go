@@ -10,6 +10,7 @@ package com.phwang.core.fabric;
 
 import com.phwang.core.utils.binder.Binder;
 import com.phwang.core.utils.binder.BinderBundle;
+import com.phwang.core.utils.tcpip.TcpIpDefine;
 import com.phwang.core.utils.threadmgr.ThreadEntityInt;
 import com.phwang.core.utils.threadmgr.ThreadMgr;
 
@@ -33,7 +34,7 @@ public class FabricDBinder implements ThreadEntityInt {
         this.fabricRoot_ = root_val;
         this.dBinder_ = new Binder(this.objectName());
         
-        this.dBinder().bindAsTcpServer(true, FabricExport.FABRIC_FRONT_PORT, false);
+        this.dBinder().bindAsTcpServer(true, TcpIpDefine.FABRIC_FRONT_PORT, false);
     }
 
     protected void startThreads() {

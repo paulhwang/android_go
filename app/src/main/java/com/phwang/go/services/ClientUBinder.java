@@ -9,6 +9,7 @@
 package com.phwang.go.services;
 
 import com.phwang.core.utils.binder.Binder;
+import com.phwang.core.utils.tcpip.TcpIpDefine;
 import com.phwang.core.utils.threadmgr.ThreadEntityInt;
 import com.phwang.core.utils.threadmgr.ThreadMgr;
 
@@ -32,7 +33,7 @@ public class ClientUBinder implements ThreadEntityInt {
         
     	this.clientRoot_ = root_val;
         this.uBinder_ = new Binder(this.objectName());
-        this.uBinder_.bindAsTcpClient(true, ClientImport.FABRIC_ANDROID_SERVER_IP_ADDRESS, ClientImport.FABRIC_ANDROID_PORT);
+        this.uBinder_.bindAsTcpClient(true, TcpIpDefine.FABRIC_ANDROID_SERVER_IP_ADDRESS, TcpIpDefine.FABRIC_ANDROID_PORT);
     }
 
     protected void startThreads() {
