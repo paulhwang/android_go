@@ -69,7 +69,7 @@ public class ThemeUParser {
     }
 
     private void processPutRoomData(ThemeData theme_data_val) {
-        String room_id_str = theme_data_val.sessionIdStr();
+        String room_id_str = theme_data_val.roomIdStr();
         this.debug(false, "processPutRoomData", "room_id_str=" + room_id_str);
 
         ThemeRoom room = this.roomMgr().getRoomByIdStr(room_id_str);

@@ -15,7 +15,7 @@ public class ThemeData {
     private char result_;
     private char theme_;
     private String groupIdStr_;
-    private String sessionIdStr_;
+    private String roomIdStr_;
      private int stringsCount_ = 0;
     private String[] stringList_ = new String[MAX_ARRAY_SIZE];
 
@@ -23,12 +23,12 @@ public class ThemeData {
     public char result() { return this.result_; };
     public char theme() { return this.theme_; };
     public String groupIdStr() { return this.groupIdStr_; };
-    public String sessionIdStr() { return this.sessionIdStr_; };
+    public String roomIdStr() { return this.roomIdStr_; };
     public String stringList(int index_val) { return this.stringList_[index_val]; };
 
     public void setResult(char result_val) { this.result_ = result_val; }
     public void setGroupIdStr(String link_id_str_val) { this.groupIdStr_ = link_id_str_val; }
-    public void setSessionIdStr(String session_id_str_val) { this.sessionIdStr_ = session_id_str_val; }
+    public void setSessionIdStr(String session_id_str_val) { this.roomIdStr_ = session_id_str_val; }
     public void addStringList(String string_val) { this.stringList_[this.stringsCount_] = string_val; this.stringsCount_++; }
 
     public ThemeData(char command_val, char result_val, char theme_val, String group_id_str_val, String session_id_str_val) {
@@ -36,7 +36,7 @@ public class ThemeData {
         this.result_ = result_val;
         this.theme_ = theme_val;
         this.groupIdStr_ = group_id_str_val;
-        this.sessionIdStr_ = session_id_str_val;
+        this.roomIdStr_ = session_id_str_val;
     }
 
     public ThemeData(String fabric_data_str_val) {
@@ -49,7 +49,7 @@ public class ThemeData {
         this.groupIdStr_ = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
 
-        this.sessionIdStr_ = Encoders.sSubstring2(rest_str);
+        this.roomIdStr_ = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
 
         this.stringsCount_ = rest_str.charAt(0) - 48;
@@ -68,7 +68,7 @@ public class ThemeData {
         buf.append(this.theme_);
 
         buf.append((this.groupIdStr_ != null) ? this.groupIdStr_: Encoders.NULL_LINK);
-        buf.append((this.sessionIdStr_ != null) ? this.sessionIdStr_: Encoders.NULL_SESSION);
+        buf.append((this.roomIdStr_ != null) ? this.roomIdStr_: Encoders.NULL_SESSION);
         buf.append(Encoders.iEncodeRaw1(this.stringsCount_));
 
         for (int i = 0; i < this.stringsCount_; i++) {
