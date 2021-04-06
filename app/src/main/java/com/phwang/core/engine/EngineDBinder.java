@@ -9,6 +9,7 @@
 package com.phwang.core.engine;
 
 import com.phwang.core.utils.binder.Binder;
+import com.phwang.core.utils.tcpip.TcpIpDefine;
 import com.phwang.core.utils.threadmgr.ThreadEntityInt;
 import com.phwang.core.utils.threadmgr.ThreadMgr;
 
@@ -32,7 +33,7 @@ public class EngineDBinder implements ThreadEntityInt {
         this.engineRoot_ = root_val;
         this.dBinder_ = new Binder(this.objectName());
 
-        this.dBinder().bindAsTcpClient(true, EngineImport.THEME_ENGINE_IP_ADDRESS, EngineImport.THEME_ENGINE_PORT);
+        this.dBinder().bindAsTcpClient(true, TcpIpDefine.THEME_ENGINE_IP_ADDRESS, TcpIpDefine.THEME_ENGINE_PORT);
         this.debug(false, "DEngineClass", "init done");
     }
 
