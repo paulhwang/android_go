@@ -11,8 +11,10 @@ package com.phwang.core.theme;
 //import com.phwang.core.utils.*;
 
 import com.phwang.core.protocols.engine.EngineCommands;
+import com.phwang.core.protocols.engine.EngineData;
 import com.phwang.core.protocols.theme.ThemeCommands;
 import com.phwang.core.protocols.theme.ThemeData;
+import com.phwang.core.protocols.theme.ThemeResults;
 import com.phwang.core.utils.encoders.Encoders;
 
 public class ThemeUParser {
@@ -57,8 +59,14 @@ public class ThemeUParser {
             return;
         }
 
-        //theme_data_val.setSessionIdStr(room.roomIdStr());
-        //this.themeUBinder().transmitData(theme_data_val.getEncodedString());
+        EngineData engineer_data = new EngineData(
+                EngineCommands.THEME_ENGINE_COMMAND_SETUP_BASE,
+                ThemeResults.UNDECIDED,
+                theme_data_val.theme(),
+                room.roomIdStr(),
+                Encoders.IGNORE
+        );
+        //this.themeUBinder().transmitData(engineer_data.getEncodedString());
 
         StringBuilder buf = new StringBuilder();
         buf.append(EngineCommands.THEME_ENGINE_COMMAND_SETUP_BASE);

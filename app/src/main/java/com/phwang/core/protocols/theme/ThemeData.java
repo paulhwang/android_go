@@ -28,15 +28,15 @@ public class ThemeData {
 
     public void setResult(char result_val) { this.result_ = result_val; }
     public void setGroupIdStr(String link_id_str_val) { this.groupIdStr_ = link_id_str_val; }
-    public void setSessionIdStr(String session_id_str_val) { this.roomIdStr_ = session_id_str_val; }
+    public void setRoomIdStr(String session_id_str_val) { this.roomIdStr_ = session_id_str_val; }
     public void addStringList(String string_val) { this.stringList_[this.stringsCount_] = string_val; this.stringsCount_++; }
 
-    public ThemeData(char command_val, char result_val, char theme_val, String group_id_str_val, String session_id_str_val) {
+    public ThemeData(char command_val, char result_val, char theme_val, String group_id_str_val, String room_id_str_val) {
         this.command_ = command_val;
         this.result_ = result_val;
         this.theme_ = theme_val;
         this.groupIdStr_ = group_id_str_val;
-        this.roomIdStr_ = session_id_str_val;
+        this.roomIdStr_ = room_id_str_val;
     }
 
     public ThemeData(String fabric_data_str_val) {
