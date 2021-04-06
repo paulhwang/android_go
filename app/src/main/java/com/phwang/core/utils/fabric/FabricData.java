@@ -25,7 +25,7 @@ public class FabricData {
     private String linkIdStr_;
     private String sessionIdStr_;
     private String jobIdStr_;
-    private int stringsCount_;
+    private int stringsCount_ = 0;
     private String[] stringList_ = new String[MAX_ARRAY_SIZE];
 
     public char command() { return this.command_; };
@@ -41,17 +41,15 @@ public class FabricData {
     public void setLinkIdStr(String link_id_str_val) { this.linkIdStr_ = link_id_str_val; }
     public void setSessionIdStr(String session_id_str_val) { this.sessionIdStr_ = session_id_str_val; }
     public void setJobIdStr(String job_id_str_val) { this.jobIdStr_ = job_id_str_val; }
-    public void setStringList(int index_val, String string_val) { this.stringList_[index_val] = string_val; }
     public void addStringList(String string_val) { this.stringList_[this.stringsCount_] = string_val; this.stringsCount_++; }
 
-    public FabricData(char command_val, char result_val, char client_type_val, char theme_val, String link_id_str_val, String session_id_str_val, int items_count_val) {
+    public FabricData(char command_val, char result_val, char client_type_val, char theme_val, String link_id_str_val, String session_id_str_val) {
         this.command_ = command_val;
         this.result_ = result_val;
         this.clientType_ = client_type_val;
         this.theme_ = theme_val;
         this.linkIdStr_ = link_id_str_val;
         this.sessionIdStr_ = session_id_str_val;
-        this.stringsCount_ = items_count_val;
     }
 
     public FabricData(String fabric_data_str_val) {

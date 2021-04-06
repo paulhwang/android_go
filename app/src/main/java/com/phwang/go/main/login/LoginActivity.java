@@ -90,11 +90,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 FabricData.ANDROID_CLIENT,
                 FabricThemes.ALL,
                 Encoders.IGNORE,
-                Encoders.IGNORE,
-                2
+                Encoders.IGNORE
         );
-        fabric_encode.setStringList(0, this.userName_);
-        fabric_encode.setStringList(1, this.password_);
+        fabric_encode.addStringList(this.userName_);
+        fabric_encode.addStringList(this.password_);
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.LOGIN_ACTIVITY);

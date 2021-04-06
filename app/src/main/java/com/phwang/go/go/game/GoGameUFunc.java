@@ -35,8 +35,7 @@ public class GoGameUFunc {
                 FabricData.ANDROID_CLIENT,
                 FabricThemes.GO,
                 this.linkIdStr(),
-                this.sessionIdStr(),
-                0
+                this.sessionIdStr()
         );
 
         Intent intent = new Intent();
@@ -53,10 +52,9 @@ public class GoGameUFunc {
                 FabricData.ANDROID_CLIENT,
                 FabricThemes.GO,
                 this.linkIdStr(),
-                this.sessionIdStr(),
-                1
+                this.sessionIdStr()
         );
-        fabric_encode.setStringList(0, move_data_val);
+        fabric_encode.addStringList(move_data_val);
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_GAME_ACTIVITY);
@@ -72,8 +70,7 @@ public class GoGameUFunc {
                 FabricData.ANDROID_CLIENT,
                 FabricThemes.GO,
                 this.linkIdStr(),
-                this.sessionIdStr(),
-                0
+                this.sessionIdStr()
         );
 
         Intent intent = new Intent();

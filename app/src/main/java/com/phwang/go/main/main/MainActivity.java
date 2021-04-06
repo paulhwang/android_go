@@ -154,8 +154,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 FabricData.ANDROID_CLIENT,
                 FabricThemes.ALL,
                 GlobalData.linkIdStr(),
-                Encoders.IGNORE,
-                0
+                Encoders.IGNORE
         );
 
         Intent intent = new Intent();
@@ -173,8 +172,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 FabricData.ANDROID_CLIENT,
                 FabricThemes.ALL,
                 GlobalData.linkIdStr(),
-                Encoders.IGNORE,
-                0
+                Encoders.IGNORE
         );
 
         Intent intent = new Intent();

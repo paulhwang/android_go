@@ -95,12 +95,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 FabricData.ANDROID_CLIENT,
                 FabricThemes.ALL,
                 Encoders.IGNORE,
-                Encoders.IGNORE,
-                3
+                Encoders.IGNORE
         );
-        fabric_encode.setStringList(0, this.userName_);
-        fabric_encode.setStringList(1, this.email_);
-        fabric_encode.setStringList(2, this.password_);
+        fabric_encode.addStringList(this.userName_);
+        fabric_encode.addStringList(this.email_);
+        fabric_encode.addStringList(this.password_);
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.REGISTER_ACTIVITY);

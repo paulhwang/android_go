@@ -124,10 +124,9 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 FabricData.ANDROID_CLIENT,
                 FabricThemes.GO,
                 GlobalData.linkIdStr(),
-                Encoders.IGNORE,
-                1
+                Encoders.IGNORE
         );
-        fabric_encode.setStringList(0, go_config_data_val);
+        fabric_encode.addStringList(go_config_data_val);
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
@@ -143,10 +142,9 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 FabricData.ANDROID_CLIENT,
                 FabricThemes.GO,
                 GlobalData.linkIdStr(),
-                Encoders.IGNORE,
-                1
+                Encoders.IGNORE
         );
-        fabric_encode.setStringList(0, go_config_data_val);
+        fabric_encode.addStringList(go_config_data_val);
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
@@ -162,10 +160,9 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 FabricData.ANDROID_CLIENT,
                 FabricThemes.GO,
                 GlobalData.linkIdStr(),
-                Encoders.IGNORE,
-                1
+                Encoders.IGNORE
         );
-        fabric_encode.setStringList(0, go_config_data_val);
+        fabric_encode.addStringList(go_config_data_val);
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
@@ -181,10 +178,9 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 FabricData.ANDROID_CLIENT,
                 FabricThemes.GO,
                 GlobalData.linkIdStr(),
-                Encoders.IGNORE,
-                1
+                Encoders.IGNORE
         );
-        fabric_encode.setStringList(0, go_config_data_val);
+        fabric_encode.addStringList(go_config_data_val);
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
