@@ -8,6 +8,8 @@
 
 package com.phwang.core.utils.fabric;
 
+import com.phwang.core.utils.encoders.Encoders;
+
 public class FabricDataStr {
     public static char   getCommand(String fabric_data_str_val)       { return fabric_data_str_val.charAt(FabricData.COMMAND_INDEX); }
     public static String getCommandStr(String fabric_data_str_val)    { return fabric_data_str_val.substring(FabricData.COMMAND_INDEX, FabricData.COMMAND_INDEX + 1); }
@@ -21,5 +23,5 @@ public class FabricDataStr {
     public static char   getTheme(String fabric_data_str_val)         { return fabric_data_str_val.charAt(FabricData.THEME_INDEX); }
     public static String getThemeStr(String fabric_data_str_val)      { return fabric_data_str_val.substring(FabricData.THEME_INDEX, FabricData.THEME_INDEX + 1); }
 
-    public static String getJobIdStr(String fabric_data_str_val)      { return fabric_data_str_val.substring(FabricData.JOB_ID_STR_INDEX); }
+    public static String getJobIdStr(String fabric_data_str_val)      { return Encoders.sSubstring2(fabric_data_str_val.substring(FabricData.JOB_ID_STR_INDEX)); }
 }
