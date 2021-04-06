@@ -9,6 +9,7 @@
 package com.phwang.core.utils.fabric;
 
 import com.phwang.core.utils.encoders.Encoders;
+import com.phwang.go.R;
 
 public class FabricData {
     private static final String TAG = "FabricData";
@@ -18,6 +19,7 @@ public class FabricData {
     public static final int RESULT_INDEX      = 1;
     public static final int CLIENT_TYPE_INDEX = 2;
     public static final int THEME_INDEX       = 3;
+    public static final int JOB_ID_STR_INDEX  = 4;
 
     public static final char ANDROID_CLIENT = 'A';
     public static final char IPHONE_CLIENT  = 'I';
@@ -59,22 +61,22 @@ public class FabricData {
 
     public FabricData(String fabric_data_str_val) {
         String rest_str = fabric_data_str_val;
-        this.command_ = rest_str.charAt(0);
-        this.result_ = rest_str.charAt(1);
-        this.clientType_ = rest_str.charAt(2);
-        this.theme_ = rest_str.charAt(3);
-        rest_str = rest_str.substring((4));
+        this.command_ = rest_str.charAt(COMMAND_INDEX);
+        this.result_ = rest_str.charAt(RESULT_INDEX);
+        this.clientType_ = rest_str.charAt(CLIENT_TYPE_INDEX);
+        this.theme_ = rest_str.charAt(THEME_INDEX);
+        rest_str = rest_str.substring((JOB_ID_STR_INDEX));
+
+        if (this.clientType_ == HTTP_CLIENT) {
+            this.jobIdStr_ = Encoders.sSubstring2(rest_str);
+            rest_str = Encoders.sSubstring2_(rest_str);
+        }
 
         this.linkIdStr_ = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
 
         this.sessionIdStr_ = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
-
-        if (this.clientType_ == HTTP_CLIENT) {
-            this.jobIdStr_ = Encoders.sSubstring2(rest_str);
-            rest_str = Encoders.sSubstring2_(rest_str);
-        }
 
         this.stringsCount_ = rest_str.charAt(0) - 48;
         rest_str = rest_str.substring(1);
@@ -92,11 +94,12 @@ public class FabricData {
         buf.append(this.clientType_);
         buf.append(this.theme_);
 
-        buf.append((this.linkIdStr_ != null) ? this.linkIdStr_: Encoders.NULL_LINK);
-        buf.append((this.sessionIdStr_ != null) ? this.sessionIdStr_: Encoders.NULL_SESSION);
         if (this.clientType_ == HTTP_CLIENT) {
             buf.append((this.jobIdStr_ != null) ? this.jobIdStr_: Encoders.NULL_JOB);
         }
+
+        buf.append((this.linkIdStr_ != null) ? this.linkIdStr_: Encoders.NULL_LINK);
+        buf.append((this.sessionIdStr_ != null) ? this.sessionIdStr_: Encoders.NULL_SESSION);
         buf.append(Encoders.iEncodeRaw1(this.stringsCount_));
 
         for (int i = 0; i < this.stringsCount_; i++) {

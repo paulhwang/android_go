@@ -20,4 +20,6 @@ public class FabricDataStr {
 
     public static char   getTheme(String fabric_data_str_val)         { return fabric_data_str_val.charAt(FabricData.THEME_INDEX); }
     public static String getThemeStr(String fabric_data_str_val)      { return fabric_data_str_val.substring(FabricData.THEME_INDEX, FabricData.THEME_INDEX + 1); }
+
+    public static String getJobIdStr(String fabric_data_str_val)      { return fabric_data_str_val.substring(FabricData.JOB_ID_STR_INDEX); }
 }
