@@ -9,6 +9,8 @@
 package com.phwang.core.engine;
 
 import com.phwang.core.protocols.engine.EngineCommands;
+import com.phwang.core.protocols.engine.EngineData;
+import com.phwang.core.protocols.theme.ThemeData;
 import com.phwang.core.utils.encoders.Encoders;
 
 public class EngineUParser {
@@ -26,31 +28,36 @@ public class EngineUParser {
 
     public void ParseInputPacket(String input_data_val) {
         this.debug(true, "ParseInputPacket", "data=" + input_data_val);
+        EngineData engine_data = new EngineData(input_data_val);
+        char command = engine_data.command();
 
-        char command = input_data_val.charAt(0);
-        String input_data = input_data_val.substring(1);
+        //char command = input_data_val.charAt(0);
+        //String input_data = input_data_val.substring(1);
 
         if (command == EngineCommands.THEME_ENGINE_COMMAND_SETUP_BASE) {
-            this.processSetupBase(input_data);
+            this.processSetupBase(engine_data);
             return;
         }
 
         if (command == EngineCommands.THEME_ENGINE_COMMAND_PUT_BASE_DATA) {
-            this.processPutBaseData(input_data);
+            this.processPutBaseData(engine_data);
             return;
         }
 
         this.abend("ParseInputPacket", input_data_val);
     }
 
-    private void processSetupBase(String input_str_val) {
-        this.debug(true, "processSetupBase", "data=" + input_str_val);
+    private void processSetupBase(EngineData engine_data_val) {
+        String room_id_str = engine_data_val.roomIdStr();
+        String input_data = engine_data_val.stringList(0);
+        this.debug(true, "processSetupBase", "engine_data_val=" + engine_data_val);
+        this.debug(true, "processSetupBase", "input_data=" + input_data);
 
-        String rest_str = input_str_val;
-        String room_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
+        //String rest_str = input_str_val;
+        //String room_id_str = Encoders.sSubstring2(rest_str);
+        //rest_str = Encoders.sSubstring2_(rest_str);
 
-        String input_data = rest_str;
+        //String input_data = rest_str;
 
         EngineBase go_base = this.baseMgr().MallocGoBase(room_id_str);
         if (go_base == null) {
@@ -68,14 +75,17 @@ public class EngineUParser {
         this.engineDBinder().TransmitData(buf.toString());
     }
 
-    private void processPutBaseData(String input_str_val) {
-        this.debug(false, "processPutBaseData", "data=" + input_str_val);
+    private void processPutBaseData(EngineData engine_data_val) {
+        String base_id_str = engine_data_val.baseIdStr();
+        String input_data = engine_data_val.stringList(0);
+        this.debug(true, "processPutBaseData", "base_id_str=" + base_id_str);
+        this.debug(true, "processPutBaseData", "input_data=" + input_data);
 
-        String rest_str = input_str_val;
-        String base_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
+        //String rest_str = input_str_val;
+        //String base_id_str = Encoders.sSubstring2(rest_str);
+        //rest_str = Encoders.sSubstring2_(rest_str);
 
-        String input_data = rest_str;
+        //String input_data = rest_str;
 
         EngineBase go_base = this.baseMgr().GetBaseByIdStr(base_id_str);
         if (go_base == null) {

@@ -67,13 +67,16 @@ public class ThemeUParser {
                 Encoders.IGNORE
         );
         engineer_data.addStringList(theme_data_val.stringList(0));
-        //this.themeUBinder().transmitData(engineer_data.getEncodedString());
+        this.themeUBinder().transmitData(engineer_data.getEncodedString());
 
+        /*
         StringBuilder buf = new StringBuilder();
         buf.append(EngineCommands.THEME_ENGINE_COMMAND_SETUP_BASE);
         buf.append(room.roomIdStr());
         buf.append(theme_data_val.stringList(0));
         this.themeUBinder().transmitData(buf.toString());
+
+         */
 
     }
 
@@ -95,13 +98,16 @@ public class ThemeUParser {
                 room.baseIdStr()
         );
         engineer_data.addStringList(theme_data_val.stringList(0));
-        //this.themeUBinder().transmitData(engineer_data.getEncodedString());
+        this.themeUBinder().transmitData(engineer_data.getEncodedString());
 
+        /*
         StringBuilder buf = new StringBuilder();
         buf.append(EngineCommands.THEME_ENGINE_COMMAND_PUT_BASE_DATA);
         buf.append(room.baseIdStr());
         buf.append(theme_data_val.stringList(0));
         this.themeUBinder().transmitData(buf.toString());
+
+         */
     }
     
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }
