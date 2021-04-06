@@ -12,6 +12,7 @@ package com.phwang.core.theme;
 
 import com.phwang.core.protocols.engine.EngineCommands;
 import com.phwang.core.protocols.theme.ThemeCommands;
+import com.phwang.core.protocols.theme.ThemeData;
 import com.phwang.core.utils.encoders.Encoders;
 
 public class ThemeUParser {
@@ -28,54 +29,48 @@ public class ThemeUParser {
         this.themeRoot_ = root_val;
     }
 
-    public void parseInputPacket(String data_val) {
-        this.debug(false, "parseInputPacket", data_val);
-        char command = data_val.charAt(0);
-        String data = data_val.substring(1);
+    public void parseInputPacket(String theme_data_str_val) {
+        this.debug(true, "parseInputPacket", theme_data_str_val);
 
-        if (command == ThemeCommands.FABRIC_THEME_COMMAND_SETUP_ROOM) {
-            this.processSetupRoom(data);
-            return;
+        ThemeData theme_data = new ThemeData(theme_data_str_val);
+
+        switch (theme_data.command()) {
+            case ThemeCommands.FABRIC_THEME_COMMAND_SETUP_ROOM:
+                this.processSetupRoom(theme_data);
+                return;
+
+            case ThemeCommands.FABRIC_THEME_COMMAND_PUT_ROOM_DATA:
+                this.processPutRoomData(theme_data);
+                return;
         }
 
-        if (command == ThemeCommands.FABRIC_THEME_COMMAND_PUT_ROOM_DATA) {
-            this.processPutRoomData(data);
-            return;
-        }
-
-        this.abend("parseInputPacket", data_val);
+        this.abend("parseInputPacket", "bad command, theme_data_str_val=" + theme_data_str_val);
     }
 
-    private void processSetupRoom(String input_str_val) {
-        this.debug(false, "processSetupRoom", input_str_val);
-
-        String rest_str = input_str_val;
-        String group_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
-
-        String input_data = rest_str;
+    private void processSetupRoom(ThemeData theme_data_val) {
+        String group_id_str = theme_data_val.groupIdStr();
+        this.debug(true, "processSetupRoom", "groupIdStr=" + group_id_str);
 
         ThemeRoom room = this.roomMgr().mallocRoom(group_id_str);
         if (room == null) {
             this.abend("processSetupRoom", "null room");
             return;
         }
-        
+
+        //theme_data_val.setSessionIdStr(room.roomIdStr());
+        //this.themeUBinder().transmitData(theme_data_val.getEncodedString());
+
         StringBuilder buf = new StringBuilder();
         buf.append(EngineCommands.THEME_ENGINE_COMMAND_SETUP_BASE);
         buf.append(room.roomIdStr());
-        buf.append(input_data);
+        buf.append(theme_data_val.stringList(0));
         this.themeUBinder().transmitData(buf.toString());
+
     }
 
-    private void processPutRoomData(String input_str_val) {
-        this.debug(false, "processPutRoomData", input_str_val);
-
-        String rest_str = input_str_val;
-        String room_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
-
-        String input_data = rest_str;
+    private void processPutRoomData(ThemeData theme_data_val) {
+        String room_id_str = theme_data_val.sessionIdStr();
+        this.debug(false, "processPutRoomData", "room_id_str=" + room_id_str);
 
         ThemeRoom room = this.roomMgr().getRoomByIdStr(room_id_str);
         if (room == null) {
@@ -86,7 +81,7 @@ public class ThemeUParser {
         StringBuilder buf = new StringBuilder();
         buf.append(EngineCommands.THEME_ENGINE_COMMAND_PUT_BASE_DATA);
         buf.append(room.baseIdStr());
-        buf.append(input_data);
+        buf.append(theme_data_val.stringList(0));
         this.themeUBinder().transmitData(buf.toString());
     }
     

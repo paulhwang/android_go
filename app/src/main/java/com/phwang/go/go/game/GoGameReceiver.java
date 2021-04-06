@@ -18,6 +18,8 @@ import com.phwang.core.protocols.fabric.FabricCommands;
 import com.phwang.core.protocols.fabric.FabricDataStr;
 import com.phwang.go.define.BundleIndexDefine;
 
+import static com.phwang.core.utils.sleep.Utils.sleep;
+
 public class GoGameReceiver extends BroadcastReceiver {
     private static final String TAG = "GoGameReceiver";
     private GoGameActivity goGameActivity_;

@@ -8,6 +8,8 @@
 
 package com.phwang.core.protocols.fabric;
 
+import android.util.Log;
+
 import com.phwang.core.protocols.fabric.FabricClients;
 import com.phwang.core.utils.encoders.Encoders;
 

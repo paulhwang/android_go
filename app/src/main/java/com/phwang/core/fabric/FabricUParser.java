@@ -343,14 +343,15 @@ public class FabricUParser {
                 room_id_str
         );
         theme_data.addStringList(fabric_data.stringList(0));
+        this.fabricUBinder().transmitData(theme_data.getEncodedString());
 
-
+/*
         StringBuilder buf = new StringBuilder();
         buf.append(ThemeCommands.FABRIC_THEME_COMMAND_PUT_ROOM_DATA);
         buf.append(room_id_str);
         buf.append(fabric_data.stringList(0));
         this.fabricUBinder().transmitData(buf.toString());
-
+*/
         fabric_data.setResult(FabricResults.SUCCEED);
     }
 
@@ -551,13 +552,16 @@ public class FabricUParser {
                 Encoders.IGNORE
                 );
         theme_data.addStringList(theme_str_val);
+        this.fabricRoot().fabricUBinder().transmitData(theme_data.getEncodedString());
 
+        /*
         StringBuilder data_buf = new StringBuilder();
         data_buf.append(ThemeCommands.FABRIC_THEME_COMMAND_SETUP_ROOM);
         data_buf.append(group_val.groupIdStr());
         data_buf.append(theme_str_val);
         String uplink_data = data_buf.toString();
         this.fabricRoot().fabricUBinder().transmitData(uplink_data);
+         */
     }
 
     private String errorProcessSetupSession(String link_id_val, String error_msg_val) {
