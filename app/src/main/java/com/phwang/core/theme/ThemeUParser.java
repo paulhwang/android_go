@@ -10,6 +10,7 @@ package com.phwang.core.theme;
 
 //import com.phwang.core.utils.*;
 
+import com.phwang.core.protocols.engine.EngineCommands;
 import com.phwang.core.protocols.theme.ThemeCommands;
 import com.phwang.core.utils.encoders.Encoders;
 
@@ -61,7 +62,7 @@ public class ThemeUParser {
         }
         
         StringBuilder buf = new StringBuilder();
-        buf.append(ThemeExport.THEME_ENGINE_COMMAND_SETUP_BASE);
+        buf.append(EngineCommands.THEME_ENGINE_COMMAND_SETUP_BASE);
         buf.append(room.roomIdStr());
         buf.append(input_data);
         this.themeUBinder().transmitData(buf.toString());
@@ -83,7 +84,7 @@ public class ThemeUParser {
         }
 
         StringBuilder buf = new StringBuilder();
-        buf.append(ThemeExport.THEME_ENGINE_COMMAND_PUT_BASE_DATA);
+        buf.append(EngineCommands.THEME_ENGINE_COMMAND_PUT_BASE_DATA);
         buf.append(room.baseIdStr());
         buf.append(input_data);
         this.themeUBinder().transmitData(buf.toString());

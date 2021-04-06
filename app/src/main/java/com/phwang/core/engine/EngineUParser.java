@@ -8,6 +8,7 @@
 
 package com.phwang.core.engine;
 
+import com.phwang.core.protocols.engine.EngineCommands;
 import com.phwang.core.utils.encoders.Encoders;
 
 public class EngineUParser {
@@ -29,12 +30,12 @@ public class EngineUParser {
         char command = input_data_val.charAt(0);
         String input_data = input_data_val.substring(1);
 
-        if (command == EngineImport.THEME_ENGINE_COMMAND_SETUP_BASE) {
+        if (command == EngineCommands.THEME_ENGINE_COMMAND_SETUP_BASE) {
             this.processSetupBase(input_data);
             return;
         }
 
-        if (command == EngineImport.THEME_ENGINE_COMMAND_PUT_BASE_DATA) {
+        if (command == EngineCommands.THEME_ENGINE_COMMAND_PUT_BASE_DATA) {
             this.processPutBaseData(input_data);
             return;
         }
@@ -60,7 +61,7 @@ public class EngineUParser {
         String output_data = go_base.setupBase(input_data);
 
         StringBuilder buf = new StringBuilder();
-        buf.append(EngineImport.THEME_ENGINE_RESPOND_SETUP_BASE);
+        buf.append(EngineCommands.THEME_ENGINE_RESPOND_SETUP_BASE);
         buf.append(go_base.roomIdStr());
         buf.append(go_base.BaseIdStr());
         buf.append(output_data);
@@ -85,7 +86,7 @@ public class EngineUParser {
         String output_data = go_base.processInputData(input_data);
 
         StringBuilder buf = new StringBuilder();
-        buf.append(EngineImport.THEME_ENGINE_RESPOND_PUT_BASE_DATA);
+        buf.append(EngineCommands.THEME_ENGINE_RESPOND_PUT_BASE_DATA);
         buf.append(go_base.roomIdStr());
         buf.append(output_data);
         this.engineDBinder().TransmitData(buf.toString());
