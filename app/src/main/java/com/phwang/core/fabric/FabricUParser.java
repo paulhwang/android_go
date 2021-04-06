@@ -8,6 +8,7 @@
 
 package com.phwang.core.fabric;
 
+import com.phwang.core.protocols.theme.ThemeCommands;
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.protocols.fabric.FabricCommands;
 import com.phwang.core.protocols.fabric.FabricData;
@@ -330,7 +331,7 @@ public class FabricUParser {
 
         /* transfer data up */
         StringBuilder buf = new StringBuilder();
-        buf.append(FabricExport.FABRIC_THEME_COMMAND_PUT_ROOM_DATA);
+        buf.append(ThemeCommands.FABRIC_THEME_COMMAND_PUT_ROOM_DATA);
         buf.append(room_id_str);
         buf.append(fabric_data.stringList(0));
         this.fabricUBinder().transmitData(buf.toString());
@@ -529,7 +530,7 @@ public class FabricUParser {
         this.debug(false, "mallocRoom", "theme_info_val=" + theme_info_val);
     	
         StringBuilder data_buf = new StringBuilder();
-        data_buf.append(FabricExport.FABRIC_THEME_COMMAND_SETUP_ROOM);
+        data_buf.append(ThemeCommands.FABRIC_THEME_COMMAND_SETUP_ROOM);
         data_buf.append(group_val.groupIdStr());
         data_buf.append(theme_info_val);
         String uplink_data = data_buf.toString();

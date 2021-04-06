@@ -10,6 +10,7 @@ package com.phwang.core.theme;
 
 //import com.phwang.core.utils.*;
 
+import com.phwang.core.protocols.theme.ThemeCommands;
 import com.phwang.core.utils.encoders.Encoders;
 
 public class ThemeUParser {
@@ -31,12 +32,12 @@ public class ThemeUParser {
         char command = data_val.charAt(0);
         String data = data_val.substring(1);
 
-        if (command == ThemeImport.FABRIC_THEME_COMMAND_SETUP_ROOM) {
+        if (command == ThemeCommands.FABRIC_THEME_COMMAND_SETUP_ROOM) {
             this.processSetupRoom(data);
             return;
         }
 
-        if (command == ThemeImport.FABRIC_THEME_COMMAND_PUT_ROOM_DATA) {
+        if (command == ThemeCommands.FABRIC_THEME_COMMAND_PUT_ROOM_DATA) {
             this.processPutRoomData(data);
             return;
         }

@@ -8,6 +8,7 @@
 
 package com.phwang.core.fabric;
 
+import com.phwang.core.protocols.theme.ThemeCommands;
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.utils.listmgr.ListEntry;
 
@@ -29,12 +30,12 @@ public class FabricDParser {
         char command = input_data_val.charAt(0);
         String input_data = input_data_val.substring(1);
 
-        if (command == FabricExport.FABRIC_THEME_RESPOND_SETUP_ROOM) {
+        if (command == ThemeCommands.FABRIC_THEME_RESPOND_SETUP_ROOM) {
             this.processSetupRoomResponse(input_data);
             return;
         }
 
-        if (command == FabricExport.FABRIC_THEME_RESPOND_PUT_ROOM_DATA) {
+        if (command == ThemeCommands.FABRIC_THEME_RESPOND_PUT_ROOM_DATA) {
             this.processPutRoomDataResponse(input_data);
             return;
         }

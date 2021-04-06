@@ -10,6 +10,7 @@ package com.phwang.core.theme;
 
 //import com.phwang.core.utils.*;
 
+import com.phwang.core.protocols.theme.ThemeCommands;
 import com.phwang.core.utils.encoders.Encoders;
 
 public class ThemeDParser {
@@ -62,7 +63,7 @@ public class ThemeDParser {
         room_object.setBaseIdStr(base_id_str);
         
         StringBuilder buf = new StringBuilder();
-        buf.append(ThemeImport.FABRIC_THEME_RESPOND_SETUP_ROOM);
+        buf.append(ThemeCommands.FABRIC_THEME_RESPOND_SETUP_ROOM);
         buf.append(room_object.groupIdStr());
         buf.append(room_object.roomIdStr());
         this.themeDBinder().transmitData(buf.toString());
@@ -114,7 +115,7 @@ public class ThemeDParser {
         }
 
         StringBuilder buf = new StringBuilder();
-        buf.append(ThemeImport.FABRIC_THEME_RESPOND_PUT_ROOM_DATA);
+        buf.append(ThemeCommands.FABRIC_THEME_RESPOND_PUT_ROOM_DATA);
         buf.append(room_object.groupIdStr());
         buf.append(data);
         this.themeDBinder().transmitData(buf.toString());
