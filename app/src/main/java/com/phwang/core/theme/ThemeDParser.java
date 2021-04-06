@@ -13,6 +13,7 @@ package com.phwang.core.theme;
 import com.phwang.core.protocols.engine.EngineCommands;
 import com.phwang.core.protocols.engine.EngineData;
 import com.phwang.core.protocols.theme.ThemeCommands;
+import com.phwang.core.protocols.theme.ThemeResults;
 import com.phwang.core.utils.encoders.Encoders;
 
 public class ThemeDParser {
@@ -59,7 +60,19 @@ public class ThemeDParser {
 
         ThemeRoom room_object = this.roomMgr().getRoomByIdStr(room_id_str);
         room_object.setBaseIdStr(base_id_str);
-        
+
+
+
+        EngineData engineer_data = new EngineData(
+                ThemeCommands.FABRIC_THEME_RESPOND_SETUP_ROOM,
+                ThemeResults.SUCCEED,
+                engine_data_val.theme(),
+                room_object.groupIdStr(),
+                room_object.roomIdStr()
+        );
+        //this.themeDBinder().transmitData(engineer_data.getEncodedString());
+
+
         StringBuilder buf = new StringBuilder();
         buf.append(ThemeCommands.FABRIC_THEME_RESPOND_SETUP_ROOM);
         buf.append(room_object.groupIdStr());
@@ -109,6 +122,19 @@ public class ThemeDParser {
             this.abend("processPutBaseDataResponse", "null room");
             return;
         }
+
+
+        EngineData engineer_data = new EngineData(
+                ThemeCommands.FABRIC_THEME_RESPOND_PUT_ROOM_DATA,
+                ThemeResults.SUCCEED,
+                engine_data_val.theme(),
+                room_object.groupIdStr(),
+                room_object.roomIdStr()
+        );
+        engineer_data.addStringList(out_put_data_str);
+        //this.themeDBinder().transmitData(engineer_data.getEncodedString());
+
+
 
         StringBuilder buf = new StringBuilder();
         buf.append(ThemeCommands.FABRIC_THEME_RESPOND_PUT_ROOM_DATA);
