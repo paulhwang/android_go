@@ -8,13 +8,18 @@
 
 package com.phwang.core.fabric;
 
+import com.phwang.core.protocols.fabric.FabricClients;
+import com.phwang.core.protocols.fabric.FabricThemes;
 import com.phwang.core.protocols.theme.ThemeCommands;
+import com.phwang.core.protocols.theme.ThemeData;
+import com.phwang.core.protocols.theme.ThemeResults;
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.protocols.fabric.FabricCommands;
 import com.phwang.core.protocols.fabric.FabricData;
 import com.phwang.core.protocols.fabric.FabricResults;
 import com.phwang.core.utils.listmgr.ListEntry;
 import com.phwang.core.utils.binder.BinderBundle;
+import com.phwang.go.global.GlobalData;
 
 public class FabricUParser {
     private static String objectName() {return "FabricUParser";}
@@ -186,7 +191,7 @@ public class FabricUParser {
         group.insertSession(session);
         session.bindGroup(group);
 
-        this.mallocRoom(group, theme_data_str);
+        this.mallocRoom(fabric_decode_val, group, theme_data_str);
 
         fabric_data.setSessionIdStr(session.lSessionIdStr());
         fabric_data.setResult(FabricResults.SUCCEED);
@@ -213,7 +218,7 @@ public class FabricUParser {
         group.insertSession(session);
         session.bindGroup(group);
 
-        this.mallocRoom(group, theme_data_str);
+        this.mallocRoom(fabric_decode_val, group, theme_data_str);
 
         fabric_data.setSessionIdStr(session.lSessionIdStr());
         fabric_data.setResult(FabricResults.SUCCEED);
@@ -240,7 +245,7 @@ public class FabricUParser {
         group.insertSession(session);
         session.bindGroup(group);
 
-        this.mallocRoom(group, theme_data_str);
+        this.mallocRoom(fabric_decode_val, group, theme_data_str);
 
         fabric_data.setSessionIdStr(session.lSessionIdStr());
         fabric_data.setResult(FabricResults.SUCCEED);
@@ -267,7 +272,7 @@ public class FabricUParser {
         group.insertSession(session);
         session.bindGroup(group);
 
-        this.mallocRoom(group, theme_data_str);
+        this.mallocRoom(fabric_decode_val, group, theme_data_str);
 
         fabric_data.setSessionIdStr(session.lSessionIdStr());
         fabric_data.setResult(FabricResults.SUCCEED);
@@ -330,6 +335,16 @@ public class FabricUParser {
         }
 
         /* transfer data up */
+        ThemeData theme_data = new ThemeData(
+                ThemeCommands.FABRIC_THEME_COMMAND_PUT_ROOM_DATA,
+                ThemeResults.UNDECIDED,
+                fabric_data.theme(),
+                session.group().groupIdStr(),
+                room_id_str
+        );
+        theme_data.addStringList(fabric_data.stringList(0));
+
+
         StringBuilder buf = new StringBuilder();
         buf.append(ThemeCommands.FABRIC_THEME_COMMAND_PUT_ROOM_DATA);
         buf.append(room_id_str);
@@ -504,7 +519,7 @@ public class FabricUParser {
         session.bindGroup(group);
 
         if (his_name.equals(link.myName())) {
-            this.mallocRoom(group, theme_data);
+            this.mallocRoom(null, group, theme_data);
         }
         else {
             FabricLink his_link = this.linkMgr().GetLinkByMyName(his_name);
@@ -526,13 +541,21 @@ public class FabricUParser {
         return response_data;
     }
 
-    private void mallocRoom(FabricGroup group_val, String theme_info_val) {
-        this.debug(false, "mallocRoom", "theme_info_val=" + theme_info_val);
-    	
+    private void mallocRoom(FabricData fabric_data_val, FabricGroup group_val, String theme_str_val) {
+        this.debug(false, "mallocRoom", "theme_str_val=" + theme_str_val);
+        ThemeData theme_data = new ThemeData(
+                ThemeCommands.FABRIC_THEME_COMMAND_SETUP_ROOM,
+                ThemeResults.UNDECIDED,
+                fabric_data_val.theme(),
+                group_val.groupIdStr(),
+                Encoders.IGNORE
+                );
+        theme_data.addStringList(theme_str_val);
+
         StringBuilder data_buf = new StringBuilder();
         data_buf.append(ThemeCommands.FABRIC_THEME_COMMAND_SETUP_ROOM);
         data_buf.append(group_val.groupIdStr());
-        data_buf.append(theme_info_val);
+        data_buf.append(theme_str_val);
         String uplink_data = data_buf.toString();
         this.fabricRoot().fabricUBinder().transmitData(uplink_data);
     }
@@ -585,7 +608,7 @@ public class FabricUParser {
         if (group == null) {
             return errorProcessSetupSession2(link_id_str, "null group");
         }
-        this.mallocRoom(group, theme_data_str);
+        this.mallocRoom(null, group, theme_data_str);
 
         String response_data = this.generateSetupSession2Response(FabricResults.SUCCEED, link.linkIdStr(), session.lSessionIdStr(), session.browserThemeIdStr());
         return response_data;
