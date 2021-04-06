@@ -14,6 +14,11 @@ public class FabricData {
     private static final String TAG = "FabricData";
     private static final int MAX_ARRAY_SIZE = 10;
 
+    public static final int COMMAND_INDEX     = 0;
+    public static final int RESULT_INDEX      = 1;
+    public static final int CLIENT_TYPE_INDEX = 2;
+    public static final int THEME_INDEX       = 3;
+
     public static final char ANDROID_CLIENT = 'A';
     public static final char IPHONE_CLIENT  = 'I';
     public static final char HTTP_CLIENT    = 'H';
