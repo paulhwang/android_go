@@ -70,14 +70,14 @@ public class ThemeDParser {
                 room_object.groupIdStr(),
                 room_object.roomIdStr()
         );
-        //this.themeDBinder().transmitData(engineer_data.getEncodedString());
+        this.themeDBinder().transmitData(engineer_data.getEncodedString());
 
 
-        StringBuilder buf = new StringBuilder();
-        buf.append(ThemeCommands.FABRIC_THEME_RESPOND_SETUP_ROOM);
-        buf.append(room_object.groupIdStr());
-        buf.append(room_object.roomIdStr());
-        this.themeDBinder().transmitData(buf.toString());
+        //StringBuilder buf = new StringBuilder();
+        //buf.append(ThemeCommands.FABRIC_THEME_RESPOND_SETUP_ROOM);
+        //buf.append(room_object.groupIdStr());
+        //buf.append(room_object.roomIdStr());
+        //this.themeDBinder().transmitData(buf.toString());
 
         /*
         char* room_id_index_val = data_val;
@@ -132,15 +132,15 @@ public class ThemeDParser {
                 room_object.roomIdStr()
         );
         engineer_data.addStringList(out_put_data_str);
-        //this.themeDBinder().transmitData(engineer_data.getEncodedString());
+        this.themeDBinder().transmitData(engineer_data.getEncodedString());
 
 
 
-        StringBuilder buf = new StringBuilder();
-        buf.append(ThemeCommands.FABRIC_THEME_RESPOND_PUT_ROOM_DATA);
-        buf.append(room_object.groupIdStr());
-        buf.append(out_put_data_str);
-        this.themeDBinder().transmitData(buf.toString());
+        //StringBuilder buf = new StringBuilder();
+        //buf.append(ThemeCommands.FABRIC_THEME_RESPOND_PUT_ROOM_DATA);
+        //buf.append(room_object.groupIdStr());
+        //buf.append(out_put_data_str);
+        //this.themeDBinder().transmitData(buf.toString());
 
         /*
         char* downlink_data;
