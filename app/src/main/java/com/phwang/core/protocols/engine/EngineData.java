@@ -26,6 +26,7 @@ public class EngineData {
     public String baseIdStr() { return this.baseIdStr_; };
     public String stringList(int index_val) { return this.stringList_[index_val]; };
 
+    public void setCommand(char command_val) { this.command_ = command_val; };
     public void setResult(char result_val) { this.result_ = result_val; }
     public void setRoomIdStr(String link_id_str_val) { this.roomIdStr_ = link_id_str_val; }
     public void setBaseIdStr(String session_id_str_val) { this.baseIdStr_ = session_id_str_val; }

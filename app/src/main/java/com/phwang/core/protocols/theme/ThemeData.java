@@ -26,6 +26,7 @@ public class ThemeData {
     public String roomIdStr() { return this.roomIdStr_; };
     public String stringList(int index_val) { return this.stringList_[index_val]; };
 
+    public void setCommand(char command_val) { this.command_ = command_val; };
     public void setResult(char result_val) { this.result_ = result_val; }
     public void setGroupIdStr(String link_id_str_val) { this.groupIdStr_ = link_id_str_val; }
     public void setRoomIdStr(String session_id_str_val) { this.roomIdStr_ = session_id_str_val; }

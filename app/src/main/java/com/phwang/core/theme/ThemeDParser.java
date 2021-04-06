@@ -11,6 +11,7 @@ package com.phwang.core.theme;
 //import com.phwang.core.utils.*;
 
 import com.phwang.core.protocols.engine.EngineCommands;
+import com.phwang.core.protocols.engine.EngineData;
 import com.phwang.core.protocols.theme.ThemeCommands;
 import com.phwang.core.utils.encoders.Encoders;
 
@@ -30,35 +31,39 @@ public class ThemeDParser {
     }
     
     public void parseInputPacket(String input_data_val) {
-        this.debug(false, "parseInputPacket", input_data_val);
-        char command = input_data_val.charAt(0);
-        String input_data = input_data_val.substring(1);
+        this.debug(true, "parseInputPacket", input_data_val);
+        EngineData engine_data = new EngineData(input_data_val);
+        char command = engine_data.command();
+
+        //char command = input_data_val.charAt(0);
+        //String input_data = input_data_val.substring(1);
 
         if (command == EngineCommands.THEME_ENGINE_RESPOND_SETUP_BASE) {
-                this.processSetupBaseResponse(input_data);
+                this.processSetupBaseResponse(engine_data);
                 return;
         }
 
         if (command == EngineCommands.THEME_ENGINE_RESPOND_PUT_BASE_DATA) {
-            this.processPutBaseDataResponse(input_data);
+            this.processPutBaseDataResponse(engine_data);
             return;
         }
 
         this.abend("parseInputPacket", input_data_val);
     }
 
-    private void processSetupBaseResponse(String input_str_val) {
-        this.debug(false, "processSetupBaseResponse", input_str_val);
+    private void processSetupBaseResponse(EngineData engine_data_val) {
+        String room_id_str = engine_data_val.roomIdStr();
+        String base_id_str = engine_data_val.baseIdStr();
 
-        String rest_str = input_str_val;
-        String room_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
+        //String rest_str = input_str_val;
+        //String room_id_str = Encoders.sSubstring2(rest_str);
+        //rest_str = Encoders.sSubstring2_(rest_str);
 
-        String base_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
+        //String base_id_str = Encoders.sSubstring2(rest_str);
+        //rest_str = Encoders.sSubstring2_(rest_str);
 
-        this.debug(false, "processSetupBaseResponse", "room_id_str=" + room_id_str);
-        this.debug(false, "processSetupBaseResponse", "base_id_str=" + base_id_str);
+        this.debug(true, "processSetupBaseResponse", "room_id_str=" + room_id_str);
+        this.debug(true, "processSetupBaseResponse", "base_id_str=" + base_id_str);
 
         ThemeRoom room_object = this.roomMgr().getRoomByIdStr(room_id_str);
         room_object.setBaseIdStr(base_id_str);
@@ -100,14 +105,18 @@ public class ThemeDParser {
         */
     }
 
-    private void processPutBaseDataResponse(String input_str_val) {
-        this.debug(false, "processPutBaseDataResponse", input_str_val);
+    private void processPutBaseDataResponse(EngineData engine_data_val) {
+        String room_id_str = engine_data_val.roomIdStr();
+        String base_id_str = engine_data_val.baseIdStr();
+        String data = engine_data_val.stringList(1);
+        this.debug(true, "processPutBaseDataResponse", "room_id_str=" + room_id_str);
+        this.debug(true, "processPutBaseDataResponse", "base_id_str=" + base_id_str);
 
-        String rest_str = input_str_val;
-        String room_id_str = Encoders.sSubstring2(rest_str);
-        rest_str = Encoders.sSubstring2_(rest_str);
+        //String rest_str = input_str_val;
+        //String room_id_str = Encoders.sSubstring2(rest_str);
+        //rest_str = Encoders.sSubstring2_(rest_str);
 
-        String data = rest_str;
+        //String data = rest_str;
 
         ThemeRoom room_object = this.roomMgr().getRoomByIdStr(room_id_str);
         if (room_object == null) {
