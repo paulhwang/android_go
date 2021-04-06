@@ -44,9 +44,11 @@ public class ThemeUParser {
             case ThemeCommands.FABRIC_THEME_COMMAND_PUT_ROOM_DATA:
                 this.processPutRoomData(theme_data);
                 return;
-        }
 
-        this.abend("parseInputPacket", "bad command, theme_data_str_val=" + theme_data_str_val);
+            default:
+                this.abend("parseInputPacket", "bad command, theme_data_str_val=" + theme_data_str_val);
+                return;
+        }
     }
 
     private void processSetupRoom(ThemeData theme_data_val) {

@@ -26,38 +26,31 @@ public class EngineUParser {
         this.engineRoot_ = root_val;
     }
 
-    public void ParseInputPacket(String input_data_val) {
-        this.debug(true, "ParseInputPacket", "data=" + input_data_val);
-        EngineData engine_data = new EngineData(input_data_val);
+    public void ParseInputPacket(String engine_data_str_val) {
+        this.debug(true, "ParseInputPacket", "data=" + engine_data_str_val);
+        EngineData engine_data = new EngineData(engine_data_str_val);
         char command = engine_data.command();
 
-        //char command = input_data_val.charAt(0);
-        //String input_data = input_data_val.substring(1);
+        switch (command) {
+            case EngineCommands.THEME_ENGINE_COMMAND_SETUP_BASE:
+                this.processSetupBase(engine_data);
+                return;
 
-        if (command == EngineCommands.THEME_ENGINE_COMMAND_SETUP_BASE) {
-            this.processSetupBase(engine_data);
-            return;
+            case EngineCommands.THEME_ENGINE_COMMAND_PUT_BASE_DATA:
+                this.processPutBaseData(engine_data);
+                return;
+
+            default:
+                this.abend("ParseInputPacket", engine_data_str_val);
+                return;
         }
-
-        if (command == EngineCommands.THEME_ENGINE_COMMAND_PUT_BASE_DATA) {
-            this.processPutBaseData(engine_data);
-            return;
-        }
-
-        this.abend("ParseInputPacket", input_data_val);
     }
 
     private void processSetupBase(EngineData engine_data_val) {
         String room_id_str = engine_data_val.roomIdStr();
         String input_data = engine_data_val.stringList(0);
-        this.debug(true, "processSetupBase", "engine_data_val=" + engine_data_val);
-        this.debug(true, "processSetupBase", "input_data=" + input_data);
-
-        //String rest_str = input_str_val;
-        //String room_id_str = Encoders.sSubstring2(rest_str);
-        //rest_str = Encoders.sSubstring2_(rest_str);
-
-        //String input_data = rest_str;
+        this.debug(false, "processSetupBase", "engine_data_val=" + engine_data_val);
+        this.debug(false, "processSetupBase", "input_data=" + input_data);
 
         EngineBase go_base = this.baseMgr().MallocGoBase(room_id_str);
         if (go_base == null) {
@@ -78,14 +71,8 @@ public class EngineUParser {
     private void processPutBaseData(EngineData engine_data_val) {
         String base_id_str = engine_data_val.baseIdStr();
         String input_data = engine_data_val.stringList(0);
-        this.debug(true, "processPutBaseData", "base_id_str=" + base_id_str);
-        this.debug(true, "processPutBaseData", "input_data=" + input_data);
-
-        //String rest_str = input_str_val;
-        //String base_id_str = Encoders.sSubstring2(rest_str);
-        //rest_str = Encoders.sSubstring2_(rest_str);
-
-        //String input_data = rest_str;
+        this.debug(false, "processPutBaseData", "base_id_str=" + base_id_str);
+        this.debug(false, "processPutBaseData", "input_data=" + input_data);
 
         EngineBase go_base = this.baseMgr().GetBaseByIdStr(base_id_str);
         if (go_base == null) {
