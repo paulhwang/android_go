@@ -9,11 +9,11 @@
 package com.phwang.go.services;
 
 import android.util.Log;
-import com.phwang.core.utils.fabric.FabricCommands;
-import com.phwang.core.utils.fabric.FabricResults;
+import com.phwang.core.protocols.fabric.FabricCommands;
+import com.phwang.core.protocols.fabric.FabricResults;
 import com.phwang.core.utils.binder.Binder;
-import com.phwang.core.utils.fabric.FabricData;
-import com.phwang.core.utils.fabric.FabricDataStr;
+import com.phwang.core.protocols.fabric.FabricData;
+import com.phwang.core.protocols.fabric.FabricDataStr;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.global.GlobalData;
 

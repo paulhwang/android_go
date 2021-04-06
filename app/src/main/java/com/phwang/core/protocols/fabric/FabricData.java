@@ -6,10 +6,10 @@
  ******************************************************************************
  */
 
-package com.phwang.core.utils.fabric;
+package com.phwang.core.protocols.fabric;
 
+import com.phwang.core.protocols.fabric.FabricClients;
 import com.phwang.core.utils.encoders.Encoders;
-import com.phwang.go.R;
 
 public class FabricData {
     private static final String TAG = "FabricData";

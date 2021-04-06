@@ -14,8 +14,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.phwang.core.utils.fabric.FabricCommands;
-import com.phwang.core.utils.fabric.FabricDataStr;
+import com.phwang.core.protocols.fabric.FabricCommands;
+import com.phwang.core.protocols.fabric.FabricDataStr;
 import com.phwang.go.define.BundleIndexDefine;
 
 public class RegisterReceiver extends BroadcastReceiver {

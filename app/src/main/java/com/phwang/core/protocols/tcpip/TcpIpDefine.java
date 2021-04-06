@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.core.utils.tcpip;
+package com.phwang.core.protocols.tcpip;
 
 public class TcpIpDefine {
     public static final String FABRIC_THEME_IP_ADDRESS = "127.0.0.1";

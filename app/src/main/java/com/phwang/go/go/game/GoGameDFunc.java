@@ -10,8 +10,7 @@ package com.phwang.go.go.game;
 
 import android.util.Log;
 
-import com.phwang.core.utils.encoders.Encoders;
-import com.phwang.core.utils.fabric.FabricData;
+import com.phwang.core.protocols.fabric.FabricData;
 
 public class GoGameDFunc {
     private static final String TAG = "GoGameDFunc";

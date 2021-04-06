@@ -10,7 +10,7 @@ package com.phwang.core.fabric;
 
 import com.phwang.core.utils.binder.Binder;
 import com.phwang.core.utils.binder.BinderBundle;
-import com.phwang.core.utils.tcpip.TcpIpDefine;
+import com.phwang.core.protocols.tcpip.TcpIpDefine;
 import com.phwang.core.utils.threadmgr.ThreadEntityInt;
 import com.phwang.core.utils.threadmgr.ThreadMgr;
 

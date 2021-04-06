@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import com.phwang.core.utils.encoders.Encoders;
-import com.phwang.core.utils.fabric.FabricData;
+
+import com.phwang.core.protocols.fabric.FabricData;
 import com.phwang.core.utils.watchdog.WatchDog;
 import com.phwang.core.utils.watchdog.WatchDogInt;
 import com.phwang.go.R;

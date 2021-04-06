@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.core.utils.fabric;
+package com.phwang.core.protocols.fabric;
 
 public class FabricCommands {
     public static final char   FABRIC_COMMAND_HTTP_DATA            = '&';

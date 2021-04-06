@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.core.utils.fabric;
+package com.phwang.core.protocols.fabric;
 
 import com.phwang.core.utils.encoders.Encoders;
 

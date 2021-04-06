@@ -9,7 +9,7 @@
 package com.phwang.go.services;
 
 import com.phwang.core.utils.binder.Binder;
-import com.phwang.core.utils.tcpip.TcpIpDefine;
+import com.phwang.core.protocols.tcpip.TcpIpDefine;
 import com.phwang.core.utils.threadmgr.ThreadEntityInt;
 import com.phwang.core.utils.threadmgr.ThreadMgr;
 

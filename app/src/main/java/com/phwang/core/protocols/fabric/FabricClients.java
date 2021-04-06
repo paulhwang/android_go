@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.core.utils.fabric;
+package com.phwang.core.protocols.fabric;
 
 public class FabricClients {
     public static final char ANDROID_CLIENT = 'A';
