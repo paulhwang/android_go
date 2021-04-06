@@ -9,8 +9,8 @@
 package com.phwang.go.services;
 
 import android.util.Log;
-import com.phwang.core.fabric.FabricCommands;
-import com.phwang.core.fabric.FabricResults;
+import com.phwang.core.utils.fabric.FabricCommands;
+import com.phwang.core.utils.fabric.FabricResults;
 import com.phwang.core.utils.binder.Binder;
 import com.phwang.core.utils.fabric.FabricData;
 import com.phwang.core.utils.fabric.FabricDataStr;

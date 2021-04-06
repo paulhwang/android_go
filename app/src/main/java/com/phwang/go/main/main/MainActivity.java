@@ -20,9 +20,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.phwang.core.fabric.FabricCommands;
-import com.phwang.core.fabric.FabricResults;
-import com.phwang.core.fabric.FabricThemes;
+import com.phwang.core.utils.fabric.FabricClients;
+import com.phwang.core.utils.fabric.FabricCommands;
+import com.phwang.core.utils.fabric.FabricResults;
+import com.phwang.core.utils.fabric.FabricThemes;
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.utils.fabric.FabricData;
 import com.phwang.go.R;
@@ -151,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FabricData fabric_encode = new FabricData(
                 FabricCommands.FABRIC_COMMAND_LOGOUT,
                 FabricResults.UNDECIDED,
-                FabricData.ANDROID_CLIENT,
+                FabricClients.ANDROID_CLIENT,
                 FabricThemes.ALL,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE
@@ -169,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FabricData fabric_encode = new FabricData(
                 FabricCommands.FABRIC_COMMAND_GET_GROUPS,
                 FabricResults.UNDECIDED,
-                FabricData.ANDROID_CLIENT,
+                FabricClients.ANDROID_CLIENT,
                 FabricThemes.ALL,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE

@@ -8,12 +8,6 @@
 
 package com.phwang.go.main.main;
 
-import android.content.Intent;
-
-import com.phwang.core.fabric.FabricCommands;
-import com.phwang.go.define.BundleIndexDefine;
-import com.phwang.go.define.IntentDefine;
-
 public class MainActivityFunc {
     private static final String TAG = "MainActivityFunc";
     private MainActivity mainActivity_;

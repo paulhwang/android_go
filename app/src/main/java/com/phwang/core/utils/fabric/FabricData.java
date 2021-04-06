@@ -21,10 +21,6 @@ public class FabricData {
     public static final int THEME_INDEX       = 3;
     public static final int JOB_ID_STR_INDEX  = 4;
 
-    public static final char ANDROID_CLIENT = 'A';
-    public static final char IPHONE_CLIENT  = 'I';
-    public static final char HTTP_CLIENT    = 'H';
-
     private char command_;
     private char result_;
     private char clientType_;
@@ -67,7 +63,7 @@ public class FabricData {
         this.theme_ = rest_str.charAt(THEME_INDEX);
         rest_str = rest_str.substring((JOB_ID_STR_INDEX));
 
-        if (this.clientType_ == HTTP_CLIENT) {
+        if (this.clientType_ == FabricClients.HTTP_CLIENT) {
             this.jobIdStr_ = Encoders.sSubstring2(rest_str);
             rest_str = Encoders.sSubstring2_(rest_str);
         }
@@ -94,7 +90,7 @@ public class FabricData {
         buf.append(this.clientType_);
         buf.append(this.theme_);
 
-        if (this.clientType_ == HTTP_CLIENT) {
+        if (this.clientType_ == FabricClients.HTTP_CLIENT) {
             buf.append((this.jobIdStr_ != null) ? this.jobIdStr_: Encoders.NULL_JOB);
         }
 

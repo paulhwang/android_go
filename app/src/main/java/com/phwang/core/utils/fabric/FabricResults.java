@@ -6,7 +6,7 @@
  ******************************************************************************
  */
 
-package com.phwang.core.fabric;
+package com.phwang.core.utils.fabric;
 
 public class FabricResults {
     public static final char   UNDECIDED             = '?';

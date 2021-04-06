@@ -16,9 +16,10 @@ import android.view.View;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputLayout;
-import com.phwang.core.fabric.FabricCommands;
-import com.phwang.core.fabric.FabricResults;
-import com.phwang.core.fabric.FabricThemes;
+import com.phwang.core.utils.fabric.FabricClients;
+import com.phwang.core.utils.fabric.FabricCommands;
+import com.phwang.core.utils.fabric.FabricResults;
+import com.phwang.core.utils.fabric.FabricThemes;
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.utils.fabric.FabricData;
 import com.phwang.go.R;
@@ -87,7 +88,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         FabricData fabric_encode = new FabricData(
                 FabricCommands.FABRIC_COMMAND_LOGIN,
                 FabricResults.UNDECIDED,
-                FabricData.ANDROID_CLIENT,
+                FabricClients.ANDROID_CLIENT,
                 FabricThemes.ALL,
                 Encoders.IGNORE,
                 Encoders.IGNORE

@@ -10,8 +10,7 @@ package com.phwang.go.services;
 
 import android.content.Intent;
 import android.util.Log;
-import com.phwang.core.fabric.FabricCommands;
-import com.phwang.core.utils.fabric.FabricDataStr;
+import com.phwang.core.utils.fabric.FabricCommands;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
 

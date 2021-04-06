@@ -6,10 +6,10 @@
  ******************************************************************************
  */
 
-package com.phwang.core.fabric;
+package com.phwang.core.utils.fabric;
 
-public class FabricThemes {
-    public static final char ALL    = '*';
-    public static final char GO     = 'G';
-    public static final char SUDOKU = 'S';
+public class FabricClients {
+    public static final char ANDROID_CLIENT = 'A';
+    public static final char IPHONE_CLIENT  = 'I';
+    public static final char HTTP_CLIENT    = 'H';
 }
