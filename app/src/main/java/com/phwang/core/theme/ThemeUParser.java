@@ -66,6 +66,7 @@ public class ThemeUParser {
                 room.roomIdStr(),
                 Encoders.IGNORE
         );
+        engineer_data.addStringList(theme_data_val.stringList(0));
         //this.themeUBinder().transmitData(engineer_data.getEncodedString());
 
         StringBuilder buf = new StringBuilder();
@@ -85,6 +86,16 @@ public class ThemeUParser {
             this.abend("processPutRoomData", "null room");
             return;
         }
+
+        EngineData engineer_data = new EngineData(
+                EngineCommands.THEME_ENGINE_COMMAND_PUT_BASE_DATA,
+                ThemeResults.UNDECIDED,
+                theme_data_val.theme(),
+                room.roomIdStr(),
+                room.baseIdStr()
+        );
+        engineer_data.addStringList(theme_data_val.stringList(0));
+        //this.themeUBinder().transmitData(engineer_data.getEncodedString());
 
         StringBuilder buf = new StringBuilder();
         buf.append(EngineCommands.THEME_ENGINE_COMMAND_PUT_BASE_DATA);
