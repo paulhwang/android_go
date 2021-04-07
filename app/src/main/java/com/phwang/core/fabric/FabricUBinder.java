@@ -8,8 +8,13 @@
 
 package com.phwang.core.fabric;
 
+import com.phwang.core.protocols.fabric.FabricData;
+import com.phwang.core.protocols.theme.ThemeCommands;
+import com.phwang.core.protocols.theme.ThemeData;
+import com.phwang.core.protocols.theme.ThemeResults;
 import com.phwang.core.utils.binder.Binder;
 import com.phwang.core.protocols.tcpip.TcpIpDefine;
+import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.utils.threadmgr.ThreadMgr;
 import com.phwang.core.utils.threadmgr.ThreadEntityInt;
 
@@ -64,7 +69,20 @@ public class FabricUBinder implements ThreadEntityInt {
         this.debug(false, "transmitData", "data=" + data_val);
         this.uBinder().transmitStringData(data_val);
     }
-    
+
+    public void sendMallocRoomRequestToThemeServer(FabricData fabric_data_val, FabricGroup group_val, String theme_str_val) {
+        this.debug(false, "sendMallocRoomRequestToThemeServer", "theme_str_val=" + theme_str_val);
+        ThemeData theme_data = new ThemeData(
+                ThemeCommands.FABRIC_THEME_COMMAND_SETUP_ROOM,
+                ThemeResults.UNDECIDED,
+                fabric_data_val.theme(),
+                group_val.groupIdStr(),
+                Encoders.IGNORE
+        );
+        theme_data.addStringList(theme_str_val);
+        this.fabricRoot().fabricUBinder().transmitData(theme_data.getEncodedString());
+    }
+
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }
     private void log(String s0, String s1) { this.fabricRoot().logIt(this.objectName() + "." + s0 + "()", s1); }
     protected void abend(String s0, String s1) { this.fabricRoot().abendIt(this.objectName() + "." + s0 + "()", s1); }
