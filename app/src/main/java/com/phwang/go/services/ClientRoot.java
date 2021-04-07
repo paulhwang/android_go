@@ -32,10 +32,7 @@ public class ClientRoot {
         this.debug(false, "ClientRoot", "init start");
 
         this.clientService_ = client_service_val;
-
-        Abend.initAbend(new ClientAbend());
-        new com.phwang.core.root.CoreRoot();
-
+        new ClientBind();
         this.threadMgr_ = new ThreadMgr();
         this.clientUBinder_ = new ClientUBinder(this);
         this.clientDParser_ = new ClientDParser(this);
