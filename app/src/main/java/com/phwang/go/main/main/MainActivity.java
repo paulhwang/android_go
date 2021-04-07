@@ -23,7 +23,7 @@ import android.view.MenuItem;
 import com.phwang.core.protocols.fabric.FabricClients;
 import com.phwang.core.protocols.fabric.FabricCommands;
 import com.phwang.core.protocols.fabric.FabricResults;
-import com.phwang.core.protocols.fabric.FabricThemes;
+import com.phwang.core.protocols.fabric.FabricThemeTypes;
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.protocols.fabric.FabricData;
 import com.phwang.go.R;
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 FabricCommands.FABRIC_COMMAND_LOGOUT,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID_CLIENT,
-                FabricThemes.ALL,
+                FabricThemeTypes.ALL,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE
         );
@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 FabricCommands.FABRIC_COMMAND_GET_GROUPS,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID_CLIENT,
-                FabricThemes.ALL,
+                FabricThemeTypes.ALL,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE
         );

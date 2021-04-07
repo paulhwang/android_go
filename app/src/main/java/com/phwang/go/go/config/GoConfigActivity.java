@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.phwang.core.protocols.fabric.FabricClients;
 import com.phwang.core.protocols.fabric.FabricCommands;
 import com.phwang.core.protocols.fabric.FabricResults;
-import com.phwang.core.protocols.fabric.FabricThemes;
+import com.phwang.core.protocols.fabric.FabricThemeTypes;
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.protocols.fabric.FabricData;
 import com.phwang.go.R;
@@ -123,7 +123,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 FabricCommands.FABRIC_COMMAND_SOLO_SESSION,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID_CLIENT,
-                FabricThemes.GO,
+                FabricThemeTypes.GO,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE
         );
@@ -141,7 +141,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 FabricCommands.FABRIC_COMMAND_HEAD_SESSION,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID_CLIENT,
-                FabricThemes.GO,
+                FabricThemeTypes.GO,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE
         );
@@ -159,7 +159,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 FabricCommands.FABRIC_COMMAND_PEER_SESSION,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID_CLIENT,
-                FabricThemes.GO,
+                FabricThemeTypes.GO,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE
         );
@@ -177,7 +177,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 FabricCommands.FABRIC_COMMAND_JOIN_SESSION,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID_CLIENT,
-                FabricThemes.GO,
+                FabricThemeTypes.GO,
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE
         );

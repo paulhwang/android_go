@@ -7,6 +7,11 @@ package com.phwang.test;
 
 import android.util.Log;
 
+import com.phwang.core.protocols.fabric.FabricClients;
+import com.phwang.core.protocols.fabric.FabricCommands;
+import com.phwang.core.protocols.fabric.FabricData;
+import com.phwang.core.protocols.fabric.FabricResults;
+import com.phwang.core.protocols.fabric.FabricThemeTypes;
 import com.phwang.core.utils.encoders.Encoders;
 
 class AndroidTester {
@@ -24,7 +29,14 @@ class AndroidTester {
     }
 
     protected void startTest() {
-
+        FabricData fabric_data = new FabricData(
+                FabricCommands.FABRIC_COMMAND_LOGIN,
+                FabricResults.UNDECIDED,
+                FabricClients.ANDROID_CLIENT,
+                FabricThemeTypes.GO,
+                Encoders.IGNORE,
+                Encoders.IGNORE
+        );
     }
 }
 

@@ -8,7 +8,7 @@
 
 package com.phwang.core.protocols.fabric;
 
-public class FabricThemes {
+public class FabricThemeTypes {
     public static final char ALL    = '*';
     public static final char GO     = 'G';
     public static final char SUDOKU = 'S';

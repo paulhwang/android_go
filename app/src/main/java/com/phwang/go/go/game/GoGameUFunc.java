@@ -13,7 +13,7 @@ import android.content.Intent;
 import com.phwang.core.protocols.fabric.FabricClients;
 import com.phwang.core.protocols.fabric.FabricCommands;
 import com.phwang.core.protocols.fabric.FabricResults;
-import com.phwang.core.protocols.fabric.FabricThemes;
+import com.phwang.core.protocols.fabric.FabricThemeTypes;
 import com.phwang.core.protocols.fabric.FabricData;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
@@ -34,7 +34,7 @@ public class GoGameUFunc {
                 FabricCommands.FABRIC_COMMAND_DELETE_SESSION,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID_CLIENT,
-                FabricThemes.GO,
+                FabricThemeTypes.GO,
                 this.linkIdStr(),
                 this.sessionIdStr()
         );
@@ -51,7 +51,7 @@ public class GoGameUFunc {
                 FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID_CLIENT,
-                FabricThemes.GO,
+                FabricThemeTypes.GO,
                 this.linkIdStr(),
                 this.sessionIdStr()
         );
@@ -69,7 +69,7 @@ public class GoGameUFunc {
                 FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID_CLIENT,
-                FabricThemes.GO,
+                FabricThemeTypes.GO,
                 this.linkIdStr(),
                 this.sessionIdStr()
         );
