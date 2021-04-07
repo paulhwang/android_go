@@ -52,13 +52,14 @@ public class AndroidTest implements ThreadEntityInt {
     }
 
     public void threadCallbackFunction() {
+        Utils.sleep(10);
         this.incrementThreadCount();
         this.androidTesterThreadFunc();
         this.decrementThreadCount();
     }
 
     private void androidTesterThreadFunc() {
-        Log.e(TAG, "androidTesterThreadFunc() start");
+        //Log.e(TAG, "androidTesterThreadFunc() start");
 
         this.testerIndex_.increment();
         int tester_index = this.testerIndex_.get();
@@ -68,7 +69,7 @@ public class AndroidTest implements ThreadEntityInt {
 
         for (int i = 0; i < this.numberOfCasePerTester_; i++) {
             tester.startTest();
-            //UtilsClass.sleep(1);
+            Utils.sleep(1);
         }
     }
 
