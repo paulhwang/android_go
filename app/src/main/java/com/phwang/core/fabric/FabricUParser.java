@@ -163,9 +163,9 @@ public class FabricUParser {
 
     private void processSoloSessionRequest(FabricData fabric_data_val) {
         String link_id_str = fabric_data_val.linkIdStr();
-        String theme_data_str = fabric_data_val.stringList(0);
+        String data_str = fabric_data_val.stringList(0);
         this.debug(true, "processSoloSessionRequest", "link_id = " + link_id_str);
-        this.debug(true, "processSoloSessionRequest", "theme_data = " + theme_data_str);
+        this.debug(true, "processSoloSessionRequest", "theme_data = " + data_str);
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
@@ -173,13 +173,12 @@ public class FabricUParser {
             return;
         }
 
-
         FabricSession session = link.mallocSession();
-        FabricGroup group = this.groupMgr().mallocGroup(theme_data_str);
+        FabricGroup group = this.groupMgr().mallocGroup(data_str);
         group.insertSession(session);
         session.bindGroup(group);
 
-        this.fabricUBinder().sendMallocRoomRequestToThemeServer(fabric_data_val, group, theme_data_str);
+        this.fabricUBinder().sendMallocRoomRequestToThemeServer(fabric_data_val.theme(), group.groupIdStr(), data_str);
 
         fabric_data_val.setSessionIdStr(session.lSessionIdStr());
         fabric_data_val.setResult(FabricResults.SUCCEED);
@@ -202,7 +201,7 @@ public class FabricUParser {
         group.insertSession(session);
         session.bindGroup(group);
 
-        this.fabricUBinder().sendMallocRoomRequestToThemeServer(fabric_data_val, group, theme_data_str);
+        this.fabricUBinder().sendMallocRoomRequestToThemeServer(fabric_data_val.theme(), group.groupIdStr(), theme_data_str);
 
         fabric_data_val.setSessionIdStr(session.lSessionIdStr());
         fabric_data_val.setResult(FabricResults.SUCCEED);
@@ -225,7 +224,7 @@ public class FabricUParser {
         group.insertSession(session);
         session.bindGroup(group);
 
-        this.fabricUBinder().sendMallocRoomRequestToThemeServer(fabric_data_val, group, theme_data_str);
+        this.fabricUBinder().sendMallocRoomRequestToThemeServer(fabric_data_val.theme(), group.groupIdStr(), theme_data_str);
 
         fabric_data_val.setSessionIdStr(session.lSessionIdStr());
         fabric_data_val.setResult(FabricResults.SUCCEED);
@@ -248,7 +247,7 @@ public class FabricUParser {
         group.insertSession(session);
         session.bindGroup(group);
 
-        this.fabricUBinder().sendMallocRoomRequestToThemeServer(fabric_data_val, group, theme_data_str);
+        this.fabricUBinder().sendMallocRoomRequestToThemeServer(fabric_data_val.theme(), group.groupIdStr(), theme_data_str);
 
         fabric_data_val.setSessionIdStr(session.lSessionIdStr());
         fabric_data_val.setResult(FabricResults.SUCCEED);
@@ -303,7 +302,7 @@ public class FabricUParser {
             return;
         }
 
-        this.fabricUBinder().sendThemeDataToThemeServer(fabric_data_val.theme(), session.group().groupIdStr(), room_id_str, data_str);
+        this.fabricUBinder().sendDataToThemeServer(fabric_data_val.theme(), session.group().groupIdStr(), room_id_str, data_str);
         fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
@@ -468,7 +467,7 @@ public class FabricUParser {
         session.bindGroup(group);
 
         if (his_name.equals(link.myName())) {
-            this.fabricUBinder().sendMallocRoomRequestToThemeServer(null, group, theme_data);
+            this.fabricUBinder().sendMallocRoomRequestToThemeServer('G', group.groupIdStr(), theme_data_str);
         }
         else {
             FabricLink his_link = this.linkMgr().GetLinkByMyName(his_name);
@@ -538,7 +537,7 @@ public class FabricUParser {
         if (group == null) {
             return errorProcessSetupSession2(link_id_str, "null group");
         }
-        this.fabricUBinder().sendMallocRoomRequestToThemeServer(null, group, theme_data_str);
+        this.fabricUBinder().sendMallocRoomRequestToThemeServer('G', group.groupIdStr(), theme_data_str);
 
         String response_data = this.generateSetupSession2Response(FabricResults.SUCCEED, link.linkIdStr(), session.lSessionIdStr(), session.browserThemeIdStr());
         return response_data;

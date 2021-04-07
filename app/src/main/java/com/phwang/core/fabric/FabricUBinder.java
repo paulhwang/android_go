@@ -70,26 +70,26 @@ public class FabricUBinder implements ThreadEntityInt {
         this.uBinder().transmitStringData(data_val);
     }
 
-    public void sendMallocRoomRequestToThemeServer(FabricData fabric_data_val, FabricGroup group_val, String theme_str_val) {
+    public void sendMallocRoomRequestToThemeServer(char theme_type_val, String group_id_str_val, String theme_str_val) {
         this.debug(false, "sendMallocRoomRequestToThemeServer", "theme_str_val=" + theme_str_val);
         ThemeData theme_data = new ThemeData(
                 ThemeCommands.FABRIC_THEME_COMMAND_SETUP_ROOM,
                 ThemeResults.UNDECIDED,
-                fabric_data_val.theme(),
-                group_val.groupIdStr(),
+                theme_type_val,
+                group_id_str_val,
                 Encoders.IGNORE
         );
         theme_data.addStringList(theme_str_val);
         this.transmitData(theme_data.getEncodedString());
     }
 
-    protected void sendThemeDataToThemeServer(char theme_type_val, String group_id_str_val, String roon_id_str_val, String data_str_val) {
+    protected void sendDataToThemeServer(char theme_type_val, String group_id_str_val, String room_id_str_val, String data_str_val) {
         ThemeData theme_data = new ThemeData(
                 ThemeCommands.FABRIC_THEME_COMMAND_PUT_ROOM_DATA,
                 ThemeResults.UNDECIDED,
                 theme_type_val,
                 group_id_str_val,
-                roon_id_str_val
+                room_id_str_val
         );
         theme_data.addStringList(data_str_val);
         this.transmitData(theme_data.getEncodedString());
