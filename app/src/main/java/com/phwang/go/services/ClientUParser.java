@@ -29,7 +29,7 @@ public class ClientUParser {
     }
 
     protected void parseUCommand(String fabric_data_str_val) {
-        Log.e(TAG, "parseUCommand() fabric_data_str=" + fabric_data_str_val);
+        //Log.e(TAG, "parseUCommand() fabric_data_str=" + fabric_data_str_val);
 
         switch (FabricDataStr.getCommand(fabric_data_str_val)) {
             case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:

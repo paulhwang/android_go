@@ -32,7 +32,7 @@ public class ThemeUParser {
     }
 
     public void parseInputPacket(String theme_data_str_val) {
-        this.debug(true, "parseInputPacket", theme_data_str_val);
+        this.debug(false, "parseInputPacket", theme_data_str_val);
 
         ThemeData theme_data = new ThemeData(theme_data_str_val);
 
@@ -53,7 +53,7 @@ public class ThemeUParser {
 
     private void processSetupRoom(ThemeData theme_data_val) {
         String group_id_str = theme_data_val.groupIdStr();
-        this.debug(true, "processSetupRoom", "groupIdStr=" + group_id_str);
+        this.debug(false, "processSetupRoom", "groupIdStr=" + group_id_str);
 
         ThemeRoom room = this.roomMgr().mallocRoom(group_id_str);
         if (room == null) {

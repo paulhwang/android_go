@@ -42,16 +42,16 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         //Log.e(TAG, "onCreate()");
 
         String fabric_data_str = this.getIntent().getExtras().getString(BundleIndexDefine.FABRIC_DATA);
-        Log.e(TAG, "onCreate() data_package=" + fabric_data_str);
+        //Log.e(TAG, "onCreate() data_package=" + fabric_data_str);
 
         FabricData fabric_decode = new FabricData(fabric_data_str);
         this.linkIdStr_ = fabric_decode.linkIdStr();
         this.sessionIdStr_ = fabric_decode.sessionIdStr();
-        Log.e(TAG, "onCreate() linkIdStr_=" + linkIdStr_);
-        Log.e(TAG, "onCreate() sessionIdStr_=" + sessionIdStr_);
+        //Log.e(TAG, "onCreate() linkIdStr_=" + linkIdStr_);
+        //Log.e(TAG, "onCreate() sessionIdStr_=" + sessionIdStr_);
 
         String config_str = fabric_decode.stringList(0);
-        Log.e(TAG, "onCreate() config_str=" + config_str);
+        //Log.e(TAG, "onCreate() config_str=" + config_str);
 
         this.goBoard_ = new GoGameBoard(this, config_str);
         this.goGameUFunc_ = new GoGameUFunc(this);
@@ -131,7 +131,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     public boolean onTouchEvent(MotionEvent event) {
         int x = ((int) event.getX() - this.goView_.viewLeft - this.goView_.gridLen0 + this.goView_.halfGridLen) / this.goView_.gridLen;
         int y = ((int) event.getY() - this.goView_.viewTop  - this.goView_.gridLen0 + this.goView_.halfGridLen) / this.goView_.gridLen;
-        Log.e(TAG, "onTouchEvent: x=" + x + " y=" + y);
+        //Log.e(TAG, "onTouchEvent: x=" + x + " y=" + y);
         switch( event.getAction() ) {
             case MotionEvent.ACTION_DOWN:
                 break;

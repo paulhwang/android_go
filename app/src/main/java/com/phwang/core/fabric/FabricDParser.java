@@ -48,8 +48,8 @@ public class FabricDParser {
     private void processSetupRoomResponse(ThemeData theme_data_val) {
         String group_id_str = theme_data_val.groupIdStr();
         String room_id_str = theme_data_val.roomIdStr();
-        this.debug(true, "processSetupRoomResponse", "group_id_str=" + group_id_str);
-        this.debug(true, "processSetupRoomResponse", "room_id_str=" + room_id_str);
+        this.debug(false, "processSetupRoomResponse", "group_id_str=" + group_id_str);
+        this.debug(false, "processSetupRoomResponse", "room_id_str=" + room_id_str);
 
         FabricGroup group = this.groupMgr().getGroupByIdStr(group_id_str);
         if (group != null) {
@@ -77,9 +77,9 @@ public class FabricDParser {
     
     private void processPutRoomDataResponse(ThemeData theme_data_val) {
         String group_id_str = theme_data_val.groupIdStr();
-        this.debug(true, "processPutRoomDataResponse", "group_id_str=" + group_id_str);
+        this.debug(false, "processPutRoomDataResponse", "group_id_str=" + group_id_str);
         String input_data = theme_data_val.stringList(0);
-        this.debug(true, "processPutRoomDataResponse", "input_data=" + input_data);
+        this.debug(false, "processPutRoomDataResponse", "input_data=" + input_data);
 
         FabricGroup group = this.groupMgr().getGroupByIdStr(group_id_str);
         if (group != null) {

@@ -55,7 +55,7 @@ public class GoGameBoard {
     }
 
     void decodeConfig(String config_str_val) {
-        Log.e(TAG, "decodeConfig() config_str=" + config_str_val);
+        //Log.e(TAG, "decodeConfig() config_str=" + config_str_val);
 
         String board_size_str = config_str_val.substring(1, 3);
         //String handicap_str = config_str.substring(3, 5);

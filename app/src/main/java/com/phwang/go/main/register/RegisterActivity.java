@@ -111,7 +111,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private boolean validateEmail() {
         this.email_ = this.emailEditText_.getText().toString();
-        Log.e(TAG, "email=" + this.email_);
+        //Log.e(TAG, "email=" + this.email_);
 
         if (this.emailEditText_.length() == 0){
             //nameLayout.setError("Error in name input");
@@ -125,7 +125,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private boolean validateUsername() {
         this.userName_ = this.userNameEditText_.getText().toString();
-        Log.e(TAG, "username=" + this.userName_);
+        //Log.e(TAG, "username=" + this.userName_);
 
         if (this.userNameEditText_.length() == 0){
             //nameLayout.setError("Error in name input");
@@ -143,7 +143,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private boolean validatePassword() {
         this.password_ = this.passwordEditText_.getText().toString();
-        Log.e(TAG, "password=" + this.password_);
+        //Log.e(TAG, "password=" + this.password_);
 
         if (this.passwordEditText_.length() == 0){
             //nameLayout.setError("Error in name input");

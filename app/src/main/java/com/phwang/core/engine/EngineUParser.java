@@ -29,7 +29,7 @@ public class EngineUParser {
     }
 
     public void ParseInputPacket(String engine_data_str_val) {
-        this.debug(true, "ParseInputPacket", "data=" + engine_data_str_val);
+        this.debug(false, "ParseInputPacket", "data=" + engine_data_str_val);
         EngineData engine_data = new EngineData(engine_data_str_val);
         char command = engine_data.command();
 

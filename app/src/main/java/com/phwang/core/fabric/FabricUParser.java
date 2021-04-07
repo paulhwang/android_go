@@ -111,9 +111,9 @@ public class FabricUParser {
         String my_name = fabric_data_val.stringList(0);
         String email = fabric_data_val.stringList(1);
         String password = fabric_data_val.stringList(1);
-        this.debug(true, "processRegisterRequest", "my_name=" + my_name);
-        this.debug(true, "processRegisterRequest", "email=" + email);
-        this.debug(true, "processRegisterRequest", "password=" + password);
+        this.debug(false, "processRegisterRequest", "my_name=" + my_name);
+        this.debug(false, "processRegisterRequest", "email=" + email);
+        this.debug(false, "processRegisterRequest", "password=" + password);
 
         fabric_data_val.setResult(FabricResults.SUCCEED);
     }
@@ -122,8 +122,8 @@ public class FabricUParser {
         char client_type = fabric_data_val.clientType();
         String my_name = fabric_data_val.stringList(0);
         String password = fabric_data_val.stringList(1);
-        this.debug(true, "processDeleteSessionRequest", "my_name=" + my_name);
-        this.debug(true, "processDeleteSessionRequest", "password=" + password);
+        this.debug(false, "processLoginRequest", "my_name=" + my_name);
+        this.debug(false, "processLoginRequest", "password=" + password);
 
         FabricLink link = this.linkMgr().mallocLink(client_type, my_name);
         if (link == null) {
@@ -164,8 +164,8 @@ public class FabricUParser {
     private void processSoloSessionRequest(FabricData fabric_data_val) {
         String link_id_str = fabric_data_val.linkIdStr();
         String data_str = fabric_data_val.stringList(0);
-        this.debug(true, "processSoloSessionRequest", "link_id = " + link_id_str);
-        this.debug(true, "processSoloSessionRequest", "theme_data = " + data_str);
+        this.debug(false, "processSoloSessionRequest", "link_id = " + link_id_str);
+        this.debug(false, "processSoloSessionRequest", "theme_data = " + data_str);
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
@@ -187,8 +187,8 @@ public class FabricUParser {
     private void processHeadSessionRequest(FabricData fabric_data_val) {
         String link_id_str = fabric_data_val.linkIdStr();
         String theme_data_str = fabric_data_val.stringList(0);
-        this.debug(true, "processHeadSessionRequest", "link_id_str=" + link_id_str);
-        this.debug(true, "processHeadSessionRequest", "theme_data_str=" + theme_data_str);
+        this.debug(false, "processHeadSessionRequest", "link_id_str=" + link_id_str);
+        this.debug(false, "processHeadSessionRequest", "theme_data_str=" + theme_data_str);
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
@@ -210,8 +210,8 @@ public class FabricUParser {
     private void processPeerSessionRequest(FabricData fabric_data_val) {
         String link_id_str = fabric_data_val.linkIdStr();
         String theme_data_str = fabric_data_val.stringList(0);
-        this.debug(true, "processPeerSessionRequest", "link_id_str=" + link_id_str);
-        this.debug(true, "processPeerSessionRequest", "theme_data_str=" + theme_data_str);
+        this.debug(false, "processPeerSessionRequest", "link_id_str=" + link_id_str);
+        this.debug(false, "processPeerSessionRequest", "theme_data_str=" + theme_data_str);
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
@@ -233,8 +233,8 @@ public class FabricUParser {
     private void processJoinSessionRequest(FabricData fabric_data_val) {
         String link_id_str = fabric_data_val.linkIdStr();
         String theme_data_str = fabric_data_val.stringList(0);
-        this.debug(true, "processJoinSessionRequest", "link_id_str=" + link_id_str);
-        this.debug(true, "processJoinSessionRequest", "theme_data_str=" + theme_data_str);
+        this.debug(false, "processJoinSessionRequest", "link_id_str=" + link_id_str);
+        this.debug(false, "processJoinSessionRequest", "theme_data_str=" + theme_data_str);
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
@@ -282,7 +282,7 @@ public class FabricUParser {
         String data_str = fabric_data_val.stringList(0);
         this.debug(false, "processPutSessionDataRequest", "link_id_str=" + link_id_str);
         this.debug(false, "processPutSessionDataRequest", "session_id_str=" + session_id_str);
-        this.debug(true, "processPutSessionDataRequest", "data_str=" + data_str);
+        this.debug(false, "processPutSessionDataRequest", "data_str=" + data_str);
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {

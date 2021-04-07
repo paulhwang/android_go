@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private boolean validateUsername() {
         this.userName_ = this.userNameEditText_.getText().toString();
-        Log.e(TAG, "username=" + this.userName_);
+        //Log.e(TAG, "username=" + this.userName_);
 
         if (this.userNameEditText_.length() == 0){
             //nameLayout.setError("Error in name input");
@@ -124,7 +124,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private boolean validatePassword() {
         this.password_ = this.passwordEditText_.getText().toString();
-        Log.e(TAG, "password=" + this.password_);
+        //Log.e(TAG, "password=" + this.password_);
 
         if (this.passwordEditText_.length() == 0){
             //nameLayout.setError("Error in name input");

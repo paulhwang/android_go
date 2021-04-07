@@ -46,7 +46,7 @@ public class GoGameReceiver extends BroadcastReceiver {
         Bundle bundle = intent_val.getExtras();
         String fabric_data_str = bundle.getString(BundleIndexDefine.FABRIC_DATA);
         char command = FabricDataStr.getCommand(fabric_data_str);
-        Log.e(TAG, "handleReceivedBundle() command=" + command + ", fabric_data=" + fabric_data_str);
+        //Log.e(TAG, "handleReceivedBundle() command=" + command + ", fabric_data=" + fabric_data_str);
 
         switch (command) {
             case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:

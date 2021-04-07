@@ -60,7 +60,7 @@ public class ClientUBinder implements ThreadEntityInt {
             	continue;
             }
 
-            this.debug(true, "uClientReceiveThreadFunc", "received_data=" + received_data);
+            this.debug(false, "uClientReceiveThreadFunc", "received_data=" + received_data);
             this.clientDParser().parserResponseData(received_data);
         }
         this.debug(true, "uClientReceiveThreadFunc", "exit");

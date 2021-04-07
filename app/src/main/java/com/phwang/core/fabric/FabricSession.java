@@ -40,7 +40,7 @@ public class FabricSession implements ListEntryInt {
     }
 
     public void bindListEntry(ListEntry list_entry_val, String who_val) {
-    	this.debug(true, "*********************bindListEntry", "who_val=" + who_val);
+    	this.debug(false, "*********************bindListEntry", "who_val=" + who_val);
     	if (who_val.equals(FabricLSessionMgr.objectName())) {
     		this.lListEntry_ = list_entry_val;
     	}

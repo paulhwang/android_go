@@ -32,7 +32,7 @@ public class ThemeDParser {
     }
     
     public void parseInputPacket(String engine_data_str_val) {
-        this.debug(true, "parseInputPacket", engine_data_str_val);
+        this.debug(false, "parseInputPacket", engine_data_str_val);
         EngineData engine_data = new EngineData(engine_data_str_val);
         char command = engine_data.command();
 

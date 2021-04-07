@@ -26,7 +26,7 @@ public class ClientDParser {
     }
     
     protected void parserResponseData(String response_data_str_val) {
-    	Log.e(TAG, "parserResponseData() response_data=" + response_data_str_val);
+    	//Log.e(TAG, "parserResponseData() response_data=" + response_data_str_val);
     	
     	switch (response_data_str_val.charAt(0)) {
             case FabricCommands.FABRIC_COMMAND_LOGIN:
@@ -64,7 +64,7 @@ public class ClientDParser {
     }
 
     protected void sendFabricDataResponse(String target_val, String fabric_data_str_val) {
-        Log.e(TAG, "sendFabricDataResponse() fabric_data_str_val=" + fabric_data_str_val);
+        //Log.e(TAG, "sendFabricDataResponse() fabric_data_str_val=" + fabric_data_str_val);
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.CLIENT_SERVICE);
