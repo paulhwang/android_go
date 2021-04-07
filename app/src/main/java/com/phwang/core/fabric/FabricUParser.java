@@ -106,80 +106,67 @@ public class FabricUParser {
         this.fabricDBinder().transmitBundleData(bundle_val);
     }
 
-    private void processRegisterRequest(FabricData fabric_decode_val) {
-        this.debug(true, "processRegisterRequest", "");
-        FabricData fabric_data = fabric_decode_val;
-
-        String my_name = fabric_data.stringList(0);
-        String email = fabric_data.stringList(1);
-        String password = fabric_data.stringList(1);
+    private void processRegisterRequest(FabricData fabric_data_val) {
+        String my_name = fabric_data_val.stringList(0);
+        String email = fabric_data_val.stringList(1);
+        String password = fabric_data_val.stringList(1);
         this.debug(true, "processRegisterRequest", "my_name=" + my_name);
         this.debug(true, "processRegisterRequest", "email=" + email);
         this.debug(true, "processRegisterRequest", "password=" + password);
 
-        fabric_data.setResult(FabricResults.SUCCEED);
+        fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
     private void processLoginRequest(FabricData fabric_data_val) {
-        this.debug(false, "processLoginRequest", "");
-        FabricData fabric_data = fabric_data_val;
-
-        char client_type = fabric_data.clientType();
-        String my_name = fabric_data.stringList(0);
-        String password = fabric_data.stringList(1);
+        char client_type = fabric_data_val.clientType();
+        String my_name = fabric_data_val.stringList(0);
+        String password = fabric_data_val.stringList(1);
         this.debug(true, "processDeleteSessionRequest", "my_name=" + my_name);
         this.debug(true, "processDeleteSessionRequest", "password=" + password);
 
         FabricLink link = this.linkMgr().mallocLink(client_type, my_name);
         if (link == null) {
-            fabric_data.setResult(FabricResults.BAD_PASSWORD);
+            fabric_data_val.setResult(FabricResults.BAD_PASSWORD);
             return;
         }
 
-        fabric_data.setLinkIdStr(link.linkIdStr());
-        fabric_data.setResult(FabricResults.SUCCEED);
+        fabric_data_val.setLinkIdStr(link.linkIdStr());
+        fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
-    private void processLogoutRequest(FabricData fabric_decode_val) {
+    private void processLogoutRequest(FabricData fabric_data_val) {
         this.debug(true, "processLogoutRequest", "input_str_val");
-        FabricData fabric_data = fabric_decode_val;
 
-        String link_id_str = fabric_data.linkIdStr();
+        String link_id_str = fabric_data_val.linkIdStr();
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            fabric_data.setResult(FabricResults.LINK_NOT_EXIST);
+            fabric_data_val.setResult(FabricResults.LINK_NOT_EXIST);
             return;
         }
         this.debug(false, "processLogoutRequest", "link_id = " + link_id_str);
 
-        fabric_data.setResult(FabricResults.SUCCEED);
+        fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
-    private void processGetGroupsRequest(FabricData fabric_decode_val) {
-        this.debug(true, "processGetGroupsRequest", "");
-        FabricData fabric_data = fabric_decode_val;
-
-        String link_id_str = fabric_data.linkIdStr();
+    private void processGetGroupsRequest(FabricData fabric_data_val) {
+        String link_id_str = fabric_data_val.linkIdStr();
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            fabric_data.setResult(FabricResults.LINK_NOT_EXIST);
+            fabric_data_val.setResult(FabricResults.LINK_NOT_EXIST);
             return;
         }
         this.debug(false, "processGetGroupsRequest", "link_id = " + link_id_str);
 
-        fabric_data.setResult(FabricResults.SUCCEED);
+        fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
-    private void processSoloSessionRequest(FabricData fabric_decode_val) {
-        this.debug(true, "processSoloSessionRequest", "");
-        FabricData fabric_data = fabric_decode_val;
-
-        String link_id_str = fabric_data.linkIdStr();
-        String theme_data_str = fabric_data.stringList(0);
+    private void processSoloSessionRequest(FabricData fabric_data_val) {
+        String link_id_str = fabric_data_val.linkIdStr();
+        String theme_data_str = fabric_data_val.stringList(0);
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            fabric_data.setResult(FabricResults.LINK_NOT_EXIST);
+            fabric_data_val.setResult(FabricResults.LINK_NOT_EXIST);
             return;
         }
 
@@ -191,22 +178,19 @@ public class FabricUParser {
         group.insertSession(session);
         session.bindGroup(group);
 
-        this.mallocRoom(fabric_decode_val, group, theme_data_str);
+        this.mallocRoom(fabric_data_val, group, theme_data_str);
 
-        fabric_data.setSessionIdStr(session.lSessionIdStr());
-        fabric_data.setResult(FabricResults.SUCCEED);
+        fabric_data_val.setSessionIdStr(session.lSessionIdStr());
+        fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
-    private void processHeadSessionRequest(FabricData fabric_decode_val) {
-        this.debug(true, "processSoloSessionRequest", "");
-        FabricData fabric_data = fabric_decode_val;
-
-        String link_id_str = fabric_data.linkIdStr();
-        String theme_data_str = fabric_data.stringList(0);
+    private void processHeadSessionRequest(FabricData fabric_data_val) {
+        String link_id_str = fabric_data_val.linkIdStr();
+        String theme_data_str = fabric_data_val.stringList(0);
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            fabric_data.setResult(FabricResults.LINK_NOT_EXIST);
+            fabric_data_val.setResult(FabricResults.LINK_NOT_EXIST);
             return;
         }
 
@@ -218,22 +202,19 @@ public class FabricUParser {
         group.insertSession(session);
         session.bindGroup(group);
 
-        this.mallocRoom(fabric_decode_val, group, theme_data_str);
+        this.mallocRoom(fabric_data_val, group, theme_data_str);
 
-        fabric_data.setSessionIdStr(session.lSessionIdStr());
-        fabric_data.setResult(FabricResults.SUCCEED);
+        fabric_data_val.setSessionIdStr(session.lSessionIdStr());
+        fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
-    private void processPeerSessionRequest(FabricData fabric_decode_val) {
-        this.debug(true, "processPeerSessionRequest", "");
-        FabricData fabric_data = fabric_decode_val;
-
-        String link_id_str = fabric_data.linkIdStr();
-        String theme_data_str = fabric_data.stringList(0);
+    private void processPeerSessionRequest(FabricData fabric_data_val) {
+        String link_id_str = fabric_data_val.linkIdStr();
+        String theme_data_str = fabric_data_val.stringList(0);
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            fabric_data.setResult(FabricResults.LINK_NOT_EXIST);
+            fabric_data_val.setResult(FabricResults.LINK_NOT_EXIST);
             return;
         }
 
@@ -245,22 +226,19 @@ public class FabricUParser {
         group.insertSession(session);
         session.bindGroup(group);
 
-        this.mallocRoom(fabric_decode_val, group, theme_data_str);
+        this.mallocRoom(fabric_data_val, group, theme_data_str);
 
-        fabric_data.setSessionIdStr(session.lSessionIdStr());
-        fabric_data.setResult(FabricResults.SUCCEED);
+        fabric_data_val.setSessionIdStr(session.lSessionIdStr());
+        fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
-    private void processJoinSessionRequest(FabricData fabric_decode_val) {
-        this.debug(true, "processJoinSessionRequest", "");
-        FabricData fabric_data = fabric_decode_val;
-
-        String link_id_str = fabric_data.linkIdStr();
-        String theme_data_str = fabric_data.stringList(0);
+    private void processJoinSessionRequest(FabricData fabric_data_val) {
+        String link_id_str = fabric_data_val.linkIdStr();
+        String theme_data_str = fabric_data_val.stringList(0);
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            fabric_data.setResult(FabricResults.LINK_NOT_EXIST);
+            fabric_data_val.setResult(FabricResults.LINK_NOT_EXIST);
             return;
         }
 
@@ -272,65 +250,59 @@ public class FabricUParser {
         group.insertSession(session);
         session.bindGroup(group);
 
-        this.mallocRoom(fabric_decode_val, group, theme_data_str);
+        this.mallocRoom(fabric_data_val, group, theme_data_str);
 
-        fabric_data.setSessionIdStr(session.lSessionIdStr());
-        fabric_data.setResult(FabricResults.SUCCEED);
+        fabric_data_val.setSessionIdStr(session.lSessionIdStr());
+        fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
-    private void processDeleteSessionRequest(FabricData fabric_decode_val) {
-        this.debug(true, "processDeleteSessionRequest", "");
-        FabricData fabric_data = fabric_decode_val;
-
-        String link_id_str = fabric_data.linkIdStr();
-        String session_id_str = fabric_data.sessionIdStr();
+    private void processDeleteSessionRequest(FabricData fabric_data_val) {
+        String link_id_str = fabric_data_val.linkIdStr();
+        String session_id_str = fabric_data_val.sessionIdStr();
 
         this.debug(false, "processDeleteSessionRequest", "link_id=" + link_id_str);
         this.debug(false, "processDeleteSessionRequest", "session_id=" + session_id_str);
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            fabric_data.setResult(FabricResults.LINK_NOT_EXIST);
+            fabric_data_val.setResult(FabricResults.LINK_NOT_EXIST);
             return;
         }
 
         FabricSession session = link.sessionMgr().getSessionByIdStr(session_id_str);
         if (session == null) {
-            fabric_data.setResult(FabricResults.SESSION_NOT_EXIST);
+            fabric_data_val.setResult(FabricResults.SESSION_NOT_EXIST);
             return;
         }
 
         link.sessionMgr().freeSession(session);
 
-        fabric_data.setResult(FabricResults.SUCCEED);
+        fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
-    private void processPutSessionDataRequest(FabricData fabric_decode_val) {
-        this.debug(false, "processPutSessionDataRequest", "");
-        FabricData fabric_data = fabric_decode_val;
-
-        String link_id_str = fabric_data.linkIdStr();
-        String session_id_str = fabric_data.sessionIdStr();
+    private void processPutSessionDataRequest(FabricData fabric_data_val) {
+        String link_id_str = fabric_data_val.linkIdStr();
+        String session_id_str = fabric_data_val.sessionIdStr();
 
         this.debug(false, "processPutSessionDataRequest", "link_id=" + link_id_str);
         this.debug(false, "processPutSessionDataRequest", "session_id=" + session_id_str);
-        this.debug(true, "processPutSessionDataRequest", "data=" + fabric_data.stringList(0));
+        this.debug(true, "processPutSessionDataRequest", "data=" + fabric_data_val.stringList(0));
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            fabric_data.setResult(FabricResults.LINK_NOT_EXIST);
+            fabric_data_val.setResult(FabricResults.LINK_NOT_EXIST);
             return;
         }
 
         FabricSession session = link.sessionMgr().getSessionByIdStr(session_id_str);
         if (session == null) {
-            fabric_data.setResult(FabricResults.SESSION_NOT_EXIST);
+            fabric_data_val.setResult(FabricResults.SESSION_NOT_EXIST);
             return;
         }
 
         String room_id_str = session.group().roomIdStr();
         if (room_id_str == null) {
-            fabric_data.setResult(FabricResults.ROOM_NOT_EXIST);
+            fabric_data_val.setResult(FabricResults.ROOM_NOT_EXIST);
             return;
         }
 
@@ -338,11 +310,11 @@ public class FabricUParser {
         ThemeData theme_data = new ThemeData(
                 ThemeCommands.FABRIC_THEME_COMMAND_PUT_ROOM_DATA,
                 ThemeResults.UNDECIDED,
-                fabric_data.theme(),
+                fabric_data_val.theme(),
                 session.group().groupIdStr(),
                 room_id_str
         );
-        theme_data.addStringList(fabric_data.stringList(0));
+        theme_data.addStringList(fabric_data_val.stringList(0));
         this.fabricUBinder().transmitData(theme_data.getEncodedString());
 
 /*
@@ -352,35 +324,32 @@ public class FabricUParser {
         buf.append(fabric_data.stringList(0));
         this.fabricUBinder().transmitData(buf.toString());
 */
-        fabric_data.setResult(FabricResults.SUCCEED);
+        fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
-    private void processGetSessionDataRequest(FabricData fabric_decode_val) {
-        this.debug(false, "processPutSessionDataRequest", "");
-        FabricData fabric_data = fabric_decode_val;
-
-        String link_id_str = fabric_data.linkIdStr();
-        String session_id_str = fabric_data.sessionIdStr();
+    private void processGetSessionDataRequest(FabricData fabric_data_val) {
+        String link_id_str = fabric_data_val.linkIdStr();
+        String session_id_str = fabric_data_val.sessionIdStr();
 
         this.debug(false, "processGetSessionDataRequest", "link_id=" + link_id_str);
         this.debug(false, "processGetSessionDataRequest", "session_id=" + session_id_str);
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {
-            fabric_data.setResult(FabricResults.LINK_NOT_EXIST);
+            fabric_data_val.setResult(FabricResults.LINK_NOT_EXIST);
             return;
         }
 
         FabricSession session = link.sessionMgr().getSessionByIdStr(session_id_str);
         if (session == null) {
-             fabric_data.setResult(FabricResults.SESSION_NOT_EXIST);
+            fabric_data_val.setResult(FabricResults.SESSION_NOT_EXIST);
             return;
         }
 
         String data = session.getPendingDownLinkData();
 
-        fabric_data.addStringList(data);
-        fabric_data.setResult(FabricResults.SUCCEED);
+        fabric_data_val.addStringList(data);
+        fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
     private String processGetLinkDataRequest(String input_str_val) {
