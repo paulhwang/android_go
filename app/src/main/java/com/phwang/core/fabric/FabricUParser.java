@@ -303,24 +303,7 @@ public class FabricUParser {
             return;
         }
 
-        /* transfer data up */
-        ThemeData theme_data = new ThemeData(
-                ThemeCommands.FABRIC_THEME_COMMAND_PUT_ROOM_DATA,
-                ThemeResults.UNDECIDED,
-                fabric_data_val.theme(),
-                session.group().groupIdStr(),
-                room_id_str
-        );
-        theme_data.addStringList(data_str);
-        this.fabricUBinder().transmitData(theme_data.getEncodedString());
-
-/*
-        StringBuilder buf = new StringBuilder();
-        buf.append(ThemeCommands.FABRIC_THEME_COMMAND_PUT_ROOM_DATA);
-        buf.append(room_id_str);
-        buf.append(fabric_data.stringList(0));
-        this.fabricUBinder().transmitData(buf.toString());
-*/
+        this.fabricUBinder().sendThemeDataToThemeServer(fabric_data_val.theme(), session.group().groupIdStr(), room_id_str, data_str);
         fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 

@@ -80,7 +80,20 @@ public class FabricUBinder implements ThreadEntityInt {
                 Encoders.IGNORE
         );
         theme_data.addStringList(theme_str_val);
-        this.fabricRoot().fabricUBinder().transmitData(theme_data.getEncodedString());
+        this.transmitData(theme_data.getEncodedString());
+    }
+
+    protected void sendThemeDataToThemeServer(char theme_type_val, String group_id_str_val, String roon_id_str_val, String data_str_val) {
+        ThemeData theme_data = new ThemeData(
+                ThemeCommands.FABRIC_THEME_COMMAND_PUT_ROOM_DATA,
+                ThemeResults.UNDECIDED,
+                theme_type_val,
+                group_id_str_val,
+                roon_id_str_val
+        );
+        theme_data.addStringList(data_str_val);
+        this.transmitData(theme_data.getEncodedString());
+
     }
 
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }
