@@ -178,7 +178,7 @@ public class FabricUParser {
         group.insertSession(session);
         session.bindGroup(group);
 
-        this.fabricUBinder().sendMallocRoomRequestToThemeServer(fabric_data_val.theme(), group.groupIdStr(), data_str);
+        this.fabricUBinder().sendMallocRoomRequestToThemeServer(fabric_data_val.themeType(), group.groupIdStr(), data_str);
 
         fabric_data_val.setSessionIdStr(session.lSessionIdStr());
         fabric_data_val.setResult(FabricResults.SUCCEED);
@@ -201,7 +201,7 @@ public class FabricUParser {
         group.insertSession(session);
         session.bindGroup(group);
 
-        this.fabricUBinder().sendMallocRoomRequestToThemeServer(fabric_data_val.theme(), group.groupIdStr(), theme_data_str);
+        this.fabricUBinder().sendMallocRoomRequestToThemeServer(fabric_data_val.themeType(), group.groupIdStr(), theme_data_str);
 
         fabric_data_val.setSessionIdStr(session.lSessionIdStr());
         fabric_data_val.setResult(FabricResults.SUCCEED);
@@ -224,7 +224,7 @@ public class FabricUParser {
         group.insertSession(session);
         session.bindGroup(group);
 
-        this.fabricUBinder().sendMallocRoomRequestToThemeServer(fabric_data_val.theme(), group.groupIdStr(), theme_data_str);
+        this.fabricUBinder().sendMallocRoomRequestToThemeServer(fabric_data_val.themeType(), group.groupIdStr(), theme_data_str);
 
         fabric_data_val.setSessionIdStr(session.lSessionIdStr());
         fabric_data_val.setResult(FabricResults.SUCCEED);
@@ -247,7 +247,7 @@ public class FabricUParser {
         group.insertSession(session);
         session.bindGroup(group);
 
-        this.fabricUBinder().sendMallocRoomRequestToThemeServer(fabric_data_val.theme(), group.groupIdStr(), theme_data_str);
+        this.fabricUBinder().sendMallocRoomRequestToThemeServer(fabric_data_val.themeType(), group.groupIdStr(), theme_data_str);
 
         fabric_data_val.setSessionIdStr(session.lSessionIdStr());
         fabric_data_val.setResult(FabricResults.SUCCEED);
@@ -302,7 +302,7 @@ public class FabricUParser {
             return;
         }
 
-        this.fabricUBinder().sendDataToThemeServer(fabric_data_val.theme(), session.group().groupIdStr(), room_id_str, data_str);
+        this.fabricUBinder().sendDataToThemeServer(fabric_data_val.themeType(), session.group().groupIdStr(), room_id_str, data_str);
         fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 

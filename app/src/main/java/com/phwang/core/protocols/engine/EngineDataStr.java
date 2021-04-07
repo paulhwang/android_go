@@ -9,6 +9,6 @@ public class EngineDataStr {
     public static char   getResult(String engine_data_str_val)        { return engine_data_str_val.charAt(EngineData.RESULT_INDEX); }
     public static String getResultStr(String engine_data_str_val)     { return engine_data_str_val.substring(EngineData.RESULT_INDEX, EngineData.RESULT_INDEX + 1); }
 
-    public static char   getTheme(String engine_data_str_val)         { return engine_data_str_val.charAt(EngineData.THEME_INDEX); }
-    public static String getThemeStr(String engine_data_str_val)      { return engine_data_str_val.substring(EngineData.THEME_INDEX, EngineData.THEME_INDEX + 1); }
+    public static char   getThemeType(String engine_data_str_val)     { return engine_data_str_val.charAt(EngineData.THEME_TYPE_INDEX); }
+    public static String getThemeTypeStr(String engine_data_str_val)  { return engine_data_str_val.substring(EngineData.THEME_TYPE_INDEX, EngineData.THEME_TYPE_INDEX + 1); }
 }

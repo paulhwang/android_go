@@ -20,13 +20,13 @@ public class FabricData {
     public static final int COMMAND_INDEX     = 0;
     public static final int RESULT_INDEX      = 1;
     public static final int CLIENT_TYPE_INDEX = 2;
-    public static final int THEME_INDEX       = 3;
+    public static final int THEME_TYPE_INDEX  = 3;
     public static final int JOB_ID_STR_INDEX  = 4;
 
     private char command_;
     private char result_;
     private char clientType_;
-    private char theme_;
+    private char themeType_;
     private String linkIdStr_;
     private String sessionIdStr_;
     private String jobIdStr_;
@@ -36,7 +36,7 @@ public class FabricData {
     public char command() { return this.command_; };
     public char result() { return this.result_; };
     public char clientType() { return this.clientType_; }
-    public char theme() { return this.theme_; };
+    public char themeType() { return this.themeType_; };
     public String linkIdStr() { return this.linkIdStr_; };
     public String sessionIdStr() { return this.sessionIdStr_; };
     public String jobIdStr() { return this.jobIdStr_; };
@@ -48,11 +48,11 @@ public class FabricData {
     public void setJobIdStr(String job_id_str_val) { this.jobIdStr_ = job_id_str_val; }
     public void addStringList(String string_val) { this.stringList_[this.stringsCount_] = string_val; this.stringsCount_++; }
 
-    public FabricData(char command_val, char result_val, char client_type_val, char theme_val, String link_id_str_val, String session_id_str_val) {
+    public FabricData(char command_val, char result_val, char client_type_val, char theme_type_val, String link_id_str_val, String session_id_str_val) {
         this.command_ = command_val;
         this.result_ = result_val;
         this.clientType_ = client_type_val;
-        this.theme_ = theme_val;
+        this.themeType_ = theme_type_val;
         this.linkIdStr_ = link_id_str_val;
         this.sessionIdStr_ = session_id_str_val;
     }
@@ -62,7 +62,7 @@ public class FabricData {
         this.command_ = rest_str.charAt(COMMAND_INDEX);
         this.result_ = rest_str.charAt(RESULT_INDEX);
         this.clientType_ = rest_str.charAt(CLIENT_TYPE_INDEX);
-        this.theme_ = rest_str.charAt(THEME_INDEX);
+        this.themeType_ = rest_str.charAt(THEME_TYPE_INDEX);
         rest_str = rest_str.substring((JOB_ID_STR_INDEX));
 
         if (this.clientType_ == FabricClients.HTTP_CLIENT) {
@@ -90,7 +90,7 @@ public class FabricData {
         buf.append(this.command_);
         buf.append(this.result_);
         buf.append(this.clientType_);
-        buf.append(this.theme_);
+        buf.append(this.themeType_);
 
         if (this.clientType_ == FabricClients.HTTP_CLIENT) {
             buf.append((this.jobIdStr_ != null) ? this.jobIdStr_: Encoders.NULL_JOB);

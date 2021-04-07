@@ -64,7 +64,7 @@ public class ThemeUParser {
         EngineData engineer_data = new EngineData(
                 EngineCommands.THEME_ENGINE_COMMAND_SETUP_BASE,
                 ThemeResults.UNDECIDED,
-                theme_data_val.theme(),
+                theme_data_val.themeType(),
                 room.roomIdStr(),
                 Encoders.IGNORE
         );
@@ -95,7 +95,7 @@ public class ThemeUParser {
         EngineData engineer_data = new EngineData(
                 EngineCommands.THEME_ENGINE_COMMAND_PUT_BASE_DATA,
                 ThemeResults.UNDECIDED,
-                theme_data_val.theme(),
+                theme_data_val.themeType(),
                 room.roomIdStr(),
                 room.baseIdStr()
         );

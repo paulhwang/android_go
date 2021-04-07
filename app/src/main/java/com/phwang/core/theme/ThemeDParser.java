@@ -66,7 +66,7 @@ public class ThemeDParser {
         EngineData engineer_data = new EngineData(
                 ThemeCommands.FABRIC_THEME_RESPOND_SETUP_ROOM,
                 ThemeResults.SUCCEED,
-                engine_data_val.theme(),
+                engine_data_val.themeType(),
                 room_object.groupIdStr(),
                 room_object.roomIdStr()
         );
@@ -127,7 +127,7 @@ public class ThemeDParser {
         EngineData engineer_data = new EngineData(
                 ThemeCommands.FABRIC_THEME_RESPOND_PUT_ROOM_DATA,
                 ThemeResults.SUCCEED,
-                engine_data_val.theme(),
+                engine_data_val.themeType(),
                 room_object.groupIdStr(),
                 room_object.roomIdStr()
         );

@@ -20,8 +20,8 @@ public class FabricDataStr {
     public static char   getClientType(String fabric_data_str_val)    { return fabric_data_str_val.charAt(FabricData.CLIENT_TYPE_INDEX); }
     public static String getClientTypeStr(String fabric_data_str_val) { return fabric_data_str_val.substring(FabricData.CLIENT_TYPE_INDEX, FabricData.CLIENT_TYPE_INDEX + 1); }
 
-    public static char   getTheme(String fabric_data_str_val)         { return fabric_data_str_val.charAt(FabricData.THEME_INDEX); }
-    public static String getThemeStr(String fabric_data_str_val)      { return fabric_data_str_val.substring(FabricData.THEME_INDEX, FabricData.THEME_INDEX + 1); }
+    public static char   getThemeType(String fabric_data_str_val)     { return fabric_data_str_val.charAt(FabricData.THEME_TYPE_INDEX); }
+    public static String getThemeTypeStr(String fabric_data_str_val)  { return fabric_data_str_val.substring(FabricData.THEME_TYPE_INDEX, FabricData.THEME_TYPE_INDEX + 1); }
 
     public static String getJobIdStr(String fabric_data_str_val)      { return Encoders.sSubstring2(fabric_data_str_val.substring(FabricData.JOB_ID_STR_INDEX)); }
 }
