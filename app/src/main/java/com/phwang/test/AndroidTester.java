@@ -25,7 +25,7 @@ class AndroidTester {
         this.androidTest_ = adnroid_test_val;
 
         this.myMame_ = "Android_" + Encoders.iEncodeRaw5(tester_index_val);
-        Log.e(TAG, "AndroidTester(init) " + this.myMame_);
+        Log.e(TAG, "AndroidTester(init) " + this.myMame_ + " thread=" + Thread.currentThread().getId());
     }
 
     protected void startTest() {

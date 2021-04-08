@@ -19,22 +19,20 @@ public class LockedInteger {
         this.it_ = val;
 	}
 	
-	public int get() { return this.it_; }
+	//public int get() { return this.it_; }
 	
 	public int increment() {
-		int i;
 		this.lock_.lock();
 		this.it_++;
-		i = this.it_;
+		int i = this.it_;
 		this.lock_.unlock();
 		return i;
 	}
 		
 	public int decrement() {
-		int i;
 		this.lock_.lock();
 		this.it_--;
-		i = this.it_;
+		int i = this.it_;
 		this.lock_.unlock();
 		return i;
 	}
