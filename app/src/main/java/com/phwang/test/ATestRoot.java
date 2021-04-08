@@ -14,18 +14,15 @@ import com.phwang.core.protocols.fabric.FabricResults;
 import com.phwang.core.protocols.fabric.FabricThemeTypes;
 import com.phwang.core.utils.encoders.Encoders;
 
-class AndroidTester {
-    private static final String TAG = "AndroidTester";
+class ATestRoot {
+    private static final String TAG = "ATestRoot";
 
-    private AndroidTest androidTest_;
     private String myMame_;
     private String password_ = "Tennis";
 
-    protected AndroidTester(AndroidTest adnroid_test_val, int tester_index_val) {
-        this.androidTest_ = adnroid_test_val;
-
-        this.myMame_ = "Android_" + Encoders.iEncodeRaw5(tester_index_val);
-        Log.e(TAG, "AndroidTester(init) " + this.myMame_ + " thread=" + Thread.currentThread().getId());
+    protected ATestRoot(int a_test_root_index_val) {
+        this.myMame_ = "Android_" + Encoders.iEncodeRaw5(a_test_root_index_val);
+        Log.e(TAG, "ATestRoot(init) " + this.myMame_ + " thread=" + Thread.currentThread().getId());
     }
 
     protected void startTest() {
@@ -39,4 +36,3 @@ class AndroidTester {
         );
     }
 }
-
