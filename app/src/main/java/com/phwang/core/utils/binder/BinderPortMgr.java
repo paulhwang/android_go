@@ -65,7 +65,7 @@ public class BinderPortMgr {
     	}
     	else {
         	this.listMgr_.malloc(port);
-        	this.debug(true, "************mallocPort", "portCount=" + this.portCount());
+        	this.debug(true, "mallocPort", "(multiple port) tcp_port=" + tcp_connection_val.getPort() + " portCount=" + this.portCount());
     	}
     }
     
