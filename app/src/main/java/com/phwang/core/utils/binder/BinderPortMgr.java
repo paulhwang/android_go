@@ -57,15 +57,16 @@ public class BinderPortMgr {
     	}
     }
     
-    protected void mallocPort(Socket tcp_connection_val) {
+    protected void mallocPort(Socket tcp_connection_val, String owner_val) {
     	BinderPort port = new BinderPort(this, tcp_connection_val);
     	
     	if (this.isSinglePort()) {
     		this.singleBinderPort_ = port;
+			this.debug(false, "mallocPort", "(single port) tcp_port=" + tcp_connection_val.getPort() + " owner=" + owner_val);
     	}
     	else {
         	this.listMgr_.malloc(port);
-        	this.debug(true, "mallocPort", "(multiple port) tcp_port=" + tcp_connection_val.getPort() + " portCount=" + this.portCount());
+        	this.debug(false, "mallocPort", "(multiple port) tcp_port=" + tcp_connection_val.getPort() + " owner=" + owner_val + " portCount=" + this.portCount());
     	}
     }
     
