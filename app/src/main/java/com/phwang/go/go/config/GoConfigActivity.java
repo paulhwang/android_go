@@ -12,6 +12,7 @@ package com.phwang.go.go.config;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,6 +35,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
 
         setContentView(R.layout.activity_go_config);
         findViewById(R.id.go_config_solo9_button).setOnClickListener(this);

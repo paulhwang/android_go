@@ -74,18 +74,18 @@ public class AndroidTest implements ThreadEntityInt {
 
     protected void incrementThreadCount() {
         int count = this.threadCount_.increment();
-        Log.e(TAG, "incrementThreadCount(*****)" + count);
+        //Log.e(TAG, "incrementThreadCount(*****)" + count);
     }
 
     protected void decrementThreadCount() {
         int count = this.threadCount_.decrement();
 
         if (count < 12) {
-            Log.e(TAG, "decrementThreadCount(*****)" + count);
+            //Log.e(TAG, "decrementThreadCount(*****)" + count);
         }
 
         if (count < 0) {
-            Log.e(TAG, "decrementThreadCount(*****) smaller than 0");
+            //Log.e(TAG, "decrementThreadCount(*****) smaller than 0");
         }
     }
 }

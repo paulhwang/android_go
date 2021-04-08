@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
 
         setContentView(R.layout.activity_main);
         findViewById(R.id.main_about_button).setOnClickListener(this);

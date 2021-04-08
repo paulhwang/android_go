@@ -34,6 +34,8 @@ public class ClientService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        //Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
+
         this.applicationContext_ = getApplicationContext();
         this.clientRoot_ = new ClientRoot(this);
         this.registerBroadcastReceiver();
@@ -41,7 +43,7 @@ public class ClientService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.e(TAG, " onStartCommand()");
+        //Log.e(TAG, " onStartCommand()");
 
         // If we get killed, after returning from here, restart
         return START_STICKY;

@@ -39,7 +39,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Log.e(TAG, "onCreate()");
+        //Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
 
         String fabric_data_str = this.getIntent().getExtras().getString(BundleIndexDefine.FABRIC_DATA);
         //Log.e(TAG, "onCreate() data_package=" + fabric_data_str);
