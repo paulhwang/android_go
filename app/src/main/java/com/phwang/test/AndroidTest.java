@@ -34,10 +34,10 @@ public class AndroidTest implements ThreadEntityInt {
 
         this.numberOfTester_ = number_of_tester_val;
         this.numberOfCasePerTester_ = number_of_case_val;
-        this.testerArray_ = new AndroidTester[this.numberOfTester_];
         this.threadMgr_ = new ThreadMgr();
         this.threadCount_ = new LockedInteger(0);
-        this.testerIndex_ = new LockedInteger(0);
+        this.testerIndex_ = new LockedInteger(-1);
+        this.testerArray_ = new AndroidTester[this.numberOfTester_];
     }
 
     public void startTest(Boolean test_on_val) {
@@ -46,13 +46,11 @@ public class AndroidTest implements ThreadEntityInt {
         }
 
         for (int i = 0; i < this.numberOfTester_; i++) {
-            Utils.sleep(10);
             this.threadMgr().createThreadObject(this.clientTesterThreadName(), this);
         }
     }
 
     public void threadCallbackFunction() {
-        Utils.sleep(10);
         this.incrementThreadCount();
         this.androidTesterThreadFunc();
         this.decrementThreadCount();
@@ -61,31 +59,32 @@ public class AndroidTest implements ThreadEntityInt {
     private void androidTesterThreadFunc() {
         //Log.e(TAG, "androidTesterThreadFunc() start");
 
-        this.testerIndex_.increment();
-        int tester_index = this.testerIndex_.get();
+        int tester_index = this.testerIndex_.increment();
+
+        Utils.sleep(10);
 
         AndroidTester tester = new AndroidTester(this, tester_index);
-        this.testerArray_[tester_index - 1] = tester;
+        this.testerArray_[tester_index] = tester;
 
         for (int i = 0; i < this.numberOfCasePerTester_; i++) {
             tester.startTest();
-            Utils.sleep(1);
+            //Utils.sleep(1);
         }
     }
 
     protected void incrementThreadCount() {
-        this.threadCount_.increment();
-        Log.e(TAG, "incrementThreadCount(*****)" + this.threadCount_.get());
+        int count = this.threadCount_.increment();
+        Log.e(TAG, "incrementThreadCount(*****)" + count);
     }
 
     protected void decrementThreadCount() {
-        this.threadCount_.decrement();
+        int count = this.threadCount_.decrement();
 
-        if (this.threadCount_.get() < 2) {
-            Log.e(TAG, "decrementThreadCount(*****)" + this.threadCount_.get());
+        if (count < 12) {
+            Log.e(TAG, "decrementThreadCount(*****)" + count);
         }
 
-        if (this.threadCount_.get() < 0) {
+        if (count < 0) {
             Log.e(TAG, "decrementThreadCount(*****) smaller than 0");
         }
     }

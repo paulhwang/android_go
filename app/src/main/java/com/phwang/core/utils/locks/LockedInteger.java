@@ -21,15 +21,21 @@ public class LockedInteger {
 	
 	public int get() { return this.it_; }
 	
-	public void increment() {
+	public int increment() {
+		int i;
 		this.lock_.lock();
 		this.it_++;
+		i = this.it_;
 		this.lock_.unlock();
+		return i;
 	}
 		
-	public void decrement() {
+	public int decrement() {
+		int i;
 		this.lock_.lock();
 		this.it_--;
+		i = this.it_;
 		this.lock_.unlock();
+		return i;
 	}
 }
