@@ -77,7 +77,8 @@ public class FabricData {
         this.sessionIdStr_ = Encoders.sSubstring2(rest_str);
         rest_str = Encoders.sSubstring2_(rest_str);
 
-        this.stringsCount_ = rest_str.charAt(0) - 48;
+        //this.stringsCount_ = rest_str.charAt(0) - 48;
+        this.stringsCount_ = Encoders.iDecodeRaw(rest_str.substring(0, STRINGS_COUNT_SIZE));
         rest_str = rest_str.substring(STRINGS_COUNT_SIZE);
 
         for (int i = 0; i < this.stringsCount_; i ++) {
@@ -99,8 +100,8 @@ public class FabricData {
 
         buf.append((this.linkIdStr_ != null) ? this.linkIdStr_: Encoders.NULL_LINK);
         buf.append((this.sessionIdStr_ != null) ? this.sessionIdStr_: Encoders.NULL_SESSION);
-        buf.append(Encoders.iEncodeRaw(this.stringsCount_, STRINGS_COUNT_SIZE));
 
+        buf.append(Encoders.iEncodeRaw(this.stringsCount_, STRINGS_COUNT_SIZE));
         for (int i = 0; i < this.stringsCount_; i++) {
             buf.append(Encoders.sEncode6(this.stringList_[i]));
         }
