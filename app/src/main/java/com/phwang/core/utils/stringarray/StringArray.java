@@ -31,7 +31,7 @@ public class StringArray {
             rest_str = Encoders.sSubstring6_(rest_str);
         }
     }
-    public String getEncodedString() {
+    public String encode() {
         StringBuilder buf = new StringBuilder();
         buf.append(Encoders.iEncodeRaw(this.stringsCount_, STRINGS_COUNT_SIZE));
         for (int i = 0; i < this.stringsCount_; i++) {

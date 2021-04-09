@@ -62,7 +62,7 @@ class ATestRoot {
                 Encoders.IGNORE
         );
         fabric_data.addStringList(this.goConfig);
-        this.uBinder().transmitStringData(fabric_data.getEncodedString());
+        this.uBinder().transmitStringData(fabric_data.encode());
     }
 
     protected void sendSoloSessionRequest(String link_id_str_val) {
@@ -75,7 +75,7 @@ class ATestRoot {
                 Encoders.IGNORE
         );
         fabric_data.addStringList(this.goConfig);
-        this.uBinder().transmitStringData(fabric_data.getEncodedString());
+        this.uBinder().transmitStringData(fabric_data.encode());
     }
 
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }

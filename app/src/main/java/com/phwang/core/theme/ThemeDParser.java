@@ -70,7 +70,7 @@ public class ThemeDParser {
                 room_object.groupIdStr(),
                 room_object.roomIdStr()
         );
-        this.themeDBinder().transmitData(engineer_data.getEncodedString());
+        this.themeDBinder().transmitData(engineer_data.encode());
 
 
         //StringBuilder buf = new StringBuilder();
@@ -132,7 +132,7 @@ public class ThemeDParser {
                 room_object.roomIdStr()
         );
         engineer_data.addStringList(out_put_data_str);
-        this.themeDBinder().transmitData(engineer_data.getEncodedString());
+        this.themeDBinder().transmitData(engineer_data.encode());
 
 
 

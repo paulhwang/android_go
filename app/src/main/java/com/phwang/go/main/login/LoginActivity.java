@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.LOGIN_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
+        intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.encode());
         intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.sendBroadcast(intent);
         this.registerBroadcastReceiver();

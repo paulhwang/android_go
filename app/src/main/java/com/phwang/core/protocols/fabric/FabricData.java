@@ -87,7 +87,7 @@ public class FabricData {
         }
     }
 
-    public String getEncodedString() {
+    public String encode() {
         StringBuilder buf = new StringBuilder();
         buf.append(this.command_);
         buf.append(this.result_);

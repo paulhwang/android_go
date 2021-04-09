@@ -39,7 +39,7 @@ public class ClientUParser {
                 if (GlobalData.linkIdStr() == null) {
                     FabricData fabric_data = new FabricData(fabric_data_str_val);
                     fabric_data.setResult(FabricResults.LINK_NOT_EXIST);
-                    String new_fabric_data_str = fabric_data.getEncodedString();
+                    String new_fabric_data_str = fabric_data.encode();
                     this.clientDParser().sendFabricDataResponse(IntentDefine.GO_CONFIG_ACTIVITY, new_fabric_data_str);
                     return;
                 }

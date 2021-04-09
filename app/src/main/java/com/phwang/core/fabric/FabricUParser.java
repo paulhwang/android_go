@@ -103,7 +103,7 @@ public class FabricUParser {
         	    break;
         }
 
-        String output_fabric_data_str = fabric_data.getEncodedString();
+        String output_fabric_data_str = fabric_data.encode();
         this.debug(false, "parseInputPacket", "output_fabric_data_str = " + output_fabric_data_str);
         bundle_val.setData(output_fabric_data_str);
         this.fabricDBinder().transmitBundleData(bundle_val);

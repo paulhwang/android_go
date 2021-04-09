@@ -66,7 +66,7 @@ public class EngineUParser {
         engine_data_val.setBaseIdStr(go_base.roomIdStr());
         engine_data_val.setBaseIdStr(go_base.BaseIdStr());
         engine_data_val.addStringList(output_data);
-        this.engineDBinder().TransmitData(engine_data_val.getEncodedString());
+        this.engineDBinder().TransmitData(engine_data_val.encode());
 
         //StringBuilder buf = new StringBuilder();
         //buf.append(EngineCommands.THEME_ENGINE_RESPOND_SETUP_BASE);
@@ -92,7 +92,7 @@ public class EngineUParser {
         engine_data_val.setCommand(EngineCommands.THEME_ENGINE_RESPOND_PUT_BASE_DATA);
         engine_data_val.setResult(EngineResults.SUCCEED);
         engine_data_val.addStringList(output_data);
-        this.engineDBinder().TransmitData(engine_data_val.getEncodedString());
+        this.engineDBinder().TransmitData(engine_data_val.encode());
 
         //StringBuilder buf = new StringBuilder();
         //buf.append(EngineCommands.THEME_ENGINE_RESPOND_PUT_BASE_DATA);

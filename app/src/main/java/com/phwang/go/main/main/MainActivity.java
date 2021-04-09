@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.MAIN_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
+        intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.encode());
         intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.sendBroadcast(intent);
         this.registerBroadcastReceiver();
@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.MAIN_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.getEncodedString());
+        intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.encode());
         intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.sendBroadcast(intent);
         this.registerBroadcastReceiver();
