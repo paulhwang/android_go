@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.phwang.go.R;
 import com.phwang.go.define.IntentDefine;
 
 public class GoJoinActivity extends AppCompatActivity implements View.OnClickListener {
@@ -23,6 +25,7 @@ public class GoJoinActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
+        setContentView(R.layout.activity_go_join);
         this.registerBroadcastReceiver();
     }
 
