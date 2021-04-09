@@ -25,7 +25,7 @@ public class ThemeData {
     public char themeType() { return this.themeType_; };
     public String groupIdStr() { return this.groupIdStr_; };
     public String roomIdStr() { return this.roomIdStr_; };
-    public String stringList(int index_val) { return this.stringList_[index_val]; };
+    public String stringListElement(int index_val) { return this.stringList_[index_val]; };
 
     public void setCommand(char command_val) { this.command_ = command_val; };
     public void setResult(char result_val) { this.result_ = result_val; }

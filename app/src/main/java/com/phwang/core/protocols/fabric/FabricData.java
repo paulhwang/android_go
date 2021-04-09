@@ -41,7 +41,7 @@ public class FabricData {
     public String linkIdStr() { return this.linkIdStr_; };
     public String sessionIdStr() { return this.sessionIdStr_; };
     public String jobIdStr() { return this.jobIdStr_; };
-    public String stringList(int index_val) { return this.stringList_[index_val]; };
+    public String stringListElement(int index_val) { return this.stringList_[index_val]; };
 
     public void setResult(char result_val) { this.result_ = result_val; }
     public void setLinkIdStr(String link_id_str_val) { this.linkIdStr_ = link_id_str_val; }

@@ -17,7 +17,8 @@ public class StringArray {
     private int stringsCount_ = 0;
     private String[] stringList_ = new String[MAX_ARRAY_SIZE];
 
-    public String stringList(int index_val) { return this.stringList_[index_val]; };
+    public String[] stringList(int index_val) { return this.stringList_; };
+    public String stringListElement(int index_val) { return this.stringList_[index_val]; };
     public void addStringList(String string_val) { this.stringList_[this.stringsCount_] = string_val; this.stringsCount_++; }
 
     public StringArray(String string_array_val) {

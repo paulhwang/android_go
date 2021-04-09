@@ -78,7 +78,7 @@ public class FabricDParser {
     private void processPutRoomDataResponse(ThemeData theme_data_val) {
         String group_id_str = theme_data_val.groupIdStr();
         this.debug(false, "processPutRoomDataResponse", "group_id_str=" + group_id_str);
-        String input_data = theme_data_val.stringList(0);
+        String input_data = theme_data_val.stringListElement(0);
         this.debug(false, "processPutRoomDataResponse", "input_data=" + input_data);
 
         FabricGroup group = this.groupMgr().getGroupByIdStr(group_id_str);

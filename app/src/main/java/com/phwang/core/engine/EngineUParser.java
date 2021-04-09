@@ -50,7 +50,7 @@ public class EngineUParser {
 
     private void processSetupBase(EngineData engine_data_val) {
         String room_id_str = engine_data_val.roomIdStr();
-        String input_data = engine_data_val.stringList(0);
+        String input_data = engine_data_val.stringListElement(0);
         this.debug(false, "processSetupBase", "engine_data_val=" + engine_data_val);
         this.debug(false, "processSetupBase", "input_data=" + input_data);
 
@@ -78,7 +78,7 @@ public class EngineUParser {
 
     private void processPutBaseData(EngineData engine_data_val) {
         String base_id_str = engine_data_val.baseIdStr();
-        String input_data = engine_data_val.stringList(0);
+        String input_data = engine_data_val.stringListElement(0);
         this.debug(false, "processPutBaseData", "base_id_str=" + base_id_str);
         this.debug(false, "processPutBaseData", "input_data=" + input_data);
 

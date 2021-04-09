@@ -113,7 +113,7 @@ public class ThemeDParser {
     private void processPutBaseDataResponse(EngineData engine_data_val) {
         String room_id_str = engine_data_val.roomIdStr();
         String base_id_str = engine_data_val.baseIdStr();
-        String out_put_data_str = engine_data_val.stringList(1);
+        String out_put_data_str = engine_data_val.stringListElement(1);
         this.debug(false, "processPutBaseDataResponse", "room_id_str=" + room_id_str);
         this.debug(false, "processPutBaseDataResponse", "base_id_str=" + base_id_str);
 
