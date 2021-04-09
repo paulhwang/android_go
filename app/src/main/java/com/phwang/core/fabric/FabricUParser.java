@@ -41,9 +41,9 @@ public class FabricUParser {
     }
 
     protected void parseInputPacket(BinderBundle bundle_val) {
-        String fabric_data_str = bundle_val.data();
-        this.debug(true, "parseInputPacket", "fabric_data_str = " + fabric_data_str);
-        FabricData fabric_data = new FabricData(fabric_data_str);
+        String input_fabric_data_str = bundle_val.data();
+        this.debug(true, "parseInputPacket", "input_fabric_data_str = " + input_fabric_data_str);
+        FabricData fabric_data = new FabricData(input_fabric_data_str);
         char command = fabric_data.command();
 
         switch (command) {
@@ -99,11 +99,13 @@ public class FabricUParser {
                 break;
                  */
             default:
-        	    this.abend("parseInputPacket", "should not reach here, fabric_data_str=" + fabric_data_str);
+        	    this.abend("parseInputPacket", "should not reach here, input_fabric_data_str=" + input_fabric_data_str);
         	    break;
         }
 
-        bundle_val.setData(fabric_data.getEncodedString());
+        String output_fabric_data_str = fabric_data.getEncodedString();
+        this.debug(false, "parseInputPacket", "output_fabric_data_str = " + output_fabric_data_str);
+        bundle_val.setData(output_fabric_data_str);
         this.fabricDBinder().transmitBundleData(bundle_val);
     }
 
@@ -234,7 +236,7 @@ public class FabricUParser {
         String link_id_str = fabric_data_val.linkIdStr();
         String theme_data_str = fabric_data_val.stringList(0);
         this.debug(false, "processJoinSessionRequest", "link_id_str=" + link_id_str);
-        this.debug(false, "processJoinSessionRequest", "theme_data_str=" + theme_data_str);
+        this.debug(true, "processJoinSessionRequest", "theme_data_str=" + theme_data_str);
 
         FabricLink link = this.linkMgr().getLinkByIdStr(link_id_str);
         if (link == null) {

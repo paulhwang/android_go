@@ -15,9 +15,9 @@ import com.phwang.core.utils.threadmgr.ThreadMgr;
 
 public class ATestUBinder implements ThreadEntityInt {
     private String objectName() {return "ATestUBinder";}
-    private String receiveThreadName() { return "UClientReceiveThread"; }
+    private String receiveThreadName() { return "UATestReceiveThread"; }
 
-    private static final int NUMBER_OF_D_WORK_THREADS = 5;
+    private static final int NUMBER_OF_D_WORK_THREADS = 1;
 
     private ATestRoot aTestRoot_;
     private Binder uBinder_;
@@ -43,11 +43,11 @@ public class ATestUBinder implements ThreadEntityInt {
     }
 
     public void threadCallbackFunction() {
-        this.uClientReceiveThreadFunc();
+        this.uATestReceiveThreadFunc();
     }
 
-    private void uClientReceiveThreadFunc() {
-        this.debug(false, "uClientReceiveThreadFunc", "start " + this.receiveThreadName());
+    private void uATestReceiveThreadFunc() {
+        this.debug(false, "uATestReceiveThreadFunc", "start " + this.receiveThreadName());
 
         while (true) {
             if (this.stopReceiveThreadFlag) {
@@ -56,14 +56,14 @@ public class ATestUBinder implements ThreadEntityInt {
 
             String received_data = this.uBinder().receiveStringData();
             if (received_data == null) {
-                this.abend("uClientReceiveThreadFunc", "null data");
+                this.abend("uATestReceiveThreadFunc", "null data");
                 continue;
             }
 
-            this.debug(false, "uClientReceiveThreadFunc", "received_data=" + received_data);
+            this.debug(false, "uATestReceiveThreadFunc", "received_data=" + received_data);
             this.aTestDParser().parserResponseData(received_data);
         }
-        this.debug(true, "uClientReceiveThreadFunc", "exit");
+        this.debug(true, "uATestReceiveThreadFunc", "exit");
     }
 
     protected void StopReceiveThread() {

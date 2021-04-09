@@ -24,6 +24,7 @@ class ATestRoot {
     private String objectName() {return "ATestRoot";}
     private static final String TAG = "ATestRoot";
 
+    private String goConfig = "G1900003";
     private String myMame_;
     private String password_ = "Tennis";
     private ThreadMgr threadMgr_;
@@ -44,10 +45,14 @@ class ATestRoot {
         this.threadMgr_ = new ThreadMgr();
         this.aTestUBinder_ = new ATestUBinder(this);
         this.aTestDParser_ = new ATestDParser(this);
-
+        this.aTestUBinder_.startThreads();
     }
 
     protected void startTest() {
+        this.sendLoginRequest();
+    }
+
+    private void sendLoginRequest() {
         FabricData fabric_data = new FabricData(
                 FabricCommands.FABRIC_COMMAND_LOGIN,
                 FabricResults.UNDECIDED,
@@ -56,6 +61,21 @@ class ATestRoot {
                 Encoders.IGNORE,
                 Encoders.IGNORE
         );
+        fabric_data.addStringList(this.goConfig);
+        this.uBinder().transmitStringData(fabric_data.getEncodedString());
+    }
+
+    protected void sendSoloSessionRequest(String link_id_str_val) {
+        FabricData fabric_data = new FabricData(
+                FabricCommands.FABRIC_COMMAND_SOLO_SESSION,
+                FabricResults.UNDECIDED,
+                FabricClients.ANDROID_CLIENT,
+                FabricThemeTypes.GO,
+                link_id_str_val,
+                Encoders.IGNORE
+        );
+        fabric_data.addStringList(this.goConfig);
+        this.uBinder().transmitStringData(fabric_data.getEncodedString());
     }
 
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }
