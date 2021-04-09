@@ -11,9 +11,7 @@ package com.phwang.go.go.join;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.phwang.go.R;
 import com.phwang.go.define.IntentDefine;
 
@@ -53,7 +51,7 @@ public class GoJoinActivity extends AppCompatActivity implements View.OnClickLis
         if (this.goJoinReceiver_ == null) {
             this.goJoinReceiver_ = new GoJoinReceiver(this);
             IntentFilter filter = new IntentFilter();
-            filter.addAction(IntentDefine.GO_CONFIG_ACTIVITY);
+            filter.addAction(IntentDefine.GO_JOIN_ACTIVITY);
             this.registerReceiver(this.goJoinReceiver_, filter);
         }
     }

@@ -64,6 +64,7 @@
         <item>13</item>
         <item>9</item>
     </string-array>
+
     <string-array name="go_stone_color_array">
         <item>Black</item>
         <item>White</item>
