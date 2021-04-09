@@ -28,7 +28,7 @@ import com.phwang.go.define.IntentDefine;
 import com.phwang.go.global.GlobalData;
 import com.phwang.go.go.game.GoGameBoard;
 
-public class GoConfigActivity extends AppCompatActivity implements View.OnClickListener{
+public class GoConfigActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "GoConfigActivity";
     private GoConfigReceiver goConfigReceiver_;
 
