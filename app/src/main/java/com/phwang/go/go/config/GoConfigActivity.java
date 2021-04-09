@@ -27,6 +27,9 @@ import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.global.GlobalData;
 import com.phwang.go.go.game.GoGameBoard;
+import com.phwang.go.go.join.GoJoinActivity;
+import com.phwang.go.go.peer.GoPeerActivity;
+import com.phwang.go.main.login.LoginActivity;
 
 public class GoConfigActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "GoConfigActivity";
@@ -77,6 +80,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View view_val) {
+        Intent intent;
         switch (view_val.getId()) {
             case R.id.go_config_solo9_button:
                 this.setupSoloSession(GoGameBoard.encodeConfig(9, 0, 0, GoGameBoard.GO_BOTH_STONE));
@@ -106,10 +110,14 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 this.setupHeadSession(GoGameBoard.encodeConfig(19, 0, 0, GoGameBoard.GO_WHITE_STONE));
                 break;
             case R.id.go_config_peer_button:
-                this.setupPeerSession(GoGameBoard.encodeConfig(13, 0, 0, GoGameBoard.GO_WHITE_STONE));
+                //this.setupPeerSession(GoGameBoard.encodeConfig(13, 0, 0, GoGameBoard.GO_WHITE_STONE));
+                intent = new Intent(this, GoPeerActivity.class);
+                startActivity(intent);
                 break;
             case R.id.go_config_join_button:
-                this.setupJoinSession(GoGameBoard.encodeConfig(19, 0, 0, GoGameBoard.GO_WHITE_STONE));
+                //this.setupJoinSession(GoGameBoard.encodeConfig(19, 0, 0, GoGameBoard.GO_WHITE_STONE));
+                intent = new Intent(this, GoJoinActivity.class);
+                startActivity(intent);
                 break;
             case R.id.go_config_play_button:
                 this.do_setup_session("phwang", "00000000G111111");
