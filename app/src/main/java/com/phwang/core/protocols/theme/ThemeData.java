@@ -5,6 +5,7 @@ import com.phwang.core.utils.encoders.Encoders;
 
 public class ThemeData {
     private static final String TAG = "ThemeData";
+    private static final int STRINGS_COUNT_SIZE = 1;
     private static final int MAX_ARRAY_SIZE = 10;
 
     public static final int COMMAND_INDEX     = 0;
@@ -54,7 +55,7 @@ public class ThemeData {
         rest_str = Encoders.sSubstring2_(rest_str);
 
         this.stringsCount_ = rest_str.charAt(0) - 48;
-        rest_str = rest_str.substring(1);
+        rest_str = rest_str.substring(STRINGS_COUNT_SIZE);
 
         for (int i = 0; i < this.stringsCount_; i ++) {
             this.stringList_[i] = Encoders.sDecode6(rest_str);
@@ -70,7 +71,7 @@ public class ThemeData {
 
         buf.append((this.groupIdStr_ != null) ? this.groupIdStr_: Encoders.NULL_LINK);
         buf.append((this.roomIdStr_ != null) ? this.roomIdStr_: Encoders.NULL_SESSION);
-        buf.append(Encoders.iEncodeRaw1(this.stringsCount_));
+        buf.append(Encoders.iEncodeRaw(this.stringsCount_, STRINGS_COUNT_SIZE));
 
         for (int i = 0; i < this.stringsCount_; i++) {
             buf.append(Encoders.sEncode6(this.stringList_[i]));
