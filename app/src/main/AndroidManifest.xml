@@ -61,7 +61,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".go.peer.GoPeerActivity">
+        <activity android:name=".go.watch.GoWatchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

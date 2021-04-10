@@ -12,7 +12,6 @@ package com.phwang.go.go.config;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,8 +28,7 @@ import com.phwang.go.global.GlobalData;
 import com.phwang.go.go.game.GoGameBoard;
 import com.phwang.go.go.head.GoHeadActivity;
 import com.phwang.go.go.join.GoJoinActivity;
-import com.phwang.go.go.peer.GoPeerActivity;
-import com.phwang.go.main.login.LoginActivity;
+import com.phwang.go.go.watch.GoWatchActivity;
 
 public class GoConfigActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "GoConfigActivity";
@@ -111,12 +109,12 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 intent = new Intent(this, GoHeadActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.go_config_peer_button:
-                intent = new Intent(this, GoPeerActivity.class);
-                startActivity(intent);
-                break;
             case R.id.go_config_join_button:
                 intent = new Intent(this, GoJoinActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.go_config_peer_button:
+                intent = new Intent(this, GoWatchActivity.class);
                 startActivity(intent);
                 break;
             case R.id.go_config_play_button:

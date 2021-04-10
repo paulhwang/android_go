@@ -6,19 +6,19 @@
  ******************************************************************************
  */
 
-package com.phwang.go.go.peer;
+package com.phwang.go.go.watch;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-public class GoPeerReceiver extends BroadcastReceiver {
-    private static final String TAG = "GoPeerReceiver";
-    private GoPeerActivity goPeerActivity_;
+public class GoWatchReceiver extends BroadcastReceiver {
+    private static final String TAG = "GoWatchReceiver";
+    private GoWatchActivity goWatchActivity_;
 
-    public GoPeerReceiver(GoPeerActivity go_peer_activity_val) {
-        this.goPeerActivity_ = go_peer_activity_val;
+    public GoWatchReceiver(GoWatchActivity go_watch_activity_val) {
+        this.goWatchActivity_ = go_watch_activity_val;
     }
 
     @Override
