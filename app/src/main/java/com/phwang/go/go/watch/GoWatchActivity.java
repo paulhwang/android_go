@@ -27,7 +27,7 @@ public class GoWatchActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
-        setContentView(R.layout.activity_go_peer);
+        setContentView(R.layout.activity_go_watch);
         ListView list_view = (ListView) findViewById(R.id.watch_list_view);
 
         StringArray string_array = new StringArray();

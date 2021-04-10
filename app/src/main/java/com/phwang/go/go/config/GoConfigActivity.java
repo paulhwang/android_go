@@ -28,6 +28,7 @@ import com.phwang.go.global.GlobalData;
 import com.phwang.go.go.game.GoGameBoard;
 import com.phwang.go.go.head.GoHeadActivity;
 import com.phwang.go.go.join.GoJoinActivity;
+import com.phwang.go.go.solo.GoSoloActivity;
 import com.phwang.go.go.watch.GoWatchActivity;
 
 public class GoConfigActivity extends AppCompatActivity implements View.OnClickListener {
@@ -103,7 +104,8 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 this.setupHeadSession(GoGameBoard.encodeConfig(9, 0, 0, GoGameBoard.GO_WHITE_STONE));
                 break;
             case R.id.go_config_white13_button:
-                this.setupHeadSession(GoGameBoard.encodeConfig(13, 0, 0, GoGameBoard.GO_WHITE_STONE));
+                intent = new Intent(this, GoSoloActivity.class);
+                startActivity(intent);
                 break;
             case R.id.go_config_white19_button:
                 intent = new Intent(this, GoHeadActivity.class);
