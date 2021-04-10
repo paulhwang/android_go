@@ -77,10 +77,10 @@
         android:orientation="horizontal"
         android:layout_gravity="center">
         <Button
-            android:id="@+id/go_config_peer_button"
+            android:id="@+id/go_config_join_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/peer_label" />
+            android:text="@string/join_label" />
     </LinearLayout>
 
     <LinearLayout
@@ -89,10 +89,10 @@
         android:orientation="horizontal"
         android:layout_gravity="center">
         <Button
-            android:id="@+id/go_config_join_button"
+            android:id="@+id/go_config_watch_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/join_label" />
+            android:text="@string/watch_label" />
     </LinearLayout>
 
     <Button
