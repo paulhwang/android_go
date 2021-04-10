@@ -40,10 +40,18 @@ public class GoPeerActivity extends AppCompatActivity implements View.OnClickLis
         string_array.addString("paul");
         string_array.addString("David");
         string_array.addString("Tom");
-        String[] str = {"aaa", "bbb", "ccc"};
+        string_array.addString("Nicole");
+        string_array.addString("Misa");
+        string_array.addString("Joseph");
+        string_array.addString("Steven");
+        string_array.addString("Evan");
+        string_array.addString("Susan");
+        string_array.addString("Betty");
+        string_array.addString("Alice");
+        string_array.addString("Bill");
+        string_array.addString("James");
         Log.e(TAG, "onCreate(1)");
 
-        //ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, str);
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, string_array.compactStringArray());
         Log.e(TAG, "onCreate(2)");
         list_view.setAdapter(adapter);
