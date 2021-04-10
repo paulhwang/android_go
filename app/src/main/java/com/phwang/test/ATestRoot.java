@@ -61,7 +61,8 @@ class ATestRoot {
                 Encoders.IGNORE,
                 Encoders.IGNORE
         );
-        fabric_data.addString(this.goConfig);
+        fabric_data.addString(this.myMame_);
+        fabric_data.addString(this.password_);
         this.uBinder().transmitStringData(fabric_data.encode());
     }
 
