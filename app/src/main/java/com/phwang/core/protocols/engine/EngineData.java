@@ -85,8 +85,15 @@ public class EngineData {
     }
 
     public void addString(String string_val) {
-        while (this.stringsCount_ >= this.arraySize_) {
-            this.arraySize_ *= 2;
+        if (this.stringsCount_ >= this.arraySize_) {
+            while (this.stringsCount_ >= this.arraySize_) {
+                this.arraySize_ *= 2;
+            }
+            String[] new_array = new String[this.arraySize_];
+            for (int i = 0; i < this.stringsCount_; i++) {
+                new_array[i] = this.stringArray_[i];
+            }
+            this.stringArray_ = new_array;
         }
 
         this.stringArray_[this.stringsCount_] = string_val;
