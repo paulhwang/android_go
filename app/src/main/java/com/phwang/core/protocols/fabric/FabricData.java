@@ -16,7 +16,6 @@ import com.phwang.core.utils.encoders.Encoders;
 public class FabricData {
     private static final String TAG = "FabricData";
     private static final int STRINGS_COUNT_SIZE = 2;
-    private static final int MAX_ARRAY_SIZE = 10;
 
     public static final int COMMAND_INDEX     = 0;
     public static final int RESULT_INDEX      = 1;
@@ -31,7 +30,7 @@ public class FabricData {
     private String linkIdStr_;
     private String sessionIdStr_;
     private String jobIdStr_;
-    private int arraySize_ = 10;
+    private int arraySize_ = 1;
     private int stringsCount_ = 0;
     private String[] stringArray_;
 
@@ -115,8 +114,15 @@ public class FabricData {
     }
 
     public void addString(String string_val) {
-        while (this.stringsCount_ >= this.arraySize_) {
-            this.arraySize_ *= 2;
+        if (this.stringsCount_ >= this.arraySize_) {
+            while (this.stringsCount_ >= this.arraySize_) {
+                this.arraySize_ *= 2;
+            }
+            String[] new_array = new String[this.arraySize_];
+            for (int i = 0; i < this.stringsCount_; i++) {
+                new_array[i] = this.stringArray_[i];
+            }
+            this.stringArray_ = new_array;
         }
 
         this.stringArray_[this.stringsCount_] = string_val;
