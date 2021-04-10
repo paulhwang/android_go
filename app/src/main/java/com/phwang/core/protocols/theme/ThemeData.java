@@ -5,7 +5,7 @@ import com.phwang.core.utils.encoders.Encoders;
 
 public class ThemeData {
     private static final String TAG = "ThemeData";
-    private static final int STRINGS_COUNT_SIZE = 1;
+    private static final int STRINGS_COUNT_SIZE = 2;
     private static final int MAX_ARRAY_SIZE = 10;
 
     public static final int COMMAND_INDEX     = 0;
