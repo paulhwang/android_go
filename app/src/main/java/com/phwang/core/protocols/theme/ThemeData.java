@@ -17,8 +17,9 @@ public class ThemeData {
     private char themeType_;
     private String groupIdStr_;
     private String roomIdStr_;
-     private int stringsCount_ = 0;
-    private String[] stringArray_ = new String[MAX_ARRAY_SIZE];
+    private int arraySize_ = 10;
+    private int stringsCount_ = 0;
+    private String[] stringArray_;
 
     public char command() { return this.command_; };
     public char result() { return this.result_; };
@@ -31,7 +32,6 @@ public class ThemeData {
     public void setResult(char result_val) { this.result_ = result_val; }
     public void setGroupIdStr(String link_id_str_val) { this.groupIdStr_ = link_id_str_val; }
     public void setRoomIdStr(String session_id_str_val) { this.roomIdStr_ = session_id_str_val; }
-    public void addString(String string_val) { this.stringArray_[this.stringsCount_] = string_val; this.stringsCount_++; }
 
     public ThemeData(char command_val, char result_val, char theme_type_val, String group_id_str_val, String room_id_str_val) {
         this.command_ = command_val;
@@ -39,6 +39,7 @@ public class ThemeData {
         this.themeType_ = theme_type_val;
         this.groupIdStr_ = group_id_str_val;
         this.roomIdStr_ = room_id_str_val;
+        this.stringArray_ = new String[this.arraySize_];
     }
 
     public ThemeData(String fabric_data_str_val) {
@@ -56,6 +57,11 @@ public class ThemeData {
 
         this.stringsCount_ = Encoders.iDecodeRaw(rest_str.substring(0, STRINGS_COUNT_SIZE));
         rest_str = rest_str.substring(STRINGS_COUNT_SIZE);
+
+        while (this.stringsCount_ > this.arraySize_) {
+            this.arraySize_ *= 2;
+        }
+        this.stringArray_ = new String[this.arraySize_];
 
         for (int i = 0; i < this.stringsCount_; i ++) {
             this.stringArray_[i] = Encoders.sDecode6(rest_str);
@@ -77,6 +83,15 @@ public class ThemeData {
             buf.append(Encoders.sEncode6(this.stringArray_[i]));
         }
         return buf.toString();
+    }
+
+    public void addString(String string_val) {
+        while (this.stringsCount_ >= this.arraySize_) {
+            this.arraySize_ *= 2;
+        }
+
+        this.stringArray_[this.stringsCount_] = string_val;
+        this.stringsCount_++;
     }
 
     public void addString1(String string_val) {

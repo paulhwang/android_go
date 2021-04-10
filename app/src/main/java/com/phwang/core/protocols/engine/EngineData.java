@@ -6,7 +6,6 @@ import com.phwang.core.utils.encoders.Encoders;
 public class EngineData {
     private static final String TAG = "EngineData";
     private static final int STRINGS_COUNT_SIZE = 2;
-    private static final int MAX_ARRAY_SIZE = 10;
 
     public static final int COMMAND_INDEX     = 0;
     public static final int RESULT_INDEX      = 1;
@@ -17,8 +16,9 @@ public class EngineData {
     private char themeType_;
     private String roomIdStr_;
     private String baseIdStr_;
+    private int arraySize_ = 10;
     private int stringsCount_ = 0;
-    private String[] stringArray_ = new String[MAX_ARRAY_SIZE];
+    private String[] stringArray_;
 
     public char command() { return this.command_; };
     public char result() { return this.result_; };
@@ -31,7 +31,6 @@ public class EngineData {
     public void setResult(char result_val) { this.result_ = result_val; }
     public void setRoomIdStr(String link_id_str_val) { this.roomIdStr_ = link_id_str_val; }
     public void setBaseIdStr(String session_id_str_val) { this.baseIdStr_ = session_id_str_val; }
-    public void addString(String string_val) { this.stringArray_[this.stringsCount_] = string_val; this.stringsCount_++; }
 
     public EngineData(char command_val, char result_val, char theme_type_val, String room_id_str_val, String base_id_str_val) {
         this.command_ = command_val;
@@ -39,6 +38,7 @@ public class EngineData {
         this.themeType_ = theme_type_val;
         this.roomIdStr_ = room_id_str_val;
         this.baseIdStr_ = base_id_str_val;
+        this.stringArray_ = new String[this.arraySize_];
     }
 
     public EngineData(String fabric_data_str_val) {
@@ -56,6 +56,11 @@ public class EngineData {
 
         this.stringsCount_ = Encoders.iDecodeRaw(rest_str.substring(0, STRINGS_COUNT_SIZE));
         rest_str = rest_str.substring(STRINGS_COUNT_SIZE);
+
+        while (this.stringsCount_ > this.arraySize_) {
+            this.arraySize_ *= 2;
+        }
+        this.stringArray_ = new String[this.arraySize_];
 
         for (int i = 0; i < this.stringsCount_; i ++) {
             this.stringArray_[i] = Encoders.sDecode6(rest_str);
@@ -77,6 +82,15 @@ public class EngineData {
             buf.append(Encoders.sEncode6(this.stringArray_[i]));
         }
         return buf.toString();
+    }
+
+    public void addString(String string_val) {
+        while (this.stringsCount_ >= this.arraySize_) {
+            this.arraySize_ *= 2;
+        }
+
+        this.stringArray_[this.stringsCount_] = string_val;
+        this.stringsCount_++;
     }
 
     public void addString1(String string_val) {

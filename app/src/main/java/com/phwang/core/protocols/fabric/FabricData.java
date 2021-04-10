@@ -31,8 +31,9 @@ public class FabricData {
     private String linkIdStr_;
     private String sessionIdStr_;
     private String jobIdStr_;
+    private int arraySize_ = 10;
     private int stringsCount_ = 0;
-    private String[] stringArray_ = new String[MAX_ARRAY_SIZE];
+    private String[] stringArray_;
 
     public char command() { return this.command_; };
     public char result() { return this.result_; };
@@ -47,7 +48,6 @@ public class FabricData {
     public void setLinkIdStr(String link_id_str_val) { this.linkIdStr_ = link_id_str_val; }
     public void setSessionIdStr(String session_id_str_val) { this.sessionIdStr_ = session_id_str_val; }
     public void setJobIdStr(String job_id_str_val) { this.jobIdStr_ = job_id_str_val; }
-    public void addString(String string_val) { this.stringArray_[this.stringsCount_] = string_val; this.stringsCount_++; }
 
     public FabricData(char command_val, char result_val, char client_type_val, char theme_type_val, String link_id_str_val, String session_id_str_val) {
         this.command_ = command_val;
@@ -56,6 +56,7 @@ public class FabricData {
         this.themeType_ = theme_type_val;
         this.linkIdStr_ = link_id_str_val;
         this.sessionIdStr_ = session_id_str_val;
+        this.stringArray_ = new String[this.arraySize_];
     }
 
     public FabricData(String fabric_data_str_val) {
@@ -80,6 +81,11 @@ public class FabricData {
         //this.stringsCount_ = rest_str.charAt(0) - 48;
         this.stringsCount_ = Encoders.iDecodeRaw(rest_str.substring(0, STRINGS_COUNT_SIZE));
         rest_str = rest_str.substring(STRINGS_COUNT_SIZE);
+
+        while (this.stringsCount_ > this.arraySize_) {
+            this.arraySize_ *= 2;
+        }
+        this.stringArray_ = new String[this.arraySize_];
 
         for (int i = 0; i < this.stringsCount_; i ++) {
             this.stringArray_[i] = Encoders.sDecode6(rest_str);
@@ -106,6 +112,15 @@ public class FabricData {
             buf.append(Encoders.sEncode6(this.stringArray_[i]));
         }
         return buf.toString();
+    }
+
+    public void addString(String string_val) {
+        while (this.stringsCount_ >= this.arraySize_) {
+            this.arraySize_ *= 2;
+        }
+
+        this.stringArray_[this.stringsCount_] = string_val;
+        this.stringsCount_++;
     }
 
     public void addString1(String string_val) {

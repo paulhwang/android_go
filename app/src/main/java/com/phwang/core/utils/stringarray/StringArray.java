@@ -13,6 +13,7 @@ import com.phwang.core.utils.encoders.Encoders;
 public class StringArray {
     private static final int STRINGS_COUNT_SIZE = 2;
 
+    private int arraySize_ = 10;
     private int stringsCount_ = 0;
     private String[] stringArray_;
 
