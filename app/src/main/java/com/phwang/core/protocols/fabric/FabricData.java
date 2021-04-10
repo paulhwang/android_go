@@ -32,7 +32,7 @@ public class FabricData {
     private String sessionIdStr_;
     private String jobIdStr_;
     private int stringsCount_ = 0;
-    private String[] stringList_ = new String[MAX_ARRAY_SIZE];
+    private String[] stringArray_ = new String[MAX_ARRAY_SIZE];
 
     public char command() { return this.command_; };
     public char result() { return this.result_; };
@@ -41,13 +41,13 @@ public class FabricData {
     public String linkIdStr() { return this.linkIdStr_; };
     public String sessionIdStr() { return this.sessionIdStr_; };
     public String jobIdStr() { return this.jobIdStr_; };
-    public String stringListElement(int index_val) { return this.stringList_[index_val]; };
+    public String stringArrayElement(int index_val) { return this.stringArray_[index_val]; };
 
     public void setResult(char result_val) { this.result_ = result_val; }
     public void setLinkIdStr(String link_id_str_val) { this.linkIdStr_ = link_id_str_val; }
     public void setSessionIdStr(String session_id_str_val) { this.sessionIdStr_ = session_id_str_val; }
     public void setJobIdStr(String job_id_str_val) { this.jobIdStr_ = job_id_str_val; }
-    public void addString(String string_val) { this.stringList_[this.stringsCount_] = string_val; this.stringsCount_++; }
+    public void addString(String string_val) { this.stringArray_[this.stringsCount_] = string_val; this.stringsCount_++; }
 
     public FabricData(char command_val, char result_val, char client_type_val, char theme_type_val, String link_id_str_val, String session_id_str_val) {
         this.command_ = command_val;
@@ -82,7 +82,7 @@ public class FabricData {
         rest_str = rest_str.substring(STRINGS_COUNT_SIZE);
 
         for (int i = 0; i < this.stringsCount_; i ++) {
-            this.stringList_[i] = Encoders.sDecode6(rest_str);
+            this.stringArray_[i] = Encoders.sDecode6(rest_str);
             rest_str = Encoders.sSubstring6_(rest_str);
         }
     }
@@ -103,7 +103,7 @@ public class FabricData {
 
         buf.append(Encoders.iEncodeRaw(this.stringsCount_, STRINGS_COUNT_SIZE));
         for (int i = 0; i < this.stringsCount_; i++) {
-            buf.append(Encoders.sEncode6(this.stringList_[i]));
+            buf.append(Encoders.sEncode6(this.stringArray_[i]));
         }
         return buf.toString();
     }

@@ -31,7 +31,7 @@ public class GoGameDFunc {
         FabricData fabric_decode = new FabricData(fabric_data_str_val);
         //Log.e(TAG, "parseGetSessionData() theme_data_str_=" + fabric_decode.stringList(0));
 
-        String theme_data_str = fabric_decode.stringListElement(0);
+        String theme_data_str = fabric_decode.stringArrayElement(0);
         //Log.e(TAG, "parseGetSessionData() theme_data_str=" + theme_data_str);
 
         String board_data_str = theme_data_str.substring(1);

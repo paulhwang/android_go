@@ -50,7 +50,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         //Log.e(TAG, "onCreate() linkIdStr_=" + linkIdStr_);
         //Log.e(TAG, "onCreate() sessionIdStr_=" + sessionIdStr_);
 
-        String config_str = fabric_decode.stringListElement(0);
+        String config_str = fabric_decode.stringArrayElement(0);
         //Log.e(TAG, "onCreate() config_str=" + config_str);
 
         this.goBoard_ = new GoGameBoard(this, config_str);

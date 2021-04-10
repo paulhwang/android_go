@@ -110,9 +110,9 @@ public class FabricUParser {
     }
 
     private void processRegisterRequest(FabricData fabric_data_val) {
-        String my_name = fabric_data_val.stringListElement(0);
-        String email = fabric_data_val.stringListElement(1);
-        String password = fabric_data_val.stringListElement(1);
+        String my_name = fabric_data_val.stringArrayElement(0);
+        String email = fabric_data_val.stringArrayElement(1);
+        String password = fabric_data_val.stringArrayElement(2);
         this.debug(false, "processRegisterRequest", "my_name=" + my_name);
         this.debug(false, "processRegisterRequest", "email=" + email);
         this.debug(false, "processRegisterRequest", "password=" + password);
@@ -122,8 +122,8 @@ public class FabricUParser {
 
     private void processLoginRequest(FabricData fabric_data_val) {
         char client_type = fabric_data_val.clientType();
-        String my_name = fabric_data_val.stringListElement(0);
-        String password = fabric_data_val.stringListElement(1);
+        String my_name = fabric_data_val.stringArrayElement(0);
+        String password = fabric_data_val.stringArrayElement(1);
         this.debug(false, "processLoginRequest", "my_name=" + my_name);
         this.debug(false, "processLoginRequest", "password=" + password);
 
@@ -165,7 +165,7 @@ public class FabricUParser {
 
     private void processSoloSessionRequest(FabricData fabric_data_val) {
         String link_id_str = fabric_data_val.linkIdStr();
-        String data_str = fabric_data_val.stringListElement(0);
+        String data_str = fabric_data_val.stringArrayElement(0);
         this.debug(false, "processSoloSessionRequest", "link_id = " + link_id_str);
         this.debug(false, "processSoloSessionRequest", "theme_data = " + data_str);
 
@@ -188,7 +188,7 @@ public class FabricUParser {
 
     private void processHeadSessionRequest(FabricData fabric_data_val) {
         String link_id_str = fabric_data_val.linkIdStr();
-        String theme_data_str = fabric_data_val.stringListElement(0);
+        String theme_data_str = fabric_data_val.stringArrayElement(0);
         this.debug(false, "processHeadSessionRequest", "link_id_str=" + link_id_str);
         this.debug(false, "processHeadSessionRequest", "theme_data_str=" + theme_data_str);
 
@@ -211,7 +211,7 @@ public class FabricUParser {
 
     private void processPeerSessionRequest(FabricData fabric_data_val) {
         String link_id_str = fabric_data_val.linkIdStr();
-        String theme_data_str = fabric_data_val.stringListElement(0);
+        String theme_data_str = fabric_data_val.stringArrayElement(0);
         this.debug(false, "processPeerSessionRequest", "link_id_str=" + link_id_str);
         this.debug(false, "processPeerSessionRequest", "theme_data_str=" + theme_data_str);
 
@@ -234,7 +234,7 @@ public class FabricUParser {
 
     private void processJoinSessionRequest(FabricData fabric_data_val) {
         String link_id_str = fabric_data_val.linkIdStr();
-        String theme_data_str = fabric_data_val.stringListElement(0);
+        String theme_data_str = fabric_data_val.stringArrayElement(0);
         this.debug(false, "processJoinSessionRequest", "link_id_str=" + link_id_str);
         this.debug(true, "processJoinSessionRequest", "theme_data_str=" + theme_data_str);
 
@@ -281,7 +281,7 @@ public class FabricUParser {
     private void processPutSessionDataRequest(FabricData fabric_data_val) {
         String link_id_str = fabric_data_val.linkIdStr();
         String session_id_str = fabric_data_val.sessionIdStr();
-        String data_str = fabric_data_val.stringListElement(0);
+        String data_str = fabric_data_val.stringArrayElement(0);
         this.debug(false, "processPutSessionDataRequest", "link_id_str=" + link_id_str);
         this.debug(false, "processPutSessionDataRequest", "session_id_str=" + session_id_str);
         this.debug(false, "processPutSessionDataRequest", "data_str=" + data_str);

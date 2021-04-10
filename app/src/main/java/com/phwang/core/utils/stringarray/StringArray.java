@@ -15,11 +15,11 @@ public class StringArray {
     private static final int MAX_ARRAY_SIZE = 10;
 
     private int stringsCount_ = 0;
-    private String[] stringList_ = new String[MAX_ARRAY_SIZE];
+    private String[] stringArray_ = new String[MAX_ARRAY_SIZE];
 
-    public String[] stringList() { return this.stringList_; };
-    public String stringListElement(int index_val) { return this.stringList_[index_val]; };
-    public void addString(String string_val) { this.stringList_[this.stringsCount_] = string_val; this.stringsCount_++; }
+    public String[] stringList() { return this.stringArray_; };
+    public String stringArrayElement(int index_val) { return this.stringArray_[index_val]; };
+    public void addString(String string_val) { this.stringArray_[this.stringsCount_] = string_val; this.stringsCount_++; }
 
     public StringArray() {
 
@@ -32,7 +32,7 @@ public class StringArray {
         rest_str = rest_str.substring(STRINGS_COUNT_SIZE);
 
         for (int i = 0; i < this.stringsCount_; i ++) {
-            this.stringList_[i] = Encoders.sDecode6(rest_str);
+            this.stringArray_[i] = Encoders.sDecode6(rest_str);
             rest_str = Encoders.sSubstring6_(rest_str);
         }
     }
@@ -40,7 +40,7 @@ public class StringArray {
         StringBuilder buf = new StringBuilder();
         buf.append(Encoders.iEncodeRaw(this.stringsCount_, STRINGS_COUNT_SIZE));
         for (int i = 0; i < this.stringsCount_; i++) {
-            buf.append(Encoders.sEncode6(this.stringList_[i]));
+            buf.append(Encoders.sEncode6(this.stringArray_[i]));
         }
         return buf.toString();
     }

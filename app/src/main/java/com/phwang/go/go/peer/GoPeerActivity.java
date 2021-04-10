@@ -42,6 +42,7 @@ public class GoPeerActivity extends AppCompatActivity implements View.OnClickLis
         Log.e(TAG, "onCreate(1)");
 
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, str);
+        //ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, string_array.stringList());
         Log.e(TAG, "onCreate(2)");
         list_view.setAdapter(adapter);
         Log.e(TAG, "onCreate(3)");
