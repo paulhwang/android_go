@@ -78,4 +78,14 @@ public class EngineData {
         }
         return buf.toString();
     }
+
+    public void addString1(String string_val) {
+        String[] new_array = new String[this.stringsCount_ + 1];
+        for (int i = 0; i < this.stringsCount_; i++) {
+            new_array[i] = this.stringArray_[i];
+        }
+        new_array[this.stringsCount_] = string_val;
+        this.stringArray_ = new_array;
+        this.stringsCount_++;
+    }
 }
