@@ -17,7 +17,7 @@ public class ThemeData {
     private char themeType_;
     private String groupIdStr_;
     private String roomIdStr_;
-    private int arraySize_ = 10;
+    private int arraySize_ = 1;
     private int stringsCount_ = 0;
     private String[] stringArray_;
 
@@ -87,9 +87,7 @@ public class ThemeData {
 
     public void addString(String string_val) {
         if (this.stringsCount_ >= this.arraySize_) {
-            while (this.stringsCount_ >= this.arraySize_) {
-                this.arraySize_ *= 2;
-            }
+            this.arraySize_ *= 2;
             String[] new_array = new String[this.arraySize_];
             for (int i = 0; i < this.stringsCount_; i++) {
                 new_array[i] = this.stringArray_[i];
