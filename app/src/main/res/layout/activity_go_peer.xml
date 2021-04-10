@@ -8,5 +8,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:id="@+id/listview" />
+        android:id="@+id/peer_list_view" />
 </LinearLayout>

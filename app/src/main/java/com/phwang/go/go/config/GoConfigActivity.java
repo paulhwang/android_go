@@ -110,15 +110,12 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
             case R.id.go_config_white19_button:
                 intent = new Intent(this, GoHeadActivity.class);
                 startActivity(intent);
-                //this.setupHeadSession(GoGameBoard.encodeConfig(19, 0, 0, GoGameBoard.GO_WHITE_STONE));
                 break;
             case R.id.go_config_peer_button:
-                //this.setupPeerSession(GoGameBoard.encodeConfig(13, 0, 0, GoGameBoard.GO_WHITE_STONE));
                 intent = new Intent(this, GoPeerActivity.class);
                 startActivity(intent);
                 break;
             case R.id.go_config_join_button:
-                //this.setupJoinSession(GoGameBoard.encodeConfig(19, 0, 0, GoGameBoard.GO_WHITE_STONE));
                 intent = new Intent(this, GoJoinActivity.class);
                 startActivity(intent);
                 break;
