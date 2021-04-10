@@ -328,7 +328,7 @@ public class FabricUParser {
 
         String data_str = session.getPendingDownLinkData();
 
-        fabric_data_val.addStringList(data_str);
+        fabric_data_val.addString(data_str);
         fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 

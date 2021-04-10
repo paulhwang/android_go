@@ -55,7 +55,7 @@ public class GoGameUFunc {
                 this.linkIdStr(),
                 this.sessionIdStr()
         );
-        fabric_encode.addStringList(move_data_val);
+        fabric_encode.addString(move_data_val);
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_GAME_ACTIVITY);

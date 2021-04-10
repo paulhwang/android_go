@@ -47,7 +47,7 @@ public class FabricData {
     public void setLinkIdStr(String link_id_str_val) { this.linkIdStr_ = link_id_str_val; }
     public void setSessionIdStr(String session_id_str_val) { this.sessionIdStr_ = session_id_str_val; }
     public void setJobIdStr(String job_id_str_val) { this.jobIdStr_ = job_id_str_val; }
-    public void addStringList(String string_val) { this.stringList_[this.stringsCount_] = string_val; this.stringsCount_++; }
+    public void addString(String string_val) { this.stringList_[this.stringsCount_] = string_val; this.stringsCount_++; }
 
     public FabricData(char command_val, char result_val, char client_type_val, char theme_type_val, String link_id_str_val, String session_id_str_val) {
         this.command_ = command_val;

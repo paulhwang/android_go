@@ -68,7 +68,7 @@ public class ThemeUParser {
                 room.roomIdStr(),
                 Encoders.IGNORE
         );
-        engineer_data.addStringList(theme_data_val.stringListElement(0));
+        engineer_data.addString(theme_data_val.stringListElement(0));
         this.themeUBinder().transmitData(engineer_data.encode());
 
         /*
@@ -99,7 +99,7 @@ public class ThemeUParser {
                 room.roomIdStr(),
                 room.baseIdStr()
         );
-        engineer_data.addStringList(theme_data_val.stringListElement(0));
+        engineer_data.addString(theme_data_val.stringListElement(0));
         this.themeUBinder().transmitData(engineer_data.encode());
 
         /*

@@ -140,7 +140,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE
         );
-        fabric_encode.addStringList(go_config_data_val);
+        fabric_encode.addString(go_config_data_val);
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
@@ -158,7 +158,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE
         );
-        fabric_encode.addStringList(go_config_data_val);
+        fabric_encode.addString(go_config_data_val);
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
@@ -176,7 +176,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE
         );
-        fabric_encode.addStringList(go_config_data_val);
+        fabric_encode.addString(go_config_data_val);
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);
@@ -194,7 +194,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 GlobalData.linkIdStr(),
                 Encoders.IGNORE
         );
-        fabric_encode.addStringList(go_config_data_val);
+        fabric_encode.addString(go_config_data_val);
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_CONFIG_ACTIVITY);

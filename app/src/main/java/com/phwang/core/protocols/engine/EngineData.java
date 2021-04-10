@@ -31,7 +31,7 @@ public class EngineData {
     public void setResult(char result_val) { this.result_ = result_val; }
     public void setRoomIdStr(String link_id_str_val) { this.roomIdStr_ = link_id_str_val; }
     public void setBaseIdStr(String session_id_str_val) { this.baseIdStr_ = session_id_str_val; }
-    public void addStringList(String string_val) { this.stringList_[this.stringsCount_] = string_val; this.stringsCount_++; }
+    public void addString(String string_val) { this.stringList_[this.stringsCount_] = string_val; this.stringsCount_++; }
 
     public EngineData(char command_val, char result_val, char theme_type_val, String room_id_str_val, String base_id_str_val) {
         this.command_ = command_val;

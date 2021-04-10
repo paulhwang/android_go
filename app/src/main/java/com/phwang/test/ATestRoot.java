@@ -61,7 +61,7 @@ class ATestRoot {
                 Encoders.IGNORE,
                 Encoders.IGNORE
         );
-        fabric_data.addStringList(this.goConfig);
+        fabric_data.addString(this.goConfig);
         this.uBinder().transmitStringData(fabric_data.encode());
     }
 
@@ -74,7 +74,7 @@ class ATestRoot {
                 link_id_str_val,
                 Encoders.IGNORE
         );
-        fabric_data.addStringList(this.goConfig);
+        fabric_data.addString(this.goConfig);
         this.uBinder().transmitStringData(fabric_data.encode());
     }
 

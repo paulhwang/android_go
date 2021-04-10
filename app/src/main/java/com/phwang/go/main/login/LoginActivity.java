@@ -94,8 +94,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Encoders.IGNORE,
                 Encoders.IGNORE
         );
-        fabric_encode.addStringList(this.userName_);
-        fabric_encode.addStringList(this.password_);
+        fabric_encode.addString(this.userName_);
+        fabric_encode.addString(this.password_);
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.LOGIN_ACTIVITY);

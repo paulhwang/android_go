@@ -79,7 +79,7 @@ public class FabricUBinder implements ThreadEntityInt {
                 group_id_str_val,
                 Encoders.IGNORE
         );
-        theme_data.addStringList(theme_str_val);
+        theme_data.addString(theme_str_val);
         this.transmitData(theme_data.encode());
     }
 
@@ -91,7 +91,7 @@ public class FabricUBinder implements ThreadEntityInt {
                 group_id_str_val,
                 room_id_str_val
         );
-        theme_data.addStringList(data_str_val);
+        theme_data.addString(data_str_val);
         this.transmitData(theme_data.encode());
 
     }
