@@ -17,7 +17,6 @@ public class StringArray {
     private int stringsCount_ = 0;
     private String[] stringArray_;
 
-    public String[] stringArray() { return this.stringArray_; };
     public String stringArrayElement(int index_val) { return this.stringArray_[index_val]; };
 
     public StringArray() {
@@ -55,4 +54,12 @@ public class StringArray {
         this.stringArray_ = new_array;
         this.stringsCount_++;
     }
+
+    public String[] compactStringArray() {
+        String[] new_array = new String[this.stringsCount_];
+        for (int i = 0; i < this.stringsCount_; i++) {
+            new_array[i] = this.stringArray_[i];
+        }
+        return new_array;
+    };
 }
