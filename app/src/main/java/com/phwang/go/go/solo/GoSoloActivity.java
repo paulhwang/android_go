@@ -10,6 +10,7 @@ package com.phwang.go.go.solo;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,7 +25,6 @@ import com.phwang.core.protocols.fabric.FabricData;
 import com.phwang.core.protocols.fabric.FabricResults;
 import com.phwang.core.protocols.fabric.FabricThemeTypes;
 import com.phwang.core.utils.encoders.Encoders;
-import com.phwang.core.utils.stringarray.StringArray;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
@@ -34,7 +34,7 @@ import com.phwang.go.go.game.GoGameBoard;
 public class GoSoloActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "GoSoloActivity";
     private GoSoloReceiver goSoloReceiver_;
-    private String[] optionArray = { "19x19", "13x13", "9x9", "Exit"};
+    private String[] boardSizeArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +42,15 @@ public class GoSoloActivity extends AppCompatActivity implements View.OnClickLis
         Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
         setContentView(R.layout.activity_go_solo);
         ListView list_view = (ListView) findViewById(R.id.solo_list_view);
+        Resources res = getResources();
 
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, this.optionArray);
+        this.boardSizeArray = new String[4];
+        this.boardSizeArray[0] = getResources().getString(R.string.solo19_label);
+        this.boardSizeArray[1] = getResources().getString(R.string.solo13_label);
+        this.boardSizeArray[2] = getResources().getString(R.string.solo9_label);
+        this.boardSizeArray[3] = getResources().getString(R.string.exit_label);
+
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, this.boardSizeArray);
         list_view.setAdapter(adapter);
         list_view.setOnItemClickListener(onClickListView);       //指定事件 Method
         this.registerBroadcastReceiver();
@@ -52,7 +59,7 @@ public class GoSoloActivity extends AppCompatActivity implements View.OnClickLis
     private AdapterView.OnItemClickListener onClickListView = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Log.e(TAG, "onItemClick() position=" + position + " val=" + optionArray[position]);
+            Log.e(TAG, "onItemClick() position=" + position + " val=" + boardSizeArray[position]);
             switch (position) {
                 case 0:
                     setupSoloSession(GoGameBoard.encodeConfig(19, 0, 0, GoGameBoard.GO_BOTH_STONE));
