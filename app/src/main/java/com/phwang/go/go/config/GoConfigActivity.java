@@ -49,6 +49,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.go_config_white13_button).setOnClickListener(this);
         findViewById(R.id.go_config_white19_button).setOnClickListener(this);
 
+        findViewById(R.id.go_config_start_button).setOnClickListener(this);
         findViewById(R.id.go_config_join_button).setOnClickListener(this);
         findViewById(R.id.go_config_watch_button).setOnClickListener(this);
         findViewById(R.id.go_config_solo_button).setOnClickListener(this);
@@ -96,6 +97,10 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(intent);
                 break;
             case R.id.go_config_white19_button:
+                intent = new Intent(this, GoHeadActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.go_config_start_button:
                 intent = new Intent(this, GoHeadActivity.class);
                 startActivity(intent);
                 break;

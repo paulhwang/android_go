@@ -9,6 +9,7 @@
 package com.phwang.go.go.head;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,14 +20,24 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.phwang.core.protocols.fabric.FabricClients;
+import com.phwang.core.protocols.fabric.FabricCommands;
+import com.phwang.core.protocols.fabric.FabricData;
+import com.phwang.core.protocols.fabric.FabricResults;
+import com.phwang.core.protocols.fabric.FabricThemeTypes;
+import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.utils.stringarray.StringArray;
 import com.phwang.go.R;
+import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
+import com.phwang.go.global.GlobalData;
+import com.phwang.go.go.game.GoGameBoard;
 
 public class GoHeadActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "GoHeadActivity";
     private GoHeadReceiver goHeadReceiver_;
-    private String[] optionArray = { "19x19 Black", "19x19 White", "13x13 Black", "13x13 White", "9x9 Black", "9x9 White"};
+    private String[] optionArray = { "19x19 Black", "19x19 White", "13x13 Black", "13x13 White", "9x9 Black", "9x9 White", "Exit"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +56,29 @@ public class GoHeadActivity extends AppCompatActivity implements View.OnClickLis
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Log.e(TAG, "onItemClick() position=" + position + " val=" + optionArray[position]);
+            switch (position) {
+                case 0:
+                    setupHeadSession(GoGameBoard.encodeConfig(19, 0, 0, GoGameBoard.GO_BLACK_STONE));
+                    break;
+                case 1:
+                    setupHeadSession(GoGameBoard.encodeConfig(19, 0, 0, GoGameBoard.GO_WHITE_STONE));
+                    break;
+                case 2:
+                    setupHeadSession(GoGameBoard.encodeConfig(13, 0, 0, GoGameBoard.GO_BLACK_STONE));
+                    break;
+                case 3:
+                    setupHeadSession(GoGameBoard.encodeConfig(13, 0, 0, GoGameBoard.GO_WHITE_STONE));
+                    break;
+                case 4:
+                    setupHeadSession(GoGameBoard.encodeConfig(9, 0, 0, GoGameBoard.GO_BLACK_STONE));
+                    break;
+                case 5:
+                    setupHeadSession(GoGameBoard.encodeConfig(9, 0, 0, GoGameBoard.GO_WHITE_STONE));
+                    break;
+                case 6:
+                    finish();
+                    break;
+            }
         }
     };
 
@@ -66,6 +100,24 @@ public class GoHeadActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view_val) {
+    }
+
+    private void setupHeadSession(String go_config_data_val) {
+        FabricData fabric_encode = new FabricData(
+                FabricCommands.FABRIC_COMMAND_HEAD_SESSION,
+                FabricResults.UNDECIDED,
+                FabricClients.ANDROID_CLIENT,
+                FabricThemeTypes.GO,
+                GlobalData.linkIdStr(),
+                Encoders.IGNORE
+        );
+        fabric_encode.addString(go_config_data_val);
+
+        Intent intent = new Intent();
+        intent.putExtra(BundleIndexDefine.FROM, IntentDefine.GO_HEAD_ACTIVITY);
+        intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.encode());
+        intent.setAction(IntentDefine.CLIENT_SERVICE);
+        this.sendBroadcast(intent);
     }
 
     private void registerBroadcastReceiver() {
