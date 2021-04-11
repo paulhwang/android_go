@@ -69,5 +69,22 @@ public class StringArray {
             new_array[i] = this.stringArray_[i];
         }
         return new_array;
+    }
+
+    public String[] sortedStringArray() {
+        String[] new_array = this.compactStringArray();
+        boolean isSwapped = false;
+        do {
+            isSwapped = false;
+            for (int i = 0; i < new_array.length - 1; i++) {
+                if (new_array[i].compareTo(new_array[i+1]) > 0) {
+                    String temp = new_array[i+1];
+                    new_array[i+1] = new_array[i];
+                    new_array[i] = temp;
+                    isSwapped = true;
+                }
+            }
+        } while ((isSwapped));
+        return new_array;
     };
 }
