@@ -41,10 +41,6 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         //Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
 
         setContentView(R.layout.activity_go_config);
-        findViewById(R.id.go_config_solo9_button).setOnClickListener(this);
-        findViewById(R.id.go_config_solo13_button).setOnClickListener(this);
-        findViewById(R.id.go_config_solo19_button).setOnClickListener(this);
-
         findViewById(R.id.go_config_black9_button).setOnClickListener(this);
         findViewById(R.id.go_config_black13_button).setOnClickListener(this);
         findViewById(R.id.go_config_black19_button).setOnClickListener(this);
@@ -55,6 +51,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
 
         findViewById(R.id.go_config_join_button).setOnClickListener(this);
         findViewById(R.id.go_config_watch_button).setOnClickListener(this);
+        findViewById(R.id.go_config_solo_button).setOnClickListener(this);
 
         findViewById(R.id.go_config_play_button).setOnClickListener(this);
         findViewById(R.id.go_config_exit_button).setOnClickListener(this);
@@ -82,15 +79,6 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view_val) {
         Intent intent;
         switch (view_val.getId()) {
-            case R.id.go_config_solo9_button:
-                this.setupSoloSession(GoGameBoard.encodeConfig(9, 0, 0, GoGameBoard.GO_BOTH_STONE));
-                break;
-            case R.id.go_config_solo13_button:
-                this.setupSoloSession(GoGameBoard.encodeConfig(13, 0, 0, GoGameBoard.GO_BOTH_STONE));
-                break;
-            case R.id.go_config_solo19_button:
-                this.setupSoloSession(GoGameBoard.encodeConfig(19, 0, 0, GoGameBoard.GO_BOTH_STONE));
-                break;
             case R.id.go_config_black9_button:
                 this.setupHeadSession(GoGameBoard.encodeConfig(9, 0, 0, GoGameBoard.GO_BLACK_STONE));
                 break;
@@ -117,6 +105,10 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.go_config_watch_button:
                 intent = new Intent(this, GoWatchActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.go_config_solo_button:
+                intent = new Intent(this, GoSoloActivity.class);
                 startActivity(intent);
                 break;
             case R.id.go_config_play_button:
