@@ -77,7 +77,7 @@ public class GoWatchActivity extends AppCompatActivity implements View.OnClickLi
         if (this.goWatchReceiver_ == null) {
             this.goWatchReceiver_ = new GoWatchReceiver(this);
             IntentFilter filter = new IntentFilter();
-            filter.addAction(IntentDefine.GO_PEER_ACTIVITY);
+            filter.addAction(IntentDefine.GO_WATCH_ACTIVITY);
             this.registerReceiver(this.goWatchReceiver_, filter);
         }
     }
