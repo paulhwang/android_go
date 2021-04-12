@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
 
         setContentView(R.layout.activity_main);
-        findViewById(R.id.main_about_button).setOnClickListener(this);
+        //findViewById(R.id.main_about_button).setOnClickListener(this);
         findViewById(R.id.main_exit_button).setOnClickListener(this);
         findViewById(R.id.main_get_groups_button).setOnClickListener(this);
         findViewById(R.id.main_login_button).setOnClickListener(this);
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.main_play_sudoku_button).setOnClickListener(this);
         findViewById(R.id.main_register_button).setOnClickListener(this);
         findViewById(R.id.main_setup_button).setOnClickListener(this);
-        findViewById(R.id.main_test_button).setOnClickListener(this);
+        //findViewById(R.id.main_test_button).setOnClickListener(this);
 
         this.mainActivityFunc_ = new MainActivityFunc(this);
         startService(new Intent(this, ClientService.class));
@@ -92,10 +92,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view_val) {
         Intent intent;
         switch (view_val.getId()) {
-            case R.id.main_about_button:
-                intent = new Intent(this, About.class);
-                startActivity(intent);
-                break;
             case R.id.main_exit_button:
                 finish();
                 break;
@@ -125,10 +121,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(this, SetupActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.main_test_button:
-                intent = new Intent(this, SetupActivity.class);
-                startActivity(intent);
-                break;
+            //case R.id.main_about_button:
+            //    intent = new Intent(this, About.class);
+            //    startActivity(intent);
+            //    break;
         }
     }
 

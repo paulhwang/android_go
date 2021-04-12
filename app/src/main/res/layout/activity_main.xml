@@ -11,8 +11,8 @@
     android:background="@color/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="50px"
-    android:padding="50px"
+    android:layout_margin="10px"
+    android:padding="10px"
     android:orientation="horizontal">
     <LinearLayout
         android:orientation="vertical"
@@ -62,19 +62,14 @@
             android:layout_height="wrap_content"
             android:text="@string/get_groups_label" />
         <Button
-            android:id="@+id/main_about_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/about_label" />
-        <Button
-            android:id="@+id/main_test_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/test_label" />
-        <Button
             android:id="@+id/main_exit_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/exit_label" />
+        <Button
+            android:id="@+id/main_about_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_label" />
     </LinearLayout>
 </LinearLayout>
