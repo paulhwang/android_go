@@ -27,6 +27,8 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     private String sessionIdStr_;
     private Boolean isDead_ = false;
     private WatchDog watchDog_;
+    private int moveX_;
+    private int moveY_;
 
     protected GoGameView goView() { return this.goView_; };
     protected GoGameBoard goBoard() { return this.goBoard_; };
@@ -35,6 +37,8 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     protected String linkIdStr() { return this.linkIdStr_; }
     protected String sessionIdStr() { return this.sessionIdStr_; }
     protected Boolean isDead() { return this.isDead_; }
+    protected int moveX() { return this.moveX_; }
+    protected int moveY() { return this.moveY_; }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,9 +133,9 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        int x = ((int) event.getX() - this.goView_.viewLeft - this.goView_.gridLen0 + this.goView_.halfGridLen) / this.goView_.gridLen;
-        int y = ((int) event.getY() - this.goView_.viewTop  - this.goView_.gridLen0 + this.goView_.halfGridLen) / this.goView_.gridLen;
-        //Log.e(TAG, "onTouchEvent: x=" + x + " y=" + y);
+        this.moveX_ = ((int) event.getX() - this.goView_.viewLeft - this.goView_.gridLen0 + this.goView_.halfGridLen) / this.goView_.gridLen;
+        this.moveY_ = ((int) event.getY() - this.goView_.viewTop  - this.goView_.gridLen0 + this.goView_.halfGridLen) / this.goView_.gridLen;
+        //Log.e(TAG, "onTouchEvent: x=" + this.x_ + " y=" + this.y_);
         switch( event.getAction() ) {
             case MotionEvent.ACTION_DOWN:
                 break;
@@ -140,7 +144,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case MotionEvent.ACTION_UP:
-                this.processTouchInput(x, y);
+                this.processTouchInput(this.moveX_, this.moveY_);
                 break;
         }
         return super.onTouchEvent(event);

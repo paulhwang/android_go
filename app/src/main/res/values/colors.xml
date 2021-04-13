@@ -8,6 +8,7 @@
     <color name="board">#A0522D</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#DE3163</color>
 
     <color name="background">#FFFFFFFF</color>
     <color name="sign_in_background">#E3E3E3</color>

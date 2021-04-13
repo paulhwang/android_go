@@ -20,9 +20,12 @@ import com.phwang.go.R;
 public class GoGameView  extends View {
     private static final String TAG = "GoGameView";
 
-    private final GoGameActivity goGame_;
-    private GoGameBoard goBoard() { return this.goGame_.goBoard(); }
-    protected int board(int x_val, int y_val) { return this.goBoard().board(x_val, y_val); }
+    private final GoGameActivity goGameActivity_;
+    private GoGameBoard goGameBoard() { return this.goGameActivity_.goBoard(); }
+    private int boardSize() { return this.goGameBoard().boardSize(); }
+    private int board(int x_val, int y_val) { return this.goGameBoard().board(x_val, y_val); }
+    private int moveX() { return this.goGameActivity_.moveX(); }
+    private int moveY() { return this.goGameActivity_.moveY(); }
 
     private int width;
     protected int viewTop;
@@ -38,15 +41,17 @@ public class GoGameView  extends View {
     private Canvas canvas;
     private final Paint whitePaint = new Paint();
     private final Paint blackPaint = new Paint();
+    private final Paint redPaint = new Paint();
     private final Paint boardPaint = new Paint();
     private final Rect rect = new Rect();
 
     public GoGameView(Context context_val, AttributeSet attrs) {
         super(context_val, attrs);
-        this.goGame_ = (GoGameActivity) context_val;
+        this.goGameActivity_ = (GoGameActivity) context_val;
 
         this.whitePaint.setColor(getResources().getColor(R.color.white));
         this.blackPaint.setColor(getResources().getColor(R.color.black));
+        this.redPaint.setColor(getResources().getColor(R.color.red));
         this.boardPaint.setColor(getResources().getColor(R.color.board));
 
         setFocusable(true);
@@ -72,7 +77,7 @@ public class GoGameView  extends View {
     protected void onDraw(Canvas canvas_val) {
         Log.d(TAG, "onDraw");
         this.canvas = canvas_val;
-        this.setupGridLen(this.width, this.goBoard().boardSize());
+        this.setupGridLen(this.width, this.boardSize());
         this.drawBoard();
     }
 
@@ -90,20 +95,23 @@ public class GoGameView  extends View {
     protected void drawBoard() {
         this.canvas.drawRect(this.gridLen1 - this.sideGridLen, this.gridLen1 - this.sideGridLen, this.gridLen19 + this.sideGridLen, this.gridLen19 + this.sideGridLen, this.boardPaint);
 
-        for (int i = this.goBoard().boardSize() ; i > 0 ; i--) {
-            this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 - 2, this.gridLen19, i * this.gridLen + this.gridLen0 - 2, this.blackPaint);
-            this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 - 1, this.gridLen19, i * this.gridLen + this.gridLen0 - 1, this.blackPaint);
-            this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0,     this.gridLen19, i * this.gridLen + this.gridLen0, this.blackPaint);
-            this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 + 1, this.gridLen19, i * this.gridLen + this.gridLen0 + 1, this.blackPaint);
-            this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 + 2, this.gridLen19, i * this.gridLen + this.gridLen0 + 2, this.blackPaint);
-            this.canvas.drawLine(i * this.gridLen + this.gridLen0 - 2, this.gridLen1, i * this.gridLen + this.gridLen0 - 2, this.gridLen19, this.blackPaint);
-            this.canvas.drawLine(i * this.gridLen + this.gridLen0 - 1, this.gridLen1, i * this.gridLen + this.gridLen0 - 1, this.gridLen19, this.blackPaint);
-            this.canvas.drawLine(i * this.gridLen + this.gridLen0,     this.gridLen1, i * this.gridLen + this.gridLen0,     this.gridLen19, this.blackPaint);
-            this.canvas.drawLine(i * this.gridLen + this.gridLen0 + 1, this.gridLen1, i * this.gridLen + this.gridLen0 + 1, this.gridLen19, this.blackPaint);
-            this.canvas.drawLine(i * this.gridLen + this.gridLen0 + 2, this.gridLen1, i * this.gridLen + this.gridLen0 + 2, this.gridLen19, this.blackPaint);
+        for (int i = this.boardSize() ; i > 0 ; i--) {
+            Paint paint = (this.moveX() == i) ? this.redPaint : this.blackPaint;
+            this.canvas.drawLine(i * this.gridLen + this.gridLen0 - 2, this.gridLen1, i * this.gridLen + this.gridLen0 - 2, this.gridLen19, paint);
+            this.canvas.drawLine(i * this.gridLen + this.gridLen0 - 1, this.gridLen1, i * this.gridLen + this.gridLen0 - 1, this.gridLen19, paint);
+            this.canvas.drawLine(i * this.gridLen + this.gridLen0,     this.gridLen1, i * this.gridLen + this.gridLen0,     this.gridLen19, paint);
+            this.canvas.drawLine(i * this.gridLen + this.gridLen0 + 1, this.gridLen1, i * this.gridLen + this.gridLen0 + 1, this.gridLen19, paint);
+            this.canvas.drawLine(i * this.gridLen + this.gridLen0 + 2, this.gridLen1, i * this.gridLen + this.gridLen0 + 2, this.gridLen19, paint);
+
+            paint = (this.moveY() == i) ? this.redPaint : this.blackPaint;
+            this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 - 2, this.gridLen19, i * this.gridLen + this.gridLen0 - 2, paint);
+            this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 - 1, this.gridLen19, i * this.gridLen + this.gridLen0 - 1, paint);
+            this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0,     this.gridLen19, i * this.gridLen + this.gridLen0,     paint);
+            this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 + 1, this.gridLen19, i * this.gridLen + this.gridLen0 + 1, paint);
+            this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 + 2, this.gridLen19, i * this.gridLen + this.gridLen0 + 2, paint);
         }
 
-        switch (this.goBoard().boardSize()) {
+        switch (this.boardSize()) {
             case 9:
                 this.drawBoardDot(5, 5);
                 break;
@@ -137,8 +145,8 @@ public class GoGameView  extends View {
 
     private void drawStones() {
 
-        for (int i = this.goBoard().boardSize() - 1; i >= 0; i--) {
-            for (int j = this.goBoard().boardSize() - 1; j >= 0; j--) {
+        for (int i = this.boardSize() - 1; i >= 0; i--) {
+            for (int j = this.boardSize() - 1; j >= 0; j--) {
                 if (this.board(i, j) == GoGameBoard.GO_BLACK_STONE){
                     this.drawStone(i, j, this.blackPaint);
                 }
