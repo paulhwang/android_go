@@ -26,7 +26,7 @@ public class GoGroup {
     private Boolean[][] deadMatrix;
 
     public GoGroupList goGroupList() { return this.goGroupList_; }
-    public GoConfig goConfig() { return this.goGroupList().goConfig(); }
+    public GoConfigInfo goConfig() { return this.goGroupList().goConfig(); }
     public int hisColor() { return this.hisColor_; }
     public int myColor() { return this.myColor_; }
     public int stoneCount() { return this.stoneCount_; }

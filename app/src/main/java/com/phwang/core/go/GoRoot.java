@@ -13,20 +13,20 @@ import com.phwang.core.utils.abend.Abend;
 public class GoRoot {
     private String objectName() {return "GoRoot";}
 
-    private GoConfig goConfig_;
+    private GoConfigInfo goConfig_;
     private GoBoard goBoard_;
     private GoGame goGame_;
     private GoParse goParse_;
     private GoFight goFight_;
 
-    public GoConfig goConfig() { return this.goConfig_; }
+    public GoConfigInfo goConfig() { return this.goConfig_; }
     public GoBoard goBoard() { return this.goBoard_; }
     public GoGame goGame() { return this.goGame_; }
     public GoParse goParse() { return this.goParse_; }
     public GoFight goFight() { return this.goFight_; }
 
     public GoRoot() {
-        this.goConfig_ = new GoConfig(this);
+        this.goConfig_ = new GoConfigInfo(this);
         this.goBoard_ = new GoBoard(this);
         this.goGame_ = new GoGame(this);
         this.goFight_ = new GoFight(this);

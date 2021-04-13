@@ -23,7 +23,7 @@ public class GoBoard {
     private int theLastDeadY;
     private GoRoot goRoot_;
 
-    public GoConfig goConfig() { return this.goRoot_.goConfig(); }
+    public GoConfigInfo goConfig() { return this.goRoot_.goConfig(); }
     public GoGame goGame() { return this.goRoot_.goGame(); }
     public String boardOutputBuffer() { return this.theBoardOutputBuffer; }
     public int boardArray(int x_val, int y_val) { return this.theBoardArray[x_val][y_val]; }

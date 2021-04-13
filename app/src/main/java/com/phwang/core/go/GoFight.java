@@ -23,7 +23,7 @@ public class GoFight {
 
     public GoRoot goRoot() { return this.goRoot_; }
     public GoBoard goBoard() { return this.goRoot_.goBoard(); }
-    public GoConfig goConfig() { return this.goRoot_.goConfig(); }
+    public GoConfigInfo goConfig() { return this.goRoot_.goConfig(); }
 
     GoGroupList emptyGroupList() { return this.theGroupListArray[0]; }
     GoGroupList blackGroupList() { return this.theGroupListArray[1]; }
