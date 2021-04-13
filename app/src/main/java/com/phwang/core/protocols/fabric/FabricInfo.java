@@ -13,8 +13,8 @@ import android.util.Log;
 import com.phwang.core.protocols.fabric.FabricClients;
 import com.phwang.core.utils.encoders.Encoders;
 
-public class FabricData {
-    private static final String TAG = "FabricData";
+public class FabricInfo {
+    private static final String TAG = "FabricInfo";
     private static final int STRINGS_COUNT_SIZE = 2;
 
     public static final int COMMAND_INDEX     = 0;
@@ -48,7 +48,7 @@ public class FabricData {
     public void setSessionIdStr(String session_id_str_val) { this.sessionIdStr_ = session_id_str_val; }
     public void setJobIdStr(String job_id_str_val) { this.jobIdStr_ = job_id_str_val; }
 
-    public FabricData(char command_val, char result_val, char client_type_val, char theme_type_val, String link_id_str_val, String session_id_str_val) {
+    public FabricInfo(char command_val, char result_val, char client_type_val, char theme_type_val, String link_id_str_val, String session_id_str_val) {
         this.command_ = command_val;
         this.result_ = result_val;
         this.clientType_ = client_type_val;
@@ -58,7 +58,7 @@ public class FabricData {
         this.stringArray_ = new String[this.arraySize_];
     }
 
-    public FabricData(String fabric_data_str_val) {
+    public FabricInfo(String fabric_data_str_val) {
         String rest_str = fabric_data_str_val;
         this.command_ = rest_str.charAt(COMMAND_INDEX);
         this.result_ = rest_str.charAt(RESULT_INDEX);

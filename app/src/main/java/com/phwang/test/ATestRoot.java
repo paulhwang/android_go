@@ -9,7 +9,7 @@ import android.util.Log;
 
 import com.phwang.core.protocols.fabric.FabricClients;
 import com.phwang.core.protocols.fabric.FabricCommands;
-import com.phwang.core.protocols.fabric.FabricData;
+import com.phwang.core.protocols.fabric.FabricInfo;
 import com.phwang.core.protocols.fabric.FabricResults;
 import com.phwang.core.protocols.fabric.FabricThemeTypes;
 import com.phwang.core.utils.abend.Abend;
@@ -53,7 +53,7 @@ class ATestRoot {
     }
 
     private void sendLoginRequest() {
-        FabricData fabric_data = new FabricData(
+        FabricInfo fabric_data = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_LOGIN,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID_CLIENT,
@@ -67,7 +67,7 @@ class ATestRoot {
     }
 
     protected void sendSoloSessionRequest(String link_id_str_val) {
-        FabricData fabric_data = new FabricData(
+        FabricInfo fabric_data = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_SOLO_SESSION,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID_CLIENT,

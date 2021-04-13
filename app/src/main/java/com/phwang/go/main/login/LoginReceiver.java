@@ -15,7 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 import com.phwang.core.protocols.fabric.FabricCommands;
 import com.phwang.core.protocols.fabric.FabricResults;
-import com.phwang.core.protocols.fabric.FabricData;
+import com.phwang.core.protocols.fabric.FabricInfo;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.global.GlobalData;
 
@@ -33,7 +33,7 @@ public class LoginReceiver extends BroadcastReceiver {
         String fabric_data_str = bundle.getString(BundleIndexDefine.FABRIC_DATA);
         //Log.e(TAG, "handleReceivedBundle() fabric_data_str=" + fabric_data_str);
 
-        FabricData fabric_decode = new FabricData(fabric_data_str);
+        FabricInfo fabric_decode = new FabricInfo(fabric_data_str);
         String link_id_str = fabric_decode.linkIdStr();
 
         switch (fabric_decode.command()) {

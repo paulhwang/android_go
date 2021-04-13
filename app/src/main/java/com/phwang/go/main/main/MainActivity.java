@@ -25,7 +25,7 @@ import com.phwang.core.protocols.fabric.FabricCommands;
 import com.phwang.core.protocols.fabric.FabricResults;
 import com.phwang.core.protocols.fabric.FabricThemeTypes;
 import com.phwang.core.utils.encoders.Encoders;
-import com.phwang.core.protocols.fabric.FabricData;
+import com.phwang.core.protocols.fabric.FabricInfo;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     protected void doLogout() {
-        FabricData fabric_encode = new FabricData(
+        FabricInfo fabric_encode = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_LOGOUT,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID_CLIENT,
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     protected void doGetGroups() {
-        FabricData fabric_encode = new FabricData(
+        FabricInfo fabric_encode = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_GET_GROUPS,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID_CLIENT,

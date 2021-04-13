@@ -8,7 +8,7 @@
 
 package com.phwang.core.fabric;
 
-import com.phwang.core.protocols.fabric.FabricData;
+import com.phwang.core.protocols.fabric.FabricInfo;
 import com.phwang.core.protocols.theme.ThemeCommands;
 import com.phwang.core.protocols.theme.ThemeInfo;
 import com.phwang.core.protocols.theme.ThemeResults;

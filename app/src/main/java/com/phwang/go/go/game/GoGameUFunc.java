@@ -14,7 +14,7 @@ import com.phwang.core.protocols.fabric.FabricClients;
 import com.phwang.core.protocols.fabric.FabricCommands;
 import com.phwang.core.protocols.fabric.FabricResults;
 import com.phwang.core.protocols.fabric.FabricThemeTypes;
-import com.phwang.core.protocols.fabric.FabricData;
+import com.phwang.core.protocols.fabric.FabricInfo;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
 
@@ -30,7 +30,7 @@ public class GoGameUFunc {
     }
 
     protected void sendDeleteSessionCommand() {
-        FabricData fabric_encode = new FabricData(
+        FabricInfo fabric_encode = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_DELETE_SESSION,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID_CLIENT,
@@ -47,7 +47,7 @@ public class GoGameUFunc {
     }
 
     protected void sendPutSessionDataCommand(String move_data_val) {
-        FabricData fabric_encode = new FabricData(
+        FabricInfo fabric_encode = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID_CLIENT,
@@ -65,7 +65,7 @@ public class GoGameUFunc {
     }
 
     protected void sendGetSessionDataCommand() {
-        FabricData fabric_encode = new FabricData(
+        FabricInfo fabric_encode = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID_CLIENT,

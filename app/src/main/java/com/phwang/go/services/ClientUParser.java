@@ -12,7 +12,7 @@ import android.util.Log;
 import com.phwang.core.protocols.fabric.FabricCommands;
 import com.phwang.core.protocols.fabric.FabricResults;
 import com.phwang.core.utils.binder.Binder;
-import com.phwang.core.protocols.fabric.FabricData;
+import com.phwang.core.protocols.fabric.FabricInfo;
 import com.phwang.core.protocols.fabric.FabricInfoStr;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.global.GlobalData;
@@ -37,7 +37,7 @@ public class ClientUParser {
             case FabricCommands.FABRIC_COMMAND_PEER_SESSION:
             case FabricCommands.FABRIC_COMMAND_JOIN_SESSION:
                 if (GlobalData.linkIdStr() == null) {
-                    FabricData fabric_data = new FabricData(fabric_data_str_val);
+                    FabricInfo fabric_data = new FabricInfo(fabric_data_str_val);
                     fabric_data.setResult(FabricResults.LINK_NOT_EXIST);
                     String new_fabric_data_str = fabric_data.encode();
                     this.clientDParser().sendFabricDataResponse(IntentDefine.GO_CONFIG_ACTIVITY, new_fabric_data_str);

@@ -1,6 +1,6 @@
 package com.phwang.test;
 
-import com.phwang.core.protocols.fabric.FabricData;
+import com.phwang.core.protocols.fabric.FabricInfo;
 import com.phwang.core.protocols.fabric.FabricCommands;
 
 public class ATestDParser {
@@ -15,7 +15,7 @@ public class ATestDParser {
 
     protected void parserResponseData(String fabric_data_str_val) {
         this.debug(true, "parserResponseData", "fabric_data_str_val=" + fabric_data_str_val);
-        FabricData fabric_data = new FabricData(fabric_data_str_val);
+        FabricInfo fabric_data = new FabricInfo(fabric_data_str_val);
         char command = fabric_data.command();
 
         switch (command) {

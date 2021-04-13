@@ -15,7 +15,7 @@ import com.phwang.core.protocols.theme.ThemeInfo;
 import com.phwang.core.protocols.theme.ThemeResults;
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.protocols.fabric.FabricCommands;
-import com.phwang.core.protocols.fabric.FabricData;
+import com.phwang.core.protocols.fabric.FabricInfo;
 import com.phwang.core.protocols.fabric.FabricResults;
 import com.phwang.core.utils.listmgr.ListEntry;
 import com.phwang.core.utils.binder.BinderBundle;
@@ -43,7 +43,7 @@ public class FabricUParser {
     protected void parseInputPacket(BinderBundle bundle_val) {
         String input_fabric_data_str = bundle_val.data();
         this.debug(true, "parseInputPacket", "input_fabric_data_str = " + input_fabric_data_str);
-        FabricData fabric_data = new FabricData(input_fabric_data_str);
+        FabricInfo fabric_data = new FabricInfo(input_fabric_data_str);
         char command = fabric_data.command();
 
         switch (command) {
@@ -109,7 +109,7 @@ public class FabricUParser {
         this.fabricDBinder().transmitBundleData(bundle_val);
     }
 
-    private void processRegisterRequest(FabricData fabric_data_val) {
+    private void processRegisterRequest(FabricInfo fabric_data_val) {
         String my_name = fabric_data_val.stringArrayElement(0);
         String email = fabric_data_val.stringArrayElement(1);
         String password = fabric_data_val.stringArrayElement(2);
@@ -120,7 +120,7 @@ public class FabricUParser {
         fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
-    private void processLoginRequest(FabricData fabric_data_val) {
+    private void processLoginRequest(FabricInfo fabric_data_val) {
         char client_type = fabric_data_val.clientType();
         String my_name = fabric_data_val.stringArrayElement(0);
         String password = fabric_data_val.stringArrayElement(1);
@@ -137,7 +137,7 @@ public class FabricUParser {
         fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
-    private void processLogoutRequest(FabricData fabric_data_val) {
+    private void processLogoutRequest(FabricInfo fabric_data_val) {
         String link_id_str = fabric_data_val.linkIdStr();
         this.debug(false, "processLogoutRequest", "link_id_str=" + link_id_str);
 
@@ -150,7 +150,7 @@ public class FabricUParser {
         fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
-    private void processGetGroupsRequest(FabricData fabric_data_val) {
+    private void processGetGroupsRequest(FabricInfo fabric_data_val) {
         String link_id_str = fabric_data_val.linkIdStr();
         this.debug(false, "processGetGroupsRequest", "link_id_str=" + link_id_str);
 
@@ -163,7 +163,7 @@ public class FabricUParser {
         fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
-    private void processSoloSessionRequest(FabricData fabric_data_val) {
+    private void processSoloSessionRequest(FabricInfo fabric_data_val) {
         String link_id_str = fabric_data_val.linkIdStr();
         String data_str = fabric_data_val.stringArrayElement(0);
         this.debug(false, "processSoloSessionRequest", "link_id = " + link_id_str);
@@ -186,7 +186,7 @@ public class FabricUParser {
         fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
-    private void processHeadSessionRequest(FabricData fabric_data_val) {
+    private void processHeadSessionRequest(FabricInfo fabric_data_val) {
         String link_id_str = fabric_data_val.linkIdStr();
         String theme_data_str = fabric_data_val.stringArrayElement(0);
         this.debug(false, "processHeadSessionRequest", "link_id_str=" + link_id_str);
@@ -209,7 +209,7 @@ public class FabricUParser {
         fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
-    private void processPeerSessionRequest(FabricData fabric_data_val) {
+    private void processPeerSessionRequest(FabricInfo fabric_data_val) {
         String link_id_str = fabric_data_val.linkIdStr();
         String theme_data_str = fabric_data_val.stringArrayElement(0);
         this.debug(false, "processPeerSessionRequest", "link_id_str=" + link_id_str);
@@ -232,7 +232,7 @@ public class FabricUParser {
         fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
-    private void processJoinSessionRequest(FabricData fabric_data_val) {
+    private void processJoinSessionRequest(FabricInfo fabric_data_val) {
         String link_id_str = fabric_data_val.linkIdStr();
         String theme_data_str = fabric_data_val.stringArrayElement(0);
         this.debug(false, "processJoinSessionRequest", "link_id_str=" + link_id_str);
@@ -255,7 +255,7 @@ public class FabricUParser {
         fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
-    private void processDeleteSessionRequest(FabricData fabric_data_val) {
+    private void processDeleteSessionRequest(FabricInfo fabric_data_val) {
         String link_id_str = fabric_data_val.linkIdStr();
         String session_id_str = fabric_data_val.sessionIdStr();
         this.debug(false, "processDeleteSessionRequest", "link_id_str=" + link_id_str);
@@ -278,7 +278,7 @@ public class FabricUParser {
         fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
-    private void processPutSessionDataRequest(FabricData fabric_data_val) {
+    private void processPutSessionDataRequest(FabricInfo fabric_data_val) {
         String link_id_str = fabric_data_val.linkIdStr();
         String session_id_str = fabric_data_val.sessionIdStr();
         String data_str = fabric_data_val.stringArrayElement(0);
@@ -308,7 +308,7 @@ public class FabricUParser {
         fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
-    private void processGetSessionDataRequest(FabricData fabric_data_val) {
+    private void processGetSessionDataRequest(FabricInfo fabric_data_val) {
         String link_id_str = fabric_data_val.linkIdStr();
         String session_id_str = fabric_data_val.sessionIdStr();
         this.debug(false, "processGetSessionDataRequest", "link_id_str=" + link_id_str);

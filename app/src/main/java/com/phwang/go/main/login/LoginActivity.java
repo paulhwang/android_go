@@ -21,7 +21,7 @@ import com.phwang.core.protocols.fabric.FabricCommands;
 import com.phwang.core.protocols.fabric.FabricResults;
 import com.phwang.core.protocols.fabric.FabricThemeTypes;
 import com.phwang.core.utils.encoders.Encoders;
-import com.phwang.core.protocols.fabric.FabricData;
+import com.phwang.core.protocols.fabric.FabricInfo;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
 
-        FabricData fabric_encode = new FabricData(
+        FabricInfo fabric_encode = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_LOGIN,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID_CLIENT,

@@ -24,7 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.phwang.core.go.GoDefine;
 import com.phwang.core.protocols.fabric.FabricClients;
 import com.phwang.core.protocols.fabric.FabricCommands;
-import com.phwang.core.protocols.fabric.FabricData;
+import com.phwang.core.protocols.fabric.FabricInfo;
 import com.phwang.core.protocols.fabric.FabricResults;
 import com.phwang.core.protocols.fabric.FabricThemeTypes;
 import com.phwang.core.utils.encoders.Encoders;
@@ -104,7 +104,7 @@ public class GoHeadActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void setupHeadSession(String go_config_data_val) {
-        FabricData fabric_encode = new FabricData(
+        FabricInfo fabric_encode = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_HEAD_SESSION,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID_CLIENT,
