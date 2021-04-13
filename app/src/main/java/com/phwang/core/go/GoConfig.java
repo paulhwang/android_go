@@ -27,8 +27,8 @@ public class GoConfig {
         this.goRoot_ = root_val;
     }
 
-    public void configIt(String input_data_val) {
-    	this.debug(false, "ConfigIt", "input_data_val=" + input_data_val);
+    public void decodeConfig(String input_data_val) {
+    	this.debug(false, "decodeConfig", "input_data_val=" + input_data_val);
     	
         String board_size_str = input_data_val.substring(0, 2);
         String handicap_str = input_data_val.substring(2, 4);
@@ -39,6 +39,16 @@ public class GoConfig {
         this.komiPoint_ = Encoders.iDecodeRaw(komi_str);
         
     	this.debug(false, "ConfigIt", "boardSize=" + boardSize());
+    }
+
+    public static String encodeConfig(int board_size_val, int handicap_val, int komi_val, int color_val) {
+        StringBuilder buf = new StringBuilder();
+        buf.append('G');
+        buf.append(Encoders.iEncodeRaw2(board_size_val));
+        buf.append(Encoders.iEncodeRaw2(handicap_val));
+        buf.append(Encoders.iEncodeRaw2(komi_val));
+        buf.append(Encoders.iEncodeRaw1(color_val));
+        return buf.toString();
     }
 
     private Boolean isValidCoordinate_(int coordinate_val) {

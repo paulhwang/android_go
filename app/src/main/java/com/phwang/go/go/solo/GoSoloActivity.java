@@ -19,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.phwang.core.go.GoConfig;
 import com.phwang.core.go.GoDefine;
 import com.phwang.core.protocols.fabric.FabricClients;
 import com.phwang.core.protocols.fabric.FabricCommands;
@@ -63,13 +64,13 @@ public class GoSoloActivity extends AppCompatActivity implements View.OnClickLis
             Log.e(TAG, "onItemClick() position=" + position + " val=" + boardSizeArray[position]);
             switch (position) {
                 case 0:
-                    setupSoloSession(GoGameBoard.encodeConfig(19, 0, 0, GoDefine.GO_BOTH_STONE));
+                    setupSoloSession(GoConfig.encodeConfig(19, 0, 0, GoDefine.GO_BOTH_STONE));
                     break;
                 case 1:
-                    setupSoloSession(GoGameBoard.encodeConfig(13, 0, 0, GoDefine.GO_BOTH_STONE));
+                    setupSoloSession(GoConfig.encodeConfig(13, 0, 0, GoDefine.GO_BOTH_STONE));
                     break;
                 case 2:
-                    setupSoloSession(GoGameBoard.encodeConfig(9, 0, 0, GoDefine.GO_BOTH_STONE));
+                    setupSoloSession(GoConfig.encodeConfig(9, 0, 0, GoDefine.GO_BOTH_STONE));
                     break;
                 case 3:
                     finish();

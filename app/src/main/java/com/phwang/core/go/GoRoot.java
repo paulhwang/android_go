@@ -34,7 +34,7 @@ public class GoRoot {
     }
 
     public String doSetup(String input_data_val) {
-        this.goConfig().configIt(input_data_val);
+        this.goConfig().decodeConfig(input_data_val);
         return "";
     }
 

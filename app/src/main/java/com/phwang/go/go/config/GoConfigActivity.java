@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.phwang.core.go.GoConfig;
 import com.phwang.core.protocols.fabric.FabricClients;
 import com.phwang.core.protocols.fabric.FabricCommands;
 import com.phwang.core.protocols.fabric.FabricResults;
@@ -82,16 +83,16 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         Intent intent;
         switch (view_val.getId()) {
             case R.id.go_config_black9_button:
-                this.setupHeadSession(GoGameBoard.encodeConfig(9, 0, 0, GoDefine.GO_BLACK_STONE));
+                this.setupHeadSession(GoConfig.encodeConfig(9, 0, 0, GoDefine.GO_BLACK_STONE));
                 break;
             case R.id.go_config_black13_button:
-                this.setupHeadSession(GoGameBoard.encodeConfig(13, 0, 0, GoDefine.GO_BLACK_STONE));
+                this.setupHeadSession(GoConfig.encodeConfig(13, 0, 0, GoDefine.GO_BLACK_STONE));
                 break;
             case R.id.go_config_black19_button:
-                this.setupHeadSession(GoGameBoard.encodeConfig(19, 0, 0, GoDefine.GO_BLACK_STONE));
+                this.setupHeadSession(GoConfig.encodeConfig(19, 0, 0, GoDefine.GO_BLACK_STONE));
                 break;
             case R.id.go_config_white9_button:
-                this.setupHeadSession(GoGameBoard.encodeConfig(9, 0, 0, GoDefine.GO_WHITE_STONE));
+                this.setupHeadSession(GoConfig.encodeConfig(9, 0, 0, GoDefine.GO_WHITE_STONE));
                 break;
             case R.id.go_config_white13_button:
                 intent = new Intent(this, GoSoloActivity.class);
