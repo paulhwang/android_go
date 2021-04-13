@@ -57,6 +57,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         String config_str = fabric_decode.stringArrayElement(0);
         //Log.e(TAG, "onCreate() config_str=" + config_str);
 
+        this.resetTouchXY();
         this.goBoard_ = new GoGameBoard(this, config_str);
         this.goGameUFunc_ = new GoGameUFunc(this);
         this.goGameDFunc_ = new GoGameDFunc(this);
@@ -105,27 +106,27 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         Intent intent;
         switch (view_val.getId()) {
             case R.id.go_game_b_button:
-                this.resetMoveXY();
+                this.resetTouchXY();
                 this.goGameUFunc_.sendPutSessionDataCommand("Gb");
                 break;
             case R.id.go_game_fb_button:
-                this.resetMoveXY();
+                this.resetTouchXY();
                 this.goGameUFunc_.sendPutSessionDataCommand("GB");
                 break;
             case R.id.go_game_f_button:
-                this.resetMoveXY();
+                this.resetTouchXY();
                 this.goGameUFunc_.sendPutSessionDataCommand("Gf");
                 break;
             case R.id.go_game_ff_button:
-                this.resetMoveXY();
+                this.resetTouchXY();
                 this.goGameUFunc_.sendPutSessionDataCommand("GF");
                 break;
             case R.id.go_game_pass_button:
-                this.resetMoveXY();
+                this.resetTouchXY();
                 this.goGameUFunc_.sendPutSessionDataCommand("GP");
                 break;
             case R.id.go_game_confirm_button:
-                this.resetMoveXY();
+                this.resetTouchXY();
                 finish();
                 break;
             case R.id.go_game_resign_button:
@@ -137,7 +138,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    private void resetMoveXY() {
+    private void resetTouchXY() {
         this.touchX_ = GoDefine.GO_INVALID_COORDINATE;
         this.touchY_ = GoDefine.GO_INVALID_COORDINATE;
     }
