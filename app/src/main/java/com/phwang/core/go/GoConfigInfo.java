@@ -22,18 +22,18 @@ public class GoConfigInfo {
     public int handicapPoint() { return this.handicapPoint_; }
     public int komiPoint() { return this.komiPoint_; }
 
-    public void decodeConfig(String input_data_val) {
-        this.debug(false, "decodeConfig", "input_data_val=" + input_data_val);
+    public GoConfigInfo(String go_config_info_str_val) {
+        this.debug(false, "GoConfigInfo", "go_config_info_str_val=" + go_config_info_str_val);
 
-        String board_size_str = input_data_val.substring(0, 2);
-        String handicap_str = input_data_val.substring(2, 4);
-        String komi_str = input_data_val.substring(4, 6);
+        String board_size_str = go_config_info_str_val.substring(0, 2);
+        String handicap_str = go_config_info_str_val.substring(2, 4);
+        String komi_str = go_config_info_str_val.substring(4, 6);
 
         this.boardSize_ = Encoders.iDecodeRaw(board_size_str);
         this.handicapPoint_ = Encoders.iDecodeRaw(handicap_str);
         this.komiPoint_ = Encoders.iDecodeRaw(komi_str);
 
-        this.debug(false, "decodeConfig", "boardSize=" + boardSize());
+        this.debug(false, "GoConfigInfo", "boardSize=" + boardSize());
     }
 
     public static String encodeConfig(int board_size_val, int handicap_val, int komi_val, int color_val) {

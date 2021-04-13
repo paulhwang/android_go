@@ -25,17 +25,12 @@ public class GoRoot {
     public GoParse goParse() { return this.goParse_; }
     public GoFight goFight() { return this.goFight_; }
 
-    public GoRoot() {
-        this.goConfigInfo_ = new GoConfigInfo();
+    public GoRoot(String go_config_info_str_val) {
+        this.goConfigInfo_ = new GoConfigInfo(go_config_info_str_val);
         this.goBoard_ = new GoBoard(this);
         this.goGame_ = new GoGame(this);
         this.goFight_ = new GoFight(this);
         this.goParse_ = new GoParse(this);
-    }
-
-    public String doSetup(String input_data_val) {
-        this.goConfigInfo().decodeConfig(input_data_val);
-        return "";
     }
 
     public String processInputData(String input_data_val) {

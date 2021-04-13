@@ -43,8 +43,8 @@ public class EngineBase implements ListEntryInt {
 
         switch (input_data_val.charAt(0)) {
             case 'G':
-                this.goRoot_ = new GoRoot();
-                return this.goRoot_.doSetup(input_data_val.substring(1));
+                this.goRoot_ = new GoRoot(input_data_val.substring(1));
+                return "";
 
             default:
                 String err_msg = "command " + input_data_val.charAt(0) + " not supported";
