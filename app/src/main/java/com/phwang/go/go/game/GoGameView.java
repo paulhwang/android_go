@@ -15,6 +15,8 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 import android.util.Log;
+
+import com.phwang.core.go.GoDefine;
 import com.phwang.go.R;
 
 public class GoGameView  extends View {
@@ -26,6 +28,8 @@ public class GoGameView  extends View {
     private int board(int x_val, int y_val) { return this.goGameBoard().board(x_val, y_val); }
     private int touchX() { return this.goGameActivity_.touchX(); }
     private int touchY() { return this.goGameActivity_.touchY(); }
+    private int moveX() { return this.goGameActivity_.moveX(); }
+    private int moveY() { return this.goGameActivity_.moveY(); }
 
     private int width;
     protected int viewTop;
@@ -144,7 +148,6 @@ public class GoGameView  extends View {
     }
 
     private void drawStones() {
-
         for (int i = this.boardSize() - 1; i >= 0; i--) {
             for (int j = this.boardSize() - 1; j >= 0; j--) {
                 if (this.board(i, j) == GoGameBoard.GO_BLACK_STONE){
@@ -155,6 +158,8 @@ public class GoGameView  extends View {
                 }
             }
         }
+
+        this.drawStone(this.moveX(), this.moveY(), this.goGameBoard().nextColor() == GoDefine.GO_BLACK_STONE ? this.blackPaint : this.whitePaint);
     }
 
     private void drawStone(int x, int y, Paint paint_val) {

@@ -39,6 +39,8 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     protected Boolean isDead() { return this.isDead_; }
     protected int touchX() { return this.touchX_; }
     protected int touchY() { return this.touchY_; }
+    protected int moveX() { return this.touchX() - 1; }
+    protected int moveY() { return this.touchY() - 1; }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,28 +108,28 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         Intent intent;
         switch (view_val.getId()) {
             case R.id.go_game_b_button:
-                this.resetTouchXY();
                 this.goGameUFunc_.sendPutSessionDataCommand("Gb");
+                this.resetTouchXY();
                 break;
             case R.id.go_game_fb_button:
-                this.resetTouchXY();
                 this.goGameUFunc_.sendPutSessionDataCommand("GB");
+                this.resetTouchXY();
                 break;
             case R.id.go_game_f_button:
-                this.resetTouchXY();
                 this.goGameUFunc_.sendPutSessionDataCommand("Gf");
+                this.resetTouchXY();
                 break;
             case R.id.go_game_ff_button:
-                this.resetTouchXY();
                 this.goGameUFunc_.sendPutSessionDataCommand("GF");
+                this.resetTouchXY();
                 break;
             case R.id.go_game_pass_button:
-                this.resetTouchXY();
                 this.goGameUFunc_.sendPutSessionDataCommand("GP");
+                this.resetTouchXY();
                 break;
             case R.id.go_game_confirm_button:
+                this.processTouchInput();
                 this.resetTouchXY();
-                finish();
                 break;
             case R.id.go_game_resign_button:
                 finish();
@@ -156,14 +158,14 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case MotionEvent.ACTION_UP:
-                this.processTouchInput();
+                //this.processTouchInput();
                 break;
         }
         return super.onTouchEvent(event);
     }
 
     public void processTouchInput() {
-        String move_str = this.goGameBoard_.encodeMove(this.touchX_ - 1, this.touchY_ - 1);
+        String move_str = this.goGameBoard_.encodeMove(this.moveX(), this.moveY());
         if (move_str == null) {
             return;
         }
