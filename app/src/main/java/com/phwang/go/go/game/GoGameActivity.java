@@ -8,13 +8,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-
 import com.phwang.core.protocols.fabric.FabricData;
 import com.phwang.core.utils.watchdog.WatchDog;
 import com.phwang.core.utils.watchdog.WatchDogInt;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
+import com.phwang.core.go.GoDefine;
 
 public class GoGameActivity extends AppCompatActivity implements View.OnClickListener, WatchDogInt {
     private static final String TAG = "GoGameActivity";
@@ -105,21 +105,27 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         Intent intent;
         switch (view_val.getId()) {
             case R.id.go_game_b_button:
+                this.resetMoveXY();
                 this.goGameUFunc_.sendPutSessionDataCommand("Gb");
                 break;
             case R.id.go_game_fb_button:
+                this.resetMoveXY();
                 this.goGameUFunc_.sendPutSessionDataCommand("GB");
                 break;
             case R.id.go_game_f_button:
+                this.resetMoveXY();
                 this.goGameUFunc_.sendPutSessionDataCommand("Gf");
                 break;
             case R.id.go_game_ff_button:
+                this.resetMoveXY();
                 this.goGameUFunc_.sendPutSessionDataCommand("GF");
                 break;
             case R.id.go_game_pass_button:
+                this.resetMoveXY();
                 this.goGameUFunc_.sendPutSessionDataCommand("GP");
                 break;
             case R.id.go_game_confirm_button:
+                this.resetMoveXY();
                 finish();
                 break;
             case R.id.go_game_resign_button:
@@ -129,6 +135,11 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
                 finish();
                 break;
         }
+    }
+
+    private void resetMoveXY() {
+        this.moveX_ = GoDefine.GO_INVALID_COORDINATE;
+        this.moveY_ = GoDefine.GO_INVALID_COORDINATE;
     }
 
     @Override

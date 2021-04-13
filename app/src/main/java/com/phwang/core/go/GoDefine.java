@@ -10,6 +10,7 @@ package com.phwang.core.go;
 
 public class GoDefine {
     public static final int MAX_BOARD_SIZE = 19;
+    public static final int GO_INVALID_COORDINATE = 20;
 
     public static final int GO_EMPTY_STONE = 0;
     public static final int GO_BLACK_STONE = 1;
