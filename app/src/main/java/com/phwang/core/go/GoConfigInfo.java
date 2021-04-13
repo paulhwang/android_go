@@ -25,9 +25,10 @@ public class GoConfigInfo {
     public GoConfigInfo(String go_config_info_str_val) {
         this.debug(false, "GoConfigInfo", "go_config_info_str_val=" + go_config_info_str_val);
 
-        String board_size_str = go_config_info_str_val.substring(0, 2);
-        String handicap_str = go_config_info_str_val.substring(2, 4);
-        String komi_str = go_config_info_str_val.substring(4, 6);
+        String rest_str = go_config_info_str_val.substring(1);
+        String board_size_str = rest_str.substring(0, 2);
+        String handicap_str = rest_str.substring(2, 4);
+        String komi_str = rest_str.substring(4, 6);
 
         this.boardSize_ = Encoders.iDecodeRaw(board_size_str);
         this.handicapPoint_ = Encoders.iDecodeRaw(handicap_str);
