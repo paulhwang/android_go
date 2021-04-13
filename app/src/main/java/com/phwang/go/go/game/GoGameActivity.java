@@ -27,8 +27,8 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     private String sessionIdStr_;
     private Boolean isDead_ = false;
     private WatchDog watchDog_;
-    private int moveX_;
-    private int moveY_;
+    private int touchX_;
+    private int touchY_;
 
     protected GoGameView goView() { return this.goView_; };
     protected GoGameBoard goBoard() { return this.goBoard_; };
@@ -37,8 +37,8 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     protected String linkIdStr() { return this.linkIdStr_; }
     protected String sessionIdStr() { return this.sessionIdStr_; }
     protected Boolean isDead() { return this.isDead_; }
-    protected int moveX() { return this.moveX_; }
-    protected int moveY() { return this.moveY_; }
+    protected int touchX() { return this.touchX_; }
+    protected int touchY() { return this.touchY_; }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,14 +138,14 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void resetMoveXY() {
-        this.moveX_ = GoDefine.GO_INVALID_COORDINATE;
-        this.moveY_ = GoDefine.GO_INVALID_COORDINATE;
+        this.touchX_ = GoDefine.GO_INVALID_COORDINATE;
+        this.touchY_ = GoDefine.GO_INVALID_COORDINATE;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        this.moveX_ = ((int) event.getX() - this.goView_.viewLeft - this.goView_.gridLen0 + this.goView_.halfGridLen) / this.goView_.gridLen;
-        this.moveY_ = ((int) event.getY() - this.goView_.viewTop  - this.goView_.gridLen0 + this.goView_.halfGridLen) / this.goView_.gridLen;
+        this.touchX_ = ((int) event.getX() - this.goView_.viewLeft - this.goView_.gridLen0 + this.goView_.halfGridLen) / this.goView_.gridLen;
+        this.touchY_ = ((int) event.getY() - this.goView_.viewTop  - this.goView_.gridLen0 + this.goView_.halfGridLen) / this.goView_.gridLen;
         //Log.e(TAG, "onTouchEvent: x=" + this.x_ + " y=" + this.y_);
         switch( event.getAction() ) {
             case MotionEvent.ACTION_DOWN:
@@ -155,7 +155,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case MotionEvent.ACTION_UP:
-                this.processTouchInput(this.moveX_, this.moveY_);
+                this.processTouchInput(this.touchX_, this.touchY_);
                 break;
         }
         return super.onTouchEvent(event);

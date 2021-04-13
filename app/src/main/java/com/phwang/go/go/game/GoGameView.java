@@ -24,8 +24,8 @@ public class GoGameView  extends View {
     private GoGameBoard goGameBoard() { return this.goGameActivity_.goBoard(); }
     private int boardSize() { return this.goGameBoard().boardSize(); }
     private int board(int x_val, int y_val) { return this.goGameBoard().board(x_val, y_val); }
-    private int moveX() { return this.goGameActivity_.moveX(); }
-    private int moveY() { return this.goGameActivity_.moveY(); }
+    private int touchX() { return this.goGameActivity_.touchX(); }
+    private int touchY() { return this.goGameActivity_.touchY(); }
 
     private int width;
     protected int viewTop;
@@ -96,14 +96,14 @@ public class GoGameView  extends View {
         this.canvas.drawRect(this.gridLen1 - this.sideGridLen, this.gridLen1 - this.sideGridLen, this.gridLen19 + this.sideGridLen, this.gridLen19 + this.sideGridLen, this.boardPaint);
 
         for (int i = this.boardSize() ; i > 0 ; i--) {
-            Paint paint = (this.moveX() == i) ? this.redPaint : this.blackPaint;
+            Paint paint = (this.touchX() == i) ? this.redPaint : this.blackPaint;
             this.canvas.drawLine(i * this.gridLen + this.gridLen0 - 2, this.gridLen1, i * this.gridLen + this.gridLen0 - 2, this.gridLen19, paint);
             this.canvas.drawLine(i * this.gridLen + this.gridLen0 - 1, this.gridLen1, i * this.gridLen + this.gridLen0 - 1, this.gridLen19, paint);
             this.canvas.drawLine(i * this.gridLen + this.gridLen0,     this.gridLen1, i * this.gridLen + this.gridLen0,     this.gridLen19, paint);
             this.canvas.drawLine(i * this.gridLen + this.gridLen0 + 1, this.gridLen1, i * this.gridLen + this.gridLen0 + 1, this.gridLen19, paint);
             this.canvas.drawLine(i * this.gridLen + this.gridLen0 + 2, this.gridLen1, i * this.gridLen + this.gridLen0 + 2, this.gridLen19, paint);
 
-            paint = (this.moveY() == i) ? this.redPaint : this.blackPaint;
+            paint = (this.touchY() == i) ? this.redPaint : this.blackPaint;
             this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 - 2, this.gridLen19, i * this.gridLen + this.gridLen0 - 2, paint);
             this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 - 1, this.gridLen19, i * this.gridLen + this.gridLen0 - 1, paint);
             this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0,     this.gridLen19, i * this.gridLen + this.gridLen0,     paint);
