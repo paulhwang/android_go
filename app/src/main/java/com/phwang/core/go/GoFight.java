@@ -63,8 +63,8 @@ public class GoFight {
         this.theGroupListArray[6] = new GoGroupList(this, 6, GoDefine.GO_EMPTY_STONE, false, null, "white");
     }
 
-    public void enterBattle(GoMove move_val) {
-        this.debug(false, "enterBattle", move_val.moveInfo());
+    public void enterBattle(GoMoveInfo move_val) {
+        this.debug(false, "enterBattle move=", move_val.moveDebugStr());
 
         this.goBoard().addStoneToBoard(move_val.X(), move_val.Y(), move_val.MyColor());
         GoGroup my_group = this.insertStoneToGroupList(move_val);
@@ -93,7 +93,7 @@ public class GoFight {
         this.abendEngine();
     }
 
-    private GoGroup insertStoneToGroupList(GoMove move_val) {
+    private GoGroup insertStoneToGroupList(GoMoveInfo move_val) {
     	GoGroupList g_list;
 
         if (move_val.MyColor() == GoDefine.GO_BLACK_STONE) {
@@ -103,7 +103,7 @@ public class GoFight {
             g_list = this.whiteGroupList();
         }
         else {
-            this.abend("insertStoneToGroupList", move_val.moveInfo());
+            this.abend("insertStoneToGroupList move=", move_val.moveDebugStr());
             return null;
         }
 
@@ -134,7 +134,7 @@ public class GoFight {
         return group;
     }
 
-    private int killOtherColorGroups(GoMove move_val, GoGroup my_group_val) {
+    private int killOtherColorGroups(GoMoveInfo move_val, GoGroup my_group_val) {
         int count;
         count = this.killOtherColorGroup(my_group_val, move_val.X() - 1, move_val.Y());
         count += this.killOtherColorGroup(my_group_val, move_val.X() + 1, move_val.Y());

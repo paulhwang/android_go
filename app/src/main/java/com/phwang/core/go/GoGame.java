@@ -20,7 +20,7 @@ public class GoGame {
     private int nextColor_;
     private Boolean thePassReceived = false;
     private Boolean theGameIsOver = false;
-    private GoMove[] theMovesArray;
+    private GoMoveInfo[] theMovesArray;
 
     public GoConfig goConfig() { return this.goRoot_.goConfig();  }
     public GoBoard goBoard() { return this.goRoot_.goBoard(); }
@@ -30,7 +30,7 @@ public class GoGame {
 
     public GoGame(GoRoot go_root_val) {
         this.goRoot_ = go_root_val;
-        this.theMovesArray = new GoMove[GO_GAME_CLASS_MAX_MOVES_ARRAY_SIZE];
+        this.theMovesArray = new GoMoveInfo[GO_GAME_CLASS_MAX_MOVES_ARRAY_SIZE];
     }
 
     private void resetGameObjectPartialData() {
@@ -39,8 +39,8 @@ public class GoGame {
         this.theGameIsOver = false;
     }
 
-    public void addNewMoveAndFight(GoMove move_val) {
-        this.debug(false, "AddNewMoveAndFight", "Move = " + move_val.moveInfo());
+    public void addNewMoveAndFight(GoMoveInfo move_val) {
+        this.debug(false, "AddNewMoveAndFight", "Move=" + move_val.moveDebugStr());
 
         if (move_val.TurnIndex() != this.totalMoves_ + 1) {
             this.log("AddNewMoveAndFight", "duplicated move received ***************** index= " + move_val.TurnIndex());
@@ -59,7 +59,7 @@ public class GoGame {
         this.nextColor_ = GoDefine.getOppositeColor(move_val.MyColor());
     }
 
-    private void insertMoveToMoveList(GoMove move_val) {
+    private void insertMoveToMoveList(GoMoveInfo move_val) {
         this.theMovesArray[this.totalMoves_] = move_val;
         this.totalMoves_++;
         this.maxMove_ = this.totalMoves_;
@@ -124,7 +124,7 @@ public class GoGame {
 
         int i = 0;
         while (i < this.totalMoves_) {
-        	GoMove move = this.theMovesArray[i];
+            GoMoveInfo move = this.theMovesArray[i];
             this.goFight().enterBattle(move);
             this.nextColor_ = GoDefine.getOppositeColor(move.MyColor());
             i += 1;

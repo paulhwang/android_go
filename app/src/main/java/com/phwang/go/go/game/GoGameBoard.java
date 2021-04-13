@@ -81,6 +81,8 @@ public class GoGameBoard {
         if (this.boardArray_[x_val][y_val] != 0) {
             return null;
         }
+
+
         StringBuilder buf = new StringBuilder("GM");
         buf.append(Encoders.iEncodeRaw2(x_val));
         buf.append(Encoders.iEncodeRaw2(y_val));
