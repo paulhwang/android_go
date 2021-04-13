@@ -10,6 +10,7 @@ package com.phwang.go.go.game;
 
 import android.util.Log;
 import com.phwang.core.go.GoDefine;
+import com.phwang.core.go.GoMoveInfo;
 import com.phwang.core.utils.encoders.Encoders;
 
 public class GoGameBoard {
@@ -82,13 +83,7 @@ public class GoGameBoard {
             return null;
         }
 
-
-        StringBuilder buf = new StringBuilder("GM");
-        buf.append(Encoders.iEncodeRaw2(x_val));
-        buf.append(Encoders.iEncodeRaw2(y_val));
-        buf.append(Encoders.iEncodeRaw1(this.nextColor_));
-        buf.append(Encoders.iEncodeRaw3(this.totalMoves_ + 1));
-        return buf.toString();
+        return GoMoveInfo.encodeMove(x_val, y_val, this.nextColor_, this.totalMoves_ + 1);
     }
 
     private Boolean isValidCoordinate_(int coordinate_val) {
