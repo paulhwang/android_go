@@ -10,7 +10,7 @@ package com.phwang.core.protocols.fabric;
 
 import com.phwang.core.utils.encoders.Encoders;
 
-public class FabricDataStr {
+public class FabricInfoStr {
     public static char   getCommand(String fabric_data_str_val)       { return fabric_data_str_val.charAt(FabricData.COMMAND_INDEX); }
     public static String getCommandStr(String fabric_data_str_val)    { return fabric_data_str_val.substring(FabricData.COMMAND_INDEX, FabricData.COMMAND_INDEX + 1); }
 

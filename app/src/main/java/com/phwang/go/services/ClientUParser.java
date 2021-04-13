@@ -13,7 +13,7 @@ import com.phwang.core.protocols.fabric.FabricCommands;
 import com.phwang.core.protocols.fabric.FabricResults;
 import com.phwang.core.utils.binder.Binder;
 import com.phwang.core.protocols.fabric.FabricData;
-import com.phwang.core.protocols.fabric.FabricDataStr;
+import com.phwang.core.protocols.fabric.FabricInfoStr;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.global.GlobalData;
 
@@ -31,7 +31,7 @@ public class ClientUParser {
     protected void parseUCommand(String fabric_data_str_val) {
         //Log.e(TAG, "parseUCommand() fabric_data_str=" + fabric_data_str_val);
 
-        switch (FabricDataStr.getCommand(fabric_data_str_val)) {
+        switch (FabricInfoStr.getCommand(fabric_data_str_val)) {
             case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
             case FabricCommands.FABRIC_COMMAND_HEAD_SESSION:
             case FabricCommands.FABRIC_COMMAND_PEER_SESSION:

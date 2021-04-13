@@ -15,7 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.phwang.core.protocols.fabric.FabricCommands;
-import com.phwang.core.protocols.fabric.FabricDataStr;
+import com.phwang.core.protocols.fabric.FabricInfoStr;
 import com.phwang.go.define.BundleIndexDefine;
 
 import static com.phwang.core.utils.sleep.Utils.sleep;
@@ -45,7 +45,7 @@ public class GoGameReceiver extends BroadcastReceiver {
 
         Bundle bundle = intent_val.getExtras();
         String fabric_data_str = bundle.getString(BundleIndexDefine.FABRIC_DATA);
-        char command = FabricDataStr.getCommand(fabric_data_str);
+        char command = FabricInfoStr.getCommand(fabric_data_str);
         //Log.e(TAG, "handleReceivedBundle() command=" + command + ", fabric_data=" + fabric_data_str);
 
         switch (command) {
