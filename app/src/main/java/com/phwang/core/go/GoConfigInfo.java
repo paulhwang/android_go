@@ -17,38 +17,53 @@ public class GoConfigInfo {
     private int boardSize_;
     private int handicapPoint_;
     private int komiPoint_;
+    private int color_;
 
     public int boardSize() { return this.boardSize_; }
     public int handicapPoint() { return this.handicapPoint_; }
     public int komiPoint() { return this.komiPoint_; }
+    public int color() { return this.color_; }
 
-    public GoConfigInfo(String go_config_info_str_val) {
-        this.debug(false, "GoConfigInfo", "go_config_info_str_val=" + go_config_info_str_val);
-
-        String rest_str = go_config_info_str_val.substring(1);
-        String board_size_str = rest_str.substring(0, 2);
-        String handicap_str = rest_str.substring(2, 4);
-        String komi_str = rest_str.substring(4, 6);
-
-        this.boardSize_ = Encoders.iDecodeRaw(board_size_str);
-        this.handicapPoint_ = Encoders.iDecodeRaw(handicap_str);
-        this.komiPoint_ = Encoders.iDecodeRaw(komi_str);
-
-        this.debug(false, "GoConfigInfo", "boardSize=" + boardSize());
+    public GoConfigInfo(int board_size_val, int handicap_val, int komi_val, int color_val) {
+        this.boardSize_ = board_size_val;
+        this.handicapPoint_ = handicap_val;
+        this.komiPoint_ = komi_val;
+        this.color_ = color_val;
     }
 
-    public static String encodeConfig(int board_size_val, int handicap_val, int komi_val, int color_val) {
+    public GoConfigInfo(String go_config_info_str_val) {
+        this.debug(true, "GoConfigInfo", "go_config_info_str_val=" + go_config_info_str_val);
+
+        String board_size_str = go_config_info_str_val.substring(1, 3);
+        String handicap_str   = go_config_info_str_val.substring(3, 5);
+        String komi_str       = go_config_info_str_val.substring(5, 7);
+        String color_str      = go_config_info_str_val.substring(7, 8);
+
+        this.boardSize_     = Encoders.iDecodeRaw(board_size_str);
+        this.handicapPoint_ = Encoders.iDecodeRaw(handicap_str);
+        this.komiPoint_     = Encoders.iDecodeRaw(komi_str);
+        this.color_         = Encoders.iDecodeRaw(color_str);
+
+        this.debug(true, "GoConfigInfo", "boardSize=" + this.boardSize_ + " color=" + this.color_);
+    }
+
+    public String encode() {
         StringBuilder buf = new StringBuilder();
         buf.append('G');
-        buf.append(Encoders.iEncodeRaw2(board_size_val));
-        buf.append(Encoders.iEncodeRaw2(handicap_val));
-        buf.append(Encoders.iEncodeRaw2(komi_val));
-        buf.append(Encoders.iEncodeRaw1(color_val));
+        buf.append(Encoders.iEncodeRaw2(this.boardSize_));
+        buf.append(Encoders.iEncodeRaw2(this.handicapPoint_));
+        buf.append(Encoders.iEncodeRaw2(this.komiPoint_));
+        buf.append(Encoders.iEncodeRaw1(this.color_));
         return buf.toString();
+     }
+
+    public static String encodeConfig(int board_size_val, int handicap_val, int komi_val, int color_val) {
+        GoConfigInfo go_config_info = new GoConfigInfo(board_size_val, handicap_val, komi_val, color_val);
+        return go_config_info.encode();
     }
 
     private Boolean isValidCoordinate_(int coordinate_val) {
-        return (0 <= coordinate_val) && (coordinate_val < this.boardSize());
+        return (0 <= coordinate_val) && (coordinate_val < this.boardSize_);
     }
 
     public Boolean isValidCoordinates(int x_val, int y_val) {
