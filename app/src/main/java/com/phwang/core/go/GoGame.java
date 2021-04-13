@@ -22,7 +22,7 @@ public class GoGame {
     private Boolean theGameIsOver = false;
     private GoMoveInfo[] theMovesArray;
 
-    public GoConfigInfo goConfig() { return this.goRoot_.goConfig();  }
+    public GoConfigInfo goConfigInfo() { return this.goRoot_.goConfigInfo();  }
     public GoBoard goBoard() { return this.goRoot_.goBoard(); }
     public GoFight goFight() { return this.goRoot_.goFight(); }
     public int totalMoves() { return this.totalMoves_; }
@@ -69,7 +69,7 @@ public class GoGame {
         this.debug(true, "ProcessBackwardMove", "");
 
         this.thePassReceived = false;
-        if (this.totalMoves_ <= this.goConfig().handicapPoint()) {
+        if (this.totalMoves_ <= this.goConfigInfo().handicapPoint()) {
             return;
         }
         this.totalMoves_--;
@@ -80,10 +80,10 @@ public class GoGame {
         this.debug(true, "ProcessDoubleBackwardMove", "");
 
         this.thePassReceived = false;
-        if (this.totalMoves_ <= this.goConfig().handicapPoint()) {
+        if (this.totalMoves_ <= this.goConfigInfo().handicapPoint()) {
             return;
         }
-        this.totalMoves_ = this.goConfig().handicapPoint();
+        this.totalMoves_ = this.goConfigInfo().handicapPoint();
         this.processTheWholeMoveList();
     }
 

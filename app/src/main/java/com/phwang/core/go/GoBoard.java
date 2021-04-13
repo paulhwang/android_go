@@ -23,7 +23,7 @@ public class GoBoard {
     private int theLastDeadY;
     private GoRoot goRoot_;
 
-    public GoConfigInfo goConfig() { return this.goRoot_.goConfig(); }
+    public GoConfigInfo goConfigInfo() { return this.goRoot_.goConfigInfo(); }
     public GoGame goGame() { return this.goRoot_.goGame(); }
     public String boardOutputBuffer() { return this.theBoardOutputBuffer; }
     public int boardArray(int x_val, int y_val) { return this.theBoardArray[x_val][y_val]; }
@@ -47,7 +47,7 @@ public class GoBoard {
         this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncodeRaw(this.goGame().totalMoves(), GoDefine.TOTAL_MOVE_SIZE);
         this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncodeRaw1(this.goGame().nextColor());
 
-        int board_size = this.goConfig().boardSize();
+        int board_size = this.goConfigInfo().boardSize();
         for (int i = 0; i < board_size; i++) {
             for (int j = 0; j < board_size; j++) {
                 char c = '0';
@@ -69,7 +69,7 @@ public class GoBoard {
     }
 
     public void addStoneToBoard(int x_val, int y_val, int color_val) {
-        if (!this.goConfig().isValidCoordinates(x_val, y_val)) {
+        if (!this.goConfigInfo().isValidCoordinates(x_val, y_val)) {
             this.log("addStoneToBoard", "bad coordinate: " + x_val + " " + y_val);
             this.abend("addStoneToBoard", "bad coordinate: " + x_val + " " + y_val);
             return;
@@ -79,7 +79,7 @@ public class GoBoard {
     }
 
     private Boolean isEmptySpace(int x_val, int y_val) {
-        if (!this.goRoot_.goConfig().isValidCoordinates(x_val, y_val)) {
+        if (!this.goRoot_.goConfigInfo().isValidCoordinates(x_val, y_val)) {
             return false;
         }
         if (this.theBoardArray[x_val][y_val] != GoDefine.GO_EMPTY_STONE) {
@@ -105,7 +105,7 @@ public class GoBoard {
     }
 
     public void resetBoardObjectData() {
-        int board_size = this.goConfig().boardSize();
+        int board_size = this.goConfigInfo().boardSize();
         for (int i = 0; i < board_size; i++) {
             for (int j = 0; j < board_size; j++) {
                 this.theBoardArray[i][j] = GoDefine.GO_EMPTY_STONE;

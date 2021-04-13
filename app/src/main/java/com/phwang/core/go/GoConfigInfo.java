@@ -23,10 +23,6 @@ public class GoConfigInfo {
     public int handicapPoint() { return this.handicapPoint_; }
     public int komiPoint() { return this.komiPoint_; }
 
-    public GoConfigInfo(GoRoot root_val) {
-        this.goRoot_ = root_val;
-    }
-
     public void decodeConfig(String input_data_val) {
         this.debug(false, "decodeConfig", "input_data_val=" + input_data_val);
 

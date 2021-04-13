@@ -29,7 +29,7 @@ public class GoGroupList {
     public GoFight goFight() { return this.goFight_; }
     public GoRoot goRoot() { return this.goFight_.goRoot(); }
     public GoBoard goBoard() { return goRoot().goBoard(); }
-    public GoConfigInfo goConfig() { return goRoot().goConfig(); }
+    public GoConfigInfo goConfigInfo() { return goRoot().goConfigInfo(); }
     public int myColor() { return this.myColor_; }
     public int groupCount() { return this.groupCount_; }
     public GoGroup groupArray(int index_val) { return this.groupArray_[index_val]; }
