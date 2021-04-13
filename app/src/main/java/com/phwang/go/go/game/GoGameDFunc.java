@@ -16,8 +16,8 @@ public class GoGameDFunc {
     private static final String TAG = "GoGameDFunc";
     private GoGameActivity goGameActivity_;
 
-    protected GoGameBoard goBoard() { return this.goGameActivity_.goBoard(); }
-    protected GoGameView goView() { return this.goGameActivity_.goView(); }
+    protected GoGameBoard goGameBoard() { return this.goGameActivity_.goGameBoard(); }
+    protected GoGameView goGameView() { return this.goGameActivity_.goGameView(); }
     private String linkIdStr() { return this.goGameActivity_.linkIdStr(); }
     private String sessionIdStr() { return this.goGameActivity_.sessionIdStr(); }
 
@@ -36,7 +36,7 @@ public class GoGameDFunc {
 
         String board_data_str = theme_data_str.substring(1);
 
-        this.goBoard().decodeBoard(board_data_str);
-        this.goView().drawBoard();
+        this.goGameBoard().decodeBoard(board_data_str);
+        this.goGameView().drawBoard();
     }
 }

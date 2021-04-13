@@ -20,8 +20,8 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     private static final String TAG = "GoGameActivity";
     private GoGameUFunc goGameUFunc_;
     private GoGameDFunc goGameDFunc_;
-    private GoGameBoard goBoard_;
-    private GoGameView goView_;
+    private GoGameBoard goGameBoard_;
+    private GoGameView goGameView_;
     private GoGameReceiver goGameReceiver_;
     private String linkIdStr_;
     private String sessionIdStr_;
@@ -30,8 +30,8 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     private int touchX_;
     private int touchY_;
 
-    protected GoGameView goView() { return this.goView_; };
-    protected GoGameBoard goBoard() { return this.goBoard_; };
+    protected GoGameView goGameView() { return this.goGameView_; };
+    protected GoGameBoard goGameBoard() { return this.goGameBoard_; };
     protected GoGameUFunc goGameUFunc() { return this.goGameUFunc_; };
     protected GoGameDFunc goGameDFunc() { return this.goGameDFunc_; };
     protected String linkIdStr() { return this.linkIdStr_; }
@@ -58,13 +58,13 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         //Log.e(TAG, "onCreate() config_str=" + config_str);
 
         this.resetTouchXY();
-        this.goBoard_ = new GoGameBoard(this, config_str);
+        this.goGameBoard_ = new GoGameBoard(this, config_str);
         this.goGameUFunc_ = new GoGameUFunc(this);
         this.goGameDFunc_ = new GoGameDFunc(this);
 
         setContentView(R.layout.activity_go_game);
-        this.goView_ = findViewById(R.id.go_game_view);
-        this.goView_.requestFocus();
+        this.goGameView_ = findViewById(R.id.go_game_view);
+        this.goGameView_.requestFocus();
         findViewById(R.id.go_game_b_button).setOnClickListener(this);
         findViewById(R.id.go_game_fb_button).setOnClickListener(this);
         findViewById(R.id.go_game_f_button).setOnClickListener(this);
@@ -145,8 +145,8 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        this.touchX_ = ((int) event.getX() - this.goView_.viewLeft - this.goView_.gridLen0 + this.goView_.halfGridLen) / this.goView_.gridLen;
-        this.touchY_ = ((int) event.getY() - this.goView_.viewTop  - this.goView_.gridLen0 + this.goView_.halfGridLen) / this.goView_.gridLen;
+        this.touchX_ = ((int) event.getX() - this.goGameView_.viewLeft - this.goGameView_.gridLen0 + this.goGameView_.halfGridLen) / this.goGameView_.gridLen;
+        this.touchY_ = ((int) event.getY() - this.goGameView_.viewTop  - this.goGameView_.gridLen0 + this.goGameView_.halfGridLen) / this.goGameView_.gridLen;
         //Log.e(TAG, "onTouchEvent: x=" + this.x_ + " y=" + this.y_);
         switch( event.getAction() ) {
             case MotionEvent.ACTION_DOWN:
@@ -163,7 +163,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     public void processTouchInput() {
-        String move_str = this.goBoard_.encodeMove(this.touchX_ - 1, this.touchY_ - 1);
+        String move_str = this.goGameBoard_.encodeMove(this.touchX_ - 1, this.touchY_ - 1);
         if (move_str == null) {
             return;
         }

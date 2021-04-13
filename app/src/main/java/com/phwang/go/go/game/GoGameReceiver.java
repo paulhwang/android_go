@@ -24,7 +24,7 @@ public class GoGameReceiver extends BroadcastReceiver {
     private static final String TAG = "GoGameReceiver";
     private GoGameActivity goGameActivity_;
 
-    private GoGameBoard goGameBoard() { return this.goGameActivity_.goBoard(); }
+    private GoGameBoard goGameBoard() { return this.goGameActivity_.goGameBoard(); }
     protected GoGameDFunc goGameDFunc() { return this.goGameActivity_.goGameDFunc(); };
     protected GoGameUFunc goGameUFunc() { return this.goGameActivity_.goGameUFunc(); };
     private Boolean isDead() { return this.goGameActivity_.isDead(); };
