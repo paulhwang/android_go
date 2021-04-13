@@ -150,10 +150,10 @@ public class GoGameView  extends View {
     private void drawStones() {
         for (int i = this.boardSize() - 1; i >= 0; i--) {
             for (int j = this.boardSize() - 1; j >= 0; j--) {
-                if (this.board(i, j) == GoGameBoard.GO_BLACK_STONE){
+                if (this.board(i, j) == GoDefine.GO_BLACK_STONE){
                     this.drawStone(i, j, this.blackPaint);
                 }
-                else if (this.board(i, j) == GoGameBoard.GO_WHITE_STONE){
+                else if (this.board(i, j) == GoDefine.GO_WHITE_STONE){
                     this.drawStone(i, j, this.whitePaint);
                 }
             }

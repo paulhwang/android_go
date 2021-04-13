@@ -15,13 +15,6 @@ import com.phwang.core.utils.encoders.Encoders;
 public class GoGameBoard {
     private static final String TAG = "GoGameBoard";
 
-    public static final int MAX_BOARD_SIZE = GoDefine.MAX_BOARD_SIZE;
-    public static final int GO_EMPTY_STONE = GoDefine.GO_EMPTY_STONE;
-    public static final int GO_BLACK_STONE = GoDefine.GO_BLACK_STONE;
-    public static final int GO_WHITE_STONE = GoDefine.GO_WHITE_STONE;
-    public static final int GO_BOTH_STONE = GoDefine.GO_BOTH_STONE;
-    public static final int TOTAL_MOVE_SIZE = GoDefine.TOTAL_MOVE_SIZE;
-
     private GoGameActivity goGame_;
     private int boardSize_ = 19;
     private final int[][] boardArray_ = new int[20][20];
