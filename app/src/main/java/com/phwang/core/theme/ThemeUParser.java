@@ -13,7 +13,7 @@ package com.phwang.core.theme;
 import com.phwang.core.protocols.engine.EngineCommands;
 import com.phwang.core.protocols.engine.EngineData;
 import com.phwang.core.protocols.theme.ThemeCommands;
-import com.phwang.core.protocols.theme.ThemeData;
+import com.phwang.core.protocols.theme.ThemeInfo;
 import com.phwang.core.protocols.theme.ThemeResults;
 import com.phwang.core.utils.encoders.Encoders;
 
@@ -34,7 +34,7 @@ public class ThemeUParser {
     public void parseInputPacket(String theme_data_str_val) {
         this.debug(false, "parseInputPacket", theme_data_str_val);
 
-        ThemeData theme_data = new ThemeData(theme_data_str_val);
+        ThemeInfo theme_data = new ThemeInfo(theme_data_str_val);
 
         switch (theme_data.command()) {
             case ThemeCommands.FABRIC_THEME_COMMAND_SETUP_ROOM:
@@ -51,7 +51,7 @@ public class ThemeUParser {
         }
     }
 
-    private void processSetupRoom(ThemeData theme_data_val) {
+    private void processSetupRoom(ThemeInfo theme_data_val) {
         String group_id_str = theme_data_val.groupIdStr();
         this.debug(false, "processSetupRoom", "groupIdStr=" + group_id_str);
 
@@ -82,7 +82,7 @@ public class ThemeUParser {
 
     }
 
-    private void processPutRoomData(ThemeData theme_data_val) {
+    private void processPutRoomData(ThemeInfo theme_data_val) {
         String room_id_str = theme_data_val.roomIdStr();
         this.debug(false, "processPutRoomData", "room_id_str=" + room_id_str);
 

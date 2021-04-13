@@ -11,7 +11,7 @@ package com.phwang.core.fabric;
 import com.phwang.core.protocols.fabric.FabricClients;
 import com.phwang.core.protocols.fabric.FabricThemeTypes;
 import com.phwang.core.protocols.theme.ThemeCommands;
-import com.phwang.core.protocols.theme.ThemeData;
+import com.phwang.core.protocols.theme.ThemeInfo;
 import com.phwang.core.protocols.theme.ThemeResults;
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.protocols.fabric.FabricCommands;

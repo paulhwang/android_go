@@ -11,7 +11,7 @@ package com.phwang.core.engine;
 import com.phwang.core.protocols.engine.EngineCommands;
 import com.phwang.core.protocols.engine.EngineData;
 import com.phwang.core.protocols.engine.EngineResults;
-import com.phwang.core.protocols.theme.ThemeData;
+import com.phwang.core.protocols.theme.ThemeInfo;
 import com.phwang.core.protocols.theme.ThemeResults;
 import com.phwang.core.utils.encoders.Encoders;
 

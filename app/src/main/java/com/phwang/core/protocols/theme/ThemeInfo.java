@@ -1,10 +1,18 @@
+/*
+ ******************************************************************************
+ *
+ *  Copyright (c) 2021 phwang. All rights reserved.
+ *
+ ******************************************************************************
+ */
+
 package com.phwang.core.protocols.theme;
 
 import com.phwang.core.protocols.fabric.FabricClients;
 import com.phwang.core.utils.encoders.Encoders;
 
-public class ThemeData {
-    private static final String TAG = "ThemeData";
+public class ThemeInfo {
+    private static final String TAG = "ThemeInfo";
     private static final int STRINGS_COUNT_SIZE = 2;
     private static final int MAX_ARRAY_SIZE = 10;
 
@@ -33,7 +41,7 @@ public class ThemeData {
     public void setGroupIdStr(String link_id_str_val) { this.groupIdStr_ = link_id_str_val; }
     public void setRoomIdStr(String session_id_str_val) { this.roomIdStr_ = session_id_str_val; }
 
-    public ThemeData(char command_val, char result_val, char theme_type_val, String group_id_str_val, String room_id_str_val) {
+    public ThemeInfo(char command_val, char result_val, char theme_type_val, String group_id_str_val, String room_id_str_val) {
         this.command_ = command_val;
         this.result_ = result_val;
         this.themeType_ = theme_type_val;
@@ -42,7 +50,7 @@ public class ThemeData {
         this.stringArray_ = new String[this.arraySize_];
     }
 
-    public ThemeData(String fabric_data_str_val) {
+    public ThemeInfo(String fabric_data_str_val) {
         String rest_str = fabric_data_str_val;
         this.command_ = rest_str.charAt(COMMAND_INDEX);
         this.result_ = rest_str.charAt(RESULT_INDEX);

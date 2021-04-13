@@ -9,7 +9,7 @@
 package com.phwang.core.fabric;
 
 import com.phwang.core.protocols.theme.ThemeCommands;
-import com.phwang.core.protocols.theme.ThemeData;
+import com.phwang.core.protocols.theme.ThemeInfo;
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.utils.listmgr.ListEntry;
 
@@ -27,7 +27,7 @@ public class FabricDParser {
 
     protected void parseInputPacket(String theme_data_val) {
         this.debug(false, "parseInputPacket", theme_data_val);
-        ThemeData theme_data = new ThemeData(theme_data_val);
+        ThemeInfo theme_data = new ThemeInfo(theme_data_val);
         char command = theme_data.command();
 
         switch (command) {
@@ -45,7 +45,7 @@ public class FabricDParser {
         }
     }
     
-    private void processSetupRoomResponse(ThemeData theme_data_val) {
+    private void processSetupRoomResponse(ThemeInfo theme_data_val) {
         String group_id_str = theme_data_val.groupIdStr();
         String room_id_str = theme_data_val.roomIdStr();
         this.debug(false, "processSetupRoomResponse", "group_id_str=" + group_id_str);
@@ -75,7 +75,7 @@ public class FabricDParser {
         }
     }
     
-    private void processPutRoomDataResponse(ThemeData theme_data_val) {
+    private void processPutRoomDataResponse(ThemeInfo theme_data_val) {
         String group_id_str = theme_data_val.groupIdStr();
         this.debug(false, "processPutRoomDataResponse", "group_id_str=" + group_id_str);
         String input_data = theme_data_val.stringArrayElement(0);

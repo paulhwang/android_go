@@ -10,7 +10,7 @@ package com.phwang.core.fabric;
 
 import com.phwang.core.protocols.fabric.FabricData;
 import com.phwang.core.protocols.theme.ThemeCommands;
-import com.phwang.core.protocols.theme.ThemeData;
+import com.phwang.core.protocols.theme.ThemeInfo;
 import com.phwang.core.protocols.theme.ThemeResults;
 import com.phwang.core.utils.binder.Binder;
 import com.phwang.core.protocols.tcpip.TcpIpDefine;
@@ -72,7 +72,7 @@ public class FabricUBinder implements ThreadEntityInt {
 
     public void sendMallocRoomRequestToThemeServer(char theme_type_val, String group_id_str_val, String theme_str_val) {
         this.debug(false, "sendMallocRoomRequestToThemeServer", "theme_str_val=" + theme_str_val);
-        ThemeData theme_data = new ThemeData(
+        ThemeInfo theme_data = new ThemeInfo(
                 ThemeCommands.FABRIC_THEME_COMMAND_SETUP_ROOM,
                 ThemeResults.UNDECIDED,
                 theme_type_val,
@@ -84,7 +84,7 @@ public class FabricUBinder implements ThreadEntityInt {
     }
 
     protected void sendDataToThemeServer(char theme_type_val, String group_id_str_val, String room_id_str_val, String data_str_val) {
-        ThemeData theme_data = new ThemeData(
+        ThemeInfo theme_data = new ThemeInfo(
                 ThemeCommands.FABRIC_THEME_COMMAND_PUT_ROOM_DATA,
                 ThemeResults.UNDECIDED,
                 theme_type_val,
