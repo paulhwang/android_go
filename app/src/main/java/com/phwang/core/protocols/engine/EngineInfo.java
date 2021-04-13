@@ -1,10 +1,18 @@
+/*
+ ******************************************************************************
+ *
+ *  Copyright (c) 2021 phwang. All rights reserved.
+ *
+ ******************************************************************************
+ */
+
 package com.phwang.core.protocols.engine;
 
 import com.phwang.core.protocols.fabric.FabricClients;
 import com.phwang.core.utils.encoders.Encoders;
 
-public class EngineData {
-    private static final String TAG = "EngineData";
+public class EngineInfo {
+    private static final String TAG = "EngineInfo";
     private static final int STRINGS_COUNT_SIZE = 2;
 
     public static final int COMMAND_INDEX     = 0;
@@ -32,7 +40,7 @@ public class EngineData {
     public void setRoomIdStr(String link_id_str_val) { this.roomIdStr_ = link_id_str_val; }
     public void setBaseIdStr(String session_id_str_val) { this.baseIdStr_ = session_id_str_val; }
 
-    public EngineData(char command_val, char result_val, char theme_type_val, String room_id_str_val, String base_id_str_val) {
+    public EngineInfo(char command_val, char result_val, char theme_type_val, String room_id_str_val, String base_id_str_val) {
         this.command_ = command_val;
         this.result_ = result_val;
         this.themeType_ = theme_type_val;
@@ -41,7 +49,7 @@ public class EngineData {
         this.stringArray_ = new String[this.arraySize_];
     }
 
-    public EngineData(String fabric_data_str_val) {
+    public EngineInfo(String fabric_data_str_val) {
         String rest_str = fabric_data_str_val;
         this.command_ = rest_str.charAt(COMMAND_INDEX);
         this.result_ = rest_str.charAt(RESULT_INDEX);

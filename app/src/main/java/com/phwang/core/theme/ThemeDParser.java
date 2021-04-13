@@ -11,7 +11,7 @@ package com.phwang.core.theme;
 //import com.phwang.core.utils.*;
 
 import com.phwang.core.protocols.engine.EngineCommands;
-import com.phwang.core.protocols.engine.EngineData;
+import com.phwang.core.protocols.engine.EngineInfo;
 import com.phwang.core.protocols.theme.ThemeCommands;
 import com.phwang.core.protocols.theme.ThemeResults;
 import com.phwang.core.utils.encoders.Encoders;
@@ -33,7 +33,7 @@ public class ThemeDParser {
     
     public void parseInputPacket(String engine_data_str_val) {
         this.debug(false, "parseInputPacket", engine_data_str_val);
-        EngineData engine_data = new EngineData(engine_data_str_val);
+        EngineInfo engine_data = new EngineInfo(engine_data_str_val);
         char command = engine_data.command();
 
         switch (command) {
@@ -52,7 +52,7 @@ public class ThemeDParser {
         }
     }
 
-    private void processSetupBaseResponse(EngineData engine_data_val) {
+    private void processSetupBaseResponse(EngineInfo engine_data_val) {
         String room_id_str = engine_data_val.roomIdStr();
         String base_id_str = engine_data_val.baseIdStr();
         this.debug(false, "processSetupBaseResponse", "room_id_str=" + room_id_str);
@@ -63,7 +63,7 @@ public class ThemeDParser {
 
 
 
-        EngineData engineer_data = new EngineData(
+        EngineInfo engineer_data = new EngineInfo(
                 ThemeCommands.FABRIC_THEME_RESPOND_SETUP_ROOM,
                 ThemeResults.SUCCEED,
                 engine_data_val.themeType(),
@@ -110,7 +110,7 @@ public class ThemeDParser {
         */
     }
 
-    private void processPutBaseDataResponse(EngineData engine_data_val) {
+    private void processPutBaseDataResponse(EngineInfo engine_data_val) {
         String room_id_str = engine_data_val.roomIdStr();
         String base_id_str = engine_data_val.baseIdStr();
         String out_put_data_str = engine_data_val.stringArrayElement(1);
@@ -124,7 +124,7 @@ public class ThemeDParser {
         }
 
 
-        EngineData engineer_data = new EngineData(
+        EngineInfo engineer_data = new EngineInfo(
                 ThemeCommands.FABRIC_THEME_RESPOND_PUT_ROOM_DATA,
                 ThemeResults.SUCCEED,
                 engine_data_val.themeType(),

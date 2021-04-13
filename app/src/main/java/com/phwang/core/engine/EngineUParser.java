@@ -9,7 +9,7 @@
 package com.phwang.core.engine;
 
 import com.phwang.core.protocols.engine.EngineCommands;
-import com.phwang.core.protocols.engine.EngineData;
+import com.phwang.core.protocols.engine.EngineInfo;
 import com.phwang.core.protocols.engine.EngineResults;
 import com.phwang.core.protocols.theme.ThemeInfo;
 import com.phwang.core.protocols.theme.ThemeResults;
@@ -30,7 +30,7 @@ public class EngineUParser {
 
     public void ParseInputPacket(String engine_data_str_val) {
         this.debug(false, "ParseInputPacket", "data=" + engine_data_str_val);
-        EngineData engine_data = new EngineData(engine_data_str_val);
+        EngineInfo engine_data = new EngineInfo(engine_data_str_val);
         char command = engine_data.command();
 
         switch (command) {
@@ -48,7 +48,7 @@ public class EngineUParser {
         }
     }
 
-    private void processSetupBase(EngineData engine_data_val) {
+    private void processSetupBase(EngineInfo engine_data_val) {
         String room_id_str = engine_data_val.roomIdStr();
         String input_data = engine_data_val.stringArrayElement(0);
         this.debug(false, "processSetupBase", "engine_data_val=" + engine_data_val);
@@ -76,7 +76,7 @@ public class EngineUParser {
         //this.engineDBinder().TransmitData(buf.toString());
     }
 
-    private void processPutBaseData(EngineData engine_data_val) {
+    private void processPutBaseData(EngineInfo engine_data_val) {
         String base_id_str = engine_data_val.baseIdStr();
         String input_data = engine_data_val.stringArrayElement(0);
         this.debug(false, "processPutBaseData", "base_id_str=" + base_id_str);

@@ -11,7 +11,7 @@ package com.phwang.core.theme;
 //import com.phwang.core.utils.*;
 
 import com.phwang.core.protocols.engine.EngineCommands;
-import com.phwang.core.protocols.engine.EngineData;
+import com.phwang.core.protocols.engine.EngineInfo;
 import com.phwang.core.protocols.theme.ThemeCommands;
 import com.phwang.core.protocols.theme.ThemeInfo;
 import com.phwang.core.protocols.theme.ThemeResults;
@@ -61,7 +61,7 @@ public class ThemeUParser {
             return;
         }
 
-        EngineData engineer_data = new EngineData(
+        EngineInfo engineer_data = new EngineInfo(
                 EngineCommands.THEME_ENGINE_COMMAND_SETUP_BASE,
                 ThemeResults.UNDECIDED,
                 theme_data_val.themeType(),
@@ -92,7 +92,7 @@ public class ThemeUParser {
             return;
         }
 
-        EngineData engineer_data = new EngineData(
+        EngineInfo engineer_data = new EngineInfo(
                 EngineCommands.THEME_ENGINE_COMMAND_PUT_BASE_DATA,
                 ThemeResults.UNDECIDED,
                 theme_data_val.themeType(),
