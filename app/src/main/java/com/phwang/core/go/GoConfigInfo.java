@@ -14,7 +14,6 @@ import com.phwang.core.utils.encoders.Encoders;
 public class GoConfigInfo {
     private String objectName() {return "GoConfigInfo";}
 
-    private GoRoot goRoot_;
     private int boardSize_;
     private int handicapPoint_;
     private int komiPoint_;

@@ -105,9 +105,8 @@ public class GoBoard {
     }
 
     public void resetBoardObjectData() {
-        int board_size = this.goConfigInfo().boardSize();
-        for (int i = 0; i < board_size; i++) {
-            for (int j = 0; j < board_size; j++) {
+        for (int i = 0; i < GoDefine.MAX_BOARD_SIZE; i++) {
+            for (int j = 0; j < GoDefine.MAX_BOARD_SIZE; j++) {
                 this.theBoardArray[i][j] = GoDefine.GO_EMPTY_STONE;
                 this.theMarkedBoardArray[i][j] = GoDefine.GO_EMPTY_STONE;
             }
