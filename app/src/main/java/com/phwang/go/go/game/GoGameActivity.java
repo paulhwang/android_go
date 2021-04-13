@@ -156,14 +156,14 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case MotionEvent.ACTION_UP:
-                this.processTouchInput(this.touchX_, this.touchY_);
+                this.processTouchInput();
                 break;
         }
         return super.onTouchEvent(event);
     }
 
-    public void processTouchInput(int x_val, int y_val) {
-        String move_str = this.goBoard_.encodeMove(x_val - 1, y_val - 1);
+    public void processTouchInput() {
+        String move_str = this.goBoard_.encodeMove(this.touchX_ - 1, this.touchY_ - 1);
         if (move_str == null) {
             return;
         }
