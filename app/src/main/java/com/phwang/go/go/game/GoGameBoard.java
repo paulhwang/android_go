@@ -22,19 +22,17 @@ public class GoGameBoard {
     private final int[][] boardArray_ = new int[20][20];
     private int totalMoves_ = 0;
     private int nextColor_ = 1;
-    private GoConfigInfo goConfigInfo_;
 
-    protected int myColor() { return this.goConfigInfo_.color(); };
-    protected int boardSize() { return this.goConfigInfo_.boardSize(); }
+    protected GoConfigInfo goConfigInfo() { return this.goGame_.goConfigInfo(); };
     protected int board(int x_val, int y_val) { return this.boardArray_[x_val][y_val]; }
     protected void setBoard(int x_val, int y_val, int val) { this.boardArray_[x_val][y_val] = val; }
     protected int totalMoves() { return this.totalMoves_; };
     protected int nextColor() { return this.nextColor_; };
     protected Boolean isValidMove(int x_val, int y_val) { return (this.boardArray_[x_val][y_val] == 0) ? true : false; }
+    private int boardSize() { return this.goConfigInfo().boardSize(); }
 
     public GoGameBoard(GoGameActivity go_game_val, String go_config_info_str_val) {
         this.goGame_ = go_game_val;
-        this.goConfigInfo_ = new GoConfigInfo(go_config_info_str_val);
     }
 
     protected void decodeBoard(String data_str_val) {

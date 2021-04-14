@@ -16,6 +16,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.util.Log;
 
+import com.phwang.core.go.GoConfigInfo;
 import com.phwang.core.go.GoDefine;
 import com.phwang.go.R;
 
@@ -23,8 +24,9 @@ public class GoGameView  extends View {
     private static final String TAG = "GoGameView";
 
     private final GoGameActivity goGameActivity_;
+    protected GoConfigInfo goConfigInfo() { return this.goGameActivity_.goConfigInfo(); };
     private GoGameBoard goGameBoard() { return this.goGameActivity_.goGameBoard(); }
-    private int boardSize() { return this.goGameBoard().boardSize(); }
+    private int boardSize() { return this.goConfigInfo().boardSize(); }
     private int board(int x_val, int y_val) { return this.goGameBoard().board(x_val, y_val); }
     private int touchX() { return this.goGameActivity_.touchX(); }
     private int touchY() { return this.goGameActivity_.touchY(); }

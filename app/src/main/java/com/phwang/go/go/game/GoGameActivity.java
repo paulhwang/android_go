@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.phwang.core.go.GoConfigInfo;
 import com.phwang.core.protocols.fabric.FabricInfo;
 import com.phwang.core.utils.watchdog.WatchDog;
 import com.phwang.core.utils.watchdog.WatchDogInt;
@@ -22,6 +24,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     private GoGameDFunc goGameDFunc_;
     private GoGameBoard goGameBoard_;
     private GoGameView goGameView_;
+    private GoConfigInfo goConfigInfo_;
     private GoGameReceiver goGameReceiver_;
     private String linkIdStr_;
     private String sessionIdStr_;
@@ -32,10 +35,13 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
 
     protected GoGameView goGameView() { return this.goGameView_; };
     protected GoGameBoard goGameBoard() { return this.goGameBoard_; };
+    protected GoConfigInfo goConfigInfo() { return this.goConfigInfo_; };
     protected GoGameUFunc goGameUFunc() { return this.goGameUFunc_; };
     protected GoGameDFunc goGameDFunc() { return this.goGameDFunc_; };
     protected String linkIdStr() { return this.linkIdStr_; }
     protected String sessionIdStr() { return this.sessionIdStr_; }
+    protected int myColor() { return this.goConfigInfo_.color(); };
+    protected int boardSize() { return this.goConfigInfo_.boardSize(); }
     protected Boolean isDead() { return this.isDead_; }
     protected int touchX() { return this.touchX_; }
     protected int touchY() { return this.touchY_; }
@@ -60,6 +66,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         //Log.e(TAG, "onCreate() config_str=" + config_str);
 
         this.resetTouchXY();
+        this.goConfigInfo_ = new GoConfigInfo(config_str);
         this.goGameBoard_ = new GoGameBoard(this, config_str);
         this.goGameUFunc_ = new GoGameUFunc(this);
         this.goGameDFunc_ = new GoGameDFunc(this);
