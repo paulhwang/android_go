@@ -18,21 +18,22 @@ import com.phwang.core.utils.encoders.Encoders;
 public class GoGameBoard {
     private static final String TAG = "GoGameBoard";
 
-    private GoGameActivity goGameActivity_;
+    //private GoGameActivity goGameActivity_;
     private final int[][] boardArray_ = new int[20][20];
     private int totalMoves_ = 0;
     private int nextColor_ = 1;
 
-    protected GoConfigInfo goConfigInfo() { return this.goGameActivity_.goConfigInfo(); };
+    //protected GoConfigInfo goConfigInfo() { return this.goGameActivity_.goConfigInfo(); };
     protected int boardArray(int x_val, int y_val) { return this.boardArray_[x_val][y_val]; }
     protected void setBoard(int x_val, int y_val, int val) { this.boardArray_[x_val][y_val] = val; }
     protected int totalMoves() { return this.totalMoves_; };
     protected int nextColor() { return this.nextColor_; };
     protected Boolean isValidMove(int x_val, int y_val) { return (this.boardArray_[x_val][y_val] == 0) ? true : false; }
-    private int boardSize() { return this.goConfigInfo().boardSize(); }
+    //private int boardSize() { return this.goConfigInfo().boardSize(); }
 
     public GoGameBoard(GoGameActivity go_game_val) {
-        this.goGameActivity_ = go_game_val;
+
+        //this.goGameActivity_ = go_game_val;
     }
 
     protected void decodeBoard(String data_str_val) {

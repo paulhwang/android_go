@@ -91,7 +91,7 @@ public class GoBoardInfo {
         this.debug(false, "encodeBoard", this.theBoardOutputBuffer);
     }
 
-    protected void decodeBoard(String data_str_val) {
+    public void decodeBoard(String data_str_val) {
         String total_moves_str = data_str_val.substring(0, 3);
         this.totalMoves_ = Encoders.iDecodeRaw(total_moves_str);
         this.nextColor_ = data_str_val.charAt(3) - 48;

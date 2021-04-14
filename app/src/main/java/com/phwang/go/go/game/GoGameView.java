@@ -16,6 +16,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.util.Log;
 
+import com.phwang.core.go.GoBoardInfo;
 import com.phwang.core.go.GoConfigInfo;
 import com.phwang.core.go.GoDefine;
 import com.phwang.go.R;
@@ -25,9 +26,9 @@ public class GoGameView  extends View {
 
     private final GoGameActivity goGameActivity_;
     protected GoConfigInfo goConfigInfo() { return this.goGameActivity_.goConfigInfo(); };
-    private GoGameBoard goGameBoard() { return this.goGameActivity_.goGameBoard(); }
+    private GoBoardInfo goBoardInfo() { return this.goGameActivity_.goBoardInfo(); }
     private int boardSize() { return this.goConfigInfo().boardSize(); }
-    private int board(int x_val, int y_val) { return this.goGameBoard().boardArray(x_val, y_val); }
+    private int board(int x_val, int y_val) { return this.goBoardInfo().boardArray(x_val, y_val); }
     private int touchX() { return this.goGameActivity_.touchX(); }
     private int touchY() { return this.goGameActivity_.touchY(); }
     private int moveX() { return this.goGameActivity_.moveX(); }
@@ -161,7 +162,7 @@ public class GoGameView  extends View {
             }
         }
 
-        this.drawStone(this.moveX(), this.moveY(), this.goGameBoard().nextColor() == GoDefine.GO_BLACK_STONE ? this.blackPaint : this.whitePaint);
+        this.drawStone(this.moveX(), this.moveY(), this.goBoardInfo().nextColor() == GoDefine.GO_BLACK_STONE ? this.blackPaint : this.whitePaint);
     }
 
     private void drawStone(int x, int y, Paint paint_val) {

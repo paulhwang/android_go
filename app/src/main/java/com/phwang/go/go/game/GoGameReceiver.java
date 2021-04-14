@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.phwang.core.go.GoBoardInfo;
 import com.phwang.core.protocols.fabric.FabricCommands;
 import com.phwang.core.protocols.fabric.FabricInfoStr;
 import com.phwang.go.define.BundleIndexDefine;
@@ -24,7 +25,7 @@ public class GoGameReceiver extends BroadcastReceiver {
     private static final String TAG = "GoGameReceiver";
     private GoGameActivity goGameActivity_;
 
-    private GoGameBoard goGameBoard() { return this.goGameActivity_.goGameBoard(); }
+    private GoBoardInfo goBoardInfo() { return this.goGameActivity_.goBoardInfo(); }
     protected GoGameDFunc goGameDFunc() { return this.goGameActivity_.goGameDFunc(); };
     protected GoGameUFunc goGameUFunc() { return this.goGameActivity_.goGameUFunc(); };
     private Boolean isDead() { return this.goGameActivity_.isDead(); };

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.phwang.core.go.GoBoardInfo;
 import com.phwang.core.go.GoConfigInfo;
 import com.phwang.core.go.GoMoveInfo;
 import com.phwang.core.protocols.fabric.FabricInfo;
@@ -23,7 +24,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     private static final String TAG = "GoGameActivity";
     private GoGameUFunc goGameUFunc_;
     private GoGameDFunc goGameDFunc_;
-    private GoGameBoard goGameBoard_;
+    private GoBoardInfo goGameBoard_;
     private GoGameView goGameView_;
     private GoConfigInfo goConfigInfo_;
     private GoGameReceiver goGameReceiver_;
@@ -35,7 +36,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     private int touchY_;
 
     protected GoGameView goGameView() { return this.goGameView_; };
-    protected GoGameBoard goGameBoard() { return this.goGameBoard_; };
+    protected GoBoardInfo goBoardInfo() { return this.goGameBoard_; };
     protected GoConfigInfo goConfigInfo() { return this.goConfigInfo_; };
     protected GoGameUFunc goGameUFunc() { return this.goGameUFunc_; };
     protected GoGameDFunc goGameDFunc() { return this.goGameDFunc_; };
@@ -68,7 +69,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
 
         this.resetTouchXY();
         this.goConfigInfo_ = new GoConfigInfo(go_config_info_str);
-        this.goGameBoard_ = new GoGameBoard(this);
+        this.goGameBoard_ = new GoBoardInfo();
         this.goGameUFunc_ = new GoGameUFunc(this);
         this.goGameDFunc_ = new GoGameDFunc(this);
 
