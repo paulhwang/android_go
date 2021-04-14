@@ -33,6 +33,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     private WatchDog watchDog_;
     private int touchX_;
     private int touchY_;
+    private Boolean waitingForConfirm_ = false;
 
     protected GoGameView goGameView() { return this.goGameView_; };
     protected GoBoardInfo goBoardInfo() { return this.goBoardInfo_; };
@@ -48,6 +49,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     protected int touchY() { return this.touchY_; }
     protected int moveX() { return this.touchX() - 1; }
     protected int moveY() { return this.touchY() - 1; }
+    protected Boolean waitingForConfirm() { return this.waitingForConfirm_; }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,6 +151,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void resetTouchXY() {
+        this.waitingForConfirm_ = false;
         this.touchX_ = GoBoardInfo.GO_INVALID_COORDINATE;
         this.touchY_ = GoBoardInfo.GO_INVALID_COORDINATE;
     }
@@ -169,6 +172,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
                 //this.processTouchInput();
                 break;
         }
+        this.waitingForConfirm_ = true;
         return super.onTouchEvent(event);
     }
 

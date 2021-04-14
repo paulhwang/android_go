@@ -102,14 +102,14 @@ public class GoGameView  extends View {
         this.canvas.drawRect(this.gridLen1 - this.sideGridLen, this.gridLen1 - this.sideGridLen, this.gridLen19 + this.sideGridLen, this.gridLen19 + this.sideGridLen, this.boardPaint);
 
         for (int i = this.boardSize() ; i > 0 ; i--) {
-            Paint paint = (this.touchX() == i) ? this.redPaint : this.blackPaint;
+            Paint paint = (this.goGameActivity_.waitingForConfirm() && this.touchX() == i) ? this.redPaint : this.blackPaint;
             this.canvas.drawLine(i * this.gridLen + this.gridLen0 - 2, this.gridLen1, i * this.gridLen + this.gridLen0 - 2, this.gridLen19, paint);
             this.canvas.drawLine(i * this.gridLen + this.gridLen0 - 1, this.gridLen1, i * this.gridLen + this.gridLen0 - 1, this.gridLen19, paint);
             this.canvas.drawLine(i * this.gridLen + this.gridLen0,     this.gridLen1, i * this.gridLen + this.gridLen0,     this.gridLen19, paint);
             this.canvas.drawLine(i * this.gridLen + this.gridLen0 + 1, this.gridLen1, i * this.gridLen + this.gridLen0 + 1, this.gridLen19, paint);
             this.canvas.drawLine(i * this.gridLen + this.gridLen0 + 2, this.gridLen1, i * this.gridLen + this.gridLen0 + 2, this.gridLen19, paint);
 
-            paint = (this.touchY() == i) ? this.redPaint : this.blackPaint;
+            paint = (this.goGameActivity_.waitingForConfirm() && this.touchY() == i) ? this.redPaint : this.blackPaint;
             this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 - 2, this.gridLen19, i * this.gridLen + this.gridLen0 - 2, paint);
             this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0 - 1, this.gridLen19, i * this.gridLen + this.gridLen0 - 1, paint);
             this.canvas.drawLine(this.gridLen1, i * this.gridLen + this.gridLen0,     this.gridLen19, i * this.gridLen + this.gridLen0,     paint);
@@ -161,7 +161,9 @@ public class GoGameView  extends View {
             }
         }
 
-        this.drawStone(this.moveX(), this.moveY(), this.goBoardInfo().nextColor() == GoBoardInfo.GO_BLACK_STONE ? this.blackPaint : this.whitePaint);
+        if (this.touchX() != GoBoardInfo.GO_INVALID_COORDINATE) {
+            this.drawStone(this.moveX(), this.moveY(), this.goBoardInfo().nextColor() == GoBoardInfo.GO_BLACK_STONE ? this.blackPaint : this.whitePaint);
+        }
     }
 
     private void drawStone(int x, int y, Paint paint_val) {
