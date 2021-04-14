@@ -68,32 +68,6 @@ public class GoBoard {
         this.debug(false, "encodeBoard", this.theBoardOutputBuffer);
     }
 
-    private Boolean isEmptySpace(int x_val, int y_val) {
-        if (!this.goRoot_.goConfigInfo().isValidCoordinates(x_val, y_val)) {
-            return false;
-        }
-        if (this.theBoardArray[x_val][y_val] != GoDefine.GO_EMPTY_STONE) {
-            return false;
-        }
-        return true;
-    }
-
-    public Boolean stoneHasAir(int x_val, int y_val) {
-        if (this.isEmptySpace(x_val, y_val - 1)) {
-            return true;
-        }
-        if (this.isEmptySpace(x_val, y_val + 1)) {
-            return true;
-        }
-        if (this.isEmptySpace(x_val - 1, y_val)) {
-            return true;
-        }
-        if (this.isEmptySpace(x_val + 1, y_val)) {
-            return true;
-        }
-        return false;
-    }
-
     public void resetBoardObjectData() {
         for (int i = 0; i < GoDefine.MAX_BOARD_SIZE; i++) {
             for (int j = 0; j < GoDefine.MAX_BOARD_SIZE; j++) {

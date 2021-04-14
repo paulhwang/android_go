@@ -26,7 +26,8 @@ public class GoGroup {
     private Boolean[][] deadMatrix;
 
     public GoGroupList goGroupList() { return this.goGroupList_; }
-    public GoConfigInfo goConfig() { return this.goGroupList().goConfigInfo(); }
+    public GoConfigInfo goConfigInfo() { return this.goGroupList().goConfigInfo(); }
+    public GoBoard goBoard() { return goGroupList().goBoard(); }
     public int hisColor() { return this.hisColor_; }
     public int myColor() { return this.myColor_; }
     public int stoneCount() { return this.stoneCount_; }
@@ -171,13 +172,39 @@ public class GoGroup {
             int j = this.minY_;
             while (j <= this.maxY_) {
                 if (this.existMatrix_[i][j]) {
-                    if (this.goGroupList_.goFight().goRoot().goBoard().stoneHasAir(i, j)) {
+                    if (this.stoneHasAir(i, j)) {
                         return true;
                     }
                 }
                 j += 1;
             }
             i += 1;
+        }
+        return false;
+    }
+
+    private Boolean isEmptySpace(int x_val, int y_val) {
+        if (!this.goConfigInfo().isValidCoordinates(x_val, y_val)) {
+            return false;
+        }
+        if (this.goBoard().boardArray(x_val, y_val) != GoDefine.GO_EMPTY_STONE) {
+            return false;
+        }
+        return true;
+    }
+
+    public Boolean stoneHasAir(int x_val, int y_val) {
+        if (this.isEmptySpace(x_val, y_val - 1)) {
+            return true;
+        }
+        if (this.isEmptySpace(x_val, y_val + 1)) {
+            return true;
+        }
+        if (this.isEmptySpace(x_val - 1, y_val)) {
+            return true;
+        }
+        if (this.isEmptySpace(x_val + 1, y_val)) {
+            return true;
         }
         return false;
     }
@@ -213,7 +240,7 @@ public class GoGroup {
 
     public void abendGroup() {
         int count = 0;
-        int board_size = this.goConfig().boardSize();
+        int board_size = this.goConfigInfo().boardSize();
         for (int i = 0; i < board_size; i++) {
             for (int j = 0; j < board_size; j++) {
                 if (this.existMatrix_[i][j]) {
@@ -227,7 +254,7 @@ public class GoGroup {
     }
 
     public void abendOnGroupConflict(GoGroup other_group_val) {
-        int board_size = this.goConfig().boardSize();
+        int board_size = this.goConfigInfo().boardSize();
         for (int i = 0; i < board_size; i++) {
             for (int j = 0; j < board_size; j++) {
                 if (this.existMatrix_[i][j]) {
