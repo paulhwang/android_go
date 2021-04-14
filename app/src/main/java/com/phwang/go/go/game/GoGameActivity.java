@@ -23,7 +23,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     private static final String TAG = "GoGameActivity";
     private GoGameUFunc goGameUFunc_;
     private GoGameDFunc goGameDFunc_;
-    private GoBoardInfo goGameBoard_;
+    private GoBoardInfo goBoardInfo_;
     private GoGameView goGameView_;
     private GoConfigInfo goConfigInfo_;
     private GoGameReceiver goGameReceiver_;
@@ -35,7 +35,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     private int touchY_;
 
     protected GoGameView goGameView() { return this.goGameView_; };
-    protected GoBoardInfo goBoardInfo() { return this.goGameBoard_; };
+    protected GoBoardInfo goBoardInfo() { return this.goBoardInfo_; };
     protected GoConfigInfo goConfigInfo() { return this.goConfigInfo_; };
     protected GoGameUFunc goGameUFunc() { return this.goGameUFunc_; };
     protected GoGameDFunc goGameDFunc() { return this.goGameDFunc_; };
@@ -68,7 +68,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
 
         this.resetTouchXY();
         this.goConfigInfo_ = new GoConfigInfo(go_config_info_str);
-        this.goGameBoard_ = new GoBoardInfo();
+        this.goBoardInfo_ = new GoBoardInfo();
         this.goGameUFunc_ = new GoGameUFunc(this);
         this.goGameDFunc_ = new GoGameDFunc(this);
 
@@ -178,12 +178,12 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
 
-        if (this.goGameBoard_.boardArray(this.moveX(), this.moveY()) != 0) {
+        if (this.goBoardInfo_.boardArray(this.moveX(), this.moveY()) != 0) {
             return;
         }
 
 
-        String move_str = GoMoveInfo.encodeMove(this.moveX(), this.moveY(), this.goGameBoard_.nextColor(), this.goGameBoard_.totalMoves() + 1);
+        String move_str = GoMoveInfo.encodeMove(this.moveX(), this.moveY(), this.goBoardInfo_.nextColor(), this.goBoardInfo_.totalMoves() + 1);
         //Log.e(TAG, "processTouchInput move=" + move_str);
 
         this.goGameUFunc_.sendPutSessionDataCommand(move_str);

@@ -27,7 +27,7 @@ public class GoGameView  extends View {
     protected GoConfigInfo goConfigInfo() { return this.goGameActivity_.goConfigInfo(); };
     private GoBoardInfo goBoardInfo() { return this.goGameActivity_.goBoardInfo(); }
     private int boardSize() { return this.goConfigInfo().boardSize(); }
-    private int board(int x_val, int y_val) { return this.goBoardInfo().boardArray(x_val, y_val); }
+    private int boardArray(int x_val, int y_val) { return this.goBoardInfo().boardArray(x_val, y_val); }
     private int touchX() { return this.goGameActivity_.touchX(); }
     private int touchY() { return this.goGameActivity_.touchY(); }
     private int moveX() { return this.goGameActivity_.moveX(); }
@@ -152,10 +152,10 @@ public class GoGameView  extends View {
     private void drawStones() {
         for (int i = this.boardSize() - 1; i >= 0; i--) {
             for (int j = this.boardSize() - 1; j >= 0; j--) {
-                if (this.board(i, j) == GoBoardInfo.GO_BLACK_STONE){
+                if (this.boardArray(i, j) == GoBoardInfo.GO_BLACK_STONE){
                     this.drawStone(i, j, this.blackPaint);
                 }
-                else if (this.board(i, j) == GoBoardInfo.GO_WHITE_STONE){
+                else if (this.boardArray(i, j) == GoBoardInfo.GO_WHITE_STONE){
                     this.drawStone(i, j, this.whitePaint);
                 }
             }
