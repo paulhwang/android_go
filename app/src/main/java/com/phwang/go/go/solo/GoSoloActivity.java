@@ -30,7 +30,6 @@ import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.global.GlobalData;
-import com.phwang.go.go.game.GoGameBoard;
 
 public class GoSoloActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "GoSoloActivity";

@@ -14,10 +14,14 @@ import com.phwang.core.utils.encoders.Encoders;
 public class GoBoardInfo {
     private String objectName() {return "GoBoardInfo";}
 
+    public static final int GO_INVALID_COORDINATE = 20;
+    public static final int GO_MAX_BOARD_SIZE = 19;
+    public static final int GO_TOTAL_MOVE_SIZE = 3;
+
     private int totalMoves_ = 0;
     private int nextColor_ = GoDefine.GO_BLACK_STONE;
-    private int[][] boardArray_ = new int[GoDefine.MAX_BOARD_SIZE] [GoDefine.MAX_BOARD_SIZE];
-    private int[][] markedBoardArray_ = new int[GoDefine.MAX_BOARD_SIZE] [GoDefine.MAX_BOARD_SIZE];
+    private int[][] boardArray_ = new int[GO_MAX_BOARD_SIZE] [GO_MAX_BOARD_SIZE];
+    private int[][] markedBoardArray_ = new int[GO_MAX_BOARD_SIZE] [GO_MAX_BOARD_SIZE];
     private String theBoardOutputBuffer;
     private int theBlackCapturedStones;
     private int theWhiteCapturedStones;
@@ -42,8 +46,8 @@ public class GoBoardInfo {
     }
 
     public void resetBoardObjectData() {
-        for (int i = 0; i < GoDefine.MAX_BOARD_SIZE; i++) {
-            for (int j = 0; j < GoDefine.MAX_BOARD_SIZE; j++) {
+        for (int i = 0; i < GO_MAX_BOARD_SIZE; i++) {
+            for (int j = 0; j < GO_MAX_BOARD_SIZE; j++) {
                 this.boardArray_[i][j] = GoDefine.GO_EMPTY_STONE;
                 this.markedBoardArray_[i][j] = GoDefine.GO_EMPTY_STONE;
             }
@@ -58,8 +62,8 @@ public class GoBoardInfo {
     }
 
     public void clearLastDeadStone() {
-        this.theLastDeadX = GoDefine.MAX_BOARD_SIZE;
-        this.theLastDeadY = GoDefine.MAX_BOARD_SIZE;
+        this.theLastDeadX = GO_MAX_BOARD_SIZE;
+        this.theLastDeadY = GO_MAX_BOARD_SIZE;
     }
 
     private final char GO_PROTOCOL_GAME_INFO = 'G';
@@ -67,12 +71,12 @@ public class GoBoardInfo {
     public void encodeBoard() {
         this.theBoardOutputBuffer = "";
         this.theBoardOutputBuffer = this.theBoardOutputBuffer + GO_PROTOCOL_GAME_INFO;
-        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncodeRaw(this.totalMoves_, GoDefine.TOTAL_MOVE_SIZE);
+        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncodeRaw(this.totalMoves_, GO_TOTAL_MOVE_SIZE);
         this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncodeRaw1(this.nextColor_);
 
         //int board_size = this.goConfigInfo().boardSize();
-        for (int i = 0; i < GoDefine.MAX_BOARD_SIZE; i++) {
-            for (int j = 0; j < GoDefine.MAX_BOARD_SIZE; j++) {
+        for (int i = 0; i < GO_MAX_BOARD_SIZE; i++) {
+            for (int j = 0; j < GO_MAX_BOARD_SIZE; j++) {
                 char c = '0';
                 switch (this.boardArray_[i][j]) {
                     case 1: c = '1'; break;
@@ -96,9 +100,9 @@ public class GoBoardInfo {
         this.totalMoves_ = Encoders.iDecodeRaw(total_moves_str);
         this.nextColor_ = data_str_val.charAt(3) - 48;
         String rest_str = data_str_val.substring(4);
-        for (int i = 0; i < GoDefine.MAX_BOARD_SIZE; i++) {
-            for (int j = 0; j < GoDefine.MAX_BOARD_SIZE; j++) {
-                this.boardArray_[i][j] = rest_str.charAt(i * GoDefine.MAX_BOARD_SIZE + j) - 48;
+        for (int i = 0; i < GO_MAX_BOARD_SIZE; i++) {
+            for (int j = 0; j < GO_MAX_BOARD_SIZE; j++) {
+                this.boardArray_[i][j] = rest_str.charAt(i * GO_MAX_BOARD_SIZE + j) - 48;
             }
         }
     }

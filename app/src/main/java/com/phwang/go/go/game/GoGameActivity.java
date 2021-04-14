@@ -150,8 +150,8 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void resetTouchXY() {
-        this.touchX_ = GoDefine.GO_INVALID_COORDINATE;
-        this.touchY_ = GoDefine.GO_INVALID_COORDINATE;
+        this.touchX_ = GoBoardInfo.GO_INVALID_COORDINATE;
+        this.touchY_ = GoBoardInfo.GO_INVALID_COORDINATE;
     }
 
     @Override

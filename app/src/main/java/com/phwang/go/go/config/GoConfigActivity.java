@@ -26,7 +26,6 @@ import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.global.GlobalData;
-import com.phwang.go.go.game.GoGameBoard;
 import com.phwang.go.go.head.GoHeadActivity;
 import com.phwang.go.go.join.GoJoinActivity;
 import com.phwang.go.go.solo.GoSoloActivity;

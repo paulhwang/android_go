@@ -42,10 +42,10 @@ public class GoGroup {
         this.myColor_ = this.goGroupList_.myColor();
         this.stoneCount_ = 0;
 
-        this.existMatrix_ = new Boolean[GoDefine.MAX_BOARD_SIZE] [GoDefine.MAX_BOARD_SIZE];
-        this.deadMatrix = new Boolean[GoDefine.MAX_BOARD_SIZE] [GoDefine.MAX_BOARD_SIZE];
-        for (int i = 0; i < GoDefine.MAX_BOARD_SIZE; i++) {
-        	for (int j = 0; j < GoDefine.MAX_BOARD_SIZE; j++) {
+        this.existMatrix_ = new Boolean[GoBoardInfo.GO_MAX_BOARD_SIZE] [GoBoardInfo.GO_MAX_BOARD_SIZE];
+        this.deadMatrix = new Boolean[GoBoardInfo.GO_MAX_BOARD_SIZE] [GoBoardInfo.GO_MAX_BOARD_SIZE];
+        for (int i = 0; i < GoBoardInfo.GO_MAX_BOARD_SIZE; i++) {
+        	for (int j = 0; j < GoBoardInfo.GO_MAX_BOARD_SIZE; j++) {
         		this.existMatrix_[i][j] = false;
         		this.deadMatrix[i][j] = false;
         	}
