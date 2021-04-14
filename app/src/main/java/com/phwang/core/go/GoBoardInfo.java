@@ -95,12 +95,11 @@ public class GoBoardInfo {
     private final char GO_PROTOCOL_GAME_INFO = 'G';
 
     public void encodeBoard() {
-        this.theBoardOutputBuffer = "";
-        this.theBoardOutputBuffer = this.theBoardOutputBuffer + GO_PROTOCOL_GAME_INFO;
-        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncodeRaw(this.totalMoves_, GO_TOTAL_MOVE_SIZE);
-        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncodeRaw1(this.nextColor_);
+        StringBuilder buf = new StringBuilder();
+        buf.append(GO_PROTOCOL_GAME_INFO);
+        buf.append(Encoders.iEncodeRaw(this.totalMoves_, GO_TOTAL_MOVE_SIZE));
+        buf.append(Encoders.iEncodeRaw1(this.nextColor_));
 
-        //int board_size = this.goConfigInfo().boardSize();
         for (int i = 0; i < GO_MAX_BOARD_SIZE; i++) {
             for (int j = 0; j < GO_MAX_BOARD_SIZE; j++) {
                 char c = '0';
@@ -108,15 +107,17 @@ public class GoBoardInfo {
                     case 1: c = '1'; break;
                     case 2: c = '2'; break;
                 }
-                this.theBoardOutputBuffer = this.theBoardOutputBuffer + c;
+                buf.append(c);
             }
         }
 
-        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncodeRaw3(this.theBlackCapturedStones);
-        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncodeRaw3(this.theWhiteCapturedStones);
+        buf.append(Encoders.iEncodeRaw3(this.theBlackCapturedStones));
+        buf.append(Encoders.iEncodeRaw3(this.theWhiteCapturedStones));
 
-        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncodeRaw2(this.theLastDeadX);
-        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncodeRaw2(this.theLastDeadY);
+        buf.append(Encoders.iEncodeRaw2(this.theLastDeadX));
+        buf.append(Encoders.iEncodeRaw2(this.theLastDeadY));
+
+        this.theBoardOutputBuffer = buf.toString();
 
         this.debug(false, "encodeBoard", this.theBoardOutputBuffer);
     }
