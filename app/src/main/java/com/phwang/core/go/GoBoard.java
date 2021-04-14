@@ -47,9 +47,9 @@ public class GoBoard {
         this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncodeRaw(this.goGame().totalMoves(), GoDefine.TOTAL_MOVE_SIZE);
         this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncodeRaw1(this.goGame().nextColor());
 
-        int board_size = this.goConfigInfo().boardSize();
-        for (int i = 0; i < board_size; i++) {
-            for (int j = 0; j < board_size; j++) {
+        //int board_size = this.goConfigInfo().boardSize();
+        for (int i = 0; i < GoDefine.MAX_BOARD_SIZE; i++) {
+            for (int j = 0; j < GoDefine.MAX_BOARD_SIZE; j++) {
                 char c = '0';
                 switch (this.theBoardArray[i][j]) {
                     case 1: c = '1'; break;

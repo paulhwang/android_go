@@ -40,15 +40,10 @@ public class GoGameBoard {
         this.totalMoves_ = Encoders.iDecodeRaw(total_moves_str);
         this.nextColor_ = data_str_val.charAt(3) - 48;
         String rest_str = data_str_val.substring(4);
-        for (int i = 0; i < this.boardSize(); i++) {
-            for (int j = 0; j < this.boardSize(); j++) {
-                this.boardArray_[i][j] = rest_str.charAt(i * this.boardSize() + j) - 48;
+        for (int i = 0; i < GoDefine.MAX_BOARD_SIZE; i++) {
+            for (int j = 0; j < GoDefine.MAX_BOARD_SIZE; j++) {
+                this.boardArray_[i][j] = rest_str.charAt(i * GoDefine.MAX_BOARD_SIZE + j) - 48;
             }
         }
-    }
-
-    protected String encodeMove(int x_val, int y_val) {
-
-        return GoMoveInfo.encodeMove(x_val, y_val, this.nextColor(), this.totalMoves() + 1);
     }
 }
