@@ -26,11 +26,10 @@ public class GoMoveInfo {
     public String moveDebugStr() { return this.moveDebugStr_; }
 
     public GoMoveInfo(String go_move_info_str_val) {
-        String encoded_move_val = go_move_info_str_val.substring(1, 9);
-        this.x_ = (encoded_move_val.charAt(0) - '0') * 10 + (encoded_move_val.charAt(1) - '0');
-        this.y_ = (encoded_move_val.charAt(2) - '0') * 10 + (encoded_move_val.charAt(3) - '0');
-        this.myColor_ = encoded_move_val.charAt(4) - '0';
-        this.turnIndex_ = (encoded_move_val.charAt(5) - '0') * 100 + (encoded_move_val.charAt(6) - '0') * 10 + (encoded_move_val.charAt(7) - '0');
+        this.x_ = (go_move_info_str_val.charAt(1) - '0') * 10 + (go_move_info_str_val.charAt(2) - '0');
+        this.y_ = (go_move_info_str_val.charAt(3) - '0') * 10 + (go_move_info_str_val.charAt(4) - '0');
+        this.myColor_ = go_move_info_str_val.charAt(5) - '0';
+        this.turnIndex_ = (go_move_info_str_val.charAt(6) - '0') * 100 + (go_move_info_str_val.charAt(7) - '0') * 10 + (go_move_info_str_val.charAt(8) - '0');
         this.moveDebugStr_ = "(" + this.x_ + ", " + this.y_ + ") " + this.myColor_ + ", " + this.turnIndex_;
     }
 
