@@ -23,7 +23,7 @@ public class GoFight {
 
     public GoRoot goRoot() { return this.goRoot_; }
     public GoBoard goBoard() { return this.goRoot_.goBoard(); }
-    public GoConfigInfo goConfig() { return this.goRoot_.goConfigInfo(); }
+    public GoConfigInfo goConfigInfo() { return this.goRoot_.goConfigInfo(); }
 
     GoGroupList emptyGroupList() { return this.theGroupListArray[0]; }
     GoGroupList blackGroupList() { return this.theGroupListArray[1]; }
@@ -66,7 +66,7 @@ public class GoFight {
     public void enterBattle(GoMoveInfo move_val) {
         this.debug(false, "enterBattle move=", move_val.moveDebugStr());
 
-        this.goBoard().addStoneToBoard(move_val.X(), move_val.Y(), move_val.MyColor());
+        this.addStoneToBoard(move_val.X(), move_val.Y(), move_val.MyColor());
         GoGroup my_group = this.insertStoneToGroupList(move_val);
         if (my_group == null) {
             this.abend("enterBattle", "fail in insertStoneToGroupList");
@@ -91,6 +91,16 @@ public class GoFight {
             }
         }
         this.abendEngine();
+    }
+
+    private void addStoneToBoard(int x_val, int y_val, int color_val) {
+        if (!this.goConfigInfo().isValidCoordinates(x_val, y_val)) {
+            this.log("addStoneToBoard", "bad coordinate: " + x_val + " " + y_val);
+            this.abend("addStoneToBoard", "bad coordinate: " + x_val + " " + y_val);
+            return;
+        }
+
+        this.goBoard().setBoardArray(x_val, y_val, color_val);
     }
 
     private GoGroup insertStoneToGroupList(GoMoveInfo move_val) {
@@ -146,7 +156,7 @@ public class GoFight {
     private int killOtherColorGroup(GoGroup my_group_val, int x_val, int y_val) {
     	GoGroup his_group;
 
-        if (!this.goConfig().isValidCoordinates(x_val, y_val)) {
+        if (!this.goConfigInfo().isValidCoordinates(x_val, y_val)) {
             return 0;
         }
 
@@ -247,7 +257,7 @@ public class GoFight {
         /* check if a stone exist in both black and white group_lists */
         int black_stone_count = 0;
         int white_stone_count = 0;
-        int board_size = this.goConfig().boardSize();
+        int board_size = this.goConfigInfo().boardSize();
 
         for (int x = 0; x < board_size; x++) {
             for (int y = 0; y < board_size; y++) {

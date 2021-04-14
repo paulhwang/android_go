@@ -68,16 +68,6 @@ public class GoBoard {
         this.debug(false, "encodeBoard", this.theBoardOutputBuffer);
     }
 
-    public void addStoneToBoard(int x_val, int y_val, int color_val) {
-        if (!this.goConfigInfo().isValidCoordinates(x_val, y_val)) {
-            this.log("addStoneToBoard", "bad coordinate: " + x_val + " " + y_val);
-            this.abend("addStoneToBoard", "bad coordinate: " + x_val + " " + y_val);
-            return;
-        }
-
-        this.theBoardArray[x_val][y_val] = color_val;
-    }
-
     private Boolean isEmptySpace(int x_val, int y_val) {
         if (!this.goRoot_.goConfigInfo().isValidCoordinates(x_val, y_val)) {
             return false;
