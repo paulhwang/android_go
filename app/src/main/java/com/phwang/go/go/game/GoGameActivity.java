@@ -56,18 +56,18 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         String fabric_data_str = this.getIntent().getExtras().getString(BundleIndexDefine.FABRIC_DATA);
         //Log.e(TAG, "onCreate() data_package=" + fabric_data_str);
 
-        FabricInfo fabric_decode = new FabricInfo(fabric_data_str);
-        this.linkIdStr_ = fabric_decode.linkIdStr();
-        this.sessionIdStr_ = fabric_decode.sessionIdStr();
+        FabricInfo fabric_info = new FabricInfo(fabric_data_str);
+        this.linkIdStr_ = fabric_info.linkIdStr();
+        this.sessionIdStr_ = fabric_info.sessionIdStr();
         //Log.e(TAG, "onCreate() linkIdStr_=" + linkIdStr_);
         //Log.e(TAG, "onCreate() sessionIdStr_=" + sessionIdStr_);
 
-        String config_str = fabric_decode.stringArrayElement(0);
+        String go_config_info_str = fabric_info.stringArrayElement(0);
         //Log.e(TAG, "onCreate() config_str=" + config_str);
 
         this.resetTouchXY();
-        this.goConfigInfo_ = new GoConfigInfo(config_str);
-        this.goGameBoard_ = new GoGameBoard(this, config_str);
+        this.goConfigInfo_ = new GoConfigInfo(go_config_info_str);
+        this.goGameBoard_ = new GoGameBoard(this);
         this.goGameUFunc_ = new GoGameUFunc(this);
         this.goGameDFunc_ = new GoGameDFunc(this);
 
