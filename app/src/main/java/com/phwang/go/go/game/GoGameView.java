@@ -27,7 +27,7 @@ public class GoGameView  extends View {
     protected GoConfigInfo goConfigInfo() { return this.goGameActivity_.goConfigInfo(); };
     private GoGameBoard goGameBoard() { return this.goGameActivity_.goGameBoard(); }
     private int boardSize() { return this.goConfigInfo().boardSize(); }
-    private int board(int x_val, int y_val) { return this.goGameBoard().board(x_val, y_val); }
+    private int board(int x_val, int y_val) { return this.goGameBoard().boardArray(x_val, y_val); }
     private int touchX() { return this.goGameActivity_.touchX(); }
     private int touchY() { return this.goGameActivity_.touchY(); }
     private int moveX() { return this.goGameActivity_.moveX(); }

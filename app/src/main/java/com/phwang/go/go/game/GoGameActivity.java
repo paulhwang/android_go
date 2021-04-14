@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.phwang.core.go.GoConfigInfo;
+import com.phwang.core.go.GoMoveInfo;
 import com.phwang.core.protocols.fabric.FabricInfo;
 import com.phwang.core.utils.watchdog.WatchDog;
 import com.phwang.core.utils.watchdog.WatchDogInt;
@@ -177,16 +178,14 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
 
-        if (this.goGameBoard_.board(this.moveX(), this.moveY()) != 0) {
+        if (this.goGameBoard_.boardArray(this.moveX(), this.moveY()) != 0) {
             return;
         }
 
 
-        String move_str = this.goGameBoard_.encodeMove(this.moveX(), this.moveY());
-        if (move_str == null) {
-            return;
-        }
+        String move_str = GoMoveInfo.encodeMove(this.moveX(), this.moveY(), this.goGameBoard_.nextColor(), this.goGameBoard_.totalMoves() + 1);
         //Log.e(TAG, "processTouchInput move=" + move_str);
+
         this.goGameUFunc_.sendPutSessionDataCommand(move_str);
     }
 
