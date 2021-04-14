@@ -18,7 +18,6 @@ import com.phwang.core.utils.watchdog.WatchDogInt;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
-import com.phwang.core.go.GoDefine;
 
 public class GoGameActivity extends AppCompatActivity implements View.OnClickListener, WatchDogInt {
     private static final String TAG = "GoGameActivity";

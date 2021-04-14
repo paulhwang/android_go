@@ -18,7 +18,6 @@ import android.util.Log;
 
 import com.phwang.core.go.GoBoardInfo;
 import com.phwang.core.go.GoConfigInfo;
-import com.phwang.core.go.GoDefine;
 import com.phwang.go.R;
 
 public class GoGameView  extends View {
@@ -153,16 +152,16 @@ public class GoGameView  extends View {
     private void drawStones() {
         for (int i = this.boardSize() - 1; i >= 0; i--) {
             for (int j = this.boardSize() - 1; j >= 0; j--) {
-                if (this.board(i, j) == GoDefine.GO_BLACK_STONE){
+                if (this.board(i, j) == GoBoardInfo.GO_BLACK_STONE){
                     this.drawStone(i, j, this.blackPaint);
                 }
-                else if (this.board(i, j) == GoDefine.GO_WHITE_STONE){
+                else if (this.board(i, j) == GoBoardInfo.GO_WHITE_STONE){
                     this.drawStone(i, j, this.whitePaint);
                 }
             }
         }
 
-        this.drawStone(this.moveX(), this.moveY(), this.goBoardInfo().nextColor() == GoDefine.GO_BLACK_STONE ? this.blackPaint : this.whitePaint);
+        this.drawStone(this.moveX(), this.moveY(), this.goBoardInfo().nextColor() == GoBoardInfo.GO_BLACK_STONE ? this.blackPaint : this.whitePaint);
     }
 
     private void drawStone(int x, int y, Paint paint_val) {

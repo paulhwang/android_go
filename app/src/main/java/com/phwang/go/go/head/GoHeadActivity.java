@@ -8,7 +8,6 @@
 
 package com.phwang.go.go.head;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -17,17 +16,17 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.phwang.core.go.GoBoardInfo;
 import com.phwang.core.go.GoConfigInfo;
-import com.phwang.core.go.GoDefine;
 import com.phwang.core.protocols.fabric.FabricClients;
 import com.phwang.core.protocols.fabric.FabricCommands;
 import com.phwang.core.protocols.fabric.FabricInfo;
 import com.phwang.core.protocols.fabric.FabricResults;
 import com.phwang.core.protocols.fabric.FabricThemeTypes;
 import com.phwang.core.utils.encoders.Encoders;
-import com.phwang.core.utils.stringarray.StringArray;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
@@ -57,22 +56,22 @@ public class GoHeadActivity extends AppCompatActivity implements View.OnClickLis
             Log.e(TAG, "onItemClick() position=" + position + " val=" + optionArray[position]);
             switch (position) {
                 case 0:
-                    setupHeadSession(GoConfigInfo.encodeConfig(19, 0, 0, GoDefine.GO_BLACK_STONE));
+                    setupHeadSession(GoConfigInfo.encodeConfig(19, 0, 0, GoBoardInfo.GO_BLACK_STONE));
                     break;
                 case 1:
-                    setupHeadSession(GoConfigInfo.encodeConfig(19, 0, 0, GoDefine.GO_WHITE_STONE));
+                    setupHeadSession(GoConfigInfo.encodeConfig(19, 0, 0, GoBoardInfo.GO_WHITE_STONE));
                     break;
                 case 2:
-                    setupHeadSession(GoConfigInfo.encodeConfig(13, 0, 0, GoDefine.GO_BLACK_STONE));
+                    setupHeadSession(GoConfigInfo.encodeConfig(13, 0, 0, GoBoardInfo.GO_BLACK_STONE));
                     break;
                 case 3:
-                    setupHeadSession(GoConfigInfo.encodeConfig(13, 0, 0, GoDefine.GO_WHITE_STONE));
+                    setupHeadSession(GoConfigInfo.encodeConfig(13, 0, 0, GoBoardInfo.GO_WHITE_STONE));
                     break;
                 case 4:
-                    setupHeadSession(GoConfigInfo.encodeConfig(9, 0, 0, GoDefine.GO_BLACK_STONE));
+                    setupHeadSession(GoConfigInfo.encodeConfig(9, 0, 0, GoBoardInfo.GO_BLACK_STONE));
                     break;
                 case 5:
-                    setupHeadSession(GoConfigInfo.encodeConfig(9, 0, 0, GoDefine.GO_WHITE_STONE));
+                    setupHeadSession(GoConfigInfo.encodeConfig(9, 0, 0, GoBoardInfo.GO_WHITE_STONE));
                     break;
                 case 6:
                     finish();

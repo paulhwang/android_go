@@ -53,7 +53,7 @@ public class GoGame {
         this.goBoardInfo().clearLastDeadStone();
         this.insertMoveToMoveList(move_val);
         this.goFight().enterBattle(move_val);
-        this.goBoardInfo().setNextColor(GoDefine.getOppositeColor(move_val.MyColor()));
+        this.goBoardInfo().setNextColor(GoBoardInfo.getOppositeColor(move_val.MyColor()));
     }
 
     private void insertMoveToMoveList(GoMoveInfo move_val) {
@@ -123,7 +123,7 @@ public class GoGame {
         while (i < this.totalMoves()) {
             GoMoveInfo move = this.theMovesArray[i];
             this.goFight().enterBattle(move);
-            this.goBoardInfo().setNextColor(GoDefine.getOppositeColor(move.MyColor()));
+            this.goBoardInfo().setNextColor(GoBoardInfo.getOppositeColor(move.MyColor()));
             i += 1;
         }
     }

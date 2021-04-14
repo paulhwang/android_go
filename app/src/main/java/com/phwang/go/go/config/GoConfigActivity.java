@@ -14,6 +14,8 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.phwang.core.go.GoBoardInfo;
 import com.phwang.core.go.GoConfigInfo;
 import com.phwang.core.protocols.fabric.FabricClients;
 import com.phwang.core.protocols.fabric.FabricCommands;
@@ -21,7 +23,6 @@ import com.phwang.core.protocols.fabric.FabricResults;
 import com.phwang.core.protocols.fabric.FabricThemeTypes;
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.protocols.fabric.FabricInfo;
-import com.phwang.core.go.GoDefine;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
@@ -81,16 +82,16 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         Intent intent;
         switch (view_val.getId()) {
             case R.id.go_config_black9_button:
-                this.setupHeadSession(GoConfigInfo.encodeConfig(9, 0, 0, GoDefine.GO_BLACK_STONE));
+                this.setupHeadSession(GoConfigInfo.encodeConfig(9, 0, 0, GoBoardInfo.GO_BLACK_STONE));
                 break;
             case R.id.go_config_black13_button:
-                this.setupHeadSession(GoConfigInfo.encodeConfig(13, 0, 0, GoDefine.GO_BLACK_STONE));
+                this.setupHeadSession(GoConfigInfo.encodeConfig(13, 0, 0, GoBoardInfo.GO_BLACK_STONE));
                 break;
             case R.id.go_config_black19_button:
-                this.setupHeadSession(GoConfigInfo.encodeConfig(19, 0, 0, GoDefine.GO_BLACK_STONE));
+                this.setupHeadSession(GoConfigInfo.encodeConfig(19, 0, 0, GoBoardInfo.GO_BLACK_STONE));
                 break;
             case R.id.go_config_white9_button:
-                this.setupHeadSession(GoConfigInfo.encodeConfig(9, 0, 0, GoDefine.GO_WHITE_STONE));
+                this.setupHeadSession(GoConfigInfo.encodeConfig(9, 0, 0, GoBoardInfo.GO_WHITE_STONE));
                 break;
             case R.id.go_config_white13_button:
                 intent = new Intent(this, GoSoloActivity.class);

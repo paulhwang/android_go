@@ -17,9 +17,35 @@ public class GoBoardInfo {
     public static final int GO_INVALID_COORDINATE = 20;
     public static final int GO_MAX_BOARD_SIZE = 19;
     public static final int GO_TOTAL_MOVE_SIZE = 3;
+    public static final int GO_EMPTY_STONE = 0;
+    public static final int GO_BLACK_STONE = 1;
+    public static final int GO_WHITE_STONE = 2;
+    public static final int GO_BOTH_STONE = 3;
+    public static final int GO_MARK_DEAD_STONE_DIFF = 4;
+    public static final int GO_MARK_EMPTY_STONE_DIFF = 8;
+
+    public static final int GO_MARKED_DEAD_BLACK_STONE = (GO_BLACK_STONE + GO_MARK_DEAD_STONE_DIFF);
+    public static final int GO_MARKED_DEAD_WHITE_STONE = (GO_WHITE_STONE + GO_MARK_DEAD_STONE_DIFF);
+
+    public static final int GO_MARKED_EMPTY_BLACK_STONE = (GO_BLACK_STONE + GO_MARK_EMPTY_STONE_DIFF);
+    public static final int GO_MARKED_EMPTY_WHITE_STONE = (GO_WHITE_STONE + GO_MARK_EMPTY_STONE_DIFF);
+
+
+    public static int getOppositeColor(int color_val) {
+        switch (color_val) {
+            case GO_BLACK_STONE:
+                return GO_WHITE_STONE;
+
+            case GO_WHITE_STONE:
+                return GO_BLACK_STONE;
+
+            default:
+                return GO_EMPTY_STONE;
+        }
+    }
 
     private int totalMoves_ = 0;
-    private int nextColor_ = GoDefine.GO_BLACK_STONE;
+    private int nextColor_ = GO_BLACK_STONE;
     private int[][] boardArray_ = new int[GO_MAX_BOARD_SIZE] [GO_MAX_BOARD_SIZE];
     private int[][] markedBoardArray_ = new int[GO_MAX_BOARD_SIZE] [GO_MAX_BOARD_SIZE];
     private String theBoardOutputBuffer;
@@ -48,8 +74,8 @@ public class GoBoardInfo {
     public void resetBoardObjectData() {
         for (int i = 0; i < GO_MAX_BOARD_SIZE; i++) {
             for (int j = 0; j < GO_MAX_BOARD_SIZE; j++) {
-                this.boardArray_[i][j] = GoDefine.GO_EMPTY_STONE;
-                this.markedBoardArray_[i][j] = GoDefine.GO_EMPTY_STONE;
+                this.boardArray_[i][j] = GO_EMPTY_STONE;
+                this.markedBoardArray_[i][j] = GO_EMPTY_STONE;
             }
         }
         this.theBlackCapturedStones = 0;
