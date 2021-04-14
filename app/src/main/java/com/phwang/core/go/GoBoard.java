@@ -13,7 +13,9 @@ import com.phwang.core.utils.encoders.Encoders;
 
 public class GoBoard {
     private String objectName() {return "GoBoard";}
-    
+
+    private int totalMoves_;
+    private int nextColor_;
     private int[][] theBoardArray;
     private int[][] theMarkedBoardArray;
     private String theBoardOutputBuffer;
@@ -26,14 +28,22 @@ public class GoBoard {
     public GoConfigInfo goConfigInfo() { return this.goRoot_.goConfigInfo(); }
     public GoGame goGame() { return this.goRoot_.goGame(); }
     public String boardOutputBuffer() { return this.theBoardOutputBuffer; }
+    public int totalMoves() { return this.totalMoves_; }
+    public int nextColor() { return this.nextColor_; }
     public int boardArray(int x_val, int y_val) { return this.theBoardArray[x_val][y_val]; }
     public void addBlackCapturedStones(int val) { this.theBlackCapturedStones += val; }
     public void addWhiteCapturedStones(int val) { this.theWhiteCapturedStones += val; }
+    public void setNextColor(int val) { this.nextColor_ = val; }
+    public void incrementTotalMoves() { this.totalMoves_++; }
+    public void decrementTotalMoves() { this.totalMoves_--; }
+    public void setTotalMoves(int val) { this.totalMoves_ = val; }
     public void setBoardArray(int x_val, int y_val, int data_val) { this.theBoardArray[x_val][y_val] = data_val; }
     public void setLastDeadStone(int x_val, int y_val) { this.theLastDeadX = x_val; this.theLastDeadY = y_val; }
 
     public GoBoard(GoRoot root_val) {
         this.goRoot_ = root_val;
+        this.totalMoves_ = 0;
+        this.nextColor_ = GoDefine.GO_BLACK_STONE;
         this.theBoardArray = new int[GoDefine.MAX_BOARD_SIZE] [GoDefine.MAX_BOARD_SIZE];
         this.theMarkedBoardArray = new int[GoDefine.MAX_BOARD_SIZE] [GoDefine.MAX_BOARD_SIZE];
         this.resetBoardObjectData();
@@ -44,8 +54,8 @@ public class GoBoard {
     public void encodeBoard() {
         this.theBoardOutputBuffer = "";
         this.theBoardOutputBuffer = this.theBoardOutputBuffer + GO_PROTOCOL_GAME_INFO;
-        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncodeRaw(this.goGame().totalMoves(), GoDefine.TOTAL_MOVE_SIZE);
-        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncodeRaw1(this.goGame().nextColor());
+        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncodeRaw(this.totalMoves_, GoDefine.TOTAL_MOVE_SIZE);
+        this.theBoardOutputBuffer = this.theBoardOutputBuffer + Encoders.iEncodeRaw1(this.nextColor_);
 
         //int board_size = this.goConfigInfo().boardSize();
         for (int i = 0; i < GoDefine.MAX_BOARD_SIZE; i++) {
