@@ -25,11 +25,8 @@ public class GoMoveInfo {
     public int TurnIndex() { return this.turnIndex_; }
     public String moveDebugStr() { return this.moveDebugStr_; }
 
-    public GoMoveInfo(String encoded_move_val) {
-        this.decodeMove(encoded_move_val);
-    }
-
-    private void decodeMove(String encoded_move_val) {
+    public GoMoveInfo(String go_move_info_str_val) {
+        String encoded_move_val = go_move_info_str_val.substring(1, 9);
         this.x_ = (encoded_move_val.charAt(0) - '0') * 10 + (encoded_move_val.charAt(1) - '0');
         this.y_ = (encoded_move_val.charAt(2) - '0') * 10 + (encoded_move_val.charAt(3) - '0');
         this.myColor_ = encoded_move_val.charAt(4) - '0';

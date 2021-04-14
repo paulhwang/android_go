@@ -53,10 +53,10 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         //Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
 
-        String fabric_data_str = this.getIntent().getExtras().getString(BundleIndexDefine.FABRIC_DATA);
+        String fabric_info_str = this.getIntent().getExtras().getString(BundleIndexDefine.FABRIC_DATA);
         //Log.e(TAG, "onCreate() data_package=" + fabric_data_str);
 
-        FabricInfo fabric_info = new FabricInfo(fabric_data_str);
+        FabricInfo fabric_info = new FabricInfo(fabric_info_str);
         this.linkIdStr_ = fabric_info.linkIdStr();
         this.sessionIdStr_ = fabric_info.sessionIdStr();
         //Log.e(TAG, "onCreate() linkIdStr_=" + linkIdStr_);

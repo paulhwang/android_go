@@ -28,7 +28,7 @@ public class GoParse {
         int len = input_data_val.length();//to be deleted
         switch (input_data_val.charAt(0)) {
             case GoExport.GO_PROTOCOL_MOVE_COMMAND:
-                GoMoveInfo move = new GoMoveInfo(input_data_val.substring(1, 9));
+                GoMoveInfo move = new GoMoveInfo(input_data_val);
                 this.goGame().addNewMoveAndFight(move);
                 return;
 
