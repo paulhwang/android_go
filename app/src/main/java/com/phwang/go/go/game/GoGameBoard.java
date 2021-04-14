@@ -48,7 +48,7 @@ public class GoGameBoard {
     }
 
     protected String encodeMove(int x_val, int y_val) {
-        if (!isValidCoordinates(x_val, y_val)) {
+        if (!this.goConfigInfo().isValidCoordinates(x_val, y_val)) {
             Log.e(TAG, "encodeMove() bad coordinate: " + x_val + " " + y_val);
             return null;
         }
@@ -58,13 +58,5 @@ public class GoGameBoard {
         }
 
         return GoMoveInfo.encodeMove(x_val, y_val, this.nextColor_, this.totalMoves_ + 1);
-    }
-
-    private Boolean isValidCoordinate_(int coordinate_val) {
-        return (0 <= coordinate_val) && (coordinate_val < this.boardSize());
-    }
-
-    private Boolean isValidCoordinates(int x_val, int y_val) {
-        return this.isValidCoordinate_(x_val) && this.isValidCoordinate_(y_val);
     }
 }
