@@ -27,7 +27,7 @@ public class GoRoot {
 
     public GoRoot(String go_config_info_str_val) {
         this.goConfigInfo_ = new GoConfigInfo(go_config_info_str_val);
-        this.goBoard_ = new GoBoard(this);
+        this.goBoard_ = new GoBoard();
         this.goGame_ = new GoGame(this);
         this.goFight_ = new GoFight(this);
         this.goParse_ = new GoParse(this);

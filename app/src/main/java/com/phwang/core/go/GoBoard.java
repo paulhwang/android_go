@@ -23,10 +23,7 @@ public class GoBoard {
     private int theWhiteCapturedStones;
     private int theLastDeadX;
     private int theLastDeadY;
-    private GoRoot goRoot_;
 
-    public GoConfigInfo goConfigInfo() { return this.goRoot_.goConfigInfo(); }
-    public GoGame goGame() { return this.goRoot_.goGame(); }
     public String boardOutputBuffer() { return this.theBoardOutputBuffer; }
     public int totalMoves() { return this.totalMoves_; }
     public int nextColor() { return this.nextColor_; }
@@ -40,8 +37,7 @@ public class GoBoard {
     public void setBoardArray(int x_val, int y_val, int data_val) { this.theBoardArray[x_val][y_val] = data_val; }
     public void setLastDeadStone(int x_val, int y_val) { this.theLastDeadX = x_val; this.theLastDeadY = y_val; }
 
-    public GoBoard(GoRoot root_val) {
-        this.goRoot_ = root_val;
+    public GoBoard() {
         this.totalMoves_ = 0;
         this.nextColor_ = GoDefine.GO_BLACK_STONE;
         this.theBoardArray = new int[GoDefine.MAX_BOARD_SIZE] [GoDefine.MAX_BOARD_SIZE];
