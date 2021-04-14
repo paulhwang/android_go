@@ -27,7 +27,7 @@ public class GoGroup {
 
     public GoGroupList goGroupList() { return this.goGroupList_; }
     public GoConfigInfo goConfigInfo() { return this.goGroupList().goConfigInfo(); }
-    public GoBoardInfo goBoard() { return goGroupList().goBoard(); }
+    public GoBoardInfo goBoardInfo() { return goGroupList().goBoardInfo(); }
     public int hisColor() { return this.hisColor_; }
     public int myColor() { return this.myColor_; }
     public int stoneCount() { return this.stoneCount_; }
@@ -187,7 +187,7 @@ public class GoGroup {
         if (!this.goConfigInfo().isValidCoordinates(x_val, y_val)) {
             return false;
         }
-        if (this.goBoard().boardArray(x_val, y_val) != GoDefine.GO_EMPTY_STONE) {
+        if (this.goBoardInfo().boardArray(x_val, y_val) != GoDefine.GO_EMPTY_STONE) {
             return false;
         }
         return true;
@@ -215,7 +215,7 @@ public class GoGroup {
             int j = this.minY_;
             while (j <= this.maxY_) {
                 if (this.existMatrix_[i][j]) {
-                    this.goGroupList_.goFight().goBoard().setBoardArray(i, j, GoDefine.GO_EMPTY_STONE);
+                    this.goGroupList_.goFight().goBoardInfo().setBoardArray(i, j, GoDefine.GO_EMPTY_STONE);
                     //this.debug(false, "removeDeadStoneFromBoard", "(" + i + "," + j + ")");
                 }
                 j += 1;
@@ -225,7 +225,7 @@ public class GoGroup {
     }
 
     public void markLastDeadInfo() {
-        this.goGroupList_.goBoard().setLastDeadStone(this.maxX_, this.maxY_);
+        this.goGroupList_.goBoardInfo().setLastDeadStone(this.maxX_, this.maxY_);
 
         if (this.maxX_ != this.minX_) {
             this.abend("MarkLastDeadInfo", "bad x");

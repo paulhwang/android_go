@@ -20,7 +20,7 @@ public class GoRoot {
     private GoFight goFight_;
 
     public GoConfigInfo goConfigInfo() { return this.goConfigInfo_; }
-    public GoBoardInfo goBoard() { return this.goBoardInfo_; }
+    public GoBoardInfo goBoardInfo() { return this.goBoardInfo_; }
     public GoGame goGame() { return this.goGame_; }
     public GoParse goParse() { return this.goParse_; }
     public GoFight goFight() { return this.goFight_; }
@@ -35,9 +35,9 @@ public class GoRoot {
 
     public String processInputData(String input_data_val) {
         this.goParse().parseInputData(input_data_val);
-        this.goBoard().encodeBoard();
-        this.debug(false, "transmitBoardData", this.goBoard().boardOutputBuffer());
-        return this.goBoard().boardOutputBuffer();
+        this.goBoardInfo().encodeBoard();
+        this.debug(false, "transmitBoardData", this.goBoardInfo().boardOutputBuffer());
+        return this.goBoardInfo().boardOutputBuffer();
     }
     
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }

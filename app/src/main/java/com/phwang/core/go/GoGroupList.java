@@ -28,7 +28,7 @@ public class GoGroupList {
 
     public GoFight goFight() { return this.goFight_; }
     public GoRoot goRoot() { return this.goFight_.goRoot(); }
-    public GoBoardInfo goBoard() { return goRoot().goBoard(); }
+    public GoBoardInfo goBoardInfo() { return goRoot().goBoardInfo(); }
     public GoConfigInfo goConfigInfo() { return goRoot().goConfigInfo(); }
     public int myColor() { return this.myColor_; }
     public int groupCount() { return this.groupCount_; }

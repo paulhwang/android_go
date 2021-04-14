@@ -22,7 +22,7 @@ public class GoFight {
     private String theLastDeadStone;
 
     public GoRoot goRoot() { return this.goRoot_; }
-    public GoBoardInfo goBoard() { return this.goRoot_.goBoard(); }
+    public GoBoardInfo goBoardInfo() { return this.goRoot_.goBoardInfo(); }
     public GoConfigInfo goConfigInfo() { return this.goRoot_.goConfigInfo(); }
 
     GoGroupList emptyGroupList() { return this.theGroupListArray[0]; }
@@ -40,7 +40,7 @@ public class GoFight {
     }
 
     public void resetEngineObjectData() {
-        this.goBoard().resetBoardObjectData();
+        this.goBoardInfo().resetBoardObjectData();
 
         this.theGroupListArray[1] = new GoGroupList(this, 1, GoDefine.GO_BLACK_STONE, false, null, null);
         this.theGroupListArray[2] = new GoGroupList(this, 2, GoDefine.GO_WHITE_STONE, false, null, null);
@@ -54,7 +54,7 @@ public class GoFight {
     private void resetMarkedGroupLists() {
         this.theGroupListArray[3] = new GoGroupList(this, 3, GoDefine.GO_BLACK_STONE, true, "black", "gray");
         this.theGroupListArray[4] = new GoGroupList(this, 4, GoDefine.GO_WHITE_STONE, true, "white", "gray");
-        this.goBoard().resetMarkedBoardObjectData();
+        this.goBoardInfo().resetMarkedBoardObjectData();
     }
 
     private void resetEmptyGroupLists() {
@@ -81,10 +81,10 @@ public class GoFight {
 
         if (dead_count != 0) {
             if (move_val.MyColor() == GoDefine.GO_BLACK_STONE) {
-                this.goBoard().addBlackCapturedStones(dead_count);
+                this.goBoardInfo().addBlackCapturedStones(dead_count);
             }
             else if (move_val.MyColor() == GoDefine.GO_WHITE_STONE) {
-                this.goBoard().addWhiteCapturedStones(dead_count);
+                this.goBoardInfo().addWhiteCapturedStones(dead_count);
             }
             else {
                 this.abend("enterBattle", "bad color");
@@ -100,7 +100,7 @@ public class GoFight {
             return;
         }
 
-        this.goBoard().setBoardArray(x_val, y_val, color_val);
+        this.goBoardInfo().setBoardArray(x_val, y_val, color_val);
     }
 
     private GoGroup insertStoneToGroupList(GoMoveInfo move_val) {
@@ -160,7 +160,7 @@ public class GoFight {
             return 0;
         }
 
-        if (this.goBoard().boardArray(x_val, y_val) != my_group_val.hisColor())
+        if (this.goBoardInfo().boardArray(x_val, y_val) != my_group_val.hisColor())
         {
             return 0;
         }
@@ -261,19 +261,19 @@ public class GoFight {
 
         for (int x = 0; x < board_size; x++) {
             for (int y = 0; y < board_size; y++) {
-                if (this.goBoard().boardArray(x, y) == GoDefine.GO_BLACK_STONE) {
+                if (this.goBoardInfo().boardArray(x, y) == GoDefine.GO_BLACK_STONE) {
                     black_stone_count++;
                     if (!this.blackGroupList().stoneExistWithinMe(x, y)) {
                         this.abend("abendEngine", "black stone does not exist in blackGroupList");
                     }
                 }
-                else if (this.goBoard().boardArray(x, y) == GoDefine.GO_WHITE_STONE) {
+                else if (this.goBoardInfo().boardArray(x, y) == GoDefine.GO_WHITE_STONE) {
                     white_stone_count++;
                     if (!this.whiteGroupList().stoneExistWithinMe(x, y)) {
                         this.abend("abendEngine", "white stone does not exist in whiteGroupList");
                     }
                 }
-                else if (this.goBoard().boardArray(x, y) == GoDefine.GO_EMPTY_STONE) {
+                else if (this.goBoardInfo().boardArray(x, y) == GoDefine.GO_EMPTY_STONE) {
                 }
                 else {
                     this.abend("abendEngine", "bad color in theBoardArray");
@@ -288,7 +288,7 @@ public class GoFight {
                 if (this.blackGroupList().stoneExistWithinMe(x, y)) {
                     black_stone_count1++;
 
-                    if (this.goBoard().boardArray(x, y) != GoDefine.GO_BLACK_STONE) {
+                    if (this.goBoardInfo().boardArray(x, y) != GoDefine.GO_BLACK_STONE) {
                         this.abend("abendEngine", "black stone does not exist in theBoardArray");
                     }
 
@@ -299,7 +299,7 @@ public class GoFight {
                 if (this.whiteGroupList().stoneExistWithinMe(x, y)) {
                     white_stone_count1++;
 
-                    if (this.goBoard().boardArray(x, y) != GoDefine.GO_WHITE_STONE) {
+                    if (this.goBoardInfo().boardArray(x, y) != GoDefine.GO_WHITE_STONE) {
                         this.abend("abendEngine", "black stone does not exist in theBoardArray");
                     }
                 }
