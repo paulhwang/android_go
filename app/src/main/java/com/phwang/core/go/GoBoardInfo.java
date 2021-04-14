@@ -121,11 +121,11 @@ public class GoBoardInfo {
         this.debug(false, "encodeBoard", this.theBoardOutputBuffer);
     }
 
-    public void decodeBoard(String data_str_val) {
-        String total_moves_str = data_str_val.substring(0, 3);
+    public void decodeBoard(String go_board_info_str_val) {
+        String total_moves_str = go_board_info_str_val.substring(1, 4);
         this.totalMoves_ = Encoders.iDecodeRaw(total_moves_str);
-        this.nextColor_ = data_str_val.charAt(3) - 48;
-        String rest_str = data_str_val.substring(4);
+        this.nextColor_ = go_board_info_str_val.charAt(4) - 48;
+        String rest_str = go_board_info_str_val.substring(5);
         for (int i = 0; i < GO_MAX_BOARD_SIZE; i++) {
             for (int j = 0; j < GO_MAX_BOARD_SIZE; j++) {
                 this.boardArray_[i][j] = rest_str.charAt(i * GO_MAX_BOARD_SIZE + j) - 48;

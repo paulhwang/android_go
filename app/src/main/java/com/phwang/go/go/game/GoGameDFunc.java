@@ -35,9 +35,7 @@ public class GoGameDFunc {
         String theme_data_str = fabric_decode.stringArrayElement(0);
         //Log.e(TAG, "parseGetSessionData() theme_data_str=" + theme_data_str);
 
-        String board_data_str = theme_data_str.substring(1);
-
-        this.goBoardInfo().decodeBoard(board_data_str);
+        this.goBoardInfo().decodeBoard(theme_data_str);
         this.goGameView().drawBoard();
     }
 }
