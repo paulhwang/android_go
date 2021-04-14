@@ -172,6 +172,16 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     public void processTouchInput() {
+        if (!this.goConfigInfo().isValidCoordinates(this.moveX(), this.moveY())) {
+            Log.e(TAG, "encodeMove() bad coordinate: " + this.moveX() + " " + this.moveY());
+            return;
+        }
+
+        if (this.goGameBoard_.board(this.moveX(), this.moveY()) != 0) {
+            return;
+        }
+
+
         String move_str = this.goGameBoard_.encodeMove(this.moveX(), this.moveY());
         if (move_str == null) {
             return;

@@ -48,14 +48,6 @@ public class GoGameBoard {
     }
 
     protected String encodeMove(int x_val, int y_val) {
-        if (!this.goConfigInfo().isValidCoordinates(x_val, y_val)) {
-            Log.e(TAG, "encodeMove() bad coordinate: " + x_val + " " + y_val);
-            return null;
-        }
-
-        if (this.boardArray_[x_val][y_val] != 0) {
-            return null;
-        }
 
         return GoMoveInfo.encodeMove(x_val, y_val, this.nextColor_, this.totalMoves_ + 1);
     }
