@@ -27,7 +27,7 @@ public class GoGroup {
 
     public GoGroupList goGroupList() { return this.goGroupList_; }
     public GoConfigInfo goConfigInfo() { return this.goGroupList().goConfigInfo(); }
-    public GoBoard goBoard() { return goGroupList().goBoard(); }
+    public GoBoardInfo goBoard() { return goGroupList().goBoard(); }
     public int hisColor() { return this.hisColor_; }
     public int myColor() { return this.myColor_; }
     public int stoneCount() { return this.stoneCount_; }

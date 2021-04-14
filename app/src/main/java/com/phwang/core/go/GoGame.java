@@ -21,7 +21,7 @@ public class GoGame {
     private GoMoveInfo[] theMovesArray;
 
     public GoConfigInfo goConfigInfo() { return this.goRoot_.goConfigInfo();  }
-    public GoBoard goBoard() { return this.goRoot_.goBoard(); }
+    public GoBoardInfo goBoard() { return this.goRoot_.goBoard(); }
     public GoFight goFight() { return this.goRoot_.goFight(); }
     private int totalMoves() { return this.goBoard().totalMoves(); }
     public int nextColor() { return this.goBoard().nextColor(); }

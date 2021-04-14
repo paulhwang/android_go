@@ -14,20 +14,20 @@ public class GoRoot {
     private String objectName() {return "GoRoot";}
 
     private GoConfigInfo goConfigInfo_;
-    private GoBoard goBoard_;
+    private GoBoardInfo goBoardInfo_;
     private GoGame goGame_;
     private GoParse goParse_;
     private GoFight goFight_;
 
     public GoConfigInfo goConfigInfo() { return this.goConfigInfo_; }
-    public GoBoard goBoard() { return this.goBoard_; }
+    public GoBoardInfo goBoard() { return this.goBoardInfo_; }
     public GoGame goGame() { return this.goGame_; }
     public GoParse goParse() { return this.goParse_; }
     public GoFight goFight() { return this.goFight_; }
 
     public GoRoot(String go_config_info_str_val) {
         this.goConfigInfo_ = new GoConfigInfo(go_config_info_str_val);
-        this.goBoard_ = new GoBoard();
+        this.goBoardInfo_ = new GoBoardInfo();
         this.goGame_ = new GoGame(this);
         this.goFight_ = new GoFight(this);
         this.goParse_ = new GoParse(this);

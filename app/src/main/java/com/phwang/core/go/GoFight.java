@@ -22,7 +22,7 @@ public class GoFight {
     private String theLastDeadStone;
 
     public GoRoot goRoot() { return this.goRoot_; }
-    public GoBoard goBoard() { return this.goRoot_.goBoard(); }
+    public GoBoardInfo goBoard() { return this.goRoot_.goBoard(); }
     public GoConfigInfo goConfigInfo() { return this.goRoot_.goConfigInfo(); }
 
     GoGroupList emptyGroupList() { return this.theGroupListArray[0]; }
