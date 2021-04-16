@@ -1,14 +1,20 @@
+/*
+ ******************************************************************************
+ *
+ *  Copyright (c) 2021 phwang. All rights reserved.
+ *
+ ******************************************************************************
+ */
+
 package com.phwang.go.go.game;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-
 import com.phwang.core.go.GoBoardInfo;
 import com.phwang.core.go.GoConfigInfo;
 import com.phwang.core.go.GoMoveInfo;
@@ -34,6 +40,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     private int touchX_;
     private int touchY_;
     private Boolean waitingForConfirm_ = false;
+    private Boolean confirmNeeded = false;
 
     protected GoGameView goGameView() { return this.goGameView_; };
     protected GoBoardInfo goBoardInfo() { return this.goBoardInfo_; };
@@ -169,7 +176,10 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case MotionEvent.ACTION_UP:
-                //this.processTouchInput();
+                if (!this.confirmNeeded) {
+                    this.processTouchInput();
+                    this.resetTouchXY();
+                }
                 break;
         }
         this.waitingForConfirm_ = true;
