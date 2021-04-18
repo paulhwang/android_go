@@ -29,6 +29,7 @@ import com.phwang.go.define.IntentDefine;
 import com.phwang.go.global.GlobalData;
 import com.phwang.go.go.head.GoHeadActivity;
 import com.phwang.go.go.join.GoJoinActivity;
+import com.phwang.go.go.play.GoPlayActivity;
 import com.phwang.go.go.solo.GoSoloActivity;
 import com.phwang.go.go.watch.GoWatchActivity;
 
@@ -118,7 +119,8 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(intent);
                 break;
             case R.id.go_config_play_button:
-                this.do_setup_session("phwang", "00000000G111111");
+                intent = new Intent(this, GoPlayActivity.class);
+                startActivity(intent);
                 break;
             case R.id.go_config_exit_button:
                 finish();

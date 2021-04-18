@@ -14,6 +14,7 @@ public class IntentDefine {
     public static final String REGISTER_ACTIVITY  = "com.phwang.go.main.register.RegisterActivity";
     public static final String LOGIN_ACTIVITY     = "com.phwang.go.main.login.LoginActivity";
     public static final String GO_CONFIG_ACTIVITY = "com.phwang.go.go.config.GoConfigActivity";
+    public static final String GO_PLAY_ACTIVITY = "com.phwang.go.go.play.GoPlayActivity";
     public static final String GO_HEAD_ACTIVITY = "com.phwang.go.go.head.GoHeadActivity";
     public static final String GO_JOIN_ACTIVITY = "com.phwang.go.go.join.GoJoinActivity";
     public static final String GO_WATCH_ACTIVITY = "com.phwang.go.go.watch.GoWatchActivity";
