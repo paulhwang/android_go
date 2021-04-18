@@ -17,18 +17,18 @@ public class GoConfigInfo {
     private int boardSize_;
     private int handicapPoint_;
     private int komiPoint_;
-    private int color_;
+    private int myColor_;
 
     public int boardSize() { return this.boardSize_; }
     public int handicapPoint() { return this.handicapPoint_; }
     public int komiPoint() { return this.komiPoint_; }
-    public int color() { return this.color_; }
+    public int myColor() { return this.myColor_; }
 
     public GoConfigInfo(int board_size_val, int handicap_val, int komi_val, int color_val) {
         this.boardSize_ = board_size_val;
         this.handicapPoint_ = handicap_val;
         this.komiPoint_ = komi_val;
-        this.color_ = color_val;
+        this.myColor_ = color_val;
     }
 
     public GoConfigInfo(String go_config_info_str_val) {
@@ -42,9 +42,9 @@ public class GoConfigInfo {
         this.boardSize_     = Encoders.iDecodeRaw(board_size_str);
         this.handicapPoint_ = Encoders.iDecodeRaw(handicap_str);
         this.komiPoint_     = Encoders.iDecodeRaw(komi_str);
-        this.color_         = Encoders.iDecodeRaw(color_str);
+        this.myColor_       = Encoders.iDecodeRaw(color_str);
 
-        this.debug(true, "GoConfigInfo", "boardSize=" + this.boardSize_ + " color=" + this.color_);
+        this.debug(true, "GoConfigInfo", "boardSize=" + this.boardSize_ + " myColor_=" + this.myColor_);
     }
 
     public String encode() {
@@ -53,7 +53,7 @@ public class GoConfigInfo {
         buf.append(Encoders.iEncodeRaw2(this.boardSize_));
         buf.append(Encoders.iEncodeRaw2(this.handicapPoint_));
         buf.append(Encoders.iEncodeRaw2(this.komiPoint_));
-        buf.append(Encoders.iEncodeRaw1(this.color_));
+        buf.append(Encoders.iEncodeRaw1(this.myColor_));
         return buf.toString();
      }
 

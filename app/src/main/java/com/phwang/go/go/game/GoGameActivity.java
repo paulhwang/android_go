@@ -49,7 +49,7 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
     protected GoGameDFunc goGameDFunc() { return this.goGameDFunc_; };
     protected String linkIdStr() { return this.linkIdStr_; }
     protected String sessionIdStr() { return this.sessionIdStr_; }
-    protected int myColor() { return this.goConfigInfo_.color(); };
+    protected int myColor() { return this.goConfigInfo_.myColor(); };
     protected int boardSize() { return this.goConfigInfo_.boardSize(); }
     protected Boolean isDead() { return this.isDead_; }
     protected int touchX() { return this.touchX_; }
@@ -165,6 +165,11 @@ public class GoGameActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        Log.e(TAG, "onTouchEvent() myColor=" + this.myColor() + " nextColor=" + this.goBoardInfo_.nextColor());
+        if ((this.myColor() != GoBoardInfo.GO_BOTH_STONE) &&
+            (this.myColor() != this.goBoardInfo_.nextColor())) {
+            return super.onTouchEvent(event);
+        }
         this.touchX_ = ((int) event.getX() - this.goGameView_.viewLeft - this.goGameView_.gridLen0 + this.goGameView_.halfGridLen) / this.goGameView_.gridLen;
         this.touchY_ = ((int) event.getY() - this.goGameView_.viewTop  - this.goGameView_.gridLen0 + this.goGameView_.halfGridLen) / this.goGameView_.gridLen;
         //Log.e(TAG, "onTouchEvent: x=" + this.x_ + " y=" + this.y_);

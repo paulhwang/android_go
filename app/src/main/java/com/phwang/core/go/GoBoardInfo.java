@@ -31,15 +31,15 @@ public class GoBoardInfo {
     public static final int GO_MARKED_EMPTY_BLACK_STONE = (GO_BLACK_STONE + GO_MARK_EMPTY_STONE_DIFF);
     public static final int GO_MARKED_EMPTY_WHITE_STONE = (GO_WHITE_STONE + GO_MARK_EMPTY_STONE_DIFF);
 
-    private int totalMoves_ = 0;
-    private int nextColor_ = GO_BLACK_STONE;
+    private int totalMoves_;
+    private int nextColor_;
     private int[][] boardArray_ = new int[GO_MAX_BOARD_SIZE][GO_MAX_BOARD_SIZE];
     private int[][] markedBoardArray_ = new int[GO_MAX_BOARD_SIZE][GO_MAX_BOARD_SIZE];
-    private String boardOutputBuffer_;
     private int blackCapturedStones_;
     private int whiteCapturedStones_;
     private int lastDeadX_;
     private int lastDeadY_;
+    private String boardOutputBuffer_;
 
     public String boardOutputBuffer() { return this.boardOutputBuffer_; }
     public int totalMoves() { return this.totalMoves_; }
@@ -65,18 +65,20 @@ public class GoBoardInfo {
                 this.markedBoardArray_[i][j] = GO_EMPTY_STONE;
             }
         }
+        this.totalMoves_ = 0;
+        this.nextColor_ = GO_BLACK_STONE;
         this.blackCapturedStones_ = 0;
         this.whiteCapturedStones_ = 0;
         this.clearLastDeadStone();
     }
 
-    public void resetMarkedBoardObjectData() {
-
-    }
-
     public void clearLastDeadStone() {
         this.lastDeadX_ = GO_MAX_BOARD_SIZE;
         this.lastDeadY_ = GO_MAX_BOARD_SIZE;
+    }
+
+    public void resetMarkedBoardObjectData() {
+
     }
 
     public void encodeBoard() {
