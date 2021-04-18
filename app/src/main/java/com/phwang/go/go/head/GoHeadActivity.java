@@ -56,22 +56,22 @@ public class GoHeadActivity extends AppCompatActivity implements View.OnClickLis
             Log.e(TAG, "onItemClick() position=" + position + " val=" + optionArray[position]);
             switch (position) {
                 case 0:
-                    setupHeadSession(GoConfigInfo.encodeConfig(19, 0, 0, GoBoardInfo.GO_BLACK_STONE));
+                    setupHeadSession(GoConfigInfo.encodeConfig(19, GoBoardInfo.GO_BLACK_STONE, 0, 0));
                     break;
                 case 1:
-                    setupHeadSession(GoConfigInfo.encodeConfig(19, 0, 0, GoBoardInfo.GO_WHITE_STONE));
+                    setupHeadSession(GoConfigInfo.encodeConfig(19, GoBoardInfo.GO_WHITE_STONE, 0, 0));
                     break;
                 case 2:
-                    setupHeadSession(GoConfigInfo.encodeConfig(13, 0, 0, GoBoardInfo.GO_BLACK_STONE));
+                    setupHeadSession(GoConfigInfo.encodeConfig(13, GoBoardInfo.GO_BLACK_STONE, 0, 0));
                     break;
                 case 3:
-                    setupHeadSession(GoConfigInfo.encodeConfig(13, 0, 0, GoBoardInfo.GO_WHITE_STONE));
+                    setupHeadSession(GoConfigInfo.encodeConfig(13, GoBoardInfo.GO_WHITE_STONE, 0, 0));
                     break;
                 case 4:
-                    setupHeadSession(GoConfigInfo.encodeConfig(9, 0, 0, GoBoardInfo.GO_BLACK_STONE));
+                    setupHeadSession(GoConfigInfo.encodeConfig(9, GoBoardInfo.GO_BLACK_STONE, 0, 0));
                     break;
                 case 5:
-                    setupHeadSession(GoConfigInfo.encodeConfig(9, 0, 0, GoBoardInfo.GO_WHITE_STONE));
+                    setupHeadSession(GoConfigInfo.encodeConfig(9, GoBoardInfo.GO_WHITE_STONE, 0, 0));
                     break;
                 case 6:
                     finish();

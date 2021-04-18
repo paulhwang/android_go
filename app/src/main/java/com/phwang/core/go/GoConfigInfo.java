@@ -57,7 +57,7 @@ public class GoConfigInfo {
         return buf.toString();
      }
 
-    public static String encodeConfig(int board_size_val, int handicap_val, int komi_val, int my_color_val) {
+    public static String encodeConfig(int board_size_val, int my_color_val, int handicap_val, int komi_val) {
         GoConfigInfo go_config_info = new GoConfigInfo(board_size_val, my_color_val, handicap_val, komi_val);
         return go_config_info.encode();
     }

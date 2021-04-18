@@ -62,13 +62,13 @@ public class GoSoloActivity extends AppCompatActivity implements View.OnClickLis
             Log.e(TAG, "onItemClick() position=" + position + " val=" + boardSizeArray[position]);
             switch (position) {
                 case 0:
-                    setupSoloSession(GoConfigInfo.encodeConfig(19, 0, 0, GoBoardInfo.GO_BOTH_STONE));
+                    setupSoloSession(GoConfigInfo.encodeConfig(19, GoBoardInfo.GO_BOTH_STONE, 0, 0));
                     break;
                 case 1:
-                    setupSoloSession(GoConfigInfo.encodeConfig(13, 0, 0, GoBoardInfo.GO_BOTH_STONE));
+                    setupSoloSession(GoConfigInfo.encodeConfig(13, GoBoardInfo.GO_BOTH_STONE, 0, 0));
                     break;
                 case 2:
-                    setupSoloSession(GoConfigInfo.encodeConfig(9, 0, 0, GoBoardInfo.GO_BOTH_STONE));
+                    setupSoloSession(GoConfigInfo.encodeConfig(9, GoBoardInfo.GO_BOTH_STONE, 0, 0));
                     break;
                 case 3:
                     finish();

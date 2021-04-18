@@ -82,16 +82,16 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         Intent intent;
         switch (view_val.getId()) {
             case R.id.go_config_black9_button:
-                this.setupHeadSession(GoConfigInfo.encodeConfig(9, 0, 0, GoBoardInfo.GO_BLACK_STONE));
+                this.setupHeadSession(GoConfigInfo.encodeConfig(9, GoBoardInfo.GO_BLACK_STONE, 0, 0));
                 break;
             case R.id.go_config_black13_button:
-                this.setupHeadSession(GoConfigInfo.encodeConfig(13, 0, 0, GoBoardInfo.GO_BLACK_STONE));
+                this.setupHeadSession(GoConfigInfo.encodeConfig(13, GoBoardInfo.GO_BLACK_STONE, 0, 0));
                 break;
             case R.id.go_config_black19_button:
-                this.setupHeadSession(GoConfigInfo.encodeConfig(19, 0, 0, GoBoardInfo.GO_BLACK_STONE));
+                this.setupHeadSession(GoConfigInfo.encodeConfig(19, GoBoardInfo.GO_BLACK_STONE, 0, 0));
                 break;
             case R.id.go_config_white9_button:
-                this.setupHeadSession(GoConfigInfo.encodeConfig(9, 0, 0, GoBoardInfo.GO_WHITE_STONE));
+                this.setupHeadSession(GoConfigInfo.encodeConfig(9, GoBoardInfo.GO_WHITE_STONE, 0, 0));
                 break;
             case R.id.go_config_white13_button:
                 intent = new Intent(this, GoSoloActivity.class);
