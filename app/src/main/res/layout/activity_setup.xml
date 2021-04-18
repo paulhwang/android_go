@@ -27,6 +27,11 @@
             android:textSize="24sp"
             android:layout_gravity="center"/>
         <Button
+            android:id="@+id/setup_admin_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/admin_label" />
+        <Button
             android:id="@+id/setup_exit_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

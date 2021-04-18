@@ -24,6 +24,7 @@
     <string name="bind_service_title">Go</string>
 
     <string name="about_label">About</string>
+    <string name="admin_label">Admin</string>
     <string name="black9_label">Black 9</string>
     <string name="black13_label">Black 13</string>
     <string name="black19_label">Black 19</string>
