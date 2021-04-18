@@ -33,7 +33,10 @@ public class ClientUBinder implements ThreadEntityInt {
         
     	this.clientRoot_ = root_val;
         this.uBinder_ = new Binder(this.objectName());
-        this.uBinder_.bindAsTcpClient(true, TcpIpDefine.FABRIC_SERVER_LOCAL_IP_ADDRESS_FOR_ANDROID, TcpIpDefine.FABRIC_ANDROID_PORT);
+    }
+
+    protected void runAsTcpClient(String ip_address_val) {
+        this.uBinder_.bindAsTcpClient(true, ip_address_val, TcpIpDefine.FABRIC_ANDROID_PORT);
     }
 
     protected void startThreads() {

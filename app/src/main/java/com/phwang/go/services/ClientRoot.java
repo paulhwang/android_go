@@ -37,7 +37,6 @@ public class ClientRoot {
         this.clientUBinder_ = new ClientUBinder(this);
         this.clientDParser_ = new ClientDParser(this);
         this.clientUParser_ = new ClientUParser(this);
-
         this.clientUBinder_.startThreads();
 	}
     

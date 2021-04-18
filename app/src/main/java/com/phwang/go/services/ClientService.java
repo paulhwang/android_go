@@ -12,11 +12,13 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.phwang.core.utils.abend.Abend;
+import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
 
 public class ClientService extends Service {
@@ -38,12 +40,18 @@ public class ClientService extends Service {
 
         this.applicationContext_ = getApplicationContext();
         this.clientRoot_ = new ClientRoot(this);
+
         this.registerBroadcastReceiver();
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    public int onStartCommand(Intent intent_val, int flags, int startId) {
         //Log.e(TAG, " onStartCommand()");
+
+        Bundle bundle = intent_val.getExtras();
+        String ip_address = bundle.getString(BundleIndexDefine.FABRIC_SERVER_IP_ADDR);
+        Log.e(TAG, " onStartCommand() ip_address=" + ip_address);
+        this.clientUBinder().runAsTcpClient(ip_address);
 
         // If we get killed, after returning from here, restart
         return START_STICKY;
