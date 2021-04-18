@@ -33,7 +33,7 @@ public class EngineDBinder implements ThreadEntityInt {
         this.engineRoot_ = root_val;
         this.dBinder_ = new Binder(this.objectName());
 
-        this.dBinder().bindAsTcpClient(true, TcpIpDefine.THEME_ENGINE_IP_ADDRESS, TcpIpDefine.THEME_ENGINE_PORT);
+        this.dBinder().bindAsTcpClient(true, TcpIpDefine.THEME_SERVER_IP_ADDRESS_FOR_ENGINE, TcpIpDefine.THEME_ENGINE_PORT);
         this.debug(false, "DEngineClass", "init done");
     }
 

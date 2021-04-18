@@ -66,7 +66,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //findViewById(R.id.main_test_button).setOnClickListener(this);
 
         this.mainActivityFunc_ = new MainActivityFunc(this);
-        startService(new Intent(this, ClientService.class));
+        Intent intent = new Intent(this, ClientService.class);
+        intent.putExtra(BundleIndexDefine.FABRIC_SERVER_IP_ADDR, "127.0.0.1");
+        startService(intent);
         this.registerBroadcastReceiver();
         this.startWatchDog();
     }

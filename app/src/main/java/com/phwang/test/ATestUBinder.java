@@ -33,7 +33,7 @@ public class ATestUBinder implements ThreadEntityInt {
 
         this.aTestRoot_ = root_val;
         this.uBinder_ = new Binder(this.objectName());
-        this.uBinder_.bindAsTcpClient(true, TcpIpDefine.FABRIC_ANDROID_SERVER_IP_ADDRESS, TcpIpDefine.FABRIC_ANDROID_PORT);
+        this.uBinder_.bindAsTcpClient(true, TcpIpDefine.FABRIC_SERVER_LOCAL_IP_ADDRESS_FOR_ANDROID, TcpIpDefine.FABRIC_ANDROID_PORT);
     }
 
     protected void startThreads() {

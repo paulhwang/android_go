@@ -33,7 +33,7 @@ public class ThemeDBinder implements ThreadEntityInt {
         this.themeRoot_ = root_val;
         this.dBinder_ = new Binder(this.objectName());
 
-        this.dBinder().bindAsTcpClient(true, TcpIpDefine.FABRIC_THEME_IP_ADDRESS, TcpIpDefine.FABRIC_THEME_PORT);
+        this.dBinder().bindAsTcpClient(true, TcpIpDefine.FABRIC_SERVER_IP_ADDRESS_FRO_THEME, TcpIpDefine.FABRIC_THEME_PORT);
     }
 
     public void startThreads() {
