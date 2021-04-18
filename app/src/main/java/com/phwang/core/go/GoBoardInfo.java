@@ -55,18 +55,18 @@ public class GoBoardInfo {
     public void setLastDeadStone(int x_val, int y_val) { this.lastDeadX_ = x_val; this.lastDeadY_ = y_val; }
 
     public GoBoardInfo() {
-        this.resetBoardObjectData();
+        this.totalMoves_ = 0;
+        this.nextColor_ = GO_BLACK_STONE;
+        this.clearBoardArrays();
     }
 
-    public void resetBoardObjectData() {
+    public void clearBoardArrays() {
         for (int i = 0; i < GO_MAX_BOARD_SIZE; i++) {
             for (int j = 0; j < GO_MAX_BOARD_SIZE; j++) {
                 this.boardArray_[i][j] = GO_EMPTY_STONE;
                 this.markedBoardArray_[i][j] = GO_EMPTY_STONE;
             }
         }
-        this.totalMoves_ = 0;
-        this.nextColor_ = GO_BLACK_STONE;
         this.blackCapturedStones_ = 0;
         this.whiteCapturedStones_ = 0;
         this.clearLastDeadStone();

@@ -115,7 +115,7 @@ public class GoGame {
     }
 
     private void processTheWholeMoveList() {
-        this.goBoardInfo().resetBoardObjectData();
+        this.goBoardInfo().clearBoardArrays();
         this.goFight().resetEngineObjectData();
         this.resetGameObjectPartialData();
 

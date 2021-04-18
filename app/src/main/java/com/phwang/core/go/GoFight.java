@@ -40,7 +40,7 @@ public class GoFight {
     }
 
     public void resetEngineObjectData() {
-        this.goBoardInfo().resetBoardObjectData();
+        this.goBoardInfo().clearBoardArrays();
 
         this.theGroupListArray[1] = new GoGroupList(this, 1, GoBoardInfo.GO_BLACK_STONE, false, null, null);
         this.theGroupListArray[2] = new GoGroupList(this, 2, GoBoardInfo.GO_WHITE_STONE, false, null, null);
