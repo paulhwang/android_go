@@ -29,6 +29,7 @@ import com.phwang.core.protocols.fabric.FabricInfo;
 import com.phwang.go.R;
 import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
+import com.phwang.go.define.PrefDefine;
 import com.phwang.go.global.GlobalData;
 import com.phwang.go.go.config.GoConfigActivity;
 import com.phwang.go.main.setup.SetupActivity;
@@ -66,8 +67,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //findViewById(R.id.main_test_button).setOnClickListener(this);
 
         this.mainActivityFunc_ = new MainActivityFunc(this);
+
+        String ip_addr = getSharedPreferences(PrefDefine.PREF_GO, MODE_PRIVATE).getString(PrefDefine.PREF_SERVER_IP_ADDRESS, "0");
+        Log.e(TAG, "onCreate() ip_addr=" + ip_addr);
+
         Intent intent = new Intent(this, ClientService.class);
-        intent.putExtra(BundleIndexDefine.FABRIC_SERVER_IP_ADDR, "127.0.0.1");
+        intent.putExtra(BundleIndexDefine.FABRIC_SERVER_IP_ADDR, ip_addr);
         startService(intent);
         this.registerBroadcastReceiver();
         this.startWatchDog();

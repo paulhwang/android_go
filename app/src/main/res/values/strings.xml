@@ -44,6 +44,7 @@
     <string name="play_sudoku_label">Play Sudoku</string>
     <string name="register_label">Register</string>
     <string name="settings_label">Settings...</string>
+    <string name="server_ip_address_label">Server IP Address</string>
     <string name="setup_label">Setup</string>
     <string name="solo_label">Solo</string>
     <string name="solo13_label">13 x 13</string>
