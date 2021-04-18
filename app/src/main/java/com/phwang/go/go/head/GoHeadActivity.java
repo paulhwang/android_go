@@ -42,7 +42,7 @@ public class GoHeadActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
         setContentView(R.layout.activity_go_head);
-        ListView list_view = (ListView) findViewById(R.id.head_list_view);
+        ListView list_view = (ListView) findViewById(R.id.go_head_list_view);
 
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, this.optionArray);
         list_view.setAdapter(adapter);
