@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         this.mainActivityFunc_ = new MainActivityFunc(this);
 
-        String ip_addr = getSharedPreferences(PrefDefine.PREF_GO, MODE_PRIVATE).getString(PrefDefine.PREF_SERVER_IP_ADDRESS, "0");
+        String ip_addr = PrefDefine.readIpAddress(this);
         Log.e(TAG, "onCreate() ip_addr=" + ip_addr);
 
         Intent intent = new Intent(this, ClientService.class);

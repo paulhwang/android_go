@@ -27,7 +27,6 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
     private static final String TAG = "SetupActivity";
 
     private EditText ServerIpAddressEditText_;
-    private String serverIpAddress_;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +57,8 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void validateServerIpAddress() {
-        this.serverIpAddress_ = this.ServerIpAddressEditText_.getText().toString();
-        Log.e(TAG, "validateServerIpAddress() ip_addr=" + this.serverIpAddress_);
-        getSharedPreferences(PrefDefine.PREF_GO, MODE_PRIVATE).edit().putString(PrefDefine.PREF_SERVER_IP_ADDRESS, this.serverIpAddress_).commit();
+        String ip_address = this.ServerIpAddressEditText_.getText().toString();
+        Log.e(TAG, "validateServerIpAddress() ip_address=" + ip_address);
+        PrefDefine.writeIpAddress(this, ip_address);
     }
 }
