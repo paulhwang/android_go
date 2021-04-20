@@ -19,12 +19,17 @@ public class GoGame {
     private Boolean thePassReceived = false;
     private Boolean theGameIsOver = false;
     private GoMoveInfo[] theMovesArray;
+    private Boolean passReceived_ = false;
 
-    public GoConfigInfo goConfigInfo() { return this.goRoot_.goConfigInfo();  }
-    public GoBoardInfo goBoardInfo() { return this.goRoot_.goBoardInfo(); }
-    public GoFight goFight() { return this.goRoot_.goFight(); }
+    protected GoConfigInfo goConfigInfo() { return this.goRoot_.goConfigInfo();  }
+    protected GoBoardInfo goBoardInfo() { return this.goRoot_.goBoardInfo(); }
+    protected GoFight goFight() { return this.goRoot_.goFight(); }
     private int totalMoves() { return this.goBoardInfo().totalMoves(); }
-    public int nextColor() { return this.goBoardInfo().nextColor(); }
+    protected int nextColor() { return this.goBoardInfo().nextColor(); }
+    protected Boolean passReceived() { return this.passReceived_; }
+    protected void setPassReceived() { this.passReceived_ = true; };
+    protected void clearPassReceived() { this.passReceived_ = false; };
+    private void setGameIsOver() { this.theGameIsOver = true; }
 
     public GoGame(GoRoot go_root_val) {
         this.goRoot_ = go_root_val;
@@ -36,9 +41,10 @@ public class GoGame {
         this.theGameIsOver = false;
     }
 
-    public void addNewMoveAndFight(GoMoveInfo move_val) {
+    protected void addNewMoveAndFight(GoMoveInfo move_val) {
         this.debug(false, "AddNewMoveAndFight", "Move=" + move_val.moveDebugStr());
 
+        this.clearPassReceived();
         if (move_val.TurnIndex() != this.totalMoves() + 1) {
             this.log("AddNewMoveAndFight", "duplicated move received ***************** index= " + move_val.TurnIndex());
             return;
@@ -62,7 +68,26 @@ public class GoGame {
         this.maxMove_ = this.totalMoves();
     }
 
-    public void processBackwardMove() {
+    protected void processPassMove() {
+        this.debug(true, "processPassMove", "");
+
+        if (!this.passReceived()) {
+            this.setPassReceived();
+            this.goBoardInfo().setNextColor(GoBoardInfo.getOppositeColor(this.nextColor()));
+            return;
+        }
+
+        //this.setGameIsOver();
+
+        //this.engineObject().resetMarkedGroupLists();
+        //this.displayResult();
+        //this.debug(true, "processPassMove", "game is over");
+        //this.engineObject().computeScore();
+        //this.engineObject().printScore();
+        //this.engineObject().abendEngine();
+    };
+
+    protected void processBackwardMove() {
         this.debug(true, "ProcessBackwardMove", "");
 
         this.thePassReceived = false;
@@ -73,7 +98,7 @@ public class GoGame {
         this.processTheWholeMoveList();
     }
 
-    public void processDoubleBackwardMove() {
+    protected void processDoubleBackwardMove() {
         this.debug(true, "ProcessDoubleBackwardMove", "");
 
         this.thePassReceived = false;
@@ -84,7 +109,7 @@ public class GoGame {
         this.processTheWholeMoveList();
     }
 
-    public void processForwardMove() {
+    protected void processForwardMove() {
         this.debug(true, "ProcessForwardMove", "");
 
         this.thePassReceived = false;
@@ -99,7 +124,7 @@ public class GoGame {
         this.processTheWholeMoveList();
     }
 
-    public void processDoubleForwardMove() {
+    protected void processDoubleForwardMove() {
         this.debug(true, "ProcessDoubleForwardMove", "");
 
         this.thePassReceived = false;
@@ -127,7 +152,7 @@ public class GoGame {
             i += 1;
         }
     }
-    
+
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }
     private void log(String s0, String s1) { Abend.log(this.objectName() + "." + s0 + "()", s1); }
     public void abend(String s0, String s1) { Abend.abend(this.objectName() + "." + s0 + "()", s1); }

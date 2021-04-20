@@ -49,6 +49,7 @@ public class GoParse {
                 return;
 
             case GoExport.GO_PROTOCOL_PASS_COMMAND:
+                this.goGame().processPassMove();
                 return;
 
             default:
