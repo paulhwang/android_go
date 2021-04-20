@@ -10,6 +10,7 @@
     <string name="app_name">Go by Paul Hwang</string>
 
     <string name="about_title">About phwang</string>
+    <string name="fabric_ip_address_title">Setup</string>
     <string name="go_game_title">Go Game</string>
     <string name="go_play_title">Go Play</string>
     <string name="go_title">Go</string>
