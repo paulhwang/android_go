@@ -51,6 +51,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         //Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
 
+        String fabric_ip_address = getIntent().getStringExtra(BundleIndexDefine.FABRIC_IP_ADDRESS);
+        Log.e(TAG, "onCreate() fabric_ip_address=" + fabric_ip_address);
+
         setContentView(R.layout.activity_main);
         //findViewById(R.id.main_about_button).setOnClickListener(this);
         findViewById(R.id.main_exit_button).setOnClickListener(this);
@@ -65,11 +68,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         this.mainActivityFunc_ = new MainActivityFunc(this);
 
-        String ip_addr = PrefDefine.readIpAddress(this);
-        Log.e(TAG, "onCreate() ip_addr=" + ip_addr);
-
         Intent intent = new Intent(this, ClientService.class);
-        intent.putExtra(BundleIndexDefine.FABRIC_SERVER_IP_ADDR, ip_addr);
+        intent.putExtra(BundleIndexDefine.FABRIC_IP_ADDRESS, fabric_ip_address);
         startService(intent);
         this.registerBroadcastReceiver();
         this.startWatchDog();

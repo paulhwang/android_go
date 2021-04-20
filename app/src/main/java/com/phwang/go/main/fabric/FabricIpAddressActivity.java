@@ -18,6 +18,8 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.phwang.go.R;
+import com.phwang.go.define.BundleIndexDefine;
+import com.phwang.go.define.IntentDefine;
 import com.phwang.go.define.PrefDefine;
 import com.phwang.go.main.main.MainActivity;
 import com.phwang.go.sudoku.About;
@@ -28,7 +30,8 @@ import static com.phwang.go.define.PrefDefine.PREF_SERVER_IP_ADDRESS;
 public class FabricIpAddressActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = "FabricIpAddressActivity";
 
-    private EditText ServerIpAddressEditText_;
+    private EditText fabricIpAddressEditText_;
+    private String fabricIpAddress_;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,7 @@ public class FabricIpAddressActivity extends AppCompatActivity implements View.O
         //Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
 
         setContentView(R.layout.activity_fabric_ip_address);
-        this.ServerIpAddressEditText_ = findViewById(R.id.fabric_ip_address);
+        this.fabricIpAddressEditText_ = findViewById(R.id.fabric_ip_address);
         findViewById(R.id.fabric_confirm_button).setOnClickListener(this);
         findViewById(R.id.fabric_exit_button).setOnClickListener(this);
     }
@@ -46,9 +49,10 @@ public class FabricIpAddressActivity extends AppCompatActivity implements View.O
         Intent intent;
         switch (view_val.getId()) {
             case R.id.fabric_confirm_button:
-                this.validateServerIpAddress();
+                this.validateFabricIpAddress();
 
                 intent = new Intent(this, MainActivity.class);
+                intent.putExtra(BundleIndexDefine.FABRIC_IP_ADDRESS, this.fabricIpAddress_);
                 startActivity(intent);
 
                 finish();
@@ -59,9 +63,9 @@ public class FabricIpAddressActivity extends AppCompatActivity implements View.O
         }
     }
 
-    private void validateServerIpAddress() {
-        String ip_address = this.ServerIpAddressEditText_.getText().toString();
-        Log.e(TAG, "validateServerIpAddress() ip_address=" + ip_address);
-        PrefDefine.writeIpAddress(this, ip_address);
+    private void validateFabricIpAddress() {
+        this.fabricIpAddress_ = this.fabricIpAddressEditText_.getText().toString();
+        Log.e(TAG, "validateFabricIpAddress() fabricIpAddress_=" + this.fabricIpAddress_);
+        PrefDefine.writeIpAddress(this, this.fabricIpAddress_);
     }
 }

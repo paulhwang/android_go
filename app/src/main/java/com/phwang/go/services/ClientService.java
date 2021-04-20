@@ -49,7 +49,7 @@ public class ClientService extends Service {
         //Log.e(TAG, " onStartCommand()");
 
         Bundle bundle = intent_val.getExtras();
-        String ip_address = bundle.getString(BundleIndexDefine.FABRIC_SERVER_IP_ADDR);
+        String ip_address = bundle.getString(BundleIndexDefine.FABRIC_IP_ADDRESS);
         Log.e(TAG, " onStartCommand() ip_address=" + ip_address);
         this.clientUBinder().runAsTcpClient(ip_address);
 
