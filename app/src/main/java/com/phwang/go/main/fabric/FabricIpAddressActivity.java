@@ -8,6 +8,7 @@
 
 package com.phwang.go.main.fabric;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.phwang.go.R;
 import com.phwang.go.define.PrefDefine;
+import com.phwang.go.main.main.MainActivity;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.sudoku.SudokuGame;
 
@@ -31,6 +33,7 @@ public class FabricIpAddressActivity extends AppCompatActivity implements View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
 
         setContentView(R.layout.activity_fabric_ip_address);
         this.ServerIpAddressEditText_ = findViewById(R.id.fabric_ip_address);
@@ -44,6 +47,10 @@ public class FabricIpAddressActivity extends AppCompatActivity implements View.O
         switch (view_val.getId()) {
             case R.id.fabric_confirm_button:
                 this.validateServerIpAddress();
+
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+
                 finish();
                 break;
             case R.id.fabric_exit_button:

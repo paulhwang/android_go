@@ -9,7 +9,6 @@
 package com.phwang.go.main.main;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.content.Intent;
@@ -19,7 +18,6 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import com.phwang.core.protocols.fabric.FabricClients;
 import com.phwang.core.protocols.fabric.FabricCommands;
 import com.phwang.core.protocols.fabric.FabricResults;
@@ -36,7 +34,6 @@ import com.phwang.go.main.setup.SetupActivity;
 import com.phwang.go.main.login.LoginActivity;
 import com.phwang.go.main.register.RegisterActivity;
 import com.phwang.go.sudoku.config.SudokuConfigActivity;
-import com.phwang.go.sudoku.About;
 import com.phwang.go.services.ClientService;
 import java.util.Timer;
 import java.util.TimerTask;
