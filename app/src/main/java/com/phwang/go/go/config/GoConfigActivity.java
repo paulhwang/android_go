@@ -43,20 +43,12 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         //Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
 
         setContentView(R.layout.activity_go_config);
-        findViewById(R.id.go_config_black9_button).setOnClickListener(this);
-        findViewById(R.id.go_config_black13_button).setOnClickListener(this);
-        findViewById(R.id.go_config_black19_button).setOnClickListener(this);
-
-        findViewById(R.id.go_config_white9_button).setOnClickListener(this);
-        findViewById(R.id.go_config_white13_button).setOnClickListener(this);
-        findViewById(R.id.go_config_white19_button).setOnClickListener(this);
-
-        findViewById(R.id.go_config_start_button).setOnClickListener(this);
-        findViewById(R.id.go_config_join_button).setOnClickListener(this);
-        findViewById(R.id.go_config_watch_button).setOnClickListener(this);
-        findViewById(R.id.go_config_solo_button).setOnClickListener(this);
 
         findViewById(R.id.go_config_play_button).setOnClickListener(this);
+        findViewById(R.id.go_config_watch_button).setOnClickListener(this);
+        findViewById(R.id.go_config_solo_button).setOnClickListener(this);
+        findViewById(R.id.go_config_start_button).setOnClickListener(this);
+        findViewById(R.id.go_config_join_button).setOnClickListener(this);
         findViewById(R.id.go_config_exit_button).setOnClickListener(this);
 
         this.registerBroadcastReceiver();
@@ -82,32 +74,8 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view_val) {
         Intent intent;
         switch (view_val.getId()) {
-            case R.id.go_config_black9_button:
-                this.setupHeadSession(GoConfigInfo.encodeConfig(9, GoBoardInfo.GO_BLACK_STONE, 0, 0));
-                break;
-            case R.id.go_config_black13_button:
-                this.setupHeadSession(GoConfigInfo.encodeConfig(13, GoBoardInfo.GO_BLACK_STONE, 0, 0));
-                break;
-            case R.id.go_config_black19_button:
-                this.setupHeadSession(GoConfigInfo.encodeConfig(19, GoBoardInfo.GO_BLACK_STONE, 0, 0));
-                break;
-            case R.id.go_config_white9_button:
-                this.setupHeadSession(GoConfigInfo.encodeConfig(9, GoBoardInfo.GO_WHITE_STONE, 0, 0));
-                break;
-            case R.id.go_config_white13_button:
-                intent = new Intent(this, GoSoloActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.go_config_white19_button:
-                intent = new Intent(this, GoHeadActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.go_config_start_button:
-                intent = new Intent(this, GoHeadActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.go_config_join_button:
-                intent = new Intent(this, GoJoinActivity.class);
+            case R.id.go_config_play_button:
+                intent = new Intent(this, GoPlayActivity.class);
                 startActivity(intent);
                 break;
             case R.id.go_config_watch_button:
@@ -118,8 +86,12 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
                 intent = new Intent(this, GoSoloActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.go_config_play_button:
-                intent = new Intent(this, GoPlayActivity.class);
+            case R.id.go_config_start_button:
+                intent = new Intent(this, GoHeadActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.go_config_join_button:
+                intent = new Intent(this, GoJoinActivity.class);
                 startActivity(intent);
                 break;
             case R.id.go_config_exit_button:
