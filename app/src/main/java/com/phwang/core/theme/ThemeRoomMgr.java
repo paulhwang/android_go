@@ -34,12 +34,12 @@ public class ThemeRoomMgr {
     
     public ThemeRoom mallocRoom(String group_id_str_val) {
     	ThemeRoom room = new ThemeRoom(group_id_str_val);
-    	ListEntry list_entry = this.listMgr_.malloc(room);
+    	ListEntry list_entry = this.listMgr_.mallocEntry(room);
         return room;
     }
 
     public void freeRoom(ThemeRoom room_val) {
-    	this.listMgr_.free(room_val.listEntry());
+    	this.listMgr_.freeEntry(room_val.listEntry());
     }
 
     public ThemeRoom getRoomByIdStr(String room_id_str_val) {

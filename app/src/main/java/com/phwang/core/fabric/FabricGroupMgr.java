@@ -35,12 +35,12 @@ public class FabricGroupMgr {
 
     public FabricGroup mallocGroup(String theme_data_val) {
     	FabricGroup group = new FabricGroup(theme_data_val);
-    	ListEntry list_entry = this.listMgr().malloc(group);
+    	ListEntry list_entry = this.listMgr().mallocEntry(group);
         return group;
     }
 
     public void freeGroup(FabricGroup group_val) {
-    	this.listMgr_.free(group_val.listEntry());
+    	this.listMgr_.freeEntry(group_val.listEntry());
     }
 
     public FabricGroup getGroupByIdStr(String group_id_str_val) {

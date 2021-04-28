@@ -64,13 +64,13 @@ public class ListMgr {
         return this.globalId_;
     }
 
-    public ListEntry malloc(ListEntryInt entity_int_val) {
-        this.debug(false, "malloc", "start");
+    public ListEntry mallocEntry(ListEntryInt entity_int_val) {
+        this.debug(false, "mallocEntry", "start");
     	
-        this.abendListMgr("before malloc");
+        this.abendListMgr("before mallocEntry");
         this.lock_.lock();
         
-        ListEntry entry = this.malloc_();
+        ListEntry entry = this.mallocEntry_();
         
         int id = this.allocId();
         this.entryCount_++;
@@ -78,21 +78,21 @@ public class ListMgr {
         entity_int_val.bindListEntry(entry, this.callerName_);
         
     	this.lock_.unlock();
-        this.abendListMgr("after malloc");
+        this.abendListMgr("after mallocEntry");
         
         if (this.entryCount_ > this.maxGlobalId_) {
-            this.abend("malloc", "entryCount_=" + this.entryCount_ + " > maxGlobalId_=" + this.maxGlobalId_);
+            this.abend("mallocEntry", "entryCount_=" + this.entryCount_ + " > maxGlobalId_=" + this.maxGlobalId_);
         }
         
         if (entry.index() > this.maxGlobalId_) {
-            this.abend("malloc", "index=" + entry.index() + " > maxGlobalId_=" + this.maxGlobalId_);
+            this.abend("mallocEntry", "index=" + entry.index() + " > maxGlobalId_=" + this.maxGlobalId_);
         }
         
-        this.debug(false, "malloc", "id=" + entry.id() + " index=" + entry.index());
+        this.debug(false, "mallocEntry", "id=" + entry.id() + " index=" + entry.index());
         return entry;
     }
 
-    private ListEntry malloc_() {
+    private ListEntry mallocEntry_() {
         for (int i = 0; i < this.arraySize_; i++) {
             if (this.entryArray_[i] == null) {
             	this.entryArray_[i] = new ListEntry(i, this.idSize());
@@ -124,33 +124,33 @@ public class ListMgr {
         return this.entryArray_[this.maxIndex_];
     }
 
-    public void free(ListEntry entry_val) {
-        this.abendListMgr("before free");
+    public void freeEntry(ListEntry entry_val) {
+        this.abendListMgr("before freeEntry");
         
         this.lock_.lock();
-        this.free_(entry_val);
+        this.freeEntry_(entry_val);
         this.lock_.unlock();
         
-        this.abendListMgr("after free");
+        this.abendListMgr("after freeEntry");
     }
 
-    private void free_(ListEntry entry_val) {
+    private void freeEntry_(ListEntry entry_val) {
         this.entryArray_[entry_val.index()].data().unBindListEntry(this.callerName_);
         this.entryArray_[entry_val.index()].clearData();
         this.entryCount_--;
     }
 
-    public void flush() {
-        this.abendListMgr("before flush");
+    public void flushEntry() {
+        this.abendListMgr("before flushEntry");
         
         this.lock_.lock();
-        this.flush_();
+        this.flushEntrys_();
         this.lock_.unlock();
         
-        this.abendListMgr("after flush");
+        this.abendListMgr("after flushEntry");
     }
 
-    public void flush_() {
+    public void flushEntrys_() {
         for (int i = 0; i <= this.maxIndex_; i++) {
             this.entryArray_[i].data().unBindListEntry(this.callerName_);
             this.entryArray_[i].clearData();

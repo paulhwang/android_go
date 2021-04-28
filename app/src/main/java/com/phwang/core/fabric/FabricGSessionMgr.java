@@ -54,11 +54,11 @@ public class FabricGSessionMgr {
 
 
     protected void bindSession(FabricSession session_val) {
-    	this.listMgr_.malloc(session_val);
+    	this.listMgr_.mallocEntry(session_val);
     }
 
     protected void unbindSession(FabricSession session_val) {
-    	this.listMgr_.free(session_val.lListEntry());
+    	this.listMgr_.freeEntry(session_val.lListEntry());
     }
 
     protected FabricSession getSessionByIdStr(String session_id_str_val) {

@@ -35,12 +35,12 @@ public class EngineBaseMgr {
 
     public EngineBase MallocGoBase(String room_id_val) {
     	EngineBase go_base = new EngineBase(room_id_val);
-    	ListEntry list_entry = this.listMgr_.malloc(go_base);
+    	ListEntry list_entry = this.listMgr_.mallocEntry(go_base);
         return go_base;
     }
 
     public void FreeGoBase(EngineBase base_val) {
-    	this.listMgr_.free(base_val.listEntry());
+    	this.listMgr_.freeEntry(base_val.listEntry());
     }
     
     public EngineBase GetBaseByIdStr(String base_id_str_val) {

@@ -38,12 +38,12 @@ public class FabricLSessionMgr {
 
     protected FabricSession mallocSession() {
     	FabricSession session = new FabricSession(this.link());
-    	ListEntry list_entry = this.listMgr().malloc(session);
+    	ListEntry list_entry = this.listMgr().mallocEntry(session);
         return session;
     }
 
     protected void freeSession(FabricSession session_val) {
-    	this.listMgr_.free(session_val.lListEntry());
+    	this.listMgr_.freeEntry(session_val.lListEntry());
     }
 
     protected FabricSession getSessionByIdStr(String session_id_str_val) {

@@ -65,13 +65,13 @@ public class BinderPortMgr {
 			this.debug(false, "mallocPort", "(single port) tcp_port=" + tcp_connection_val.getPort() + " owner=" + owner_val);
     	}
     	else {
-        	this.listMgr_.malloc(port);
+        	this.listMgr_.mallocEntry(port);
         	this.debug(false, "mallocPort", "(multiple port) tcp_port=" + tcp_connection_val.getPort() + " owner=" + owner_val + " portCount=" + this.portCount());
     	}
     }
     
     protected void freePort(BinderPort port_val) {
-    	this.listMgr_.free(port_val.listEntry());
+    	this.listMgr_.freeEntry(port_val.listEntry());
     	port_val.destructor();
     }
     
