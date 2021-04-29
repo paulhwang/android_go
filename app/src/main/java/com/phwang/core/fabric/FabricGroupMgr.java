@@ -36,11 +36,14 @@ public class FabricGroupMgr {
     public FabricGroup mallocGroup(String theme_data_val) {
     	FabricGroup group = new FabricGroup(theme_data_val);
     	ListEntry list_entry = this.listMgr().mallocEntry(group);
+        group.bindListEntry(list_entry, this.objectName());
         return group;
     }
 
     public void freeGroup(FabricGroup group_val) {
-    	this.listMgr_.freeEntry(group_val.listEntry());
+        ListEntry list_entry = group_val.listEntry();
+        group_val.unBindListEntry(this.objectName());
+        this.listMgr_.freeEntry(list_entry);
     }
 
     public FabricGroup getGroupByIdStr(String group_id_str_val) {
