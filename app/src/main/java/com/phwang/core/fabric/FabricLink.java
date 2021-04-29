@@ -44,11 +44,18 @@ public class FabricLink implements ListEntryInt {
         this.sessionMgr_ = new FabricLSessionMgr(this);
     }
 
+
     public void bindListEntry(ListEntry list_entry_object_val, String who_val) {
+        //if (this.listEntry_ == list_entry_object_val) {
+        //    this.abend("bindListEntry", "already done!");
+        //}
         this.listEntry_ = list_entry_object_val;
     }
 
     public void unBindListEntry(String who_val) {
+        //if (this.listEntry_ == null) {
+        //    this.abend("unBindListEntry", "already done!");
+        //}
         this.listEntry_ = null;
     }
 

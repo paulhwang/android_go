@@ -37,14 +37,16 @@ public class FabricLinkMgr implements ListMgrInt {
 
     protected FabricLink mallocLink(char client_type_val, String my_name_val) {
     	FabricLink link = new FabricLink(client_type_val, my_name_val);
-    	this.listMgr().mallocEntry(link);
-        
+        ListEntry list_entry  = this.listMgr().mallocEntry(link);
+        link.bindListEntry(list_entry, this.objectName());
         this.nameList().updateNameList();
         return link;
     }
 
     protected void freeLink(FabricLink link_val) {
-    	this.listMgr_.freeEntry(link_val.listEntry());
+        ListEntry list_entry = link_val.listEntry();
+        link_val.unBindListEntry(this.objectName());
+    	this.listMgr_.freeEntry(list_entry);
     }
     
     protected FabricLink getLinkByIdStr(String link_id_str_val) {

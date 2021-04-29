@@ -146,6 +146,7 @@ public class FabricUParser {
             fabric_data_val.setResult(FabricResults.LINK_NOT_EXIST);
             return;
         }
+        this.linkMgr().freeLink(link);
 
         fabric_data_val.setResult(FabricResults.SUCCEED);
     }
