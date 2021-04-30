@@ -106,6 +106,7 @@ public class GoGame {
             return;
         }
         this.goBoardInfo().setTotalMoves(this.goConfigInfo().handicapPoint());
+        this.goBoardInfo().setNextColor(GoBoardInfo.GO_BLACK_STONE);
         this.processTheWholeMoveList();
     }
 
