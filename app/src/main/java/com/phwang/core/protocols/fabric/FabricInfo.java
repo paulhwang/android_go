@@ -108,7 +108,7 @@ public class FabricInfo {
 
         buf.append(Encoders.iEncodeRaw(this.stringsCount_, STRINGS_COUNT_SIZE));
         for (int i = 0; i < this.stringsCount_; i++) {
-            buf.append(Encoders.sEncode6(this.stringArray_[i]));
+            buf.append(Encoders.encodeString(this.stringArray_[i]));
         }
         return buf.toString();
     }

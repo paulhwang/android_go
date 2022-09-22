@@ -73,6 +73,36 @@ public class Encoders {
         return iDecodeRaw(str);
     }
 
+    public static String encodeString(String str_val) {
+        int length_size;
+        int length = str_val.length();
+
+        StringBuilder buf = new StringBuilder();
+        if (length < 10) {
+            buf.append("1");
+            buf.append(iEncodeRaw(length, 1));
+        }
+        else if (length < 100) {
+            buf.append("2");
+            buf.append(iEncodeRaw(length, 2));
+        }
+        else if (length < 1000) {
+            buf.append("3");
+            buf.append(iEncodeRaw(length, 3));
+        }
+        else if (length < 10000) {
+            buf.append("4");
+            buf.append(iEncodeRaw(length, 4));
+        }
+        else if (length < 100000) {
+            buf.append("5");
+            buf.append(iEncodeRaw(length, 5));
+        }
+
+        buf.append(str_val);
+        return buf.toString();
+    }
+
     public static String sEncode(String str_val, int size_val) {
         StringBuilder buf = new StringBuilder();
         buf.append(Encoders.iEncodeRaw(str_val.length(), size_val));

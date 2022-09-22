@@ -30,7 +30,7 @@ public class Binder implements ThreadEntityInt {
     private String serverIpAddr_;
     private short tcpPort_;
     private Socket tcpConnection_;
-    private Boolean useIOnotReaderWriter_ = true;
+    private Boolean useIOnotReaderWriter_ = false;
     private BinderPortMgr portMgr_;
     
     protected String ownerName()  {return this.ownerName_; }
