@@ -75,12 +75,12 @@ public class Binder implements ThreadEntityInt {
 			return;
 		}
 		
-        this.abend("binderReceiveThreadFunc", "not server or client");
+        this.abend("threadCallbackFunction", "not server or client");
 	}
 
     public Boolean bindAsTcpServer(Boolean create_server_thread_val, short port_val, Boolean is_single_port_val) {
     	if (this.whichThread_ != null) {
-            this.abend("BindAsTcpServer", "bindAs is not null");
+            this.abend("bindAsTcpServer", "bindAs is not null");
     		return false;
     	}
     	
@@ -98,7 +98,7 @@ public class Binder implements ThreadEntityInt {
     }
     
     private Boolean tcpServerThreadFunc() {
-        this.debug(false, "TcpServerThreadFunc", "start (" + this.ownerName() + " " + this.binderServerThreadName() + ")");
+        this.debug(false, "tcpServerThreadFunc", "start (" + this.ownerName() + " " + this.binderServerThreadName() + ")");
         this.whichThread_ = null;
         
         ServerSocket ss = null;
@@ -109,9 +109,9 @@ public class Binder implements ThreadEntityInt {
         		}
         		
         		this.tcpConnection_ = ss.accept();
-        		this.debug(false, "BindAsTcpServer", this.ownerName() + " server accepted");
-        		this.debug(false, "BindAsTcpServer", "clientAddress = " + this.tcpClientName());
-        		this.debug(false, "BindAsTcpServer", "clientName = " + this.tcpClientAddress());
+        		this.debug(false, "tcpServerThreadFunc", this.ownerName() + " server accepted");
+        		this.debug(false, "tcpServerThreadFunc", "clientAddress = " + this.tcpClientName());
+        		this.debug(false, "tcpServerThreadFunc", "clientName = " + this.tcpClientAddress());
         		this.portMgr_.mallocPort(this.tcpConnection(), this.ownerName());
         		
         		if (this.isSinglePort_) {
@@ -128,7 +128,7 @@ public class Binder implements ThreadEntityInt {
 
     public Boolean bindAsTcpClient(Boolean create_client_thread_val, String ip_addr_val, short port_val) {
     	if (this.whichThread_ != null) {
-            this.abend("BindAsTcpServer", "bindAs is not null");
+            this.abend("bindAsTcpClient", "bindAs is not null");
     		return false;
     	}
 
@@ -146,13 +146,14 @@ public class Binder implements ThreadEntityInt {
     }
 
     private Boolean tcpClientThreadFunc() {
-        this.debug(false, "TcpClientThreadFunc", "start (" + this.ownerName() + " " + this.binderClientThreadName() + ")");
+        this.debug(false, "tcpClientThreadFunc", "start (" + this.ownerName() + " " + this.binderClientThreadName() + ")");
         this.whichThread_ = null;
 
         try {
     		this.tcpConnection_ = new Socket(this.serverIpAddr(), this.tcpPort());
-    		this.debug(false, "BindAsTcpClient", this.ownerName() + " client connected");
+    		this.debug(true, "tcpClientThreadFunc", this.ownerName() + " client connected");
     		this.portMgr_.mallocPort(this.tcpConnection_, this.ownerName());
+			this.portMgr_.transmitStringData("phwang168");
     		return true;
     	}
     	catch (Exception e) {

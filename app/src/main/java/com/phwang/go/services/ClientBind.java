@@ -16,7 +16,7 @@ public class ClientBind {
     public ClientBind() {
         //Utils.sleep(10);
         Abend.initAbend(new ClientAbend());
-        new com.phwang.core.root.CoreRoot();
-        new ATestMain(3, 1).startTest(true);
+        //new com.phwang.core.root.CoreRoot();
+        //new ATestMain(3, 1).startTest(true);
     }
 }
