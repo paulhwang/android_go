@@ -26,7 +26,7 @@ public class ClientDParser {
     }
     
     protected void parserResponseData(String response_data_str_val) {
-    	//Log.e(TAG, "parserResponseData() response_data=" + response_data_str_val);
+    	Log.e(TAG, "parserResponseData() response_data=" + response_data_str_val);
     	
     	switch (response_data_str_val.charAt(0)) {
             case FabricCommands.FABRIC_COMMAND_LOGIN:

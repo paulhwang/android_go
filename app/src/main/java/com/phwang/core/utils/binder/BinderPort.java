@@ -153,7 +153,7 @@ public class BinderPort implements ThreadEntityInt, ListEntryInt {
             return;
         }
         
-        String data;
+        String data = null;
         while (true) {
 			if (this.destructorOn_) {
 				return;
@@ -164,12 +164,15 @@ public class BinderPort implements ThreadEntityInt, ListEntryInt {
         			data = this.inputStream_.readUTF();
         		}
         		else {
-        			data = this.inputStream_.readUTF();
-        			//data = this.inputReader.read();
+					char[] array = new char[1000];
+					int length = this.inputReader_.read(array, 0, array.length);
+					if (length > 0) {
+						data = String.copyValueOf(array, 0, length);
+					}
         		}
         		
         		if (data != null) {
-        			this.debug(false, "binderReceiveThreadFunc", "data = " + data);
+        			this.debug(true, "binderReceiveThreadFunc", "data = " + data);
         			this.receiveQueue_.enqueue(data);
         		}
         		else {
@@ -194,7 +197,7 @@ public class BinderPort implements ThreadEntityInt, ListEntryInt {
 			
     		String data = (String) this.receiveQueue_.dequeue();
     		if (data != null) {
-        		this.debug(false, "receiveStringData", "data = " + data);
+        		this.debug(true, "receiveStringData", "data = " + data);
         		return data;
     		}
     		
