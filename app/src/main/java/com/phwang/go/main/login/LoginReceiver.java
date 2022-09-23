@@ -31,12 +31,7 @@ public class LoginReceiver extends BroadcastReceiver {
     public void onReceive(Context context_val, Intent intent_val) {
         Bundle bundle = intent_val.getExtras();
         String fabric_data_str = bundle.getString(BundleIndexDefine.FABRIC_DATA);
-        Log.e(TAG, "*********************LoginReceiver::onReceive() fabric_data_str=" + fabric_data_str);
-        Log.e(TAG, "*********************LoginReceiver::onReceive() fabric_data_str=" + fabric_data_str);
-        Log.e(TAG, "*********************LoginReceiver::onReceive() fabric_data_str=" + fabric_data_str);
-        Log.e(TAG, "*********************LoginReceiver::onReceive() fabric_data_str=" + fabric_data_str);
-        Log.e(TAG, "*********************LoginReceiver::onReceive() fabric_data_str=" + fabric_data_str);
-        Log.e(TAG, "*********************LoginReceiver::onReceive() fabric_data_str=" + fabric_data_str);
+        Log.e(TAG, "LoginReceiver.onReceive() fabric_data_str=" + fabric_data_str);
 
         /*
         FabricInfo fabric_decode = new FabricInfo(fabric_data_str);

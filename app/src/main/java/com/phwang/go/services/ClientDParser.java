@@ -58,7 +58,7 @@ public class ClientDParser {
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION2:
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION3:
             default:
-    		    Log.e(TAG, "parserResponseData() response_data_str_val=" + response_data_str_val);
+    		    Log.e(TAG, "ClientDParser.parserResponseData() bad command!!!!! data=" + response_data_str_val);
     		    break;
     	}
     }
