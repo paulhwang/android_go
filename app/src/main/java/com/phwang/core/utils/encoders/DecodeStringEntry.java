@@ -9,7 +9,7 @@
 package com.phwang.core.utils.encoders;
 
 public class DecodeStringEntry {
-    String data;
+    public String data;
     int total_encoded_size;
 
     public DecodeStringEntry(String data_val, int total_str_length_val) {
