@@ -14,6 +14,7 @@ import com.phwang.core.protocols.fabric.FabricResults;
 import com.phwang.core.utils.binder.Binder;
 import com.phwang.core.protocols.fabric.FabricInfo;
 import com.phwang.core.protocols.fabric.FabricInfoStr;
+import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.global.GlobalData;
 
@@ -53,7 +54,15 @@ public class ClientUParser {
             case FabricCommands.FABRIC_COMMAND_DELETE_SESSION:
             case FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA:
             case FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA:
-                this.uBinder().transmitStringData(fabric_data_str_val);
+
+                StringBuilder buf = new StringBuilder();
+                buf.append('{');
+                buf.append(Encoders.iEncodeRaw4(fabric_data_str_val.length()));
+                buf.append(fabric_data_str_val);
+                buf.append('}');
+                String data = buf.toString();
+
+                this.uBinder().transmitStringData(data);
                 break;
 
             default:
