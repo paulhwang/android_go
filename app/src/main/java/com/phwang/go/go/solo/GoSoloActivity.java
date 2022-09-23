@@ -98,6 +98,7 @@ public class GoSoloActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void setupSoloSession(String go_config_data_val) {
+        /*
         FabricInfo fabric_encode = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_SOLO_SESSION,
                 FabricResults.UNDECIDED,
@@ -113,6 +114,8 @@ public class GoSoloActivity extends AppCompatActivity implements View.OnClickLis
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.encode());
         intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.sendBroadcast(intent);
+
+         */
     }
 
     private void registerBroadcastReceiver() {

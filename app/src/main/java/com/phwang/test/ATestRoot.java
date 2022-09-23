@@ -53,6 +53,7 @@ class ATestRoot {
     }
 
     private void sendLoginRequest() {
+        /*
         FabricInfo fabric_data = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_LOGIN,
                 FabricResults.UNDECIDED,
@@ -64,9 +65,12 @@ class ATestRoot {
         fabric_data.addString(this.myMame_);
         fabric_data.addString(this.password_);
         this.uBinder().transmitStringData(fabric_data.encode());
+
+         */
     }
 
     protected void sendSoloSessionRequest(String link_id_str_val) {
+        /*
         FabricInfo fabric_data = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_SOLO_SESSION,
                 FabricResults.UNDECIDED,
@@ -77,6 +81,8 @@ class ATestRoot {
         );
         fabric_data.addString(this.goConfig);
         this.uBinder().transmitStringData(fabric_data.encode());
+
+         */
     }
 
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }

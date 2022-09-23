@@ -103,6 +103,50 @@ public class Encoders {
         return buf.toString();
     }
 
+    public static DecodeStringEntry decodeString(String input_val) {
+        DecodeStringEntry output = null;
+        int total_str_size;
+        int length = 0;
+        int head_size = 2;
+        int index = 1;
+
+        switch (input_val.charAt(0)) {
+            case '5':
+                length = length * 10 + input_val.charAt(index) - 48;
+                index++;
+                head_size++;
+
+            case '4':
+                length = length * 10 + input_val.charAt(index) - 48;
+                index++;
+                head_size++;
+
+            case '3':
+                length = length * 10 + input_val.charAt(index) - 48;
+                index++;
+                head_size++;
+
+            case '2':
+                length = length * 10 + input_val.charAt(index) - 48;
+                index++;
+                head_size++;
+
+            case '1':
+                length = length * 10 + input_val.charAt(index) - 48;
+                index++;
+                //head_size++;
+
+                StringBuilder buf = new StringBuilder();
+                buf.append(input_val.substring(index, index + length));
+                output = new DecodeStringEntry(buf.toString(), length + head_size);
+                break;
+
+            default:
+                break;
+        }
+        return output;
+    }
+
     public static String sEncode(String str_val, int size_val) {
         StringBuilder buf = new StringBuilder();
         buf.append(Encoders.iEncodeRaw(str_val.length(), size_val));

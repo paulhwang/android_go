@@ -30,6 +30,7 @@ public class GoGameUFunc {
     }
 
     protected void sendDeleteSessionCommand() {
+        /*
         FabricInfo fabric_encode = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_DELETE_SESSION,
                 FabricResults.UNDECIDED,
@@ -44,9 +45,12 @@ public class GoGameUFunc {
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.encode());
         intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.goGameActivity_.sendBroadcast(intent);
+
+         */
     }
 
     protected void sendPutSessionDataCommand(String move_data_val) {
+        /*
         FabricInfo fabric_encode = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_PUT_SESSION_DATA,
                 FabricResults.UNDECIDED,
@@ -62,9 +66,12 @@ public class GoGameUFunc {
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.encode());
         intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.goGameActivity_.sendBroadcast(intent);
+
+         */
     }
 
     protected void sendGetSessionDataCommand() {
+        /*
         FabricInfo fabric_encode = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_GET_SESSION_DATA,
                 FabricResults.UNDECIDED,
@@ -79,5 +86,7 @@ public class GoGameUFunc {
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.encode());
         intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.goGameActivity_.sendBroadcast(intent);
+
+         */
     }
 }

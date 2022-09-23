@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
+        Log.e(TAG, "*************LoginActivity::onCreate() thread_id=" + Thread.currentThread().getId());
 
         setContentView(R.layout.activity_login);
         this.userNameEditText_ = findViewById(R.id.sign_in_username);
@@ -67,12 +67,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view_val) {
+        Log.e(TAG, "LoginActivity::onClick()" );
         Intent intent;
         switch (view_val.getId()) {
             case R.id.sign_in_confirm_button:
-                if (this.validateUsername() && this.validatePassword()) {
-                    this.do_setup_link();
-                }
+                Log.e(TAG, "LoginActivity::onClick(confirm)" );
+                this.do_setup_link();
                 finish();
                 break;
             case R.id.sign_in_exit_button:
@@ -82,24 +82,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     protected void do_setup_link() {
-        if (!validateUsername() || !validatePassword()) {
-            return;
-        }
+        //if (!validateUsername() || !validatePassword()) {
+        //    return;
+        //}
+        this.userName_ = this.userNameEditText_.getText().toString();
+        this.password_ = this.passwordEditText_.getText().toString();
 
-        FabricInfo fabric_encode = new FabricInfo(
-                FabricCommands.FABRIC_COMMAND_LOGIN,
-                FabricResults.UNDECIDED,
-                FabricClients.ANDROID_CLIENT,
-                FabricThemeTypes.ALL,
-                Encoders.IGNORE,
-                Encoders.IGNORE
-        );
-        fabric_encode.addString(this.userName_);
-        fabric_encode.addString(this.password_);
+        StringBuilder buf = new StringBuilder();
+        buf.append("A0L");
+        buf.append(Encoders.encodeString(this.userName_));
+        buf.append(Encoders.encodeString(this.password_));
+        String fabric_data = buf.toString();
+        Log.e(TAG, "LoginActivity::do_setup_link() fabric_data=" + fabric_data);
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.LOGIN_ACTIVITY);
-        intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.encode());
+        intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_data);
         intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.sendBroadcast(intent);
         this.registerBroadcastReceiver();

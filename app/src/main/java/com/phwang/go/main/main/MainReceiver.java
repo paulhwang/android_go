@@ -39,7 +39,7 @@ public class MainReceiver extends BroadcastReceiver {
 
         //Log.e(TAG, "handleReceivedBundle() command=" + fabric_decode.command() + ", result=" + fabric_decode.result());
 
-        switch (fabric_decode.command()) {
+        switch (fabric_decode.command().charAt(1)) {
             case FabricCommands.FABRIC_COMMAND_REGISTER:
                 Log.e(TAG, "handleReceivedBundle() FABRIC_COMMAND_REGISTER");
                 break;

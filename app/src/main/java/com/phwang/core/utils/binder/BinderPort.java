@@ -9,6 +9,7 @@
 package com.phwang.core.utils.binder;
 
 import com.phwang.core.utils.abend.Abend;
+import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.utils.listmgr.ListEntry;
 import com.phwang.core.utils.listmgr.ListEntryInt;
 import com.phwang.core.utils.queue.ListQueue;
@@ -233,8 +234,15 @@ public class BinderPort implements ThreadEntityInt, ListEntryInt {
    				
 				continue;
         	}
-			
-	        try {
+
+			StringBuilder buf = new StringBuilder();
+			buf.append('{');
+			buf.append(Encoders.iEncodeRaw4(data.length()));
+			buf.append(data);
+			buf.append('}');
+			data = buf.toString();
+
+			try {
         		if (this.useIOnotReaderWriter()) {
     	        	this.outputStream_.writeUTF(data);
         		}
@@ -246,9 +254,8 @@ public class BinderPort implements ThreadEntityInt, ListEntryInt {
 	        catch (Exception e) { }
         }
     }
-
-    protected void transmitStringData(String data_val) {
-        this.debug(false, "transmitStringData", "data = " + data_val);
+	protected void transmitStringData(String data_val) {
+        this.debug(true, "transmitStringData", "data = " + data_val);
         this.transmitQueue_.enqueue(data_val);
     }
     

@@ -41,12 +41,13 @@ public class FabricUParser {
     }
 
     protected void parseInputPacket(BinderBundle bundle_val) {
+        /*
         String input_fabric_data_str = bundle_val.data();
         this.debug(true, "parseInputPacket", "input_fabric_data_str = " + input_fabric_data_str);
         FabricInfo fabric_data = new FabricInfo(input_fabric_data_str);
-        char command = fabric_data.command();
+        String command = fabric_data.command();
 
-        switch (command) {
+        switch (command.charAt(1)) {
             case FabricCommands.FABRIC_COMMAND_REGISTER:
                 this.processRegisterRequest(fabric_data);
                 break;
@@ -81,23 +82,23 @@ public class FabricUParser {
                 this.processGetSessionDataRequest(fabric_data);
                 break;
 
-                /*
-            case FabricCommands.FABRIC_COMMAND_GET_LINK_DATA:
-                response_data = this.processGetLinkDataRequest(rest_str.substring(1));
-                break;
-            case FabricCommands.FABRIC_COMMAND_GET_NAME_LIST:
-                response_data = this.processGetNameListRequest(rest_str.substring(1));
-                break;
-            case FabricCommands.FABRIC_COMMAND_SETUP_SESSION:
-                response_data = this.processSetupSessionRequest(rest_str.substring(1));
-                break;
-            case FabricCommands.FABRIC_COMMAND_SETUP_SESSION2:
-                response_data = this.processSetupSession2Request(rest_str.substring(1));
-                break;
-            case FabricCommands.FABRIC_COMMAND_SETUP_SESSION3:
-                response_data = this.processSetupSession3Request(rest_str.substring(1));
-                break;
-                 */
+
+            //case FabricCommands.FABRIC_COMMAND_GET_LINK_DATA:
+            //    response_data = this.processGetLinkDataRequest(rest_str.substring(1));
+            //    break;
+            //case FabricCommands.FABRIC_COMMAND_GET_NAME_LIST:
+            //    response_data = this.processGetNameListRequest(rest_str.substring(1));
+            //    break;
+            //case FabricCommands.FABRIC_COMMAND_SETUP_SESSION:
+            //    response_data = this.processSetupSessionRequest(rest_str.substring(1));
+            //   break;
+            //case FabricCommands.FABRIC_COMMAND_SETUP_SESSION2:
+            //    response_data = this.processSetupSession2Request(rest_str.substring(1));
+            //    break;
+            //case FabricCommands.FABRIC_COMMAND_SETUP_SESSION3:
+            //    response_data = this.processSetupSession3Request(rest_str.substring(1));
+            //    break;
+
             default:
         	    this.abend("parseInputPacket", "should not reach here, input_fabric_data_str=" + input_fabric_data_str);
         	    break;
@@ -107,7 +108,8 @@ public class FabricUParser {
         this.debug(false, "parseInputPacket", "output_fabric_data_str = " + output_fabric_data_str);
         bundle_val.setData(output_fabric_data_str);
         this.fabricDBinder().transmitBundleData(bundle_val);
-    }
+    */
+}
 
     private void processRegisterRequest(FabricInfo fabric_data_val) {
         String my_name = fabric_data_val.stringArrayElement(0);
@@ -117,9 +119,10 @@ public class FabricUParser {
         this.debug(false, "processRegisterRequest", "email=" + email);
         this.debug(false, "processRegisterRequest", "password=" + password);
 
-        fabric_data_val.setResult(FabricResults.SUCCEED);
+        ///////////////fabric_data_val.setResult(FabricResults.SUCCEED);
     }
 
+    /*
     private void processLoginRequest(FabricInfo fabric_data_val) {
         char client_type = fabric_data_val.clientType();
         String my_name = fabric_data_val.stringArrayElement(0);
@@ -600,7 +603,7 @@ public class FabricUParser {
         response_buf.append(theme_id_str_val);
         return response_buf.toString();
     }
-
+*/
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }
     private void log(String s0, String s1) { this.fabricRoot().logIt(this.objectName() + "." + s0 + "()", s1); }
     protected void abend(String s0, String s1) { this.fabricRoot().abendIt(this.objectName() + "." + s0 + "()", s1); }

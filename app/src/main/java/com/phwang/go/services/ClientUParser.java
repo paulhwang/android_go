@@ -29,9 +29,11 @@ public class ClientUParser {
     }
 
     protected void parseUCommand(String fabric_data_str_val) {
-        //Log.e(TAG, "parseUCommand() fabric_data_str=" + fabric_data_str_val);
+        Log.e(TAG, "ClientUParser::parseUCommand() fabric_data_str=" + fabric_data_str_val);
 
-        switch (FabricInfoStr.getCommand(fabric_data_str_val)) {
+        switch (fabric_data_str_val.charAt(2)) {
+        //switch (FabricInfoStr.getCommand(fabric_data_str_val)) {
+            /*
             case FabricCommands.FABRIC_COMMAND_SOLO_SESSION:
             case FabricCommands.FABRIC_COMMAND_HEAD_SESSION:
             case FabricCommands.FABRIC_COMMAND_PEER_SESSION:
@@ -43,6 +45,7 @@ public class ClientUParser {
                     this.clientDParser().sendFabricDataResponse(IntentDefine.GO_CONFIG_ACTIVITY, new_fabric_data_str);
                     return;
                 }
+                */
             case FabricCommands.FABRIC_COMMAND_REGISTER:
             case FabricCommands.FABRIC_COMMAND_LOGIN:
             case FabricCommands.FABRIC_COMMAND_LOGOUT:

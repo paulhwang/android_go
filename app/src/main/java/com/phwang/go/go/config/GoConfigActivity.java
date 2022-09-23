@@ -101,6 +101,7 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
     }
 
     protected void setupSoloSession(String go_config_data_val) {
+        /*
         FabricInfo fabric_encode = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_SOLO_SESSION,
                 FabricResults.UNDECIDED,
@@ -116,9 +117,12 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.encode());
         intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.sendBroadcast(intent);
+
+         */
     }
 
     protected void setupHeadSession(String go_config_data_val) {
+        /*
         FabricInfo fabric_encode = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_HEAD_SESSION,
                 FabricResults.UNDECIDED,
@@ -134,9 +138,12 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.encode());
         intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.sendBroadcast(intent);
+
+         */
     }
 
     protected void setupPeerSession(String go_config_data_val) {
+        /*
         FabricInfo fabric_encode = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_PEER_SESSION,
                 FabricResults.UNDECIDED,
@@ -152,9 +159,12 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.encode());
         intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.sendBroadcast(intent);
+
+         */
     }
 
     protected void setupJoinSession(String go_config_data_val) {
+        /*
         FabricInfo fabric_encode = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_JOIN_SESSION,
                 FabricResults.UNDECIDED,
@@ -170,6 +180,8 @@ public class GoConfigActivity extends AppCompatActivity implements View.OnClickL
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.encode());
         intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.sendBroadcast(intent);
+
+         */
     }
 
     protected void do_setup_session(String his_name_val, String theme_data_val) {

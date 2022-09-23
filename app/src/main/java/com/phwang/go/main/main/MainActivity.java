@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view_val) {
+        Log.e(TAG, "*************MainActivity::onClick() thread_id=");
         Intent intent;
         switch (view_val.getId()) {
             case R.id.main_exit_button:
@@ -103,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 this.doGetGroups();
                 break;
             case R.id.main_login_button:
+                Log.e(TAG, "*************MainActivity::onClick(login) thread_id=");
                 intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
                 break;
@@ -150,6 +152,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     protected void doLogout() {
+        /*
         FabricInfo fabric_encode = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_LOGOUT,
                 FabricResults.UNDECIDED,
@@ -165,9 +168,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.sendBroadcast(intent);
         this.registerBroadcastReceiver();
+
+         */
     }
 
     protected void doGetGroups() {
+        /*
         FabricInfo fabric_encode = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_GET_GROUPS,
                 FabricResults.UNDECIDED,
@@ -183,6 +189,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.sendBroadcast(intent);
         this.registerBroadcastReceiver();
+
+         */
     }
 
     private void registerBroadcastReceiver() {

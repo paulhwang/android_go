@@ -32,8 +32,15 @@ public class GoConfigReceiver extends BroadcastReceiver {
     public void onReceive(Context context_val, Intent intent_val) {
         Bundle bundle = intent_val.getExtras();
         String fabric_data_str = bundle.getString(BundleIndexDefine.FABRIC_DATA);
-        //Log.e(TAG, "handleReceivedBundle() fabric_data_str=" + fabric_data_str);
+        Log.e(TAG, "*********************GoConfigReceiver::onReceive() fabric_data_str=" + fabric_data_str);
+        Log.e(TAG, "*********************GoConfigReceiver::onReceive() fabric_data_str=" + fabric_data_str);
+        Log.e(TAG, "*********************GoConfigReceiver::onReceive() fabric_data_str=" + fabric_data_str);
+        Log.e(TAG, "*********************GoConfigReceiver::onReceive() fabric_data_str=" + fabric_data_str);
+        Log.e(TAG, "*********************GoConfigReceiver::onReceive() fabric_data_str=" + fabric_data_str);
+        Log.e(TAG, "*********************GoConfigReceiver::onReceive() fabric_data_str=" + fabric_data_str);
+        Log.e(TAG, "*********************GoConfigReceiver::onReceive() fabric_data_str=" + fabric_data_str);
 
+        /*
         FabricInfo fabric_decode = new FabricInfo(fabric_data_str);
         char command = fabric_decode.command();
         char result = fabric_decode.result();
@@ -69,6 +76,8 @@ public class GoConfigReceiver extends BroadcastReceiver {
             default:
                 break;
         }
+
+         */
     }
 
     private void processSetupSoloSessionResponse(char result_val, String fabric_data_str_val) {

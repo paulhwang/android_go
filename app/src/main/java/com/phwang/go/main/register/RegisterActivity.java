@@ -89,8 +89,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         if (!validateEmail() || !validateUsername() || !validatePassword()) {
             return;
         }
-
-        FabricInfo fabric_encode = new FabricInfo(
+/*
+        FabricInfo fabric_encode = new FabricInfo();
                 FabricCommands.FABRIC_COMMAND_REGISTER,
                 FabricResults.UNDECIDED,
                 FabricClients.ANDROID_CLIENT,
@@ -107,6 +107,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.encode());
         intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.sendBroadcast(intent);
+
+ */
     }
 
     private boolean validateEmail() {

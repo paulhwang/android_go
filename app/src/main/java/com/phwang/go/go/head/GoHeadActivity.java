@@ -101,6 +101,7 @@ public class GoHeadActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void setupHeadSession(String go_config_data_val) {
+        /*
         FabricInfo fabric_encode = new FabricInfo(
                 FabricCommands.FABRIC_COMMAND_HEAD_SESSION,
                 FabricResults.UNDECIDED,
@@ -116,6 +117,8 @@ public class GoHeadActivity extends AppCompatActivity implements View.OnClickLis
         intent.putExtra(BundleIndexDefine.FABRIC_DATA, fabric_encode.encode());
         intent.setAction(IntentDefine.CLIENT_SERVICE);
         this.sendBroadcast(intent);
+
+         */
     }
 
     private void registerBroadcastReceiver() {

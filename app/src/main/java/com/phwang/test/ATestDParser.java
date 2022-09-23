@@ -14,6 +14,7 @@ public class ATestDParser {
     }
 
     protected void parserResponseData(String fabric_data_str_val) {
+        /*
         this.debug(true, "parserResponseData", "fabric_data_str_val=" + fabric_data_str_val);
         FabricInfo fabric_data = new FabricInfo(fabric_data_str_val);
         char command = fabric_data.command();
@@ -23,6 +24,8 @@ public class ATestDParser {
                 this.aTestRoot_.sendSoloSessionRequest(fabric_data.linkIdStr());
                 break;
         }
+
+         */
     }
 
     private void debug(Boolean on_off, String s0, String s1) { if (on_off) this.log(s0, s1); }
