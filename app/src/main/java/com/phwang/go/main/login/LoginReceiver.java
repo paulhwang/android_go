@@ -30,17 +30,24 @@ public class LoginReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context_val, Intent intent_val) {
         Bundle bundle = intent_val.getExtras();
-        String fabric_data_str = bundle.getString(BundleIndexDefine.FABRIC_DATA);
-        Log.e(TAG, "LoginReceiver.onReceive() fabric_data_str=" + fabric_data_str);
+        String fabric_data = bundle.getString(BundleIndexDefine.FABRIC_DATA);
+        Log.e(TAG, "LoginReceiver.onReceive() fabric_data_str=" + fabric_data);
 
-        /*
-        FabricInfo fabric_decode = new FabricInfo(fabric_data_str);
-        String link_id_str = fabric_decode.linkIdStr();
+        /* l***001002000116phwang */
+        char response = fabric_data.charAt(0);
+        String result = fabric_data.substring(4, 6);
+        String link_id_str = fabric_data.substring(6, 14);
+        String my_name = fabric_data.substring(14);
+        if (my_name != this.signInActivity_.userName_) {
+            Log.e(TAG, "LoginReceiver.onReceive() userName ERROR!!! " + my_name + "!=" + this.signInActivity_.userName_);
+        }
 
-        switch (fabric_decode.command()) {
-            case FabricCommands.FABRIC_COMMAND_LOGIN:
-                if (fabric_decode.result() == FabricResults.SUCCEED) {
+        switch (response) {
+            case FabricCommands.FABRIC_RESPONSE_LOGIN:
+                if (result == FabricResults.SUCCEED_STR) {
                     GlobalData.setLinkIdStr(link_id_str);
+                    GlobalData.setUserName(my_name);
+                    Log.e(TAG, "LoginReceiver.onReceive() GlobalData.linkIdSt()=" + GlobalData.linkIdStr());
                     this.signInActivity_.finish();
                 }
                 else {
@@ -48,9 +55,8 @@ public class LoginReceiver extends BroadcastReceiver {
                 }
                 break;
             default:
+                Log.e(TAG, "LoginReceiver.onReceive() BAD_RESPONSSE=" + response);
                 break;
         }
-
-         */
     }
 }

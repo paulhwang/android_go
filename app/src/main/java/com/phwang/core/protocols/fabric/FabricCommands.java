@@ -15,8 +15,9 @@ public class FabricCommands {
     public static final String FABRIC_COMMAND_REGISTER_STR         = "R";
     public static final char   FABRIC_COMMAND_LOGIN                = 'L';
     public static final String FABRIC_COMMAND_LOGIN_STR            = "L";
-    public static final char   FABRIC_COMMAND_LOGOUT               = 'l';
-    public static final String FABRIC_COMMAND_LOGOUT_STR           = "l";
+    public static final char   FABRIC_RESPONSE_LOGIN               = 'l';
+    public static final char   FABRIC_COMMAND_LOGOUT               = 'x';
+    public static final String FABRIC_COMMAND_LOGOUT_STR           = "x";
     public static final char   FABRIC_COMMAND_GET_GROUPS           = 'g';
     public static final String FABRIC_COMMAND_GET_GROUPS_STR       = "g";
     public static final char   FABRIC_COMMAND_GET_LINK_DATA        = 'D';

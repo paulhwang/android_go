@@ -11,7 +11,7 @@ package com.phwang.core.protocols.fabric;
 public class FabricResults {
     public static final char   UNDECIDED             = '?';
     public static final char   SUCCEED               = '0';
-    public static final String SUCCEED_STR           = "0";
+    public static final String SUCCEED_STR           = "00";
     public static final char   ACCOUNT_NOT_EXIST     = '1';
     public static final String ACCOUNT_NOT_EXIST_STR = "1";
     public static final char   BAD_PASSWORD          = '2';

@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextInputLayout userNameLayout_;
     private EditText userNameEditText_;
     private EditText passwordEditText_;
-    private String userName_;
+    protected String userName_;
     private String password_;
 
     @Override

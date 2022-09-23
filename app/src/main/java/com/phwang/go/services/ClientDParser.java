@@ -30,6 +30,7 @@ public class ClientDParser {
     	
     	switch (response_data_str_val.charAt(0)) {
             case FabricCommands.FABRIC_COMMAND_LOGIN:
+            case FabricCommands.FABRIC_RESPONSE_LOGIN:
                 this.sendFabricDataResponse(IntentDefine.LOGIN_ACTIVITY, response_data_str_val);
                 break;
 
