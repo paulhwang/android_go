@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.util.Log;
 import com.phwang.core.protocols.fabric.FabricCommands;
 import com.phwang.core.protocols.fabric.FabricResults;
+import com.phwang.core.protocols.fabric.FabricResponseIndex;
+import com.phwang.core.protocols.fabric.FabricSize;
 import com.phwang.core.protocols.fabric.FabricInfo;
 import com.phwang.core.utils.encoders.DecodeStringEntry;
 import com.phwang.core.utils.encoders.Encoders;
@@ -36,10 +38,10 @@ public class LoginReceiver extends BroadcastReceiver {
         Log.e(TAG, "onReceive() fabric_data=" + fabric_data);
 
         /* l***001002000116phwang */
-        char response = fabric_data.charAt(0);
-        String result = fabric_data.substring(4, 6);
-        String link_id = fabric_data.substring(6, 14);
-        String encoded_my_name = fabric_data.substring(14);
+        char response = fabric_data.charAt(FabricResponseIndex.CODE_INDEX);
+        String result = fabric_data.substring(FabricResponseIndex.RESULT_INDEX, FabricResponseIndex.RESULT_INDEX + FabricSize.RESULT_SIZE);
+        String link_id = fabric_data.substring(FabricResponseIndex.LINK_ID_INDEX, FabricResponseIndex.LINK_ID_INDEX + FabricSize.LINK_ID_SIZE);
+        String encoded_my_name = fabric_data.substring(FabricResponseIndex.NEXT_TO_LINK_ID_INDEX);
 
         if (response != FabricCommands.FABRIC_RESPONSE_LOGIN) {
             Log.e(TAG, "onReceive()" + " Bad response! data=" + fabric_data);

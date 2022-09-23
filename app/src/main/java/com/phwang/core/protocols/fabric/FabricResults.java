@@ -9,6 +9,8 @@
 package com.phwang.core.protocols.fabric;
 
 public class FabricResults {
+    public static final int SIZE = 2;
+
     public static final char   UNDECIDED             = '?';
     public static final char   SUCCEED               = '0';
     public static final String SUCCEED_STR           = "00";
