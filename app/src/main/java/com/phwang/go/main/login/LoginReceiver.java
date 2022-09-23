@@ -56,7 +56,6 @@ public class LoginReceiver extends BroadcastReceiver {
         if (result.equals(FabricResults.SUCCEED_STR)) {
             GlobalData.setLinkIdStr(link_id);
             GlobalData.setUserName(name_string_entry.data);
-            Log.e(TAG, "onReceive() GlobalData.linkIdSt()=" + GlobalData.linkIdStr());
             Log.e(TAG, "onReceive()" + " Succeed!");
             this.signInActivity_.finish();
         }

@@ -172,14 +172,12 @@ public class BinderPort implements ThreadEntityInt, ListEntryInt {
         		}
         		
         		if (data != null) {
-        			this.debug(true, "binderReceiveThreadFunc", "data = " + data);
+        			this.debug(false, "binderReceiveThreadFunc", "data = " + data);
 					//BinderPort.binderReceiveThreadFunc() data = {0020l***001001000014paul}
 					String length_string = data.substring(1, 5);
-					this.debug(true, "binderReceiveThreadFunc", "length = " + length_string);
 					int length = Encoders.iDecodeRaw(length_string);
-					this.debug(true, "binderReceiveThreadFunc", "length = " + length);
 					String new_data = data.substring(5, 5 + length);
-					this.debug(true, "binderReceiveThreadFunc", "new_data = " + new_data);
+					this.debug(false, "binderReceiveThreadFunc", "new_data = " + new_data);
 					this.receiveQueue_.enqueue(new_data);
         		}
         		else {
