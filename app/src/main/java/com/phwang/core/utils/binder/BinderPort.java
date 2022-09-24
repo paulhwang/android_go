@@ -8,7 +8,6 @@
 
 package com.phwang.core.utils.binder;
 
-import android.util.Log;
 import com.phwang.core.utils.abend.Abend;
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.utils.listmgr.ListEntry;
@@ -16,6 +15,7 @@ import com.phwang.core.utils.listmgr.ListEntryInt;
 import com.phwang.core.utils.queue.ListQueue;
 import com.phwang.core.utils.threadmgr.ThreadEntity;
 import com.phwang.core.utils.threadmgr.ThreadEntityInt;
+import com.phwang.core.utils.abend.Logit;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -24,7 +24,7 @@ import java.io.OutputStreamWriter;
 import java.net.*;
 
 public class BinderPort implements ThreadEntityInt, ListEntryInt {
-	private static final String TAG = "phwang BinderPort";
+	private static final String TAG = "BinderPort";
     private String objectName() {return "BinderPort";}
     private String transmitThreadName() { return "PortTransmitThread"; }
     private String receiveThreadName() { return "PortReceiveThread"; }
@@ -145,7 +145,7 @@ public class BinderPort implements ThreadEntityInt, ListEntryInt {
     }
 
     private void binderReceiveThreadFunc() {
-        Log.e(TAG, "binderReceiveThreadFunc() thread_id=" + Thread.currentThread().getId());
+        Logit.e(TAG, "binderReceiveThreadFunc() thread_id=" + Thread.currentThread().getId());
         
     	this.whichThread_ = this.transmitThreadName();
 		this.transmitThread_ = new ThreadEntity(this.transmitThreadName(), this);
@@ -204,7 +204,7 @@ public class BinderPort implements ThreadEntityInt, ListEntryInt {
 			
     		String data = (String) this.receiveQueue_.dequeue();
     		if (data != null) {
-				Log.e(TAG, "receiveStringData() data=" + data);
+				Logit.e(TAG, "receiveStringData() data=" + data);
         		return data;
     		}
     		
@@ -219,7 +219,7 @@ public class BinderPort implements ThreadEntityInt, ListEntryInt {
     }
 
     private void binderTransmitThreadFunc() {
-		Log.e(TAG, "binderTransmitThreadFunc() thread_id=" + Thread.currentThread().getId());
+		Logit.e(TAG, "binderTransmitThreadFunc() thread_id=" + Thread.currentThread().getId());
         this.whichThread_ = null;
         
         if (this.tcpConnection_ == null) {
@@ -258,7 +258,7 @@ public class BinderPort implements ThreadEntityInt, ListEntryInt {
         }
     }
 	protected void transmitStringData(String data_val) {
-        Log.e(TAG, "transmitStringData() data=" + data_val);
+        Logit.e(TAG, "transmitStringData() data=" + data_val);
         this.transmitQueue_.enqueue(data_val);
     }
     

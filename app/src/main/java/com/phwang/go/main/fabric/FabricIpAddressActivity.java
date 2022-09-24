@@ -11,7 +11,6 @@ package com.phwang.go.main.fabric;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -24,11 +23,12 @@ import com.phwang.go.define.PrefDefine;
 import com.phwang.go.main.main.MainActivity;
 import com.phwang.go.sudoku.About;
 import com.phwang.go.sudoku.SudokuGame;
+import com.phwang.core.utils.abend.Logit;
 
 import static com.phwang.go.define.PrefDefine.PREF_SERVER_IP_ADDRESS;
 
 public class FabricIpAddressActivity extends AppCompatActivity implements View.OnClickListener{
-    private static final String TAG = "phwang FabricIpAddressActivity";
+    private static final String TAG = "FabricIpAddressActivity";
 
     private EditText fabricIpAddressEditText_;
     private String fabricIpAddress_;
@@ -65,7 +65,7 @@ public class FabricIpAddressActivity extends AppCompatActivity implements View.O
 
     private void validateFabricIpAddress() {
         this.fabricIpAddress_ = this.fabricIpAddressEditText_.getText().toString();
-        Log.e(TAG, "validateFabricIpAddress() fabricIpAddress_=" + this.fabricIpAddress_);
+        Logit.e(TAG, "validateFabricIpAddress() fabricIpAddress_=" + this.fabricIpAddress_);
         PrefDefine.writeIpAddress(this, this.fabricIpAddress_);
     }
 }

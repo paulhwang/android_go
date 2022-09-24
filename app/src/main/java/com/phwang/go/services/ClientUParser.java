@@ -8,7 +8,6 @@
 
 package com.phwang.go.services;
 
-import android.util.Log;
 import com.phwang.core.protocols.fabric.FabricCommands;
 import com.phwang.core.protocols.fabric.FabricResults;
 import com.phwang.core.utils.binder.Binder;
@@ -17,9 +16,10 @@ import com.phwang.core.protocols.fabric.FabricInfoStr;
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.go.define.IntentDefine;
 import com.phwang.go.global.GlobalData;
+import com.phwang.core.utils.abend.Logit;
 
 public class ClientUParser {
-    private static final String TAG = "phwang ClientUParser";
+    private static final String TAG = "ClientUParser";
     private ClientRoot clientRoot_;
 
     private ClientDParser clientDParser() { return this.clientRoot_.clientDParser(); }
@@ -30,7 +30,7 @@ public class ClientUParser {
     }
 
     protected void parseUCommand(String fabric_data_str_val) {
-        Log.e(TAG, "parseUCommand() fabric_data_str=" + fabric_data_str_val);
+        Logit.e(TAG, "parseUCommand() fabric_data_str=" + fabric_data_str_val);
 
         switch (fabric_data_str_val.charAt(2)) {
         //switch (FabricInfoStr.getCommand(fabric_data_str_val)) {
@@ -66,7 +66,7 @@ public class ClientUParser {
                 break;
 
             default:
-                Log.e(TAG, "handleCommand(not implemented) fabric_data_str=" + fabric_data_str_val);
+                Logit.e(TAG, "handleCommand(not implemented) fabric_data_str=" + fabric_data_str_val);
         }
     }
 }

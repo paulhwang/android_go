@@ -8,16 +8,16 @@
 
 package com.phwang.core.utils.binder;
 
-import android.util.Log;
 import com.phwang.core.utils.abend.Abend;
 import com.phwang.core.utils.listmgr.ListEntry;
 import com.phwang.core.utils.threadmgr.ThreadEntity;
 import com.phwang.core.utils.threadmgr.ThreadEntityInt;
 
 import java.net.*;
+import com.phwang.core.utils.abend.Logit;
 
 public class Binder implements ThreadEntityInt {
-	private static final String TAG = "phwang Binder";
+	private static final String TAG = "Binder";
     private String objectName() {return "Binder";}
     private String binderServerThreadName() { return "BinderServerThread"; }
     private String binderClientThreadName() { return "BinderClientThread"; }
@@ -100,7 +100,7 @@ public class Binder implements ThreadEntityInt {
     }
     
     private Boolean tcpServerThreadFunc() {
-    	Log.e(TAG, "tcpServerThreadFunc() thread_id=" + Thread.currentThread().getId() + " owner=" + this.ownerName() + " thread_name=" + this.binderClientThreadName());
+    	Logit.e(TAG, "tcpServerThreadFunc() thread_id=" + Thread.currentThread().getId() + " owner=" + this.ownerName() + " thread_name=" + this.binderClientThreadName());
 		this.whichThread_ = null;
         
         ServerSocket ss = null;
@@ -148,18 +148,18 @@ public class Binder implements ThreadEntityInt {
     }
 
     private Boolean tcpClientThreadFunc() {
-		Log.e(TAG, "tcpClientThreadFunc() thread_id=" + Thread.currentThread().getId() + " owner=" + this.ownerName() + " thread_name=" + this.binderServerThreadName());
+		Logit.e(TAG, "tcpClientThreadFunc() thread_id=" + Thread.currentThread().getId() + " owner=" + this.ownerName() + " thread_name=" + this.binderServerThreadName());
         this.whichThread_ = null;
 
         try {
     		this.tcpConnection_ = new Socket(this.serverIpAddr(), this.tcpPort());
-			Log.e(TAG, "tcpClientThreadFunc() " + this.ownerName() + " client connected");
+			Logit.e(TAG, "tcpClientThreadFunc() " + this.ownerName() + " client connected");
     		this.portMgr_.mallocPort(this.tcpConnection_, this.ownerName());
 			this.portMgr_.transmitStringData("phwang168");
     		return true;
     	}
     	catch (Exception e) {
-			Log.e(TAG, "tcpClientThreadFunc() " + this.ownerName() + " Exception=" + e);
+			Logit.e(TAG, "tcpClientThreadFunc() " + this.ownerName() + " Exception=" + e);
     		return false;
     	}
     }

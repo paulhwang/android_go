@@ -11,7 +11,6 @@ package com.phwang.go.main.login;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +19,7 @@ import com.phwang.core.protocols.fabric.FabricClients;
 import com.phwang.core.protocols.fabric.FabricCommands;
 import com.phwang.core.protocols.fabric.FabricResults;
 import com.phwang.core.protocols.fabric.FabricThemeTypes;
+import com.phwang.core.utils.abend.Logit;
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.protocols.fabric.FabricInfo;
 import com.phwang.go.R;
@@ -27,7 +27,7 @@ import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = "phwang LoginActivity";
+    private static final String TAG = "LoginActivity";
     private LoginReceiver loginReceiver_;
     private TextInputLayout userNameLayout_;
     private EditText userNameEditText_;
@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
+        Logit.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
 
         setContentView(R.layout.activity_login);
         this.userNameEditText_ = findViewById(R.id.sign_in_username);
@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         buf.append(Encoders.encodeString(this.userName_));
         buf.append(Encoders.encodeString(this.password_));
         String fabric_data = buf.toString();
-        Log.e(TAG, "doSetupLink() fabric_data=" + fabric_data);
+        Logit.e(TAG, "doSetupLink() fabric_data=" + fabric_data);
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.LOGIN_ACTIVITY);

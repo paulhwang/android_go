@@ -12,11 +12,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import com.phwang.go.define.BundleIndexDefine;
+import com.phwang.core.utils.abend.Logit;
 
 public class ClientReceiver extends BroadcastReceiver {
-    private static final String TAG = "phwang ClientReceiver";
+    private static final String TAG = "ClientReceiver";
     private ClientService clientService_;
 
     private ClientUParser clientUParser() { return this.clientService_.clientUParser(); }
@@ -29,7 +29,7 @@ public class ClientReceiver extends BroadcastReceiver {
     public void onReceive(Context context_val, Intent intent_val) {
         Bundle bundle = intent_val.getExtras();
         String fabric_data_str = bundle.getString(BundleIndexDefine.FABRIC_DATA);
-        Log.e(TAG, "onReceive() fabric_data_str=" + fabric_data_str);
+        Logit.e(TAG, "onReceive() fabric_data_str=" + fabric_data_str);
         this.clientUParser().parseUCommand(fabric_data_str);
     }
 }

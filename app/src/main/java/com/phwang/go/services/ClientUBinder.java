@@ -8,15 +8,14 @@
 
 package com.phwang.go.services;
 
-import android.util.Log;
-
 import com.phwang.core.utils.binder.Binder;
 import com.phwang.core.protocols.tcpip.TcpIpDefine;
 import com.phwang.core.utils.threadmgr.ThreadEntityInt;
 import com.phwang.core.utils.threadmgr.ThreadMgr;
+import com.phwang.core.utils.abend.Logit;
 
 public class ClientUBinder implements ThreadEntityInt {
-    private static final String TAG = "phwang ClientUBinder";
+    private static final String TAG = "ClientUBinder";
     private String objectName() {return "ClientUBinder";}
     private String receiveThreadName() { return "UClientReceiveThread"; }
 
@@ -32,7 +31,7 @@ public class ClientUBinder implements ThreadEntityInt {
     public Binder uBinder() { return this.uBinder_; }
     
     protected ClientUBinder(ClientRoot root_val) {
-        Log.e(TAG, "ClientUBinder() thread_id=" + Thread.currentThread().getId());
+        Logit.e(TAG, "ClientUBinder() thread_id=" + Thread.currentThread().getId());
 
         this.clientRoot_ = root_val;
         this.uBinder_ = new Binder(this.objectName());
@@ -53,7 +52,7 @@ public class ClientUBinder implements ThreadEntityInt {
 	}
     
     private void uClientReceiveThreadFunc() {
-       Log.e(TAG, "uClientReceiveThreadFunc() thread_id=" + Thread.currentThread().getId() + " owner=" + this.receiveThreadName());
+       Logit.e(TAG, "uClientReceiveThreadFunc() thread_id=" + Thread.currentThread().getId() + " owner=" + this.receiveThreadName());
 
         while (true) {
             if (this.stopReceiveThreadFlag) {
@@ -66,10 +65,10 @@ public class ClientUBinder implements ThreadEntityInt {
             	continue;
             }
 
-            Log.e(TAG, "uClientReceiveThreadFunc() received_data=" + received_data);
+            Logit.e(TAG, "uClientReceiveThreadFunc() received_data=" + received_data);
             this.clientDParser().parserResponseData(received_data);
         }
-        Log.e(TAG, "uClientReceiveThreadFunc() exit");
+        Logit.e(TAG, "uClientReceiveThreadFunc() exit");
     }
     
     protected void StopReceiveThread() {

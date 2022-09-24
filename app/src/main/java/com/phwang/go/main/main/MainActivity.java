@@ -13,7 +13,6 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.content.Intent;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,11 +34,12 @@ import com.phwang.go.main.login.LoginActivity;
 import com.phwang.go.main.register.RegisterActivity;
 import com.phwang.go.sudoku.config.SudokuConfigActivity;
 import com.phwang.go.services.ClientService;
+import com.phwang.core.utils.abend.Logit;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = "phwang MainActivity";
+    private static final String TAG = "MainActivity";
     private MainActivityFunc mainActivityFunc_;
     private MainReceiver mainReceiver_;
     private static Boolean runGo = true;
@@ -49,10 +49,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
+        Logit.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
 
         String fabric_ip_address = getIntent().getStringExtra(BundleIndexDefine.FABRIC_IP_ADDRESS);
-        Log.e(TAG, "onCreate() fabric_ip_address=" + fabric_ip_address);
+        Logit.e(TAG, "onCreate() fabric_ip_address=" + fabric_ip_address);
 
         setContentView(R.layout.activity_main);
         //findViewById(R.id.main_about_button).setOnClickListener(this);
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view_val) {
-        Log.e(TAG, "onClick() thread_id=" + Thread.currentThread().getId());
+        Logit.e(TAG, "onClick() thread_id=" + Thread.currentThread().getId());
         Intent intent;
         switch (view_val.getId()) {
             case R.id.main_exit_button:
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 this.doGetGroups();
                 break;
             case R.id.main_login_button:
-                Log.e(TAG, "onClick() login_button thread_id=" + Thread.currentThread().getId());
+                Logit.e(TAG, "onClick() login_button thread_id=" + Thread.currentThread().getId());
                 intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
                 break;
@@ -231,7 +231,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void run() {
                         count++;
-                        Log.e(TAG, "watchDog() " + count);
+                        Logit.e(TAG, "watchDog() " + count);
                     }
                 });
             }
