@@ -8,16 +8,19 @@
 
 package com.phwang.go.services;
 
+import android.util.Log;
+
 import com.phwang.core.utils.binder.Binder;
 import com.phwang.core.protocols.tcpip.TcpIpDefine;
 import com.phwang.core.utils.threadmgr.ThreadEntityInt;
 import com.phwang.core.utils.threadmgr.ThreadMgr;
 
 public class ClientUBinder implements ThreadEntityInt {
+    private static final String TAG = "phwang ClientUBinder";
     private String objectName() {return "ClientUBinder";}
     private String receiveThreadName() { return "UClientReceiveThread"; }
 
-	private static final int NUMBER_OF_D_WORK_THREADS = 5;
+	private static final int NUMBER_OF_D_WORK_THREADS = 1;
     
     private ClientRoot clientRoot_;
     private Binder uBinder_;
@@ -29,9 +32,9 @@ public class ClientUBinder implements ThreadEntityInt {
     public Binder uBinder() { return this.uBinder_; }
     
     protected ClientUBinder(ClientRoot root_val) {
-        this.debug(false, "ClientUBinder", "init start");
-        
-    	this.clientRoot_ = root_val;
+        Log.e(TAG, "ClientUBinder() thread_id=" + Thread.currentThread().getId());
+
+        this.clientRoot_ = root_val;
         this.uBinder_ = new Binder(this.objectName());
     }
 
@@ -50,8 +53,8 @@ public class ClientUBinder implements ThreadEntityInt {
 	}
     
     private void uClientReceiveThreadFunc() {
-        this.debug(false, "uClientReceiveThreadFunc", "start " + this.receiveThreadName());
-        
+       Log.e(TAG, "uClientReceiveThreadFunc() thread_id=" + Thread.currentThread().getId() + " owner=" + this.receiveThreadName());
+
         while (true) {
             if (this.stopReceiveThreadFlag) {
                 break;
@@ -63,10 +66,10 @@ public class ClientUBinder implements ThreadEntityInt {
             	continue;
             }
 
-            this.debug(false, "uClientReceiveThreadFunc", "received_data=" + received_data);
+            Log.e(TAG, "uClientReceiveThreadFunc() received_data=" + received_data);
             this.clientDParser().parserResponseData(received_data);
         }
-        this.debug(true, "uClientReceiveThreadFunc", "exit");
+        Log.e(TAG, "uClientReceiveThreadFunc() exit");
     }
     
     protected void StopReceiveThread() {
