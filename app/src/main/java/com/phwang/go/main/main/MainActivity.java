@@ -39,7 +39,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "phwang MainActivity";
     private MainActivityFunc mainActivityFunc_;
     private MainReceiver mainReceiver_;
     private static Boolean runGo = true;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
+        Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
 
         String fabric_ip_address = getIntent().getStringExtra(BundleIndexDefine.FABRIC_IP_ADDRESS);
         Log.e(TAG, "onCreate() fabric_ip_address=" + fabric_ip_address);
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view_val) {
-        Log.e(TAG, "*************MainActivity::onClick() thread_id=");
+        Log.e(TAG, "onClick() thread_id=" + Thread.currentThread().getId());
         Intent intent;
         switch (view_val.getId()) {
             case R.id.main_exit_button:
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 this.doGetGroups();
                 break;
             case R.id.main_login_button:
-                Log.e(TAG, "*************MainActivity::onClick(login) thread_id=");
+                Log.e(TAG, "onClick() login_button thread_id=" + Thread.currentThread().getId());
                 intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
                 break;

@@ -22,7 +22,7 @@ import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
 
 public class ClientService extends Service {
-    private static final String TAG = "ClientService";
+    private static final String TAG = "phwang ClientService";
     private Context applicationContext_;
     private ClientReceiver clientReceiver_;
     private ClientRoot clientRoot_;
@@ -36,7 +36,7 @@ public class ClientService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        //Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
+        Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
 
         this.applicationContext_ = getApplicationContext();
         this.clientRoot_ = new ClientRoot(this);
@@ -50,7 +50,7 @@ public class ClientService extends Service {
 
         Bundle bundle = intent_val.getExtras();
         String ip_address = bundle.getString(BundleIndexDefine.FABRIC_IP_ADDRESS);
-        Log.e(TAG, " onStartCommand() ip_address=" + ip_address);
+        Log.e(TAG, "onStartCommand() ip_address=" + ip_address);
         this.clientUBinder().runAsTcpClient(ip_address);
 
         // If we get killed, after returning from here, restart

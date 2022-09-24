@@ -8,6 +8,7 @@
 
 package com.phwang.core.utils.binder;
 
+import android.util.Log;
 import com.phwang.core.utils.abend.Abend;
 import com.phwang.core.utils.encoders.Encoders;
 import com.phwang.core.utils.listmgr.ListEntry;
@@ -23,6 +24,7 @@ import java.io.OutputStreamWriter;
 import java.net.*;
 
 public class BinderPort implements ThreadEntityInt, ListEntryInt {
+	private static final String TAG = "phwang BinderPort";
     private String objectName() {return "BinderPort";}
     private String transmitThreadName() { return "PortTransmitThread"; }
     private String receiveThreadName() { return "PortReceiveThread"; }
@@ -143,7 +145,7 @@ public class BinderPort implements ThreadEntityInt, ListEntryInt {
     }
 
     private void binderReceiveThreadFunc() {
-        this.debug(false, "binderReceiveThreadFunc", "start thread ***");
+        Log.e(TAG, "binderReceiveThreadFunc() thread_id=" + Thread.currentThread().getId());
         
     	this.whichThread_ = this.transmitThreadName();
 		this.transmitThread_ = new ThreadEntity(this.transmitThreadName(), this);
@@ -202,7 +204,7 @@ public class BinderPort implements ThreadEntityInt, ListEntryInt {
 			
     		String data = (String) this.receiveQueue_.dequeue();
     		if (data != null) {
-        		this.debug(true, "receiveStringData", "data = " + data);
+				Log.e(TAG, "receiveStringData() data=" + data);
         		return data;
     		}
     		
@@ -217,7 +219,7 @@ public class BinderPort implements ThreadEntityInt, ListEntryInt {
     }
 
     private void binderTransmitThreadFunc() {
-        this.debug(false, "binderTransmitThreadFunc", "start thread ***");
+		Log.e(TAG, "binderTransmitThreadFunc() thread_id=" + Thread.currentThread().getId());
         this.whichThread_ = null;
         
         if (this.tcpConnection_ == null) {
@@ -256,7 +258,7 @@ public class BinderPort implements ThreadEntityInt, ListEntryInt {
         }
     }
 	protected void transmitStringData(String data_val) {
-        this.debug(true, "transmitStringData", "data = " + data_val);
+        Log.e(TAG, "transmitStringData() data=" + data_val);
         this.transmitQueue_.enqueue(data_val);
     }
     

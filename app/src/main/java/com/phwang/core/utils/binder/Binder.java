@@ -8,6 +8,7 @@
 
 package com.phwang.core.utils.binder;
 
+import android.util.Log;
 import com.phwang.core.utils.abend.Abend;
 import com.phwang.core.utils.listmgr.ListEntry;
 import com.phwang.core.utils.threadmgr.ThreadEntity;
@@ -16,6 +17,7 @@ import com.phwang.core.utils.threadmgr.ThreadEntityInt;
 import java.net.*;
 
 public class Binder implements ThreadEntityInt {
+	private static final String TAG = "phwang Binder";
     private String objectName() {return "Binder";}
     private String binderServerThreadName() { return "BinderServerThread"; }
     private String binderClientThreadName() { return "BinderClientThread"; }
@@ -98,8 +100,8 @@ public class Binder implements ThreadEntityInt {
     }
     
     private Boolean tcpServerThreadFunc() {
-        this.debug(false, "tcpServerThreadFunc", "start (" + this.ownerName() + " " + this.binderServerThreadName() + ")");
-        this.whichThread_ = null;
+    	Log.e(TAG, "tcpServerThreadFunc() thread_id=" + Thread.currentThread().getId() + " owner=" + this.ownerName() + " thread_name=" + this.binderClientThreadName());
+		this.whichThread_ = null;
         
         ServerSocket ss = null;
         while (true) {
@@ -146,18 +148,18 @@ public class Binder implements ThreadEntityInt {
     }
 
     private Boolean tcpClientThreadFunc() {
-        this.debug(false, "tcpClientThreadFunc", "start (" + this.ownerName() + " " + this.binderClientThreadName() + ")");
+		Log.e(TAG, "tcpClientThreadFunc() thread_id=" + Thread.currentThread().getId() + " owner=" + this.ownerName() + " thread_name=" + this.binderServerThreadName());
         this.whichThread_ = null;
 
         try {
     		this.tcpConnection_ = new Socket(this.serverIpAddr(), this.tcpPort());
-    		this.debug(true, "tcpClientThreadFunc", this.ownerName() + " client connected");
+			Log.e(TAG, "tcpClientThreadFunc() " + this.ownerName() + " client connected");
     		this.portMgr_.mallocPort(this.tcpConnection_, this.ownerName());
 			this.portMgr_.transmitStringData("phwang168");
     		return true;
     	}
     	catch (Exception e) {
-			this.debug(true, "tcpClientThreadFunc", this.ownerName() + " Exception=" + e);
+			Log.e(TAG, "tcpClientThreadFunc() " + this.ownerName() + " Exception=" + e);
     		return false;
     	}
     }

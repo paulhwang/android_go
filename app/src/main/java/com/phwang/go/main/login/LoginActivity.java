@@ -27,7 +27,7 @@ import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = "LoginActivity";
+    private static final String TAG = "phwang LoginActivity";
     private LoginReceiver loginReceiver_;
     private TextInputLayout userNameLayout_;
     private EditText userNameEditText_;
@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e(TAG, "*************LoginActivity::onCreate() thread_id=" + Thread.currentThread().getId());
+        Log.e(TAG, "onCreate() thread_id=" + Thread.currentThread().getId());
 
         setContentView(R.layout.activity_login);
         this.userNameEditText_ = findViewById(R.id.sign_in_username);
@@ -67,12 +67,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view_val) {
-        Log.e(TAG, "LoginActivity::onClick()" );
+        //Log.e(TAG, "onClick()" );
         Intent intent;
         switch (view_val.getId()) {
             case R.id.sign_in_confirm_button:
-                Log.e(TAG, "LoginActivity::onClick(confirm)" );
-                this.do_setup_link();
+                //Log.e(TAG, "onClick() confirm_buttom" );
+                this.doSetupLink();
                 finish();
                 break;
             case R.id.sign_in_exit_button:
@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    protected void do_setup_link() {
+    protected void doSetupLink() {
         //if (!validateUsername() || !validatePassword()) {
         //    return;
         //}
@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         buf.append(Encoders.encodeString(this.userName_));
         buf.append(Encoders.encodeString(this.password_));
         String fabric_data = buf.toString();
-        Log.e(TAG, "LoginActivity::do_setup_link() fabric_data=" + fabric_data);
+        Log.e(TAG, "doSetupLink() fabric_data=" + fabric_data);
 
         Intent intent = new Intent();
         intent.putExtra(BundleIndexDefine.FROM, IntentDefine.LOGIN_ACTIVITY);

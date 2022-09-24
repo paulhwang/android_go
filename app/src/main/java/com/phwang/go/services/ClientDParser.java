@@ -15,7 +15,7 @@ import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.define.IntentDefine;
 
 public class ClientDParser {
-    private static final String TAG = "ClientDParser";
+    private static final String TAG = "phwang ClientDParser";
 
     private ClientRoot clientRoot_;
 
@@ -59,7 +59,7 @@ public class ClientDParser {
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION2:
             case FabricCommands.FABRIC_COMMAND_SETUP_SESSION3:
             default:
-    		    Log.e(TAG, "ClientDParser.parserResponseData() bad command!!!!! data=" + response_data_str_val);
+    		    Log.e(TAG, "parserResponseData() bad command!!!!! data=" + response_data_str_val);
     		    break;
     	}
     }

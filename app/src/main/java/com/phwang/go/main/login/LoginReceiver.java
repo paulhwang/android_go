@@ -24,7 +24,7 @@ import com.phwang.go.define.BundleIndexDefine;
 import com.phwang.go.global.GlobalData;
 
 public class LoginReceiver extends BroadcastReceiver {
-    private static final String TAG = "LoginReceiver";
+    private static final String TAG = "phwang LoginReceiver";
     private LoginActivity signInActivity_;
 
     public LoginReceiver(LoginActivity sign_in_activity_val) {

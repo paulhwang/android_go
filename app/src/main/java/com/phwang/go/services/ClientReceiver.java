@@ -16,7 +16,7 @@ import android.util.Log;
 import com.phwang.go.define.BundleIndexDefine;
 
 public class ClientReceiver extends BroadcastReceiver {
-    private static final String TAG = "ClientReceiver";
+    private static final String TAG = "phwang ClientReceiver";
     private ClientService clientService_;
 
     private ClientUParser clientUParser() { return this.clientService_.clientUParser(); }
@@ -27,10 +27,9 @@ public class ClientReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context_val, Intent intent_val) {
-        Log.e(TAG, "**************ClientReceiver::onReceive()");
         Bundle bundle = intent_val.getExtras();
         String fabric_data_str = bundle.getString(BundleIndexDefine.FABRIC_DATA);
-        Log.e(TAG, "**************ClientReceiver::onReceive() fabric_data_str=" + fabric_data_str);
+        Log.e(TAG, "onReceive() fabric_data_str=" + fabric_data_str);
         this.clientUParser().parseUCommand(fabric_data_str);
     }
 }

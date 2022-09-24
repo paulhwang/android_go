@@ -28,7 +28,7 @@ import com.phwang.go.sudoku.SudokuGame;
 import static com.phwang.go.define.PrefDefine.PREF_SERVER_IP_ADDRESS;
 
 public class FabricIpAddressActivity extends AppCompatActivity implements View.OnClickListener{
-    private static final String TAG = "FabricIpAddressActivity";
+    private static final String TAG = "phwang FabricIpAddressActivity";
 
     private EditText fabricIpAddressEditText_;
     private String fabricIpAddress_;

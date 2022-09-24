@@ -19,7 +19,7 @@ import com.phwang.go.define.IntentDefine;
 import com.phwang.go.global.GlobalData;
 
 public class ClientUParser {
-    private static final String TAG = "ClientUParser";
+    private static final String TAG = "phwang ClientUParser";
     private ClientRoot clientRoot_;
 
     private ClientDParser clientDParser() { return this.clientRoot_.clientDParser(); }
@@ -30,7 +30,7 @@ public class ClientUParser {
     }
 
     protected void parseUCommand(String fabric_data_str_val) {
-        Log.e(TAG, "ClientUParser::parseUCommand() fabric_data_str=" + fabric_data_str_val);
+        Log.e(TAG, "parseUCommand() fabric_data_str=" + fabric_data_str_val);
 
         switch (fabric_data_str_val.charAt(2)) {
         //switch (FabricInfoStr.getCommand(fabric_data_str_val)) {
